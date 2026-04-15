@@ -26,7 +26,6 @@
 .eh-001 { background: var(--color-background-primary); border-bottom: 0.5px solid var(--color-border-tertiary); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 60px; }
 .eh-002 { display: flex; align-items: center; gap: 10px; }
 .eh-003 { display: flex; align-items: center; justify-content: center; }
-.eh-004 { font-size: 16px; font-weight: 500; color: var(--color-text-primary); }
 .eh-005 { font-size: 13px; color: var(--color-text-secondary); margin-left: -4px; }
 .eh-105 { height: 40px; width: auto; display: block; }
 .eh-006 { display: flex; gap: 24px; align-items: center; }
@@ -85,7 +84,6 @@
 .eh-026 { font-size: 28px; font-weight: 500; color: var(--sedir-green); }
 .eh-027 { font-size: 12px; color: var(--color-text-secondary); margin-top: 2px; }
 .eh-028 { text-align: center; border-left: 0.5px solid var(--color-border-tertiary); }
-.eh-029 { padding: 3rem 2rem; display: grid; grid-template-columns: 1fr 340px; gap: 2rem; }
 .eh-030 { margin-bottom: 2.5rem; }
 .eh-031 { font-size: 20px; font-weight: 500; margin-bottom: 1.25rem; color: var(--color-text-primary); }
 .eh-032 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
@@ -128,10 +126,6 @@
 .eh-069 { font-size: 14px; font-weight: 500; margin-bottom: 8px; }
 .eh-070 { font-size: 12px; color: rgba(255,255,255,0.7); line-height: 1.6; margin-bottom: 14px; }
 .eh-071 { background: #fff; color: var(--sedir-green-dark); border: none; padding: 9px 18px; border-radius: 8px; font-size: 13px; font-weight: 500; cursor: pointer; width: 100%; }
-.eh-072 { background: var(--color-background-secondary); border-top: 0.5px solid var(--color-border-tertiary); padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center; }
-.eh-073 { font-size: 13px; font-weight: 500; color: var(--color-text-primary); }
-.eh-074 { display: flex; gap: 20px; }
-.eh-075 { font-size: 12px; color: var(--color-text-secondary); cursor: pointer; }
 .eh-076 { padding: 2rem 2rem 0; }
 .eh-077 { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: 16px; padding: 1.5rem; display: grid; grid-template-columns: 1.3fr 0.9fr; gap: 1.5rem; align-items: center; }
 .eh-078 { font-size: 24px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 0.5rem; }
@@ -146,7 +140,6 @@
 .eh-095 { font-size: 12px; font-weight: 500; margin-top: 0.55rem; }
 .eh-086 { background: var(--sedir-green); }
 .eh-087 { background: var(--sedir-green-dark); }
-.eh-088 { background: var(--sedir-green-alt); }
 .eh-096 { background: #8C7855; }
 .eh-097 { background: #009C63; }
 .eh-098 { background: #000306; }
@@ -225,18 +218,20 @@
   flex-shrink: 0;
 }
 .footer-v2-icon {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.15);
-  text-decoration: none;
-  display: inline-flex;
+  background: rgba(255,255,255,0.15);
+
+  display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.3s ease;
+
+  transition: 0.3s;
 }
+
 .footer-v2-icon:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255,255,255,0.3);
 }
 .footer-v2-icon svg {
   width: 18px;
@@ -274,14 +269,12 @@
 }
 
 /* Tipografia secundaria Franklin Gothic Demi en elementos de alto impacto */
-.eh-004,
 .eh-007,
 .eh-008,
 .eh-017,
 .eh-031,
 .eh-061,
 .eh-069,
-.eh-073,
 .btn-primary,
 .btn-outline,
 .eh-021,
@@ -300,8 +293,6 @@
   .eh-112 { gap: 1rem; }
   .eh-113 { min-height: 380px; }
   .eh-023,
-  .eh-029,
-  .eh-072,
   .footer-v2-wrap { padding-left: 2.5rem; padding-right: 2.5rem; }
   .eh-026 { font-size: 34px; }
   .eh-029 { grid-template-columns: 1fr 380px; gap: 2.5rem; }
