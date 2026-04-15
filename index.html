@@ -1,283 +1,119 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>.:: SEDIR ::.</title>
-	<link rel="shortcut icon" type="image/x-icon" href="https://www.sedir.org.pe/favicon.ico">
-	<link rel="icon" type="image/png" sizes="32x32" href="https://www.sedir.org.pe/favicon_32x32.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="https://www.sedir.org.pe/favicon_96x96.png">
-	<style>
-		:root {
-			--bg: #f3efd9;
-			--paper: #ffffff;
-			--ink: #202124;
-			--muted: #5f6368;
-			--accent: #2f6b2f;
-			--dark: #303030;
-			--line: #dedede;
-		}
-
-		* {
-			box-sizing: border-box;
-		}
-
-		body {
-			margin: 0;
-			font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-			color: var(--ink);
-			background: linear-gradient(180deg, #e4dbba 0%, #f7f4e6 220px, #f4f4f4 100%);
-		}
-
-		.container {
-			width: min(1080px, 100% - 2rem);
-			margin: 0 auto;
-		}
-
-		.hero {
-			padding: 1.2rem 0 1rem;
-			background: #e4dbba;
-			border-bottom: 1px solid #d5c89f;
-		}
-
-		.hero h1 {
-			margin: 0;
-			font-size: clamp(1.5rem, 3vw, 2rem);
-			letter-spacing: 0.04em;
-		}
-
-		.hero p {
-			margin: 0.45rem 0 0;
-			color: #4d4a3f;
-		}
-
-		section {
-			background: var(--paper);
-			margin: 1rem auto;
-			border: 1px solid var(--line);
-			border-radius: 10px;
-			overflow: hidden;
-		}
-
-		.section-pad {
-			padding: 1rem;
-		}
-
-		.grid-4 {
-			display: grid;
-			grid-template-columns: repeat(4, minmax(0, 1fr));
-			gap: 0.8rem;
-		}
-
-		.card-link {
-			display: block;
-			text-decoration: none;
-			color: inherit;
-			background: #f8f8f8;
-			border: 1px solid var(--line);
-			border-radius: 8px;
-			padding: 0.9rem;
-			min-height: 95px;
-			transition: transform 0.2s ease, box-shadow 0.2s ease;
-		}
-
-		.card-link:hover {
-			transform: translateY(-2px);
-			box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-		}
-
-		.card-link strong {
-			display: block;
-			margin-bottom: 0.25rem;
-			color: var(--accent);
-		}
-
-		.banner img {
-			width: 100%;
-			display: block;
-			height: auto;
-		}
-
-		.about {
-			display: grid;
-			grid-template-columns: 1.2fr 1fr;
-			gap: 1rem;
-			background: #eaf4e7;
-		}
-
-		.about h2,
-		.about h3 {
-			margin-top: 0;
-			font-size: 1.2rem;
-		}
-
-		.about h2 span,
-		.about h3 span {
-			color: var(--accent);
-		}
-
-		.lead-img {
-			float: left;
-			width: 150px;
-			max-width: 45%;
-			margin: 0 0.75rem 0.6rem 0;
-			border-radius: 6px;
-			border: 1px solid #cfd8cf;
-		}
-
-		.channel-link {
-			display: inline-flex;
-			align-items: center;
-			gap: 0.4rem;
-			text-decoration: none;
-			color: #b00000;
-			font-weight: 600;
-		}
-
-		.embed {
-			width: 100%;
-			aspect-ratio: 16 / 9;
-			border: 0;
-			border-radius: 8px;
-		}
-
-		.placeholder {
-			background: #fafafa;
-			border: 1px dashed #bdbdbd;
-			border-radius: 8px;
-			padding: 1rem;
-			color: var(--muted);
-		}
-
-		.dark {
-			background: var(--dark);
-			color: #f1f1f1;
-		}
-
-		.dark h3 {
-			margin-top: 0;
-		}
-
-		footer {
-			margin: 1rem auto 2rem;
-			color: var(--muted);
-			font-size: 0.92rem;
-			text-align: center;
-		}
-
-		@media (max-width: 900px) {
-			.grid-4 {
-				grid-template-columns: repeat(2, minmax(0, 1fr));
-			}
-
-			.about {
-				grid-template-columns: 1fr;
-			}
-		}
-
-		@media (max-width: 560px) {
-			.container {
-				width: min(1080px, 100% - 1rem);
-			}
-
-			.grid-4 {
-				grid-template-columns: 1fr;
-			}
-		}
-	</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SEDIR | Inicio</title>
+  <link rel="stylesheet" href="estilo_home.css">
 </head>
 <body>
-	<header class="hero">
-		<div class="container">
-			<h1>SEDIR</h1>
-			<p>Servicio para el Desarrollo Integral Rural</p>
-		</div>
-	</header>
 
-	<main class="container">
-		<section>
-			<div class="section-pad">
-				<h2>Portada</h2>
-				<div class="placeholder">
-					El slider de la portada en el sitio antiguo se cargaba desde <strong>slide/index.php</strong>.
-					Se puede migrar aquí como carrusel HTML/CSS/JS en el siguiente paso.
-				</div>
-			</div>
-		</section>
+<div class="root">
 
-		<section>
-			<div class="section-pad grid-4">
-				<a class="card-link" href="https://www.sedir.org.pe/unidades-productivas2025.php" target="_blank" rel="noopener noreferrer">
-					<strong>Unidades Productivas</strong>
-					<span>Accede a la sección 2025.</span>
-				</a>
-				<a class="card-link" href="publicaciones.php" target="_blank" rel="noopener noreferrer">
-					<strong>Publicaciones</strong>
-					<span>Materiales y recursos institucionales.</span>
-				</a>
-				<a class="card-link" href="investigacion.php" target="_blank" rel="noopener noreferrer">
-					<strong>Investigación</strong>
-					<span>Proyectos y líneas de investigación.</span>
-				</a>
-				<a class="card-link" href="https://www.sedir.org.pe/condiciones-del-clima.php" target="_blank" rel="noopener noreferrer">
-					<strong>Condiciones del Clima</strong>
-					<span>Información meteorológica y agrícola.</span>
-				</a>
-			</div>
-		</section>
+  <!-- NAVEGACION -->
+  <div class="eh-001">
+    <div class="eh-002">
+      <div class="eh-003">
+        <img class="eh-105" src="activos/img/logo-sedir-png1.png" alt="Logo SEDIR">
+      </div>
+      <span class="eh-005">| Valle de Nepeña</span>
+    </div>
+    <div class="eh-006">
+      <a class="eh-008" href="index.html">Inicio</a>
+      <a class="eh-007" href="quienes-somos.html">Quiénes somos</a>
+      <a class="eh-007" href="proyectos.html">Proyectos</a>
+      <a class="eh-007" href="noticias.html">Noticias</a>
+      <a class="eh-007" href="dashboard.html">Dashboard</a>
+      <a class="btn-primary eh-009" href="contacto.html">Contacto</a>
+    </div>
+  </div>
 
-		<section class="banner">
-			<a href="https://www.sedir.org.pe/revista-detalle.php" target="_blank" rel="noopener noreferrer">
-				<img src="https://www.sedir.org.pe/imgs/Banner-Revista-2daEdicion.jpg" alt="Revista SEDIR 2da edición">
-			</a>
-		</section>
+  <!-- HERO PRINCIPAL -->
+  <div class="eh-010">
+    <div class="eh-011"></div>
+    <div class="eh-012"></div>
+    <div class="eh-119">
+      <div class="eh-013">
+        <!--<div class="eh-014">
+          <div class="eh-015"></div>
+          <span class="eh-016">Desarrollo agropecuario sostenible desde 2012</span>
+        </div>-->
+        <h1 class="eh-017">SEDIR — Servicio para el<br>Desarrollo Integral Rural<br><span class="eh-018">Valle de
+            Nepeña</span></h1>
+        <p class="eh-019">Desde 2012, impulsamos el desarrollo agropecuario y agroindustrial sostenible en el valle de
+          Nepeña, fortaleciendo capacidades locales, transfiriendo tecnología, brindando asistencia técnica
+          especializada y promoviendo la investigación aplicada en alianza con la academia.</p>
+        <div class="eh-020">
+          <a class="eh-021" href="quienes-somos.html">Conoce nuestros Servicios</a>
+          <a class="eh-022" href="proyectos.html">Ver Proyectos agrícola →</a>
+        </div>
+      </div>
+      <div class="eh-112" aria-label="Galería destacada de actividades 2025">
+        <div class="eh-113 eh-114">
+          <img src="activos/img/2025-Asesoria-agricola.jpg" alt="Asesoría agrícola SEDIR 2025" loading="eager">
+          <img src="activos/img/2025-abejas.jpg" alt="Actividad de apicultura SEDIR 2025" loading="lazy">
+          <img src="activos/img/2025-parcelas-demostrativas.jpg" alt="Parcelas demostrativas SEDIR 2025" loading="lazy">
+          <img src="activos/img/2025-New001.jpg" alt="Actividad SEDIR 2025" loading="lazy">
+          <img src="activos/img/2025-New002.jpg" alt="Actividad SEDIR 2025" loading="lazy">
+          <img src="activos/img/2025-New003.jpg" alt="Actividad SEDIR 2025" loading="lazy">
+          <img src="activos/img/2025-New004.jpg" alt="Actividad SEDIR 2025" loading="lazy">
+          <div class="eh-116">Actividades 2025</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-		<section class="about section-pad">
-			<article>
-				<h2><span>AGRICULTURA:</span> Desarrollo Integral</h2>
-				<p>
-					<img class="lead-img" src="https://www.sedir.org.pe/imgs/Portada_01.png" alt="Portada agricultura">
-					La asociación, Servicio para el Desarrollo Integral Rural - SEDIR, tiene como propósito contribuir en el desarrollo agrícola y agroindustrial del valle del Nepeña, mediante el fortalecimiento de capacidades locales, asistencia técnica y extensión agraria.
-				</p>
-				<p>
-					Nuestra área de intervención involucra a dos ámbitos: zona costa, en el cual la actividad se concentra más que todo en la fruticultura; y el ámbito de la sierra, espacio en el cual la práctica agrícola es más con fines de autoconsumo, pero que a la vez hay potenciales para un desarrollo productivo con valor diferenciado, cuyos productos serían destinados a mercados especializados.
-				</p>
-				<p>
-					La articulación de mercados es un aspecto clave para ambos escenarios, teniendo como destino el mercado externo.
-				</p>
-			</article>
-			<aside>
-				<h3><span>Canal Audiovisual</span></h3>
-				<p>
-					<a class="channel-link" href="https://www.youtube.com/channel/UCJXXfE-BCNidYAKdWbyekDQ" target="_blank" rel="noopener noreferrer">
-						Ir al canal
-						<img src="https://www.sedir.org.pe/imgs/youtube.png" width="28" height="28" alt="YouTube">
-					</a>
-				</p>
-				<iframe class="embed" src="https://www.youtube.com/embed/C6ccbpTBqhA" title="Canal audiovisual SEDIR" allowfullscreen></iframe>
-			</aside>
-		</section>
+  <!-- FRANJA DE INDICADORES -->
+  <div class="eh-023">
+    <div class="eh-024">
+      <div class="eh-025">
+        <div class="eh-026">4,000+</div>
+        <div class="eh-027">Familias beneficiadas</div>
+      </div>
+      <div class="eh-028">
+        <div class="eh-026">4,710+</div>
+        <div class="eh-027">Agricultores y Emprendedores</div>
+      </div>
+      <div class="eh-028">
+        <div class="eh-026">665</div>
+        <div class="eh-027">Emprendedores Formados</div>
+      </div>
+      <div class="eh-028">
+        <div class="eh-026">450+</div>
+        <div class="eh-027">Mujeres Empoderadas</div>
+      </div>
+    </div>
+  </div>
 
-		<section>
-			<div class="section-pad">
-				<h3>Noticias</h3>
-				<div class="placeholder">
-					En el sitio antiguo esta sección se incluía desde <strong>noticias/index.php</strong>.
-				</div>
-			</div>
-		</section>
+  <div class="eh-106">
+    <div class="eh-107">
+      <div class="eh-109">
+        <div class="section-label">Explora SEDIR</div>
+        <h2 class="eh-031">Navega por nuestras secciones</h2>
+        <div class="eh-032">
+          <a class="card eh-110" href="quienes-somos.html">
+            <div class="eh-034">Quiénes somos</div>
+            <div class="eh-035">Identidad institucional, paleta oficial y tipografías de marca.</div>
+          </a>
+          <a class="card eh-110" href="proyectos.html">
+            <div class="eh-034">Proyectos</div>
+            <div class="eh-035">Iniciativas activas para el desarrollo integral rural en el valle.</div>
+          </a>
+          <a class="card eh-110" href="noticias.html">
+            <div class="eh-034">Noticias</div>
+            <div class="eh-035">Últimas novedades, actividades y logros institucionales.</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 
-		<section class="dark">
-			<div class="section-pad">
-				<h3>Enlaces Recomendados</h3>
-				<div class="placeholder">
-					El carrusel antiguo venía desde <strong>carousel/index.html</strong>.
-					Está preparado este bloque para reemplazarlo por un carrusel moderno o una grilla de enlaces.
-				</div>
-			</div>
-		</section>
-	</main>
-	<div id="shared-footer"></div>
-	<script src="activos/js/footer-loader.js" defer></script>
+  <div id="shared-footer"></div>
+
+</div>
+
+<script src="activos/js/footer-loader.js" defer></script>
+
 </body>
 </html>
+

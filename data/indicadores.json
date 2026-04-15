@@ -1,0 +1,14 @@
+{
+  "produccion": [
+    { "cultivo": "Cana de azucar", "toneladas": 1240 },
+    { "cultivo": "Maiz", "toneladas": 890 },
+    { "cultivo": "Esparrago", "toneladas": 560 },
+    { "cultivo": "Palta", "toneladas": 340 }
+  ],
+  "clima": {
+    "temperatura": { "valor": "24 C", "detalle": "+2 C vs ayer" },
+    "humedad": { "valor": "68%", "detalle": "Nivel optimo" },
+    "viento": { "valor": "12 km/h", "detalle": "Direccion NO" },
+    "precipitacion": { "valor": "0 mm", "detalle": "Sin lluvia" }
+  }
+}

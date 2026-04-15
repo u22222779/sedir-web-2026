@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -16,7 +16,7 @@
         <span class="eh-005">| Valle de Nepeña</span>
       </div>
       <div class="eh-006">
-        <a class="eh-007" href="sedir_home.html">Inicio</a>
+        <a class="eh-007" href="index.html">Inicio</a>
         <a class="eh-007" href="quienes-somos.html">Quiénes somos</a>
         <a class="eh-007" href="proyectos.html">Proyectos</a>
         <a class="eh-007" href="noticias.html">Noticias</a>
@@ -30,57 +30,41 @@
         <div class="eh-030">
           <div class="section-label">Dashboard productivo</div>
           <h1 class="eh-031">Indicadores agrícolas en tiempo real</h1>
+          <div id="dashboard-error" class="eh-054" hidden></div>
           <div class="card eh-039">
             <div class="eh-040">
               <div>
                 <div class="eh-041">Producción por cultivo (ton) — 2024</div>
-                <div class="eh-042">
-                  <div>
-                    <div class="eh-043"><span class="eh-044">Caña de azúcar</span><span class="eh-045">1,240 t</span></div>
-                    <div class="eh-046"><div class="eh-047"></div></div>
-                  </div>
-                  <div>
-                    <div class="eh-043"><span class="eh-044">Maíz</span><span class="eh-045">890 t</span></div>
-                    <div class="eh-046"><div class="eh-048"></div></div>
-                  </div>
-                  <div>
-                    <div class="eh-043"><span class="eh-044">Espárrago</span><span class="eh-045">560 t</span></div>
-                    <div class="eh-046"><div class="eh-049"></div></div>
-                  </div>
-                  <div>
-                    <div class="eh-043"><span class="eh-044">Palta</span><span class="eh-045">340 t</span></div>
-                    <div class="eh-046"><div class="eh-050"></div></div>
-                  </div>
-                </div>
+                <div class="eh-042" id="dashboard-produccion"></div>
               </div>
               <div>
                 <div class="eh-041">Condiciones meteorológicas</div>
                 <div class="eh-051">
-                  <div class="eh-052">
-                    <div class="eh-037">Temperatura</div>
-                    <div class="eh-053">24°C</div>
-                    <div class="eh-054">↑ 2° vs ayer</div>
+                  <div class="eh-052" id="clima-temperatura">
+                    <div class="eh-037" data-role="label">Temperatura</div>
+                    <div class="eh-053" data-role="valor">--</div>
+                    <div class="eh-054" data-role="detalle">Cargando...</div>
                   </div>
-                  <div class="eh-052">
-                    <div class="eh-037">Humedad</div>
-                    <div class="eh-055">68%</div>
-                    <div class="eh-054">Óptima</div>
+                  <div class="eh-052" id="clima-humedad">
+                    <div class="eh-037" data-role="label">Humedad</div>
+                    <div class="eh-055" data-role="valor">--</div>
+                    <div class="eh-054" data-role="detalle">Cargando...</div>
                   </div>
-                  <div class="eh-052">
-                    <div class="eh-037">Viento</div>
-                    <div class="eh-056">12 km/h</div>
-                    <div class="eh-054">NO</div>
+                  <div class="eh-052" id="clima-viento">
+                    <div class="eh-037" data-role="label">Viento</div>
+                    <div class="eh-056" data-role="valor">--</div>
+                    <div class="eh-054" data-role="detalle">Cargando...</div>
                   </div>
-                  <div class="eh-052">
-                    <div class="eh-037">Precipitación</div>
-                    <div class="eh-057">0 mm</div>
-                    <div class="eh-054">Sin lluvia</div>
+                  <div class="eh-052" id="clima-precipitacion">
+                    <div class="eh-037" data-role="label">Precipitación</div>
+                    <div class="eh-057" data-role="valor">--</div>
+                    <div class="eh-054" data-role="detalle">Cargando...</div>
                   </div>
                 </div>
               </div>
             </div>
             <div class="eh-058">
-              <a class="btn-outline eh-059" href="dashboard.html">Ver dashboard completo →</a>
+              <span class="eh-037" id="dashboard-updated-at"></span>
             </div>
           </div>
         </div>
@@ -90,5 +74,8 @@
     <div id="shared-footer"></div>
   </div>
   <script src="activos/js/footer-loader.js" defer></script>
+  <script src="activos/js/dashboard-api.js" defer></script>
 </body>
 </html>
+
+

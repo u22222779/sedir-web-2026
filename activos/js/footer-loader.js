@@ -1,4 +1,6 @@
 (function () {
+  var siteRoot = '/';
+
   function ensureFooterStylesheet() {
     var existingLink = document.querySelector('link[data-shared-footer-css="true"]');
     if (existingLink) {
@@ -7,7 +9,7 @@
 
     var link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = 'activos/css/footer.css';
+    link.href = siteRoot + 'activos/css/footer.css';
     link.setAttribute('data-shared-footer-css', 'true');
     document.head.appendChild(link);
   }
@@ -18,10 +20,10 @@
       return;
     }
 
-    fetch('footer.html')
+    fetch(siteRoot + 'footer.html')
       .then(function (response) {
         if (!response.ok) {
-          throw new Error('No se pudo cargar footer.html');
+          throw new Error('No se pudo cargar footer.html: ' + response.status);
         }
         return response.text();
       })

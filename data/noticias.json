@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "titulo": "SEDIR fortalece capacidades en riego tecnificado",
+    "fecha": "2026-03-28",
+    "categoria": "Capacitacion",
+    "resumen": "Se desarrollo una jornada tecnica con productores del valle de Nepena para mejorar eficiencia hidrica."
+  },
+  {
+    "id": 2,
+    "titulo": "Nueva alianza para extension agraria en zonas altas",
+    "fecha": "2026-04-05",
+    "categoria": "Institucional",
+    "resumen": "SEDIR y aliados locales iniciaron un plan de acompanamiento para pequenos productores."
+  },
+  {
+    "id": 3,
+    "titulo": "Parcela demostrativa reporta incremento de rendimiento",
+    "fecha": "2026-04-10",
+    "categoria": "Proyectos",
+    "resumen": "El seguimiento de campo muestra mejoras en produccion mediante manejo integrado."
+  }
+]
