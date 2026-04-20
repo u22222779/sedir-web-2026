@@ -1,5 +1,5 @@
 footer {
-  --footer-bg: #0a7a50;
+  --footer-bg: #006A49;
   --footer-text: #d9efe6;
   --footer-text-light: rgba(255, 255, 255, 0.85);
   --footer-text-lighter: rgba(255, 255, 255, 0.75);
@@ -70,17 +70,26 @@ footer nav a:hover {
   text-decoration: underline;
 }
 
-.social-icons {
+.social-icons,
+.social-icons2 {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   gap: 0.8rem;
-  max-width: 184px;
   flex-shrink: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.social-icons a {
+.social-icons li,
+.social-icons2 li {
+  display: inline-flex;
+}
+
+.social-icons a,
+.social-icons2 a {
   flex: 0 0 40px;
   width: 40px;
   height: 40px;
@@ -97,7 +106,9 @@ footer nav a:hover {
 }
 
 .social-icons .icon,
-.social-icons a svg {
+.social-icons a svg,
+.social-icons2 .icon,
+.social-icons2 a svg {
   width: 24px;
   height: 24px;
   color: #ffffff;
@@ -108,11 +119,16 @@ footer nav a:hover {
 .social-icons .icon path,
 .social-icons .icon rect,
 .social-icons a svg path,
-.social-icons a svg rect {
+.social-icons a svg rect,
+.social-icons2 .icon path,
+.social-icons2 .icon rect,
+.social-icons2 a svg path,
+.social-icons2 a svg rect {
   fill: currentColor;
 }
 
-.social-icons a:hover {
+.social-icons a:hover,
+.social-icons2 a:hover {
   background: rgba(255, 255, 255, 0.3);
   transform: scale(1.1);
 }
@@ -146,7 +162,8 @@ footer > p:last-child {
     font-size: 13px;
   }
 
-  .social-icons {
+  .social-icons,
+  .social-icons2 {
     justify-content: center;
     gap: 1rem;
   }
@@ -174,11 +191,13 @@ footer > p:last-child {
     font-size: 12px;
   }
 
-  .social-icons {
+  .social-icons,
+  .social-icons2 {
     gap: 0.6rem;
   }
 
-  .social-icons a {
+  .social-icons a,
+  .social-icons2 a {
     flex-basis: 36px;
     width: 36px;
     height: 36px;
