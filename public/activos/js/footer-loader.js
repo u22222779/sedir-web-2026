@@ -1,22 +1,6 @@
 (function () {
   'use strict';
 
-  // Determina la ruta base según la ubicación del archivo
-  function getBasePath() {
-    const path = window.location.pathname;
-    const segments = path.split('/').filter(Boolean);
-    
-    // Si estamos en /pages/, sube un nivel
-    if (segments.includes('pages')) {
-      return '../';
-    }
-    
-    // Si estamos en la raíz
-    return './';
-  }
-
-  const siteRoot = getBasePath();
-
   // Carga una hoja de estilos si no existe
   function loadStylesheet(id, href, attributes = {}) {
     if (document.querySelector(`link[data-${id}="true"]`)) {
@@ -63,7 +47,7 @@
 
   // Carga el CSS del footer
   function ensureFooterStylesheet() {
-    loadStylesheet('shared-footer-css', siteRoot + 'activos/css/footer.css');
+    loadStylesheet('shared-footer-css', '/activos/css/footer.css');
   }
 
   // Carga un componente HTML
@@ -73,7 +57,7 @@
       return;
     }
 
-    fetch(siteRoot + componentPath, { cache: 'no-store' })
+    fetch(componentPath, { cache: 'no-store' })
       .then(response => {
         if (!response.ok) {
           throw new Error(`Error ${response.status}: No se pudo cargar ${componentPath}`);
@@ -91,12 +75,12 @@
 
   // Carga el footer
   function loadSharedFooter() {
-    loadComponent('shared-footer', 'components/footer.html', 'footer');
+    loadComponent('shared-footer', '/components/footer.html', 'footer');
   }
 
   // Carga la sección de iconos de familia
   function loadIconFamilySection() {
-    loadComponent('shared-icon-family', 'components/icon-family.html', 'icon-family');
+    loadComponent('shared-icon-family', '/components/icon-family.html', 'icon-family');
   }
 
   // Inicialización cuando el DOM esté listo

@@ -70,26 +70,16 @@ footer nav a:hover {
   text-decoration: underline;
 }
 
-.social-icons,
-.social-icons2 {
+.social-icons {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   gap: 0.8rem;
   flex-shrink: 0;
-  list-style: none;
-  padding: 0;
-  margin: 0;
 }
 
-.social-icons li,
-.social-icons2 li {
-  display: inline-flex;
-}
-
-.social-icons a,
-.social-icons2 a {
+.social-icons a {
   flex: 0 0 40px;
   width: 40px;
   height: 40px;
@@ -106,9 +96,7 @@ footer nav a:hover {
 }
 
 .social-icons .icon,
-.social-icons a svg,
-.social-icons2 .icon,
-.social-icons2 a svg {
+.social-icons a svg {
   width: 24px;
   height: 24px;
   color: #ffffff;
@@ -119,16 +107,11 @@ footer nav a:hover {
 .social-icons .icon path,
 .social-icons .icon rect,
 .social-icons a svg path,
-.social-icons a svg rect,
-.social-icons2 .icon path,
-.social-icons2 .icon rect,
-.social-icons2 a svg path,
-.social-icons2 a svg rect {
+.social-icons a svg rect {
   fill: currentColor;
 }
 
-.social-icons a:hover,
-.social-icons2 a:hover {
+.social-icons a:hover {
   background: rgba(255, 255, 255, 0.3);
   transform: scale(1.1);
 }
@@ -162,8 +145,7 @@ footer > p:last-child {
     font-size: 13px;
   }
 
-  .social-icons,
-  .social-icons2 {
+  .social-icons {
     justify-content: center;
     gap: 1rem;
   }
@@ -191,13 +173,11 @@ footer > p:last-child {
     font-size: 12px;
   }
 
-  .social-icons,
-  .social-icons2 {
+  .social-icons {
     gap: 0.6rem;
   }
 
-  .social-icons a,
-  .social-icons2 a {
+  .social-icons a {
     flex-basis: 36px;
     width: 36px;
     height: 36px;
