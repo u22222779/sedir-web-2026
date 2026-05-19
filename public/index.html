@@ -1,126 +1,1094 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
+
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SEDIR | Inicio</title>
-  <link rel="stylesheet" href="activos/css/estilo_home.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>SEDIR - Desarrollo Rural Sostenible</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&amp;family=Libre+Franklin:wght@300;400;500;600;700&amp;display=swap"
+    rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              DEFAULT: '#00944a',
+              dark: '#006a49',
+              light: '#e6f4ed',
+            },
+            secondary: {
+              DEFAULT: '#8c7855',
+              dark: '#6e5e42',
+            },
+            dark: '#1a1a1a',
+            gray: {
+              50: '#f9fafb',
+              100: '#f3f4f6',
+              200: '#e5e7eb',
+              800: '#1f2937',
+              900: '#111827',
+            }
+          },
+          fontFamily: {
+            sans: ['Libre Franklin', 'sans-serif'],
+            display: ['Montserrat', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style data-purpose="custom-styles">
+    body {
+      font-family: "Libre Franklin", sans-serif;
+      color: #333
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: "Montserrat", sans-serif
+    }
+
+    .hero-bg {
+      position: relative;
+      background-color: #006a49;
+      /* fallback */
+      overflow: hidden;
+    }
+
+    .impact-bg {
+      background-color: #006a49
+    }
+
+    .partners-bg {
+      background-color: #006a49
+    }
+
+    .video-overlay {
+      background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.6) 100%)
+    }
+
+    /* Hero slideshow styles */
+    .hero-slideshow,
+    .hero-bg-slideshow {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 1rem;
+      overflow: hidden;
+    }
+
+    .hero-slideshow img,
+    .hero-bg-slideshow img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      opacity: 0;
+      animation: heroSlideShow 35s infinite;
+    }
+
+    .hero-bg-slideshow img:nth-of-type(1) {
+      animation-delay: 0s;
+    }
+
+    .hero-bg-slideshow img:nth-of-type(2) {
+      animation-delay: 7s;
+    }
+
+    .hero-bg-slideshow img:nth-of-type(3) {
+      animation-delay: 14s;
+    }
+
+    .hero-bg-slideshow img:nth-of-type(4) {
+      animation-delay: 21s;
+    }
+
+    .hero-bg-slideshow img:nth-of-type(5) {
+      animation-delay: 28s;
+    }
+
+    .hero-bg-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 5;
+      background: linear-gradient(rgba(0, 106, 73, 0.55), rgba(0, 106, 73, 0.55));
+    }
+
+    /* Right column carousel card */
+    .carousel-card {
+      position: relative;
+      width: 621px;
+      height: 320px;
+      border-radius: 1rem;
+      overflow: hidden;
+      margin-left: auto;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    }
+
+    .carousel-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      opacity: 0;
+      animation: carouselSlide 35s infinite;
+    }
+
+    .carousel-card img:nth-of-type(1) {
+      animation-delay: 0s;
+    }
+
+    .carousel-card img:nth-of-type(2) {
+      animation-delay: 7s;
+    }
+
+    .carousel-card img:nth-of-type(3) {
+      animation-delay: 14s;
+    }
+
+    .carousel-card img:nth-of-type(4) {
+      animation-delay: 21s;
+    }
+
+    .carousel-card img:nth-of-type(5) {
+      animation-delay: 28s;
+    }
+
+    @keyframes carouselSlide {
+      0% {
+        opacity: 0
+      }
+
+      6% {
+        opacity: 1
+      }
+
+      26% {
+        opacity: 1
+      }
+
+      32% {
+        opacity: 0
+      }
+
+      100% {
+        opacity: 0
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .carousel-card {
+        width: 360px;
+        height: 260px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .carousel-card {
+        width: 100%;
+        height: 280px;
+        margin-left: 0;
+      }
+    }
+
+    @keyframes heroSlideShow {
+      0% {
+        opacity: 0
+      }
+
+      6% {
+        opacity: 1
+      }
+
+      26% {
+        opacity: 1
+      }
+
+      32% {
+        opacity: 0
+      }
+
+      100% {
+        opacity: 0
+      }
+    }
+  </style>
 </head>
-<body>
 
-<div class="root">
-
-  <!-- NAVEGACION -->
-  <div class="eh-001">
-    <div class="eh-002">
-      <div class="eh-003">
-        <img class="eh-105" src="activos/img/logo-sedir-png1.png" alt="Logo SEDIR">
+<body class="antialiased bg-gray-50">
+  <!-- BEGIN: Navigation -->
+  <nav class="bg-white sticky top-0 z-50 shadow-sm border-b border-primary-dark">
+    <div class="w-full px-[40px] flex justify-between items-center">
+      <div class="flex items-center">
+        <img alt="SEDIR Logo" src="activos/img_logos/logo-msi.png" style="height:84px; width:auto; object-fit:contain;" />
       </div>
-      <span class="eh-005">| Valle de Nepeña</span>
-    </div>
-    <div class="eh-006">
-      <a class="eh-008" href="index.html">Inicio</a>
-      <a class="eh-007" href="pages/quienes-somos.html">Quiénes somos</a>
-      <a class="eh-007" href="pages/proyectos.html">Proyectos</a>
-      <a class="eh-007" href="pages/noticias.html">Noticias</a>
-      <a class="eh-007" href="pages/dashboard.html">Dashboard</a>
-      <a class="btn-primary eh-009" href="pages/contacto.html">Contacto</a>
-    </div>
-  </div>
-
-  <!-- HERO PRINCIPAL -->
-  <div class="eh-010">
-    <div class="eh-011"></div>
-    <div class="eh-012"></div>
-    <div class="eh-119">
-      <div class="eh-013">
-        <!--<div class="eh-014">
-          <div class="eh-015"></div>
-          <span class="eh-016">Desarrollo agropecuario sostenible desde 2012</span>
-        </div>-->
-        <h1 class="eh-017">SEDIR — Servicio para el<br>Desarrollo Integral Rural<br><span class="eh-018">Valle de
-            Nepeña</span></h1>
-        <p class="eh-019">Desde 2012, impulsamos el desarrollo agropecuario y agroindustrial sostenible en el valle de
-          Nepeña, fortaleciendo capacidades locales, transfiriendo tecnología, brindando asistencia técnica
-          especializada y promoviendo la investigación aplicada en alianza con la academia.</p>
-        <div class="eh-020">
-          <a class="eh-021" href="pages/quienes-somos.html">Conoce nuestros Servicios</a>
-          <a class="eh-022" href="pages/proyectos.html">Ver Proyectos agrícola →</a>
-        </div>
-      </div>
-      <div class="eh-112" aria-label="Galería destacada de actividades 2025">
-        <div class="eh-113 eh-114">
-          <img src="activos/img/2025-Asesoria-agricola.jpg" alt="Asesoría agrícola SEDIR 2025" loading="eager">
-          <img src="activos/img/2025-abejas.jpg" alt="Actividad de apicultura SEDIR 2025" loading="lazy">
-          <img src="activos/img/2025-parcelas-demostrativas.jpg" alt="Parcelas demostrativas SEDIR 2025" loading="lazy">
-          <img src="activos/img/2025-New001.jpg" alt="Actividad SEDIR 2025" loading="lazy">
-          <img src="activos/img/2025-New002.jpg" alt="Actividad SEDIR 2025" loading="lazy">
-          <img src="activos/img/2025-New003.jpg" alt="Actividad SEDIR 2025" loading="lazy">
-          <img src="activos/img/2025-New004.jpg" alt="Actividad SEDIR 2025" loading="lazy">
-          <div class="eh-116">Actividades 2025</div>
-        </div>
+      <div class="hidden md:flex items-center" style="gap:35px;">
+        <a class="text-primary font-display font-medium text-[16px]" href="#">Inicio</a>
+        <a class="text-gray-600 hover:text-primary font-display font-medium text-[16px] transition-colors"
+          href="#">Quienes somos</a>
+        <a class="text-gray-600 hover:text-primary font-display font-medium text-[16px] transition-colors" href="#">Qué
+          hacemos</a>
+        <a class="text-gray-600 hover:text-primary font-display font-medium text-[16px] transition-colors"
+          href="#">Proyectos</a>
+        <a class="text-gray-600 hover:text-primary font-display font-medium text-[16px] transition-colors"
+          href="#">Noticias</a>
+        <a class="text-gray-600 hover:text-primary font-display font-medium text-[16px] transition-colors"
+          href="#">Productos y Servicios</a>
+        <a class="bg-primary hover:bg-primary-dark text-white px-6 py-2 rounded-full font-display font-medium text-[16px] transition-colors"
+          href="#">Contáctanos</a>
       </div>
     </div>
-  </div>
-
-  <!-- FRANJA DE INDICADORES -->
-  <div class="eh-023">
-    <div class="eh-023-title">Nuestro Impacto</div>
-    <div class="eh-024">
-      <div class="eh-025">
-        <div class="eh-026">4,000+</div>
-        <div class="eh-027"><strong>Familias Beneficiadas</strong></div>
-        <p class="eh-027b">Familias agricultoras que mejoraron su produccion y calidad de vida gracias a nuestros programas.</p>
-      </div>
-      <div class="eh-028">
-        <div class="eh-026">4,710+</div>
-        <div class="eh-027"><strong>Agricultores y Emprendedores</strong></div>
-        <p class="eh-027b">Beneficiarios directos del proyecto de cooperacion LED-SEDIR ejecutado entre 2013 y 2024.</p>
-      </div>
-      <div class="eh-028">
-        <div class="eh-026">665</div>
-        <div class="eh-027"><strong>Emprendedores Formados</strong></div>
-        <p class="eh-027b">Participantes en programas de formacion especializada en cultivos, crianzas y agroindustria.</p>
-      </div>
-      <div class="eh-028">
-        <div class="eh-026">450+</div>
-        <div class="eh-027"><strong>Mujeres Empoderadas</strong></div>
-        <p class="eh-027b">Mujeres integradas a la cadena productiva, liderando su propio desarrollo economico y comunitario.</p>
-      </div>
+  </nav>
+  <!-- END: Navigation -->
+  <!-- BEGIN: Hero Section -->
+  <section class="hero-bg text-white py-12 lg:py-20 relative overflow-hidden">
+    <div class="hero-bg-slideshow" aria-hidden="true">
+      <img src="activos/img_portada/Sem4-Portada01.jpg" alt="Portada fondo 1" />
+      <img src="activos/img_portada/Sem4-Portada02.jpg" alt="Portada fondo 2" />
+      <img src="activos/img_portada/Sem4-Portada03.jpg" alt="Portada fondo 3" />
+      <img src="activos/img_portada/Sem4-Portada04.jpg" alt="Portada fondo 4" />
+      <img src="activos/img_portada/Sem4-Portada05.jpg" alt="Portada fondo 5" />
     </div>
-  </div>
-
-  <div class="eh-106">
-    <div class="eh-107">
-      <div class="eh-109">
-        <div class="section-label">Explora SEDIR</div>
-        <h2 class="eh-031">Navega por nuestras secciones</h2>
-        <div class="eh-032">
-          <a class="card eh-110" href="pages/quienes-somos.html">
-            <div class="eh-034">Quiénes somos</div>
-            <div class="eh-035">Identidad institucional, paleta oficial y tipografías de marca.</div>
+    <div class="hero-bg-overlay" aria-hidden="true"></div>
+    <div
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+      <div>
+        <h1 class="font-extrabold leading-tight mb-6 text-[68px]">
+          Impulsamos el desarrollo rural <span class="text-[#F09734]">sostenible</span>
+        </h1>
+        <p class="text-lg lg:text-xl mb-8 text-gray-100 max-w-lg font-display font-light">
+          Fortalecemos capacidades productivas y mejoramos la calidad de vida de más de 4,000 familias en el Valle de
+          Nepeña, Áncash.
+        </p>
+        <div class="flex flex-wrap gap-4 mb-12">
+          <a class="bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-full font-semibold transition-colors border-2 border-primary"
+            href="#">
+            Conoce nuestros Proyectos
           </a>
-          <a class="card eh-110" href="pages/proyectos.html">
-            <div class="eh-034">Proyectos</div>
-            <div class="eh-035">Iniciativas activas para el desarrollo integral rural en el valle.</div>
-          </a>
-          <a class="card eh-110" href="pages/noticias.html">
-            <div class="eh-034">Noticias</div>
-            <div class="eh-035">Últimas novedades, actividades y logros institucionales.</div>
+          <a class="bg-transparent hover:bg-white/10 text-white px-8 py-3 rounded-full font-semibold transition-colors border-2 border-white"
+            href="#">
+            Contáctanos
           </a>
         </div>
+        <div class="flex gap-8 border-t border-white/20 pt-8">
+          <div>
+            <p class="text-3xl font-bold text-white mb-1">4,000<span class="text-[#F09734]">+</span></p>
+            <p class="text-xs tracking-wider uppercase text-gray-300">Familias<br />Beneficiadas</p>
+          </div>
+          <div>
+            <p class="text-3xl font-bold text-white mb-1">12<span class="text-[#F09734]">+</span></p>
+            <p class="text-xs tracking-wider uppercase text-gray-300">Familias<br />Beneficiadas</p>
+          </div>
+          <div>
+            <p class="text-3xl font-bold text-white mb-1">18</p>
+            <p class="text-xs tracking-wider uppercase text-gray-300">Familias<br />Beneficiadas</p>
+          </div>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="carousel-card" role="img" aria-label="Galería destacada">
+          <img alt="Portada 1" src="activos/img_portada/Sem4-Portada01.jpg" />
+          <img alt="Portada 2" src="activos/img_portada/Sem4-Portada02.jpg" />
+          <img alt="Portada 3" src="activos/img_portada/Sem4-Portada03.jpg" />
+          <img alt="Portada 4" src="activos/img_portada/Sem4-Portada04.jpg" />
+          <img alt="Portada 5" src="activos/img_portada/Sem4-Portada05.jpg" />
+        </div>
+        <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-secondary rounded-full -z-10"></div>
+        <div class="absolute -top-6 -right-6 w-24 h-24 bg-primary/30 rounded-full -z-10"></div>
       </div>
     </div>
-  </div>
+  </section>
+  <!-- END: Hero Section -->
+  <!-- BEGIN: Who We Are -->
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div class="order-2 lg:order-1 relative">
+        <img alt="Trabajadores en campo de cultivo" class="shadow-xl w-full object-cover h-[500px]"
+          src="activos\img_portada\Sem5-Portada01.jpg" loading="lazy" style="border-radius:55px 0 55px 55px;" />
+        <div class="absolute -top-4 -left-4 w-full h-full border-2 border-primary -z-10"
+          style="border-radius:55px 0 55px 55px;"></div>
+      </div>
+      <div class="order-1 lg:order-2">
+        <div class="flex items-center gap-2 mb-4">
+          <div class="w-2 h-2 rounded-full bg-primary"></div>
+          <span class="text-primary font-bold text-sm tracking-wider uppercase">Quiénes Somos</span>
+        </div>
+        <h2 class="text-4xl font-bold text-gray-900 mb-6">Más de una década transformando el agro</h2>
+        <p class="text-gray-600 mb-6 leading-relaxed">
+          SEDIR es una organización dedicada a impulsar el desarrollo agropecuario y agroindustrial en el valle de
+          Nepeña. Desde 2012, trabajamos fortaleciendo las capacidades de los productores agrícolas, promoviendo la
+          educación técnica y transfiriendo tecnología para mejorar la productividad y sostenibilidad del sector.
+        </p>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          A través de proyectos innovadores, fomentamos la investigación, el uso responsable de los recursos naturales y
+          la creación de valor agregado en la producción agrícola. Nuestra labor ha beneficiado a más de 4,000 familias
+          e integrado a jóvenes y mujeres en iniciativas de emprendimiento sostenible.
+        </p>
+        <div class="grid grid-cols-2 gap-y-3 mb-8">
+          <div class="flex items-center gap-2">
+            <div class="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+            <span class="text-gray-700 text-sm">Servicio de calidad</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+            <span class="text-gray-700 text-sm">Confianza</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+            <span class="text-gray-700 text-sm">Responsabilidad</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+            <span class="text-gray-700 text-sm">Compromiso con resultados</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+            <span class="text-gray-700 text-sm">Trabajo en equipo</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+            <span class="text-gray-700 text-sm">Sostenibilidad</span>
+          </div>
+        </div>
+        <a class="inline-block bg-secondary hover:bg-secondary-dark text-white px-8 py-3 rounded-full font-medium transition-colors"
+          href="#">
+          Conoce más sobre SEDIR
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- END: Who We Are -->
+  <!-- BEGIN: Services & Programs -->
+  <section class="py-24 bg-[#f4f8f4]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="flex items-center justify-center gap-2 mb-4">
+        <div class="w-2 h-2 rounded-full bg-primary"></div>
+        <span class="text-primary font-bold text-sm tracking-wider uppercase">Qué Hacemos</span>
+      </div>
+      <h2 class="text-4xl font-bold text-gray-900 mb-4">Nuestros servicios y programas</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto mb-16">
+        Trabajamos en cuatro ejes estratégicos para el desarrollo integral del sector agropecuario del valle de Nepeña.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
+        <!-- Service 1 -->
+        <div
+          class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 flex flex-col items-start">
+          <div class="flex items-center justify-center mb-6" role="img" aria-label="Icono usuarios"
+            style="width:50px;height:50px;background:#00944A; border:4px solid #ffffff; border-radius:0 15px 15px; box-shadow:0 4px 4px rgba(0,0,0,0.25);">
+            <svg width="22" height="22" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M18.4168 22.75V20.5833C18.4168 19.4341 17.9603 18.3319 17.1476 17.5192C16.335 16.7065 15.2328 16.25 14.0835 16.25H5.41683C4.26756 16.25 3.16536 16.7065 2.3527 17.5192C1.54004 18.3319 1.0835 19.4341 1.0835 20.5833V22.75"
+                stroke="white" stroke-width="1.95" stroke-linecap="round" />
+              <path
+                d="M9.74984 11.9167C12.1431 11.9167 14.0832 9.97657 14.0832 7.58333C14.0832 5.1901 12.1431 3.25 9.74984 3.25C7.3566 3.25 5.4165 5.1901 5.4165 7.58333C5.4165 9.97657 7.3566 11.9167 9.74984 11.9167Z"
+                stroke="white" stroke-width="1.95" stroke-linecap="round" />
+              <path
+                d="M24.9165 22.75V20.5833C24.9158 19.6232 24.5962 18.6905 24.008 17.9316C23.4197 17.1728 22.5961 16.6308 21.6665 16.3908"
+                stroke="white" stroke-width="1.95" stroke-linecap="round" />
+              <path
+                d="M17.3335 3.39081C18.2656 3.62947 19.0918 4.17157 19.6818 4.93164C20.2718 5.69172 20.592 6.62654 20.592 7.58872C20.592 8.55091 20.2718 9.48573 19.6818 10.2458C19.0918 11.0059 18.2656 11.548 17.3335 11.7866"
+                stroke="white" stroke-width="1.95" stroke-linecap="round" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-3">Capacitación y asistencia técnica</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Formación especializada en manejo de cultivos, injertos,
+            fumigación y polinización para productores del Valle de Nepeña. Incluye talleres prácticos en campo y
+            asesoría personalizada.</p>
+        </div>
+        <!-- Service 2 -->
+        <div
+          class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 flex flex-col items-start">
+          <div class="flex items-center justify-center mb-6" role="img" aria-label="Icono usuarios"
+            style="width:50px;height:50px;background:#00944A; border:4px solid #ffffff; border-radius:0 15px 15px; box-shadow:0 4px 4px rgba(0,0,0,0.25);">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M11.9167 20.5833C16.7031 20.5833 20.5833 16.7031 20.5833 11.9167C20.5833 7.1302 16.7031 3.25 11.9167 3.25C7.1302 3.25 3.25 7.1302 3.25 11.9167C3.25 16.7031 7.1302 20.5833 11.9167 20.5833Z"
+                stroke="white" stroke-width="1.95" stroke-linecap="round" />
+              <path d="M22.7501 22.75L18.0376 18.0375" stroke="white" stroke-width="1.95" stroke-linecap="round" />
+              <path d="M11.9165 8.66669V15.1667M8.6665 11.9167H15.1665" stroke="white" stroke-width="1.95"
+                stroke-linecap="round" />
+            </svg>
 
-  <div id="shared-footer"></div>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-3">Investigación aplicada</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Proyectos de investigación orientados a mejorar la
+            productividad agrícola, identificar variedades de mayor rendimiento y desarrollar técnicas adaptadas a las
+            condiciones del valle.</p>
+        </div>
+        <!-- Service 3 -->
+        <div
+          class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 flex flex-col items-start">
+          <div class="flex items-center justify-center mb-6" role="img" aria-label="Icono usuarios"
+            style="width:50px;height:50px;background:#00944A; border:4px solid #ffffff; border-radius:0 15px 15px; box-shadow:0 4px 4px rgba(0,0,0,0.25);">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g clip-path="url(#clip0_190_1120)">
+                <path
+                  d="M2.1665 18.4167L12.9998 23.8334L23.8332 18.4167M2.1665 13L12.9998 18.4167L23.8332 13M12.9998 2.16669L2.1665 7.58335L12.9998 13L23.8332 7.58335L12.9998 2.16669Z"
+                  stroke="white" stroke-width="1.95" stroke-linecap="round" />
+              </g>
+              <defs>
+                <clipPath id="clip0_190_1120">
+                  <rect width="26" height="26" fill="white" />
+                </clipPath>
+              </defs>
+            </svg>
 
-</div>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-3">Transferencia tecnológica</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Adopción e implementación de innovaciones agrícolas para
+            mejorar la eficiencia productiva: sistemas de riego tecnificado, herramientas digitales de monitoreo y
+            agricultura de precisión.</p>
+        </div>
+        <!-- Service 4 -->
+        <div
+          class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 flex flex-col items-start">
+          <div class="flex items-center justify-center mb-6" role="img" aria-label="Icono usuarios"
+            style="width:50px;height:50px;background:#00944A; border:4px solid #ffffff; border-radius:0 15px 15px; box-shadow:0 4px 4px rgba(0,0,0,0.25);">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M15.1668 2.16669H6.50016C5.92553 2.16669 5.37443 2.39496 4.9681 2.80129C4.56177 3.20762 4.3335 3.75872 4.3335 4.33335V21.6667C4.3335 22.2413 4.56177 22.7924 4.9681 23.1988C5.37443 23.6051 5.92553 23.8334 6.50016 23.8334H19.5002C20.0748 23.8334 20.6259 23.6051 21.0322 23.1988C21.4386 22.7924 21.6668 22.2413 21.6668 21.6667V8.66669L15.1668 2.16669Z"
+                stroke="white" stroke-width="1.95" stroke-linecap="round" />
+              <path d="M15.1665 2.16669V8.66669H21.6665" stroke="white" stroke-width="1.95" stroke-linecap="round" />
+              <path d="M17.3332 14.0833H8.6665" stroke="white" stroke-width="1.95" stroke-linecap="round" />
+              <path d="M17.3332 18.4167H8.6665" stroke="white" stroke-width="1.95" stroke-linecap="round" />
+              <path d="M10.8332 9.75H9.74984H8.6665" stroke="white" stroke-width="1.95" stroke-linecap="round" />
+            </svg>
 
-<script src="activos/js/footer-loader.js" defer></script>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-3">Publicaciones técnicas</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Revista Agricultura: Desarrollo Integral, documentos
+            técnicos, guías prácticas y boletines con resultados de investigación para difundir conocimiento al sector
+            agropecuario.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- END: Services & Programs -->
+  <!-- BEGIN: Impact Counters -->
+  <section class="impact-bg py-20 text-white text-center">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-center gap-2 mb-4">
+        <div class="w-2 h-2 rounded-full bg-[#F09734]"></div>
+        <span class="text-[#F09734] font-bold text-sm tracking-wider uppercase">Nuestro Impacto</span>
+      </div>
+      <h2 class="text-3xl lg:text-4xl font-bold mb-16">Resultados que transforman vidas</h2>
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 divide-y md:divide-y-0 md:divide-x divide-white/20">
+        <div class="pt-8 md:pt-0 px-4">
+          <p class="text-5xl font-bold mb-4">4,000<span class="text-[#F09734]">+</span></p>
+          <p class="text-xs tracking-widest uppercase mb-2">Familias Beneficiadas</p>
+          <p class="text-sm text-gray-200">Familias agricultoras que mejoraron su producción y calidad de vida</p>
+        </div>
+        <div class="pt-8 md:pt-0 px-4">
+          <p class="text-5xl font-bold mb-4">4,710<span class="text-[#F09734]">+</span></p>
+          <p class="text-xs tracking-widest uppercase mb-2">Agricultores Y Emprendedores</p>
+          <p class="text-sm text-gray-200">Beneficiarios Directos Del Proyecto De Cooperación LED-SEDIR (2013-2024)</p>
+        </div>
+        <div class="pt-8 md:pt-0 px-4">
+          <p class="text-5xl font-bold mb-4">665</p>
+          <p class="text-xs tracking-widest uppercase mb-2">Emprendedores Formados</p>
+          <p class="text-sm text-gray-200">Participantes En Formación Especializada En Cultivos, Crianzas Y
+            Agroindustria</p>
+        </div>
+        <div class="pt-8 md:pt-0 px-4">
+          <p class="text-5xl font-bold mb-4">450<span class="text-[#F09734]">+</span></p>
+          <p class="text-xs tracking-widest uppercase mb-2">Mujeres Empoderadas</p>
+          <p class="text-sm text-gray-200">Mujeres Integradas A La Cadena Productiva, Liderando Su Desarrollo Económico
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- END: Impact Counters -->
+  <!-- BEGIN: Featured Projects -->
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-end mb-12">
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-2 h-2 rounded-full bg-primary"></div>
+            <span class="text-primary font-bold text-sm tracking-wider uppercase">Qué Hacemos</span>
+          </div>
+          <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Proyectos destacados</h2>
+          <p class="text-gray-600">Iniciativas activas para el desarrollo integral rural en el valle de Nepeña.</p>
+        </div>
+        <a class="hidden md:inline-flex border-2 border-primary text-primary hover:bg-primary hover:text-white px-6 py-2 rounded-full font-medium transition-colors"
+          href="#">
+          Ver todos los proyectos
+        </a>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Project 1 -->
+        <div
+          class="bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition-all group flex flex-col">
+          <div class="relative h-60 overflow-hidden">
+            <img alt="Fortalecimiento de la actividad agrícola" class="w-full h-full object-contain bg-gray-100"
+              src="activos\img_logos\logo-led.png" />
+          </div>
+          <div class="p-8 flex flex-col flex-grow">
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Fortalecimiento de la actividad agrícola y agroindustrial
+              en el distrito de Moro</h3>
+            <p class="text-gray-600 text-sm mb-6 flex-grow">Iniciativa de cofinanciamiento (LED y SEDIR) que ha
+              impulsado la competitividad del Valle de Nepeña mediante asistencia técnica, innovación tecnológica y
+              capacitación especializada, beneficiando a más de 5,300 agricultores y emprendedores locales.</p>
+            <a class="text-primary font-semibold text-sm flex items-center gap-2 group-hover:gap-3 transition-all"
+              href="#">
+              Leer más <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                </path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <!-- Project 2 -->
+        <div
+          class="bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition-all group flex flex-col">
+          <div class="relative h-60 overflow-hidden">
+            <img alt="Fortalecimiento de capacidades productivas" class="w-full h-full object-contain bg-gray-100"
+              src="activos\img_logos\logo-led.png" />
+          </div>
+          <div class="p-8 flex flex-col flex-grow">
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Fortalecimiento de capacidades productivas para los
+              productores agropecuarios del Distrito de Moro y la Subcuenca del Río Loco, Ancash, Perú.</h3>
+            <p class="text-gray-600 text-sm mb-6 flex-grow">Proyecto de cofinanciamiento (LED y SEDIR) que impulsa
+              tecnologías agroecológicas, la asociatividad para acceder a nuevos mercados y la integración de mujeres y
+              jóvenes en la cadena productiva del Distrito de Moro y la Subcuenca del Río Loco.</p>
+            <a class="text-primary font-semibold text-sm flex items-center gap-2 group-hover:gap-3 transition-all"
+              href="#">
+              Leer más <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                </path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <!-- Project 3 -->
+        <div
+          class="bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition-all group flex flex-col">
+          <div class="relative h-60 overflow-hidden">
+            <img alt="Centro de Investigación y Emprendimiento Agrícola"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              src="https://lh3.googleusercontent.com/aida/ADBb0ugf-mmTYBKfNwYo6D16iTSV-VWTqrZtf4-y8UtVHAFS4FJw48vW8kMdjB73PBbXPFFyMx1_SCWjEQcKeDpormrtL_oR02ClK18KDtrbGH2twRtIufxN6EaAsdkjo2oJDDnN3kT4CXZ47pisZZ5lSvLr7Bam2WiBxifinUgujx2woGbyJA3HrtNtIn0qsjciaS7Eh4FhFKwcimfGP7tWIRoKXEHdmQH3yJDApR2aIQ-VsWAXk-v4Tt7HOk9n" />
+          </div>
+          <div class="p-8 flex flex-col flex-grow">
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Centro de Investigación y Emprendimiento Agrícola</h3>
+            <p class="text-gray-600 text-sm mb-6 flex-grow">Proyecto estratégico para la implementación del CIEA —
+              espacio con laboratorios y salas interactivas para investigadores nacionales e internacionales al 2030.
+            </p>
+            <a class="text-primary font-semibold text-sm flex items-center gap-2 group-hover:gap-3 transition-all"
+              href="#">
+              Leer más <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                </path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="mt-8 text-center md:hidden">
+        <a class="inline-flex border-2 border-primary text-primary hover:bg-primary hover:text-white px-6 py-2 rounded-full font-medium transition-colors"
+          href="#">
+          Ver todos los proyectos
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- END: Featured Projects -->
+  <!-- BEGIN: Latest News -->
+  <section class="py-24 bg-[#f4f8f4]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-end mb-12">
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-2 h-2 rounded-full bg-primary"></div>
+            <span class="text-primary font-bold text-sm tracking-wider uppercase">Noticias</span>
+          </div>
+          <h2 class="text-3xl lg:text-4xl font-bold text-gray-900">Últimas novedades</h2>
+        </div>
+        <a class="hidden md:inline-flex border-2 border-primary text-primary hover:bg-primary hover:text-white px-6 py-2 rounded-full font-medium transition-colors"
+          href="#">
+          Ver todas las noticias
+        </a>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- News Item 1 -->
+        <div
+          class="bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition-all group flex flex-col">
+          <div class="relative h-56 overflow-hidden">
+            <img alt="El Auge de la Palta Peruana"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              src="activos\img_noticias\notapalta00428114_18-08-25.jpg" />
+          </div>
+          <div class="p-6 flex flex-col flex-grow">
+            <div class="flex items-center gap-4 mb-4">
+              <span class="text-xs text-gray-500 font-medium">18 Ago 2025</span>
+              <span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full font-medium">Agroindustria</span>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-3 leading-snug">El Auge de la Palta Peruana: Tendencias de
+              Exportación 2016-2025</h3>
+            <p class="text-gray-600 text-sm mb-6 flex-grow line-clamp-3">La palta peruana, reconocida por su textura
+              cremosa y rico sabor, ha ganado influencia significativa en los mercados internacionales en la última
+              década.</p>
+            <a class="text-primary font-semibold text-sm flex items-center gap-2 group-hover:gap-3 transition-all"
+              href="#">
+              Leer más <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                </path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <!-- News Item 2 -->
+        <div
+          class="bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition-all group flex flex-col">
+          <div class="relative h-56 overflow-hidden">
+            <img alt="Áncash: Casma será sede"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              src="activos\img_noticias\congreso-2024739633_15-08-25.jpg" />
+          </div>
+          <div class="p-6 flex flex-col flex-grow">
+            <div class="flex items-center gap-4 mb-4">
+              <span class="text-xs text-gray-500 font-medium">15 Ago 2025</span>
+              <span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full font-medium">Eventos</span>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-3 leading-snug">Áncash: Casma será sede del XII Congreso
+              Internacional de Mango y Palto 2025</h3>
+            <p class="text-gray-600 text-sm mb-6 flex-grow line-clamp-3">Casma se alista para convertirse en el
+              epicentro de la agroexportación peruana con la realización del XII Congreso Internacional.</p>
+            <a class="text-primary font-semibold text-sm flex items-center gap-2 group-hover:gap-3 transition-all"
+              href="#">
+              Leer más <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                </path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <!-- News Item 3 -->
+        <div
+          class="bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition-all group flex flex-col">
+          <div class="relative h-56 overflow-hidden">
+            <img alt="El sabor de la tradición"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              src="activos/img_noticias/nota_2025-07-31_at_3.33.26_pm.42904_31-07-25.jpeg" />
+          </div>
+          <div class="p-6 flex flex-col flex-grow">
+            <div class="flex items-center gap-4 mb-4">
+              <span class="text-xs text-gray-500 font-medium">31 Jul 2025</span>
+              <span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full font-medium">Comunidad</span>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 mb-3 leading-snug">El sabor de la tradición: Moro elige a los
+              campeones del mejor morino</h3>
+            <p class="text-gray-600 text-sm mb-6 flex-grow line-clamp-3">El distrito de Moro celebró con orgullo y
+              espíritu festivo la quinta edición del Concurso del Mejor Morino, evento que se ha convertido en símbolo
+              de identidad.</p>
+            <a class="text-primary font-semibold text-sm flex items-center gap-2 group-hover:gap-3 transition-all"
+              href="#">
+              Leer más <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                </path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="mt-8 text-center md:hidden">
+        <a class="inline-flex border-2 border-primary text-primary hover:bg-primary hover:text-white px-6 py-2 rounded-full font-medium transition-colors"
+          href="#">
+          Ver todas las noticias
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- END: Latest News -->
+  <!-- BEGIN: Video Section -->
+  <!-- BEGIN: Video Section -->
+  <section class="py-24 bg-white text-center">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
+      <div class="flex items-center justify-center gap-2 mb-4">
+        <div class="w-2 h-2 rounded-full bg-primary"></div>
+        <span class="text-primary font-bold text-sm tracking-wider uppercase">
+          Canal Audiovisual
+        </span>
+      </div>
+
+      <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+        Conoce SEDIR en video
+      </h2>
+
+      <p class="text-gray-600 max-w-2xl mx-auto mb-12">
+        Descubre el impacto de nuestros programas y la labor diaria de las familias del Valle de Nepeña.
+      </p>
+
+      <!-- VIDEO CON LINK AL CANAL -->
+      <a href="https://www.youtube.com/@SEDIRagro" target="_blank"
+        class="block relative rounded-3xl overflow-hidden shadow-2xl group aspect-video">
+
+        <!-- VIDEO DE YOUTUBE -->
+        <iframe class="w-full h-full" src="https://www.youtube.com/embed/ibnpRbKvGIM" title="Video SEDIR"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+
+        <!-- EFECTO HOVER -->
+        <div class="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-all duration-300"></div>
+
+      </a>
+
+    </div>
+  </section>
+  <!-- END: Video Section -->
+  <!-- BEGIN: Strategic Partners -->
+  <section class="partners-bg py-20 text-white text-center">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-center gap-2 mb-4">
+        <div class="w-2 h-2 rounded-full bg-[#F09734]"></div>
+        <span class="text-[#F09734] font-bold text-sm tracking-wider uppercase">Aliados</span>
+      </div>
+      <h2 class="text-3xl font-bold mb-4">Aliados estratégicos</h2>
+      <p class="text-gray-200 max-w-2xl mx-auto mb-12 text-sm">
+        Trabajamos en red con instituciones públicas, académicas y del sector privado.
+      </p>
+      <!-- GRID LOGOS -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+
+        <!-- CARD LOGO -->
+        <div
+          class="group bg-white/5 border border-white/10 backdrop-blur-xl rounded-3xl p-6 hover:bg-white hover:-translate-y-2 transition-all duration-500 shadow-2xl">
+          <img alt="SENASA"
+            class="h-24 mx-auto object-contain grayscale group-hover:grayscale-0 transition duration-500"
+            src="activos/img_aliados/Carrousel-Senasa.png" />
+        </div>
+
+        <div
+          class="group bg-white/5 border border-white/10 backdrop-blur-xl rounded-3xl p-6 hover:bg-white hover:-translate-y-2 transition-all duration-500 shadow-2xl">
+          <img alt="Red Agrícola"
+            class="h-24 mx-auto object-contain grayscale group-hover:grayscale-0 transition duration-500"
+            src="activos/img_aliados/Carrousel-RedAgricola.png" />
+        </div>
+
+        <div
+          class="group bg-white/5 border border-white/10 backdrop-blur-xl rounded-3xl p-6 hover:bg-white hover:-translate-y-2 transition-all duration-500 shadow-2xl">
+          <img alt="ProMango"
+            class="h-24 mx-auto object-contain grayscale group-hover:grayscale-0 transition duration-500"
+            src="activos/img_aliados/Carrousel-ProMango.png" />
+        </div>
+
+        <div
+          class="group bg-white/5 border border-white/10 backdrop-blur-xl rounded-3xl p-6 hover:bg-white hover:-translate-y-2 transition-all duration-500 shadow-2xl">
+          <img alt="Prohass"
+            class="h-24 mx-auto object-contain grayscale group-hover:grayscale-0 transition duration-500"
+            src="activos/img_aliados/Carrousel-Prohass.png" />
+        </div>
+
+        <div
+          class="group bg-white/5 border border-white/10 backdrop-blur-xl rounded-3xl p-6 hover:bg-white hover:-translate-y-2 transition-all duration-500 shadow-2xl">
+          <img alt="Portal Frutícola"
+            class="h-24 mx-auto object-contain grayscale group-hover:grayscale-0 transition duration-500"
+            src="activos/img_aliados/Carrousel-PortalFruticola.png" />
+        </div>
+
+        <div
+          class="group bg-white/5 border border-white/10 backdrop-blur-xl rounded-3xl p-6 hover:bg-white hover:-translate-y-2 transition-all duration-500 shadow-2xl">
+          <img alt="La Molina"
+            class="h-24 mx-auto object-contain grayscale group-hover:grayscale-0 transition duration-500"
+            src="activos/img_aliados/Carrousel-LaMolina.png" />
+        </div>
+
+        <div
+          class="group bg-white/5 border border-white/10 backdrop-blur-xl rounded-3xl p-6 hover:bg-white hover:-translate-y-2 transition-all duration-500 shadow-2xl">
+          <img alt="INIA" class="h-24 mx-auto object-contain grayscale group-hover:grayscale-0 transition duration-500"
+            src="activos/img_aliados/Carrousel-Inia.png" />
+        </div>
+
+        <div
+          class="group bg-white/5 border border-white/10 backdrop-blur-xl rounded-3xl p-6 hover:bg-white hover:-translate-y-2 transition-all duration-500 shadow-2xl">
+          <img alt="Gobierno Perú"
+            class="h-24 mx-auto object-contain grayscale group-hover:grayscale-0 transition duration-500"
+            src="activos/img_aliados/Carrousel-GobPe.png" />
+        </div>
+
+        <div
+          class="group bg-white/5 border border-white/10 backdrop-blur-xl rounded-3xl p-6 hover:bg-white hover:-translate-y-2 transition-all duration-500 shadow-2xl">
+          <img alt="CIAO" class="h-24 mx-auto object-contain grayscale group-hover:grayscale-0 transition duration-500"
+            src="activos/img_aliados/Carrousel-Ciao.png" />
+        </div>
+
+        <div
+          class="group bg-white/5 border border-white/10 backdrop-blur-xl rounded-3xl p-6 hover:bg-white hover:-translate-y-2 transition-all duration-500 shadow-2xl">
+          <img alt="Agronoticias"
+            class="h-24 mx-auto object-contain grayscale group-hover:grayscale-0 transition duration-500"
+            src="activos/img_aliados/Carrousel-Agronoticias.png" />
+        </div>
+
+        <div
+          class="group bg-white/5 border border-white/10 backdrop-blur-xl rounded-3xl p-6 hover:bg-white hover:-translate-y-2 transition-all duration-500 shadow-2xl">
+          <img alt="Agraria"
+            class="h-24 mx-auto object-contain grayscale group-hover:grayscale-0 transition duration-500"
+            src="activos/img_aliados/Carrousel-Agraria.png" />
+        </div>
+
+        <div
+          class="group bg-white/5 border border-white/10 backdrop-blur-xl rounded-3xl p-6 hover:bg-white hover:-translate-y-2 transition-all duration-500 shadow-2xl">
+          <img alt="ADEX" class="h-24 mx-auto object-contain grayscale group-hover:grayscale-0 transition duration-500"
+            src="activos/img_aliados/Carrousel-Adex.png" />
+        </div>
+
+        <div
+          class="group bg-white/5 border border-white/10 backdrop-blur-xl rounded-3xl p-6 hover:bg-white hover:-translate-y-2 transition-all duration-500 shadow-2xl">
+          <img alt="ACU" class="h-24 mx-auto object-contain grayscale group-hover:grayscale-0 transition duration-500"
+            src="activos/img_aliados/Carrousel-ACU.png" />
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- END: Strategic Partners -->
+  <!-- BEGIN: Contact Section -->
+  <section class="py-24 bg-white relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <div class="flex items-center justify-center gap-2 mb-4">
+          <div class="w-2 h-2 rounded-full bg-primary"></div>
+          <span class="text-primary font-bold text-sm tracking-wider uppercase">Contacto</span>
+        </div>
+        <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">¿Cómo podemos ayudarte?</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          Comunícate con nuestro equipo para más información sobre proyectos, servicios o alianzas.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+        <!-- Contact Info & Map -->
+        <div class="space-y-8">
+          <div class="bg-primary text-white contact-rounded p-8 shadow-lg" style="border-radius: 55px 0px 55px 0px">
+            <h3 class="text-xl font-bold mb-8">Información de contacto</h3>
+            <div class="space-y-6">
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                      stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                    <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round"
+                      stroke-width="2"></path>
+                  </svg>
+                </div>
+                <div>
+                  <p class="font-bold text-sm mb-1">Sede Central</p>
+                  <p class="text-sm text-gray-100">Fundo Bellavista Parcela 291 (500 metros del portal de ingreso a
+                    Moro) Moro — Áncash, Perú</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path
+                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                      stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                  </svg>
+                </div>
+                <div>
+                  <p class="font-bold text-sm mb-1">Teléfono / WhatsApp</p>
+                  <p class="text-sm text-gray-100">962 118 628</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path
+                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                      stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                  </svg>
+                </div>
+                <div>
+                  <p class="font-bold text-sm mb-1">Correo electrónico</p>
+                  <p class="text-sm text-gray-100">contacto@sedir.org.pe</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                    <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"
+                      stroke-width="2"></path>
+                  </svg>
+                </div>
+                <div>
+                  <p class="font-bold text-sm mb-1">Horario de Atención</p>
+                  <p class="text-sm text-gray-100">Lunes a Viernes: 8:00 am - 5:00 pm</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="rounded-3xl overflow-hidden shadow-lg h-64 border border-gray-200">
+
+            <!-- MAPA EMBEBIDO -->
+            <iframe class="w-full h-full" src="https://www.google.com/maps?q=SEDIR+Nepeña&output=embed"
+              allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+
+          </div>
+
+          <!-- BOTÓN OPCIONAL -->
+          <div class="mt-4 text-center">
+            <a href="https://maps.app.goo.gl/8Z3ngsadtKozAGHW7" target="_blank"
+              class="inline-flex items-center gap-2 bg-[#00944A] hover:bg-[#007a3d] text-white px-10 py-3 rounded-full font-semibold transition-all duration-300 shadow-lg">
+
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z" />
+              </svg>
+
+              Ver ubicación en Google Maps
+            </a>
+          </div>
+        </div>
+        <!-- Contact Form -->
+        <div class="contact-form-bg rounded-3xl p-8 shadow-sm border border-gray-100" style="background: #F0F0EE">
+          <h3 class="text-xl font-bold text-gray-900 mb-6">Envíanos un mensaje</h3>
+          <form class="space-y-5">
+            <div>
+              <label class="block text-xs font-semibold text-gray-700 mb-1 uppercase tracking-wider" for="name">Nombre
+                Completo</label>
+              <input
+                class="w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring focus:ring-primary/20 text-sm py-3 px-4"
+                id="name" placeholder="Tu nombre" type="text" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-gray-700 mb-1 uppercase tracking-wider" for="email">Correo
+                Electrónico</label>
+              <input
+                class="w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring focus:ring-primary/20 text-sm py-3 px-4"
+                id="email" placeholder="tucorreo@email.com" type="email" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-gray-700 mb-1 uppercase tracking-wider"
+                for="subject">Asunto</label>
+              <input
+                class="w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring focus:ring-primary/20 text-sm py-3 px-4"
+                id="subject" placeholder="Solicitar asesoría técnica" type="text" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-gray-700 mb-1 uppercase tracking-wider"
+                for="message">Mensaje</label>
+              <textarea
+                class="w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring focus:ring-primary/20 text-sm py-3 px-4 resize-none"
+                id="message" placeholder="Escribe tu mensaje aquí..." rows="4"></textarea>
+            </div>
+            <div class="mt-4 text-center">
+              <button type="submit" class="inline-flex items-center gap-2 bg-[#00944A] hover:bg-[#007a3d] text-white px-5 py-3 rounded-full font-semibold transition-all duration-300 shadow-lg">
+                Enviar mensaje
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+                  <path d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                </svg>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Floating WhatsApp Button -->
+    <a class="fixed bottom-8 right-8 bg-[#25D366] text-white p-4 rounded-full shadow-xl hover:bg-[#20bd5a] transition-colors z-50"
+      href="#">
+      <svg class="w-8 h-8" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z">
+        </path>
+      </svg>
+    </a>
+  </section>
+  <!-- END: Contact Section -->
+  <!-- BEGIN: Footer -->
+  <footer class="bg-[#0f1115] text-gray-400 py-16 border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <!-- Brand & Social -->
+      <div>
+        <img alt="SEDIR Logo Blanco" class="h-10 mb-6"
+          src="activos/img_logos/logo-msi.png" />
+        <p class="text-sm mb-6 leading-relaxed">
+          Impulsamos el desarrollo agropecuario y agroindustrial sostenible en el Valle de Nepeña desde 2012,
+          beneficiando a más de 4,000 familias rurales de Áncash.
+        </p>
+        <div class="flex gap-4">
+          <a class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
+            href="#">
+            <svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24">
+              <path
+                d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z">
+              </path>
+            </svg>
+          </a>
+          <a class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
+            href="#">
+            <svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24">
+              <path
+                d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z">
+              </path>
+            </svg>
+          </a>
+          <a class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
+            href="#">
+            <svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z">
+              </path>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <!-- Navegación -->
+      <div>
+        <h4 class="text-white font-bold text-sm tracking-wider uppercase mb-6">Navegación</h4>
+        <ul class="space-y-3 text-sm">
+          <li><a class="hover:text-primary transition-colors" href="#">Inicio</a></li>
+          <li><a class="hover:text-primary transition-colors" href="#">Nosotros</a></li>
+          <li><a class="hover:text-primary transition-colors" href="#">Qué hacemos</a></li>
+          <li><a class="hover:text-primary transition-colors" href="#">Proyectos</a></li>
+          <li><a class="hover:text-primary transition-colors" href="#">Noticias</a></li>
+        </ul>
+      </div>
+      <!-- Servicios -->
+      <div>
+        <h4 class="text-white font-bold text-sm tracking-wider uppercase mb-6">Servicios</h4>
+        <ul class="space-y-3 text-sm">
+          <li><a class="hover:text-primary transition-colors" href="#">Capacitación técnica</a></li>
+          <li><a class="hover:text-primary transition-colors" href="#">Investigación aplicada</a></li>
+          <li><a class="hover:text-primary transition-colors" href="#">Transferencia tecnológica</a></li>
+          <li><a class="hover:text-primary transition-colors" href="#">Asesoría agrícola</a></li>
+          <li><a class="hover:text-primary transition-colors" href="#">Publicaciones</a></li>
+        </ul>
+      </div>
+      <!-- Contacto -->
+      <div>
+        <h4 class="text-white font-bold text-sm tracking-wider uppercase mb-6">Contacto</h4>
+        <ul class="space-y-3 text-sm">
+          <li>Moro — Áncash, Perú</li>
+          <li>962 118 628</li>
+          <li>contacto@sedir.org.pe</li>
+          <li>sedir.org.pe</li>
+        </ul>
+      </div>
+    </div>
+    <div
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
+      <p>© 2025 SEDIR — Servicio para el Desarrollo Integral Rural. Todos los derechos reservados.</p>
+      <p>Moro, Áncash, Valle de Nepeña — Perú</p>
+    </div>
+  </footer>
+  <!-- END: Footer -->
 </body>
+
 </html>
-
-

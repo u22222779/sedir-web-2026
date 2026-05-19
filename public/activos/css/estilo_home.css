@@ -36,6 +36,23 @@
   .section-label { font-size: 11px; font-weight: 300; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sedir-green); margin-bottom: 8px; }
   .card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: 12px; padding: 1.25rem; }
 
+/* Card de contacto con esquinas personalizadas: TL 55px, TR 0, BR 55px, BL 0 */
+.contact-rounded {
+  border-radius: 55px 0 55px 0;
+}
+
+/* Fondo del formulario de contacto */
+.contact-form-bg {
+  background: #F0F0EE;
+}
+
+/* Neutraliza el padding vertical del nav para el logo */
+.logo-offset {
+  display: block;
+  margin: 0;
+}
+
+
 /* Estilos extraidos de atributos inline del HTML */
 .eh-001 {
   background: #ffffff;
@@ -45,7 +62,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 68px;
+    height: auto;
   position: sticky;
   top: 0;
   z-index: 50;
@@ -53,10 +70,10 @@
 .eh-002 { display: flex; align-items: center; gap: 10px; }
 .eh-003 { display: flex; align-items: center; justify-content: center; }
 .eh-005 { font-size: 15px; color: #4f7259; margin-left: -4px; }
-.eh-105 { height: 40px; width: auto; display: block; }
-.eh-006 { display: flex; gap: 24px; align-items: center; }
-.eh-007 { font-size: 17px; color: #2e7d32; cursor: pointer; transition: color 0.2s ease; }
-.eh-008 { font-size: 17px; color: #1b5e20; font-weight: 700; cursor: pointer; transition: color 0.2s ease; }
+.eh-105 { width: 260px; height: 75px; display: block; }
+.eh-006 { display: flex; gap: 35px; align-items: center; }
+.eh-007 { font-family: 'Montserrat', sans-serif; font-size: 16px; color: #2e7d32; font-weight: 500; cursor: pointer; transition: color 0.2s ease; }
+.eh-008 { font-family: 'Montserrat', sans-serif; font-size: 16px; color: #1b5e20; font-weight: 500; cursor: pointer; transition: color 0.2s ease; }
 .eh-009 { padding: 9px 18px; font-size: 17px; }
 .eh-007, .eh-008 { text-decoration: none; }
 .eh-007:hover,
@@ -191,6 +208,20 @@
 .eh-102 { font-size: 11px; color: var(--sedir-green); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.4rem; }
 .eh-103 { font-size: 18px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 0.45rem; }
 .eh-104 { font-size: 13px; line-height: 1.65; color: var(--color-text-secondary); }
+
+/* Reusable service icon square */
+.service-icon {
+  width: 50px;
+  height: 50px;
+  background: var(--sedir-green);
+  border: 4px solid #ffffff;
+  border-radius: 0 15px 15px 0;
+  box-shadow: 0 4px 4px rgba(0,0,0,0.25);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.service-icon svg { width: 22px; height: 22px; display: block; }
 
 /* Contenedores reutilizables para paginas internas */
 .eh-106 { padding: 3rem 2rem; }
@@ -538,6 +569,38 @@
   font-family: var(--font-secondary);
 }
 
+/* Carrusel de aliados */
+.partners-carousel-wrapper {
+  overflow: hidden;
+  width: 100%;
+  padding: 2rem 0;
+}
+
+.partners-carousel {
+  display: flex;
+  gap: 1.5rem;
+  animation: scrollPartners 60s linear infinite;
+  width: fit-content;
+}
+
+.partners-carousel-card {
+  min-width: 200px;
+  flex-shrink: 0;
+}
+
+@keyframes scrollPartners {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% / 2));
+  }
+}
+
+.partners-carousel:hover {
+  animation-play-state: paused;
+}
+
 /* Escala visual un poco mayor para escritorio */
 @media (min-width: 1024px) {
   .eh-017 { font-size: 42px; }
@@ -585,7 +648,7 @@
   .eh-024 { grid-template-columns: 1fr; }
   .eh-001 {
     height: auto;
-    min-height: 68px;
+    min-height: 84px;
     padding: 0.85rem 1rem;
     flex-direction: column;
     align-items: flex-start;
@@ -599,7 +662,11 @@
   }
 
   .eh-007,
-  .eh-008,
+  .eh-008 {
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+  }
   .eh-009 {
     font-size: 17px;
   }
