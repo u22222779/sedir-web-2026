@@ -1,0 +1,44 @@
+/* SECTION: Animations */
+@keyframes carouselSlide {
+  0% {
+    opacity: 0;
+  }
+
+  6% {
+    opacity: 1;
+  }
+
+  26% {
+    opacity: 1;
+  }
+
+  32% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes heroSlideShow {
+  0% {
+    opacity: 0;
+  }
+
+  6% {
+    opacity: 1;
+  }
+
+  26% {
+    opacity: 1;
+  }
+
+  32% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

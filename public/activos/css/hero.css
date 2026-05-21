@@ -1,0 +1,96 @@
+/* SECTION: Hero */
+.hero-bg {
+  position: relative;
+  background-color: #006a49;
+  overflow: hidden;
+}
+
+.hero-slideshow,
+.hero-bg-slideshow {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.hero-slideshow img,
+.hero-bg-slideshow img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0;
+  animation: heroSlideShow 35s infinite;
+}
+
+.hero-bg-slideshow img:nth-of-type(1) {
+  animation-delay: 0s;
+}
+
+.hero-bg-slideshow img:nth-of-type(2) {
+  animation-delay: 7s;
+}
+
+.hero-bg-slideshow img:nth-of-type(3) {
+  animation-delay: 14s;
+}
+
+.hero-bg-slideshow img:nth-of-type(4) {
+  animation-delay: 21s;
+}
+
+.hero-bg-slideshow img:nth-of-type(5) {
+  animation-delay: 28s;
+}
+
+.hero-bg-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  background: linear-gradient(rgba(0, 106, 73, 0.55), rgba(0, 106, 73, 0.55));
+}
+
+.carousel-card {
+  position: relative;
+  width: 621px;
+  height: 320px;
+  border-radius: 1rem;
+  overflow: hidden;
+  margin-left: auto;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
+
+.carousel-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0;
+  animation: carouselSlide 35s infinite;
+}
+
+.carousel-card img:nth-of-type(1) {
+  animation-delay: 0s;
+}
+
+.carousel-card img:nth-of-type(2) {
+  animation-delay: 7s;
+}
+
+.carousel-card img:nth-of-type(3) {
+  animation-delay: 14s;
+}
+
+.carousel-card img:nth-of-type(4) {
+  animation-delay: 21s;
+}
+
+.carousel-card img:nth-of-type(5) {
+  animation-delay: 28s;
+}

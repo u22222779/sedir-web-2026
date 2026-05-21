@@ -1,0 +1,124 @@
+/* SECTION: Base */
+body {
+  font-family: "Libre Franklin", sans-serif;
+  color: #333;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif;
+}
+
+/* SECTION: Generic Blocks */
+.impact-bg {
+  background-color: #006a49;
+}
+
+.partners-bg {
+  background-color: #006a49;
+}
+
+.video-overlay {
+  background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.6) 100%);
+}
+
+/* SECTION: Utility Classes Replacing Inline Styles */
+.who-image-radius {
+  border-radius: 55px 0 55px 55px;
+}
+
+.service-icon-box {
+  width: 50px;
+  height: 50px;
+  background: #00944a;
+  border: 4px solid #ffffff;
+  border-radius: 0 15px 15px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.contact-info-card-radius {
+  border-radius: 55px 0 55px 0;
+}
+
+.contact-form-bg {
+  background: #f0f0ee;
+}
+
+.section-kicker-dot {
+  position: relative;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background: #00944a;
+  flex: 0 0 auto;
+}
+
+.section-kicker-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translate(4px, 4px);
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 9999px;
+  background: rgba(0, 148, 74, 0.35);
+}
+
+.section-kicker-label {
+  color: #00944a;
+}
+
+.hero-secondary-frame {
+  background: #00944a;
+  border: 1.5px solid #8c7855;
+  color: #ffffff;
+  display: inline-block;
+}
+
+.hero-secondary-frame:hover {
+  border-color: #6e5e42;
+}
+
+.who-more-button {
+  background: #8c7855;
+  color: #ffffff;
+  display: inline-block;
+}
+
+.who-more-button:hover {
+  background: #6e5e42;
+}
+
+/* Projects CTA: green outline and fill on hover */
+.projects-cta {
+  border: 2px solid #00944a;
+  color: #00944a;
+}
+
+.projects-cta:hover {
+  background: #00944a;
+  color: #ffffff;
+}
+
+/* Read more links use the same green color */
+.readmore-link {
+  color: #00944a;
+}
+
+.readmore-link svg {
+  stroke: currentColor;
+}
+
+.readmore-link:hover {
+  color: #00944a;
+}
+
+/* News category badges */
+.category-badge {
+  background-color: #e0f5f0;
+  color: #00944a;
+}

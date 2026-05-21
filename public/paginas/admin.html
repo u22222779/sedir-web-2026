@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Panel Administrativo - SEDIR</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../activos/css/style.css" />
+  <style>
+    body { font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+    .sidebar { width: 220px; }
+    .content { margin-left: 240px; }
+    .card { border-radius: 16px; box-shadow: 0 8px 30px rgba(16,24,40,0.06); }
+    .nav-link.active { background: #f0faf4; color: #00944a; font-weight: 600; }
+  </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+  <div class="fixed top-0 left-0 bottom-0 sidebar bg-white border-r border-gray-100 p-6">
+    <div class="mb-4 text-center">
+      <img src="../activos/img_logos/logo-msi.png" alt="SEDIR" class="h-12 object-contain mx-auto" />
+    </div>
+    <div class="border-t border-gray-200 my-4"></div>
+    <nav class="space-y-2 text-gray-700">
+      <a href="#" data-view="dashboard" class="nav-link block py-2 px-3 rounded hover:bg-gray-50">Dashboard</a>
+      <a href="#" data-view="administrador" class="nav-link block py-2 px-3 rounded hover:bg-gray-50">Administrador</a>
+      <a href="#" data-view="noticia" class="nav-link block py-2 px-3 rounded hover:bg-gray-50">Noticia</a>
+      <a href="#" data-view="producto" class="nav-link block py-2 px-3 rounded hover:bg-gray-50">Producto</a>
+    </nav>
+    <div class="mt-8">
+      <a href="/paginas/login.html" class="text-sm text-red-600">Cerrar sesión</a>
+    </div>
+  </div>
+  <main class="content p-8">
+    <header class="flex items-center justify-between mb-8">
+      <h1 class="text-2xl font-bold text-gray-800">Administrador</h1>
+      <span class="text-sm text-gray-500">Panel de gestión</span>
+    </header>    
+    <section id="main-content" class="card bg-white p-8"></section>
+  </main>
+
+  <script>
+    const content = document.getElementById('main-content');
+    const navLinks = document.querySelectorAll('[data-view]');
+
+    const tableWrap = (title, buttonLabel, headers, rows, emptyText = 'No hay registros') => `
+      <section class="card bg-white p-8">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="text-xl font-bold">${title}</h2>
+          <a href="#" class="inline-flex items-center gap-2 bg-[#00944a] hover:bg-[#007a3d] text-white px-4 py-2 rounded-full font-medium">${buttonLabel}</a>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left">
+            <thead class="text-sm text-gray-500 border-b">
+              <tr>
+                ${headers.map((header) => `<th class="py-3">${header}</th>`).join('')}
+              </tr>
+            </thead>
+            <tbody class="text-gray-700">
+              ${rows.length ? rows.join('') : `<tr class="border-b h-24"><td colspan="${headers.length}" class="text-center text-gray-400">${emptyText}</td></tr>`}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    `;
+
+    const views = {
+      dashboard: `
+        <section class="card bg-white p-8">
+          <h2 class="text-xl font-bold mb-3">Panel basado en el diagrama</h2>
+          <p class="text-gray-600 mb-6">Usa el menú lateral para revisar las entidades principales: administrador, noticia y producto.</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+            <div class="rounded-2xl border border-gray-100 p-4 bg-gray-50"><p class="text-sm text-gray-500">Noticias</p><p class="text-2xl font-bold">1 tabla</p></div>
+            <div class="rounded-2xl border border-gray-100 p-4 bg-gray-50"><p class="text-sm text-gray-500">Productos</p><p class="text-2xl font-bold">1 tabla</p></div>
+            <div class="rounded-2xl border border-gray-100 p-4 bg-gray-50"><p class="text-sm text-gray-500">Usuarios</p><p class="text-2xl font-bold">1 tabla</p></div>
+          </div>
+        </section>
+      `,
+      administrador: tableWrap(
+        'Administrador',
+        '+ Nuevo administrador',
+        ['ID', 'Usuario', 'Contraseña', 'Acciones'],
+        [
+          `<tr class="border-b"><td class="py-4">1</td><td class="py-4 font-medium">admin</td><td class="py-4">********</td><td class="py-4"><div class="flex gap-2"><button class="px-3 py-1 bg-blue-600 text-white rounded">Editar</button><button class="px-3 py-1 bg-red-600 text-white rounded">Eliminar</button></div></td></tr>`
+        ]
+      ),
+      noticia: tableWrap(
+        'Noticia',
+        '+ Nueva noticia',
+        ['ID', 'Título', 'Fecha', 'Categoría', 'Acciones'],
+        [
+          `<tr class="border-b"><td class="py-4">1</td><td class="py-4 font-medium">El Auge de la Palta Peruana</td><td class="py-4">18 Ago 2025</td><td class="py-4">Agroindustria</td><td class="py-4"><div class="flex gap-2"><button class="px-3 py-1 bg-blue-600 text-white rounded">Editar</button><button class="px-3 py-1 bg-red-600 text-white rounded">Eliminar</button></div></td></tr>`,
+          `<tr class="border-b"><td class="py-4">2</td><td class="py-4 font-medium">Casma será sede del XII Congreso</td><td class="py-4">15 Ago 2025</td><td class="py-4">Eventos</td><td class="py-4"><div class="flex gap-2"><button class="px-3 py-1 bg-blue-600 text-white rounded">Editar</button><button class="px-3 py-1 bg-red-600 text-white rounded">Eliminar</button></div></td></tr>`
+        ]
+      ),
+      producto: tableWrap(
+        'Producto',
+        '+ Nuevo producto',
+        ['ID', 'Nombre', 'Descripción', 'Imagen URL', 'Acciones'],
+        [
+          `<tr class="border-b"><td class="py-4">1</td><td class="py-4 font-medium">Semilla de maíz</td><td class="py-4">Semilla seleccionada para siembra</td><td class="py-4">/img/semilla.jpg</td><td class="py-4"><div class="flex gap-2"><button class="px-3 py-1 bg-blue-600 text-white rounded">Editar</button><button class="px-3 py-1 bg-red-600 text-white rounded">Eliminar</button></div></td></tr>`,
+          `<tr class="border-b"><td class="py-4">2</td><td class="py-4 font-medium">Kit de herramientas</td><td class="py-4">Juego básico de campo</td><td class="py-4">/img/kit.jpg</td><td class="py-4"><div class="flex gap-2"><button class="px-3 py-1 bg-blue-600 text-white rounded">Editar</button><button class="px-3 py-1 bg-red-600 text-white rounded">Eliminar</button></div></td></tr>`
+        ]
+      )
+    };
+
+    async function loadView(view) {
+      content.innerHTML = views[view] || views.dashboard;
+      navLinks.forEach((link) => {
+        link.classList.toggle('active', link.dataset.view === view);
+      });
+    }
+
+    navLinks.forEach((link) => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        loadView(link.dataset.view);
+      });
+    });
+
+    loadView('dashboard');
+  </script>
+</body>
+</html>

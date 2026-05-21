@@ -1,0 +1,41 @@
+/* SECTION: Navbar */
+.navbar-shell {
+  font-family: "Montserrat", "Libre Franklin", sans-serif;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 50;
+  border-bottom: 1.5px solid #00944a;
+}
+
+body {
+  padding-top: 84px;
+}
+
+.navbar-logo {
+  height: 84px;
+  width: auto;
+  object-fit: contain;
+}
+
+.navbar-cta {
+  background: #00944a;
+  color: #ffffff;
+  display: inline-block;
+}
+
+.navbar-cta:hover {
+  background: #006a49;
+}
+
+.navbar-cta-mobile {
+  background: #00944a;
+  color: #ffffff;
+  display: block;
+}
+
+.navbar-cta-mobile:hover {
+  background: #006a49;
+}

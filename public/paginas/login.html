@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - SEDIR</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../activos/css/style.css" />
+    <style>
+        body {
+            font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+        }
+
+        .page-bg {
+            background-color: #f3fbf6;
+        }
+
+        .card-radius {
+            border-radius: 28px;
+        }
+
+        .input-pill {
+            border: 1px solid #e6eef0;
+            border-radius: 9999px;
+            padding: 12px 18px;
+        }
+
+        .input-pill:focus {
+            outline: none;
+            box-shadow: 0 6px 18px rgba(0, 148, 74, 0.08);
+            border-color: #00944a;
+        }
+
+        .card-shadow {
+            box-shadow: 0 15px 40px rgba(16, 24, 40, 0.08);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Login Container -->
+    <div class="h-screen flex items-center justify-center page-bg px-4">
+        <div class="bg-white card-radius card-shadow w-full max-w-sm p-8 text-center">
+            <div
+                class="mx-auto mb-4 w-28 h-28 rounded-full bg-white flex items-center justify-center border border-gray-100">
+                <img src="../activos/img_logos/logo-sedir-links.png" alt="SEDIR" class="h-16 object-contain" />
+            </div>
+            <h2 class="text-2xl font-bold text-gray-800 mb-1">Panel SEDIR</h2>
+            <p class="text-sm text-gray-500 mb-6">Acceso administrativo</p>
+
+            <form id="login-form" class="space-y-4">
+                <div>
+                    <input id="email" name="email" type="text" placeholder="admin" value=""
+                        class="input-pill w-full text-sm" required />
+                </div>
+                <div>
+                    <input id="password" name="password" type="password" placeholder="contraseña"
+                        class="input-pill w-full text-sm" required />
+                </div>
+
+                <button type="submit"
+                    class="w-full bg-[#00944a] hover:bg-[#007a3d] text-white rounded-full py-3 font-semibold flex items-center justify-center gap-2">
+                    Ingresar
+                    <svg width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M10.8064 9.97498H8.62439C8.44255 9.97498 8.31267 9.84509 8.31267 9.66326V8.62419C8.31267 8.46833 8.44255 8.31248 8.62439 8.31248H10.8064C11.248 8.31248 11.6377 7.9488 11.6377 7.48123V2.49373C11.6377 2.05212 11.248 1.66248 10.8064 1.66248H8.62439C8.44255 1.66248 8.31267 1.53259 8.31267 1.35076V0.311694C8.31267 0.155835 8.44255 -2.45571e-05 8.62439 -2.45571e-05H10.8064C12.1832 -2.45571e-05 13.3002 1.11697 13.3002 2.49373V7.48123C13.3002 8.85798 12.1832 9.97498 10.8064 9.97498ZM9.58552 4.75369C9.81931 5.01345 9.81931 5.4031 9.58552 5.63689L5.22146 10.001C4.83181 10.3906 4.15642 10.1308 4.15642 9.55935V7.0656H0.623605C0.259933 7.0656 0.000167847 6.80583 0.000167847 6.44216V3.94841C0.000167847 3.61072 0.259933 3.32498 0.623605 3.32498H4.15642V0.831225C4.15642 0.285718 4.83181 -2.45571e-05 5.22146 0.389624L9.58552 4.75369Z"
+                            fill="white" />
+                    </svg>
+
+                </button>
+
+                <p class="text-xs text-gray-400 mt-2">demo: <span class="font-medium text-gray-700">admin</span> / <span
+                        class="font-medium text-gray-700">sedir2025</span></p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Handle login form submission
+        document.getElementById('login-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            console.log('Login attempt:', { email, password });
+
+            // TODO: Implement actual login logic
+            alert('Login functionality to be implemented');
+        });
+    </script>
+</body>
+
+</html>
