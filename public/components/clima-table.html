@@ -1,0 +1,34 @@
+<!-- COMPONENT: Clima Historical Table -->
+<section class="space-y-4 clima-page-section">
+  <div class="flex justify-between items-end mb-4">
+    <h2 class="font-headline-md text-headline-md text-on-surface">Datos históricos (últimos 7 días)</h2>
+    <button class="bg-primary text-on-primary hover:bg-primary/90 transition-colors rounded-full px-4 py-2 font-label-md text-sm flex items-center gap-2" type="button">
+      <span class="material-symbols-outlined text-sm" data-icon="download">download</span> Descargar CSV
+    </button>
+  </div>
+  <div class="glass-card rounded-xl overflow-hidden w-full overflow-x-auto">
+    <table class="w-full text-left border-collapse clima-history-table">
+      <thead>
+        <tr>
+          <th class="font-label-md text-label-md text-on-surface">Fecha</th>
+          <th class="font-label-md text-label-md text-on-surface">Temp. Máx (°C)</th>
+          <th class="font-label-md text-label-md text-on-surface">Temp. Mín (°C)</th>
+          <th class="font-label-md text-label-md text-on-surface">Humedad (%)</th>
+          <th class="font-label-md text-label-md text-on-surface">Viento (km/h)</th>
+          <th class="font-label-md text-label-md text-on-surface">Precip. (mm)</th>
+        </tr>
+      </thead>
+      <tbody id="clima-history-body" class="font-body-md text-body-md text-on-surface-variant divide-y divide-outline-variant/30"></tbody>
+    </table>
+  </div>
+  <template id="clima-history-row-template">
+    <tr class="clima-history-row transition-colors">
+      <td class="p-3">{{date}}</td>
+      <td class="p-3">{{maxTemp}}</td>
+      <td class="p-3">{{minTemp}}</td>
+      <td class="p-3">{{humidity}}</td>
+      <td class="p-3">{{wind}}</td>
+      <td class="p-3">{{rain}}</td>
+    </tr>
+  </template>
+</section>

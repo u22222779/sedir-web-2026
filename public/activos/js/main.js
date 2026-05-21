@@ -30,35 +30,26 @@ window.tailwind.config = {
   }
 };
 
-/* SECTION: Component Loader */
-async function loadComponent(targetId, componentPath) {
-  var target = document.getElementById(targetId);
-  if (!target) {
-    return;
-  }
-
-  try {
-    var response = await fetch(componentPath);
-    if (!response.ok) {
-      throw new Error("No se pudo cargar " + componentPath);
-    }
-
-    target.innerHTML = await response.text();
-  } catch (error) {
-    console.error(error);
-  }
-}
-
 /* SECTION: App Bootstrap */
 async function initializePage() {
-  await loadComponent("navbar-container", "/components/navbar.html");
-  await loadComponent("hero-container", "/components/hero.html");
-  await loadComponent("proyectos-container", "/components/proyectos.html");
-  await loadComponent("contacto-container", "/components/contacto.html");
-  await loadComponent("footer-container", "/components/footer.html");
+  if (document.querySelector("[data-component]")) {
+    await window.loadComponentsFromDataAttributes();
+  } else if (typeof window.loadLegacyHomeComponents === "function") {
+    await window.loadLegacyHomeComponents();
+  }
 
-  if (typeof window.initMenu === "function") {
+  if (typeof window.initNavbar === "function") {
+    window.initNavbar();
+  } else if (typeof window.initMenu === "function") {
     window.initMenu();
+  }
+
+  if (typeof window.renderNoticiasCards === "function") {
+    await window.renderNoticiasCards();
+  }
+
+  if (typeof window.initFiltrosNoticias === "function") {
+    window.initFiltrosNoticias();
   }
 
   if (typeof window.initSlider === "function") {
@@ -71,6 +62,10 @@ async function initializePage() {
 
   if (typeof window.initForm === "function") {
     window.initForm();
+  }
+
+  if (typeof window.initClimaPage === "function") {
+    window.initClimaPage();
   }
 }
 

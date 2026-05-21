@@ -1,0 +1,14 @@
+/* SECTION: Noticias Page Fonts */
+.noticias-page {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.noticias-page h1,
+.noticias-page h2,
+.noticias-page h3,
+.noticias-page h4,
+.noticias-page h5,
+.noticias-page h6,
+.noticias-page .font-montserrat {
+  font-family: 'Montserrat', sans-serif;
+}

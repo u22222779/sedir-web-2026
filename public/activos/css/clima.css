@@ -1,0 +1,61 @@
+/* SECTION: Climate Page */
+body.clima-page {
+  font-size: 14px;
+}
+
+.clima-page-hero {
+  position: center;
+  min-height: 379px;
+  overflow: hidden;
+  background: #006b34;
+  color: #ffffff;
+}
+
+.clima-page-hero__pattern {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: radial-gradient(circle at 2px 2px, rgba(255, 255, 255, 0.15) 1px, transparent 0);
+  background-size: 32px 32px;
+}
+
+.clima-page-hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  background: linear-gradient(to right, #006b34, #008643);
+  opacity: 0.9;
+}
+
+.clima-page-hero__inner {
+  position: relative;
+  z-index: 20;
+  max-width: 1521px;
+}
+
+/* content spacing handled by container padding in component */
+
+.clima-station-label {
+  font-family: "Hanken Grotesk", Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  fill: #0f172a;
+}
+
+.clima-page-section {
+  width: 100%;
+}
+
+.clima-page-section--spaced {
+  padding-top: 3rem;
+}
+
+.clima-page-card {
+  border-radius: 0.75rem;
+}
+
+/* Hero content max width */
+.clima-hero-content {
+  max-width: 1296px;
+  width: 100%;
+}
