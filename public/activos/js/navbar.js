@@ -26,6 +26,34 @@ function initNavbar() {
   document.querySelectorAll("#mobile-menu a").forEach(function (link) {
     link.addEventListener("click", closeMenu);
   });
+
+  var normalizePath = function (value) {
+    var path = value.split("?")[0].split("#")[0];
+
+    if (path.endsWith("/")) {
+      return path.slice(0, -1);
+    }
+
+    return path;
+  };
+
+  var currentPath = normalizePath(window.location.pathname || "/");
+
+  document.querySelectorAll(".navbar-link").forEach(function (link) {
+    var target = link.getAttribute("href");
+
+    if (!target || target === "#") {
+      return;
+    }
+
+    var linkUrl = new URL(target, window.location.origin);
+    var linkPath = normalizePath(linkUrl.pathname);
+
+    if (linkPath === currentPath) {
+      link.classList.add("is-active");
+      link.setAttribute("aria-current", "page");
+    }
+  });
 }
 
 window.initNavbar = initNavbar;

@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:14-alpine
+    container_name: sedir-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: sedir_user
+      POSTGRES_PASSWORD: sedir_password
+      POSTGRES_DB: sedir_db
+    ports:
+      - '55432:5432'
+    volumes:
+      - sedir_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  sedir_postgres_data:

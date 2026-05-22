@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Qué hacemos - SEDIR</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#5c5c5c",
+                        "error-container": "#ffdad6",
+                        "outline": "#6e7a6e",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#bdcabc",
+                        "on-surface-variant": "#3e4a3f",
+                        "primary-fixed": "#8afaa7",
+                        "inverse-on-surface": "#f0f1f2",
+                        "tertiary-fixed": "#e4e2e1",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#c8c6c5",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed": "#00210c",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#6edd8d",
+                        "inverse-surface": "#2e3132",
+                        "on-primary-fixed-variant": "#005227",
+                        "surface-container-high": "#e7e8e9",
+                        "primary-container": "#008643",
+                        "on-background": "#191c1d",
+                        "surface-container": "#edeeef",
+                        "on-secondary-fixed-variant": "#304f00",
+                        "on-primary-container": "#f6fff3",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#006d35",
+                        "tertiary-container": "#757474",
+                        "secondary-fixed": "#b8f568",
+                        "surface-dim": "#d9dadb",
+                        "primary": "#006b34",
+                        "on-surface": "#191c1d",
+                        "surface": "#f8f9fa",
+                        "on-tertiary-fixed-variant": "#474746",
+                        "on-secondary-container": "#467000",
+                        "on-secondary-fixed": "#112000",
+                        "surface-container-low": "#f3f4f5",
+                        "secondary-fixed-dim": "#9dd84f",
+                        "secondary-container": "#b8f568",
+                        "surface-container-highest": "#e1e3e4",
+                        "surface-variant": "#e1e3e4",
+                        "surface-bright": "#f8f9fa",
+                        "background": "#f8f9fa",
+                        "on-tertiary-fixed": "#1b1c1c",
+                        "primary-fixed-dim": "#6edd8d",
+                        "secondary": "#426900",
+                        "on-tertiary-container": "#fffcfb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "margin-desktop": "64px",
+                        "unit": "4px",
+                        "container-max": "1280px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-xl": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .hero-overlay {
+            background: linear-gradient(rgba(0, 107, 52, 0.75), rgba(0, 107, 52, 0.75));
+        }
+
+        .custom-shadow {
+            box-shadow: 0 16px 32px -12px rgba(0, 107, 52, 0.06);
+        }
+
+        .section-number {
+            -webkit-text-stroke: 1px currentColor;
+            color: transparent;
+        }
+    </style>
+</head>
+
+<body class="bg-background text-on-surface font-body-md">
+    <!-- Top Navigation Bar -->
+    <nav
+        class="bg-surface docked full-width top-0 border-b border-outline-variant flex justify-between items-center px-gutter w-full max-w-container-max mx-auto h-16 sticky z-50">
+        <div class="flex items-center gap-2">
+            <span class="font-headline-md text-headline-md font-bold text-primary">SEDIR</span>
+        </div>
+        <div class="hidden md:flex items-center gap-8">
+            <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors"
+                href="#">Inicio</a>
+            <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors"
+                href="#">Quiénes somos</a>
+            <a class="font-label-md text-label-md text-primary font-bold border-b-2 border-primary pb-1" href="#">Qué
+                hacemos</a>
+            <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors"
+                href="#">Proyectos</a>
+            <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors"
+                href="#">Noticias</a>
+            <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors"
+                href="#">Dashboard</a>
+            <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors"
+                href="#">Contacto</a>
+            <button
+                class="bg-primary text-on-primary px-6 py-2 rounded-full font-label-md hover:opacity-90 transition-all active:scale-95">Acceso
+                Socios</button>
+        </div>
+        <button class="md:hidden p-2 text-on-surface">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
+    </nav>
+    <!-- Hero Section -->
+    <header class="relative w-full h-[500px] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-cover bg-center"
+            data-alt="A panoramic wide shot of Peruvian farmers working in a lush green agricultural field under a soft morning sun. The scene captures the essence of rural development with rows of diverse crops stretching towards the horizon, bathed in a natural, warm glow that emphasizes growth and sustainability. The composition highlights the connection between people and the land in a professional, high-quality photograph."
+            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDCNf1MUoPadjn05Ye3bDTY7IHDHpkGa-g4XShod1gFs4nt4R0q0ibxstkFo5gzhuurkAqS6LaZ6RTWeJUtb0L2ozXrn7bCtfTD_GIy2na1e7Un6J9ZRcBeHpMXJk7bgfaGAyHr5p-yt5kZN0oz83nS_hXNsFAt0s0qn6lEcUiKDlFnDHUAtn3dF58gbxeTie8mGqGsqxH96jt4SvljJkOyFSsMhsOOmzJ9elLqruiQgqJqVUkWMjBLgsLqtjt5CYkX0I4IOSfu66MG')">
+        </div>
+        <div class="absolute inset-0 hero-overlay"></div>
+        <div class="relative z-10 text-center px-gutter max-w-4xl mx-auto">
+            <h1 class="font-headline-xl text-headline-xl text-on-primary mb-6">Sembramos <span
+                    class="text-secondary-fixed">desarrollo</span> con propósito</h1>
+            <p class="font-body-lg text-body-lg text-on-primary/90 mb-10 max-w-2xl mx-auto">Impulsamos el impacto social
+                a través de la capacitación, la transferencia tecnológica, la investigación aplicada y modelos
+                productivos sostenibles.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <button
+                    class="bg-transparent border-2 border-on-primary text-on-primary px-8 py-3 rounded-full font-label-md hover:bg-on-primary hover:text-primary transition-all">Capacitación</button>
+                <button
+                    class="bg-transparent border-2 border-on-primary text-on-primary px-8 py-3 rounded-full font-label-md hover:bg-on-primary hover:text-primary transition-all">Asistencia
+                    técnica</button>
+                <button
+                    class="bg-transparent border-2 border-on-primary text-on-primary px-8 py-3 rounded-full font-label-md hover:bg-on-primary hover:text-primary transition-all">Investigación
+                    aplicada</button>
+            </div>
+        </div>
+    </header>
+    <!-- Section 01: Desarrollo de Capacidades -->
+    <section class="py-20 bg-surface">
+        <div class="max-w-container-max mx-auto px-gutter">
+            <div class="flex flex-col md:flex-row gap-12 items-start">
+                <div class="w-full md:w-1/2">
+                    <div class="flex items-center gap-4 mb-4">
+                        <span class="text-[64px] font-extrabold text-secondary leading-none">01</span>
+                        <div>
+                            <span class="text-secondary font-bold uppercase tracking-widest text-xs">SISTEMA</span>
+                            <h2 class="font-headline-lg text-headline-lg text-primary">Desarrollo de Capacidades</h2>
+                        </div>
+                    </div>
+                    <div class="mb-10 p-6 bg-surface-container-low border-l-4 border-primary rounded-r-lg">
+                        <span class="font-bold text-primary text-xs uppercase mb-2 block">OBJETIVO</span>
+                        <p class="text-on-surface-variant font-body-md">Fortalecer las capacidades de los pequeños
+                            productores para mejorar su productividad y competitividad, a través de la formación
+                            técnica, acompañamiento constante y organización asociativa.</p>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="group p-6 bg-[#00944A] rounded-xl text-white transition-all hover:translate-x-2">
+                            <div class="flex gap-4">
+                                <span class="material-symbols-outlined text-4xl" data-weight="fill">school</span>
+                                <div>
+                                    <h3 class="font-headline-md text-headline-md mb-2">Capacitación Técnica</h3>
+                                    <p class="text-white/80 font-body-md">Preparamos para la rentabilidad de su
+                                        producción y actividad local, enfocando en las mejores prácticas agrícolas, el
+                                        uso eficiente de recursos y la implementación de tecnologías innovadoras.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group p-6 bg-[#00944A] rounded-xl text-white transition-all hover:translate-x-2">
+                            <div class="flex gap-4">
+                                <span class="material-symbols-outlined text-4xl" data-weight="fill">eco</span>
+                                <div>
+                                    <h3 class="font-headline-md text-headline-md mb-2">Promoción de la agricultura
+                                        sostenible</h3>
+                                    <p class="text-white/80 font-body-md">Enseñamos métodos agroecológicos y técnicos
+                                        que respeten el medio ambiente. Manejo de manejo integrado de plagas y la
+                                        conservación de la biodiversidad para asegurar una agricultura que proteja la
+                                        salud del ecosistema.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group p-6 bg-[#00944A] rounded-xl text-white transition-all hover:translate-x-2">
+                            <div class="flex gap-4">
+                                <span class="material-symbols-outlined text-4xl" data-weight="fill">groups</span>
+                                <div>
+                                    <h3 class="font-headline-md text-headline-md mb-2">Fortalecimiento Organizativo</h3>
+                                    <p class="text-white/80 font-body-md">Ayudamos a la creación de estructuras
+                                        asociativas, mejorando su acceso a mercados más rentables y fomentando redes de
+                                        apoyo entre comunidades rurales de manera activa.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 grid grid-cols-2 gap-4">
+                    <img class="w-full h-[300px] object-cover rounded-xl col-span-2 shadow-lg"
+                        data-alt="A high-quality photo showing a group of diverse rural farmers sitting in a semi-circle during an outdoor technical workshop. A facilitator stands in front of a white board, explaining agricultural techniques. The lighting is bright and clear, reflecting a professional educational setting with a focus on community empowerment and shared learning in a rural Peruvian environment."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCETzZZmkEfjmt2-jBOdnnYcIBm47NZMr051m4yaaXY9mzwsTrvvKj8znxgRt_VZ3ZFQE633OgeIMmP8qnzOJcfwR7NbzVAgPCaPWRjGEF94QJgCdzZ0Yx4ZieV0nURpveMkdkxd_L4zqb7ctVAGcJFLYUnzB2xDiXmZUS1BwmfFi9DBvlAOqZJrgdI9FOKIuubQQ9eHSJ2Rhf9Ru6FtI4VZPEdRvtN2mOLhrjzDKOepixz6LjS8aMp9lIeYuy7h4DlSb9w0P5LpBpH" />
+                    <img class="w-full h-[200px] object-cover rounded-xl shadow-lg"
+                        data-alt="Close-up of small green seedlings being planted in a field by calloused, hardworking hands. The soil is dark and rich, and the morning light creates soft shadows. This image communicates the start of a sustainable agricultural process with a focus on care, detail, and environmental stewardship in a modern corporate photographic style."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzouo8tUktjEr1SoJ6e1RIpdcEmIkBUL1-CtIOZmoTfygibd_z31GvfQKcKNcTlJE35eplVhJGdjQf66wFXZZriRlzSqPCgsoF33vwBBI1ckpXEl8GAsUzHCW4ACMsNzI9URSGLmZiIhgp1xK9R1FdpQ4xTnsbh_X_aV1PvKYfDDqvcPW3BySTUl2RQyNYhGJhmUVJIrDF1D5LsG7yo369Mkot98AglW4yG3XnZ-G6qWHvLlpXiOaublSClxJ7aH82LpMIfK9uuNu9" />
+                    <img class="w-full h-[200px] object-cover rounded-xl shadow-lg"
+                        data-alt="A wide-angle shot of a terraced agricultural field in the Andes mountains. Farmers are seen in the distance tending to the crops. The sky is bright blue, and the vibrant greens of the crops contrast beautifully with the earthy tones of the mountains. The image is crisp, professional, and captures the scale of the agricultural landscape."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlkl0eRl10RRbFyMULGlzka83oeyx68SiVsZeYYuZwhf6Ufg8jrxd_S4ako_56bsl_IE2W0VdFuW3-L1hIuZFhAGt0pXRXlsCTSfQRePA_-uAj8lJQIssLvogi4RDkR1Kv7eoYNbyuN7xbf2Cu6Ah4YqBZNIVsGpL0B32i3oBnKVOr5MIJrs8OmzpVvfWspwyTUPC0BSvW73UnKlengdqjgtdxL69sIxOk9wVfEB6NwDUHzCyAcoNZ5dcn9U9vJDN09P-gqPiNYsct" />
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Section 02: Transferencia de Tecnología Agrícola -->
+    <section class="py-20 bg-primary-container text-on-primary-container">
+        <div class="max-w-container-max mx-auto px-gutter">
+            <div class="flex items-center gap-4 mb-12">
+                <span class="text-[64px] font-extrabold text-secondary leading-none">02</span>
+                <div>
+                    <span class="text-secondary font-bold uppercase tracking-widest text-xs">SISTEMA</span>
+                    <h2 class="font-headline-lg text-headline-lg text-on-primary-container">Transferencia de Tecnología
+                        Agrícola</h2>
+                </div>
+            </div>
+            <div class="mb-12 max-w-3xl">
+                <span class="font-bold text-secondary-fixed text-xs uppercase mb-2 block">OBJETIVO</span>
+                <p class="font-body-lg text-body-lg text-on-primary-container/90">Mejorar la productividad y
+                    sostenibilidad del sector agropecuario mediante la difusión de conocimientos y tecnologías adaptadas
+                    a las necesidades de los productores.</p>
+            </div>
+            <div class="w-full mb-12">
+                <img class="w-full h-[400px] object-cover rounded-2xl shadow-xl"
+                    data-alt="A breathtaking panoramic view of a lush Peruvian valley with extensive agricultural plots. The fields show different stages of crop growth, creating a patchwork of greens and yellows. In the foreground, a group of technicians and farmers are observing a demonstration of a modern irrigation system. The atmosphere is one of progress, technical rigor, and collaboration."
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7_RysUjYVJJzb8mdgc31n6OWgwS0kSVvZUfQuqwZSyHqjq062QyDoHjd1tBoqFCAviiE0tEz80IWXqBFFb8Erotxw8i1oevUuHDhfNeTyzKBgaT7j8JVi12Q0QuzRkq9y7d2Brz-fkbirgm7GqC6m9lCUT38Wh9-jSfhKN4Ie3ZUQc2-y_wZb01Hkx3PjytFqemkZuwtOg9nIngP26pnQ6mjdARbU-r18qvdVlDe0FX_3cRbeZiAEMLst-9SLXuNHqlFacGMQsiOm" />
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="bg-surface rounded-xl overflow-hidden shadow-md group hover:shadow-xl transition-all">
+                    <img class="w-full h-40 object-cover"
+                        data-alt="Close up of high-quality vegetable seedlings ready for transplanting. The plants are healthy, vibrant green, and organized in modern plastic seedling trays. Professional lighting highlights the texture of the leaves and the quality of the agricultural product, conveying scientific excellence and agricultural innovation."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQtCDGCAsH7diMauRGS3XHNwJzgwSKqIcg4LIdbysq2blbyaQptsLC8YW2VS7JfkrZcvY5XbZBNwx9rNpizkmpddnhG2GoR5G6UXKmdfI_zU1J2mko3ivucCmA--0HPsYkW5WhcaDP0sdJ0LwEIAOblBrphjmnzR3eCabo2zKy3njUemCzNjewvPI-SNC_tkcEH_iDVcLf1gntXMxcY56v1nE8mEdwDXWbEekrtcNzcZDhwO9Pfk59Qr-SxiHXKkhp6XJvji7GjAA7" />
+                    <div class="p-6">
+                        <h4 class="font-headline-md text-headline-md text-primary mb-3">Plantas Biomédicas</h4>
+                        <p class="text-on-surface-variant font-body-md text-sm">Espacios de exhibición donde los
+                            productores observan y evalúan nuevas técnicas agrícolas en tiempo real, facilitando el
+                            intercambio y mejoras de modelos agroecológicos.</p>
+                    </div>
+                </div>
+                <div class="bg-surface rounded-xl overflow-hidden shadow-md group hover:shadow-xl transition-all">
+                    <img class="w-full h-40 object-cover"
+                        data-alt="A clean, professional workspace with a laptop showing a website design for an agricultural information portal. The screen displays charts and infographics about crop yields. Beside it is a camera and a notebook, suggesting the creation of digital content and educational materials for farmers in a modern corporate setting."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaRUVy3ORKvMtREXZ0F-8rLvihqpo8LvSHNtSEOGr7N22pAIoGPX6_LHnf6rbBUwPuBeRSnZKqMen0qwKAHEIrYj9ttZ8Kzg11CY3-lC9XtVjLWRZFYrNlDyprUiRQdHkLRHmLoMvesLxUnOdrlpzQNjUbUuOQPZtoQLN4iEBaIGD-U4_iiExWIZhSf71_E4Hs5neFGDaOhgDedl9RgYk60JoGtPu9rK4C6jFPaEMQRsnurkSSa_UWgC44ieI03QOeOo6JJdOM_r36" />
+                    <div class="p-6">
+                        <h4 class="font-headline-md text-headline-md text-primary mb-3">Creación de Contenidos</h4>
+                        <p class="text-on-surface-variant font-body-md text-sm">Producción y distribución de contenidos
+                            educativos como vídeos, tutoriales, boletines informativos e infografías para asegurar el
+                            acceso al conocimiento.</p>
+                    </div>
+                </div>
+                <div class="bg-surface rounded-xl overflow-hidden shadow-md group hover:shadow-xl transition-all">
+                    <img class="w-full h-40 object-cover"
+                        data-alt="Stacks of professionally printed manuals and brochures about sustainable farming practices laid out on a clean wooden table. The covers feature vibrant agricultural photography and the SEDIR logo. The presentation is neat and emphasizes the importance of accessible, printed technical resources for rural development."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCs5tSxUNksK6PEBHoxJcPho8i-_k2wta4CacD2dbAhMLPof3B1oQ7liiZonejVUmtTssOYPLXJD6mcVRKDVfhgpUU_BzKFapv01L2OaJoI-WlXBrgma3iRMuGjjIW6qsDjpGdJ-ciljItLl0OukmtjpVii1CuwsIxjAx8KoW-OXj7xoVy9x-DFesoQBR7DLqiLyKm-YkBnQ-mBbW0EBwDSro3jKDQ2mwZgOcfKL_cEX0HyTlaTsY7OuqtD9OhJ6A8qorIEWPNyynzI" />
+                    <div class="p-6">
+                        <h4 class="font-headline-md text-headline-md text-primary mb-3">Materiales Impresos</h4>
+                        <p class="text-on-surface-variant font-body-md text-sm">Revistas, folletos y manuales técnicos
+                            que facilitan el acceso a la información de manera cercana y visual, para reforzar el
+                            alcance de las capacitaciones en la comunidad.</p>
+                    </div>
+                </div>
+                <div class="bg-surface rounded-xl overflow-hidden shadow-md group hover:shadow-xl transition-all">
+                    <img class="w-full h-40 object-cover"
+                        data-alt="Inside a professional radio broadcasting studio. A microphone with a pop filter is in the foreground, and through the glass, a person can be seen speaking into another mic. This scene represents Radio SEDIR, an essential tool for reaching remote rural areas with vital agricultural news and educational programming."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5motq41qvygpt-XpEFaQvwqG3Acbd8oMvJCbzqydhcPTxsvzZ9M_14EsdSAP5poPTyZohOdUF6zeuVCfLHCD4RLjXw6sHHtEo1_nvHuj1i7kRUArR3utenXwjcM8-1vIyKZlvUQvSf9vHP9m-ifZ7FTDqXuL4DyiDEwfyNgjmzijaBh-1bLoDavYFxb9l87M1fa82Hu4v70ZV0nIWyQba06ScXs9zXnfdbl3KDv0EUedNSfiGH5Wh4LNpafdkpQlvOX9GAxGRRrVk" />
+                    <div class="p-6">
+                        <h4 class="font-headline-md text-headline-md text-primary mb-3">Radio SEDIR</h4>
+                        <p class="text-on-surface-variant font-body-md text-sm">Espacio radiofónico informativo para
+                            llegar a los más remotos caseríos con programas educativos, noticias y entrevistas con
+                            líderes y expertos en el campo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Section 03: Investigación Aplicada -->
+    <section class="py-20 bg-surface">
+        <div class="max-w-container-max mx-auto px-gutter">
+            <div class="flex items-center gap-4 mb-12">
+                <span class="text-[64px] font-extrabold text-secondary leading-none">03</span>
+                <div>
+                    <span class="text-secondary font-bold uppercase tracking-widest text-xs">PROGRAMA</span>
+                    <h2 class="font-headline-lg text-headline-lg text-primary">Investigación Aplicada</h2>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row gap-12 items-center">
+                <div class="w-full md:w-1/2 grid grid-cols-2 gap-4">
+                    <img class="w-full h-[400px] object-cover rounded-xl col-span-2"
+                        data-alt="A focused female scientist in a white lab coat and face mask working with a high-precision microscope in a clean, modern agricultural laboratory. She is examining plant tissue samples. The environment is clinical, bright, and organized, showcasing the scientific rigor behind SEDIR's applied research programs."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfaOP91UM01SwBaSvbMMryGZxi8fQdp9Bdul_eYpKwDCmF7O94OhcoL_nMYMFucaIgB1ps_vgvMLPSOcnzzT8fifNoyhW3LyYOdsDNWeAry4rkJGKOKicdo7rOeh7AEE-tQ6mbQ6QtcfEdvQ73ghJnQNp1YRYVZo_A_bsaa0LL1M_8C2g_DTAEh8nN-CiHczHWlaoqd9atYvEdgpGMWSXtl9HBsLeHlzxcq4MoI_ULD6z6R0tSHhR5oblrbWTMCk-ITpaDS3ov6JlS" />
+                    <img class="w-full h-[200px] object-cover rounded-xl"
+                        data-alt="Technicians in a clean room facility carefully inspecting and packing fresh organic vegetables into containers. They wear protective gear, emphasizing quality control and food safety standards. The lighting is crisp and the background is orderly, representing high-end agro-industrial processing."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAV5XEqT3U0ZKLaWCeEIJmRW0mgJEGSm4PUPrXmhpFBKKtiTvsxd5HhQ1avyPlaOD5uu-N3VROgwMFC4-Mf9BpqOMz0BOBNJXvtLevDk3Prcbs6OqsNl1NY69pJEKwlH49fD5gJQZiiZ3c-5Xa37tak8m2yEtlvsVhMdvej37LJz96lB-k_dGR7400wwvg__QAoMJWpI01p7u4eEY9Er5j-R7JZAtIkiTs09uZr5wV9tro_3v66IvhcSPd-9yUaKOgxOeX67dX_u0G9" />
+                    <img class="w-full h-[200px] object-cover rounded-xl"
+                        data-alt="Rows of experimental bottled products, perhaps essential oils or fruit extracts, lined up in a laboratory setting. Each bottle has a precise label. In the background, laboratory equipment is visible but out of focus. This image symbolizes the transformation of agricultural raw materials into high-value processed goods through research."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuTMFILlAGLETo4Zs4x9QqBDUwKjweXA8cqXFkzR0GxRxwNVbE5B6FcijqVOzAk6UNGPgMfbAT4mlrIkP7LvQQjDK2vCs-LyefSxuaLe0yQr6Mb5eIrn08HJqs67GzKRyca5M5JeJYGMWhSLr0Bs04TLT0P6f44LfCshRqJiwvNRAaL7DJjHpTQl0F5id52dUtr0YPRU9Zhq18eqJ4JDakzuAn2pBQLmAccX31g9x84rBaRFhjHJUtbRAePQL9VcFi1NMoHBJxWETB" />
+                </div>
+                <div class="w-full md:w-1/2">
+                    <div class="mb-10">
+                        <span class="font-bold text-primary text-xs uppercase mb-2 block">OBJETIVO</span>
+                        <p class="text-on-surface-variant font-body-md text-lg italic">Fomentar la investigación
+                            aplicada en el sector agroindustrial y agroforestal, impulsando la participación de
+                            estudiantes universitarios en proyectos de tesis que contribuyan a la innovación y
+                            sostenibilidad, para mejorar la productividad en el valle de Nepeña.</p>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="bg-primary text-on-primary p-8 rounded-2xl shadow-lg border-l-8 border-secondary">
+                            <div class="flex gap-4 mb-4">
+                                <span class="material-symbols-outlined text-3xl" data-weight="fill">science</span>
+                                <h3 class="font-headline-md text-headline-md">Investigación Agrícola</h3>
+                            </div>
+                            <p class="font-body-md text-on-primary/90 leading-relaxed">Consideramos la investigación
+                                como una herramienta fundamental para el desarrollo del pequeño productor, buscando
+                                técnicas y soluciones adecuadas para los desafíos que enfrentan los agricultores locales
+                                en la actualidad. Nuestros investigadores aplican sus conocimientos en la optimización
+                                de procesos y cultivos, bajo parámetros técnicos y criterios de productividad, calidad y
+                                responsabilidad socio-ambiental.</p>
+                        </div>
+                        <div class="bg-primary text-on-primary p-8 rounded-2xl shadow-lg border-l-8 border-secondary">
+                            <div class="flex gap-4 mb-4">
+                                <span class="material-symbols-outlined text-3xl"
+                                    data-weight="fill">precision_manufacturing</span>
+                                <h3 class="font-headline-md text-headline-md">Desarrollo Agroindustrial</h3>
+                            </div>
+                            <p class="font-body-md text-on-primary/90 leading-relaxed">Promovemos la transformación de
+                                materias primas rurales en productos de valor agregado, fomentando la innovación y la
+                                competitividad del sector agroindustrial. Acompañamos a medianos y pequeños empresarios
+                                en la adopción de procesos tecnológicos, brindando asesoría y desarrollo a través de la
+                                investigación, impulsando el bienestar de las familias locales y contribuyendo en la
+                                mejora de prácticas agroindustriales locales.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-surface-container-highest dark:bg-inverse-surface border-t border-outline-variant">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-gutter py-12 max-w-container-max mx-auto">
+            <div class="flex flex-col gap-4">
+                <span class="font-headline-md text-headline-md font-bold text-primary">SEDIR</span>
+                <p class="text-on-surface-variant font-body-md max-w-xs">Impulsamos el desarrollo sostenible y la mejora
+                    de la calidad de vida en las zonas rurales a través de la formación y la innovación constante.</p>
+                <div class="flex gap-4 mt-2">
+                    <a class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center hover:opacity-80 transition-all"
+                        href="#"><span class="material-symbols-outlined text-xl">social_leaderboard</span></a>
+                    <a class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center hover:opacity-80 transition-all"
+                        href="#"><span class="material-symbols-outlined text-xl">public</span></a>
+                    <a class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center hover:opacity-80 transition-all"
+                        href="#"><span class="material-symbols-outlined text-xl">work</span></a>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <h5 class="font-label-md text-label-md text-primary uppercase mb-4">Navegación</h5>
+                    <ul class="space-y-2">
+                        <li><a class="text-on-surface-variant hover:text-primary underline font-body-md"
+                                href="#">Inicio</a></li>
+                        <li><a class="text-on-surface-variant hover:text-primary underline font-body-md"
+                                href="#">Quiénes somos</a></li>
+                        <li><a class="text-on-surface-variant hover:text-primary underline font-body-md" href="#">Qué
+                                hacemos</a></li>
+                        <li><a class="text-on-surface-variant hover:text-primary underline font-body-md"
+                                href="#">Proyectos</a></li>
+                        <li><a class="text-on-surface-variant hover:text-primary underline font-body-md"
+                                href="#">Noticias</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-label-md text-label-md text-primary uppercase mb-4">Servicios</h5>
+                    <ul class="space-y-2">
+                        <li><a class="text-on-surface-variant hover:text-primary underline font-body-md"
+                                href="#">Capacitación</a></li>
+                        <li><a class="text-on-surface-variant hover:text-primary underline font-body-md"
+                                href="#">Asistencia Técnica</a></li>
+                        <li><a class="text-on-surface-variant hover:text-primary underline font-body-md"
+                                href="#">Investigación</a></li>
+                        <li><a class="text-on-surface-variant hover:text-primary underline font-body-md"
+                                href="#">Publicaciones</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <h5 class="font-label-md text-label-md text-primary uppercase mb-4">Contacto</h5>
+                <ul class="space-y-4 text-on-surface-variant font-body-md">
+                    <li class="flex items-start gap-2">
+                        <span class="material-symbols-outlined text-primary">location_on</span>
+                        <span>Moro - Ancash, Perú</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary">call</span>
+                        <span>(043) 391 037</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary">mail</span>
+                        <span>contacto@sedir.org.pe</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-outline-variant py-6 text-center">
+            <p class="text-on-surface-variant font-body-md text-sm">© 2024 SEDIR - Servicio para el Desarrollo Integral
+                Rural. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
