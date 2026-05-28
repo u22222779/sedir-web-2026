@@ -27,6 +27,28 @@ async function loadComponentsFromDataAttributes() {
         return;
       }
 
+      // Special handling for navbar to avoid FOUC: reserve space, hide, then fade-in
+      if (target.id === "navbar-container" || (componentPath && componentPath.indexOf('navbar.html') !== -1)) {
+        try {
+          target.classList.add('navbar-loading');
+          var response = await fetch(componentPath);
+          if (!response.ok) {
+            throw new Error("No se pudo cargar " + componentPath);
+          }
+
+          target.innerHTML = await response.text();
+
+          requestAnimationFrame(function () {
+            target.classList.remove('navbar-loading');
+            target.classList.add('navbar-loaded');
+          });
+        } catch (error) {
+          console.error(error);
+        }
+
+        return;
+      }
+
       try {
         var response = await fetch(componentPath);
         if (!response.ok) {
@@ -40,6 +62,28 @@ async function loadComponentsFromDataAttributes() {
     })
   );
 }
+
+// Optional explicit loader for navbar when called directly
+async function loadNavbar() {
+  var container = document.getElementById('navbar-container');
+  if (!container) return;
+
+  try {
+    container.classList.add('navbar-loading');
+    var response = await fetch('/components/navbar.html');
+    if (!response.ok) throw new Error('No se pudo cargar /components/navbar.html');
+    container.innerHTML = await response.text();
+
+    requestAnimationFrame(function () {
+      container.classList.remove('navbar-loading');
+      container.classList.add('navbar-loaded');
+    });
+  } catch (err) {
+    console.error('Error cargando navbar:', err);
+  }
+}
+
+window.loadNavbar = loadNavbar;
 
 async function loadLegacyHomeComponents() {
   await loadComponent("navbar-container", "/components/navbar.html");

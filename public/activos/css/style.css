@@ -72,6 +72,20 @@ h6 {
   color: #00944a;
 }
 
+/* NAVBAR: reserve space and fading helpers to avoid FOUC when navbar is injected */
+#navbar-container {
+  min-height: 84px; /* spacer height matching .navbar-shell / .navbar-logo */
+}
+
+.navbar-loading {
+  opacity: 0;
+}
+
+.navbar-loaded {
+  opacity: 1;
+  transition: opacity .2s ease;
+}
+
 .hero-secondary-frame {
   background: #00944a;
   border: 1.5px solid #8c7855;
@@ -121,4 +135,39 @@ h6 {
 .category-badge {
   background-color: #e0f5f0;
   color: #00944a;
+}
+
+/* Company-themed card used on index: one corner 0, others 50px */
+.company-card {
+  background: #00944a; /* company green */
+  color: #ffffff;
+  border-radius: 0 45px 45px 45px; /* top-left 0, others 35px */
+  padding: 2rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.company-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 36px rgba(0,0,0,0.12);
+}
+
+.company-card h3,
+.company-card p,
+.company-card .readmore-link {
+  color: #ffffff;
+}
+
+.company-card .readmore-link {
+  border: 2px solid rgba(255,255,255,0.12);
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+}
+
+.company-card .readmore-link:hover {
+  background: rgba(255,255,255,0.08);
 }
