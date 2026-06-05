@@ -39,6 +39,7 @@ async function obtenerNoticias(req, res) {
         titulo,
         fecha,
         contenido,
+        facebook_reel_url,
         imagen_portada,
         id_categoria_noticia,
         created_at,
@@ -84,6 +85,7 @@ async function crearNoticia(req, res) {
       fecha: sanitizeText(req.body.fecha),
       contenido: sanitizeText(req.body.contenido),
       imagen_portada: sanitizeText(req.body.imagen_portada),
+      facebook_reel_url: sanitizeText(req.body.facebook_reel_url || ''),
     };
 
     const result = await pool.query(
@@ -93,14 +95,16 @@ async function crearNoticia(req, res) {
           fecha,
           contenido,
           imagen_portada,
+          facebook_reel_url,
           id_categoria_noticia
         )
-        VALUES ($1, $2, $3, $4, $5)
+        VALUES ($1, $2, $3, $4, $5, $6)
         RETURNING
           id_noticia AS id,
           titulo,
           fecha,
           contenido,
+          facebook_reel_url,
           imagen_portada,
           id_categoria_noticia,
           created_at,
@@ -111,6 +115,7 @@ async function crearNoticia(req, res) {
         noticia.fecha,
         noticia.contenido,
         noticia.imagen_portada,
+        noticia.facebook_reel_url,
         categoriaId,
       ]
     );
@@ -159,6 +164,7 @@ async function actualizarNoticia(req, res) {
       fecha: sanitizeText(req.body.fecha),
       contenido: sanitizeText(req.body.contenido),
       imagen_portada: sanitizeText(req.body.imagen_portada),
+      facebook_reel_url: sanitizeText(req.body.facebook_reel_url || ''),
     };
 
     const result = await pool.query(
@@ -169,13 +175,15 @@ async function actualizarNoticia(req, res) {
           fecha = $2,
           contenido = $3,
           imagen_portada = $4,
-          id_categoria_noticia = $5
-        WHERE id_noticia = $6
+          facebook_reel_url = $5,
+          id_categoria_noticia = $6
+        WHERE id_noticia = $7
         RETURNING
           id_noticia AS id,
           titulo,
           fecha,
           contenido,
+          facebook_reel_url,
           imagen_portada,
           id_categoria_noticia,
           created_at,
@@ -186,6 +194,7 @@ async function actualizarNoticia(req, res) {
         noticia.fecha,
         noticia.contenido,
         noticia.imagen_portada,
+        noticia.facebook_reel_url,
         categoriaId,
         id,
       ]
@@ -224,6 +233,7 @@ async function eliminarNoticia(req, res) {
           titulo,
           fecha,
           contenido,
+          facebook_reel_url,
           imagen_portada,
           id_categoria_noticia,
           created_at,

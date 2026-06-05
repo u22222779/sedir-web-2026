@@ -28,7 +28,7 @@ h6 {
 
 /* SECTION: Utility Classes Replacing Inline Styles */
 .who-image-radius {
-  border-radius: 55px 0 55px 55px;
+  border-radius: 60px 0 60px 60px;
 }
 
 .service-icon-box {
@@ -41,7 +41,7 @@ h6 {
 }
 
 .contact-info-card-radius {
-  border-radius: 55px 0 55px 0;
+  border-radius: 20px;
 }
 
 .contact-form-bg {
@@ -141,7 +141,7 @@ h6 {
 .company-card {
   background: #00944a; /* company green */
   color: #ffffff;
-  border-radius: 0 45px 45px 45px; /* top-left 0, others 35px */
+  border-radius: 0 60px 60px 60px; /* top-left 0, others 60px */
   padding: 2rem;
   box-shadow: 0 8px 20px rgba(0,0,0,0.06);
   display: flex;
@@ -170,4 +170,27 @@ h6 {
 
 .company-card .readmore-link:hover {
   background: rgba(255,255,255,0.08);
+}
+
+/* Override Tailwind rounding utilities for container-like elements to 60px */
+.rounded-3xl,
+.rounded-2xl,
+.rounded-xl,
+.rounded-lg,
+.rounded {
+  border-radius: 60px !important;
+}
+
+/* News modal styles */
+#news-modal { }
+#news-modal .aspect-video { max-width: 1200px; }
+#news-modal-content iframe { display: block; }
+#news-modal-close { backdrop-filter: blur(4px); }
+/* Ensure iframe/img fill the square modal cleanly */
+#news-modal-content iframe,
+#news-modal-content img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }

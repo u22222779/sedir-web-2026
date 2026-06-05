@@ -27,7 +27,7 @@ async function renderProyectos() {
     ? proyectos.map(function (item) {
         const image = item.imagen || '/activos/img_logos/logo-led.png';
         return `
-          <article class="bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition-all group flex flex-col">
+          <article class="bg-white rounded-[30px] overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition-all group flex flex-col">
             <div class="relative h-60 overflow-hidden bg-gray-50">
               <img alt="${escapeHtml(item.nombre || 'Proyecto')}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="${escapeHtml(image)}" />
             </div>

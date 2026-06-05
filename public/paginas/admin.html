@@ -10,7 +10,7 @@
     body { font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
     .sidebar { width: 280px; }
     .content { margin-left: 300px; }
-    .card { border-radius: 22px; box-shadow: 0 14px 40px rgba(15, 23, 42, 0.08); }
+    .card { border-radius: 60px; box-shadow: 0 14px 40px rgba(15, 23, 42, 0.08); }
     .nav-link.active { background: #f0faf4; color: #00944a; font-weight: 700; }
     .field { border: 1px solid #e5e7eb; border-radius: 16px; padding: 12px 14px; width: 100%; }
     .field:focus { outline: none; border-color: #00944a; box-shadow: 0 0 0 4px rgba(0, 148, 74, 0.08); }
@@ -176,7 +176,7 @@
     }
 
     function noticiaForm(model) {
-      const data = model || { titulo: '', fecha: '', contenido: '', imagen_portada: '', id_categoria_noticia: '' };
+      const data = model || { titulo: '', fecha: '', contenido: '', imagen_portada: '', id_categoria_noticia: '', facebook_reel_url: '' };
       return `
         <input type="hidden" name="id" value="${escapeHtml(data.id || '')}" />
         <div>
@@ -194,6 +194,10 @@
         <div>
           <label class="text-sm font-semibold text-slate-600">Imagen portada *</label>
           <input class="field mt-2" name="imagen_portada" required value="${escapeHtml(data.imagen_portada)}" />
+        </div>
+        <div>
+          <label class="text-sm font-semibold text-slate-600">Facebook Reel (URL)</label>
+          <input class="field mt-2" name="facebook_reel_url" placeholder="https://www.facebook.com/reel/..." value="${escapeHtml(data.facebook_reel_url)}" />
         </div>
         <div>
           <label class="text-sm font-semibold text-slate-600">Categoría *</label>
