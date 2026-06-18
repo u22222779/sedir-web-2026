@@ -4,16 +4,33 @@
     <div class="flex items-center">
       <img alt="SEDIR Logo" src="/activos/img_logos/logo-msi.png" class="navbar-logo" />
     </div>
-    
+
     <!-- Desktop Menu -->
     <div class="hidden md:flex items-center flex-nowrap gap-5">
       <a class="navbar-link font-display font-medium text-[16px]" href="/index.html">Inicio</a>
-      <a class="navbar-link font-display font-medium text-[16px]" href="/paginas/quienessomos.html">Quienes somos</a>
-      <a class="navbar-link font-display font-medium text-[16px]" href="/paginas/quehacemos.html">Que hacemos</a>
-      <a class="navbar-link font-display font-medium text-[16px]" href="#">Proyectos</a>
-      <a class="navbar-link font-display font-medium text-[16px]" href="/paginas/noticia.html">Noticias</a>
-      <a class="navbar-link font-display font-medium text-[16px]" href="/paginas/servicios.html">Productos y Servicios</a>
-      <a class="navbar-cta px-6 py-2 rounded-[10px] font-display font-medium text-[16px] transition-colors" href="/paginas/contacto.html">Contactanos</a>
+      <a class="navbar-link font-display font-medium text-[16px]" href="../paginas/quienessomos.html">Quienes somos</a>
+      <a class="navbar-link font-display font-medium text-[16px]" href="../paginas/quehacemos.html">Que hacemos</a>
+      <a class="navbar-link font-display font-medium text-[16px]" href="../paginas/proyectos.html">Proyectos</a>
+      <a class="navbar-link font-display font-medium text-[16px]" href="../paginas/noticia.html">Noticias</a>
+      <div class="relative inline-block group">
+        <button class="navbar-link font-display font-medium text-[16px] flex items-center gap-1 py-2">
+          Productos y Servicios
+          <span class="text-xs">▼</span>
+        </button>
+
+        <div
+          class="absolute left-0 top-full hidden group-hover:block bg-white shadow-lg rounded-md min-w-[200px] z-50 border">
+          <a href="../paginas/productos.html" class="block px-4 py-3 text-gray-700 hover:bg-gray-100">
+            Productos
+          </a>
+
+          <a href="../paginas/servicios.html" class="block px-4 py-3 text-gray-700 hover:bg-gray-100">
+            Servicios
+          </a>
+        </div>
+      </div>
+      <a class="navbar-cta px-6 py-2 rounded-[10px] font-display font-medium text-[16px] transition-colors"
+        href="../paginas/contacto.html">Contactanos</a>
     </div>
 
     <!-- Mobile Button -->
@@ -26,7 +43,8 @@
 </nav>
 
 <!-- COMPONENT: Mobile Drawer -->
-<div id="mobile-menu" class="fixed top-0 right-[-100%] w-[280px] h-full bg-white shadow-2xl z-[999] transition-all duration-300 ease-in-out md:hidden">
+<div id="mobile-menu"
+  class="fixed top-0 right-[-100%] w-[280px] h-full bg-white shadow-2xl z-[999] transition-all duration-300 ease-in-out md:hidden">
   <div class="flex justify-between items-center p-6 border-b">
     <img src="/activos/img_logos/logo-msi.png" class="h-10" alt="SEDIR Logo" />
 
@@ -39,16 +57,65 @@
 
   <div class="flex flex-col p-6 gap-5 font-medium text-gray-700">
     <a href="/index.html" class="navbar-link">Inicio</a>
+<<<<<<< HEAD
     <a href="/paginas/quienessomos.html" class="navbar-link">Quienes Somos</a>
     <a href="/paginas/quehacemos.html" class="navbar-link">Que hacemos</a>
     <a href="/paginas/proyectos.html" class="navbar-link">Proyectos</a>
     <a href="/paginas/noticia.html" class="navbar-link">Noticias</a>
     <a href="/paginas/servicios.html" class="navbar-link">Productos y Servicios</a>
+=======
+    <a href="../paginas/quienessomos.html" class="navbar-link">Quienes Somos</a>
+    <a href="../paginas/quehacemos.html" class="navbar-link">Que hacemos</a>
+    <a href="../paginas/proyectos.html" class="navbar-link">Proyectos</a>
+    <a href="../paginas/noticia.html" class="navbar-link">Noticias</a>
+>>>>>>> main
 
-    <a href="/paginas/contacto.html" class="navbar-cta-mobile text-center py-3 rounded-full mt-4">
-      Contactanos
+    <div>
+      <button id="mobileMenuBtn" type="button" class="navbar-link w-full text-left flex justify-between items-center">
+        Productos y Servicios
+        <span>▼</span>
+      </button>
+
+      <div id="mobileSubmenu" class="hidden mt-2 pl-3 space-y-2">
+        <a href="../paginas/productos.html" class="navbar-link block">
+          Productos
+        </a>
+        <a href="../paginas/servicios.html" class="navbar-link block">
+          Servicios
+        </a>
+      </div>
+    </div>
+
+    <a href="../paginas/contacto.html" class="navbar-cta-mobile text-center py-3 rounded-full mt-4">
+      Contáctanos
     </a>
   </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const menuBtn = document.getElementById("menu-btn");
+  const closeBtn = document.getElementById("close-menu");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const overlay = document.getElementById("overlay");
+
+  menuBtn.addEventListener("click", () => {
+    mobileMenu.style.right = "0";
+    overlay.classList.remove("hidden");
+  });
+
+  closeBtn.addEventListener("click", () => {
+    mobileMenu.style.right = "-100%";
+    overlay.classList.add("hidden");
+  });
+
+  overlay.addEventListener("click", () => {
+    mobileMenu.style.right = "-100%";
+    overlay.classList.add("hidden");
+  });
+
+});
+</script>
 </div>
 
 <div id="overlay" class="fixed inset-0 bg-black/40 hidden z-[998] md:hidden"></div>

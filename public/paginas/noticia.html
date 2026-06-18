@@ -46,18 +46,6 @@
         <div id="news-cards-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
     </main>
 
-    <!-- Video modal: opens in a large rectangle when a news card is clicked -->
-    <div id="news-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
-        <div id="news-modal-backdrop" class="absolute inset-0 bg-black/70"></div>
-        <div class="relative z-10 w-[350px] h-[620px] max-w-none">
-            <button id="news-modal-close"
-                class="absolute -top-3 -right-3 z-20 bg-black/70 text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg">✕</button>
-            <div class="w-full h-full bg-black rounded-[20px] overflow-hidden shadow-2xl">
-                <div id="news-modal-content" class="w-full h-full"></div>
-            </div>
-        </div>
-    </div>
-
     <div id="footer-container" data-component="/components/footer.html"></div>
 
     <script src="/activos/js/components.js" defer></script>
