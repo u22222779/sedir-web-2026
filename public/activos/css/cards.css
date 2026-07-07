@@ -1,0 +1,8 @@
+/* SECTION: News Cards */
+.news-card {
+  position: relative;
+}
+
+.news-card--featured {
+  /* Keeps the featured card hook explicit without changing the rendered layout. */
+}

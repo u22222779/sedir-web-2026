@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Publicaciones - SEDIR</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&amp;family=Libre+Franklin:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet" />
+  <link href="/activos/css/style.css" rel="stylesheet" />
+  <link href="/activos/css/navbar.css" rel="stylesheet" />
+  <link href="/activos/css/footer.css" rel="stylesheet" />
+  <link href="/activos/css/responsive.css" rel="stylesheet" />
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#006b34",
+            "primary-dark": "#0b4f30",
+            secondary: "#F09734",
+            cream: "#F6F1E7",
+            mint: "#EEF5EC"
+          },
+          borderRadius: {
+            DEFAULT: "0.25rem",
+            lg: "0.5rem",
+            xl: "0.75rem",
+            full: "9999px"
+          },
+          fontFamily: {
+            display: ["Montserrat", "sans-serif"],
+            body: ["Libre Franklin", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    .hero-publicaciones-bg {
+      background: linear-gradient(135deg, #0b6b45 0%, #0a5c3b 60%, #094c32 100%);
+    }
+
+    .hero-photo-placeholder {
+      background: linear-gradient(160deg, #0f7a4d 0%, #0a5637 100%);
+    }
+  </style>
+</head>
+
+<body class="bg-white text-gray-900 font-body antialiased">
+  <div id="navbar-container" class="navbar-loading" data-component="/components/navbar.html"></div>
+
+  <!-- BEGIN: Hero Publicaciones -->
+  <header class="hero-publicaciones-bg text-white">
+    <div class="max-w-7xl mx-auto px-6 md:px-10 py-16 md:py-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <span class="inline-block text-secondary font-bold text-sm tracking-wider uppercase mb-4">
+          Divulgación técnica
+        </span>
+        <h1 class="font-display font-extrabold text-4xl md:text-5xl leading-tight mb-6">
+          Nuestras<br />
+          <span class="text-secondary">Publicaciones</span>
+        </h1>
+        <p class="text-gray-100/90 text-base md:text-lg max-w-xl mb-8">
+          Generamos y difundimos contenidos orientados a la transferencia de tecnología y conocimiento agrícola,
+          contextualizados en la realidad del Valle del Nepeña.
+        </p>
+
+        <div class="flex items-center gap-3">
+          <span class="text-sm text-gray-200/80">Socio de Cooperación:</span>
+          <div class="bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-xs leading-tight text-gray-100">
+            Proyecto de Cooperación:<br />
+            <span class="font-semibold">LED Servicio de Liechtenstein para el Desarrollo</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-photo-placeholder rounded-[24px] h-72 md:h-96 w-full shadow-2xl" aria-hidden="true"></div>
+    </div>
+  </header>
+  <!-- END: Hero Publicaciones -->
+
+  <main class="w-full">
+
+    <!-- BEGIN: Comunicación / Impacto / Features -->
+    <section class="max-w-7xl mx-auto px-6 md:px-10 py-16 md:py-20">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+
+        <!-- Columna izquierda: texto + stat -->
+        <div>
+          <h2 class="font-display font-bold text-3xl md:text-4xl text-gray-900 mb-5 leading-snug">
+            La comunicación como herramienta de transformación
+          </h2>
+          <p class="text-gray-600 text-base md:text-lg leading-relaxed mb-10">
+            Nuestro enfoque de Comunicación para el Desarrollo busca democratizar el acceso a información técnica de
+            calidad para generar un impacto real en la sostenibilidad del agro.
+          </p>
+
+          <div class="border-l-4 border-primary bg-white rounded-xl shadow-sm p-6 max-w-sm">
+            <span class="text-xs font-bold tracking-wider uppercase text-gray-500">Impacto regional</span>
+            <p class="font-display font-extrabold text-4xl text-secondary my-2">+150</p>
+            <p class="text-sm text-gray-600">Publicaciones técnicas distribuidas en el Valle.</p>
+          </div>
+        </div>
+
+        <!-- Columna derecha: 2x2 feature cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div class="bg-cream rounded-[20px] p-6">
+            <div class="w-12 h-12 rounded-xl bg-primary text-white flex items-center justify-center mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+              </svg>
+            </div>
+            <h3 class="font-display font-bold text-lg text-gray-900 mb-2">Transferencia tecnológica</h3>
+            <p class="text-sm text-gray-600">Difusión de innovaciones para el campo.</p>
+          </div>
+
+          <div class="bg-cream rounded-[20px] p-6">
+            <div class="w-12 h-12 rounded-xl bg-primary text-white flex items-center justify-center mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+              </svg>
+            </div>
+            <h3 class="font-display font-bold text-lg text-gray-900 mb-2">Conocimiento aplicado</h3>
+            <p class="text-sm text-gray-600">Saberes prácticos para el productor.</p>
+          </div>
+
+          <div class="bg-cream rounded-[20px] p-6">
+            <div class="w-12 h-12 rounded-xl bg-primary text-white flex items-center justify-center mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+              </svg>
+            </div>
+            <h3 class="font-display font-bold text-lg text-gray-900 mb-2">Red de expertos</h3>
+            <p class="text-sm text-gray-600">Conectando saberes institucionales.</p>
+          </div>
+
+          <div class="bg-cream rounded-[20px] p-6">
+            <div class="w-12 h-12 rounded-xl bg-primary text-white flex items-center justify-center mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21" />
+              </svg>
+            </div>
+            <h3 class="font-display font-bold text-lg text-gray-900 mb-2">Enfoque territorial</h3>
+            <p class="text-sm text-gray-600">Soluciones para el Valle del Nepeña.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END: Comunicación / Impacto / Features -->
+
+    <!-- BEGIN: Biblioteca Virtual -->
+    <section class="bg-mint py-16 md:py-20">
+      <div class="max-w-7xl mx-auto px-6 md:px-10">
+        <span class="inline-block text-secondary font-bold text-sm tracking-wider uppercase mb-3">
+          Recursos educativos
+        </span>
+        <h2 class="font-display font-extrabold text-3xl md:text-4xl text-primary mb-10">
+          Biblioteca Virtual
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+          <!-- Revista Sembrando Futuro -->
+          <article class="bg-white rounded-[24px] shadow-sm overflow-hidden md:row-span-1">
+            <img src="https://sedir.org.pe/imgs/revista/REV-ED-007.jpg" alt="Revista Sembrando Futuro" class="h-56 w-full object-cover" />
+            <div class="p-6">
+              <h3 class="font-display font-bold text-xl text-gray-900 mb-3">Revista "Sembrando Futuro"</h3>
+              <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                Publicación de carácter informativo y formativo que recogen experiencias del campo desde la mirada de
+                los productores, así como el análisis técnico de los profesionales. También incluyen entrevistas a
+                expertos nacionales e internacionales, especialmente en temas como la fruticultura, aportando una
+                visión amplia y actualizada del sector.
+              </p>
+              <a href="/paginas/revistas.html" class="inline-flex items-center gap-2 font-semibold text-primary hover:text-primary-dark transition-colors">
+                Explorar ediciones
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Manuales Técnicos -->
+          <article class="bg-white rounded-[24px] shadow-sm overflow-hidden">
+            <img src="https://sedir.org.pe/imgs/BibliotecaAgricola/cabeceraBiblioteca01.jpg" alt="Manual: ¿Cómo instalar una plantación?" class="h-40 w-full object-cover" />
+            <div class="p-6">
+              <h3 class="font-display font-bold text-xl text-gray-900 mb-2">Manuales Técnicos</h3>
+              <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                Con el firme propósito de transferir conocimientos técnicos, nuestros manuales abordan temas
+                específicos y están elaborados en base a la experiencia directa de nuestros técnicos en campo. Son
+                herramientas útiles tanto para productores como para estudiantes y profesionales del rubro.
+              </p>
+              <a href="/paginas/manuales.html" class="inline-flex items-center gap-2 bg-primary text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-primary-dark transition-colors">
+                Ver PDF
+              </a>
+            </div>
+          </article>
+
+          <!-- Boletines -->
+          <article class="bg-white rounded-[24px] shadow-sm overflow-hidden">
+            <img src="https://sedir.org.pe/imgs/tit-edicionJUL-2024.jpg" alt="Boletín Jul 2024" class="h-40 w-full object-cover" />
+            <div class="p-6">
+              <h3 class="font-display font-bold text-xl text-gray-900 mb-2">Boletines</h3>
+              <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                Publicaciones periódicas que recogen las principales actividades institucionales, avances de
+                proyectos y recomendaciones técnicas clave para el manejo eficiente y sostenible de cultivos. Son una
+                vía rápida y eficaz para mantener informada a nuestra comunidad.
+              </p>
+              <a href="/paginas/boletines.html" class="inline-flex items-center gap-2 font-semibold text-primary hover:text-primary-dark transition-colors">
+                Descargar edición
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 12m0 0l4.5-4.5M12 12V3" />
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Webinars & Capacitación -->
+          <article class="bg-primary-dark text-white rounded-[24px] p-8 flex flex-col justify-center">
+            <span class="inline-block text-secondary font-bold text-xs tracking-wider uppercase mb-3">Multimedio</span>
+            <h3 class="font-display font-bold text-2xl mb-3">Webinars &amp; Capacitación</h3>
+            <p class="text-sm text-gray-100/90 leading-relaxed mb-6">
+              Gracias al apoyo de aliados estratégicos, desarrollamos conferencias virtuales con expertos nacionales e
+              internacionales de reconocida trayectoria en distintas áreas del conocimiento agrícola. En esta sección
+              compartimos los materiales y grabaciones de estas sesiones, disponibles para consulta abierta.
+            </p>
+            <a href="/paginas/webinars.html" class="inline-flex items-center gap-2 bg-white text-primary-dark text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-gray-100 transition-colors w-fit">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M4 5.25A2.25 2.25 0 016.25 3h6.5A2.25 2.25 0 0115 5.25v13.5A2.25 2.25 0 0112.75 21h-6.5A2.25 2.25 0 014 18.75V5.25zM16.5 9.75L20.086 7.4a.75.75 0 011.164.625v7.95a.75.75 0 01-1.164.625L16.5 14.25v-4.5z" />
+              </svg>
+              Ver videos
+            </a>
+          </article>
+
+          <!-- Trípticos -->
+          <article class="md:col-span-2 bg-primary-dark text-white rounded-[24px] p-8">
+            <span class="inline-block text-secondary font-bold text-xs tracking-wider uppercase mb-3">Word</span>
+            <h3 class="font-display font-bold text-2xl mb-3">Trípticos</h3>
+            <p class="text-sm text-gray-100/90 leading-relaxed mb-6 max-w-3xl">
+              Materiales técnicos breves y concretos, que abordan temas de manejo agronómico y sanidad de los
+              cultivos. Son recursos diseñados para una lectura ágil y aplicación directa en campo.
+            </p>
+            <a href="/paginas/tripticos.html" class="inline-flex items-center gap-2 bg-white text-primary-dark text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-gray-100 transition-colors w-fit">
+              Ver galería
+            </a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+    <!-- END: Biblioteca Virtual -->
+
+    <!-- BEGIN: Newsletter CTA -->
+    <section class="bg-primary-dark text-white py-16">
+      <div class="max-w-7xl mx-auto px-6 md:px-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+        <div>
+          <h2 class="font-display font-extrabold text-3xl md:text-4xl mb-3">¿Buscas material especializado?</h2>
+          <p class="text-gray-100/90 max-w-lg">
+            Suscríbete a nuestro boletín para recibir las últimas publicaciones técnicas directamente en tu correo.
+          </p>
+        </div>
+
+        <form id="publicaciones-newsletter-form" class="flex w-full max-w-md gap-3">
+          <input
+            type="email"
+            name="email"
+            required
+            placeholder="Tu correo electrónico"
+            class="flex-grow rounded-full px-5 py-3 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-secondary"
+          />
+          <button
+            type="submit"
+            class="bg-secondary text-white font-semibold px-6 py-3 rounded-full hover:brightness-95 transition whitespace-nowrap"
+          >
+            Suscribirme
+          </button>
+        </form>
+      </div>
+    </section>
+    <!-- END: Newsletter CTA -->
+
+  </main>
+
+  <div id="footer-container" data-component="/components/footer.html"></div>
+  <div id="whatsapp-container" data-component="/components/whatsapp.html"></div>
+
+  <script src="/activos/js/components.js" defer></script>
+  <script src="/activos/js/navbar.js" defer></script>
+  <script src="/activos/js/main.js" defer></script>
+  <script>
+    // No hay todavía un endpoint de suscripción a boletín en el backend
+    // (ver /api). Mientras tanto, esto solo evita el reload de la página
+    // y da una confirmación visual simple.
+    document.getElementById('publicaciones-newsletter-form')?.addEventListener('submit', function (event) {
+      event.preventDefault();
+      var button = event.target.querySelector('button[type="submit"]');
+      if (!button) return;
+      var original = button.textContent;
+      button.textContent = '¡Gracias!';
+      button.disabled = true;
+      setTimeout(function () {
+        button.textContent = original;
+        button.disabled = false;
+        event.target.reset();
+      }, 2500);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!-- COMPONENT: Card Noticia -->
+<template id="news-card-template">
+  <article class="{{articleClass}}" data-news-card data-category="{{categoryKey}}">
+    <div class="absolute top-4 left-4 z-10">
+      <span class="bg-sedir-orange text-white text-xs font-bold px-3 py-1 uppercase tracking-wider rounded-[30px] font-montserrat">{{category}}</span>
+    </div>
+    <img alt="{{alt}}" class="{{imageClass}}" src="{{image}}" />
+    <div class="p-6 flex-grow flex flex-col">
+      <span class="text-xs text-gray-500 mb-2 block font-montserrat font-semibold">{{date}}</span>
+      <div data-heading-tag="{{headingTag}}" data-heading-class="{{headingClass}}">{{title}}</div>
+      <p class="{{excerptClass}}">{{excerpt}}</p>
+      <div class="mt-auto border-t border-gray-100 pt-4">
+        <a class="{{linkClass}}" href="/paginas/noticia-detalle.html?id={{id}}">
+          Leer más
+          <svg class="w-4 h-4 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </article>
+</template>

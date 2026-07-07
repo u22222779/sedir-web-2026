@@ -1,0 +1,45 @@
+<!-- COMPONENT: Clima Stats -->
+<section class="space-y-6 clima-page-section">
+  <div>
+    <h2 class="font-headline-md text-headline-md text-on-surface">Reporte consolidado del clima en tiempo real</h2>
+    <p class="font-body-md text-body-md text-on-surface-variant text-sm mt-1">Datos actualizados desde nuestra estación
+      en Moro (460 m.s.n.m).</p>
+  </div>
+  <div id="clima-kpi-container" class="grid grid-cols-2 md:grid-cols-4 gap-4"></div>
+  <template id="clima-kpi-template">
+    <div class="glass-card rounded-xl p-6 text-center hover:-translate-y-1 transition-transform duration-300">
+      <span class="material-symbols-outlined text-4xl mb-2 text-{{color}}" data-icon="{{icon}}">{{icon}}</span>
+      <div class="clima-kpi-value">{{value}}</div>
+      <div class="font-label-md text-label-md text-on-surface-variant mt-1">{{label}}</div>
+    </div>
+  </template>
+
+  <div class="glass-card rounded-xl p-6 flex flex-col justify-between relative overflow-hidden">
+    <div class="flex justify-between items-center mb-4">
+      <h3 class="font-label-md text-label-md text-on-surface">Tendencias del día</h3>
+      <div class="flex gap-4">
+        <span class="flex items-center gap-1 text-sm font-label-md"><span
+            class="w-3 h-3 rounded-full bg-error inline-block"></span> Temperatura</span>
+        <span class="flex items-center gap-1 text-sm font-label-md"><span
+            class="w-3 h-3 rounded-full bg-primary inline-block"></span> Humedad</span>
+      </div>
+    </div>
+    <div class="flex-1 border-l border-b border-outline-variant/30 relative mt-4">
+      <div class="absolute inset-0 flex flex-col justify-between pointer-events-none">
+        <div class="border-t border-outline-variant/10 w-full"></div>
+        <div class="border-t border-outline-variant/10 w-full"></div>
+        <div class="border-t border-outline-variant/10 w-full"></div>
+        <div class="border-t border-outline-variant/10 w-full"></div>
+      </div>
+      <svg class="absolute inset-0 w-full h-full preserve-3d" preserveaspectratio="none" viewBox="0 0 100 100">
+        <path d="M0,80 Q25,90 50,40 T100,60" fill="none" stroke="var(--tw-colors-error)" stroke-width="2"
+          vector-effect="non-scaling-stroke"></path>
+        <path d="M0,40 Q30,50 60,30 T100,40" fill="none" stroke="var(--tw-colors-primary)" stroke-width="2"
+          vector-effect="non-scaling-stroke"></path>
+      </svg>
+      <div class="absolute -bottom-6 w-full flex justify-between text-xs text-on-surface-variant">
+        <span>00h</span><span>06h</span><span>12h</span><span>18h</span><span>24h</span>
+      </div>
+    </div>
+  </div>
+</section>

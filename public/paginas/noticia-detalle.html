@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<title>.:: SEDIR ::.</title>
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title id="page-title">SEDIR - Noticia</title>
+    <meta id="meta-description" name="description" content="" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'sedir-green': '#00944a',
+                        'sedir-dark-green': '#006a49',
+                        'sedir-orange': '#f09734',
+                        'sedir-gray': '#4a5568',
+                        'sedir-light-gray': '#f7fafc',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Libre+Franklin:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="../activos/css/style.css" rel="stylesheet" />
+    <link href="../activos/css/navbar.css" rel="stylesheet" />
+    <link href="../activos/css/hero.css" rel="stylesheet" />
+    <link href="../activos/css/noticias.css" rel="stylesheet" />
+    <link href="../activos/css/cards.css" rel="stylesheet" />
+    <link href="../activos/css/footer.css" rel="stylesheet" />
+    <link href="../activos/css/responsive.css" rel="stylesheet" />
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Open+Sans:wght@400;600&amp;display=swap"
+        rel="stylesheet" />
+
+    <style>
+        .noticia-contenido img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+        }
+
+        .noticia-contenido p {
+            margin-bottom: 1.25rem;
+            line-height: 1.8;
+        }
+
+        .noticia-contenido a {
+            color: #00944a;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-800 noticias-page">
+    <div id="navbar-container" class="navbar-loading" data-component="/components/navbar.html"></div>
+
+    <main class="container mx-auto px-4 py-10 max-w-5xl">
+        <a href="/paginas/noticia.html" class="inline-flex items-center gap-2 text-sedir-green font-semibold text-sm mb-8 hover:gap-3 transition-all">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M10 19l-7-7m0 0l7-7m-7 7h18" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+            </svg>
+            Volver a noticias
+        </a>
+
+        <div id="noticia-loading" class="text-center py-24 text-gray-500">Cargando noticia...</div>
+        <div id="noticia-error" class="hidden text-center py-24 text-gray-500">
+            No se pudo encontrar esta noticia.
+            <div class="mt-4">
+                <a href="/paginas/noticia.html" class="text-sedir-green font-semibold underline">Ver todas las noticias</a>
+            </div>
+        </div>
+
+        <article id="noticia-detalle" class="hidden">
+            <span id="noticia-categoria" class="inline-block bg-sedir-orange text-white text-xs font-bold px-3 py-1 uppercase tracking-wider rounded-[30px] font-montserrat mb-4"></span>
+            <h1 id="noticia-titulo" class="text-3xl md:text-4xl font-bold text-gray-900 font-montserrat mb-3 leading-tight"></h1>
+            <p id="noticia-subtitulo" class="text-lg text-gray-600 mb-4"></p>
+            <div class="flex items-center gap-3 text-sm text-gray-500 mb-8 font-medium">
+                <span id="noticia-fecha"></span>
+            </div>
+            <div class="rounded-[24px] overflow-hidden mb-10 border border-gray-100 shadow-sm">
+                <img id="noticia-imagen" alt="" class="w-full max-h-[480px] object-cover" />
+            </div>
+            <div id="noticia-contenido" class="noticia-contenido text-gray-700 text-base"></div>
+        </article>
+    </main>
+
+    <div id="footer-container" data-component="/components/footer.html"></div>
+  <div id="whatsapp-container" data-component="/components/whatsapp.html"></div>
+
+    <script src="/activos/js/components.js" defer></script>
+    <script src="/activos/js/navbar.js" defer></script>
+    <script src="/activos/js/noticia-detalle.js" defer></script>
+    <script src="/activos/js/main.js" defer></script>
+</body>
+
+</html>

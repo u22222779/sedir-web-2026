@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boletines - SEDIR</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&amp;family=Libre+Franklin:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet" />
+  <link href="/activos/css/style.css" rel="stylesheet" />
+  <link href="/activos/css/navbar.css" rel="stylesheet" />
+  <link href="/activos/css/footer.css" rel="stylesheet" />
+  <link href="/activos/css/responsive.css" rel="stylesheet" />
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#006b34",
+            "primary-dark": "#0b4f30",
+            secondary: "#F09734",
+            cream: "#F6F1E7",
+            mint: "#EEF5EC"
+          },
+          fontFamily: {
+            display: ["Montserrat", "sans-serif"],
+            body: ["Libre Franklin", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    .hero-publicaciones-bg {
+      background: linear-gradient(135deg, #0b6b45 0%, #0a5c3b 60%, #094c32 100%);
+    }
+  </style>
+</head>
+
+<body class="bg-white text-gray-900 font-body antialiased">
+  <div id="navbar-container" class="navbar-loading" data-component="/components/navbar.html"></div>
+
+  <header class="hero-publicaciones-bg text-white">
+    <div class="max-w-7xl mx-auto px-6 md:px-10 py-14 md:py-16">
+      <a href="/paginas/publicaciones.html" class="inline-flex items-center gap-2 text-white/80 hover:text-white text-sm font-semibold mb-6 transition-colors">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m0 0l7 7"></path></svg>
+        Volver a Publicaciones
+      </a>
+      <span class="inline-block text-secondary font-bold text-sm tracking-wider uppercase mb-3">
+        Divulgación técnica
+      </span>
+      <h1 class="font-display font-extrabold text-4xl md:text-5xl leading-tight mb-4">Boletines</h1>
+      <p class="text-gray-100/90 text-base md:text-lg max-w-2xl">
+        Publicaciones periódicas con las principales actividades institucionales, avances de proyectos y
+        recomendaciones técnicas clave para el manejo eficiente y sostenible de cultivos.
+      </p>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 md:px-10 py-12 md:py-16">
+    <div id="galeria-boletines" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <p class="text-sm text-gray-500 col-span-full">Cargando boletines...</p>
+    </div>
+  </main>
+
+  <div id="footer-container" data-component="/components/footer.html"></div>
+  <div id="whatsapp-container" data-component="/components/whatsapp.html"></div>
+
+  <script src="/activos/js/components.js" defer></script>
+  <script src="/activos/js/navbar.js" defer></script>
+  <script src="/activos/js/publicaciones.js" defer></script>
+  <script src="/activos/js/main.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      window.cargarGaleriaPorTipo('boletin', 'galeria-boletines');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estación Meteorológica SEDIR</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body class="bg-gray-100">
+
+    <section class="max-w-7xl mx-auto px-4 py-10">
+
+        <div class="text-center mb-8">
+            <h2 class="text-4xl font-bold text-[#006A49]">
+                Estación Meteorológica
+            </h2>
+            <p class="text-gray-600 mt-2">
+                Datos climáticos en tiempo real
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+
+            <!-- Temperatura -->
+            <div class="bg-white rounded-2xl shadow p-6 text-center">
+                <div class="text-5xl mb-3">🌡️</div>
+                <h3 class="font-bold text-gray-700">Temperatura</h3>
+                <p id="temp" class="text-3xl font-bold text-[#00944a] mt-2">--</p>
+                <span class="text-sm text-gray-500">°C</span>
+            </div>
+
+            <!-- Humedad -->
+            <div class="bg-white rounded-2xl shadow p-6 text-center">
+                <div class="text-5xl mb-3">💧</div>
+                <h3 class="font-bold text-gray-700">Humedad</h3>
+                <p id="humedad" class="text-3xl font-bold text-[#00944a] mt-2">--</p>
+                <span class="text-sm text-gray-500">%</span>
+            </div>
+
+            <!-- Precipitaciones -->
+            <div class="bg-white rounded-2xl shadow p-6 text-center">
+                <div class="text-5xl mb-3">🌧️</div>
+                <h3 class="font-bold text-gray-700">Precipitación</h3>
+                <p id="lluvia" class="text-3xl font-bold text-[#00944a] mt-2">--</p>
+                <span class="text-sm text-gray-500">mm</span>
+            </div>
+
+            <!-- UV -->
+            <div class="bg-white rounded-2xl shadow p-6 text-center">
+                <div class="text-5xl mb-3">☀️</div>
+                <h3 class="font-bold text-gray-700">Radiación UV</h3>
+                <p id="uv" class="text-3xl font-bold text-[#00944a] mt-2">--</p>
+                <span class="text-sm text-gray-500">Índice</span>
+            </div>
+
+            <!-- Sensación térmica -->
+            <div class="bg-white rounded-2xl shadow p-6 text-center">
+                <div class="text-5xl mb-3">🥵</div>
+                <h3 class="font-bold text-gray-700">Sensación Térmica</h3>
+                <p id="sensacion" class="text-3xl font-bold text-[#00944a] mt-2">--</p>
+                <span class="text-sm text-gray-500">°C</span>
+            </div>
+
+        </div>
+
+        <div class="text-center mt-6 text-sm text-gray-500">
+            Última actualización:
+            <span id="actualizacion">--</span>
+        </div>
+
+    </section>
+
+    <script>
+
+        // Coordenadas (cámbialas por las de tu estación)
+        const LATITUD = -9.1869;
+        const LONGITUD = -77.5280;
+
+        async function cargarClima() {
+
+            try {
+
+                const url =
+                    `https://api.open-meteo.com/v1/forecast?latitude=${LATITUD}&longitude=${LONGITUD}&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,uv_index`;
+
+                const respuesta = await fetch(url);
+                const data = await respuesta.json();
+
+                document.getElementById("temp").textContent =
+                    data.current.temperature_2m;
+
+                document.getElementById("humedad").textContent =
+                    data.current.relative_humidity_2m;
+
+                document.getElementById("lluvia").textContent =
+                    data.current.precipitation;
+
+                document.getElementById("uv").textContent =
+                    data.current.uv_index;
+
+                document.getElementById("sensacion").textContent =
+                    data.current.apparent_temperature;
+
+                document.getElementById("actualizacion").textContent =
+                    new Date().toLocaleString("es-PE");
+
+            } catch (error) {
+
+                console.error(error);
+
+                document.getElementById("actualizacion").textContent =
+                    "Error al cargar datos";
+
+            }
+        }
+
+        // Primera carga
+        cargarClima();
+
+        // Actualizar cada 5 minutos
+        setInterval(cargarClima, 300000);
+
+    </script>
+
+</body>
+
+</html>

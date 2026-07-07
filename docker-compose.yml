@@ -1,0 +1,5 @@
+# Local Postgres service removed. This project expects an external PostgreSQL
+# instance configured via environment variables in `backend/.env` (PGHOST,
+# PGPORT, PGUSER, PGPASSWORD, PGDATABASE, PGSSL). If you need a local Docker
+# Postgres for development, re-add the service block here or run a separate
+# Postgres container and map credentials accordingly.

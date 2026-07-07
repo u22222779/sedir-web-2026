@@ -1,0 +1,52 @@
+/* SECTION: Navbar */
+.navbar-shell {
+  font-family: "Montserrat", "Libre Franklin", sans-serif;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 50;
+  border-bottom: 1.5px solid #00944a;
+}
+
+
+.navbar-logo {
+  height: 84px;
+  width: auto;
+  object-fit: contain;
+}
+
+.navbar-cta {
+  background: #00944a;
+  color: #ffffff;
+  display: inline-block;
+}
+
+.navbar-cta:hover {
+  background: #006a49;
+}
+
+.navbar-cta-mobile {
+  background: #00944a;
+  color: #ffffff;
+  display: block;
+}
+
+.navbar-cta-mobile:hover {
+  background: #006a49;
+}
+
+.navbar-link {
+  color: #4b5563;
+  transition: color 180ms ease, opacity 180ms ease;
+}
+
+.navbar-link:hover,
+.navbar-link.is-active {
+  color: #00944a;
+}
+
+.navbar-link.is-active {
+  font-weight: 600;
+}

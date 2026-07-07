@@ -1,0 +1,415 @@
+<!doctype html>
+<html class="light" lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Quiénes somos - SEDIR</title>
+    <script src="../activos/js/components.js"></script>
+    <script src="../activos/js/navbar.js"></script>
+    <script src="../activos/js/main.js"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="../activos/css/style.css" rel="stylesheet" />
+    <link href="../activos/css/navbar.css" rel="stylesheet" />
+    <link href="../activos/css/footer.css" rel="stylesheet" />
+    <link href="../activos/css/responsive.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&amp;family=Libre+Franklin:wght@300;400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              tertiary: "#5c5c5c",
+              "error-container": "#ffdad6",
+              outline: "#6e7a6e",
+              "surface-container-lowest": "#ffffff",
+              "outline-variant": "#bdcabc",
+              "on-surface-variant": "#3e4a3f",
+              "primary-fixed": "#8afaa7",
+              "inverse-on-surface": "#f0f1f2",
+              "tertiary-fixed": "#e4e2e1",
+              "on-secondary": "#ffffff",
+              "on-tertiary": "#ffffff",
+              "on-primary": "#ffffff",
+              "tertiary-fixed-dim": "#c8c6c5",
+              "on-error-container": "#93000a",
+              "on-primary-fixed": "#00210c",
+              "on-error": "#ffffff",
+              "inverse-primary": "#6edd8d",
+              "inverse-surface": "#2e3132",
+              "on-primary-fixed-variant": "#005227",
+              "surface-container-high": "#e7e8e9",
+              "primary-container": "#008643",
+              "on-background": "#191c1d",
+              "surface-container": "#edeeef",
+              "on-secondary-fixed-variant": "#304f00",
+              "on-primary-container": "#f6fff3",
+              error: "#ba1a1a",
+              "surface-tint": "#006d35",
+              "tertiary-container": "#757474",
+              "secondary-fixed": "#b8f568",
+              "surface-dim": "#d9dadb",
+              primary: "#006b34",
+              "on-surface": "#191c1d",
+              surface: "#f8f9fa",
+              "on-tertiary-fixed-variant": "#474746",
+              "on-secondary-container": "#467000",
+              "on-secondary-fixed": "#112000",
+              "surface-container-low": "#f3f4f5",
+              "secondary-fixed-dim": "#9dd84f",
+              "secondary-container": "#b8f568",
+              "surface-container-highest": "#e1e3e4",
+              "surface-variant": "#e1e3e4",
+              "surface-bright": "#f8f9fa",
+              background: "#f8f9fa",
+              "on-tertiary-fixed": "#1b1c1c",
+              "primary-fixed-dim": "#6edd8d",
+              secondary: "#426900",
+              "on-tertiary-container": "#fffcfb",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              gutter: "24px",
+              "margin-desktop": "64px",
+              unit: "4px",
+              "container-max": "1280px",
+              "margin-mobile": "16px",
+            },
+            fontFamily: {
+              "label-md": ["Libre Franklin", "sans-serif"],
+              "headline-lg-mobile": ["Montserrat", "sans-serif"],
+              "body-lg": ["Libre Franklin", "sans-serif"],
+              "body-md": ["Libre Franklin", "sans-serif"],
+              "headline-xl": ["Montserrat", "sans-serif"],
+              "headline-md": ["Montserrat", "sans-serif"],
+              "headline-lg": ["Montserrat", "sans-serif"],
+            },
+            fontSize: {
+              "label-md": ["14px", { lineHeight: "20px", fontWeight: "600" }],
+              "headline-lg-mobile": [
+                "28px",
+                { lineHeight: "36px", fontWeight: "700" },
+              ],
+              "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+              "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+              "headline-xl": [
+                "48px",
+                {
+                  lineHeight: "56px",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "800",
+                },
+              ],
+              "headline-md": [
+                "24px",
+                { lineHeight: "32px", fontWeight: "700" },
+              ],
+              "headline-lg": [
+                "32px",
+                {
+                  lineHeight: "40px",
+                  letterSpacing: "-0.01em",
+                  fontWeight: "700",
+                },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+    </style>
+  </head>
+
+  <body
+    class="bg-background text-on-surface font-body-md flex flex-col min-h-screen"
+  >
+    <!-- Navigation Component -->
+    <div
+      id="navbar-container"
+      class="navbar-loading"
+      data-component="/components/navbar.html"
+    ></div>
+
+    <!-- Contenido Principal -->
+    <main class="grow bg-[linear-gradient(90deg,#00944A,#00B159)]">
+      <!-- Titular -->
+      <header class="w-full h-[430px] bg-[linear-gradient(90deg,rgba(6,106,73,0.85)_35%,rgba(0,216,143,0.85)_100%),url('../activos/img_quienessomos/MIEL.jpg')] bg-cover bg-center bg-no-repeat rounded-bl-none rounded-br-[100px] md:rounded-br-[120px] flex justify-center">
+        <div class="h-full w-full max-w-[1606px] px-6 md:px-12 lg:px-[100px] flex items-center">
+          <div class="max-w-4xl">
+            <div class="mb-4">
+              <h3 class="text-white text-[20px] font-normal leading-normal tracking-[2px] mb-2" style="font-family: 'Franklin Gothic Demi', 'Franklin Gothic', sans-serif;">Nosotros</h3>
+              <h1 class="text-white font-headline-xl text-[55px] md:text-[64px] font-extrabold leading-none">Quiénes Somos</h1>
+            </div>
+            <h2
+              class="font-headline-md text-xl md:text-[22px] text-white leading-snug md:leading-[30px] italic font-bold mt-6 max-w-[700px]"
+            >
+              Desde 2012, promoviendo el
+              <span class="font-extrabold text-[#F09734]"
+                >desarrollo agropecuario y agroindustrial</span
+              >
+              en el valle de Nepeña.
+            </h2>
+          </div>
+        </div>
+      </header>
+
+      <!-- Contenedor principal para Quiénes Somos -->
+      <section class="bg-[#F2F7F9] rounded-r-[80px] md:rounded-r-[120px] w-full h-full flex flex-row justify-center">
+        <div class="h-full w-full max-w-[1606px] py-[50px] md:py-[80px] lg:py-[100px] px-[30px] pr-[45px] md:px-[80px] lg:px-[100px] flex flex-col lg:flex-row lg:items-center items-center gap-12 lg:gap-24">
+          <!-- Columna Texto -->
+          <div class="w-full lg:w-1/2 flex flex-col justify-center">
+            <p
+              class="text-lg md:text-[18px] md:leading-[35px] text-black font-normal" style="font-family: 'Montserrat', sans-serif;"
+            >
+              <span class="font-bold text-[#00944A]">SEDIR</span> es una
+              organización dedicada a impulsar el desarrollo agropecuario y
+              agroindustrial en el valle de Nepeña. Desde
+              <span class="font-bold text-[#00944A]">2012</span>, trabajamos
+              <span class="font-bold text-[#00944A]">fortaleciendo</span> las
+              capacidades de los productores agrícolas, promoviendo la
+              educación técnica y transfiriendo tecnología para
+              <span class="font-bold text-[#00944A]"
+                >mejorar la productividad y sostenibilidad del sector</span
+              >. <br /><br />
+              A través de
+              <span class="font-bold text-[#00944A]"
+                >proyectos innovadores</span
+              >, fomentamos la investigación, el uso responsable de los
+              recursos naturales y la creación de valor agregado en la
+              producción agrícola. Nuestra labor ha beneficiado a más de
+              <span class="font-bold text-[#00944A]">4,000 familias</span> y
+              ha integrado a una gran cantidad de jóvenes y mujeres en
+              <span class="font-bold text-[#00944A]"
+                >iniciativas de emprendimiento y producción sostenible</span
+              >.
+            </p>
+          </div>
+
+          <!-- Columna Imágenes -->
+          <div class="w-full lg:w-1/2 flex flex-col h-full gap-8 lg:gap-0">
+            <img
+              src="/activos/img_quienessomos/sedir-desc-icons.png"
+              alt="Valores e iniciativas SEDIR"
+              class="w-full h-auto object-contain mx-auto lg:mx-0"
+            />
+            
+            <!-- Espaciador que fuerza a la imagen de abajo a irse al fondo -->
+            <div class="hidden lg:block flex-grow min-h-[40px]"></div>
+
+            <img
+              src="/activos/img_quienessomos/sedir-desc-photo.png"
+              alt="Agricultores trabajando en el campo"
+              class="w-full h-[250px] lg:h-[280px] xl:h-[300px] object-cover rounded-[20px] rounded-tr-[100px] md:rounded-tr-[140px] shadow-xl mt-auto"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Sección Misión -->
+      <section class="w-full max-w-[1406px] mx-auto my-12 lg:my-0 px-4 lg:px-0">
+        <div class="flex flex-col lg:flex-row items-stretch gap-0 lg:gap-0 h-full bg-[#006A49] lg:bg-transparent rounded-[30px] lg:rounded-none overflow-hidden lg:overflow-visible">
+          <!-- Imagen Misión -->
+          <div class="w-full lg:w-1/2 flex items-end p-6 pb-0 lg:p-0">
+            <img
+              src="/activos/img_quienessomos/img_1.png"
+              alt="Misión SEDIR"
+              class="w-full h-[300px] lg:h-[485px] object-cover rounded-[20px] lg:rounded-tl-none lg:rounded-br-none lg:rounded-tr-[120px] lg:rounded-bl-[120px]"
+            />
+          </div>
+          
+          <!-- Texto Misión -->
+          <div class="w-full lg:w-1/2 h-auto lg:h-[545px] bg-transparent lg:bg-[#006A49] rounded-none md:rounded-tl-[120px] md:rounded-r-[120px] p-8 md:p-16 lg:py-[100px] flex flex-col justify-center items-center text-center gap-8 md:gap-[60px]">
+            <h2 class="text-[#D2FFA4] font-headline-xl text-3xl md:text-5xl font-bold">Misión</h2>
+            <p class="text-white text-lg text-balance md:text-[18px] md:leading-[37px] font-normal" style="font-family: 'Montserrat', sans-serif;">
+              Impulsar el <span class="font-bold text-[#D2FFA4]">desarrollo agropecuario y agroindustrial sostenible</span> en el valle de Nepeña mediante la <span class="font-bold text-[#D2FFA4]">capacitación</span> de productores, la transferencia tecnológica y la educación agroecológica, promoviendo la <span class="font-bold text-[#D2FFA4]">innovación</span> y el uso responsable de los recursos para <span class="font-bold text-[#D2FFA4]">mejorar la calidad de vida</span> de las familias rurales.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sección Visión -->
+      <section class="w-full max-w-[1406px] mx-auto my-12 lg:my-0 px-4 lg:px-0">
+        <div class="flex flex-col-reverse lg:flex-row items-stretch gap-8 lg:gap-[100px] h-full w-full bg-[linear-gradient(90deg,#006A49,#019869)] rounded-[30px] lg:rounded-b-none lg:rounded-t-[120px] p-6 lg:p-[100px]">
+          <!-- Texto Visión -->
+          <div class="w-full lg:w-1/2 flex flex-col justify-center py-8">
+            <h2 class="text-[#D2FFA4] font-headline-xl text-3xl md:text-5xl font-bold mb-10 text-center">Visión</h2>
+            
+            <div class="flex flex-col gap-8 md:px-8">
+              <!-- Item 1 -->
+              <div class="flex flex-row items-center gap-4">
+                <img src="/activos/img_quienessomos/icon_1.png" alt="Icono 1" class="shrink-0 w-16 h-16 md:w-20 md:h-20 object-contain" />
+                <p class="text-white text-center text-balance md:text-[18px] leading-relaxed md:leading-[37px]" style="font-family: 'Montserrat', sans-serif;">
+                  Ser referente regional en formación, <span class="font-bold text-[#D2FFA4]">innovación e investigación agrícola</span> con principios de sostenibilidad.
+                </p>
+              </div>
+              
+              <!-- Item 2 -->
+              <div class="flex items-center justify-end gap-4 text-right">
+                <p class="text-white text-center text-balance md:text-[18px] md:leading-[37px] leading-relaxed" style="font-family: 'Montserrat', sans-serif;">
+                  Al 2030, contar con el <span class="font-bold text-[#D2FFA4]">Centro de Investigación y Emprendimiento Agrícola</span> (CIEA) con laboratorios y salas interactivas.
+                </p>
+                <img src="/activos/img_quienessomos/icon_2.png" alt="Icono 2" class="shrink-0 w-16 h-16 md:w-20 md:h-20 object-contain" />
+              </div>
+              
+              <!-- Item 3 -->
+              <div class="flex flex-row items-center gap-4">
+                <img src="/activos/img_quienessomos/icon_3.png" alt="Icono 3" class="shrink-0 w-16 h-16 md:w-20 md:h-20 object-contain" />
+                <p class="text-white text-center text-balance md:text-[18px] md:leading-[37px] leading-relaxed" style="font-family: 'Montserrat', sans-serif;">
+                  Lograr que nuestros usuarios apliquen con confianza <span class="font-bold text-[#D2FFA4]">soluciones prácticas e innovadoras</span> para el manejo sostenible de sus cultivos.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Imagen Visión -->
+          <div class="w-full lg:w-1/2 flex flex-col justify-center items-center lg:items-center">
+            <img
+              src="/activos/img_quienessomos/img_2.png"
+              alt="Visión SEDIR"
+              class="w-full h-[300px] lg:w-auto lg:h-[400px]  object-cover rounded-[20px] lg:rounded-tr-none lg:rounded-bl-none lg:rounded-tl-[120px] lg:rounded-br-[120px]"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Sección Valores -->
+      <section class="w-full bg-[#F2F7F9] py-16 md:py-24">
+        <div class="max-w-container-max mx-auto px-4 md:px-8">
+          <!-- Encabezado Valores -->
+          <div class="text-center mb-16">
+            <h2 class="text-[#005227] font-headline-xl text-3xl md:text-5xl font-bold mb-4">Nuestros Valores</h2>
+            <p class="text-[#3e4a3f] text-lg md:text-[20px] font-normal" style="font-family: 'Montserrat', sans-serif;">
+              Los principios que guían nuestro trabajo diario y compromiso con la comunidad.
+            </p>
+          </div>
+
+          <!-- Grid de Tarjetas (2 columnas arriba, 1 centrada abajo) -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 justify-items-center max-w-[1606px]">
+            
+            <!-- Tarjeta 1: Calidad de Servicio -->
+            <div class="bg-white rounded-[20px] p-6 shadow-xl border border-gray-100 flex flex-col md:flex-row items-center gap-6 w-full">
+              <div class="flex-1 text-center md:text-left">
+                <span class="material-symbols-outlined text-[#006b34] text-4xl mb-4 block">military_tech</span>
+                <h3 class="text-[#191c1d] font-bold text-sm tracking-wider mb-3 uppercase" style="font-family: 'Montserrat', sans-serif;">CALIDAD DE SERVICIO</h3>
+                <p class="text-[#474746] text-sm md:text-base leading-relaxed" style="font-family: 'Montserrat', sans-serif;">
+                  Buscamos la excelencia en todas nuestras intervenciones, asegurando resultados con impacto positivo.
+                </p>
+              </div>
+              <div class="w-full md:w-[200px] h-[150px] flex-shrink-0">
+                <img src="/activos/img_quienessomos/values_1.png" alt="Calidad de Servicio" class="w-full h-full object-cover rounded-[12px]" />
+              </div>
+            </div>
+
+            <!-- Tarjeta 2: Responsabilidad -->
+            <div class="bg-white rounded-[20px] p-6 shadow-xl border border-gray-100 flex flex-col md:flex-row items-center gap-6 w-full">
+              <div class="flex-1 text-center md:text-left">
+                <span class="material-symbols-outlined text-[#006b34] text-4xl mb-4 block">handshake</span>
+                <h3 class="text-[#191c1d] font-bold text-sm tracking-wider mb-3 uppercase" style="font-family: 'Montserrat', sans-serif;">RESPONSABILIDAD</h3>
+                <p class="text-[#474746] text-sm md:text-base leading-relaxed" style="font-family: 'Montserrat', sans-serif;">
+                  Asumimos nuestros compromisos con las comunidades, donantes y el medio ambiente con total seriedad.
+                </p>
+              </div>
+              <div class="w-full md:w-[200px] h-[150px] flex-shrink-0">
+                <img src="/activos/img_quienessomos/values_2.png" alt="Responsabilidad" class="w-full h-full object-cover rounded-[12px]" />
+              </div>
+            </div>
+
+            <!-- Tarjeta 3: Trabajo en Equipo -->
+            <div class="bg-white rounded-[20px] p-6 shadow-xl border border-gray-100 flex flex-col md:flex-row items-center gap-6 w-full">
+              <div class="flex-1 text-center md:text-left">
+                <span class="material-symbols-outlined text-[#006b34] text-4xl mb-4 block">groups</span>
+                <h3 class="text-[#191c1d] font-bold text-sm tracking-wider mb-3 uppercase" style="font-family: 'Montserrat', sans-serif;">TRABAJO EN EQUIPO</h3>
+                <p class="text-[#474746] text-sm md:text-base leading-relaxed" style="font-family: 'Montserrat', sans-serif;">
+                  Fomentamos la colaboración y sinergia entre nuestro personal, beneficiarios y aliados.
+                </p>
+              </div>
+              <div class="w-full md:w-[200px] h-[150px] flex-shrink-0">
+                <img src="/activos/img_quienessomos/values_3.png" alt="Trabajo en Equipo" class="w-full h-full object-cover rounded-[12px]" />
+              </div>
+            </div>
+
+            <!-- Tarjeta 4: Confianza -->
+            <div class="bg-white rounded-[20px] p-6 shadow-xl border border-gray-100 flex flex-col md:flex-row items-center gap-6 w-full">
+              <div class="flex-1 text-center md:text-left">
+                <span class="material-symbols-outlined text-[#006b34] text-4xl mb-4 block">verified_user</span>
+                <h3 class="text-[#191c1d] font-bold text-sm tracking-wider mb-3 uppercase" style="font-family: 'Montserrat', sans-serif;">CONFIANZA</h3>
+                <p class="text-[#474746] text-sm md:text-base leading-relaxed" style="font-family: 'Montserrat', sans-serif;">
+                  Construimos relaciones basadas en la transparencia, la honestidad y el respeto mutuo.
+                </p>
+              </div>
+              <div class="w-full md:w-[200px] h-[150px] flex-shrink-0">
+                <img src="/activos/img_quienessomos/values_4.png" alt="Confianza" class="w-full h-full object-cover rounded-[12px]" />
+              </div>
+            </div>
+
+            <!-- Tarjeta 5: Compromiso (Centrada abajo) -->
+            <div class="bg-white rounded-[20px] p-6 shadow-xl border border-gray-100 flex flex-col md:flex-row items-center gap-6 w-full lg:max-w-[630px] lg:col-span-2">
+              <div class="flex-1 text-center md:text-left">
+                <span class="material-symbols-outlined text-[#006b34] text-4xl mb-4 block">workspace_premium</span>
+                <h3 class="text-[#191c1d] font-bold text-sm tracking-wider mb-3 uppercase" style="font-family: 'Montserrat', sans-serif;">COMPROMISO</h3>
+                <p class="text-[#474746] text-sm md:text-base leading-relaxed" style="font-family: 'Montserrat', sans-serif;">
+                  Dedicación total a nuestra misión de mejorar la calidad de vida de las familias rurales.
+                </p>
+              </div>
+              <div class="w-full md:w-[200px] h-[150px] flex-shrink-0">
+                <img src="/activos/img_quienessomos/values_5.png" alt="Compromiso" class="w-full h-full object-cover rounded-[12px]" />
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Sección Nuestro Equipo -->
+      <section class="w-full bg-[linear-gradient(90deg,#019869,#008159,#006A49)] pt-8 pb-8 md:pt-16 md:pb-16 flex flex-row justify-center">
+        <div class="w-full max-w-[1606px] px-6 md:px-12 lg:px-[100px] flex flex-col xl:flex-row justify-center items-center gap-12 xl:gap-[70px]">
+          <!-- Imagen del Equipo -->
+          <div class="w-full xl:w-[60%] flex justify-end">
+            <img
+              src="/activos/img_quienessomos/team.png"
+              alt="Equipo de profesionales SEDIR"
+              class="w-full h-auto object-cover rounded-[40px] md:rounded-[80px] shadow-xl"
+            />
+          </div>
+
+          <!-- Texto Nuestro Equipo -->
+          <div class="flex flex-col justify-center items-center w-full xl:w-[40%] xl:pr-[70px] text-center gap-8 md:gap-[50px]">
+            <h2 class="text-[#b8f568] font-headline-xl text-3xl md:text-5xl font-bold tracking-tight">
+              Nuestro Equipo
+            </h2>
+            <p class="text-white text-lg text-balance md:text-[18px] md:leading-[38px] font-normal" style="font-family: 'Montserrat', sans-serif;">
+              Un equipo de profesionales <span class="font-bold">apasionados</span>, unidos por la excelencia técnica y un compromiso humano inquebrantable para transformar el campo con <span class="font-bold">integridad, responsabilidad y trabajo colaborativo</span>.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer Component -->
+    <div id="footer-container" data-component="/components/footer.html"></div>
+
+    <!-- WhatsApp floating button -->
+    <div id="whatsapp-container" data-component="/components/whatsapp.html"></div>
+  </body>
+</html>

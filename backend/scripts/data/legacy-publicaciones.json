@@ -1,0 +1,290 @@
+[
+  {
+    "tipo": "revista",
+    "titulo": "Revista VII Edición",
+    "descripcion": "Revista \"Sembrando Futuro\", edición institucional de SEDIR.",
+    "imagen_portada": "https://sedir.org.pe/imgs/revista/REV-ED-007.jpg",
+    "archivo_url": "https://online.fliphtml5.com/jgvew/nfcm/",
+    "orden": 7,
+    "fecha": null
+  },
+  {
+    "tipo": "revista",
+    "titulo": "Revista VI Edición",
+    "descripcion": "Revista \"Sembrando Futuro\", edición institucional de SEDIR.",
+    "imagen_portada": "https://sedir.org.pe/imgs/revista/REV-ED-006.jpg",
+    "archivo_url": "https://online.fliphtml5.com/jgvew/nmnl/",
+    "orden": 6,
+    "fecha": null
+  },
+  {
+    "tipo": "revista",
+    "titulo": "Revista V Edición",
+    "descripcion": "Revista \"Sembrando Futuro\", edición institucional de SEDIR.",
+    "imagen_portada": "https://sedir.org.pe/imgs/revista/REV-ED-005.jpg",
+    "archivo_url": "https://online.fliphtml5.com/mfao/rmzk/#p=1",
+    "orden": 5,
+    "fecha": null
+  },
+  {
+    "tipo": "revista",
+    "titulo": "Revista IV Edición",
+    "descripcion": "Revista \"Sembrando Futuro\", edición institucional de SEDIR.",
+    "imagen_portada": "https://sedir.org.pe/imgs/revista/REV-ED-004.jpg",
+    "archivo_url": "https://online.fliphtml5.com/mfao/zwqo/#p=1",
+    "orden": 4,
+    "fecha": null
+  },
+  {
+    "tipo": "revista",
+    "titulo": "Revista III Edición",
+    "descripcion": "Revista \"Sembrando Futuro\", edición institucional de SEDIR.",
+    "imagen_portada": "https://sedir.org.pe/imgs/revista/REV-ED-003.jpg",
+    "archivo_url": "https://online.fliphtml5.com/mfao/vygr/#p=1",
+    "orden": 3,
+    "fecha": null
+  },
+  {
+    "tipo": "revista",
+    "titulo": "Revista II Edición",
+    "descripcion": "Revista \"Sembrando Futuro\", edición institucional de SEDIR.",
+    "imagen_portada": "https://sedir.org.pe/imgs/revista/REV-ED-002.jpg",
+    "archivo_url": "https://online.fliphtml5.com/mfao/rhbw/#p=1",
+    "orden": 2,
+    "fecha": null
+  },
+  {
+    "tipo": "revista",
+    "titulo": "Revista I Edición",
+    "descripcion": "Revista \"Sembrando Futuro\", edición institucional de SEDIR.",
+    "imagen_portada": "https://sedir.org.pe/imgs/revista/REV-ED-001.jpg",
+    "archivo_url": "http://online.fliphtml5.com/mfao/dibs/#p=1",
+    "orden": 1,
+    "fecha": null
+  },
+  {
+    "tipo": "boletin",
+    "titulo": "Boletín Jul 2024",
+    "descripcion": "Boletín informativo con actividades institucionales y recomendaciones técnicas.",
+    "imagen_portada": "https://sedir.org.pe/imgs/tit-edicionJUL-2024.jpg",
+    "archivo_url": "https://online.fliphtml5.com/jgvew/xupc/",
+    "orden": 15,
+    "fecha": "2024-07-01"
+  },
+  {
+    "tipo": "boletin",
+    "titulo": "Boletín Abr 2024",
+    "descripcion": "Boletín informativo con actividades institucionales y recomendaciones técnicas.",
+    "imagen_portada": "https://sedir.org.pe/imgs/tit-edicionABR-2024.jpg",
+    "archivo_url": "https://online.fliphtml5.com/jgvew/qvgo/",
+    "orden": 14,
+    "fecha": "2024-04-01"
+  },
+  {
+    "tipo": "boletin",
+    "titulo": "Boletín Oct 2023",
+    "descripcion": "Boletín informativo con actividades institucionales y recomendaciones técnicas.",
+    "imagen_portada": "https://sedir.org.pe/imgs/tit-edicionOCT-2023.jpg",
+    "archivo_url": "https://online.fliphtml5.com/jgvew/xngq/",
+    "orden": 13,
+    "fecha": "2023-10-01"
+  },
+  {
+    "tipo": "boletin",
+    "titulo": "Boletín Jul 2023",
+    "descripcion": "Boletín informativo con actividades institucionales y recomendaciones técnicas.",
+    "imagen_portada": "https://sedir.org.pe/imgs/tit-edicionJUL-2023.jpg",
+    "archivo_url": "https://online.fliphtml5.com/jgvew/saxi/",
+    "orden": 12,
+    "fecha": "2023-07-01"
+  },
+  {
+    "tipo": "boletin",
+    "titulo": "Boletín May 2023",
+    "descripcion": "Boletín informativo con actividades institucionales y recomendaciones técnicas.",
+    "imagen_portada": "https://sedir.org.pe/imgs/tit-edicionMAY-2023.jpg",
+    "archivo_url": "https://online.fliphtml5.com/jgvew/jeag/",
+    "orden": 11,
+    "fecha": "2023-05-01"
+  },
+  {
+    "tipo": "boletin",
+    "titulo": "Boletín Oct 2022",
+    "descripcion": "Boletín informativo con actividades institucionales y recomendaciones técnicas.",
+    "imagen_portada": "https://sedir.org.pe/imgs/tit-edicionOCT-2022.jpg",
+    "archivo_url": "https://online.fliphtml5.com/mfao/lsjk/",
+    "orden": 10,
+    "fecha": "2022-10-01"
+  },
+  {
+    "tipo": "boletin",
+    "titulo": "Boletín Jul 2022",
+    "descripcion": "Boletín informativo con actividades institucionales y recomendaciones técnicas.",
+    "imagen_portada": "https://sedir.org.pe/imgs/tit-edicionJUL-2022.jpg",
+    "archivo_url": "https://online.fliphtml5.com/mfao/iryg/",
+    "orden": 9,
+    "fecha": "2022-07-01"
+  },
+  {
+    "tipo": "boletin",
+    "titulo": "Boletín Abr 2022",
+    "descripcion": "Boletín informativo con actividades institucionales y recomendaciones técnicas.",
+    "imagen_portada": "https://sedir.org.pe/imgs/tit-edicionABR-2022.jpg",
+    "archivo_url": "https://online.fliphtml5.com/mfao/akwe/",
+    "orden": 8,
+    "fecha": "2022-04-01"
+  },
+  {
+    "tipo": "boletin",
+    "titulo": "Boletín Set 2021",
+    "descripcion": "Boletín informativo con actividades institucionales y recomendaciones técnicas.",
+    "imagen_portada": "https://sedir.org.pe/imgs/tit-edicionSET-2021.jpg",
+    "archivo_url": "https://online.fliphtml5.com/mfao/ravw/",
+    "orden": 7,
+    "fecha": "2021-09-01"
+  },
+  {
+    "tipo": "boletin",
+    "titulo": "Boletín Dic 2020",
+    "descripcion": "Boletín informativo con actividades institucionales y recomendaciones técnicas.",
+    "imagen_portada": "https://sedir.org.pe/imgs/tit-edicionDIC-2020.jpg",
+    "archivo_url": "https://online.fliphtml5.com/mfao/ihlr/",
+    "orden": 6,
+    "fecha": "2020-12-01"
+  },
+  {
+    "tipo": "boletin",
+    "titulo": "Boletín Ago 2020",
+    "descripcion": "Boletín informativo con actividades institucionales y recomendaciones técnicas.",
+    "imagen_portada": "https://sedir.org.pe/imgs/tit-edicionAGO-2020.jpg",
+    "archivo_url": "https://online.fliphtml5.com/mfao/syqa/",
+    "orden": 5,
+    "fecha": "2020-08-01"
+  },
+  {
+    "tipo": "boletin",
+    "titulo": "Boletín Abr 2020",
+    "descripcion": "Boletín informativo con actividades institucionales y recomendaciones técnicas.",
+    "imagen_portada": "https://sedir.org.pe/imgs/tit-edicionABR-2020.jpg",
+    "archivo_url": "https://online.fliphtml5.com/mfao/bqoe/",
+    "orden": 4,
+    "fecha": "2020-04-01"
+  },
+  {
+    "tipo": "boletin",
+    "titulo": "Boletín Oct 2019",
+    "descripcion": "Boletín informativo con actividades institucionales y recomendaciones técnicas.",
+    "imagen_portada": "https://sedir.org.pe/imgs/tit-edicionOCT-2019.jpg",
+    "archivo_url": "https://online.fliphtml5.com/mfao/woci/",
+    "orden": 3,
+    "fecha": "2019-10-01"
+  },
+  {
+    "tipo": "boletin",
+    "titulo": "Boletín edición 2",
+    "descripcion": "Boletín informativo con actividades institucionales y recomendaciones técnicas.",
+    "imagen_portada": "https://sedir.org.pe/imgs/tit-edicion2.jpg",
+    "archivo_url": "https://online.fliphtml5.com/mfao/ngyn/",
+    "orden": 2,
+    "fecha": null
+  },
+  {
+    "tipo": "boletin",
+    "titulo": "Boletín edición 1",
+    "descripcion": "Boletín informativo con actividades institucionales y recomendaciones técnicas.",
+    "imagen_portada": "https://sedir.org.pe/imgs/tit-edicion3.jpg",
+    "archivo_url": "https://online.fliphtml5.com/mfao/nftd/",
+    "orden": 1,
+    "fecha": null
+  },
+  {
+    "tipo": "triptico",
+    "titulo": "Tríptico: Cuyes",
+    "descripcion": "Material técnico breve sobre manejo agronómico y sanidad de cultivos.",
+    "imagen_portada": "https://sedir.org.pe/imgs/tit-triptico-Cuyes-2023.jpg",
+    "archivo_url": "https://sedir.org.pe/imgs/PDF/Triptico_Cuyes_2023.pdf",
+    "orden": 9,
+    "fecha": null
+  },
+  {
+    "tipo": "triptico",
+    "titulo": "Tríptico: Sembrando Futuro 06",
+    "descripcion": "Material técnico breve sobre manejo agronómico y sanidad de cultivos.",
+    "imagen_portada": "https://sedir.org.pe/imgs/tit-triptico-SEDIR-2023.jpg",
+    "archivo_url": "https://sedir.org.pe/imgs/PDF/Triptico-Sembrando-Futuro-06-2023.pdf",
+    "orden": 8,
+    "fecha": null
+  },
+  {
+    "tipo": "triptico",
+    "titulo": "Tríptico: Sedir",
+    "descripcion": "Material técnico breve sobre manejo agronómico y sanidad de cultivos.",
+    "imagen_portada": "https://sedir.org.pe/imgs/tit-triptico-SEDIR-2022.jpg",
+    "archivo_url": "https://sedir.org.pe/imgs/PDF/Triptico-SEDIR-2022.pdf",
+    "orden": 7,
+    "fecha": null
+  },
+  {
+    "tipo": "triptico",
+    "titulo": "Tríptico: Papa",
+    "descripcion": "Material técnico breve sobre manejo agronómico y sanidad de cultivos.",
+    "imagen_portada": "https://sedir.org.pe/imgs/tit-triptico-papasNativas-2022.jpg",
+    "archivo_url": "https://sedir.org.pe/imgs/PDF/Triptico-Papa-2022.pdf",
+    "orden": 6,
+    "fecha": null
+  },
+  {
+    "tipo": "triptico",
+    "titulo": "Tríptico: Palto",
+    "descripcion": "Material técnico breve sobre manejo agronómico y sanidad de cultivos.",
+    "imagen_portada": "https://sedir.org.pe/imgs/tit-triptico-cultivo-palto-2022.jpg",
+    "archivo_url": "https://sedir.org.pe/imgs/PDF/Triptico-Palto.pdf",
+    "orden": 5,
+    "fecha": null
+  },
+  {
+    "tipo": "triptico",
+    "titulo": "Tríptico: Aranita Roja",
+    "descripcion": "Material técnico breve sobre manejo agronómico y sanidad de cultivos.",
+    "imagen_portada": "https://sedir.org.pe/imgs/tit-triptico-aranita-roja-2022.jpg",
+    "archivo_url": "https://sedir.org.pe/imgs/PDF/Triptico-Aranita-Roja.pdf",
+    "orden": 4,
+    "fecha": null
+  },
+  {
+    "tipo": "triptico",
+    "titulo": "Tríptico: Cuyes",
+    "descripcion": "Material técnico breve sobre manejo agronómico y sanidad de cultivos.",
+    "imagen_portada": "https://sedir.org.pe/imgs/tit-triptico-cuyes-2022.jpg",
+    "archivo_url": "https://sedir.org.pe/imgs/PDF/Triptico-Cuyes.pdf",
+    "orden": 3,
+    "fecha": null
+  },
+  {
+    "tipo": "triptico",
+    "titulo": "Tríptico: Mosca De La Fruta",
+    "descripcion": "Material técnico breve sobre manejo agronómico y sanidad de cultivos.",
+    "imagen_portada": "https://sedir.org.pe/imgs/tit-triptico1.jpg",
+    "archivo_url": "https://sedir.org.pe/imgs/PDF/Triptico-moscadelaFruta.pdf",
+    "orden": 2,
+    "fecha": null
+  },
+  {
+    "tipo": "triptico",
+    "titulo": "Tríptico: Sanidad Y Crianza De Abejas",
+    "descripcion": "Material técnico breve sobre manejo agronómico y sanidad de cultivos.",
+    "imagen_portada": "https://sedir.org.pe/imgs/tit-triptico2.jpg",
+    "archivo_url": "https://sedir.org.pe/imgs/PDF/Brochure-Sanidad-y-Crianza-de-Abejas.pdf",
+    "orden": 1,
+    "fecha": null
+  },
+  {
+    "tipo": "manual",
+    "titulo": "¿Cómo instalar una plantación?",
+    "descripcion": "Manual técnico elaborado por SEDIR con recomendaciones para la selección de plantones y la instalación correcta de una plantación frutal.",
+    "imagen_portada": "https://sedir.org.pe/imgs/BibliotecaAgricola/cabeceraBiblioteca01.jpg",
+    "archivo_url": "https://drive.google.com/file/d/1P9Y73Z_Zrk7SAPYXtmfrz_JQbE8e6DRQ/view?usp=sharing",
+    "orden": 1,
+    "fecha": null
+  }
+]

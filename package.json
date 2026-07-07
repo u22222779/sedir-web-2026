@@ -1,0 +1,25 @@
+{
+  "name": "sedir-web-2026",
+  "version": "1.0.0",
+  "description": "Base web de SEDIR con frontend en `public/` y backend activo en `backend/` usando Node.js, Express y PostgreSQL.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/u22222779/sedir-web-2026.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/u22222779/sedir-web-2026/issues"
+  },
+  "homepage": "https://github.com/u22222779/sedir-web-2026#readme",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.1",
+    "tailwindcss": "^4.3.1"
+  }
+}
