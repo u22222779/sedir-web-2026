@@ -238,7 +238,7 @@ async function run() {
         1, 
         'Miel de Abeja', 
         'Producto a partir de néctares de árboles frutícolas y flores silvestres. Pura, natural y rica en nutrientes, cosechada con técnicas apícolas sostenibles.', 
-        '/activos/img_productos/miel_de_abeja.png', 
+        '/activos/img_productos/2025-Mieldeabeja2800gr.jpg', 
         1
       )
       ON CONFLICT (id_producto) DO UPDATE SET 
@@ -254,7 +254,7 @@ async function run() {
         2, 
         'Néctar de Frutas', 
         'Elaborados con la mejor selección de frutas locales, manteniendo su sabor original y valor nutricional. Ideal para el consumo diario.', 
-        '/activos/img_productos/nectar_de_frutas.png', 
+        '/activos/img_productos/Nectar-y-mermelada.jpg', 
         1
       )
       ON CONFLICT (id_producto) DO UPDATE SET 
@@ -270,7 +270,7 @@ async function run() {
         3, 
         'Destilados y Licores', 
         'Fino destilado de uva y exquisitos licores de fruta (Coknat), elaborados artesanalmente con técnicas tradicionales para un sabor inigualable.', 
-        '/activos/img_productos/destilados_y_licores.png', 
+        '/activos/img_productos/2025-EspiritudeUva.jpg', 
         1
       )
       ON CONFLICT (id_producto) DO UPDATE SET 
@@ -287,7 +287,7 @@ async function run() {
         4, 
         'Plantones de Palto', 
         'Plantas vigorosas, injertadas y libres de patógenos, listas para campo definitivo.', 
-        '/activos/img_productos/plantones_de_palto.png', 
+        '/activos/img_productos/2025-IMG_9964.png', 
         2
       )
       ON CONFLICT (id_producto) DO UPDATE SET 
