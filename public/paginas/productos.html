@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <title>.:: SEDIR ::.</title>
   <link rel="icon" href="../activos/img_logos/logo-sedir-links.png" type="image/x-icon">
@@ -103,7 +104,7 @@
         </div>
         <div class="mt-4 md:mt-0">
           <span
-            class="custom-badge-natural inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider">
+            class="custom-badge-natural inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-sm font-semibold uppercase tracking-wider">
             <i class="fas fa-certificate text-amber-500"></i>
             100% Natural
           </span>
@@ -128,15 +129,15 @@
             <div
               class="flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] bg-white rounded-[30px] border border-gray-100 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
               <div>
-                <img src="/activos/img_productos/miel_de_abeja.png" alt="Miel de Abeja"
+                <img id="miel-img" src="/activos/img_productos/miel_de_abeja.png" alt="Miel de Abeja"
                   class="w-full h-56 object-cover">
                 <div class="p-6">
                   <div class="flex items-center justify-between mb-3">
-                    <span class="text-xs font-bold text-[#00944a]">Composición: Productos</span>
-                    <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-[#006A49] text-white">Orgánico</span>
+                    <span class="text-sm font-bold text-[#00944a]">Composición: Productos</span>
+                    <span class="px-2.5 py-0.5 text-sm font-bold rounded-full bg-[#006A49] text-white">Orgánico</span>
                   </div>
-                  <h3 class="text-xl font-bold text-gray-900 mb-3">Miel de Abeja</h3>
-                  <p class="text-gray-600 text-sm leading-relaxed">
+                  <h3 id="miel-title" class="text-xl font-bold text-gray-900 mb-3">Miel de Abeja</h3>
+                  <p id="miel-desc" class="text-gray-600 text-sm leading-relaxed">
                     Producto a partir de néctares de árboles frutícolas y flores silvestres.
                     Pura, natural y rica en nutrientes.
                   </p>
@@ -153,12 +154,12 @@
             <div
               class="flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] bg-white rounded-[30px] border border-gray-100 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
               <div>
-                <img src="/activos/img_productos/nectar_de_frutas.png" alt="Néctar de Frutas"
+                <img id="nectar-img" src="/activos/img_productos/nectar_de_frutas.png" alt="Néctar de Frutas"
                   class="w-full h-56 object-cover">
                 <div class="p-6">
-                  <span class="text-xs font-bold text-[#00944a]">Composición: Productos</span>
-                  <h3 class="text-xl font-bold text-gray-900 my-3">Néctar de Frutas</h3>
-                  <p class="text-gray-600 text-sm leading-relaxed">
+                  <span class="text-sm font-bold text-[#00944a]">Composición: Productos</span>
+                  <h3 id="nectar-title" class="text-xl font-bold text-gray-900 my-3">Néctar de Frutas</h3>
+                  <p id="nectar-desc" class="text-gray-600 text-sm leading-relaxed">
                     Elaborados con la mejor selección de frutas locales,
                     manteniendo su sabor original y valor nutricional.
                   </p>
@@ -175,18 +176,18 @@
             <div
               class="flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] bg-white rounded-[30px] border border-gray-100 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
               <div>
-                <img src="/activos/img_productos/destilados_y_licores.png" alt="Destilados y Licores"
+                <img id="destilados-img" src="/activos/img_productos/destilados_y_licores.png" alt="Destilados y Licores"
                   class="w-full h-56 object-cover">
                 <div class="p-6">
-                  <span class="text-xs font-bold text-[#00944a]">Composición: Productos</span>
-                  <h3 class="text-xl font-bold text-gray-900 my-3">Destilados y Licores</h3>
-                  <p class="text-gray-600 text-sm leading-relaxed mb-3">
+                  <span class="text-sm font-bold text-[#00944a]">Composición: Productos</span>
+                  <h3 id="destilados-title" class="text-xl font-bold text-gray-900 my-3">Destilados y Licores</h3>
+                  <p id="destilados-desc" class="text-gray-600 text-sm leading-relaxed mb-3">
                     Fino destilado de uva y exquisitos licores de fruta,
                     elaborados artesanalmente.
                   </p>
-                  <div class="flex flex-wrap gap-2">
-                    <span class="px-2 py-1 text-xs rounded-full bg-slate-100">Uva</span>
-                    <span class="px-2 py-1 text-xs rounded-full bg-slate-100">Coknat</span>
+                  <div id="destilados-tags" class="flex flex-wrap gap-2">
+                    <span class="px-2 py-1 text-sm rounded-full bg-slate-100">Uva</span>
+                    <span class="px-2 py-1 text-sm rounded-full bg-slate-100">Coknat</span>
                   </div>
                 </div>
               </div>
@@ -205,8 +206,8 @@
                   class="w-full h-56 object-cover">
                 <div class="p-6">
                   <div class="flex items-center justify-between mb-3">
-                    <span class="text-xs font-bold text-[#00944a]">Composición: Productos</span>
-                    <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-[#006A49] text-white">Premium</span>
+                    <span class="text-sm font-bold text-[#00944a]">Composición: Productos</span>
+                    <span class="px-2.5 py-0.5 text-sm font-bold rounded-full bg-[#006A49] text-white">Premium</span>
                   </div>
                   <h3 class="text-xl font-bold text-gray-900 mb-3">Café Especial</h3>
                   <p class="text-gray-600 text-sm leading-relaxed">
@@ -229,8 +230,8 @@
                   class="w-full h-56 object-cover">
                 <div class="p-6">
                   <div class="flex items-center justify-between mb-3">
-                    <span class="text-xs font-bold text-[#00944a]">Composición: Productos</span>
-                    <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-[#006A49] text-white">Natural</span>
+                    <span class="text-sm font-bold text-[#00944a]">Composición: Productos</span>
+                    <span class="px-2.5 py-0.5 text-sm font-bold rounded-full bg-[#006A49] text-white">Natural</span>
                   </div>
 
                   <h3 class="text-xl font-bold text-gray-900 mb-3">
@@ -411,7 +412,7 @@
                 <div>
                   <div class="flex items-center gap-2 text-[#00944a] mb-2">
                     <i class="fas fa-leaf text-sm"></i>
-                    <span class="text-xs font-bold uppercase tracking-wider">Certificado</span>
+                    <span class="text-sm font-bold uppercase tracking-wider">Certificado</span>
                   </div>
                   <h3 id="palto-title" class="text-xl font-bold text-gray-900 mb-2">Plantones de Palto</h3>
                   <p id="palto-desc" class="text-gray-600 text-sm leading-relaxed mb-4">
@@ -419,27 +420,57 @@
                   </p>
 
                   <!-- Palto variety tags -->
-                  <div id="palto-tags" class="flex flex-wrap gap-2 mb-4">
-                    <span
-                      class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">Zutano</span>
-                    <span
-                      class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-slate-100 text-slate-600">Mexicano</span>
-                    <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-slate-100 text-slate-600">Duke
-                      7</span>
-                    <span
-                      class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-green-100 text-green-800">Hass</span>
-                    <span
-                      class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-green-100 text-green-800">Fuerte</span>
-                    <span
-                      class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-slate-100 text-slate-600">Nabal</span>
+                  <div id="palto-tags" class="flex flex-wrap gap-2.5 mb-4">
+
+                    <button
+                      data-info="Alta resistencia a enfermedades y buen desarrollo radicular. Ideal como portainjerto por su vigor y adaptación."
+                      class="variedad px-3.5 py-2 text-sm font-semibold rounded-full bg-blue-100 text-blue-800 min-h-[40px] flex items-center justify-center">
+                      Zutano
+                    </button>
+
+                    <button
+                      data-info="Variedad adaptada a diferentes condiciones climáticas, con buen crecimiento inicial y producción estable."
+                      class="variedad px-3.5 py-2 text-sm font-semibold rounded-full bg-slate-100 text-slate-600 min-h-[40px] flex items-center justify-center">
+                      Mexicano
+                    </button>
+
+                    <button
+                      data-info="Portainjerto reconocido por su tolerancia a problemas del suelo y excelente desarrollo radicular."
+                      class="variedad px-3.5 py-2 text-sm font-semibold rounded-full bg-slate-100 text-slate-600 min-h-[40px] flex items-center justify-center">
+                      Duke 7
+                    </button>
+
+                    <button
+                      data-info="Variedad comercial de alta demanda, con frutos de excelente calidad y buen rendimiento productivo."
+                      class="variedad px-3.5 py-2 text-sm font-semibold rounded-full bg-green-100 text-green-800 min-h-[40px] flex items-center justify-center">
+                      Hass
+                    </button>
+
+                    <button
+                      data-info="Variedad con buena adaptación y características favorables para producción agrícola sostenible."
+                      class="variedad px-3.5 py-2 text-sm font-semibold rounded-full bg-green-100 text-green-800 min-h-[40px] flex items-center justify-center">
+                      Fuerte
+                    </button>
+
+                    <button
+                      data-info="Variedad tradicional con frutos de buena calidad y características productivas destacadas."
+                      class="variedad px-3.5 py-2 text-sm font-semibold rounded-full bg-slate-100 text-slate-600 min-h-[40px] flex items-center justify-center">
+                      Nabal
+                    </button>
+
                   </div>
                 </div>
 
                 <!-- Highlight badge bottom -->
                 <div
-                  class="bg-gray-50 border border-gray-100 rounded-[15px] p-3 text-xs text-gray-600 flex items-center gap-2">
+                  class="bg-gray-50 border border-gray-100 rounded-[15px] p-3 text-sm leading-relaxed text-gray-600 flex items-center gap-2"
+
                   <i class="fas fa-shield-halved text-emerald-600 text-sm"></i>
-                  <span>Alta resistencia a enfermedades y buen desarrollo radicular.</span>
+
+                  <span id="info-variedad">
+                    Seleccione una variedad para conocer sus características.
+                  </span>
+
                 </div>
               </div>
             </div>
@@ -454,22 +485,45 @@
                   <h3 id="mango-title" class="text-lg font-bold text-gray-900 mb-2">Plantones de Mango</h3>
 
                   <!-- Mango tags -->
-                  <div id="mango-tags" class="flex flex-wrap gap-1.5 mb-4">
-                    <span
-                      class="px-2 py-0.5 text-[11px] font-semibold rounded-full bg-blue-100 text-blue-800">Camboyano</span>
-                    <span
-                      class="px-2 py-0.5 text-[11px] font-semibold rounded-full bg-slate-100 text-slate-600">Manzano</span>
-                    <span
-                      class="px-2 py-0.5 text-[11px] font-semibold rounded-full bg-slate-100 text-slate-600">Kent</span>
-                    <span
-                      class="px-2 py-0.5 text-[11px] font-semibold rounded-full bg-slate-100 text-slate-600">Keitt</span>
-                    <span
-                      class="px-2 py-0.5 text-[11px] font-semibold rounded-full bg-slate-100 text-slate-600">Edward</span>
+                  <div id="mango-tags" class="flex flex-wrap gap-2 mb-4">
+
+                    <button
+                      class="variedad-mango px-3 py-2 text-sm font-semibold rounded-full bg-blue-100 text-blue-800 min-h-[36px] flex items-center justify-center"
+                      data-info="Mango Camboyano: variedad de buen crecimiento, adaptada a climas cálidos y con buena productividad.">
+                      Camboyano
+                    </button>
+
+                    <button
+                      class="variedad-mango px-3 py-2 text-sm font-semibold rounded-full bg-slate-100 text-slate-600 min-h-[36px] flex items-center justify-center"
+                      data-info="Mango Manzano: destaca por su sabor dulce, buena textura y aceptación comercial.">
+                      Manzano
+                    </button>
+
+                    <button
+                      class="variedad-mango px-3 py-2 text-sm font-semibold rounded-full bg-slate-100 text-slate-600 min-h-[36px] flex items-center justify-center"
+                      data-info="Mango Kent: variedad comercial reconocida por su calidad de fruta y rendimiento.">
+                      Kent
+                    </button>
+
+                    <button
+                      class="variedad-mango px-3 py-2 text-sm font-semibold rounded-full bg-slate-100 text-slate-600 min-h-[36px] flex items-center justify-center"
+                      data-info="Mango Keitt: fruta grande, firme y con buena conservación postcosecha.">
+                      Keitt
+                    </button>
+
+                    <button
+                      class="variedad-mango px-3 py-2 text-sm font-semibold rounded-full bg-slate-100 text-slate-600 min-h-[36px] flex items-center justify-center"
+                      data-info="Mango Edward: variedad con excelente sabor y características comerciales.">
+                      Edward
+                    </button>
+
                   </div>
 
-                  <p id="mango-desc" class="text-gray-600 text-sm leading-relaxed mb-4">
-                    Alta resistencia a enfermedades y buen desarrollo radicular.
-                  </p>
+                  <!-- Único bloque de descripción (antes había dos elementos con el mismo id) -->
+                  <div class="bg-gray-50 border border-gray-100 rounded-[15px] p-3 text-sm leading-relaxed text-gray-600 flex items-start gap-2 mb-4"
+                    <i class="fas fa-shield-halved text-emerald-600 text-sm mt-0.5"></i>
+                    <span id="mango-desc">Seleccione una variedad para conocer sus características.</span>
+                  </div>
                 </div>
 
                 <!-- Custom Vector Sprout Cycle Graphic -->
@@ -503,17 +557,17 @@
                 <ul class="space-y-3.5 text-sm text-gray-700">
                   <li class="flex items-start gap-2.5">
                     <span class="text-[#00944a] mt-0.5"><i class="fas fa-circle-check"></i></span>
-                    <span class="text-xs leading-relaxed"><strong>Porta injerto Palo:</strong> Excelente vigor y
+                    <span class="text-sm leading-relaxed"><strong>Porta injerto Palo:</strong> Excelente vigor y
                       resistencia a suelos difíciles.</span>
                   </li>
                   <li class="flex items-start gap-2.5">
                     <span class="text-[#00944a] mt-0.5"><i class="fas fa-circle-check"></i></span>
-                    <span class="text-xs leading-relaxed"><strong>Variedad Seda:</strong> Fruto de pulpa suave y dulce,
+                    <span class="text-sm leading-relaxed"><strong>Variedad Seda:</strong> Fruto de pulpa suave y dulce,
                       ideal para postres.</span>
                   </li>
                   <li class="flex items-start gap-2.5">
                     <span class="text-[#00944a] mt-0.5"><i class="fas fa-circle-check"></i></span>
-                    <span class="text-xs leading-relaxed"><strong>Variedad Beltrán:</strong> Buena producción y frutos
+                    <span class="text-sm leading-relaxed"><strong>Variedad Beltrán:</strong> Buena producción y frutos
                       de alta calidad.</span>
                   </li>
                 </ul>
@@ -539,7 +593,7 @@
                     </div>
                     <div>
                       <h4 id="gulupa-title" class="font-bold text-sm text-gray-900 mb-1">Semilla de Gulupa</h4>
-                      <p id="gulupa-desc" class="text-xs text-gray-600 leading-relaxed">
+                      <p id="gulupa-desc" class="text-sm text-gray-600 leading-relaxed">
                         Semillas certificadas para cultivos de alta rentabilidad, ideales para producción comercial de
                         maracuyá morado.
                       </p>
@@ -554,7 +608,7 @@
                     </div>
                     <div>
                       <h4 id="compost-title" class="font-bold text-sm text-gray-900 mb-1">Compost Orgánico</h4>
-                      <p id="compost-desc" class="text-xs text-gray-600 leading-relaxed">
+                      <p id="compost-desc" class="text-sm text-gray-600 leading-relaxed">
                         Fertilizante orgánico ideal para mejorar la calidad del suelo y potenciar el crecimiento de
                         cultivos, enriqueciendo los suelos con nutrientes esenciales.
                       </p>
@@ -569,28 +623,28 @@
                     </div>
                     <div class="flex-grow">
                       <h4 id="cuyes-title" class="font-bold text-sm text-gray-900 mb-1">Cuyes Reproductores</h4>
-                      <p id="cuyes-desc" class="text-xs text-gray-600 leading-relaxed mb-3">
+                      <p id="cuyes-desc" class="text-sm text-gray-600 leading-relaxed mb-3">
                         Ofrecemos cuyes de razas mejoradas para producción:
                       </p>
                       <!-- Subtags inside Cuyes -->
                       <div class="space-y-3">
                         <div>
                           <span
-                            class="inline-block px-2 py-0.5 text-[10px] font-bold rounded bg-[#e6f4ed] text-[#00944a] mb-0.5">RAZA
+                            class="inline-block px-2 py-0.5 text-sm font-bold rounded bg-[#e6f4ed] text-[#00944a] mb-0.5">RAZA
                             PERÚ</span>
-                          <p class="text-[10px] text-gray-500 leading-tight">Excelente tasa de crecimiento y conversión
+                          <p class="text-sm text-gray-500 leading-tight">Excelente tasa de crecimiento y conversión
                             alimenticia, ideal para producción comercial.</p>
                         </div>
                         <div>
                           <span
-                            class="inline-block px-2 py-0.5 text-[10px] font-bold rounded bg-[#e6f4ed] text-[#00944a] mb-0.5">INTI</span>
-                          <p class="text-[10px] text-gray-500 leading-tight">Destacada por su alta prolificidad y buena
+                            class="inline-block px-2 py-0.5 text-sm font-bold rounded bg-[#e6f4ed] text-[#00944a] mb-0.5">INTI</span>
+                          <p class="text-sm text-gray-500 leading-tight">Destacada por su alta prolificidad y buena
                             calidad de carne.</p>
                         </div>
                         <div>
                           <span
-                            class="inline-block px-2 py-0.5 text-[10px] font-bold rounded bg-[#e6f4ed] text-[#00944a] mb-0.5">INKA</span>
-                          <p class="text-[10px] text-gray-500 leading-tight">Caracterizada por su resistencia y óptimo
+                            class="inline-block px-2 py-0.5 text-sm font-bold rounded bg-[#e6f4ed] text-[#00944a] mb-0.5">INKA</span>
+                          <p class="text-sm text-gray-500 leading-tight">Caracterizada por su resistencia y óptimo
                             rendimiento productivo.</p>
                         </div>
                       </div>
@@ -616,10 +670,8 @@
         <!-- New products will be dynamically loaded here if added in database -->
       </div>
     </section>
-
   </main>
   <!-- END: Main Page Content -->
-
   <!-- BEGIN: Footer Component -->
   <div id="footer-container" data-component="/components/footer.html"></div>
   <div id="whatsapp-container" data-component="/components/whatsapp.html"></div>
@@ -629,6 +681,36 @@
   <script src="/activos/js/components.js" defer></script>
   <script src="/activos/js/navbar.js" defer></script>
   <script src="/activos/js/main.js" defer></script>
+
+  <!-- Variedades: Palto (RQ1) y Mango (RQ2) - selección con resaltado -->
+  <script>
+
+    document.querySelectorAll("[data-info]").forEach(boton => {
+
+      boton.addEventListener("click", function () {
+
+        const informacion = this.getAttribute("data-info");
+        const esPalto = this.classList.contains("variedad");
+        const grupo = esPalto ? "variedad" : "variedad-mango";
+        const destino = esPalto ? "info-variedad" : "mango-desc";
+
+        // Actualiza el texto de características
+        document.getElementById(destino).textContent = informacion;
+
+        // Resalta el botón seleccionado dentro de su propio grupo
+        document.querySelectorAll(`.${grupo}`).forEach(btn => {
+          btn.classList.remove("bg-blue-100", "text-blue-800", "bg-green-100", "text-green-800");
+          btn.classList.add("bg-slate-100", "text-slate-600");
+        });
+
+        this.classList.remove("bg-slate-100", "text-slate-600");
+        this.classList.add("bg-blue-100", "text-blue-800");
+
+      });
+
+    });
+
+  </script>
 
   <!-- Dynamic Database Data Binding Script -->
   <script>
@@ -699,7 +781,7 @@
               const tagsContainer = document.getElementById('destilados-tags');
               if (tagsContainer) {
                 tagsContainer.innerHTML = producto.etiquetas.map(t =>
-                  `<span class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-slate-100 text-slate-600">${t}</span>`
+                  `<span class="px-2.5 py-0.5 text-sm font-semibold rounded-full bg-slate-100 text-slate-600">${t}</span>`
                 ).join('');
               }
             }
@@ -710,30 +792,15 @@
             updateElementText('palto-title', producto.nombre);
             updateElementText('palto-desc', producto.descripcion);
             updateElementImage('palto-img', producto.imagen_url);
-
-            if (producto.etiquetas && producto.etiquetas.length > 0) {
-              const tagsContainer = document.getElementById('palto-tags');
-              if (tagsContainer) {
-                tagsContainer.innerHTML = producto.etiquetas.map(t =>
-                  `<span class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-slate-100 text-slate-600">${t}</span>`
-                ).join('');
-              }
-            }
+            // NOTA: no se sobrescribe #palto-tags (botones de variedad) ni
+            // #info-variedad; esos los controla el script de selección de
+            // variedades, no la API.
             matched = true;
           }
           // 5. Plantones de Mango
           else if (nameNormalized.includes('mango')) {
             updateElementText('mango-title', producto.nombre);
-            updateElementText('mango-desc', producto.descripcion);
-
-            if (producto.etiquetas && producto.etiquetas.length > 0) {
-              const tagsContainer = document.getElementById('mango-tags');
-              if (tagsContainer) {
-                tagsContainer.innerHTML = producto.etiquetas.map(t =>
-                  `<span class="px-2 py-0.5 text-[11px] font-semibold rounded-full bg-slate-100 text-slate-600">${t}</span>`
-                ).join('');
-              }
-            }
+            // NOTA: no se sobrescribe #mango-tags ni #mango-desc por la misma razón.
             matched = true;
           }
           // 6. Plantones de Lúcuma
@@ -783,14 +850,14 @@
                   ` : ''}
                   <div class="p-6">
                     <div class="flex items-center justify-between mb-3">
-                      <span class="text-xs font-bold text-[#00944a]">${p.nombre_categoria || 'Insumo'}</span>
+                      <span class="text-sm font-bold text-[#00944a]">${p.nombre_categoria || 'Insumo'}</span>
                     </div>
                     <h3 class="text-xl font-bold text-gray-900 mb-3">${p.nombre}</h3>
                     <p class="text-gray-600 text-sm leading-relaxed mb-4">${p.descripcion}</p>
                     
                     ${p.etiquetas && p.etiquetas.length > 0 ? `
                       <div class="flex flex-wrap gap-2 mb-2">
-                        ${p.etiquetas.map(t => `<span class="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-slate-100 text-slate-600">${t}</span>`).join('')}
+                        ${p.etiquetas.map(t => `<span class="px-2.5 py-0.5 text-sm font-semibold rounded-full bg-slate-100 text-slate-600">${t}</span>`).join('')}
                       </div>
                     ` : ''}
                   </div>

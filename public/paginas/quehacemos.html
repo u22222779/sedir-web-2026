@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 
 <html class="light" lang="es">
+
 <head>
-  <title>.:: SEDIR ::.</title>
-  <link rel="icon" href="../activos/img_logos/logo-sedir-links.png" type="image/x-icon">
+    <title>.:: SEDIR ::.</title>
+    <link rel="icon" href="../activos/img_logos/logo-sedir-links.png" type="image/x-icon">
 
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -130,6 +131,10 @@
             -webkit-text-stroke: 1px currentColor;
             color: transparent;
         }
+
+        html {
+            scroll-behavior: smooth;
+        }
     </style>
 </head>
 
@@ -137,33 +142,43 @@
     <!-- Navigation Component -->
     <div id="navbar-container" class="navbar-loading" data-component="/components/navbar.html"></div>
     <!-- Hero Section -->
-    <header class="relative w-full h-auto min-h-[520px] sm:min-h-[560px] md:min-h-[385px] lg:min-h-[500px] py-12 sm:py-14 md:py-16 flex items-center justify-center overflow-hidden">
+    <header
+        class="relative w-full h-auto min-h-[520px] sm:min-h-[560px] md:min-h-[385px] lg:min-h-[500px] py-12 sm:py-14 md:py-16 flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 bg-cover bg-center"
             data-alt="A panoramic wide shot of Peruvian farmers working in a lush green agricultural field under a soft morning sun. The scene captures the essence of rural development with rows of diverse crops stretching towards the horizon, bathed in a natural, warm glow that emphasizes growth and sustainability. The composition highlights the connection between people and the land in a professional, high-quality photograph."
             style="background-image: url('../activos/img_quehacemos/Sem5-Portada02.jpg');">
         </div>
         <div class="absolute inset-0 hero-overlay"></div>
         <div class="relative z-10 text-center px-4 sm:px-gutter max-w-4xl mx-auto">
-            <h1 class="text-[53px] sm:text-[44px] md:text-[62px] font-extrabold text-white leading-tight mb-4">Sembramos <span
-                    class="text-[53px] sm:text-[44px] md:text-[62px] font-extrabold text-white leading-tight mb-3"
-                    style="color: #F09734;">desarrollo</span> con propósito</h1>
-            <p class="font-body-lg text-sm sm:text-base md:text-body-lg text-on-primary/90 mb-8 md:mb-10 max-w-2xl mx-auto">Impulsamos el impacto social
+            <h1 class="text-[53px] sm:text-[44px] md:text-[62px] font-extrabold text-white leading-tight mb-4">Sembramos
+                <span class="text-[53px] sm:text-[44px] md:text-[62px] font-extrabold text-white leading-tight mb-3"
+                    style="color: #F09734;">desarrollo</span> con propósito
+            </h1>
+            <p
+                class="font-body-lg text-sm sm:text-base md:text-body-lg text-on-primary/90 mb-8 md:mb-10 max-w-2xl mx-auto">
+                Impulsamos el impacto social
                 a través de la capacitación, la transferencia tecnológica, la investigación aplicada y modelos
                 productivos sostenibles.</p>
             <div class="flex flex-wrap justify-center gap-3 md:gap-4">
-                <button
-                    class="bg-transparent border-2 border-on-primary text-on-primary px-5 md:px-8 py-3 rounded-full font-label-md text-sm md:text-base hover:bg-on-primary hover:text-primary transition-all">Capacitación</button>
-                <button
-                    class="bg-transparent border-2 border-on-primary text-on-primary px-5 md:px-8 py-3 rounded-full font-label-md text-sm md:text-base hover:bg-on-primary hover:text-primary transition-all">Asistencia
-                    técnica</button>
-                <button
-                    class="bg-transparent border-2 border-on-primary text-on-primary px-5 md:px-8 py-3 rounded-full font-label-md text-sm md:text-base hover:bg-on-primary hover:text-primary transition-all">Investigación
-                    aplicada</button>
+                <a href="#capacitacion"
+                    class="bg-transparent border-2 border-on-primary text-on-primary px-5 md:px-8 py-3 rounded-full font-label-md text-sm md:text-base hover:bg-on-primary hover:text-primary transition-all">
+                    Capacitación
+                </a>
+
+                <a href="#asistencia-tecnica"
+                    class="bg-transparent border-2 border-on-primary text-on-primary px-5 md:px-8 py-3 rounded-full font-label-md text-sm md:text-base hover:bg-on-primary hover:text-primary transition-all">
+                    Asistencia técnica
+                </a>
+
+                <a href="#investigacion"
+                    class="bg-transparent border-2 border-on-primary text-on-primary px-5 md:px-8 py-3 rounded-full font-label-md text-sm md:text-base hover:bg-on-primary hover:text-primary transition-all">
+                    Investigación aplicada
+                </a>
             </div>
         </div>
     </header>
     <!-- Section 01: Desarrollo de Capacidades -->
-    <section class="py-20 bg-surface relative">
+    <section id="capacitacion" class="py-20 bg-surface relative">
         <div class="max-w-container-max mx-auto px-gutter">
             <div class="flex flex-col gap-6">
                 <div>
@@ -304,7 +319,7 @@
         </div>
     </section>
     <!-- Section 02: Transferencia de Tecnología Agrícola -->
-    <section class="py-20 text-white bg-gradient-to-b from-[#00944A] to-[#006A49]">
+    <section id="asistencia-tecnica" class="py-20 text-white bg-gradient-to-b from-[#00944A] to-[#006A49]">
         <div class="max-w-container-max mx-auto px-gutter">
             <div class="flex items-center gap-4 mb-8">
                 <span class="text-[64px] font-extrabold text-[#f9a11b] leading-none">02</span>
@@ -376,7 +391,7 @@
                 <div
                     class="overflow-hidden rounded-[24px] bg-white text-[#1c3f2a] shadow-[0_10px_24px_rgba(0,0,0,0.18)]">
                     <img class="h-[180px] w-full object-cover" alt="Radio SEDIR"
-                    src="../activos/img_quehacemos/P1400114.JPG" />
+                        src="../activos/img_quehacemos/P1400114.JPG" />
                     <div class="p-5">
                         <h3 class="font-body-md font-semibold text-[18px] text-[#1c5a36] mb-2">Radio SEDIR</h3>
                         <p class="text-[15px] leading-6 text-slate-600">Espacio dedicado a la difusión de información
@@ -388,7 +403,7 @@
         </div>
     </section>
     <!-- Section 03: Investigación Aplicada -->
-    <section class="py-20 bg-surface">
+    <section id="investigacion" class="py-20 bg-surface">
         <div class="max-w-container-max mx-auto px-gutter">
             <div class="flex items-center gap-4 mb-8">
                 <span class="text-[64px] font-extrabold text-secondary leading-none" style="color: #F09734;">03</span>
