@@ -39,7 +39,7 @@ const LON = -78.1861;
 ========================================== */
 async function cargarClima() {
   try {
-    const url = `https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,uv_index&daily=temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=auto`;
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,uv_index&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,wind_speed_10m_max,uv_index_max&timezone=auto`;
 
     const res = await fetch(url);
     const data = await res.json();
@@ -149,11 +149,13 @@ function cargarHistorico(daily) {
 
   daily.time.forEach((fecha, i) => {
     tbody.innerHTML += `
-      <tr>
-        <td class="p-2">${fecha}</td>
-        <td class="p-2">${daily.temperature_2m_max[i]}°</td>
-        <td class="p-2">${daily.temperature_2m_min[i]}°</td>
-        <td class="p-2">${daily.precipitation_sum[i]} mm</td>
+      <tr class="clima-history-row border-b">
+        <td class="p-3">${fecha}</td>
+        <td class="p-3">${daily.temperature_2m_max[i]}°</td>
+        <td class="p-3">${daily.temperature_2m_min[i]}°</td>
+        <td class="p-3">${daily.uv_index_max[i] ?? "—"}</td>
+        <td class="p-3">${daily.wind_speed_10m_max[i]} km/h</td>
+        <td class="p-3">${daily.precipitation_sum[i]} mm</td>
       </tr>
     `;
   });

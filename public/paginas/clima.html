@@ -24,22 +24,33 @@
   <link href="/activos/css/responsive.css" rel="stylesheet" />
 </head>
 
-<body class=bg-[#8C7855]/15
-  class="bg-background text-on-background font-body-md antialiased selection:bg-primary-container selection:text-on-primary-container clima-page">
+<body
+  class="bg-background text-on-background font-body-md antialiased selection:bg-primary-container selection:text-on-primary-container clima-page bg-[#8C7855]/5">
   <div id="navbar-container" class="navbar-loading" data-component="/components/navbar.html"></div>
   <div id="hero-container" data-component="/components/hero-clima.html"></div>
 
-  <main class="max-w-7xl mx-auto px-6 py-16 space-y-20">
+  <!-- ================= SUB-NAV DE SECCIONES ================= -->
+  <nav class="clima-subnav sticky top-[84px] z-40 bg-white/95 backdrop-blur border-b border-gray-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-6 flex gap-6 overflow-x-auto text-sm font-semibold">
+      <a href="#resumen" class="clima-subnav__link py-4 whitespace-nowrap transition">Resumen</a>
+      <a href="#en-vivo" class="clima-subnav__link py-4 whitespace-nowrap transition">Clima en vivo</a>
+      <a href="#pronostico" class="clima-subnav__link py-4 whitespace-nowrap transition">Pronóstico 7 días</a>
+      <a href="#estacion-historica" class="clima-subnav__link py-4 whitespace-nowrap transition">Histórico de la estación</a>
+    </div>
+  </nav>
+
+  <main class="max-w-7xl mx-auto px-6 py-16 space-y-24">
     <!-- ================= CLIMA INFO SECTION ================= -->
-    <section class="space-y-10 clima-page-section">
+    <section id="resumen" class="space-y-10 clima-page-section scroll-mt-[150px]">
       <!-- TITULO PRINCIPAL -->
       <div>
-        <h2 class="text-4xl font-bold text-green-900">
+        <span class="text-xs font-bold tracking-widest text-primary uppercase">Por qué importa</span>
+        <h2 class="text-4xl font-bold text-green-900 mt-1">
           ¿Por qué es fundamental<br>
           monitorear el clima?
         </h2>
 
-        <div class="w-16 h-1 bg-primary rounded-full mt-2"></div>
+        <div class="w-16 h-1 bg-primary rounded-full mt-3"></div>
       </div>
 
       <!-- CARDS SUPERIORES -->
@@ -117,17 +128,27 @@
           </div>
         </div>
 
-        <!-- VISUAL BLOQUE (SIMULA IMÁGENES) -->
+        <!-- DATOS CLAVE DE LA ESTACIÓN -->
         <div class="grid grid-cols-2 gap-4">
 
-          <div class="h-64 bg-gray-200 rounded-3xl"></div>
-
-          <div class="space-y-4">
-            <div class="h-28 bg-gray-200 rounded-2xl flex items-center justify-center font-bold">
-              98%<br><span class="text-xs font-normal">Precisión de datos</span>
+          <div class="col-span-2 bg-primary/5 border border-primary/20 rounded-3xl p-6 flex items-center gap-4">
+            <div class="w-14 h-14 rounded-2xl bg-primary flex items-center justify-center text-white shrink-0">
+              <span class="material-symbols-outlined">history</span>
             </div>
+            <div>
+              <div class="text-2xl font-bold text-green-900">2019 – 2024</div>
+              <div class="text-xs text-gray-500">Años de registro histórico disponibles</div>
+            </div>
+          </div>
 
-            <div class="h-28 bg-gray-200 rounded-2xl"></div>
+          <div class="bg-white border border-gray-200 rounded-2xl p-5 text-center shadow-sm">
+            <div class="text-3xl font-bold text-primary">5</div>
+            <div class="text-xs text-gray-500 mt-1">Variables monitoreadas</div>
+          </div>
+
+          <div class="bg-white border border-gray-200 rounded-2xl p-5 text-center shadow-sm">
+            <div class="text-3xl font-bold text-primary">460<span class="text-base">msnm</span></div>
+            <div class="text-xs text-gray-500 mt-1">Altitud de la estación</div>
           </div>
 
         </div>
@@ -136,8 +157,17 @@
 
     </section>
     <!-- ================= KPI ================= -->
-    <section>
-      <h2 class="text-xl font-bold mb-4">Clima en tiempo real</h2>
+    <section id="en-vivo" class="scroll-mt-[150px] bg-[#f7faf7] rounded-3xl p-8 md:p-10 space-y-6">
+      <div class="flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <span class="text-xs font-bold tracking-widest text-primary uppercase">Ahora mismo</span>
+          <h2 class="text-2xl font-bold mt-1">Clima en tiempo real</h2>
+        </div>
+        <span class="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
+          <span class="material-symbols-outlined text-sm">satellite_alt</span>
+          Fuente: Open-Meteo (pronóstico para Moro)
+        </span>
+      </div>
 
       <div id="clima-kpi-container" class="grid grid-cols-2 md:grid-cols-5 gap-4"></div>
 
@@ -150,13 +180,18 @@
       </template>
     </section>
 
-    <!-- ================= HISTÓRICO ================= -->
-    <section class="space-y-4">
+    <!-- ================= PRONÓSTICO ================= -->
+    <section id="pronostico" class="scroll-mt-[150px] space-y-4">
 
-      <div class="flex justify-between items-center">
-        <h2 class="text-xl font-bold">Datos históricos (7 días)</h2>
+      <div class="flex flex-wrap justify-between items-center gap-3">
+        <div>
+          <span class="text-xs font-bold tracking-widest text-primary uppercase">Próximos días</span>
+          <h2 class="text-2xl font-bold mt-1">Pronóstico (7 días)</h2>
+        </div>
 
-        <button class="bg-green-600 text-white px-4 py-2 rounded-full">
+        <button id="clima-csv-btn" type="button"
+          class="bg-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold inline-flex items-center gap-2 hover:bg-green-700 transition">
+          <span class="material-symbols-outlined text-base">download</span>
           Descargar CSV
         </button>
       </div>
@@ -170,7 +205,7 @@
               <th class="p-3">Fecha</th>
               <th class="p-3">Máx °C</th>
               <th class="p-3">Mín °C</th>
-              <th class="p-3">Humedad</th>
+              <th class="p-3">UV máx</th>
               <th class="p-3">Viento</th>
               <th class="p-3">Lluvia</th>
             </tr>
@@ -182,16 +217,48 @@
 
       </div>
 
-      <template id="clima-history-row-template">
-        <tr>
-          <td class="p-3">{{date}}</td>
-          <td class="p-3">{{maxTemp}}</td>
-          <td class="p-3">{{minTemp}}</td>
-          <td class="p-3">{{humidity}}</td>
-          <td class="p-3">{{wind}}</td>
-          <td class="p-3">{{rain}}</td>
-        </tr>
-      </template>
+    </section>
+
+    <!-- ================= HISTÓRICO ESTACIÓN METEOROLÓGICA ================= -->
+    <section id="estacion-historica" class="scroll-mt-[150px] space-y-8">
+
+      <div>
+        <span class="text-xs font-bold tracking-widest text-primary uppercase">Registro propio</span>
+        <h2 class="text-3xl font-bold text-green-900 mt-1">Histórico de nuestra Estación Meteorológica</h2>
+        <p class="text-sm text-gray-500 mt-2 max-w-2xl">
+          Estación física de SEDIR ubicada en el distrito de Moro (485 m.s.n.m.). Elegí el año, el mes y las
+          condiciones climáticas que querés consultar del registro histórico 2019 – 2024.
+        </p>
+        <div class="w-16 h-1 bg-primary rounded-full mt-3"></div>
+      </div>
+
+      <!-- FILTROS -->
+      <form id="estacion-form" class="bg-white rounded-3xl p-8 shadow-md border border-gray-200 space-y-6">
+        <div class="flex flex-wrap gap-6">
+          <div>
+            <label class="block text-xs font-semibold text-gray-500 mb-1" for="estacion-anio">Año</label>
+            <select id="estacion-anio" class="border border-gray-300 rounded-lg px-4 py-2 text-sm min-w-[120px]"></select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-gray-500 mb-1" for="estacion-mes">Mes</label>
+            <select id="estacion-mes" class="border border-gray-300 rounded-lg px-4 py-2 text-sm min-w-[160px]"></select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-gray-500 mb-2">Condición climática</label>
+          <div id="estacion-variables" class="flex flex-wrap gap-3"></div>
+        </div>
+
+        <button id="estacion-buscar" type="submit"
+          class="bg-primary text-white px-6 py-3 rounded-full font-semibold text-sm inline-flex items-center gap-2 hover:bg-green-800 transition">
+          <span class="material-symbols-outlined text-lg">search</span>
+          Buscar
+        </button>
+      </form>
+
+      <!-- RESULTADOS -->
+      <div id="estacion-resultados" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
 
     </section>
 
@@ -205,6 +272,8 @@
   <script src="/activos/js/dashboard.js" defer></script>
   <script src="/activos/js/main.js" defer></script>
   <script src="/activos/js/clima.js" defer></script>
+  <script src="/activos/js/estacion-historica.js" defer></script>
+  <script src="/activos/js/clima-subnav.js" defer></script>
 </body>
 
 </html>

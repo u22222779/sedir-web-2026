@@ -1,0 +1,291 @@
+{
+  "humedad": {
+    "2019": {
+      "10": "HumedadRelativa_Octubre2019.jpg",
+      "11": "HumedadRelativa_Noviembre2019.jpg",
+      "12": "HumedadRelativa_Diciembre2019.jpg"
+    },
+    "2020": {
+      "01": "HumedadRelativa_Enero2020.jpg",
+      "02": "HumedadRelativa_Febrero2020.jpg",
+      "03": "HumedadRelativa_Marzo2020.jpg",
+      "04": "HumedadRelativa_Abril2020.jpg",
+      "05": "HumedadRelativa_Mayo2020.jpg",
+      "06": "HumedadRelativa_Junio2020.jpg",
+      "07": "HumedadRelativa_Julio2020.jpg",
+      "08": "HumedadRelativa_Agosto2020.jpg",
+      "09": "HumedadRelativa_Setiembre2020.jpg",
+      "10": "HumedadRelativa_Octubre2020.jpg",
+      "11": "HumedadRelativa_Noviembre2020.jpg",
+      "12": "HumedadRelativa_Diciembre2020.jpg"
+    },
+    "2021": {
+      "01": "Humedad-1-ENE2021.jpg",
+      "02": "Humedad-1-FEB2021.jpg",
+      "03": "Humedad-1-MAR2021.jpg",
+      "04": "Humedad-1-ABR2021.jpg",
+      "05": "Humedad-1-MAY2021.jpg",
+      "06": "Humedad-1-JUN2021.jpg",
+      "07": "Humedad-1-JUL2021.jpg",
+      "08": "Humedad-1-AGO2021.jpg",
+      "09": "Humedad-1-SET2021.jpg",
+      "10": "Humedad-1-OCT2021.jpg",
+      "11": "HumedadRelativa_Noviembre2021.jpg",
+      "12": "HumedadRelativa_Diciembre2021.jpg"
+    },
+    "2022": {
+      "01": "Humedad-1-ENE2022.jpg",
+      "02": "HumedadRelativa_Febrero2022.jpg",
+      "03": "Humedad-1-MAR2022.jpg",
+      "04": "Humedad-1-ABR2022.jpg",
+      "05": "Humedad-1-MAY2022.jpg",
+      "06": "Humedad-1-JUN2022.jpg",
+      "07": "Humedad-1-JUL2022.jpg",
+      "08": "Humedad-1-AGO2022.jpg",
+      "09": "Humedad-1-SET2022.jpg",
+      "10": "Humedad-1-OCT2022.jpg",
+      "11": "Humedad-1-NOV2022.jpg",
+      "12": "Humedad-1-DIC2022.jpg"
+    },
+    "2023": {
+      "01": "Humedad-1-ENE2023.jpg",
+      "02": "Humedad-1-FEB2023.jpg",
+      "04": "Humedad-1-ABR2023.jpg",
+      "05": "Humedad-1-MAY2023.jpg",
+      "06": "Humedad-1-JUN2023.jpg",
+      "08": "Humedad-1-AGO2023.jpg",
+      "10": "Humedad-1-OCT2023.jpg",
+      "11": "Humedad-1-NOV2023.jpg",
+      "12": "Humedad-1-DIC2023.jpg"
+    },
+    "2024": {
+      "01": "Humedad-1-ENE2024.jpg",
+      "02": "Humedad-1-FEB2024.jpg",
+      "03": "Humedad-1-MAR2024.jpg",
+      "04": "Humedad-1-ABR2024.jpg",
+      "05": "Humedad-1-MAY2024.jpg",
+      "06": "Humedad-1-JUN2024.jpg",
+      "07": "Humedad-1-JUL2024.jpg",
+      "08": "Humedad-1-AGO2024.jpg",
+      "09": "Humedad-1-SET2024.jpg"
+    }
+  },
+  "precipitaciones": {
+    "2019": {
+      "10": "Precipitaciones_Octubre2019.jpg",
+      "11": "Precipitaciones_Noviembre2019.jpg",
+      "12": "Precipitaciones_Diciembre2019.jpg"
+    },
+    "2020": {
+      "01": "Precipitaciones_Enero2020.jpg",
+      "02": "Precipitaciones_Febrero2020.jpg",
+      "03": "Precipitaciones_Marzo2020.jpg",
+      "04": "Precipitaciones_Abril2020.jpg",
+      "05": "Precipitaciones_Mayo2020.jpg",
+      "06": "Precipitaciones_Junio2020.jpg",
+      "07": "Precipitaciones_Julio2020.jpg",
+      "08": "Precipitaciones_Agosto2020.jpg",
+      "09": "Precipitaciones_Setiembre2020.jpg",
+      "10": "Precipitaciones_Octubre2020.jpg",
+      "11": "Precipitaciones_Noviembre2020.jpg",
+      "12": "Precipitaciones_Diciembre2020.jpg"
+    },
+    "2021": {
+      "01": "Precipitaciones-1-ENE2021.jpg",
+      "02": "Precipitaciones-1-FEB2021.jpg",
+      "03": "Precipitaciones-1-MAR2021.jpg",
+      "04": "Precipitaciones-1-ABR2021.jpg",
+      "05": "Precipitaciones-1-MAY2021.jpg",
+      "06": "Precipitaciones-1-JUN2021.jpg",
+      "07": "Precipitaciones-1-JUL2021.jpg",
+      "08": "Precipitaciones-1-AGO2021.jpg",
+      "09": "Precipitaciones-1-SET2021.jpg",
+      "10": "Precipitaciones-1-OCT2021.jpg",
+      "11": "Precipitaciones_Noviembre2021.jpg",
+      "12": "Precipitaciones_Diciembre2021.jpg"
+    },
+    "2022": {
+      "01": "Precipitaciones-1-ENE2022.jpg",
+      "02": "Precipitaciones_Febrero2022.jpg",
+      "03": "Precipitaciones-1-MAR2022.jpg",
+      "04": "Precipitaciones-1-ABR2022.jpg",
+      "05": "Precipitaciones-1-MAY2022.jpg",
+      "06": "Precipitaciones-1-JUN2022.jpg",
+      "07": "Precipitaciones-1-JUL2022.jpg",
+      "08": "Precipitaciones-1-AGO2022.jpg",
+      "09": "Precipitaciones-1-SET2022.jpg",
+      "10": "Precipitaciones-1-OCT2022.jpg",
+      "11": "Precipitaciones-1-NOV2022.jpg",
+      "12": "Precipitaciones-1-DIC2022.jpg"
+    },
+    "2023": {
+      "01": "Precipitaciones-1-ENE2023.jpg",
+      "02": "Precipitaciones-1-FEB2023.jpg",
+      "04": "Precipitaciones-1-ABR2023.jpg",
+      "05": "Precipitaciones-1-MAY2023.jpg",
+      "06": "Precipitaciones-1-JUN2023.jpg",
+      "08": "Precipitaciones-1-AGO2023.jpg",
+      "10": "Precipitaciones-1-OCT2023.jpg",
+      "11": "Precipitaciones-1-NOV2023.jpg",
+      "12": "Precipitaciones-1-DIC2023.jpg"
+    },
+    "2024": {
+      "01": "Precipitaciones-1-ENE2024.jpg",
+      "02": "Precipitaciones-1-FEB2024.jpg",
+      "03": "Precipitaciones-1-MAR2024.jpg",
+      "04": "Precipitaciones-1-ABR2024.jpg",
+      "05": "Precipitaciones-1-MAY2024.jpg",
+      "06": "Precipitaciones-1-JUN2024.jpg",
+      "07": "Precipitaciones-1-JUL2024.jpg",
+      "08": "Precipitaciones-1-AGO2024.jpg",
+      "09": "Precipitaciones-1-SET2024.jpg"
+    }
+  },
+  "radiacion_uv": {
+    "2019": {
+      "10": "IndiceUV_Octubre2019.jpg",
+      "11": "IndiceUV_Noviembre2019.jpg",
+      "12": "IndiceUV_Diciembre2019.jpg"
+    },
+    "2020": {
+      "01": "IndiceUV_Enero2020.jpg",
+      "02": "IndiceUV_Febrero2020.jpg",
+      "03": "IndiceUV_Marzo2020.jpg",
+      "04": "IndiceUV_Abril2020.jpg",
+      "05": "IndiceUV_Mayo2020.jpg",
+      "06": "IndiceUV_Junio2020.jpg",
+      "07": "IndiceUV_Juliol2020.jpg",
+      "08": "IndiceUV_Agosto2020.jpg",
+      "09": "IndiceUV_Setiembre2020.jpg",
+      "10": "IndiceUV_Octubre2020.jpg",
+      "11": "IndiceUV_Noviembre2020.jpg",
+      "12": "IndiceUV_Diciembre2020.jpg"
+    },
+    "2021": {
+      "01": "RadiacionUV-1-ENE2021.jpg",
+      "02": "RadiacionUV-1-FEB2021.jpg",
+      "03": "RadiacionUV-1-MAR2021.jpg",
+      "04": "RadiacionUV-1-ABR2021.jpg",
+      "05": "RadiacionUV-1-MAY2021.jpg",
+      "06": "RadiacionUV-1-JUN2021.jpg",
+      "07": "RadiacionUV-1-JUL2021.jpg",
+      "08": "RadiacionUV-1-AGO2021.jpg",
+      "09": "RadiacionUV-1-SET2021.jpg",
+      "10": "RadiacionUV-1-OCT2021.jpg",
+      "11": "IndiceUV_Noviembre2021.jpg",
+      "12": "IndiceUV_Diciembre2021.jpg"
+    },
+    "2022": {
+      "01": "RadiacionUV-1-ENE2022.jpg",
+      "02": "IndiceUV_Febrero2022.jpg",
+      "03": "RadiacionUV-1-MAR2022.jpg",
+      "04": "RadiacionUV-1-ABR2022.jpg",
+      "05": "RadiacionUV-1-MAY2022.jpg",
+      "06": "RadiacionUV-1-JUN2022.jpg",
+      "07": "RadiacionUV-1-JUL2022.jpg",
+      "08": "RadiacionUV-1-AGO2022.jpg",
+      "09": "RadiacionUV-1-SET2022.jpg",
+      "10": "RadiacionUV-1-OCT2022.jpg",
+      "11": "RadiacionUV-1-NOV2022.jpg",
+      "12": "RadiacionUV-1-DIC2022.jpg"
+    },
+    "2023": {
+      "01": "RadiacionUV-1-ENE2023.jpg",
+      "02": "RadiacionUV-1-FEB2023.jpg",
+      "04": "RadiacionUV-1-ABR2023.jpg",
+      "05": "RadiacionUV-1-MAY2023.jpg",
+      "06": "RadiacionUV-1-JUN2023.jpg",
+      "08": "RadiacionUV-1-AGO2023.jpg",
+      "10": "RadiacionUV-1-OCT2023.jpg",
+      "11": "RadiacionUV-1-NOV2023.jpg",
+      "12": "RadiacionUV-1-DIC2023.jpg"
+    },
+    "2024": {
+      "01": "RadiacionUV-1-ENE2024.jpg",
+      "02": "RadiacionUV-1-FEB2024.jpg",
+      "03": "RadiacionUV-1-MAR2024.jpg",
+      "04": "RadiacionUV-1-ABR2024.jpg",
+      "05": "RadiacionUV-1-MAY2024.jpg",
+      "06": "RadiacionUV-1-JUN2024.jpg",
+      "07": "RadiacionUV-1-JUL2024.jpg",
+      "08": "RadiacionUV-1-AGO2024.jpg",
+      "09": "RadiacionUV-1-SET2024.jpg"
+    }
+  },
+  "sensacion_termica": {
+    "2023": {
+      "06": "SensacionTermica-1-JUN2023.jpg"
+    }
+  },
+  "temperatura": {
+    "2019": {
+      "10": "Temperatura_Octubre2019.jpg",
+      "11": "Temperatura_Noviembre2019.jpg",
+      "12": "Temperatura_Diciembre2019.jpg"
+    },
+    "2020": {
+      "01": "Temperatura_Enero2020.jpg",
+      "02": "Temperatura_Febrero2020.jpg",
+      "03": "Temperatura_Marzo2020.jpg",
+      "04": "Temperatura_Abril2020.jpg",
+      "05": "Temperatura_Mayo2020.jpg",
+      "06": "Temperatura_Junio2020.jpg",
+      "07": "Temperatura_Julio2020.jpg",
+      "08": "Temperatura_Agosto2020.jpg",
+      "09": "Temperatura_Setiembre2020.jpg",
+      "10": "Temperatura_Octubre2020.jpg",
+      "11": "Temperatura_Noviembre2020.jpg",
+      "12": "Temperatura_Diciembre2020.jpg"
+    },
+    "2021": {
+      "01": "Temperatura-1-ENE2021.jpg",
+      "02": "Temperatura-1-FEB2021.jpg",
+      "03": "Temperatura-1-MAR2021.jpg",
+      "04": "Temperatura-1-ABR2021.jpg",
+      "05": "Temperatura-1-MAY2021.jpg",
+      "06": "Temperatura-1-JUN2021.jpg",
+      "07": "Temperatura-1-JUL2021.jpg",
+      "08": "Temperatura-1-AGO2021.jpg",
+      "09": "Temperatura-1-SET2021.jpg",
+      "10": "Temperatura-1-OCT2021.jpg",
+      "11": "Temperatura_Noviembre2021.jpg",
+      "12": "Temperatura_Diciembre2021.jpg"
+    },
+    "2022": {
+      "01": "Temperatura-1-ENE2022.jpg",
+      "02": "Temperatura_Febrero2022.jpg",
+      "03": "Temperatura-1-MAR2022.jpg",
+      "04": "Temperatura-1-ABR2022.jpg",
+      "05": "Temperatura-1-MAY2022.jpg",
+      "06": "Temperatura-1-JUN2022.jpg",
+      "07": "Temperatura-1-JUL2022.jpg",
+      "08": "Temperatura-1-AGO2022.jpg",
+      "09": "Temperatura-1-SET2022.jpg",
+      "10": "Temperatura-1-OCT2022.jpg",
+      "11": "Temperatura-1-NOV2022.jpg",
+      "12": "Temperatura-1-DIC2022.jpg"
+    },
+    "2023": {
+      "01": "Temperatura-1-ENE2023.jpg",
+      "02": "Temperatura-1-FEB2023.jpg",
+      "04": "Temperatura-1-ABR2023.jpg",
+      "05": "Temperatura-1-MAY2023.jpg",
+      "06": "Temperatura-1-JUN2023.jpg",
+      "08": "Temperatura-1-AGO2023.jpg",
+      "10": "Temperatura-1-OCT2023.jpg",
+      "11": "Temperatura-1-NOV2023.jpg",
+      "12": "Temperatura-1-DIC2023.jpg"
+    },
+    "2024": {
+      "01": "Temperatura-1-ENE2024.jpg",
+      "02": "Temperatura-1-FEB2024.jpg",
+      "03": "Temperatura-1-MAR2024.jpg",
+      "04": "Temperatura-1-ABR2024.jpg",
+      "05": "Temperatura-1-MAY2024.jpg",
+      "06": "Temperatura-1-JUN2024.jpg",
+      "07": "Temperatura-1-JUL2024.jpg",
+      "08": "Temperatura-1-AGO2024.jpg",
+      "09": "Temperatura-1-SET2024.jpg"
+    }
+  }
+}

@@ -54,6 +54,35 @@ body.clima-page {
   border-radius: 0.75rem;
 }
 
+/* Histórico Estación Meteorológica: chips de variables */
+.estacion-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(0, 107, 52, 0.25);
+  background: #fff;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #1f2937;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.estacion-chip:has(.estacion-chip__input:checked) {
+  background: #006b34;
+  border-color: #006b34;
+  color: #fff;
+}
+
+.estacion-chip__input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
 /* Hero content max width */
 .clima-hero-content {
   max-width: 1296px;
