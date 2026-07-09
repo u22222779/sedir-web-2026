@@ -29,7 +29,8 @@
    la foto oscura del hero. */
 .navbar-shell.is-scrolled {
   background: rgba(255, 255, 255, 0.98) !important;
-  border-bottom-color: #00944a;
+  border-bottom: 3px solid #00944a;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   padding-top: 4px;
   padding-bottom: 4px;
 }
@@ -114,4 +115,13 @@
 .navbar-shell.is-scrolled .navbar-burger {
   color: #00944a;
   filter: none;
+}
+.navbar-shell.is-scrolled::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, #00944a 0%, #00b35a 50%, #006a49 100%);
 }
