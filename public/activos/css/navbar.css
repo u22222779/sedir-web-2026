@@ -1,4 +1,7 @@
-/* SECTION: Navbar */
+/* ==========================================
+   NAVBAR GLOBAL - SEDIR
+========================================== */
+
 .navbar-shell {
   font-family: "Montserrat", "Libre Franklin", sans-serif;
   position: fixed;
@@ -6,122 +9,238 @@
   left: 0;
   right: 0;
   width: 100%;
-  z-index: 50;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background: transparent !important;
-  background-color: transparent !important;
-  border-bottom: none !important;
-  box-shadow: none !important;
-  backdrop-filter: none;
-  transition: background-color 250ms ease, padding 250ms ease;
+  z-index: 9999;
+
+  padding: 10px 0;
+
+  background: transparent;
+  border-bottom: none;
+  box-shadow: none;
+
+  backdrop-filter: blur(0);
+  -webkit-backdrop-filter: blur(0);
+
+  transition:
+    background-color .3s ease,
+    backdrop-filter .3s ease,
+    padding .3s ease,
+    box-shadow .3s ease;
 }
+
+/* ==============================
+   Estado inicial
+============================== */
 
 .navbar-shell:not(.is-scrolled) {
-  background: transparent !important;
-  background-color: transparent !important;
-  border-bottom: none !important;
-  box-shadow: none !important;
+  background: transparent;
+  border-bottom: none;
+  box-shadow: none;
 }
 
-/* Estado sólido: se activa por JS (navbar.js) al hacer scroll, para que
-   el navbar siga siendo legible sobre CUALQUIER contenido, no solo sobre
-   la foto oscura del hero. */
+/* ==============================
+   Navbar al hacer scroll
+============================== */
+
 .navbar-shell.is-scrolled {
-  background: rgba(255, 255, 255, 0.98) !important;
-  border-bottom: 3px solid #00944a;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  padding-top: 4px;
-  padding-bottom: 4px;
+  background: rgba(255,255,255,.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  padding: 5px 0;
+
+  box-shadow:
+      0 8px 24px rgba(0,0,0,.08);
+
+  position: fixed;
 }
 
-/* Píldora del logo: transparente sobre el hero y más grande. */
-.navbar-logo-pill {
-  display: inline-flex;
-  align-items: center;
-  background: transparent !important;
-  border-radius: 999px;
-  padding: 12px 24px 12px 12px;
-  border: none !important;
+/* Línea inferior verde institucional */
+
+.navbar-shell.is-scrolled::after{
+    content:"";
+    position:absolute;
+
+    left:0;
+    bottom:0;
+
+    width:100%;
+    height:1px;
+
+    background:linear-gradient(
+        90deg,
+        #00944a 0%,
+        #00b35a 50%,
+        #006a49 100%
+    );
 }
 
-.navbar-logo {
-  height: 90px;
-  max-height: 90px;
-  width: auto;
-  object-fit: contain;
-  transition: height 250ms ease;
+/* ==============================
+   Logo
+============================== */
+
+.navbar-logo-pill{
+    display:inline-flex;
+    align-items:center;
+
+    background:transparent;
+
+    border:none;
+
+    border-radius:999px;
+
+    padding:12px 24px 12px 12px;
 }
 
-.navbar-shell.is-scrolled .navbar-logo {
-  height: 60px;
-  max-height: 60px;
+.navbar-logo{
+
+    height:90px;
+    max-height:90px;
+    width:auto;
+
+    object-fit:contain;
+
+    transition:height .3s ease;
 }
 
-.navbar-cta {
-  background: linear-gradient(90deg, #00944a 0%, #006a49 100%);
-  color: #ffffff;
-  display: inline-block;
-  box-shadow: 0 4px 14px rgba(0, 148, 74, 0.35);
+.navbar-shell.is-scrolled .navbar-logo{
+
+    height:60px;
+    max-height:60px;
+
 }
 
-.navbar-cta:hover {
-  filter: brightness(0.95);
+/* ==============================
+   Links
+============================== */
+
+.navbar-link{
+
+    color:#ffffff;
+
+    font-weight:500;
+
+    text-decoration:none;
+
+    transition:
+        color .25s ease,
+        opacity .25s ease;
+
 }
 
-.navbar-cta-mobile {
-  background: #00944a;
-  color: #ffffff;
-  display: block;
+.navbar-link:hover{
+
+    color:#F09734;
+
 }
 
-.navbar-cta-mobile:hover {
-  background: #006a49;
+.navbar-link.is-active{
+
+    color:#F09734;
+    font-weight:700;
+
 }
 
-/* Transparente sobre el hero: texto blanco con sombra sutil para
-   legibilidad sobre cualquier zona de la foto. Al hacer scroll (clase
-   is-scrolled) pasa a texto oscuro sobre fondo blanco sólido. */
-.navbar-link {
-  color: #ffffff;
-  transition: color 180ms ease, opacity 180ms ease, text-shadow 180ms ease;
-}
+/* Links sobre fondo blanco */
 
-.navbar-link:hover,
-.navbar-link.is-active {
-  color: #F09734;
-}
+.navbar-shell.is-scrolled .navbar-link{
 
-.navbar-link.is-active {
-  font-weight: 600;
-}
+    color:#374151;
 
-.navbar-shell.is-scrolled .navbar-link {
-  color: #4b5563;
-  text-shadow: none;
 }
 
 .navbar-shell.is-scrolled .navbar-link:hover,
-.navbar-shell.is-scrolled .navbar-link.is-active {
-  color: #00944a;
+.navbar-shell.is-scrolled .navbar-link.is-active{
+
+    color:#00944a;
+
 }
 
-.navbar-burger {
-  color: #ffffff;
-  filter: drop-shadow(0 1px 2px rgba(0, 3, 6, 0.45));
-  transition: color 180ms ease;
+/* ==============================
+   Botón CTA
+============================== */
+
+.navbar-cta{
+
+    background:linear-gradient(
+        90deg,
+        #00944a,
+        #006a49
+    );
+
+    color:#fff;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    box-shadow:
+        0 6px 18px rgba(0,148,74,.30);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+
 }
 
-.navbar-shell.is-scrolled .navbar-burger {
-  color: #00944a;
-  filter: none;
+.navbar-cta:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 10px 22px rgba(0,148,74,.40);
+
 }
-.navbar-shell.is-scrolled::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, #00944a 0%, #00b35a 50%, #006a49 100%);
+
+.navbar-cta-mobile{
+
+    background:#00944a;
+    color:#fff;
+
+}
+
+.navbar-cta-mobile:hover{
+
+    background:#006a49;
+
+}
+
+/* ==============================
+   Botón hamburguesa
+============================== */
+
+.navbar-burger{
+
+    color:#ffffff;
+
+    transition:
+        color .25s ease;
+
+}
+
+.navbar-shell.is-scrolled .navbar-burger{
+
+    color:#00944a;
+
+}
+
+/* ==============================
+   Responsive
+============================== */
+
+@media (max-width:768px){
+
+    .navbar-logo{
+
+        height:70px;
+        max-height:70px;
+
+    }
+
+    .navbar-shell.is-scrolled .navbar-logo{
+
+        height:55px;
+        max-height:55px;
+
+    }
+
 }
