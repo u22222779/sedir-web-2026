@@ -210,7 +210,7 @@
 
 .navbar-burger{
 
-    color:#ffffff;
+    color:#000306;
 
     transition:
         color .25s ease;
@@ -219,28 +219,52 @@
 
 .navbar-shell.is-scrolled .navbar-burger{
 
-    color:#00944a;
+    color:#ffffff;
 
 }
+/* ==========================================
+   NAVBAR RESPONSIVE
+========================================== */
 
-/* ==============================
-   Responsive
-============================== */
+@media (max-width: 768px) {
 
-@media (max-width:768px){
+  /* Botón hamburguesa */
+  .navbar-burger {
+    color: #ffffff !important;
+  }
 
-    .navbar-logo{
+  .navbar-shell.is-scrolled .navbar-burger {
+    color: #F09734 !important;
+  }
 
-        height:70px;
-        max-height:70px;
+  /* Enlaces del menú móvil */
+  .navbar-mobile-menu .navbar-link,
+  #mobile-menu .navbar-link,
+  .mobile-menu .navbar-link {
+    color: #000306 !important;
+  }
 
-    }
+  /* Hover */
+  .navbar-mobile-menu .navbar-link:hover,
+  #mobile-menu .navbar-link:hover,
+  .mobile-menu .navbar-link:hover {
+    color: #00944a !important;
+  }
 
-    .navbar-shell.is-scrolled .navbar-logo{
+  /* Página activa */
+  .navbar-mobile-menu .navbar-link.is-active,
+  #mobile-menu .navbar-link.is-active,
+  .mobile-menu .navbar-link.is-active {
+    color: #F09734 !important;
+    font-weight: 700;
+  }
 
-        height:55px;
-        max-height:55px;
-
-    }
+  /* Si usa aria-current="page" */
+  .navbar-mobile-menu .navbar-link[aria-current="page"],
+  #mobile-menu .navbar-link[aria-current="page"],
+  .mobile-menu .navbar-link[aria-current="page"] {
+    color: #F09734 !important;
+    font-weight: 700;
+  }
 
 }
