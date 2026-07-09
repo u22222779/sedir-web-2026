@@ -82,7 +82,7 @@
    legibilidad sobre cualquier zona de la foto. Al hacer scroll (clase
    is-scrolled) pasa a texto oscuro sobre fondo blanco sólido. */
 .navbar-link {
-  color: #000306;
+  color: #ffffff;
   transition: color 180ms ease, opacity 180ms ease, text-shadow 180ms ease;
 }
 

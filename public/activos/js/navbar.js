@@ -7,6 +7,33 @@ window.initNavbar = function () {
   const mobileSubmenu = document.getElementById("mobileSubmenu");
   const navbarShell = document.querySelector(".navbar-shell");
 
+  // Marcar el link activo según la página actual
+  const marcarLinkActivo = () => {
+    const rutaActual = window.location.pathname;
+    const links = document.querySelectorAll(".navbar-link[href]");
+
+    links.forEach(link => {
+      const href = link.getAttribute("href");
+      let esActivo = false;
+
+      // Comparar las rutas
+      if (href === "/" && (rutaActual === "/" || rutaActual === "/index.html")) {
+        esActivo = true;
+      } else if (href && href !== "/" && rutaActual.includes(href.split("/").pop())) {
+        esActivo = true;
+      }
+
+      if (esActivo) {
+        link.classList.add("is-active");
+      } else {
+        link.classList.remove("is-active");
+      }
+    });
+  };
+
+  // Ejecutar al cargar
+  marcarLinkActivo();
+
   if (!menuBtn) return;
 
   menuBtn.onclick = () => {
