@@ -156,8 +156,12 @@
     <!-- Contenido Principal -->
     <main class="grow bg-[linear-gradient(90deg,#00944A,#00B159)]">
       <!-- Titular -->
-      <header class="w-full h-[430px] bg-[linear-gradient(90deg,rgba(6,106,73,0.85)_35%,rgba(0,216,143,0.85)_100%),url('../activos/img_quienessomos/MIEL.jpg')] bg-cover bg-center bg-no-repeat rounded-bl-none rounded-br-[100px] md:rounded-br-[120px] flex justify-center">
-        <div class="h-full w-full max-w-[1606px] px-6 md:px-12 lg:px-[100px] flex items-center">
+      <header class="relative w-full h-[430px] rounded-bl-none rounded-br-[100px] md:rounded-br-[120px] flex justify-center overflow-hidden" style="background: #006A49;">
+        <div class="absolute inset-0 z-0">
+          <img alt="Agricultores en campo" class="w-full h-full object-cover opacity-30" src="../activos/img_quienessomos/MIEL.jpg" />
+        </div>
+        <div class="absolute inset-0 bg-black/25 z-10"></div>
+        <div class="h-full w-full max-w-[1606px] px-6 md:px-12 lg:px-[100px] flex items-center relative z-20">
           <div class="max-w-4xl">
             <div class="mb-4">
               <h3 class="text-white text-[20px] font-normal leading-normal tracking-[2px] mb-2" style="font-family: 'Franklin Gothic Demi', 'Franklin Gothic', sans-serif;">Nosotros</h3>
@@ -310,7 +314,7 @@
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 justify-items-center max-w-[1606px]">
             
             <!-- Tarjeta 1: Calidad de Servicio -->
-            <div class="bg-white rounded-[20px] p-6 shadow-xl border border-gray-100 flex flex-col md:flex-row items-center gap-6 w-full">
+            <div class="bg-white rounded-[40px] p-6 shadow-xl border border-gray-100 flex flex-col md:flex-row items-center gap-6 w-full">
               <div class="flex-1 text-center md:text-left">
                 <span class="material-symbols-outlined text-[#006b34] text-4xl mb-4 block">military_tech</span>
                 <h3 class="text-[#191c1d] font-bold text-sm tracking-wider mb-3 uppercase" style="font-family: 'Montserrat', sans-serif;">CALIDAD DE SERVICIO</h3>
@@ -324,7 +328,7 @@
             </div>
 
             <!-- Tarjeta 2: Responsabilidad -->
-            <div class="bg-white rounded-[20px] p-6 shadow-xl border border-gray-100 flex flex-col md:flex-row items-center gap-6 w-full">
+            <div class="bg-white rounded-[40px] p-6 shadow-xl border border-gray-100 flex flex-col md:flex-row items-center gap-6 w-full">
               <div class="flex-1 text-center md:text-left">
                 <span class="material-symbols-outlined text-[#006b34] text-4xl mb-4 block">handshake</span>
                 <h3 class="text-[#191c1d] font-bold text-sm tracking-wider mb-3 uppercase" style="font-family: 'Montserrat', sans-serif;">RESPONSABILIDAD</h3>
@@ -338,7 +342,7 @@
             </div>
 
             <!-- Tarjeta 3: Trabajo en Equipo -->
-            <div class="bg-white rounded-[20px] p-6 shadow-xl border border-gray-100 flex flex-col md:flex-row items-center gap-6 w-full">
+            <div class="bg-white rounded-[40px] p-6 shadow-xl border border-gray-100 flex flex-col md:flex-row items-center gap-6 w-full">
               <div class="flex-1 text-center md:text-left">
                 <span class="material-symbols-outlined text-[#006b34] text-4xl mb-4 block">groups</span>
                 <h3 class="text-[#191c1d] font-bold text-sm tracking-wider mb-3 uppercase" style="font-family: 'Montserrat', sans-serif;">TRABAJO EN EQUIPO</h3>
@@ -352,7 +356,7 @@
             </div>
 
             <!-- Tarjeta 4: Confianza -->
-            <div class="bg-white rounded-[20px] p-6 shadow-xl border border-gray-100 flex flex-col md:flex-row items-center gap-6 w-full">
+            <div class="bg-white rounded-[40px] p-6 shadow-xl border border-gray-100 flex flex-col md:flex-row items-center gap-6 w-full">
               <div class="flex-1 text-center md:text-left">
                 <span class="material-symbols-outlined text-[#006b34] text-4xl mb-4 block">verified_user</span>
                 <h3 class="text-[#191c1d] font-bold text-sm tracking-wider mb-3 uppercase" style="font-family: 'Montserrat', sans-serif;">CONFIANZA</h3>
@@ -366,7 +370,7 @@
             </div>
 
             <!-- Tarjeta 5: Compromiso (Centrada abajo) -->
-            <div class="bg-white rounded-[20px] p-6 shadow-xl border border-gray-100 flex flex-col md:flex-row items-center gap-6 w-full lg:max-w-[630px] lg:col-span-2">
+            <div class="bg-white rounded-[40px] p-6 shadow-xl border border-gray-100 flex flex-col md:flex-row items-center gap-6 w-full lg:max-w-[630px] lg:col-span-2">
               <div class="flex-1 text-center md:text-left">
                 <span class="material-symbols-outlined text-[#006b34] text-4xl mb-4 block">workspace_premium</span>
                 <h3 class="text-[#191c1d] font-bold text-sm tracking-wider mb-3 uppercase" style="font-family: 'Montserrat', sans-serif;">COMPROMISO</h3>

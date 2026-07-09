@@ -119,10 +119,6 @@
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
 
-        .hero-overlay {
-            background: linear-gradient(rgba(0, 107, 52, 0.75), rgba(0, 107, 52, 0.75));
-        }
-
         .custom-shadow {
             box-shadow: 0 16px 32px -12px rgba(0, 107, 52, 0.06);
         }
@@ -142,11 +138,9 @@
     <!-- Navigation Component -->
     <div id="navbar-container" class="navbar-loading" data-component="/components/navbar.html"></div>
     <!-- Hero Section -->
-    <header
-        class="relative w-full h-auto min-h-[520px] sm:min-h-[560px] md:min-h-[385px] lg:min-h-[500px] py-12 sm:py-14 md:py-16 flex items-center justify-center overflow-hidden">
-        <div class="absolute inset-0 bg-cover bg-center"
-            data-alt="A panoramic wide shot of Peruvian farmers working in a lush green agricultural field under a soft morning sun. The scene captures the essence of rural development with rows of diverse crops stretching towards the horizon, bathed in a natural, warm glow that emphasizes growth and sustainability. The composition highlights the connection between people and the land in a professional, high-quality photograph."
-            style="background-image: url('../activos/img_quehacemos/Sem5-Portada02.jpg');">
+    <header class="relative w-full h-auto min-h-[520px] sm:min-h-[560px] md:min-h-[385px] lg:min-h-[500px] py-12 sm:py-14 md:py-16 flex items-center justify-center overflow-hidden" style="background: #006A49;">
+        <div class="absolute inset-0 z-0">
+            <img alt="" class="w-full h-full object-cover opacity-30" src="../activos/img_quehacemos/Sem5-Portada02.jpg" />
         </div>
         <div class="absolute inset-0 hero-overlay"></div>
         <div class="relative z-10 text-center px-4 sm:px-gutter max-w-4xl mx-auto">

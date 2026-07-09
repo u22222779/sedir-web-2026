@@ -7,24 +7,65 @@
   right: 0;
   width: 100%;
   z-index: 50;
-  border-bottom: 1.5px solid #00944a;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background: transparent !important;
+  background-color: transparent !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none;
+  transition: background-color 250ms ease, padding 250ms ease;
 }
 
+.navbar-shell:not(.is-scrolled) {
+  background: transparent !important;
+  background-color: transparent !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+/* Estado sólido: se activa por JS (navbar.js) al hacer scroll, para que
+   el navbar siga siendo legible sobre CUALQUIER contenido, no solo sobre
+   la foto oscura del hero. */
+.navbar-shell.is-scrolled {
+  background: rgba(255, 255, 255, 0.98) !important;
+  border-bottom-color: #00944a;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+/* Píldora del logo: transparente sobre el hero y más grande. */
+.navbar-logo-pill {
+  display: inline-flex;
+  align-items: center;
+  background: transparent !important;
+  border-radius: 999px;
+  padding: 12px 24px 12px 12px;
+  border: none !important;
+}
 
 .navbar-logo {
-  height: 84px;
+  height: 90px;
+  max-height: 90px;
   width: auto;
   object-fit: contain;
+  transition: height 250ms ease;
+}
+
+.navbar-shell.is-scrolled .navbar-logo {
+  height: 60px;
+  max-height: 60px;
 }
 
 .navbar-cta {
-  background: #00944a;
+  background: linear-gradient(90deg, #00944a 0%, #006a49 100%);
   color: #ffffff;
   display: inline-block;
+  box-shadow: 0 4px 14px rgba(0, 148, 74, 0.35);
 }
 
 .navbar-cta:hover {
-  background: #006a49;
+  filter: brightness(0.95);
 }
 
 .navbar-cta-mobile {
@@ -37,16 +78,41 @@
   background: #006a49;
 }
 
+/* Transparente sobre el hero: texto blanco con sombra sutil para
+   legibilidad sobre cualquier zona de la foto. Al hacer scroll (clase
+   is-scrolled) pasa a texto oscuro sobre fondo blanco sólido. */
 .navbar-link {
-  color: #4b5563;
-  transition: color 180ms ease, opacity 180ms ease;
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0, 3, 6, 0.45);
+  transition: color 180ms ease, opacity 180ms ease, text-shadow 180ms ease;
 }
 
 .navbar-link:hover,
 .navbar-link.is-active {
-  color: #00944a;
+  color: #F09734;
 }
 
 .navbar-link.is-active {
   font-weight: 600;
+}
+
+.navbar-shell.is-scrolled .navbar-link {
+  color: #4b5563;
+  text-shadow: none;
+}
+
+.navbar-shell.is-scrolled .navbar-link:hover,
+.navbar-shell.is-scrolled .navbar-link.is-active {
+  color: #00944a;
+}
+
+.navbar-burger {
+  color: #ffffff;
+  filter: drop-shadow(0 1px 2px rgba(0, 3, 6, 0.45));
+  transition: color 180ms ease;
+}
+
+.navbar-shell.is-scrolled .navbar-burger {
+  color: #00944a;
+  filter: none;
 }

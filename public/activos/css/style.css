@@ -146,7 +146,14 @@ h6 {
 
 /* NAVBAR: reserve space and fading helpers to avoid FOUC when navbar is injected */
 #navbar-container {
-  min-height: 84px; /* spacer height matching .navbar-shell / .navbar-logo */
+  min-height: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+}
+
+.navbar-loading,
+.navbar-loaded {
+  background: transparent !important;
 }
 
 .navbar-loading {
