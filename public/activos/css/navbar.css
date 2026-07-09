@@ -228,13 +228,18 @@
 
 @media (max-width: 768px) {
 
+  /* Reservar espacio para el navbar fixed en mobile */
+  body {
+    padding-top: 110px;
+  }
+
   /* Botón hamburguesa */
   .navbar-burger {
-    color: #ffffff !important;
+    color: #000306 !important;
   }
 
   .navbar-shell.is-scrolled .navbar-burger {
-    color: #F09734 !important;
+    color: #000306 !important;
   }
 
   /* Enlaces del menú móvil */
