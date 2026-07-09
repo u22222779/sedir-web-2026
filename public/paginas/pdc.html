@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es">
+
+<head>
+    <title>Plan de Desarrollo Concertado (PDC) - SEDIR</title>
+    <link rel="icon" href="../activos/img_logos/logo-sedir-links.png" type="image/x-icon">
+
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="description" content="Plan de Desarrollo Concertado de SEDIR: fortalecimiento de capacidades locales en el ámbito de Moro y la Sub Cuenca del Río Loco, bajo la metodología 'aprender haciendo'." />
+
+    <script src="../activos/js/components.js"></script>
+    <script src="../activos/js/navbar.js"></script>
+    <script src="../activos/js/main.js"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="../activos/css/style.css" rel="stylesheet" />
+    <link href="../activos/css/navbar.css" rel="stylesheet" />
+    <link href="../activos/css/footer.css" rel="stylesheet" />
+    <link href="../activos/css/responsive.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&amp;family=Libre+Franklin:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#006b34",
+                        "primary-dark": "#0b4f30",
+                        secondary: "#F09734",
+                        cream: "#F6F1E7",
+                        mint: "#EEF5EC"
+                    },
+                    fontFamily: {
+                        display: ["Montserrat", "sans-serif"],
+                        body: ["Libre Franklin", "sans-serif"]
+                    }
+                }
+            }
+        };
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .pdc-card {
+            transition: transform 300ms ease, box-shadow 300ms ease;
+        }
+
+        .pdc-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -12px rgba(0, 107, 52, 0.25);
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-900 font-body antialiased">
+    <div id="navbar-container" class="navbar-loading" data-component="/components/navbar.html"></div>
+
+    <!-- Hero -->
+    <header class="relative w-full min-h-[380px] md:min-h-[420px] flex items-center justify-center overflow-hidden" style="background:#006A49;">
+        <div class="absolute inset-0 z-0">
+            <img alt="" class="w-full h-full object-cover opacity-25" src="https://sedir.org.pe/imgs/PDCMoro/PDCMoro.jpg" />
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-b from-primary-dark/60 to-primary-dark/90"></div>
+
+        <div class="relative z-10 text-center px-6 max-w-3xl mx-auto py-16">
+            <nav aria-label="Breadcrumb" class="mb-5">
+                <ol class="flex items-center justify-center gap-2 text-xs text-white/70 font-semibold uppercase tracking-wide">
+                    <li><a href="/index.html" class="hover:text-white transition-colors">Inicio</a></li>
+                    <li aria-hidden="true">/</li>
+                    <li><a href="/paginas/quehacemos.html" class="hover:text-white transition-colors">Qué Hacemos</a></li>
+                    <li aria-hidden="true">/</li>
+                    <li class="text-white" aria-current="page">PDC</li>
+                </ol>
+            </nav>
+
+            <span class="inline-block text-secondary font-bold text-sm tracking-wider uppercase mb-3">
+                Plan de Desarrollo Concertado
+            </span>
+            <h1 class="text-3xl md:text-5xl font-display font-extrabold text-white leading-tight mb-5">
+                Fortalecemos capacidades locales para un desarrollo agrícola sostenible
+            </h1>
+            <p class="text-white/90 text-sm md:text-base max-w-2xl mx-auto">
+                Consiste en desarrollar y fortalecer capacidades locales a fin de garantizar la sostenibilidad del
+                desarrollo agrícola. La metodología de los talleres es <strong class="text-white">"aprender
+                    haciendo"</strong>.
+            </p>
+        </div>
+    </header>
+
+    <!-- Selector de ámbito -->
+    <main class="max-w-6xl mx-auto px-6 md:px-10 py-16 md:py-20">
+        <div class="text-center mb-12">
+            <h2 class="font-display font-bold text-2xl md:text-3xl text-gray-900 mb-3">Elige el ámbito de
+                intervención</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto text-sm md:text-base">
+                Trabajamos en dos zonas con realidades productivas distintas, cada una con su propia estrategia de
+                capacitación.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+
+            <a href="/paginas/pdc-moro.html" class="pdc-card group relative rounded-[28px] overflow-hidden shadow-sm border border-gray-100 block">
+                <div class="h-64 md:h-72 w-full overflow-hidden">
+                    <img src="https://sedir.org.pe/imgs/PDCMoro/PDCMoro.jpg" alt="Ámbito Moro"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                    <span class="inline-block bg-secondary text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide mb-3">
+                        300 - 1,300 m.s.n.m
+                    </span>
+                    <h3 class="font-display font-bold text-2xl text-white mb-2">Ámbito Moro</h3>
+                    <p class="text-white/85 text-sm mb-4">
+                        Cultivos frutícolas: predomina la palta y el mango.
+                    </p>
+                    <span class="inline-flex items-center gap-2 text-white font-semibold text-sm">
+                        Ver programa
+                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </span>
+                </div>
+            </a>
+
+            <a href="/paginas/pdc-subcuenca.html" class="pdc-card group relative rounded-[28px] overflow-hidden shadow-sm border border-gray-100 block">
+                <div class="h-64 md:h-72 w-full overflow-hidden">
+                    <img src="https://sedir.org.pe/imgs/PDCSubCuenca/P1260207.JPG" alt="Sub Cuenca del Río Loco"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                    <span class="inline-block bg-secondary text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide mb-3">
+                        1,300 - 4,000 m.s.n.m
+                    </span>
+                    <h3 class="font-display font-bold text-2xl text-white mb-2">Sub Cuenca del Río Loco</h3>
+                    <p class="text-white/85 text-sm mb-4">
+                        16 caseríos, agricultura de autoconsumo y microclimas diversos.
+                    </p>
+                    <span class="inline-flex items-center gap-2 text-white font-semibold text-sm">
+                        Ver programa
+                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </span>
+                </div>
+            </a>
+
+        </div>
+    </main>
+
+    <div id="footer-container" data-component="/components/footer.html"></div>
+    <div id="whatsapp-container" data-component="/components/whatsapp.html"></div>
+</body>
+
+</html>

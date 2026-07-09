@@ -5,6 +5,7 @@ window.initNavbar = function () {
   const overlay = document.getElementById("overlay");
   const mobileMenuBtn = document.getElementById("mobileMenuBtn");
   const mobileSubmenu = document.getElementById("mobileSubmenu");
+  const navbarShell = document.querySelector(".navbar-shell");
 
   if (!menuBtn) return;
 
@@ -27,5 +28,25 @@ window.initNavbar = function () {
     mobileMenuBtn.onclick = () => {
       mobileSubmenu.classList.toggle("hidden");
     };
+  }
+
+  // Navbar transparente -> blanco sólido al hacer scroll (~60px).
+  // El CSS (navbar.css) ya define ambos estados vía la clase .is-scrolled;
+  // aquí solo la activamos/desactivamos según la posición del scroll.
+  if (navbarShell && !navbarShell.dataset.scrollBound) {
+    navbarShell.dataset.scrollBound = "true";
+
+    const SCROLL_THRESHOLD = 60;
+
+    const actualizarEstadoScroll = () => {
+      const debeEstarSolido = window.scrollY > SCROLL_THRESHOLD;
+      navbarShell.classList.toggle("is-scrolled", debeEstarSolido);
+    };
+
+    // Estado inicial correcto sin esperar al primer scroll
+    // (evita parpadeo si la página ya carga con scroll restaurado).
+    actualizarEstadoScroll();
+
+    window.addEventListener("scroll", actualizarEstadoScroll, { passive: true });
   }
 };
