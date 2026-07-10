@@ -1,13 +1,14 @@
 window.initNavbar = function () {
   const menuBtn = document.getElementById("menu-btn");
-  const closeBtn = document.getElementById("close-menu");
   const mobileMenu = document.getElementById("mobile-menu");
   const overlay = document.getElementById("overlay");
   const mobileMenuBtn = document.getElementById("mobileMenuBtn");
   const mobileSubmenu = document.getElementById("mobileSubmenu");
   const navbarShell = document.querySelector(".navbar-shell");
 
-  // Marcar el link activo según la página actual
+  // ===============================
+  // Marcar página activa
+  // ===============================
   const marcarLinkActivo = () => {
     const rutaActual = window.location.pathname;
     const links = document.querySelectorAll(".navbar-link[href]");
@@ -16,64 +17,100 @@ window.initNavbar = function () {
       const href = link.getAttribute("href");
       let esActivo = false;
 
-      // Comparar las rutas
       if (href === "/" && (rutaActual === "/" || rutaActual === "/index.html")) {
         esActivo = true;
       } else if (href && href !== "/" && rutaActual.includes(href.split("/").pop())) {
         esActivo = true;
       }
 
-      if (esActivo) {
-        link.classList.add("is-active");
-      } else {
-        link.classList.remove("is-active");
-      }
+      link.classList.toggle("is-active", esActivo);
     });
   };
 
-  // Ejecutar al cargar
   marcarLinkActivo();
 
   if (!menuBtn) return;
 
-  menuBtn.onclick = () => {
+  // ===============================
+  // Abrir menú
+  // ===============================
+menuBtn.onclick = () => {
+
+  const abierto = menuBtn.classList.contains("active");
+
+
+  if(abierto){
+
+    cerrarMenu();
+
+  } else {
+
     mobileMenu.style.right = "0";
+
     overlay.classList.remove("hidden");
-  };
 
-  closeBtn.onclick = () => {
-    mobileMenu.style.right = "-100%";
-    overlay.classList.add("hidden");
-  };
+    navbarShell.classList.add("menu-open");
 
-  overlay.onclick = () => {
-    mobileMenu.style.right = "-100%";
-    overlay.classList.add("hidden");
-  };
+    menuBtn.classList.add("active");
 
-  if (mobileMenuBtn) {
-    mobileMenuBtn.onclick = () => {
-      mobileSubmenu.classList.toggle("hidden");
-    };
   }
 
-  // Navbar transparente -> blanco sólido al hacer scroll (~60px).
-  // El CSS (navbar.css) ya define ambos estados vía la clase .is-scrolled;
-  // aquí solo la activamos/desactivamos según la posición del scroll.
+};
+
+  // ===============================
+  // Cerrar menú
+  // ===============================
+  const cerrarMenu = () => {
+
+    mobileMenu.style.right = "-100%";
+    overlay.classList.add("hidden");
+
+    navbarShell.classList.remove("menu-open");
+
+    // Regresar X a hamburguesa
+    menuBtn.classList.remove("active");
+
+  };
+
+  // ===============================
+  // Submenú móvil
+  // ===============================
+  if (mobileMenuBtn) {
+
+    mobileMenuBtn.onclick = () => {
+
+      mobileSubmenu.classList.toggle("hidden");
+
+    };
+
+  }
+
+  // ===============================
+  // Navbar sólido al hacer scroll
+  // ===============================
   if (navbarShell && !navbarShell.dataset.scrollBound) {
+
     navbarShell.dataset.scrollBound = "true";
 
     const SCROLL_THRESHOLD = 60;
 
     const actualizarEstadoScroll = () => {
-      const debeEstarSolido = window.scrollY > SCROLL_THRESHOLD;
-      navbarShell.classList.toggle("is-scrolled", debeEstarSolido);
+
+      navbarShell.classList.toggle(
+        "is-scrolled",
+        window.scrollY > SCROLL_THRESHOLD
+      );
+
     };
 
-    // Estado inicial correcto sin esperar al primer scroll
-    // (evita parpadeo si la página ya carga con scroll restaurado).
     actualizarEstadoScroll();
 
-    window.addEventListener("scroll", actualizarEstadoScroll, { passive: true });
+    window.addEventListener(
+      "scroll",
+      actualizarEstadoScroll,
+      { passive: true }
+    );
+
   }
+
 };

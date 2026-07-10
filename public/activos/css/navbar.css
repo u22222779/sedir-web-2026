@@ -222,6 +222,41 @@
     color:#ffffff;
 
 }
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width:768px){
+
+  /* Logo más pequeño */
+
+  .navbar-logo{
+
+      height: 75px;
+      max-height:75px;
+
+  }
+
+  .navbar-shell.is-scrolled .navbar-logo{
+
+      height:52px;
+      max-height:52px;
+
+  }
+
+  /* Cuando el menú está abierto */
+
+  .navbar-shell.menu-open .navbar-logo-container{
+
+      opacity:0;
+
+      transform:translateX(-30px);
+
+      pointer-events:none;
+
+  }
+
 /* ==========================================
    NAVBAR RESPONSIVE
 ========================================== */
@@ -271,5 +306,54 @@
     color: #F09734 !important;
     font-weight: 700;
   }
+
+}
+}
+/* ==========================================
+   HAMBURGUESA ANIMADA A X
+========================================== */
+
+.menu-icon{
+
+    width:32px;
+    height:32px;
+
+}
+
+
+.menu-icon .line{
+
+    transition:
+        transform .35s ease,
+        opacity .25s ease;
+
+    transform-origin:center;
+
+}
+
+
+/* Estado abierto */
+
+#menu-btn.active .line1{
+
+    transform:
+    translateY(6px)
+    rotate(45deg);
+
+}
+
+
+#menu-btn.active .line2{
+
+    opacity:0;
+
+}
+
+
+#menu-btn.active .line3{
+
+    transform:
+    translateY(-6px)
+    rotate(-45deg);
 
 }
