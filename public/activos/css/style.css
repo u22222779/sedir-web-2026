@@ -273,3 +273,36 @@ h6 {
   object-fit: cover;
   display: block;
 }
+html,
+body{
+    width:100%;
+    overflow-x:hidden;
+}
+
+
+img{
+    max-width:100%;
+}
+
+
+section{
+    overflow:hidden;
+}
+
+
+@media(max-width:640px){
+
+    h1{
+        letter-spacing:-0.02em;
+    }
+
+    .photo-contrast::after{
+        background:
+        linear-gradient(
+            180deg,
+            rgba(0,3,6,.15),
+            rgba(0,3,6,.85)
+        );
+    }
+
+}

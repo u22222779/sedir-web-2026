@@ -1,26 +1,56 @@
 <style>
-  /* Hero debajo del navbar en móviles */
-@media (max-width: 768px) {
+  /* Fix del bug de 100vh en móviles (la barra de direcciones cambia el viewport) */
   .hero-home {
-    padding-top: 950px;
+    height: 100vh;
+    height: 100dvh;
+    /* dvh = viewport dinámico real, ignora barra de Safari/Chrome */
   }
-}
+
+  /* Hero debajo del navbar en móviles */
+  @media (max-width: 768px) {
+    .hero-home {
+      padding-top: 950px;
+      min-height: 100dvh;
+    }
+
+    .hero-video {
+      object-position: center 30%;
+    }
+  }
+
+  /* Botón de sonido */
+  .sound-toggle {
+    transition: background-color 0.2s ease, transform 0.15s ease;
+  }
+
+  .sound-toggle:hover {
+    transform: scale(1.08);
+  }
+
+  .sound-toggle:active {
+    transform: scale(0.95);
+  }
 </style>
 <!-- COMPONENT: Hero (rediseñado según Manual de Identidad Visual SEDIR) -->
-<section class="hero-home relative overflow-hidden bg-[#000306] text-white min-h-screen h-screen flex flex-col justify-end">
-  <!-- Foto ancla única + degradado oscuro (Regla de contraste del manual,
-       en vez del carrusel de 5 fotos compitiendo entre sí). -->
+<section class="hero-home relative overflow-hidden bg-[#000306] text-white min-h-screen flex flex-col justify-end">
+  <!-- Video de fondo (local) + degradado oscuro (Regla de contraste del manual) -->
   <div class="absolute inset-0 z-0">
-    <img src="activos/img_portada/Sem4-Portada01.jpg" alt="Productor del Valle de Nepeña trabajando en campo, SEDIR"
-      class="w-full h-full object-cover" />
+    <video id="heroVideo" class="hero-video w-full h-full object-cover object-center"
+      poster="activos/img_portada/Sem4-Portada01.jpg" autoplay muted loop playsinline preload="metadata" data-start="70"
+      data-end="310"
+      data-desktop-src="activos/videos/videoplayback.mp4"
+      data-mobile-src="activos/videos/videoplaybackmobile.mp4">
+      <source src="activos/videos/videoplaybackmobile.mp4" type="video/mp4" media="(max-width: 768px)" />
+      <source src="activos/videos/videoplayback.mp4" type="video/mp4" />
+      Tu navegador no soporta el elemento de video.
+    </video>
     <div class="absolute inset-0 bg-gradient-to-t from-[#000306] via-[#000306]/50 to-[#000306]/10"></div>
     <div class="absolute inset-0 bg-gradient-to-r from-[#000306]/70 via-transparent to-transparent"></div>
   </div>
+
   <!-- Palabra de fondo grande (textura tipográfica), sutil -->
   <div
     class="absolute top-1/2 left-0 -translate-y-1/2 w-full z-[1] select-none pointer-events-none opacity-[0.07] overflow-hidden whitespace-nowrap">
-    <span
-      class="text-[14rem] md:text-[22rem] font-black text-white font-display tracking-widest uppercase">Nepeña</span>
   </div>
 
   <div class="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pb-16 pt-32">
@@ -63,7 +93,8 @@
            fotos reales del equipo (técnica de collage: personas reales,
            no íconos ni stock). -->
       <div class="lg:col-span-5">
-<div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-[28px] rounded-tl-none p-8 shadow-2xl">          <div class="flex items-center -space-x-3 mb-6">
+        <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-[28px] rounded-tl-none p-8 shadow-2xl">
+          <div class="flex items-center -space-x-3 mb-6">
             <div class="w-12 h-12 rounded-full border-2 border-white overflow-hidden">
               <img src="activos/img_investigaciones/investigacion1-08-25.jpg" alt="Técnica de SEDIR en laboratorio"
                 class="w-full h-full object-cover" />
@@ -109,3 +140,120 @@
     </div>
   </div>
 </section>
+
+<script>
+  (function () {
+    function ensureCorrectVideoSource() {
+      const video = document.getElementById('heroVideo');
+      if (!video || video.dataset.srcResolved) return;
+      video.dataset.srcResolved = 'true';
+
+      const isMobile = window.matchMedia('(max-width: 768px)').matches;
+      const desiredSrc = isMobile ? video.dataset.mobileSrc : video.dataset.desktopSrc;
+
+      // Si el <source> activo no coincide con el que corresponde al viewport
+      // (algunos navegadores no re-evalúan bien el atributo media en <video>),
+      // forzamos el src correcto manualmente.
+      const currentSrc = video.currentSrc || video.querySelector('source')?.src || '';
+      if (!currentSrc || !currentSrc.endsWith(desiredSrc.split('/').pop())) {
+        video.innerHTML = `<source src="${desiredSrc}" type="video/mp4">`;
+        video.load();
+      }
+    }
+
+    function initHeroVideo() {
+      const video = document.getElementById('heroVideo');
+      if (!video || video.dataset.initialized) return;
+      video.dataset.initialized = 'true';
+
+      const startTime = parseFloat(video.dataset.start); // 70s = 1:10
+      const endTime = parseFloat(video.dataset.end);      // 310s = 5:10
+
+      const setStart = () => {
+        if (video.currentTime < startTime || video.currentTime >= endTime) {
+          video.currentTime = startTime;
+        }
+      };
+
+      video.addEventListener('loadedmetadata', setStart);
+      video.addEventListener('canplay', setStart, { once: true });
+
+      video.addEventListener('timeupdate', () => {
+        if (video.currentTime >= endTime) {
+          video.currentTime = startTime;
+        }
+      });
+
+      // Si el metadata ya estaba disponible antes de registrar el listener
+      if (video.readyState >= 1) setStart();
+    }
+
+    function updateIcon(video) {
+      const btn = document.getElementById('soundToggle');
+      const iconMuted = document.getElementById('iconMuted');
+      const iconUnmuted = document.getElementById('iconUnmuted');
+      if (!btn || !iconMuted || !iconUnmuted) return;
+
+      if (video.muted) {
+        iconMuted.classList.remove('hidden');
+        iconUnmuted.classList.add('hidden');
+        btn.setAttribute('aria-label', 'Activar sonido');
+      } else {
+        iconMuted.classList.add('hidden');
+        iconUnmuted.classList.remove('hidden');
+        btn.setAttribute('aria-label', 'Silenciar');
+      }
+    }
+
+    // Delegación de eventos: funciona aunque el botón se inserte después,
+    // o si el script se ejecuta antes de que exista el elemento en el DOM.
+    document.addEventListener('click', function (e) {
+      const btn = e.target.closest('#soundToggle');
+      if (!btn) return;
+
+      const video = document.getElementById('heroVideo');
+      if (!video) return;
+
+      video.muted = !video.muted;
+      video.volume = 1;
+
+      if (!video.muted) {
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            // Si el navegador bloquea, forzamos mute de nuevo para no
+            // dejar el ícono desincronizado del estado real
+            video.muted = true;
+            updateIcon(video);
+          });
+        }
+      }
+
+      updateIcon(video);
+    });
+
+    // Inicializa el source correcto y el recorte de tiempo del video en
+    // cuanto exista en el DOM
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        ensureCorrectVideoSource();
+        initHeroVideo();
+      });
+    } else {
+      ensureCorrectVideoSource();
+      initHeroVideo();
+    }
+
+    // Respaldo: si el componente se inyecta dinámicamente después de
+    // DOMContentLoaded (común en sistemas de includes/fetch), revisamos
+    // periódicamente hasta encontrarlo.
+    const observer = new MutationObserver(() => {
+      const video = document.getElementById('heroVideo');
+      if (video && !video.dataset.initialized) {
+        ensureCorrectVideoSource();
+        initHeroVideo();
+      }
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+  })();
+</script>
