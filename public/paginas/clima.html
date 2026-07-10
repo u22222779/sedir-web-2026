@@ -5,7 +5,7 @@
   <title>.:: SEDIR ::.</title>
   <link rel="icon" href="../activos/img_logos/logo-sedir-links.png" type="image/x-icon">
 
-    <meta charset="utf-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="/activos/js/clima.js"></script>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -19,7 +19,6 @@
   <link href="/activos/css/navbar.css" rel="stylesheet" />
   <link href="/activos/css/hero.css" rel="stylesheet" />
   <link href="../activos/css/clima.css" rel="stylesheet" />
-  <link href="/activos/css/dashboard.css" rel="stylesheet" />
   <link href="/activos/css/footer.css" rel="stylesheet" />
   <link href="/activos/css/responsive.css" rel="stylesheet" />
 </head>
@@ -33,9 +32,10 @@
   <nav class="clima-subnav sticky top-[84px] z-40 bg-white/95 backdrop-blur border-b border-gray-200 shadow-sm">
     <div class="max-w-7xl mx-auto px-6 flex gap-6 overflow-x-auto text-sm font-semibold">
       <a href="#resumen" class="clima-subnav__link py-4 whitespace-nowrap transition">Resumen</a>
-      <a href="#en-vivo" class="clima-subnav__link py-4 whitespace-nowrap transition">Clima en vivo</a>
-      <a href="#pronostico" class="clima-subnav__link py-4 whitespace-nowrap transition">Pronóstico 7 días</a>
-      <a href="#estacion-historica" class="clima-subnav__link py-4 whitespace-nowrap transition">Histórico de la estación</a>
+      <a href="#estacion-historica" class="clima-subnav__link py-4 whitespace-nowrap transition">Histórico de la
+        estación</a>
+      <a href="#en-vivo" class="clima-subnav__link py-4 whitespace-nowrap transition">Estación en vivo</a>
+
     </div>
   </nav>
 
@@ -72,7 +72,8 @@
 
         <!-- CARD 2 -->
         <div class="bg-white rounded-3xl p-10 shadow-md border border-gray-200 hover:shadow-xl transition">
-          <div class="w-14 h-14 flex items-center justify-center border-[5px] border-[#00944A] mb-6 rounded-[0_15px_15px_15px]">
+          <div
+            class="w-14 h-14 flex items-center justify-center border-[5px] border-[#00944A] mb-6 rounded-[0_15px_15px_15px]">
             <span class="material-symbols-outlined text-primary">water_drop</span>
           </div>
 
@@ -84,7 +85,8 @@
 
         <!-- CARD 3 -->
         <div class="bg-white rounded-3xl p-10 shadow-md border border-gray-200 hover:shadow-xl transition">
-          <div class="w-14 h-14 flex items-center justify-center border-[5px] border-[#00944A] mb-6 rounded-[0_15px_15px_15px]">
+          <div
+            class="w-14 h-14 flex items-center justify-center border-[5px] border-[#00944A] mb-6 rounded-[0_15px_15px_15px]">
             <span class="material-symbols-outlined text-[#00944A]">eco</span>
           </div>
 
@@ -155,112 +157,101 @@
 
       </div>
 
-    </section>
-    <!-- ================= KPI ================= -->
-    <section id="en-vivo" class="scroll-mt-[150px] bg-[#f7faf7] rounded-3xl p-8 md:p-10 space-y-6">
-      <div class="flex flex-wrap items-center justify-between gap-3">
+      <!-- ================= HISTÓRICO ESTACIÓN METEOROLÓGICA ================= -->
+      <section id="estacion-historica" class="scroll-mt-[150px] space-y-8">
+
         <div>
-          <span class="text-xs font-bold tracking-widest text-primary uppercase">Ahora mismo</span>
-          <h2 class="text-2xl font-bold mt-1">Clima en tiempo real</h2>
-        </div>
-        <span class="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500">
-          <span class="material-symbols-outlined text-sm">satellite_alt</span>
-          Fuente: Open-Meteo (pronóstico para Moro)
-        </span>
-      </div>
-
-      <div id="clima-kpi-container" class="grid grid-cols-2 md:grid-cols-5 gap-4"></div>
-
-      <template id="clima-kpi-template">
-        <div class="glass-card p-6 text-center rounded-xl">
-          <span class="material-symbols-outlined text-3xl">{{icon}}</span>
-          <div class="text-xl font-bold mt-2">{{value}}</div>
-          <div class="text-sm text-gray-500">{{label}}</div>
-        </div>
-      </template>
-    </section>
-
-    <!-- ================= PRONÓSTICO ================= -->
-    <section id="pronostico" class="scroll-mt-[150px] space-y-4">
-
-      <div class="flex flex-wrap justify-between items-center gap-3">
-        <div>
-          <span class="text-xs font-bold tracking-widest text-primary uppercase">Próximos días</span>
-          <h2 class="text-2xl font-bold mt-1">Pronóstico (7 días)</h2>
+          <span class="text-xs font-bold tracking-widest text-primary uppercase">Registro propio</span>
+          <h2 class="text-3xl font-bold text-green-900 mt-1">Histórico de nuestra Estación Meteorológica</h2>
+          <p class="text-sm text-gray-500 mt-2 max-w-2xl">
+            Estación física de SEDIR ubicada en el distrito de Moro (485 m.s.n.m.). Elegí el año, el mes y las
+            condiciones climáticas que querés consultar del registro histórico 2019 – 2024.
+          </p>
+          <div class="w-16 h-1 bg-primary rounded-full mt-3"></div>
         </div>
 
-        <button id="clima-csv-btn" type="button"
-          class="bg-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold inline-flex items-center gap-2 hover:bg-green-700 transition">
-          <span class="material-symbols-outlined text-base">download</span>
-          Descargar CSV
-        </button>
-      </div>
+        <!-- FILTROS -->
+        <form id="estacion-form" class="bg-white rounded-3xl p-8 shadow-md border border-gray-200 space-y-6">
+          <div class="flex flex-wrap gap-6">
+            <div>
+              <label class="block text-xs font-semibold text-gray-500 mb-1" for="estacion-anio">Año</label>
+              <select id="estacion-anio"
+                class="border border-gray-300 rounded-lg px-4 py-2 text-sm min-w-[120px]"></select>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-gray-500 mb-1" for="estacion-mes">Mes</label>
+              <select id="estacion-mes"
+                class="border border-gray-300 rounded-lg px-4 py-2 text-sm min-w-[160px]"></select>
+            </div>
+          </div>
 
-      <div class="overflow-x-auto glass-card rounded-xl">
+          <div>
+            <label class="block text-xs font-semibold text-gray-500 mb-2">Condición climática</label>
+            <div id="estacion-variables" class="flex flex-wrap gap-3"></div>
+          </div>
 
-        <table class="w-full min-w-[700px] text-left border-collapse">
+          <button id="estacion-buscar" type="submit"
+            class="bg-primary text-white px-6 py-3 rounded-full font-semibold text-sm inline-flex items-center gap-2 hover:bg-green-800 transition">
+            <span class="material-symbols-outlined text-lg">search</span>
+            Buscar
+          </button>
+        </form>
 
-          <thead>
-            <tr class="border-b">
-              <th class="p-3">Fecha</th>
-              <th class="p-3">Máx °C</th>
-              <th class="p-3">Mín °C</th>
-              <th class="p-3">UV máx</th>
-              <th class="p-3">Viento</th>
-              <th class="p-3">Lluvia</th>
-            </tr>
-          </thead>
+        <!-- RESULTADOS -->
+        <div id="estacion-resultados" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+        <div class="flex items-center justify-center gap-4">
+          <div class="flex-1 h-px bg-gray-200"></div>
+          <span class="material-symbols-outlined text-primary">eco</span>
+          <div class="flex-1 h-px bg-gray-200"></div>
+        </div>
+      </section>
+      <!-- ================= ESTACIÓN EN VIVO (WEATHERLINK) ================= -->
+      <section id="en-vivo"
+        class="scroll-mt-[150px] bg-[#f7faf7] rounded-2xl sm:rounded-3xl p-4 sm:p-8 md:p-10 space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <div>
+            <span class="text-xs font-bold tracking-widest text-primary uppercase">Ahora mismo</span>
+            <h2 class="text-xl sm:text-2xl font-bold mt-1">Estación en vivo</h2>
+          </div>
+          <span
+            class="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500 self-start sm:self-auto">
+            <span class="material-symbols-outlined text-sm">satellite_alt</span>
+            Fuente: WeatherLink (estación SEDIR - Moro)
+          </span>
+        </div>
 
-          <tbody id="clima-history-body"></tbody>
-
-        </table>
-
-      </div>
-
-    </section>
-
-    <!-- ================= HISTÓRICO ESTACIÓN METEOROLÓGICA ================= -->
-    <section id="estacion-historica" class="scroll-mt-[150px] space-y-8">
-
-      <div>
-        <span class="text-xs font-bold tracking-widest text-primary uppercase">Registro propio</span>
-        <h2 class="text-3xl font-bold text-green-900 mt-1">Histórico de nuestra Estación Meteorológica</h2>
-        <p class="text-sm text-gray-500 mt-2 max-w-2xl">
-          Estación física de SEDIR ubicada en el distrito de Moro (485 m.s.n.m.). Elegí el año, el mes y las
-          condiciones climáticas que querés consultar del registro histórico 2019 – 2024.
+        <p class="text-sm text-gray-500 max-w-2xl">
+          Consulta en tiempo real todas las variables que mide nuestra estación meteorológica física en Moro:
+          temperatura, humedad, viento, presión y precipitación, directamente desde la plataforma oficial WeatherLink.
         </p>
-        <div class="w-16 h-1 bg-primary rounded-full mt-3"></div>
-      </div>
 
-      <!-- FILTROS -->
-      <form id="estacion-form" class="bg-white rounded-3xl p-8 shadow-md border border-gray-200 space-y-6">
-        <div class="flex flex-wrap gap-6">
-          <div>
-            <label class="block text-xs font-semibold text-gray-500 mb-1" for="estacion-anio">Año</label>
-            <select id="estacion-anio" class="border border-gray-300 rounded-lg px-4 py-2 text-sm min-w-[120px]"></select>
+        <div class="bg-white rounded-2xl sm:rounded-3xl shadow-md border border-gray-200 overflow-hidden">
+          <div
+            class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 px-4 sm:px-6 py-4 border-b border-gray-100">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 bg-primary rounded-full animate-pulse shrink-0"></span>
+              <span class="font-semibold text-sm">Panel WeatherLink - Estación SEDIR</span>
+            </div>
+            <a href="https://www.weatherlink.com/embeddablePage/show/048aa7c5bd19418e89ee77fb4351cf56/summary"
+              target="_blank" rel="noopener noreferrer"
+              class="bg-primary text-white px-4 py-2.5 sm:py-2 rounded-full text-sm font-semibold inline-flex items-center justify-center gap-2 hover:bg-green-800 transition w-full sm:w-auto shrink-0">
+              <span class="material-symbols-outlined text-base">open_in_new</span>
+              Ver en pantalla completa
+            </a>
           </div>
-          <div>
-            <label class="block text-xs font-semibold text-gray-500 mb-1" for="estacion-mes">Mes</label>
-            <select id="estacion-mes" class="border border-gray-300 rounded-lg px-4 py-2 text-sm min-w-[160px]"></select>
+
+          <!-- Contenedor responsivo del embed: alto fijo por breakpoint en vez de aspect-ratio, -->
+          <!-- para que el panel de WeatherLink (que es alto y con scroll interno) se vea completo -->
+          <!-- en celulares, tablets y escritorio, con scroll táctil suave en iOS. -->
+          <div class="w-full h-[480px] sm:h-[560px] md:h-[640px] lg:h-[720px] overflow-y-auto"
+            style="-webkit-overflow-scrolling: touch;">
+            <iframe src="https://www.weatherlink.com/embeddablePage/show/048aa7c5bd19418e89ee77fb4351cf56/summary"
+              title="Estación meteorológica SEDIR en vivo - WeatherLink" class="w-full h-full border-0" loading="lazy"
+              scrolling="yes">
+            </iframe>
           </div>
         </div>
-
-        <div>
-          <label class="block text-xs font-semibold text-gray-500 mb-2">Condición climática</label>
-          <div id="estacion-variables" class="flex flex-wrap gap-3"></div>
-        </div>
-
-        <button id="estacion-buscar" type="submit"
-          class="bg-primary text-white px-6 py-3 rounded-full font-semibold text-sm inline-flex items-center gap-2 hover:bg-green-800 transition">
-          <span class="material-symbols-outlined text-lg">search</span>
-          Buscar
-        </button>
-      </form>
-
-      <!-- RESULTADOS -->
-      <div id="estacion-resultados" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
-
-    </section>
+      </section>
 
   </main>
 
@@ -269,9 +260,7 @@
 
   <script src="/activos/js/components.js" defer></script>
   <script src="/activos/js/navbar.js" defer></script>
-  <script src="/activos/js/dashboard.js" defer></script>
   <script src="/activos/js/main.js" defer></script>
-  <script src="/activos/js/clima.js" defer></script>
   <script src="/activos/js/estacion-historica.js" defer></script>
   <script src="/activos/js/clima-subnav.js" defer></script>
 </body>
