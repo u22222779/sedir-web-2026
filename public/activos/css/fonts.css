@@ -1,0 +1,63 @@
+/* ==========================
+   TIPOGRAFIAS SEDIR
+   Montserrat: Light / Regular / Medium / SemiBold / Bold
+   Franklin Gothic Demi: Regular / Italic
+========================== */
+
+/* --- Montserrat --- */
+@font-face {
+  font-family: "Montserrat";
+  src: url("../fonts/montserrat/Montserrat-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("../fonts/montserrat/Montserrat-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("../fonts/montserrat/Montserrat-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("../fonts/montserrat/Montserrat-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("../fonts/montserrat/Montserrat-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* --- Franklin Gothic Demi --- */
+@font-face {
+  font-family: "Franklin Gothic Demi";
+  src: url("../fonts/franklin-gothic-demi/FranklinGothicDemi-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Franklin Gothic Demi";
+  src: url("../fonts/franklin-gothic-demi/FranklinGothicDemi-Italic.woff2") format("woff2");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
