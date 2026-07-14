@@ -225,6 +225,74 @@
           temperatura, humedad, viento, presión y precipitación, directamente desde la plataforma oficial WeatherLink.
         </p>
 
+        <!-- DASHBOARD DE TARJETAS EN VIVO -->
+        <div class="bg-white rounded-2xl sm:rounded-3xl shadow-md border border-gray-200 p-6 space-y-6">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <span id="wl-estado"
+              class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-500">
+              Conectando...
+            </span>
+            <span id="wl-actualizado" class="text-xs text-gray-400">Última actualización: --</span>
+          </div>
+
+          <p id="wl-error"
+            class="hidden text-sm text-red-600 bg-red-50 border border-red-100 rounded-xl px-4 py-3"></p>
+
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <!-- Temperatura -->
+            <div class="rounded-2xl border border-gray-200 p-5 text-center">
+              <span class="material-symbols-outlined text-primary text-3xl">thermostat</span>
+              <p id="wl-temp" class="text-3xl font-bold mt-2">--°C</p>
+              <p class="text-xs text-gray-500 mt-1">Temperatura</p>
+              <p id="wl-sensacion" class="text-xs text-gray-400">Sensación: --°C</p>
+            </div>
+
+            <!-- Humedad -->
+            <div class="rounded-2xl border border-gray-200 p-5 text-center">
+              <span class="material-symbols-outlined text-primary text-3xl">humidity_percentage</span>
+              <p id="wl-humedad" class="text-3xl font-bold mt-2">--%</p>
+              <p class="text-xs text-gray-500 mt-1">Humedad relativa</p>
+            </div>
+
+            <!-- Viento -->
+            <div class="rounded-2xl border border-gray-200 p-5 text-center">
+              <span class="material-symbols-outlined text-primary text-3xl">air</span>
+              <p id="wl-viento" class="text-3xl font-bold mt-2">-- km/h</p>
+              <p class="text-xs text-gray-500 mt-1">Viento (<span id="wl-viento-dir">--</span>)</p>
+              <p id="wl-viento-rafaga" class="text-xs text-gray-400">Ráfaga: -- km/h</p>
+            </div>
+
+            <!-- Presión -->
+            <div class="rounded-2xl border border-gray-200 p-5 text-center">
+              <span class="material-symbols-outlined text-primary text-3xl">speed</span>
+              <p id="wl-presion" class="text-3xl font-bold mt-2">-- hPa</p>
+              <p class="text-xs text-gray-500 mt-1">Presión barométrica</p>
+            </div>
+
+            <!-- Lluvia -->
+            <div class="rounded-2xl border border-gray-200 p-5 text-center">
+              <span class="material-symbols-outlined text-primary text-3xl">rainy</span>
+              <p id="wl-lluvia-dia" class="text-3xl font-bold mt-2">-- mm</p>
+              <p class="text-xs text-gray-500 mt-1">Lluvia acumulada (hoy)</p>
+              <p id="wl-lluvia-tasa" class="text-xs text-gray-400">Tasa: -- mm/h</p>
+            </div>
+
+            <!-- UV -->
+            <div class="rounded-2xl border border-gray-200 p-5 text-center">
+              <span class="material-symbols-outlined text-primary text-3xl">wb_sunny</span>
+              <p id="wl-uv" class="text-3xl font-bold mt-2">--</p>
+              <p class="text-xs text-gray-500 mt-1">Índice UV</p>
+            </div>
+
+            <!-- Radiación solar -->
+            <div class="rounded-2xl border border-gray-200 p-5 text-center">
+              <span class="material-symbols-outlined text-primary text-3xl">solar_power</span>
+              <p id="wl-solar" class="text-3xl font-bold mt-2">-- W/m²</p>
+              <p class="text-xs text-gray-500 mt-1">Radiación solar</p>
+            </div>
+          </div>
+        </div>
+
         <div class="bg-white rounded-2xl sm:rounded-3xl shadow-md border border-gray-200 overflow-hidden">
           <div
             class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 px-4 sm:px-6 py-4 border-b border-gray-100">
@@ -262,6 +330,7 @@
   <script src="/activos/js/navbar.js" defer></script>
   <script src="/activos/js/main.js" defer></script>
   <script src="/activos/js/estacion-historica.js" defer></script>
+  <script src="/activos/js/clima-dashboard.js" defer></script>
   <script src="/activos/js/clima-subnav.js" defer></script>
 </body>
 
