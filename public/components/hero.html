@@ -1,259 +1,142 @@
 <style>
-  /* Fix del bug de 100vh en móviles (la barra de direcciones cambia el viewport) */
-  .hero-home {
-    height: 100vh;
-    height: 100dvh;
-    /* dvh = viewport dinámico real, ignora barra de Safari/Chrome */
-  }
+/* ==========================
+   HERO SLIDESHOW
+========================== */
 
-  /* Hero debajo del navbar en móviles */
-  @media (max-width: 768px) {
-    .hero-home {
-      padding-top: 950px;
-      min-height: 100dvh;
+.hero-home{
+    position:relative;
+    width:100%;
+    height:550px;
+    overflow:hidden;
+    background:#000306;
+}
+
+#heroSlideshow{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+}
+
+.hero-slide{
+    position:absolute;
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+    object-position:center 40%;
+
+    opacity:0;
+
+    animation:heroFade 30s infinite;
+}
+
+/* Imagen 1 */
+.hero-slide:nth-child(1){
+    animation-delay:0s;
+}
+
+/* Imagen 2 */
+.hero-slide:nth-child(2){
+    animation-delay:4s;
+}
+
+/* Imagen 3 */
+.hero-slide:nth-child(3){
+    animation-delay:8s;
+}
+
+/* Imagen 4 */
+.hero-slide:nth-child(4){
+    animation-delay:12s;
+}
+
+/* Imagen 5 */
+.hero-slide:nth-child(5){
+    animation-delay:16s;
+}
+
+/* Imagen 6 */
+.hero-slide:nth-child(6){
+    animation-delay:20s;
+}
+
+@keyframes heroFade{
+
+    0%{
+        opacity:0;
     }
 
-    .hero-video {
-      object-position: center 30%;
+    4%{
+        opacity:1;
     }
-  }
 
-  /* Botón de sonido */
-  .sound-toggle {
-    transition: background-color 0.2s ease, transform 0.15s ease;
-  }
+    16%{
+        opacity:1;
+    }
 
-  .sound-toggle:hover {
-    transform: scale(1.08);
-  }
+    20%{
+        opacity:0;
+    }
 
-  .sound-toggle:active {
-    transform: scale(0.95);
-  }
+    100%{
+        opacity:0;
+    }
+
+}
+
+@media (max-width:768px){
+
+    .hero-home{
+        height:420px;
+    }
+
+    .hero-slide{
+        object-position:center 30%;
+    }
+
+}
 </style>
-<!-- COMPONENT: Hero (rediseñado según Manual de Identidad Visual SEDIR) -->
-<section class="hero-home relative overflow-hidden bg-[#000306] text-white min-h-screen flex flex-col justify-end">
-  <!-- Video de fondo (local) + degradado oscuro (Regla de contraste del manual) -->
-  <div class="absolute inset-0 z-0">
-    <video id="heroVideo" class="hero-video w-full h-full object-cover object-center"
-      poster="activos/img_portada/Sem4-Portada01.jpg" autoplay muted loop playsinline preload="metadata" data-start="70"
-      data-end="310"
-      data-desktop-src="activos/videos/videoplayback.mp4"
-      data-mobile-src="activos/videos/videoplaybackmobile.mp4">
-      <source src="activos/videos/videoplaybackmobile.mp4" type="video/mp4" media="(max-width: 768px)" />
-      <source src="activos/videos/videoplayback.mp4" type="video/mp4" />
-      Tu navegador no soporta el elemento de video.
-    </video>
-    <div class="absolute inset-0 bg-gradient-to-t from-[#000306] via-[#000306]/50 to-[#000306]/10"></div>
-    <div class="absolute inset-0 bg-gradient-to-r from-[#000306]/70 via-transparent to-transparent"></div>
-  </div>
 
-  <!-- Palabra de fondo grande (textura tipográfica), sutil -->
-  <div
-    class="absolute top-1/2 left-0 -translate-y-1/2 w-full z-[1] select-none pointer-events-none opacity-[0.07] overflow-hidden whitespace-nowrap">
-  </div>
+<section class="hero-home">
 
-  <div class="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pb-16 pt-32">
+    <div id="heroSlideshow">
 
-    <!-- Maquetación en L: contenido anclado abajo-izquierda, tarjetas de
-         métricas ancladas abajo-derecha (asimetría, no 50/50 centrado). -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
+        <img
+            class="hero-slide"
+            src="activos/img_portada/Sem4-Portada01.jpg"
+            alt="Imagen 1">
 
-      <!-- Columna de texto: 7/12 (proporción asimétrica, no mitad y mitad) -->
-      <div class="lg:col-span-7">
+        <img
+            class="hero-slide"
+            src="activos/img_portada/Sem4-Portada02.jpg"
+            alt="Imagen 2">
 
+        <img
+            class="hero-slide"
+            src="activos/img_portada/Sem4-Portada03.jpg"
+            alt="Imagen 3">
 
-        <h1 class="font-display font-extrabold leading-[0.95] mb-6 text-5xl md:text-6xl lg:text-7xl">
-          Impulsamos el desarrollo<br />
-          rural <span class="text-[#F09734]">sostenible</span>
-        </h1>
+        <img
+            class="hero-slide"
+            src="activos/img_portada/Sem4-Portada04.jpg"
+            alt="Imagen 4">
 
-        <p class="text-lg text-gray-200 max-w-xl mb-10 leading-relaxed">
-          Fortalecemos capacidades productivas y mejoramos la calidad de vida de más de 4,000 familias en el
-          Valle de Nepeña, Áncash.
-        </p>
+        <img
+            class="hero-slide"
+            src="activos/img_portada/Sem4-Portada05.jpg"
+            alt="Imagen 5">
 
-        <div class="flex flex-wrap gap-4">
-          <a href="../paginas/proyectos.html"
-            class="inline-flex items-center gap-2 bg-[#00944A] hover:bg-[#006A49] text-white px-8 py-4 rounded-full font-bold uppercase text-sm tracking-wide transition-colors">
-            Conoce nuestros proyectos
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
-              stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </a>
-          <a href="../paginas/contacto.html"
-            class="inline-flex items-center gap-2 border-2 border-white/70 hover:bg-white hover:text-[#000306] text-white px-8 py-4 rounded-full font-bold uppercase text-sm tracking-wide transition-colors">
-            Contáctanos
-          </a>
-        </div>
-      </div>
-
-      <!-- Columna de métricas: 5/12, tarjeta "glass" con datos reales y
-           fotos reales del equipo (técnica de collage: personas reales,
-           no íconos ni stock). -->
-      <div class="lg:col-span-5">
-        <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-[28px] rounded-tl-none p-8 shadow-2xl">
-          <div class="flex items-center -space-x-3 mb-6">
-            <div class="w-12 h-12 rounded-full border-2 border-white overflow-hidden">
-              <img src="activos/img_investigaciones/investigacion1-08-25.jpg" alt="Técnica de SEDIR en laboratorio"
-                class="w-full h-full object-cover" />
-            </div>
-            <div class="w-12 h-12 rounded-full border-2 border-white overflow-hidden">
-              <img src="activos/img_unidades_productivas/apicultura-08-25.jpg" alt="Técnicos de SEDIR en unidad apícola"
-                class="w-full h-full object-cover object-top" />
-            </div>
-            <div
-              class="w-12 h-12 rounded-full border-2 border-white overflow-hidden bg-[#00944A] flex items-center justify-center">
-              <span class="text-white text-xs font-bold">+665</span>
-            </div>
-          </div>
-
-          <div class="grid grid-cols-2 gap-6">
-            <div>
-              <p class="font-display font-black text-4xl leading-none mb-1">4,000<span class="text-[#F09734]">+</span>
-              </p>
-              <p class="text-xs tracking-widest uppercase text-gray-300">Familias<br />beneficiadas</p>
-            </div>
-            <div>
-              <p class="font-display font-black text-4xl leading-none mb-1">665</p>
-              <p class="text-xs tracking-widest uppercase text-gray-300">Emprendedores<br />formados</p>
-            </div>
-          </div>
-
-          <div class="h-px bg-white/20 my-6"></div>
-
-          <div class="flex items-center justify-between">
-            <div>
-              <p class="font-display font-black text-3xl leading-none mb-1">450<span class="text-[#F09734]">+</span></p>
-              <p class="text-xs tracking-widest uppercase text-gray-300">Mujeres empoderadas</p>
-            </div>
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-[#00944a]" fill="none" stroke="currentColor"
-              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-              <path d="M5 21c8 0 14-6 14-14C11 7 5 13 5 21z" />
-              <path d="M5 21c3-6 8-11 14-14" />
-            </svg>
-          </div>
-        </div>
-      </div>
+        <img
+            class="hero-slide"
+            src="activos/img_portada/Sem5-Portada01.jpg"
+            alt="Imagen 6">
 
     </div>
-  </div>
+
+    <!-- Degradado -->
+    <div class="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/40 to-transparent pointer-events-none"></div>
+
 </section>
-
-<script>
-  (function () {
-    function ensureCorrectVideoSource() {
-      const video = document.getElementById('heroVideo');
-      if (!video || video.dataset.srcResolved) return;
-      video.dataset.srcResolved = 'true';
-
-      const isMobile = window.matchMedia('(max-width: 768px)').matches;
-      const desiredSrc = isMobile ? video.dataset.mobileSrc : video.dataset.desktopSrc;
-
-      // Si el <source> activo no coincide con el que corresponde al viewport
-      // (algunos navegadores no re-evalúan bien el atributo media en <video>),
-      // forzamos el src correcto manualmente.
-      const currentSrc = video.currentSrc || video.querySelector('source')?.src || '';
-      if (!currentSrc || !currentSrc.endsWith(desiredSrc.split('/').pop())) {
-        video.innerHTML = `<source src="${desiredSrc}" type="video/mp4">`;
-        video.load();
-      }
-    }
-
-    function initHeroVideo() {
-      const video = document.getElementById('heroVideo');
-      if (!video || video.dataset.initialized) return;
-      video.dataset.initialized = 'true';
-
-      const startTime = parseFloat(video.dataset.start); // 70s = 1:10
-      const endTime = parseFloat(video.dataset.end);      // 310s = 5:10
-
-      const setStart = () => {
-        if (video.currentTime < startTime || video.currentTime >= endTime) {
-          video.currentTime = startTime;
-        }
-      };
-
-      video.addEventListener('loadedmetadata', setStart);
-      video.addEventListener('canplay', setStart, { once: true });
-
-      video.addEventListener('timeupdate', () => {
-        if (video.currentTime >= endTime) {
-          video.currentTime = startTime;
-        }
-      });
-
-      // Si el metadata ya estaba disponible antes de registrar el listener
-      if (video.readyState >= 1) setStart();
-    }
-
-    function updateIcon(video) {
-      const btn = document.getElementById('soundToggle');
-      const iconMuted = document.getElementById('iconMuted');
-      const iconUnmuted = document.getElementById('iconUnmuted');
-      if (!btn || !iconMuted || !iconUnmuted) return;
-
-      if (video.muted) {
-        iconMuted.classList.remove('hidden');
-        iconUnmuted.classList.add('hidden');
-        btn.setAttribute('aria-label', 'Activar sonido');
-      } else {
-        iconMuted.classList.add('hidden');
-        iconUnmuted.classList.remove('hidden');
-        btn.setAttribute('aria-label', 'Silenciar');
-      }
-    }
-
-    // Delegación de eventos: funciona aunque el botón se inserte después,
-    // o si el script se ejecuta antes de que exista el elemento en el DOM.
-    document.addEventListener('click', function (e) {
-      const btn = e.target.closest('#soundToggle');
-      if (!btn) return;
-
-      const video = document.getElementById('heroVideo');
-      if (!video) return;
-
-      video.muted = !video.muted;
-      video.volume = 1;
-
-      if (!video.muted) {
-        const playPromise = video.play();
-        if (playPromise !== undefined) {
-          playPromise.catch(() => {
-            // Si el navegador bloquea, forzamos mute de nuevo para no
-            // dejar el ícono desincronizado del estado real
-            video.muted = true;
-            updateIcon(video);
-          });
-        }
-      }
-
-      updateIcon(video);
-    });
-
-    // Inicializa el source correcto y el recorte de tiempo del video en
-    // cuanto exista en el DOM
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', () => {
-        ensureCorrectVideoSource();
-        initHeroVideo();
-      });
-    } else {
-      ensureCorrectVideoSource();
-      initHeroVideo();
-    }
-
-    // Respaldo: si el componente se inyecta dinámicamente después de
-    // DOMContentLoaded (común en sistemas de includes/fetch), revisamos
-    // periódicamente hasta encontrarlo.
-    const observer = new MutationObserver(() => {
-      const video = document.getElementById('heroVideo');
-      if (video && !video.dataset.initialized) {
-        ensureCorrectVideoSource();
-        initHeroVideo();
-      }
-    });
-    observer.observe(document.body, { childList: true, subtree: true });
-  })();
-</script>
