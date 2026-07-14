@@ -1,4 +1,24 @@
 /* SECTION: Generic Component Loader */
+
+// Los <script> insertados via innerHTML NO se ejecutan automaticamente
+// (restriccion de seguridad de los navegadores). Esta funcion los busca
+// dentro del contenedor recien inyectado y los vuelve a crear como
+// elementos <script> nuevos, lo que si dispara su ejecucion.
+function executeInjectedScripts(container) {
+  var scripts = Array.from(container.querySelectorAll("script"));
+
+  scripts.forEach(function (oldScript) {
+    var newScript = document.createElement("script");
+
+    Array.from(oldScript.attributes).forEach(function (attr) {
+      newScript.setAttribute(attr.name, attr.value);
+    });
+
+    newScript.textContent = oldScript.textContent;
+    oldScript.parentNode.replaceChild(newScript, oldScript);
+  });
+}
+
 async function loadComponent(targetId, componentPath) {
   var target = document.getElementById(targetId);
   if (!target) {
@@ -12,6 +32,7 @@ async function loadComponent(targetId, componentPath) {
     }
 
     target.innerHTML = await response.text();
+    executeInjectedScripts(target);
   } catch (error) {
     console.error(error);
   }
@@ -37,6 +58,7 @@ async function loadComponentsFromDataAttributes() {
           }
 
           target.innerHTML = await response.text();
+          executeInjectedScripts(target);
 
           requestAnimationFrame(function () {
             target.classList.remove('navbar-loading');
@@ -65,6 +87,7 @@ async function loadComponentsFromDataAttributes() {
         }
 
         target.innerHTML = await response.text();
+        executeInjectedScripts(target);
       } catch (error) {
         console.error(error);
       }
@@ -82,6 +105,7 @@ async function loadNavbar() {
     var response = await fetch('/components/navbar.html');
     if (!response.ok) throw new Error('No se pudo cargar /components/navbar.html');
     container.innerHTML = await response.text();
+    executeInjectedScripts(container);
 
     requestAnimationFrame(function () {
       container.classList.remove('navbar-loading');

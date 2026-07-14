@@ -9,6 +9,7 @@
     height:550px;
     overflow:hidden;
     background:#000306;
+    box-shadow:0 12px 24px -8px rgba(0,0,0,.35);
 }
 
 #heroSlideshow{
@@ -18,7 +19,7 @@
     height:100%;
 }
 
-.hero-slide{
+.hero-video{
     position:absolute;
     inset:0;
 
@@ -27,64 +28,13 @@
 
     object-fit:cover;
     object-position:center 40%;
-
-    opacity:0;
-
-    animation:heroFade 30s infinite;
 }
 
-/* Imagen 1 */
-.hero-slide:nth-child(1){
-    animation-delay:0s;
-}
-
-/* Imagen 2 */
-.hero-slide:nth-child(2){
-    animation-delay:4s;
-}
-
-/* Imagen 3 */
-.hero-slide:nth-child(3){
-    animation-delay:8s;
-}
-
-/* Imagen 4 */
-.hero-slide:nth-child(4){
-    animation-delay:12s;
-}
-
-/* Imagen 5 */
-.hero-slide:nth-child(5){
-    animation-delay:16s;
-}
-
-/* Imagen 6 */
-.hero-slide:nth-child(6){
-    animation-delay:20s;
-}
-
-@keyframes heroFade{
-
-    0%{
-        opacity:0;
-    }
-
-    4%{
-        opacity:1;
-    }
-
-    16%{
-        opacity:1;
-    }
-
-    20%{
-        opacity:0;
-    }
-
-    100%{
-        opacity:0;
-    }
-
+.hero-overlay{
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.35);
+    pointer-events:none;
 }
 
 @media (max-width:768px){
@@ -93,7 +43,7 @@
         height:420px;
     }
 
-    .hero-slide{
+    .hero-video{
         object-position:center 30%;
     }
 
@@ -104,39 +54,79 @@
 
     <div id="heroSlideshow">
 
-        <img
-            class="hero-slide"
-            src="activos/img_portada/Sem4-Portada01.jpg"
-            alt="Imagen 1">
+        <video
+            id="heroVideo"
+            class="hero-video"
+            autoplay
+            muted
+            playsinline
+            preload="auto">
 
-        <img
-            class="hero-slide"
-            src="activos/img_portada/Sem4-Portada02.jpg"
-            alt="Imagen 2">
+            <source src="activos/videos/VIDEO.mp4" type="video/mp4">
 
-        <img
-            class="hero-slide"
-            src="activos/img_portada/Sem4-Portada03.jpg"
-            alt="Imagen 3">
-
-        <img
-            class="hero-slide"
-            src="activos/img_portada/Sem4-Portada04.jpg"
-            alt="Imagen 4">
-
-        <img
-            class="hero-slide"
-            src="activos/img_portada/Sem4-Portada05.jpg"
-            alt="Imagen 5">
-
-        <img
-            class="hero-slide"
-            src="activos/img_portada/Sem5-Portada01.jpg"
-            alt="Imagen 6">
+        </video>
 
     </div>
 
-    <!-- Degradado -->
+    <div class="hero-overlay"></div>
+
     <div class="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/40 to-transparent pointer-events-none"></div>
 
 </section>
+
+<script>
+
+(function(){
+
+    const video = document.getElementById("heroVideo");
+
+    if(!video) return;
+
+    const INICIO = 6;
+    const FIN = 88;
+
+    // Cuando el video ya tiene la metadata
+    video.addEventListener("loadedmetadata", function(){
+
+        video.currentTime = INICIO;
+
+    });
+
+    // Cuando ya puede reproducirse
+    video.addEventListener("canplay", function(){
+
+        video.play().catch(()=>{});
+
+    });
+
+    // Bucle manual
+    video.addEventListener("timeupdate", function(){
+
+        if(video.currentTime >= FIN){
+
+            video.currentTime = INICIO;
+
+            video.play().catch(()=>{});
+
+        }
+
+    });
+
+    // Si llega al final del archivo
+    video.addEventListener("ended", function(){
+
+        video.currentTime = INICIO;
+
+        video.play().catch(()=>{});
+
+    });
+
+    // Si al momento de correr este script el video ya tenia metadata cargada
+    // (puede pasar si el navegador cacheo el video), forzamos el inicio ya mismo.
+    if (video.readyState >= 1 && video.currentTime < INICIO) {
+        video.currentTime = INICIO;
+    }
+
+})();
+
+</script>
