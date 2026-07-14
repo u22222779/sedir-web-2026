@@ -1,125 +1,127 @@
 <style>
-/* ==========================
+    /* ==========================
    HERO SLIDESHOW
 ========================== */
 
-.hero-home{
-    position:relative;
-    width:100%;
-    height:550px;
-    overflow:hidden;
-    background:#000306;
-    box-shadow:0 12px 24px -8px rgba(0,0,0,.35);
-}
-
-#heroSlideshow{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-}
-
-.hero-video{
-    position:absolute;
-    inset:0;
-
-    width:100%;
-    height:100%;
-
-    object-fit:cover;
-    object-position:center 40%;
-}
-
-.hero-overlay{
-    position:absolute;
-    inset:0;
-    background:rgba(0,0,0,.35);
-    pointer-events:none;
-}
-
-.hero-content{
-    position:absolute;
-    inset:0;
-    z-index:2;
-    display:flex;
-    align-items:flex-end;         /* antes: center */
-    padding-inline:1.5rem;
-    padding-bottom:4.5rem;         /* controla qué tan abajo quedan */
-}
-
-.hero-buttons{
-    display:flex;
-    flex-wrap:wrap;
-    gap:1rem;
-    max-width:1280px;
-    margin-inline:auto;
-    width:100%;
-}
-
-.hero-btn{
-    display:inline-flex;
-    align-items:center;
-    gap:.5rem;
-    padding:.9rem 2rem;
-    border-radius:9999px;
-    font-weight:700;
-    font-size:1rem;
-    transition:all .2s ease;
-}
-
-.hero-btn-primary{
-    background:#00944A;
-    color:#fff;
-}
-
-.hero-btn-primary:hover{
-    background:#006A49;
-}
-
-.hero-btn-secondary{
-    background:rgba(255,255,255,.1);
-    backdrop-filter:blur(12px);
-    border:1px solid rgba(255,255,255,.3);
-    color:#fff;
-}
-
-.hero-btn-secondary:hover{
-    background:rgba(255,255,255,.2);
-}
-
-@media (max-width:768px){
-
-    .hero-home{
-        height:420px;
+    .hero-home {
+        position: relative;
+        width: 100%;
+        height: 650px;
+        overflow: hidden;
+        background: #000306;
+        box-shadow: 0 12px 24px -8px rgba(0, 0, 0, .35);
     }
 
-    .hero-video{
-        object-position:center 30%;
+    #heroSlideshow {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
     }
 
-    .hero-content{
-        padding-bottom:2.5rem;
+    .hero-video {
+        position: absolute;
+        inset: 0;
+
+        width: 100%;
+        height: 100%;
+
+        object-fit: cover;
+        object-position: center 40%;
     }
 
-    .hero-btn{
-        padding:.75rem 1.5rem;
-        font-size:.9rem;
+    .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, .35);
+        pointer-events: none;
     }
 
-}
+    .hero-content {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+
+        padding-left: 8%;
+        padding-bottom: 4.5rem;
+
+        transform: translateY(50px);
+    }
+
+    .hero-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        max-width: 1280px;
+        margin-inline: auto;
+        width: 100%;
+    }
+
+    .hero-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: .5rem;
+        padding: .9rem 2rem;
+        border-radius: 9999px;
+        font-weight: 700;
+        font-size: 1rem;
+        transition: all .2s ease;
+    }
+
+    .hero-btn-primary {
+        background: #00944A;
+        color: #fff;
+    }
+
+    .hero-btn-primary:hover {
+        background: #006A49;
+    }
+
+    .hero-btn-secondary {
+        background: rgba(255, 255, 255, .1);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, .3);
+        color: #fff;
+    }
+
+    .hero-btn-secondary:hover {
+        background: rgba(255, 255, 255, .2);
+    }
+
+    @media (max-width:768px) {
+
+        .hero-home {
+            height: 420px;
+        }
+
+        .hero-video {
+            object-position: center 30%;
+        }
+
+        .hero-content {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+            padding-bottom: 2.5rem;
+        }
+
+        .hero-btn {
+            padding: .75rem 1.5rem;
+            font-size: .9rem;
+        }
+
+    }
 </style>
+<link href="../activos/css/fonts.css" rel="stylesheet" />
 
 <section class="hero-home">
 
     <div id="heroSlideshow">
 
-        <video
-            id="heroVideo"
-            class="hero-video"
-            autoplay
-            muted
-            playsinline
-            preload="auto">
+        <video id="heroVideo" class="hero-video" autoplay muted playsinline preload="auto">
 
             <source src="activos/videos/VIDEO.mp4" type="video/mp4">
 
@@ -132,49 +134,196 @@
     <div class="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/40 to-transparent pointer-events-none"></div>
 
     <div class="hero-content">
-        <div class="hero-buttons">
-            <a href="/paginas/quienessomos.html" class="hero-btn hero-btn-primary">Conoce SEDIR</a>
-            <a href="/paginas/proyectos.html" class="hero-btn hero-btn-secondary">Nuestros Proyectos</a>
+
+        <div class="hero-info">
+
+
+            <h1 class="hero-title">
+                Desarrollo
+            </h1>
+
+
+            <p class="hero-description">
+                Servicios de investigación, innovación y asesoría técnica
+                para el desarrollo agrícola sostenible.
+            </p>
+
+            <br>
+            <div class="hero-buttons">
+
+                <a href="/paginas/quienessomos.html" class="hero-btn hero-btn-primary">
+                    Conoce SEDIR
+                </a>
+
+
+                <a href="/paginas/proyectos.html" class="hero-btn hero-btn-secondary">
+                    Nuestros Proyectos
+                </a>
+
+            </div>
+
+
         </div>
+
     </div>
 
 </section>
 
 <script>
 
-(function(){
+    (function () {
 
-    const video = document.getElementById("heroVideo");
+        const video = document.getElementById("heroVideo");
 
-    if(!video) return;
+        if (!video) return;
 
-    const INICIO = 6;
-    const FIN = 88;
+        const INICIO = 6;
+        const FIN = 88;
 
-    video.addEventListener("loadedmetadata", function(){
-        video.currentTime = INICIO;
-    });
-
-    video.addEventListener("canplay", function(){
-        video.play().catch(()=>{});
-    });
-
-    video.addEventListener("timeupdate", function(){
-        if(video.currentTime >= FIN){
+        video.addEventListener("loadedmetadata", function () {
             video.currentTime = INICIO;
-            video.play().catch(()=>{});
+        });
+
+        video.addEventListener("canplay", function () {
+            video.play().catch(() => { });
+        });
+
+        video.addEventListener("timeupdate", function () {
+            if (video.currentTime >= FIN) {
+                video.currentTime = INICIO;
+                video.play().catch(() => { });
+            }
+        });
+
+        video.addEventListener("ended", function () {
+            video.currentTime = INICIO;
+            video.play().catch(() => { });
+        });
+
+        if (video.readyState >= 1 && video.currentTime < INICIO) {
+            video.currentTime = INICIO;
         }
-    });
 
-    video.addEventListener("ended", function(){
-        video.currentTime = INICIO;
-        video.play().catch(()=>{});
-    });
-
-    if (video.readyState >= 1 && video.currentTime < INICIO) {
-        video.currentTime = INICIO;
-    }
-
-})();
+    })();
 
 </script>
+<style>
+    /* ==========================
+   HERO TEXT
+========================== */
+
+
+    .hero-info {
+
+        max-width: 650px;
+
+        color: white;
+
+        animation: heroFade .8s ease forwards;
+
+    }
+
+
+    .hero-category {
+
+        display: inline-block;
+
+        font-size: .75rem;
+
+        font-weight: 700;
+
+        letter-spacing: .25em;
+
+        text-transform: uppercase;
+
+        color: #8FE3B0;
+
+        margin-bottom: 1rem;
+
+    }
+
+    .hero-title {
+        font-family: "Montserrat", Arial, sans-serif;
+        font-weight: 800;
+        /* o 800 si tienes ExtraBold */
+        font-size: 4rem;
+        line-height: 1;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+        text-shadow: 0 4px 20px rgba(0, 0, 0, .5);
+    }
+
+    .hero-description {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 400;
+        font-size: 1.15rem;
+        line-height: 1.7;
+        max-width: 560px;
+        color: rgba(255, 255, 255, .9);
+    }
+
+    .hero-btn {
+        font-family: "Montserrat", Arial, sans-serif;
+        font-weight: 600;
+    }
+
+
+
+
+    @keyframes heroFade {
+
+        from {
+
+            opacity: 0;
+
+            transform: translateY(30px);
+
+        }
+
+
+        to {
+
+            opacity: 1;
+
+            transform: translateY(0);
+
+        }
+
+    }
+
+    @media (max-width:768px) {
+
+        .hero-content {
+            justify-content: center;
+            align-items: center;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+            padding-bottom: 0;
+            transform: translateY(30px);
+        }
+
+        /* Ocultar texto */
+        .hero-title,
+        .hero-description {
+            display: none;
+        }
+
+        .hero-info {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        /* Mantener botones centrados */
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .hero-btn {
+            padding: .75rem 1.5rem;
+            font-size: .9rem;
+        }
+
+    }
+</style>

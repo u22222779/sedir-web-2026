@@ -191,6 +191,137 @@
     return svg;
   }
 
+  // --- 4) Gauge semicircular genérico (Humedad, UV, Radiación solar) ---
+  // Igual estilo que gaugeViento pero reutilizable: color, escala y unidad
+  // configurables, y con arco de fondo restante en gris (como los widgets
+  // oficiales de WeatherLink).
+  function gaugeGenerico(valor, opciones = {}) {
+    const {
+      max = 100,
+      unidad = "",
+      color = "#22c55e",
+      decimales = 1,
+      etiquetaCentro = null, // ej. "Índice" para UV
+    } = opciones;
+
+    const size = 220;
+    const cx = size / 2;
+    const cy = size / 2 + 6;
+    const r = 86;
+    const tieneValor = typeof valor === "number" && !Number.isNaN(valor);
+    const pct = tieneValor ? Math.max(0, Math.min(1, valor / max)) : 0;
+    const sweep = 180 * pct;
+
+    const bgPath = describeArc(cx, cy, r, -90, 90);
+    const fgPath = sweep > 0 ? describeArc(cx, cy, r, -90, -90 + sweep) : null;
+    const inicio = polarToCartesian(cx, cy, r + 16, -90);
+
+    const textoValor = tieneValor ? comaDecimal(valor.toFixed(decimales)) : "--";
+
+    return `
+      <svg viewBox="0 0 ${size} ${size * 0.62}" class="w-full max-w-[220px] h-auto" xmlns="http://www.w3.org/2000/svg">
+        <path d="${bgPath}" fill="none" stroke="#e7eaee" stroke-width="14" stroke-linecap="round"/>
+        ${fgPath ? `<path d="${fgPath}" fill="none" stroke="${color}" stroke-width="14" stroke-linecap="round"/>` : ""}
+        <text x="${inicio.x}" y="${inicio.y + 4}" font-size="11" fill="#9aa3ab" text-anchor="middle">0</text>
+        ${
+          etiquetaCentro
+            ? `<text x="${cx}" y="${cy - 30}" font-size="12" fill="#6b7280" text-anchor="middle">${etiquetaCentro}</text>`
+            : ""
+        }
+        <text x="${cx}" y="${cy - 14}" font-size="30" font-weight="700" fill="#1f2937" text-anchor="middle">${textoValor}</text>
+        <text x="${cx}" y="${cy + 10}" font-size="13" fill="#6b7280" text-anchor="middle">${unidad}</text>
+      </svg>`;
+  }
+
+  // --- 5) Gráfico de línea del barómetro ---
+  // WeatherLink no expone un endpoint histórico gratuito sencillo, así que
+  // construimos la tendencia con las propias lecturas que va haciendo este
+  // dashboard (una por refresco), guardadas en localStorage para que
+  // sobreviva recargas de página. Se conservan las últimas 6 horas.
+  const HISTORIAL_KEY = "sedir_clima_barometro_historial";
+  const HISTORIAL_MAX_MS = 6 * 60 * 60 * 1000; // 6 horas
+
+  function registrarPresion(hpa) {
+    if (typeof hpa !== "number" || Number.isNaN(hpa)) return leerHistorialPresion();
+    let historial = leerHistorialPresion();
+    const ahora = Date.now();
+    historial.push({ t: ahora, v: redondear(hpa, 1) });
+    historial = historial.filter((p) => ahora - p.t <= HISTORIAL_MAX_MS);
+    try {
+      localStorage.setItem(HISTORIAL_KEY, JSON.stringify(historial));
+    } catch (e) {
+      /* localStorage no disponible: seguimos solo en memoria para esta carga */
+    }
+    return historial;
+  }
+
+  function leerHistorialPresion() {
+    try {
+      const guardado = JSON.parse(localStorage.getItem(HISTORIAL_KEY) || "[]");
+      const ahora = Date.now();
+      return Array.isArray(guardado)
+        ? guardado.filter((p) => ahora - p.t <= HISTORIAL_MAX_MS)
+        : [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function graficoBarometro(historial) {
+    const width = 620;
+    const height = 200;
+    const marginLeft = 60;
+    const marginRight = 14;
+    const marginTop = 18;
+    const marginBottom = 30;
+    const chartW = width - marginLeft - marginRight;
+    const chartH = height - marginTop - marginBottom;
+
+    if (!historial || historial.length < 2) {
+      return `<div class="flex items-center justify-center text-xs text-gray-400" style="height:${height}px">
+        Reuniendo lecturas para mostrar la tendencia (se completa en unos minutos)...
+      </div>`;
+    }
+
+    const valores = historial.map((p) => p.v);
+    const min = Math.min(...valores);
+    const max = Math.max(...valores);
+    // padding vertical para que la línea no toque los bordes cuando la
+    // presión varía muy poco (caso frecuente en pocas horas)
+    const rango = Math.max(max - min, 2);
+    const yMin = Math.floor((min - rango * 0.25) * 10) / 10;
+    const yMax = Math.ceil((max + rango * 0.25) * 10) / 10;
+
+    const t0 = historial[0].t;
+    const t1 = historial[historial.length - 1].t;
+    const xFor = (t) => marginLeft + (t1 === t0 ? 0 : ((t - t0) / (t1 - t0)) * chartW);
+    const yFor = (v) => marginTop + chartH - ((v - yMin) / (yMax - yMin)) * chartH;
+
+    let svg = `<svg viewBox="0 0 ${width} ${height}" class="w-full h-auto" xmlns="http://www.w3.org/2000/svg">`;
+
+    // líneas guía horizontales + etiquetas en mb
+    [yMin, (yMin + yMax) / 2, yMax].forEach((v) => {
+      const y = yFor(v);
+      svg += `<line x1="${marginLeft}" y1="${y}" x2="${width - marginRight}" y2="${y}" stroke="#eef0f2" stroke-width="1"/>`;
+      svg += `<text x="${marginLeft - 8}" y="${y + 4}" font-size="11" fill="#9aa3ab" text-anchor="end">${comaDecimal(v.toFixed(1))} mb</text>`;
+    });
+
+    // etiquetas de hora (inicio, medio, fin)
+    [historial[0], historial[Math.floor(historial.length / 2)], historial[historial.length - 1]].forEach((p) => {
+      const x = xFor(p.t);
+      svg += `<text x="${x}" y="${height - 6}" font-size="10.5" fill="#6b7280" text-anchor="middle">${formatearHora(p.t / 1000)}</text>`;
+    });
+
+    // línea de tendencia
+    const puntos = historial.map((p) => `${xFor(p.t)},${yFor(p.v)}`).join(" ");
+    svg += `<polyline points="${puntos}" fill="none" stroke="#374151" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>`;
+
+    // eje base
+    svg += `<line x1="${marginLeft}" y1="${marginTop + chartH}" x2="${width - marginRight}" y2="${marginTop + chartH}" stroke="#d7dbe0" stroke-width="1"/>`;
+    svg += `</svg>`;
+    return svg;
+  }
+
   function gradosACardinal(deg) {
     if (typeof deg !== "number") return "--";
     const puntos = ["Norte", "Noreste", "Este", "Sureste", "Sur", "Suroeste", "Oeste", "Noroeste"];
@@ -245,6 +376,48 @@
     const contRosa = document.getElementById("wl-compass-viento");
     if (contRosa) {
       contRosa.innerHTML = rosaVientos(dato.viento_direccion, mphAMs(dato.viento_velocidad_mph));
+    }
+
+    // Humedad (gauge 0-100%)
+    const contHumedad = document.getElementById("wl-gauge-humedad");
+    if (contHumedad) {
+      contHumedad.innerHTML = gaugeGenerico(redondear(dato.humedad, 1), {
+        max: 100,
+        unidad: "%",
+        color: "#00944A",
+        decimales: 1,
+      });
+    }
+
+    // UV (gauge 0-12, escala estándar del índice UV)
+    const contUv = document.getElementById("wl-gauge-uv");
+    if (contUv) {
+      contUv.innerHTML = gaugeGenerico(redondear(dato.uv, 1), {
+        max: 12,
+        unidad: "",
+        color: "#e67e22",
+        decimales: 1,
+        etiquetaCentro: "Índice",
+      });
+    }
+
+    // Radiación solar (gauge 0-1200 W/m², rango típico de irradiancia)
+    const contSolar = document.getElementById("wl-gauge-solar");
+    if (contSolar) {
+      contSolar.innerHTML = gaugeGenerico(redondear(dato.radiacion_solar_wm2, 0), {
+        max: 1200,
+        unidad: "W/m²",
+        color: "#c0392b",
+        decimales: 0,
+      });
+    }
+
+    // Barómetro (tendencia de presión en mb/hPa acumulada por este dashboard)
+    const contBarometro = document.getElementById("wl-chart-barometro");
+    if (contBarometro) {
+      const hpaActual = inHgAHpa(dato.presion_barometrica_in);
+      const historial = registrarPresion(hpaActual);
+      contBarometro.innerHTML = graficoBarometro(historial);
     }
 
     const actualizado = dato.actualizado

@@ -121,6 +121,40 @@
           </div>
         </div>
 
+        <!-- SEGUNDA FILA: Humedad / Barómetro / UV -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <!-- Humedad -->
+          <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
+            <h3 class="font-bold text-gray-800 text-base">Humedad</h3>
+            <p class="text-xs italic text-gray-400 mb-2">Sedir Moro</p>
+            <div id="wl-gauge-humedad" class="flex justify-center items-center h-full"></div>
+          </div>
+
+          <!-- Barómetro -->
+          <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 md:col-span-2">
+            <h3 class="font-bold text-gray-800 text-base">Barómetro</h3>
+            <p class="text-xs italic text-gray-400 mb-2">WeatherLink en directo</p>
+            <div id="wl-chart-barometro"></div>
+          </div>
+
+          <!-- UV -->
+          <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
+            <h3 class="font-bold text-gray-800 text-base">UV</h3>
+            <p class="text-xs italic text-gray-400 mb-2">Sedir Moro</p>
+            <div id="wl-gauge-uv" class="flex justify-center items-center h-full"></div>
+          </div>
+        </div>
+
+        <!-- TERCERA FILA: Radiación solar -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <!-- Radiación solar -->
+          <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
+            <h3 class="font-bold text-gray-800 text-base">Radiación solar</h3>
+            <p class="text-xs italic text-gray-400 mb-2">Sedir Moro</p>
+            <div id="wl-gauge-solar" class="flex justify-center items-center h-full"></div>
+          </div>
+        </div>
+
         <!-- DASHBOARD DE TARJETAS EN VIVO -->
         <div class="bg-white rounded-2xl sm:rounded-3xl shadow-md border border-gray-200 p-6 space-y-6">
           <div class="flex items-center justify-between flex-wrap gap-2">
