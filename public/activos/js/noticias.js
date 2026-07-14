@@ -8,6 +8,25 @@ function escapeHtml(value) {
     .replaceAll("'", '&#39;');
 }
 
+function stripHtml(value) {
+  return String(value ?? '')
+    // Convierte saltos de bloque comunes en espacios para no pegar palabras
+    .replace(/<\/(p|div|br|li|h[1-6])\s*>/gi, ' ')
+    .replace(/<br\s*\/?>/gi, ' ')
+    // Elimina cualquier otra etiqueta HTML
+    .replace(/<[^>]*>/g, '')
+    // Decodifica entidades HTML más comunes
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    // Normaliza espacios múltiples
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 function getCategoryLabel(item) {
   return String(item && (item.nombre_categoria || item.categoria || item.id_categoria_noticia) || 'General').trim() || 'General';
 }
@@ -63,7 +82,7 @@ function toNoticiasCards(items) {
       headingClass: 'text-lg font-bold font-montserrat text-gray-900 mb-3 group-hover:text-sedir-green transition-colors line-clamp-2',
       title: item.titulo || '',
       excerptClass: 'text-gray-600 text-sm mb-6 flex-grow line-clamp-3',
-      excerpt: item.contenido || '',
+      excerpt: stripHtml(item.contenido).slice(0, 160),
       linkClass: 'readmore-link font-semibold text-sm flex items-center gap-1 transition-colors group-hover:gap-2'
     };
   });
@@ -93,7 +112,7 @@ function renderHomeNoticias(items) {
             <span class="text-xs category-badge px-3 py-1 rounded-full font-medium">${escapeHtml(categoryLabel)}</span>
           </div>
           <h3 class="text-lg font-bold text-gray-900 mb-3 leading-snug">${escapeHtml(item.titulo || '')}</h3>
-          <p class="text-gray-600 text-sm mb-6 flex-grow line-clamp-3">${escapeHtml((item.contenido || '').slice(0, 160))}</p>
+          <p class="text-gray-600 text-sm mb-6 flex-grow line-clamp-3">${escapeHtml(stripHtml(item.contenido).slice(0, 160))}</p>
           <a class="readmore-link font-semibold text-sm flex items-center gap-2 group-hover:gap-3 transition-all" href="/paginas/noticia-detalle.html?id=${encodeURIComponent(item.id)}">Leer más</a>
         </div>
       </article>

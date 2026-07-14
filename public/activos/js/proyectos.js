@@ -7,6 +7,21 @@ function escapeHtml(value) {
     .replaceAll("'", '&#39;');
 }
 
+function stripHtml(value) {
+  return String(value ?? '')
+    .replace(/<\/(p|div|br|li|h[1-6])\s*>/gi, ' ')
+    .replace(/<br\s*\/?>/gi, ' ')
+    .replace(/<[^>]*>/g, '')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 function formatProjectDate(value) {
   if (!value) return 'Sin fecha';
   const date = new Date(value);
@@ -37,7 +52,7 @@ async function renderProyectos() {
                 <span class="text-xs text-gray-500">${escapeHtml(formatProjectDate(item.fecha_inicio))}</span>
               </div>
               <h3 class="text-xl font-bold text-gray-900 mb-4">${escapeHtml(item.nombre || '')}</h3>
-              <p class="text-gray-600 text-sm mb-6 flex-grow">${escapeHtml(item.descripcion || '')}</p>
+              <p class="text-gray-600 text-sm mb-6 flex-grow">${escapeHtml(stripHtml(item.descripcion || ''))}</p>
               <div class="text-sm text-gray-500 mb-4">Beneficiarios: ${escapeHtml(item.beneficiarios || '')}</div>
             </div>
           </article>

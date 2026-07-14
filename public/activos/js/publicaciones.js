@@ -1,5 +1,14 @@
 /* SECTION: Publicaciones (Biblioteca Virtual) */
 
+function escapeHtml(value) {
+  return String(value ?? '')
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;');
+}
+
 function formatFechaCorta(fecha) {
   if (!fecha) return '';
   return new Date(fecha).toLocaleDateString('es-PE', { month: 'long', year: 'numeric' });
@@ -15,13 +24,13 @@ function crearTarjetaPublicacion(pub) {
 
   article.innerHTML = `
     <div class="h-48 w-full overflow-hidden bg-mint">
-      <img src="${pub.imagen_portada || ''}" alt="${pub.titulo}" class="w-full h-full object-cover" loading="lazy" />
+      <img src="${escapeHtml(pub.imagen_portada || '')}" alt="${escapeHtml(pub.titulo || '')}" class="w-full h-full object-cover" loading="lazy" />
     </div>
     <div class="p-6 flex flex-col flex-grow">
       ${fechaHtml}
-      <h3 class="font-display font-bold text-lg text-gray-900 mb-2">${pub.titulo}</h3>
-      <p class="text-sm text-gray-600 leading-relaxed mb-4 flex-grow">${pub.descripcion || ''}</p>
-      <a href="${pub.archivo_url}" target="_blank" rel="noopener"
+      <h3 class="font-display font-bold text-lg text-gray-900 mb-2">${escapeHtml(pub.titulo || '')}</h3>
+      <p class="text-sm text-gray-600 leading-relaxed mb-4 flex-grow">${escapeHtml(pub.descripcion || '')}</p>
+      <a href="${escapeHtml(pub.archivo_url || '')}" target="_blank" rel="noopener"
         class="inline-flex items-center gap-2 font-semibold text-primary hover:text-primary-dark transition-colors w-fit">
         Ver publicación
         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

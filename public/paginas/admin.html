@@ -212,6 +212,21 @@
         .replaceAll("'", '&#39;');
     }
 
+    function stripHtml(value) {
+      return String(value ?? '')
+        .replace(/<\/(p|div|br|li|h[1-6])\s*>/gi, ' ')
+        .replace(/<br\s*\/?>/gi, ' ')
+        .replace(/<[^>]*>/g, '')
+        .replace(/&nbsp;/g, ' ')
+        .replace(/&amp;/g, '&')
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .replace(/&quot;/g, '"')
+        .replace(/&#39;/g, "'")
+        .replace(/\s+/g, ' ')
+        .trim();
+    }
+
     function formatDate(value) {
       if (!value) return 'Sin fecha';
       const date = new Date(value);
@@ -469,7 +484,7 @@
           <tr class="border-b border-slate-100 align-top">
             <td class="py-4 pr-4">
               <div class="font-semibold text-slate-900">${escapeHtml(item.titulo)}</div>
-              <div class="text-xs text-slate-500 max-w-xl">${escapeHtml((item.contenido || '').slice(0, 110))}</div>
+              <div class="text-xs text-slate-500 max-w-xl">${escapeHtml(stripHtml(item.contenido).slice(0, 110))}</div>
             </td>
             <td class="py-4 pr-4 whitespace-nowrap">${formatDate(item.fecha)}</td>
             <td class="py-4 pr-4">${escapeHtml(item.nombre_categoria || item.id_categoria_noticia)}</td>
@@ -494,7 +509,7 @@
           <tr class="border-b border-slate-100 align-top">
             <td class="py-4 pr-4">
               <div class="font-semibold text-slate-900">${escapeHtml(item.nombre)}</div>
-              <div class="text-xs text-slate-500 max-w-xl">${escapeHtml((item.descripcion || '').slice(0, 110))}</div>
+              <div class="text-xs text-slate-500 max-w-xl">${escapeHtml(stripHtml(item.descripcion).slice(0, 110))}</div>
             </td>
             <td class="py-4 pr-4 whitespace-nowrap">${formatDate(item.fecha_inicio)} - ${formatDate(item.fecha_fin)}</td>
             <td class="py-4 pr-4">${escapeHtml(item.estado)}</td>
