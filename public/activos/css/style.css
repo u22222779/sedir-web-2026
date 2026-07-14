@@ -216,6 +216,92 @@ h6 {
   color: #00944a;
 }
 
+/* Global utility: force Montserrat on non-heading elements (eyebrows, CTAs, labels) */
+.font-montserrat {
+  font-family: "Montserrat", sans-serif;
+}
+
+/* SECTION: Knowledge Infrastructure Cards (flat, no shadow) */
+.knowledge-card {
+  border-radius: 28px;
+  border: 1.5px solid transparent;
+  transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.knowledge-card:hover {
+  transform: translateY(-4px);
+}
+
+.knowledge-card--tierra {
+  background: #8c7855;
+  border-color: #a1906f;
+}
+.knowledge-card--tierra:hover {
+  border-color: #009c63;
+}
+
+.knowledge-card--verde {
+  background: #00944a;
+  border-color: #1aa85f;
+}
+.knowledge-card--verde:hover {
+  border-color: #ffffff;
+}
+
+.knowledge-card--naranja {
+  background: #f09734;
+  border-color: #e2ad6c;
+}
+.knowledge-card--naranja:hover {
+  border-color: #000306;
+}
+
+.knowledge-card--oscuro {
+  background: #006a49;
+  border-color: #1c8265;
+}
+.knowledge-card--oscuro:hover {
+  border-color: #009c63;
+}
+
+.knowledge-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.6rem 1.1rem;
+  border-radius: 9999px;
+  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  color: #ffffff;
+  background: transparent;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.knowledge-card__cta:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #ffffff;
+}
+
+.knowledge-card__cta--solid {
+  border: none;
+  color: #00944a;
+  background: #ffffff;
+}
+.knowledge-card__cta--solid:hover {
+  background: #f2f2f2;
+}
+
+.knowledge-card__cta--solid-dark {
+  border: none;
+  color: #006a49;
+  background: #ffffff;
+}
+.knowledge-card__cta--solid-dark:hover {
+  background: #f2f2f2;
+}
+
 /* Company-themed card used on index: one corner 0, others 50px */
 .company-card {
   background: #00944a; /* company green */

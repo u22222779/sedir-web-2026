@@ -15,8 +15,39 @@
     <script src="activos/js/main.js"></script>
     <script src="/activos/js/navbar.js" defer></script>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      // Paleta y tipografías del Manual de Identidad Visual de SEDIR
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#00944A",
+              "primary-dark": "#006A49",
+              "primary-alt": "#009C63",
+              brown: "#8C7855",
+              secondary: "#F09734",
+              ink: "#000306",
+              cream: "#FBF7EE"
+            },
+            fontFamily: {
+              display: ["Montserrat", "sans-serif"],
+              body: ["Libre Franklin", "sans-serif"]
+            }
+          }
+        }
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+    </style>
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&amp;family=Libre+Franklin:wght@300;400;500;600;700&amp;display=swap"
+      rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
       rel="stylesheet" />
     <link href="activos/css/style.css" rel="stylesheet" />
     <link href="activos/css/navbar.css" rel="stylesheet" />
@@ -35,98 +66,109 @@
   <!-- BEGIN: Hero Component -->
   <div id="hero-container" data-component="/components/hero.html"></div>
   <!-- END: Hero Component -->
-  <section class="py-16 bg-[#f4f8f4]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-8">
-        <h2 class="text-4xl font-bold text-gray-900">Nuestra Infraestructura del Conocimiento</h2>
-        <p class="text-gray-600 mt-2">Acceso directo a nuestras herramientas clave para el desarrollo agrario
-          sostenible.</p>
+
+  <!-- BEGIN: Infrastructure Bento Grid -->
+  <section class="py-16 md:py-24 bg-cream px-4 sm:px-6 lg:px-8" id="areas">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <div class="flex items-center justify-center gap-2 mb-4">
+          <div class="section-kicker-dot"></div>
+          <span class="section-kicker-label font-bold text-sm tracking-wider uppercase">Ecosistema SEDIR</span>
+        </div>
+        <h2 class="font-display text-3xl lg:text-4xl font-bold text-ink">Infraestructura del Conocimiento</h2>
+        <p class="font-body text-gray-600 mt-3 max-w-2xl mx-auto">Acceso directo a nuestras herramientas clave para
+          el desarrollo agrario sostenible.</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
-        <!-- Card 1 (span 2 cols) -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[240px]">
+        <!-- Unidades Productivas -->
         <a href="#"
-          class="md:col-span-2 bg-[#8c7855] rounded-[30px] p-8 shadow-lg flex flex-col justify-between text-white">
-          <div>
-            <div class="text-xs uppercase tracking-wider mb-3 text-white/80">Gestión integrada</div>
-            <h3 class="font-display text-3xl font-bold mb-4">Unidades Productivas</h3>
-            <p class="text-sm text-white/90">Optimización de recursos y trazabilidad en tiempo real para centros
-              experimentales.</p>
-          </div>
-          <div class="mt-6">
-            <span
-              class="inline-flex items-center gap-2 text-sm font-semibold bg-white/20 px-3 py-2 rounded-full">Ingresar
-              al Portal <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3">
-                </path>
-              </svg></span>
+          class="md:col-span-8 group relative overflow-hidden rounded-[30px] shadow-lg hover:shadow-xl transition-all duration-500 bg-brown">
+          <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+            style="background-image:url('activos/img_unidades_productivas/apicultura-08-25.jpg')"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-8">
+            <div class="text-xs uppercase tracking-wider mb-2 text-white/80 font-body">Gestión integrada</div>
+            <h3 class="font-display text-white text-2xl md:text-3xl font-bold mb-2">Unidades Productivas</h3>
+            <p class="font-body text-white/80 max-w-md text-sm">Centros de alta eficiencia optimizados para la
+              máxima producción sostenible.</p>
           </div>
         </a>
 
-        <!-- Card 2 (span 1 col) -->
+        <!-- Investigación -->
         <a href="/paginas/investigaciones.html"
-          class="md:col-span-1 bg-[#00944a] rounded-[30px] p-6 shadow-lg flex flex-col justify-between text-white">
-          <div>
-            <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor" stroke-width="1.8">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M8 18h8M10 18v-2m4-6V6a2 2 0 10-4 0v4m0 0h4m-4 0l5 5m-5-5H8" />
-              </svg>
+          class="md:col-span-4 group relative overflow-hidden rounded-[30px] shadow-lg hover:shadow-xl transition-all duration-500 bg-primary">
+          <div class="p-8 h-full flex flex-col justify-between relative z-10">
+            <div class="w-12 h-12 bg-white/15 rounded-xl flex items-center justify-center text-white">
+              <span class="material-symbols-outlined text-3xl">biotech</span>
             </div>
-            <h4 class="text-2xl font-bold mb-2">Investigación</h4>
-            <p class="text-sm text-white/90">Nuevos hallazgos en fitopatología y mejora genética de cultivos nativos.
-            </p>
+            <div>
+              <h3 class="font-display text-white text-2xl font-bold mb-2">Investigación</h3>
+              <p class="font-body text-white/80 text-sm">Nuevos hallazgos en fitopatología y mejora genética de
+                cultivos nativos.</p>
+            </div>
           </div>
-          <div class="mt-6">
-            <button class="bg-white text-[#00944a] px-4 py-2 rounded-full font-semibold">Explorar
-              investigaciones</button>
+          <div class="absolute inset-0 opacity-10 pointer-events-none">
+            <svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" fill="none" r="40" stroke="white" stroke-width="0.5"></circle>
+              <circle cx="50" cy="50" fill="none" r="30" stroke="white" stroke-width="0.5"></circle>
+            </svg>
           </div>
         </a>
 
-        <!-- Card 3 (span 1 col) -->
+        <!-- Condiciones de Clima -->
         <a href="/paginas/clima.html"
-          class="md:col-span-1 bg-[#f09734] rounded-[30px] p-6 shadow-lg flex flex-col justify-between text-black">
-          <div>
-            <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="4"></circle>
-                <path stroke-linecap="round"
-                  d="M12 2v2M12 20v2M2 12h2M20 12h2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
-              </svg>
+          class="md:col-span-4 group relative overflow-hidden rounded-[30px] shadow-lg hover:shadow-xl transition-all duration-500 bg-white border border-gray-100">
+          <div class="p-8">
+            <div class="flex justify-between items-start mb-4">
+              <span class="material-symbols-outlined text-primary text-4xl">thermostat</span>
+              <div class="text-right">
+                <span class="font-display text-4xl font-bold text-ink">24°C</span>
+                <p class="font-body text-xs text-gray-500 uppercase">Promedio Regional</p>
+              </div>
             </div>
-            <h4 class="text-2xl font-bold mb-2">Condiciones de Clima</h4>
-            <p class="text-sm">Datos climáticos precisos para la toma de decisiones agrícolas inteligentes.</p>
+            <h3 class="font-display text-2xl font-bold mb-2 text-ink">Condiciones de Clima</h3>
+            <p class="font-body text-gray-600 text-sm">Datos climáticos precisos para la toma de decisiones
+              agrícolas inteligentes.</p>
           </div>
-          <div class="mt-4 h-2 bg-white/20 rounded-full overflow-hidden">
-            <div class="h-full bg-[#00944a] w-1/3"></div>
+          <div class="mt-auto px-8 pb-8">
+            <div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+              <div class="w-[65%] h-full bg-primary"></div>
+            </div>
           </div>
         </a>
 
-        <!-- Card 4: Publicaciones (span 2 cols, imágenes a la derecha) -->
+        <!-- Publicaciones -->
         <a href="/paginas/publicaciones.html"
-          class="md:col-span-2 bg-[#0b6b50] rounded-[30px] shadow-lg flex flex-col md:flex-row items-center gap-6 text-white overflow-hidden">
-          <div class="flex-1 p-8">
-            <h4 class="text-3xl font-bold mb-2">Publicaciones</h4>
-            <p class="text-sm text-white/90">Accede a guías prácticas, manuales y boletines técnicos para agricultores y
-              técnicos.</p>
-            <div class="mt-6">
-              <button class="bg-white text-[#0b6b50] px-4 py-2 rounded-full font-semibold">Descargar Catálogo</button>
+          class="md:col-span-8 group relative overflow-hidden rounded-[30px] shadow-lg hover:shadow-xl transition-all duration-500 bg-primary-dark">
+          <div class="absolute inset-0 bg-cover bg-center opacity-30 mix-blend-overlay"
+            style="background-image:url('activos/img_unidades_productivas/REV-ED-006.jpg')"></div>
+          <div class="relative z-10 p-8 h-full flex items-center justify-between">
+            <div class="max-w-md">
+              <h3 class="font-display text-white text-2xl md:text-3xl font-bold mb-2">Biblioteca Técnica</h3>
+              <p class="font-body text-white/80 text-sm">Accede a guías prácticas, manuales, boletines técnicos y
+                publicaciones científicas desarrolladas por expertos.</p>
+              <span class="mt-6 flex items-center gap-2 text-white font-bold hover:underline font-body">
+                Explorar Publicaciones
+                <span class="material-symbols-outlined">menu_book</span>
+              </span>
+
             </div>
-          </div>
-          <div class="hidden md:flex relative w-80 shrink-0 h-full items-center justify-center overflow-visible">
+            <div
+              class="hidden md:flex relative w-[300px] h-[220px] shrink-0 items-center justify-center overflow-visible">
 
-            <img src="activos/img_unidades_productivas/REV-ED-006.jpg" alt="Catálogo de publicaciones"
-              class="absolute right-[100px] top-6 w-28 object-contain rotate-[8deg] drop-shadow-[0_16px_25px_rgba(0,0,0,0.30)]" />
+              <img src="activos/img_unidades_productivas/REV-ED-006.jpg" alt="Catálogo de publicaciones" class="absolute left-8 top-4 w-32 object-contain rotate-[8deg]
+           drop-shadow-[0_16px_25px_rgba(0,0,0,0.30)]
+           transition-all duration-500 group-hover:scale-105">
 
+            </div>
           </div>
         </a>
       </div>
-
     </div>
   </section>
+  <!-- END: Infrastructure Bento Grid -->
+
   <!-- END: Impact Counters -->
   <!-- BEGIN: Componentes Proyecto -->
   <div id="proyectos-container" data-component="/components/proyectos.html"></div>

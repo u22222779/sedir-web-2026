@@ -37,6 +37,56 @@
     pointer-events:none;
 }
 
+.hero-content{
+    position:absolute;
+    inset:0;
+    z-index:2;
+    display:flex;
+    align-items:flex-end;         /* antes: center */
+    padding-inline:1.5rem;
+    padding-bottom:4.5rem;         /* controla qué tan abajo quedan */
+}
+
+.hero-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:1rem;
+    max-width:1280px;
+    margin-inline:auto;
+    width:100%;
+}
+
+.hero-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:.5rem;
+    padding:.9rem 2rem;
+    border-radius:9999px;
+    font-weight:700;
+    font-size:1rem;
+    transition:all .2s ease;
+}
+
+.hero-btn-primary{
+    background:#00944A;
+    color:#fff;
+}
+
+.hero-btn-primary:hover{
+    background:#006A49;
+}
+
+.hero-btn-secondary{
+    background:rgba(255,255,255,.1);
+    backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,.3);
+    color:#fff;
+}
+
+.hero-btn-secondary:hover{
+    background:rgba(255,255,255,.2);
+}
+
 @media (max-width:768px){
 
     .hero-home{
@@ -45,6 +95,15 @@
 
     .hero-video{
         object-position:center 30%;
+    }
+
+    .hero-content{
+        padding-bottom:2.5rem;
+    }
+
+    .hero-btn{
+        padding:.75rem 1.5rem;
+        font-size:.9rem;
     }
 
 }
@@ -72,6 +131,13 @@
 
     <div class="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/40 to-transparent pointer-events-none"></div>
 
+    <div class="hero-content">
+        <div class="hero-buttons">
+            <a href="/paginas/quienessomos.html" class="hero-btn hero-btn-primary">Conoce SEDIR</a>
+            <a href="/paginas/proyectos.html" class="hero-btn hero-btn-secondary">Nuestros Proyectos</a>
+        </div>
+    </div>
+
 </section>
 
 <script>
@@ -85,44 +151,26 @@
     const INICIO = 6;
     const FIN = 88;
 
-    // Cuando el video ya tiene la metadata
     video.addEventListener("loadedmetadata", function(){
-
         video.currentTime = INICIO;
-
     });
 
-    // Cuando ya puede reproducirse
     video.addEventListener("canplay", function(){
-
         video.play().catch(()=>{});
-
     });
 
-    // Bucle manual
     video.addEventListener("timeupdate", function(){
-
         if(video.currentTime >= FIN){
-
             video.currentTime = INICIO;
-
             video.play().catch(()=>{});
-
         }
-
     });
 
-    // Si llega al final del archivo
     video.addEventListener("ended", function(){
-
         video.currentTime = INICIO;
-
         video.play().catch(()=>{});
-
     });
 
-    // Si al momento de correr este script el video ya tenia metadata cargada
-    // (puede pasar si el navegador cacheo el video), forzamos el inicio ya mismo.
     if (video.readyState >= 1 && video.currentTime < INICIO) {
         video.currentTime = INICIO;
     }
