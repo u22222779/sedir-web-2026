@@ -23,7 +23,7 @@ window.tailwind.config = {
         }
       },
       fontFamily: {
-        sans: ["Libre Franklin", "sans-serif"],
+        sans: ["Franklin Gothic Demi", "sans-serif"],
         display: ["Montserrat", "sans-serif"]
       }
     }

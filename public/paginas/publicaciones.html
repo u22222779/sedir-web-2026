@@ -17,11 +17,9 @@
   <link href="/activos/css/responsive.css" rel="stylesheet" />
   <script id="tailwind-config">
     // Paleta y tipografías tomadas directo del Manual de Identidad Visual
-    // de SEDIR (no aproximadas). Nota sobre tipografía: el manual define
-    // "Franklin Gothic Demi" para texto; el sitio usa Libre Franklin como
-    // reemplazo (Franklin Gothic es una fuente con licencia comercial, no
-    // disponible en Google Fonts). Si SEDIR cuenta con los archivos de
-    // Franklin Gothic Demi, se puede reemplazar aquí.
+    // de SEDIR. El sitio ya cuenta con los archivos de Franklin Gothic Demi
+    // autoalojados (activos/fonts/franklin-gothic-demi) y los usa como
+    // fuente de texto principal.
     tailwind.config = {
       darkMode: "class",
       theme: {
@@ -37,7 +35,7 @@
           },
           fontFamily: {
             display: ["Montserrat", "sans-serif"],
-            body: ["Libre Franklin", "sans-serif"]
+            body: ["Montserrat-Light", "sans-serif"]
           }
         }
       }

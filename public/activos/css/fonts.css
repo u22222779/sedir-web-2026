@@ -61,3 +61,19 @@
   font-style: italic;
   font-display: swap;
 }
+
+/* ==========================
+   CLASES CENTRALIZADAS SEDIR
+   Fuente unica de verdad para todo el sitio.
+   Cambia una regla aca y se actualiza en TODAS las paginas
+   que enlazan este archivo (activos/css/fonts.css).
+========================== */
+.font-montserrat-light {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+}
+
+.font-franklin-demi {
+  font-family: "Franklin Gothic Demi", sans-serif;
+  font-weight: normal;
+}
