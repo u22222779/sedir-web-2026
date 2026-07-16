@@ -5,7 +5,9 @@
 <head>
   <title>.:: SEDIR ::.</title>
   <link rel="icon" href="activos/img_logos/logo-sedir-links.png" type="image/x-icon">
-<link rel="stylesheet" href="activos/css/fonts.css">
+  <link rel="stylesheet" href="activos/css/fonts.css">
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -13,6 +15,7 @@
     <script src="activos/js/proyectos.js"></script>
     <script src="activos/js/noticias.js"></script>
     <script src="activos/js/main.js"></script>
+
     <script src="/activos/js/navbar.js" defer></script>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <script id="tailwind-config">
@@ -44,9 +47,6 @@
       }
     </style>
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&amp;family=Libre+Franklin:wght@300;400;500;600;700&amp;display=swap"
-      rel="stylesheet" />
-    <link
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
       rel="stylesheet" />
     <link href="activos/css/style.css" rel="stylesheet" />
@@ -70,16 +70,6 @@
   <!-- BEGIN: Infrastructure Bento Grid -->
   <section class="py-16 md:py-24 bg-cream px-4 sm:px-6 lg:px-8" id="areas">
     <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-12">
-        <div class="flex items-center justify-center gap-2 mb-4">
-          <div class="section-kicker-dot"></div>
-          <span class="section-kicker-label font-bold text-sm tracking-wider uppercase">Ecosistema SEDIR</span>
-        </div>
-        <h2 class="font-display text-3xl lg:text-4xl font-bold text-ink">Infraestructura del Conocimiento</h2>
-        <p class="font-body text-gray-600 mt-3 max-w-2xl mx-auto">Acceso directo a nuestras herramientas clave para
-          el desarrollo agrario sostenible.</p>
-      </div>
-
       <div class="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[240px]">
         <!-- Unidades Productivas -->
         <a href="#"
@@ -168,8 +158,455 @@
     </div>
   </section>
   <!-- END: Infrastructure Bento Grid -->
+  <style>
+    .about-section {
+      --verde: #2f8f4e;
+      --texto: #3a3a3a;
+      --texto-suave: #55575c;
+      --boton: #8a7a63;
+      --boton-hover: #7a6b56;
+      background: #ffffff;
+      margin: 0 auto;
+      padding: 120px;
+      display: flex;
+      gap: 120px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
 
+
+    .about-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      display: block;
+      object-fit: cover;
+    }
+
+    .about-content {
+      flex: 1 1 420px;
+    }
+
+    .about-section .eyebrow {
+      color: var(--verde);
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin: 0 0 10px 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .about-section .eyebrow::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--verde);
+      display: inline-block;
+    }
+
+    .about-section h2.title {
+      font-size: 2rem;
+      line-height: 1.2;
+      color: #1c1c1c;
+      margin: 0 0 20px 0;
+      font-weight: 800;
+    }
+
+    .about-content p {
+      font-family: "franklin-gothic-demi", sans-serif;
+      font-size: 1.2rem;
+      font-weight: 300;
+      line-height: 1.5;
+      color: var(--texto);
+    }
+
+    .values-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 24px;
+      list-style: none;
+      padding: 0;
+      margin: 20px 0 28px 0;
+    }
+
+    .values-list li {
+      font-family: "Libre Franklin", sans-serif;
+      color: var(--texto);
+      font-size: 1.05rem;
+      font-weight: 300;
+      line-height: 1.8;
+      position: relative;
+      padding-left: 16px;
+    }
+
+    .values-list li::before {
+      content: "\00b7";
+      position: absolute;
+      left: 0;
+      font-weight: 300;
+      color: var(--texto);
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: var(--boton);
+      color: #fff;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 30px;
+      font-size: 1.2rem;
+      font-weight: 400;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .cta-button:hover {
+      background: var(--boton-hover);
+    }
+
+    @media (max-width: 768px) {
+      .about-section {
+        padding: 24px;
+      }
+
+      .about-section h2.title {
+        font-size: 1.6rem;
+      }
+
+      .values-list {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      border-radius: 0 25px 25px 25px;
+    }
+  </style>
+
+  <section class="about-section">
+    <div class="about-image">
+      <img src="/activos/img_servicios/2025-abejas.jpg"
+        alt="Productores capacitándose en apicultura en el valle de Nepeña">
+    </div>
+
+    <div class="about-content">
+      <p class="eyebrow">Quiénes somos</p>
+      <h2 class="title">Más de una década transformando el agro</h2>
+
+      <p>SEDIR es una organización dedicada a impulsar el desarrollo agropecuario y agroindustrial en el valle de
+        Nepeña. Desde 2012, trabajamos fortaleciendo las capacidades de los productores agrícolas, promoviendo la
+        educación técnica y transfiriendo tecnología para mejorar la productividad y sostenibilidad del sector.</p>
+
+      <p>A través de proyectos innovadores, fomentamos la investigación, el uso responsable de los recursos naturales y
+        la creación de valor agregado en la producción agrícola. Nuestra labor ha beneficiado a más de 4,000 familias e
+        integrado a jóvenes y mujeres en iniciativas de emprendimiento sostenible.</p>
+
+      <ul class="values-list">
+        <li>Servicio de calidad</li>
+        <li>Confianza</li>
+        <li>Responsabilidad</li>
+        <li>Compromiso con resultados</li>
+        <li>Trabajo en equipo</li>
+        <li>Sostenibilidad</li>
+      </ul>
+
+      <a href="/paginas/quienessomos.html" class="cta-button">
+        Conoce más sobre SEDIR
+      </a>
+    </div>
+  </section>
   <!-- END: Impact Counters -->
+
+
+
+
+  <!-- === QUÉ HACEMOS== -->
+  <section class="py-24 bg-[#F5FAF8]">
+    <div class="max-w-7xl mx-auto px-6">
+
+      <!-- Encabezado -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+
+        <span class="inline-flex items-center text-primary font-bold uppercase tracking-widest text-sm">
+          <span class="w-2 h-2 rounded-full bg-primary mr-2"></span>
+          QUÉ HACEMOS
+        </span>
+
+        <h2 class="mt-4 text-4xl lg:text- font-display font-extrabold text-ink">
+          Nuestros servicios y programas
+        </h2>
+
+        <p class="mt-5 text-gray-500 text-lg leading-8 font-body">
+          Trabajamos en cuatro ejes estratégicos para impulsar el desarrollo
+          integral del sector agropecuario del valle de Nepeña mediante
+          investigación, innovación y asistencia técnica.
+        </p>
+
+      </div>
+
+      <!-- Tarjetas -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+        <!-- Card 1 -->
+        <div
+          class="group bg-white rounded-3xl p-8 border border-green-100 shadow-md hover:shadow-xl hover:-translate-y-2 transition duration-300">
+
+          <div
+            class="w-12 h-12 bg-primary border-4 border-white rounded-tr-[16px] rounded-br-[16px] rounded-bl-[16px] flex items-center justify-center shadow-lg mb-6">
+            <i class="fas fa-users text-white text-lg"></i>
+          </div>
+
+          <h3 class="font-display text-xl font-bold text-ink mb-4">
+            Capacitación y asistencia técnica
+          </h3>
+
+          <p class="font-body text-gray-600 ">
+            Formación especializada en manejo de cultivos, injertos,
+            fumigación y polinización para productores del valle de
+            Nepeña mediante talleres prácticos y asesoría personalizada.
+          </p>
+
+        </div>
+
+        <!-- Card 2 -->
+        <div
+          class="group bg-white rounded-3xl p-8 border border-green-100 shadow-md hover:shadow-xl hover:-translate-y-2 transition duration-300">
+
+          <div             class="w-12 h-12 bg-primary border-4 border-white rounded-tr-[16px] rounded-br-[16px] rounded-bl-[16px] flex items-center justify-center shadow-lg mb-6">
+
+            <i class="fas fa-microscope text-white text-xl"></i>
+          </div>
+
+          <h3 class="font-display text-xl font-bold text-ink mb-4">
+            Investigación aplicada
+          </h3>
+
+          <p class="font-body text-gray-600 leading-7">
+            Desarrollo de proyectos orientados a mejorar la productividad
+            agrícola mediante investigación, innovación y transferencia
+            de conocimientos.
+          </p>
+
+        </div>
+
+        <!-- Card 3 -->
+        <div
+          class="group bg-white rounded-3xl p-8 border border-green-100 shadow-md hover:shadow-xl hover:-translate-y-2 transition duration-300">
+
+          <div             class="w-12 h-12 bg-primary border-4 border-white rounded-tr-[16px] rounded-br-[16px] rounded-bl-[16px] flex items-center justify-center shadow-lg mb-6">
+
+            <i class="fas fa-layer-group text-white text-xl"></i>
+          </div>
+
+          <h3 class="font-display text-xl font-bold text-ink mb-4">
+            Transferencia tecnológica
+          </h3>
+
+          <p class="font-body text-gray-600 leading-7">
+            Implementamos tecnologías agrícolas, herramientas digitales,
+            sistemas de riego y buenas prácticas para incrementar la
+            productividad y sostenibilidad.
+          </p>
+
+        </div>
+
+        <!-- Card 4 -->
+        <div
+          class="group bg-white rounded-3xl p-8 border border-green-100 shadow-md hover:shadow-xl hover:-translate-y-2 transition duration-300">
+
+          <div             class="w-12 h-12 bg-primary border-4 border-white rounded-tr-[16px] rounded-br-[16px] rounded-bl-[16px] flex items-center justify-center shadow-lg mb-6">
+
+            <i class="fas fa-file-alt text-white text-xl"></i>
+          </div>
+
+          <h3 class="font-display text-xl font-bold text-ink mb-4">
+            Publicaciones técnicas
+          </h3>
+
+          <p class="font-body text-gray-600 leading-7">
+            Elaboramos revistas, boletines, manuales y documentos
+            técnicos con resultados de investigación para fortalecer
+            el conocimiento del sector agropecuario.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+            NUESTRO IMPACTO
+=========================================== -->
+
+<section class="relative overflow-hidden py-24 bg-gradient-to-br from-[#006A49] via-[#007A53] to-[#00563B]">
+
+    <!-- Decoración -->
+    <div class="absolute top-0 left-0 w-96 h-96 bg-white/5 rounded-full blur-3xl -translate-x-40 -translate-y-40"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-[#F09734]/10 rounded-full blur-3xl translate-x-40 translate-y-40"></div>
+
+    <div class="relative max-w-7xl mx-auto px-6">
+
+        <!-- Encabezado -->
+        <div class="text-center mb-16">
+
+            <span
+                class="inline-flex items-center text-[#F09734] font-bold uppercase tracking-[3px] text-sm">
+
+                <span class="w-2 h-2 rounded-full bg-[#F09734] mr-3"></span>
+
+                NUESTRO IMPACTO
+
+            </span>
+
+            <h2 class="mt-5 text-4xl lg:text-5xl font-extrabold text-white">
+                Resultados que transforman vidas
+            </h2>
+
+            <p class="mt-5 text-green-100 text-lg max-w-2xl mx-auto">
+                Más de una década impulsando el desarrollo agrícola del valle de
+                Nepeña mediante innovación, capacitación y transferencia tecnológica.
+            </p>
+
+        </div>
+
+        <!-- Tarjetas -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+            <!-- CARD -->
+            <div class="bg-white/10 backdrop-blur-md border border-white/15 rounded-3xl p-8 text-center hover:-translate-y-3 hover:bg-white/15 transition-all duration-300">
+
+                <div class="w-16 h-16 mx-auto rounded-full bg-[#F09734] flex items-center justify-center shadow-lg">
+
+                    <i class="fas fa-home text-white text-2xl"></i>
+
+                </div>
+
+                <h3 class="mt-6 text-6xl font-extrabold text-white">
+
+                    4,000<span class="text-[#F09734]">+</span>
+
+                </h3>
+
+                <div class="w-14 h-1 bg-[#F09734] rounded-full mx-auto my-5"></div>
+
+                <h4 class="uppercase tracking-wider font-semibold text-white text-sm">
+
+                    Familias beneficiadas
+
+                </h4>
+
+                <p class="mt-4 text-green-100 leading-7">
+
+                    Agricultores que mejoraron su productividad y calidad de vida.
+
+                </p>
+
+            </div>
+
+            <!-- CARD -->
+            <div class="bg-white/10 backdrop-blur-md border border-white/15 rounded-3xl p-8 text-center hover:-translate-y-3 hover:bg-white/15 transition-all duration-300">
+
+                <div class="w-16 h-16 mx-auto rounded-full bg-[#F09734] flex items-center justify-center shadow-lg">
+
+                    <i class="fas fa-users text-white text-2xl"></i>
+
+                </div>
+
+                <h3 class="mt-6 text-6xl font-extrabold text-white">
+
+                    4,710<span class="text-[#F09734]">+</span>
+
+                </h3>
+
+                <div class="w-14 h-1 bg-[#F09734] rounded-full mx-auto my-5"></div>
+
+                <h4 class="uppercase tracking-wider font-semibold text-white text-sm">
+
+                    Agricultores y emprendedores
+
+                </h4>
+
+                <p class="mt-4 text-green-100 leading-7">
+
+                    Beneficiarios directos del Proyecto de Cooperación LED–SEDIR.
+
+                </p>
+
+            </div>
+
+            <!-- CARD -->
+            <div class="bg-white/10 backdrop-blur-md border border-white/15 rounded-3xl p-8 text-center hover:-translate-y-3 hover:bg-white/15 transition-all duration-300">
+
+                <div class="w-16 h-16 mx-auto rounded-full bg-[#F09734] flex items-center justify-center shadow-lg">
+
+                    <i class="fas fa-seedling text-white text-2xl"></i>
+
+                </div>
+
+                <h3 class="mt-6 text-6xl font-extrabold text-white">
+
+                    665
+
+                </h3>
+
+                <div class="w-14 h-1 bg-[#F09734] rounded-full mx-auto my-5"></div>
+
+                <h4 class="uppercase tracking-wider font-semibold text-white text-sm">
+
+                    Emprendedores formados
+
+                </h4>
+
+                <p class="mt-4 text-green-100 leading-7">
+
+                    Personas capacitadas en producción, crianzas y agroindustria.
+
+                </p>
+
+            </div>
+
+            <!-- CARD -->
+            <div class="bg-white/10 backdrop-blur-md border border-white/15 rounded-3xl p-8 text-center hover:-translate-y-3 hover:bg-white/15 transition-all duration-300">
+
+                <div class="w-16 h-16 mx-auto rounded-full bg-[#F09734] flex items-center justify-center shadow-lg">
+
+                    <i class="fas fa-female text-white text-2xl"></i>
+
+                </div>
+
+                <h3 class="mt-6 text-6xl font-extrabold text-white">
+
+                    450<span class="text-[#F09734]">+</span>
+
+                </h3>
+
+                <div class="w-14 h-1 bg-[#F09734] rounded-full mx-auto my-5"></div>
+
+                <h4 class="uppercase tracking-wider font-semibold text-white text-sm">
+
+                    Mujeres empoderadas
+
+                </h4>
+
+                <p class="mt-4 text-green-100 leading-7">
+
+                    Integradas a cadenas productivas y programas de desarrollo económico.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
   <!-- BEGIN: Componentes Proyecto -->
   <div id="proyectos-container" data-component="/components/proyectos.html"></div>
   <!-- END: Componentes Proyecto -->
@@ -180,7 +617,6 @@
       <div class="flex justify-between items-end mb-12">
         <div>
           <div class="flex items-center gap-2 mb-4">
-            <div class="section-kicker-dot"></div>
             <span class="section-kicker-label font-bold text-sm tracking-wider uppercase">Noticias</span>
           </div>
           <h2 class="text-3xl lg:text-4xl font-bold text-gray-900">Últimas novedades</h2>
@@ -205,18 +641,18 @@
 
       <div class="text-center mb-12">
         <div class="flex items-center justify-center gap-2 mb-4">
-          <div class="section-kicker-dot"></div>
           <span class="section-kicker-label font-bold text-sm tracking-wider uppercase">
-            Canal Audiovisual
+            CANAL OFICIAL
           </span>
         </div>
 
         <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-          Conoce SEDIR en video
+          Impulsando el conocimiento a través del contenido
         </h2>
 
         <p class="text-gray-600 max-w-2xl mx-auto">
-          Descubre el impacto de nuestros programas y la labor diaria de las familias del Valle de Nepeña.
+          Nuestro canal de YouTube es una herramienta vital para la transferencia tecnológica. Compartimos técnicas,
+          testimonios y avances científicos semanalmente.
         </p>
       </div>
 
@@ -280,7 +716,7 @@
             </h3>
 
             <p class="text-white/90 text-sm md:text-base">
-              Explora más videos, testimonios, capacitaciones y actividades realizadas por SEDIR.
+              + 1,900 Suscriptores + videos, testimonios, capacitaciones y actividades realizadas por SEDIR.
             </p>
           </div>
 
@@ -290,21 +726,13 @@
     </div>
   </section>
   <!-- BEGIN: Strategic Partners -->
-  <section class="partners-bg py-20 text-white text-center">
+  <section class="partners-bg py-16 md:py-20 text-white text-center">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-center gap-2 mb-4">
-        <div class="w-2 h-2 rounded-full bg-[#F09734]"></div>
-        <span class="text-[#F09734] font-bold text-sm tracking-wider uppercase">
-          Páginas de Interés
+        <span class="text-[#ffffff] font-bold text-sm md:text-base tracking-[0.2em] uppercase">
+          Sitios Recomendados
         </span>
       </div>
-
-      <h2 class="text-3xl font-bold mb-4">Página y Aliados Estratégicos</h2>
-
-      <p class="text-gray-200 max-w-2xl mx-auto mb-12 text-sm">
-        Trabajamos en red con instituciones públicas, académicas y del sector privado.
-      </p>
-
       <!-- CAROUSEL LOGOS -->
       <div class="partners-carousel overflow-hidden">
         <div class="partners-carousel-track flex w-max gap-6 py-2">

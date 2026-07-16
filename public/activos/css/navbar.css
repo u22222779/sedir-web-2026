@@ -11,8 +11,10 @@
   width: 100%;
   z-index: 9999;
 
-  padding: 10px 0;
-
+  height: 100px;      /* Ajusta según el tamaño del logo */
+  padding: 8px;
+  display: flex;
+  align-items: center;
   background: transparent;
   border-bottom: none;
   box-shadow: none;
@@ -45,8 +47,8 @@
   background: rgba(255,255,255,.96);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-
-  padding: 5px 0;
+  height: 80px;
+  padding: 0;
 
   box-shadow:
       0 8px 24px rgba(0,0,0,.08);
@@ -93,8 +95,8 @@
 
 .navbar-logo{
 
-    height:90px;
-    max-height:90px;
+    height:100px;
+    max-height:100px;
     width:auto;
 
     object-fit:contain;
@@ -104,8 +106,8 @@
 
 .navbar-shell.is-scrolled .navbar-logo{
 
-    height:60px;
-    max-height:60px;
+    height:90px;
+    max-height:90px;
 
 }
 
@@ -240,8 +242,8 @@
 
   .navbar-shell.is-scrolled .navbar-logo{
 
-      height:52px;
-      max-height:52px;
+      height:65px;
+      max-height:65px;
 
   }
 
@@ -269,9 +271,18 @@
   }
 
   /* Botón hamburguesa */
-  .navbar-burger {
-    color: #000306 !important;
-  }
+  .navbar-burger{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    height: 48px;
+
+    padding: 0;
+
+    color: #000306;
+}
 
   .navbar-shell.is-scrolled .navbar-burger {
     color: #000306 !important;
@@ -315,8 +326,8 @@
 
 .menu-icon{
 
-    width:32px;
-    height:32px;
+    width:36px;
+    height:36px;
 
 }
 
