@@ -33,7 +33,8 @@
         height: 100dvh; 
         min-height: 520px; 
         overflow: hidden;
-        background-color: var(--color-fondo-oscuro);
+        /* Fondo degradado verde institucional en lugar de negro puro mientras carga el video */
+        background: radial-gradient(circle at center, var(--color-primario-oscuro) 0%, var(--color-fondo-oscuro) 100%);
         box-shadow: 0 12px 30px rgba(0, 3, 6, 0.5);
     }
 
@@ -51,12 +52,12 @@
         height: 100%;
         object-fit: cover;
         object-position: center 35%; 
+        /* Eliminamos opacity: 0 para que el video aparezca apenas el navegador reciba el primer fotograma */
     }
 
     /* ==========================================
-       3. OVERLAYS DEGRADADOS (ACLARADOS / OPCIÓN 1)
+       3. OVERLAYS DEGRADADOS
     ========================================= */
-    /* Capa general: casi invisible, solo quita el brillo excesivo (bajó de 0.45 a 0.25) */
     .hero-overlay {
         position: absolute;
         inset: 0;
@@ -69,7 +70,6 @@
         z-index: 1;
     }
 
-    /* Degradado inferior: sombra ligera solo tras el texto (bajó de 0.85 a 0.55) */
     .hero-content-gradient {
         position: absolute;
         bottom: 0;
@@ -86,7 +86,6 @@
         z-index: 1;
     }
 
-    /* Degradado superior: sombra suave para que el menú del sitio se lea bien (bajó de 0.60 a 0.35) */
     .hero-top-gradient {
         position: absolute;
         top: 0;
@@ -127,7 +126,6 @@
         line-height: 1.3; 
         color: #FFFFFF;
         text-wrap: balance;
-        /* Sombra de texto reforzada un poquito para proteger la lectura al haber menos oscuridad detrás */
         text-shadow: 0 3px 14px rgba(0, 3, 6, 0.9); 
     }
 
@@ -163,8 +161,9 @@
             transform: translateY(0);
         }
     }
-/* ==========================================
-       6. MÓVIL Y TABLET: CENTRADO ABSOLUTO
+
+    /* ==========================================
+       6. MÓVIL Y TABLET
     ========================================= */
     @media (max-width: 768px) {
         .hero-video {
@@ -190,15 +189,12 @@
             text-align: center;
         }
 
-        /* --- TAMAÑO DE TEXTO AUMENTADO PARA MÓVIL --- */
         .hero-description {
             width: 100%;
             text-align: center;
             margin: 0 auto;
-            /* Mínimo de 1.75rem (28px) en teléfonos normales, escala dinámica 
-               a 7.5vw y alcanza hasta 2.5rem (40px) en tablets o pantallas anchas */
             font-size: clamp(1.75rem, 7.5vw, 2.5rem); 
-            line-height: 1.2; /* Interlineado compacto para que no ocupe demasiada altura */
+            line-height: 1.2; 
             letter-spacing: -0.015em;
         }
 
@@ -208,10 +204,8 @@
         }
     }
 
-    /* --- AJUSTE DE SEGURIDAD PARA TELÉFONOS MUY PEQUEÑOS (ej. iPhone SE) --- */
     @media (max-width: 380px) {
         .hero-description {
-            /* Sube de 1.35rem a 1.5rem (24px) en pantallas estrechas */
             font-size: 1.5rem; 
             line-height: 1.2;
         }
@@ -221,7 +215,7 @@
 <section class="hero-home" aria-label="Innovación y Desarrollo para la Agricultura">
     <div id="heroSlideshow">
         <video id="heroVideo" class="hero-video" autoplay muted playsinline preload="auto" aria-hidden="true">
-            <source src="activos/videos/VIDEO.mp4" type="video/mp4">
+            <source src="../activos/videos/VIDEO.mp4" type="video/mp4">
             Su navegador no soporta el video de fondo.
         </video>
     </div>
@@ -250,30 +244,32 @@
         const INICIO = 6;
         const FIN = 88;
 
+        // 1. Asignar tiempo inicial sin bloquear el renderizado
         video.addEventListener("loadedmetadata", function () {
             if (video.duration >= INICIO) {
                 video.currentTime = INICIO;
             }
         });
 
-        const startPlay = () => {
-            video.play().catch(error => {
-                console.warn("Autoplay de video intervenido por el navegador:", error);
-            });
-        };
-
-        video.addEventListener("canplay", startPlay, { once: true });
-
+        // 2. Control de bucle simple al llegar al final del fragmento
         video.addEventListener("timeupdate", function () {
-            if (video.currentTime >= FIN || video.currentTime < INICIO - 1) {
+            if (video.currentTime >= FIN) {
                 video.currentTime = INICIO;
-                startPlay();
+                video.play().catch(() => {});
             }
         });
 
+        // 3. Respaldo por si el video llega al final natural del archivo
         video.addEventListener("ended", function () {
             video.currentTime = INICIO;
-            startPlay();
+            video.play().catch(() => {});
         });
+
+        // 4. Intentar reproducir apenas haya datos suficientes
+        video.addEventListener("canplay", function () {
+            video.play().catch(error => {
+                console.warn("Autoplay bloqueado:", error);
+            });
+        }, { once: true });
     })();
 </script>
