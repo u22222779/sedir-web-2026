@@ -163,8 +163,7 @@
             transform: translateY(0);
         }
     }
-
-    /* ==========================================
+/* ==========================================
        6. MÓVIL Y TABLET: CENTRADO ABSOLUTO
     ========================================= */
     @media (max-width: 768px) {
@@ -173,7 +172,7 @@
         }
 
         .hero-content {
-            padding: 0 6%;
+            padding: 0 5%;
             display: flex;
             flex-direction: column;
             justify-content: center; 
@@ -191,17 +190,30 @@
             text-align: center;
         }
 
+        /* --- TAMAÑO DE TEXTO AUMENTADO PARA MÓVIL --- */
         .hero-description {
             width: 100%;
             text-align: center;
             margin: 0 auto;
-            font-size: clamp(1.35rem, 6vw, 1.85rem);
-            line-height: 1.4;
+            /* Mínimo de 1.75rem (28px) en teléfonos normales, escala dinámica 
+               a 7.5vw y alcanza hasta 2.5rem (40px) en tablets o pantallas anchas */
+            font-size: clamp(1.75rem, 7.5vw, 2.5rem); 
+            line-height: 1.2; /* Interlineado compacto para que no ocupe demasiada altura */
+            letter-spacing: -0.015em;
         }
 
         .hero-info::after {
-            margin: 1.3rem auto 0; 
+            margin: 1.2rem auto 0; 
             width: 60px;
+        }
+    }
+
+    /* --- AJUSTE DE SEGURIDAD PARA TELÉFONOS MUY PEQUEÑOS (ej. iPhone SE) --- */
+    @media (max-width: 380px) {
+        .hero-description {
+            /* Sube de 1.35rem a 1.5rem (24px) en pantallas estrechas */
+            font-size: 1.5rem; 
+            line-height: 1.2;
         }
     }
 </style>

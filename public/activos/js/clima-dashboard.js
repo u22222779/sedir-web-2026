@@ -483,11 +483,14 @@
         "wl-presion": PhysicsConverter.format(PhysicsConverter.inHgToHpa(d.presion_barometrica_in), 1, "mb"),
         "wl-viento": PhysicsConverter.format(PhysicsConverter.mphToMs(d.viento_velocidad_mph), 1, "m/s"),
         "wl-viento-dir": PhysicsConverter.degreesToCardinal(d.viento_direccion),
+        "wl-viento-rafaga": `Ráfaga: ${PhysicsConverter.format(PhysicsConverter.mphToMs(d.viento_rafaga_mph), 1, "m/s")}`,
         "wl-lluvia-dia": PhysicsConverter.format(PhysicsConverter.inToMm(d.lluvia_dia_in), 1, "mm"),
         "wl-lluvia-tasa": `${PhysicsConverter.format(PhysicsConverter.inToMm(d.lluvia_tasa_in_h), 1, "mm/hr")}`,
         "wl-uv": PhysicsConverter.format(d.uv, 1),
         "wl-solar": PhysicsConverter.format(d.radiacion_solar_wm2, 0, "W/m²"),
         "wl-actualizado": d.actualizado ? `Última actualización: ${new Date(d.actualizado).toLocaleString("es-PE", { dateStyle: "long", timeStyle: "short" })}` : "--",
+        "wl-temp-max-hora": d.temperatura_max_hora ? `a las ${d.temperatura_max_hora}` : "",
+        "wl-temp-min-hora": d.temperatura_min_hora ? `a las ${d.temperatura_min_hora}` : "",
       };
 
       requestAnimationFrame(() => {
@@ -523,14 +526,14 @@
         max: 15, unit: "m/s", color: CONFIG.COLORS.WIND_GAUGE, decimals: 1
       });
 
-      // Panel 5 y 6: Lluvia actual y Lluvia total
+      // Panel 5: Lluvia actual (día y tasa), únicamente con datos reales que
+      // entrega la API de WeatherLink. Se quitó el panel de "Mes/Año" porque
+      // esos totales no vienen en el endpoint /current y antes se rellenaban
+      // con una estimación inventada (día x 3), lo cual no son datos reales.
       const rainDayMm = PhysicsConverter.round(PhysicsConverter.inToMm(d.lluvia_dia_in), 1) || 0.0;
       const rainRateMm = PhysicsConverter.round(PhysicsConverter.inToMm(d.lluvia_tasa_in_h), 1) || 0.0;
-      const rainMonthMm = PhysicsConverter.round(PhysicsConverter.inToMm(d.lluvia_mes_in || d.lluvia_dia_in), 1) || 0.0;
-      const rainYearMm = PhysicsConverter.round(PhysicsConverter.inToMm(d.lluvia_anio_in || (d.lluvia_dia_in * 3)), 1) || 0.8;
 
-      this.charts.renderRainBars("wl-chart-lluvia-actual", ["day", "Storm", "Rate"], [rainDayMm, 0.0, rainRateMm], 4.0);
-      this.charts.renderRainBars("wl-chart-lluvia-total", ["Mes", "Año"], [rainMonthMm, rainYearMm], 1.0);
+      this.charts.renderRainBars("wl-chart-lluvia-actual", ["Día", "Tasa"], [rainDayMm, rainRateMm], 4.0);
 
       // Panel 7: Gauge de Humedad (%)
       this.charts.renderGauge("wl-gauge-humedad", PhysicsConverter.round(d.humedad, 1), {

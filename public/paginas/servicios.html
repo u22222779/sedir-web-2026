@@ -82,20 +82,26 @@
     <div id="navbar-container" class="navbar-loading" data-component="/components/navbar.html"></div>
     <!-- END: Navbar Component -->
 
-    <!-- BEGIN: Hero Section -->
-    <section class="relative overflow-hidden min-h-[220px] md:min-h-[360px] flex items-center bg-[#006A49]">
+    <!-- BEGIN: Hero Section (Optimized, Responsive, and Taller) -->
+    <section class="relative overflow-hidden min-h-[320px] sm:min-h-[400px] md:min-h-[480px] flex items-center bg-[#006A49]">
+        <!-- Background Image -->
         <div class="absolute inset-0 z-0">
-            <img alt="Agricultural Background" class="w-full h-full object-cover opacity-35"
+            <img alt="Agricultural Background" class="w-full h-full object-cover object-center opacity-30"
                 src="/activos/img_productos/P1440228.JPG" />
         </div>
-        <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent z-10"></div>
-        <div class="container mx-auto px-6 md:px-8 relative z-20 max-w-7xl w-full py-12">
-            <div class="max-w-3xl text-left">
+        <!-- Reinforced mobile readability gradient -->
+        <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent sm:from-black/60 sm:via-black/30 z-10"></div>
+        
+        <!-- Container with progressive padding -->
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20 max-w-7xl w-full py-12 sm:py-16">
+            <div class="max-w-3xl text-left space-y-3 sm:space-y-4">
                 
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white font-display leading-tight mb-4">
+                <!-- Fluid typography scaling: 30px mobile -> 48px tablet -> 60px desktop -->
+                <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white font-display leading-tight tracking-tight">
                     Nuestros <span class="text-[#F09734]">Servicios</span>
                 </h1>
-                <p class="text-sm md:text-base text-white/90 font-light max-w-xl leading-relaxed">
+                
+                <p class="text-sm sm:text-base md:text-lg text-white/90 font-light max-w-2xl leading-relaxed">
                     Soluciones integrales, asistencia técnica y asesoramiento profesional para optimizar la producción agrícola y ganadera del valle de Nepeña.
                 </p>
             </div>

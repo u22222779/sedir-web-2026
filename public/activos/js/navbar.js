@@ -7,7 +7,7 @@ window.initNavbar = function () {
   const navbarShell = document.querySelector(".navbar-shell");
 
   // ===============================
-  // Marcar página activa
+  // 1. Marcar página activa
   // ===============================
   const marcarLinkActivo = () => {
     const rutaActual = window.location.pathname;
@@ -32,85 +32,76 @@ window.initNavbar = function () {
   if (!menuBtn) return;
 
   // ===============================
-  // Abrir menú
-  // ===============================
-menuBtn.onclick = () => {
-
-  const abierto = menuBtn.classList.contains("active");
-
-
-  if(abierto){
-
-    cerrarMenu();
-
-  } else {
-
-    mobileMenu.style.right = "0";
-
-    overlay.classList.remove("hidden");
-
-    navbarShell.classList.add("menu-open");
-
-    menuBtn.classList.add("active");
-
-  }
-
-};
-
-  // ===============================
-  // Cerrar menú
+  // 2. Cerrar menú (función auxiliar)
   // ===============================
   const cerrarMenu = () => {
-
-    mobileMenu.style.right = "-100%";
-    overlay.classList.add("hidden");
-
-    navbarShell.classList.remove("menu-open");
-
-    // Regresar X a hamburguesa
+    if (mobileMenu) mobileMenu.style.right = "-100%";
+    if (overlay) overlay.classList.add("hidden");
+    if (navbarShell) navbarShell.classList.remove("menu-open");
     menuBtn.classList.remove("active");
-
+    document.body.style.overflow = ""; // Restaura el scroll del cuerpo
   };
 
   // ===============================
-  // Submenú móvil
+  // 3. Abrir / Cerrar menú
   // ===============================
-  if (mobileMenuBtn) {
+  menuBtn.onclick = () => {
+    const abierto = menuBtn.classList.contains("active");
 
-    mobileMenuBtn.onclick = () => {
+    if (abierto) {
+      cerrarMenu();
+    } else {
+      if (mobileMenu) mobileMenu.style.right = "0";
+      if (overlay) overlay.classList.remove("hidden");
+      if (navbarShell) navbarShell.classList.add("menu-open");
+      menuBtn.classList.add("active");
+      document.body.style.overflow = "hidden"; // Bloquea el scroll de fondo
+    }
+  };
 
-      mobileSubmenu.classList.toggle("hidden");
-
-    };
-
+  // Cerrar si tocan el fondo oscuro (overlay)
+  if (overlay) {
+    overlay.onclick = cerrarMenu;
   }
 
   // ===============================
-  // Navbar sólido al hacer scroll
+  // 4. Submenú móvil
+  // ===============================
+  if (mobileMenuBtn && mobileSubmenu) {
+    mobileMenuBtn.onclick = () => {
+      mobileSubmenu.classList.toggle("hidden");
+    };
+  }
+
+  // ===============================
+  // 5. Navbar inteligente: Sólido + Ocultar al bajar
   // ===============================
   if (navbarShell && !navbarShell.dataset.scrollBound) {
-
     navbarShell.dataset.scrollBound = "true";
 
     const SCROLL_THRESHOLD = 60;
+    let lastScrollY = window.scrollY;
 
     const actualizarEstadoScroll = () => {
+      const currentScrollY = window.scrollY;
 
-      navbarShell.classList.toggle(
-        "is-scrolled",
-        window.scrollY > SCROLL_THRESHOLD
-      );
+      // Estado 1: Cambiar a fondo sólido o sombra al pasar el umbral
+      navbarShell.classList.toggle("is-scrolled", currentScrollY > SCROLL_THRESHOLD);
 
+      // Estado 2: Ocultar al bajar, mostrar al subir (sólo si el menú móvil está cerrado)
+      if (!navbarShell.classList.contains("menu-open")) {
+        if (currentScrollY > lastScrollY && currentScrollY > 120) {
+          // Bajando: esconde el navbar
+          navbarShell.classList.add("navbar-hidden");
+        } else {
+          // Subiendo: muestra el navbar
+          navbarShell.classList.remove("navbar-hidden");
+        }
+      }
+
+      lastScrollY = currentScrollY;
     };
 
-    actualizarEstadoScroll();
-
-    window.addEventListener(
-      "scroll",
-      actualizarEstadoScroll,
-      { passive: true }
-    );
-
+    window.addEventListener("scroll", actualizarEstadoScroll, { passive: true });
   }
-
 };
