@@ -96,6 +96,24 @@
           temperatura, humedad, viento, presión y precipitación, directamente desde la plataforma oficial WeatherLink.
         </p>
 
+        <!-- SUBNAV: alterna entre el dashboard dinámico y el panel embebido de WeatherLink -->
+        <div class="clima-subnav" role="tablist" aria-label="Vistas de la estación en vivo">
+          <button type="button" id="tab-btn-dashboard" class="clima-tab-btn is-active" role="tab"
+            aria-selected="true" aria-controls="tab-panel-dashboard" data-tab="dashboard">
+            <span class="material-symbols-outlined text-base leading-none">monitoring</span>
+            Ahora mismo
+          </button>
+          <button type="button" id="tab-btn-weatherlink" class="clima-tab-btn" role="tab" aria-selected="false"
+            aria-controls="tab-panel-weatherlink" data-tab="weatherlink">
+            <span class="material-symbols-outlined text-base leading-none">dashboard</span>
+            Panel WeatherLink
+          </button>
+        </div>
+
+        <!-- ============= TAB 1: DASHBOARD DINÁMICO "AHORA MISMO" ============= -->
+        <div id="tab-panel-dashboard" class="clima-tab-panel space-y-6" role="tabpanel"
+          aria-labelledby="tab-btn-dashboard">
+
         <!-- PANEL ESTILO WEATHERLINK: Temperatura / Velocidad / Dirección -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <!-- Temperatura -->
@@ -156,7 +174,7 @@
           </div>
         </div>
 
-        <!-- TERCERA FILA: Radiación solar -->
+        <!-- TERCERA FILA: Radiación solar / Rosa de los vientos / Lluvia -->
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
           <!-- Radiación solar -->
           <div class="tremor-card">
@@ -165,6 +183,33 @@
               <span class="tremor-badge tremor-badge-neutral">Sedir Moro</span>
             </div>
             <div id="wl-gauge-solar" class="flex justify-center items-center h-full"></div>
+          </div>
+
+          <!-- Rosa de los vientos (24h) -->
+          <div class="tremor-card">
+            <div class="flex items-center justify-between mb-1">
+              <h3 class="font-semibold text-gray-800 text-sm">Rosa de los vientos</h3>
+              <span class="tremor-badge tremor-badge-neutral">Últimas 24h</span>
+            </div>
+            <div id="wl-wind-rose" class="flex justify-center items-center h-full"></div>
+          </div>
+
+          <!-- Lluvia actual -->
+          <div class="tremor-card">
+            <div class="flex items-center justify-between mb-1">
+              <h3 class="font-semibold text-gray-800 text-sm">Lluvia — hoy</h3>
+              <span class="tremor-badge tremor-badge-neutral">Sedir Moro</span>
+            </div>
+            <div id="wl-chart-lluvia-actual"></div>
+          </div>
+
+          <!-- Lluvia acumulada -->
+          <div class="tremor-card">
+            <div class="flex items-center justify-between mb-1">
+              <h3 class="font-semibold text-gray-800 text-sm">Lluvia acumulada</h3>
+              <span class="tremor-badge tremor-badge-neutral">Mes / Año</span>
+            </div>
+            <div id="wl-chart-lluvia-total"></div>
           </div>
         </div>
 
@@ -266,6 +311,12 @@
           </div>
         </div>
 
+        </div>
+        <!-- ============= FIN TAB 1: DASHBOARD ============= -->
+
+        <!-- ============= TAB 2: PANEL EMBEBIDO WEATHERLINK ============= -->
+        <div id="tab-panel-weatherlink" class="clima-tab-panel hidden" role="tabpanel"
+          aria-labelledby="tab-btn-weatherlink">
         <div class="bg-white rounded-2xl sm:rounded-3xl shadow-md border border-gray-200 overflow-hidden">
           <div
             class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 px-4 sm:px-6 py-4 border-b border-gray-100">
@@ -292,6 +343,9 @@
             </iframe>
           </div>
         </div>
+        </div>
+        <!-- ============= FIN TAB 2: PANEL WEATHERLINK ============= -->
+
       </section>
 
   </main>
@@ -304,7 +358,7 @@
   <script src="/activos/js/main.js" defer></script>
   <script src="/activos/js/estacion-historica.js" defer></script>
   <script src="/activos/js/clima-dashboard.js" defer></script>
-  <script src="/activos/js/clima-subnav.js" defer></script>
+  <script src="../activos/js/clima-subnav.js" defer></script>
 </body>
 
 </html>
