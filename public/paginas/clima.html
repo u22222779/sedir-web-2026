@@ -7,8 +7,8 @@
 
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="/activos/js/clima.js"></script>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
   <link
     href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&amp;family=Libre+Franklin:wght@300;400;500;600;700&amp;display=swap"
     rel="stylesheet" />
@@ -82,12 +82,11 @@
         class="scroll-mt-[150px] bg-[#f7faf7] rounded-2xl sm:rounded-3xl p-4 sm:p-8 md:p-10 space-y-6">
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div>
-            <span class="text-xs font-bold tracking-widest text-primary uppercase">Ahora mismo</span>
-            <h2 class="text-xl sm:text-2xl font-bold mt-1">Estación en vivo</h2>
+            <span class="tremor-eyebrow text-primary">Ahora mismo</span>
+            <h2 class="text-xl sm:text-2xl font-bold mt-1 text-gray-900">Estación en vivo</h2>
           </div>
-          <span
-            class="inline-flex items-center gap-1.5 bg-white border border-gray-200 rounded-full px-3 py-1.5 text-xs font-medium text-gray-500 self-start sm:self-auto">
-            <span class="material-symbols-outlined text-sm">satellite_alt</span>
+          <span class="tremor-badge tremor-badge-station">
+            <span class="material-symbols-outlined text-sm leading-none">satellite_alt</span>
             Fuente: WeatherLink (estación SEDIR - Moro)
           </span>
         </div>
@@ -100,23 +99,29 @@
         <!-- PANEL ESTILO WEATHERLINK: Temperatura / Velocidad / Dirección -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <!-- Temperatura -->
-          <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
-            <h3 class="font-bold text-gray-800 text-base">Temperatura</h3>
-            <p class="text-xs italic text-gray-400 mb-2">Sedir Moro</p>
+          <div class="tremor-card">
+            <div class="flex items-center justify-between mb-1">
+              <h3 class="font-semibold text-gray-800 text-sm">Temperatura</h3>
+              <span class="tremor-badge tremor-badge-neutral">Sedir Moro</span>
+            </div>
             <div id="wl-chart-temp"></div>
           </div>
 
           <!-- Velocidad del viento -->
-          <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
-            <h3 class="font-bold text-gray-800 text-base">Velocidad del viento</h3>
-            <p class="text-xs italic text-gray-400 mb-2">Sedir Moro</p>
+          <div class="tremor-card">
+            <div class="flex items-center justify-between mb-1">
+              <h3 class="font-semibold text-gray-800 text-sm">Velocidad del viento</h3>
+              <span class="tremor-badge tremor-badge-neutral">Sedir Moro</span>
+            </div>
             <div id="wl-gauge-viento" class="flex justify-center items-center h-full"></div>
           </div>
 
           <!-- Dirección del viento -->
-          <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
-            <h3 class="font-bold text-gray-800 text-base">Dirección del viento</h3>
-            <p class="text-xs italic text-gray-400 mb-2">Sedir Moro</p>
+          <div class="tremor-card">
+            <div class="flex items-center justify-between mb-1">
+              <h3 class="font-semibold text-gray-800 text-sm">Dirección del viento</h3>
+              <span class="tremor-badge tremor-badge-neutral">Sedir Moro</span>
+            </div>
             <div id="wl-compass-viento" class="flex justify-center"></div>
           </div>
         </div>
@@ -124,23 +129,29 @@
         <!-- SEGUNDA FILA: Humedad / Barómetro / UV -->
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
           <!-- Humedad -->
-          <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
-            <h3 class="font-bold text-gray-800 text-base">Humedad</h3>
-            <p class="text-xs italic text-gray-400 mb-2">Sedir Moro</p>
+          <div class="tremor-card">
+            <div class="flex items-center justify-between mb-1">
+              <h3 class="font-semibold text-gray-800 text-sm">Humedad</h3>
+              <span class="tremor-badge tremor-badge-neutral">Sedir Moro</span>
+            </div>
             <div id="wl-gauge-humedad" class="flex justify-center items-center h-full"></div>
           </div>
 
           <!-- Barómetro -->
-          <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 md:col-span-2">
-            <h3 class="font-bold text-gray-800 text-base">Barómetro</h3>
-            <p class="text-xs italic text-gray-400 mb-2">WeatherLink en directo</p>
+          <div class="tremor-card md:col-span-2">
+            <div class="flex items-center justify-between mb-1">
+              <h3 class="font-semibold text-gray-800 text-sm">Barómetro</h3>
+              <span class="tremor-badge tremor-badge-neutral">WeatherLink en directo</span>
+            </div>
             <div id="wl-chart-barometro"></div>
           </div>
 
           <!-- UV -->
-          <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
-            <h3 class="font-bold text-gray-800 text-base">UV</h3>
-            <p class="text-xs italic text-gray-400 mb-2">Sedir Moro</p>
+          <div class="tremor-card">
+            <div class="flex items-center justify-between mb-1">
+              <h3 class="font-semibold text-gray-800 text-sm">UV</h3>
+              <span class="tremor-badge tremor-badge-neutral">Sedir Moro</span>
+            </div>
             <div id="wl-gauge-uv" class="flex justify-center items-center h-full"></div>
           </div>
         </div>
@@ -148,9 +159,11 @@
         <!-- TERCERA FILA: Radiación solar -->
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
           <!-- Radiación solar -->
-          <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
-            <h3 class="font-bold text-gray-800 text-base">Radiación solar</h3>
-            <p class="text-xs italic text-gray-400 mb-2">Sedir Moro</p>
+          <div class="tremor-card">
+            <div class="flex items-center justify-between mb-1">
+              <h3 class="font-semibold text-gray-800 text-sm">Radiación solar</h3>
+              <span class="tremor-badge tremor-badge-neutral">Sedir Moro</span>
+            </div>
             <div id="wl-gauge-solar" class="flex justify-center items-center h-full"></div>
           </div>
         </div>
@@ -158,8 +171,8 @@
         <!-- DASHBOARD DE TARJETAS EN VIVO -->
         <div class="bg-white rounded-2xl sm:rounded-3xl shadow-md border border-gray-200 p-6 space-y-6">
           <div class="flex items-center justify-between flex-wrap gap-2">
-            <span id="wl-estado"
-              class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-500">
+            <span id="wl-estado" class="tremor-badge tremor-badge-loading">
+              <span class="w-1.5 h-1.5 rounded-full bg-current"></span>
               Conectando...
             </span>
             <span id="wl-actualizado" class="text-xs text-gray-400">Última actualización: --</span>
@@ -170,73 +183,85 @@
 
           <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
             <!-- Temperatura -->
-            <div class="rounded-2xl border border-gray-200 p-5 text-center">
-              <span class="material-symbols-outlined text-primary text-3xl">thermostat</span>
-              <p id="wl-temp" class="text-3xl font-bold mt-2">--°C</p>
-              <p class="text-xs text-gray-500 mt-1">Temperatura</p>
-              <p id="wl-sensacion" class="text-xs text-gray-400">Sensación: --°C</p>
-              <div class="flex items-center justify-center gap-3 mt-3 pt-3 border-t border-gray-100">
-                <div class="flex items-center gap-1">
-                  <span class="material-symbols-outlined text-red-500 text-base">arrow_upward</span>
-                  <span class="text-xs">
-                    <span class="text-gray-400">Máx:</span>
-                    <span id="wl-temp-max" class="font-semibold text-gray-700">--°C</span>
-                    <span id="wl-temp-max-hora" class="text-gray-400 block leading-tight"></span>
+            <div class="tremor-card">
+              <span class="tremor-icon-badge">
+                <span class="material-symbols-outlined text-xl leading-none">thermostat</span>
+              </span>
+              <p class="tremor-eyebrow mt-3">Temperatura</p>
+              <p id="wl-temp" class="tremor-metric mt-0.5">--°C</p>
+              <p class="tremor-label mt-0.5">Sensación: <span id="wl-sensacion">--°C</span></p>
+              <div class="tremor-divider grid grid-cols-2 gap-2 mt-3 pt-3">
+                <div>
+                  <span class="tremor-badge tremor-badge-up">
+                    <span class="material-symbols-outlined text-sm leading-none">arrow_upward</span>
+                    <span id="wl-temp-max">--°C</span>
                   </span>
+                  <p id="wl-temp-max-hora" class="text-[11px] text-gray-400 mt-1 leading-tight"></p>
                 </div>
-                <div class="flex items-center gap-1">
-                  <span class="material-symbols-outlined text-blue-500 text-base">arrow_downward</span>
-                  <span class="text-xs">
-                    <span class="text-gray-400">Mín:</span>
-                    <span id="wl-temp-min" class="font-semibold text-gray-700">--°C</span>
-                    <span id="wl-temp-min-hora" class="text-gray-400 block leading-tight"></span>
+                <div>
+                  <span class="tremor-badge tremor-badge-down">
+                    <span class="material-symbols-outlined text-sm leading-none">arrow_downward</span>
+                    <span id="wl-temp-min">--°C</span>
                   </span>
+                  <p id="wl-temp-min-hora" class="text-[11px] text-gray-400 mt-1 leading-tight"></p>
                 </div>
               </div>
             </div>
 
             <!-- Humedad -->
-            <div class="rounded-2xl border border-gray-200 p-5 text-center">
-              <span class="material-symbols-outlined text-primary text-3xl">humidity_percentage</span>
-              <p id="wl-humedad" class="text-3xl font-bold mt-2">--%</p>
-              <p class="text-xs text-gray-500 mt-1">Humedad relativa</p>
+            <div class="tremor-card">
+              <span class="tremor-icon-badge">
+                <span class="material-symbols-outlined text-xl leading-none">humidity_percentage</span>
+              </span>
+              <p class="tremor-eyebrow mt-3">Humedad relativa</p>
+              <p id="wl-humedad" class="tremor-metric mt-0.5">--%</p>
             </div>
 
             <!-- Viento -->
-            <div class="rounded-2xl border border-gray-200 p-5 text-center">
-              <span class="material-symbols-outlined text-primary text-3xl">air</span>
-              <p id="wl-viento" class="text-3xl font-bold mt-2">-- km/h</p>
-              <p class="text-xs text-gray-500 mt-1">Viento (<span id="wl-viento-dir">--</span>)</p>
-              <p id="wl-viento-rafaga" class="text-xs text-gray-400">Ráfaga: -- km/h</p>
+            <div class="tremor-card">
+              <span class="tremor-icon-badge">
+                <span class="material-symbols-outlined text-xl leading-none">air</span>
+              </span>
+              <p class="tremor-eyebrow mt-3">Viento (<span id="wl-viento-dir">--</span>)</p>
+              <p id="wl-viento" class="tremor-metric mt-0.5">-- km/h</p>
+              <p class="tremor-label mt-0.5" id="wl-viento-rafaga">Ráfaga: -- km/h</p>
             </div>
 
             <!-- Presión -->
-            <div class="rounded-2xl border border-gray-200 p-5 text-center">
-              <span class="material-symbols-outlined text-primary text-3xl">speed</span>
-              <p id="wl-presion" class="text-3xl font-bold mt-2">-- hPa</p>
-              <p class="text-xs text-gray-500 mt-1">Presión barométrica</p>
+            <div class="tremor-card">
+              <span class="tremor-icon-badge">
+                <span class="material-symbols-outlined text-xl leading-none">speed</span>
+              </span>
+              <p class="tremor-eyebrow mt-3">Presión barométrica</p>
+              <p id="wl-presion" class="tremor-metric mt-0.5">-- hPa</p>
             </div>
 
             <!-- Lluvia -->
-            <div class="rounded-2xl border border-gray-200 p-5 text-center">
-              <span class="material-symbols-outlined text-primary text-3xl">rainy</span>
-              <p id="wl-lluvia-dia" class="text-3xl font-bold mt-2">-- mm</p>
-              <p class="text-xs text-gray-500 mt-1">Lluvia acumulada (hoy)</p>
-              <p id="wl-lluvia-tasa" class="text-xs text-gray-400">Tasa: -- mm/h</p>
+            <div class="tremor-card">
+              <span class="tremor-icon-badge">
+                <span class="material-symbols-outlined text-xl leading-none">rainy</span>
+              </span>
+              <p class="tremor-eyebrow mt-3">Lluvia acumulada (hoy)</p>
+              <p id="wl-lluvia-dia" class="tremor-metric mt-0.5">-- mm</p>
+              <p class="tremor-label mt-0.5" id="wl-lluvia-tasa">Tasa: -- mm/h</p>
             </div>
 
             <!-- UV -->
-            <div class="rounded-2xl border border-gray-200 p-5 text-center">
-              <span class="material-symbols-outlined text-primary text-3xl">wb_sunny</span>
-              <p id="wl-uv" class="text-3xl font-bold mt-2">--</p>
-              <p class="text-xs text-gray-500 mt-1">Índice UV</p>
+            <div class="tremor-card">
+              <span class="tremor-icon-badge">
+                <span class="material-symbols-outlined text-xl leading-none">wb_sunny</span>
+              </span>
+              <p class="tremor-eyebrow mt-3">Índice UV</p>
+              <p id="wl-uv" class="tremor-metric mt-0.5">--</p>
             </div>
 
             <!-- Radiación solar -->
-            <div class="rounded-2xl border border-gray-200 p-5 text-center">
-              <span class="material-symbols-outlined text-primary text-3xl">solar_power</span>
-              <p id="wl-solar" class="text-3xl font-bold mt-2">-- W/m²</p>
-              <p class="text-xs text-gray-500 mt-1">Radiación solar</p>
+            <div class="tremor-card">
+              <span class="tremor-icon-badge">
+                <span class="material-symbols-outlined text-xl leading-none">solar_power</span>
+              </span>
+              <p class="tremor-eyebrow mt-3">Radiación solar</p>
+              <p id="wl-solar" class="tremor-metric mt-0.5">-- W/m²</p>
             </div>
           </div>
         </div>

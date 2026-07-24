@@ -1,5 +1,3 @@
-const pool = require("../config/database");
-
 const WL_BASE_URL = "https://api.weatherlink.com/v2";
 
 // Cache simple en memoria para no golpear la API de WeatherLink en cada
@@ -159,46 +157,5 @@ exports.obtenerClimaActual = async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(error.status || 500).json({ error: error.message });
-  }
-};
-
-exports.guardarClima = async (req, res) => {
-  try {
-
-    const {
-      temperatura,
-      humedad,
-      sensacion,
-      precipitacion,
-      uv,
-      fecha
-    } = req.body;
-
-    await pool.query(
-      `INSERT INTO clima_historico
-      (
-        temperatura,
-        humedad,
-        sensacion_termica,
-        precipitacion,
-        radiacion_uv,
-        fecha_registro
-      )
-      VALUES ($1,$2,$3,$4,$5,$6)`,
-      [
-        temperatura,
-        humedad,
-        sensacion,
-        precipitacion,
-        uv,
-        fecha
-      ]
-    );
-
-    res.json({ ok: true });
-
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: error.message });
   }
 };

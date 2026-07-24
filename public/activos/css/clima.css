@@ -3,6 +3,96 @@ body.clima-page {
   font-size: 14px;
 }
 
+/* ==========================================================================
+   TREMOR-STYLE DESIGN TOKENS — Panel "Estación en vivo" (WeatherLink)
+   Inspirado en el sistema de componentes Tremor (tarjetas planas,
+   etiquetas en mayúsculas, métricas grandes y badges de estado),
+   reconstruido con clases utilitarias de Tailwind + variables de marca
+   SEDIR (verde primario / naranja institucional), sin dependencias nuevas.
+   ========================================================================== */
+.tremor-card {
+  background: #fff;
+  border: 1px solid #e5e7eb; /* gray-200 */
+  border-radius: 0.75rem; /* rounded-xl */
+  padding: 1.25rem;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.tremor-card:hover {
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+  border-color: #d1d5db;
+}
+.tremor-eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #6b7280; /* gray-500 */
+}
+.tremor-metric {
+  font-size: 1.75rem;
+  line-height: 1.15;
+  font-weight: 700;
+  color: #111827; /* gray-900 */
+  font-variant-numeric: tabular-nums;
+}
+.tremor-label {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+.tremor-icon-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 0.625rem;
+  background: rgba(0, 148, 74, 0.1);
+  color: #00944a;
+  flex-shrink: 0;
+}
+.tremor-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  border-radius: 9999px;
+  padding: 0.125rem 0.625rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.tremor-badge-neutral {
+  background: #f3f4f6;
+  color: #4b5563;
+}
+.tremor-badge-station {
+  background: #eef2ff;
+  color: #4338ca;
+}
+.tremor-badge-up {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+.tremor-badge-down {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+.tremor-badge-live {
+  background: #dcfce7;
+  color: #15803d;
+}
+.tremor-badge-offline {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+.tremor-badge-loading {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+.tremor-divider {
+  border-top: 1px solid #f3f4f6;
+}
+
+
 .clima-page-hero {
   position: center;
   min-height: 379px;
