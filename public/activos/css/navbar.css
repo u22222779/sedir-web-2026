@@ -1,37 +1,44 @@
 /* ==========================================
-   NAVBAR GLOBAL - SEDIR
+   1. VARIABLES Y COLORES DEL NAVBAR
 ========================================== */
+:root {
+  --color-primario: #00944a;       /* Verde Principal */
+  --color-primario-oscuro: #006A49;/* Verde Oscuro / Hover */
+  --color-tierra: #8C7855;         /* Tono Tierra / Cosecha */
+  --color-secundario-verde: #009C63;
+  --color-fondo-oscuro: #000306;   /* Fondo negro/azul profundo */
+  --color-acento-naranja: #F09734; /* Naranja Vibrante / Acento */
 
+  --font-montserrat: 'Montserrat', sans-serif;
+  --font-franklin: 'Franklin Gothic Demi', 'Franklin Gothic', sans-serif;
+}
+
+/* ==========================================
+   2. NAVBAR ESTRUCTURA PRINCIPAL
+========================================== */
 .navbar-shell {
-  font-family: "Montserrat", "Franklin Gothic Demi", sans-serif;
+  font-family: var(--font-montserrat);
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   width: 100%;
   z-index: 9999;
-
-  height: 100px;      /* Ajusta según el tamaño del logo */
-  padding: 8px;
+  height: 100px;
+  padding: 0 24px;
   display: flex;
   align-items: center;
   background: transparent;
   border-bottom: none;
   box-shadow: none;
-
   backdrop-filter: blur(0);
   -webkit-backdrop-filter: blur(0);
-
   transition:
-    background-color .3s ease,
-    backdrop-filter .3s ease,
-    padding .3s ease,
-    box-shadow .3s ease;
+    background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    backdrop-filter 0.35s ease,
+    height 0.35s ease,
+    box-shadow 0.35s ease;
 }
-
-/* ==============================
-   Estado inicial
-============================== */
 
 .navbar-shell:not(.is-scrolled) {
   background: transparent;
@@ -39,332 +46,229 @@
   box-shadow: none;
 }
 
-/* ==============================
-   Navbar al hacer scroll
-============================== */
+/* Enlaces con tamaño de letra 16px en Escritorio */
+.navbar-link {
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 16px; /* <-- TAMAÑO ARREGLADO PARA ESCRITORIO */
+  text-decoration: none;
+  position: relative;
+  white-space: nowrap; 
+  transition: color 0.25s ease, opacity 0.25s ease;
+}
 
+.navbar-link:hover {
+  color: var(--color-acento-naranja);
+}
+
+.navbar-link.is-active {
+  color: var(--color-acento-naranja);
+  font-weight: 700;
+}
+
+/* Línea animada inferior en hover (Solo PC) */
+.navbar-link::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: var(--color-acento-naranja);
+  transition: width 0.3s ease;
+}
+
+.navbar-link:hover::after {
+  width: 100%;
+}
+
+.navbar-burger {
+  color: #ffffff;
+  transition: color 0.25s ease;
+}
+
+/* ==============================
+   3. ESTADO SCROLLED (AL BAJAR POR LA WEB)
+============================== */
 .navbar-shell.is-scrolled {
-  background: rgba(255,255,255,.96);
+  background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  height: 80px;
-  padding: 0;
-
-  box-shadow:
-      0 8px 24px rgba(0,0,0,.08);
-
-  position: fixed;
+  height: 90px;
+  padding: 0 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
-/* Línea inferior verde institucional */
-
-.navbar-shell.is-scrolled::after{
-    content:"";
-    position:absolute;
-
-    left:0;
-    bottom:0;
-
-    width:100%;
-    height:1px;
-
-    background:linear-gradient(
-        90deg,
-        #00944a 0%,
-        #00b35a 50%,
-        #006a49 100%
-    );
+.navbar-shell.is-scrolled::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--color-primario) 0%,
+    var(--color-secundario-verde) 50%,
+    var(--color-primario-oscuro) 100%
+  );
 }
 
-/* ==============================
-   Logo
-============================== */
-
-.navbar-logo-pill{
-    display:inline-flex;
-    align-items:center;
-
-    background:transparent;
-
-    border:none;
-
-    border-radius:999px;
-
-    padding:12px 24px 12px 12px;
-}
-
-.navbar-logo{
-
-    height:100px;
-    max-height:100px;
-    width:auto;
-
-    object-fit:contain;
-
-    transition:height .3s ease;
-}
-
-.navbar-shell.is-scrolled .navbar-logo{
-
-    height:90px;
-    max-height:90px;
-
-}
-
-/* ==============================
-   Links
-============================== */
-
-.navbar-link{
-
-    color:#ffffff;
-
-    font-weight:500;
-
-    text-decoration:none;
-
-    transition:
-        color .25s ease,
-        opacity .25s ease;
-
-}
-
-.navbar-link:hover{
-
-    color:#F09734;
-
-}
-
-.navbar-link.is-active{
-
-    color:#F09734;
-    font-weight:700;
-
-}
-
-/* Links sobre fondo blanco */
-
-.navbar-shell.is-scrolled .navbar-link{
-
-    color:#374151;
-
+.navbar-shell.is-scrolled .navbar-link {
+  color: #374151;
 }
 
 .navbar-shell.is-scrolled .navbar-link:hover,
-.navbar-shell.is-scrolled .navbar-link.is-active{
+.navbar-shell.is-scrolled .navbar-link.is-active {
+  color: var(--color-primario);
+}
 
-    color:#00944a;
-
+.navbar-shell.is-scrolled .navbar-burger {
+  color: var(--color-fondo-oscuro);
 }
 
 /* ==============================
-   Botón CTA
+   4. LOGO
 ============================== */
-
-.navbar-cta{
-
-    background:linear-gradient(
-        90deg,
-        #00944a,
-        #006a49
-    );
-
-    color:#fff;
-
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-
-    box-shadow:
-        0 6px 18px rgba(0,148,74,.30);
-
-    transition:
-        transform .25s ease,
-        box-shadow .25s ease;
-
+.navbar-logo-pill {
+  display: inline-flex;
+  align-items: center;
+  background: transparent;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 24px 12px 12px;
 }
 
-.navbar-cta:hover{
-
-    transform:translateY(-2px);
-
-    box-shadow:
-        0 10px 22px rgba(0,148,74,.40);
-
+.navbar-logo {
+  height: 100px;
+  max-height: 100px;
+  width: auto;
+  object-fit: contain;
+  transition: height 0.3s ease;
 }
 
-.navbar-cta-mobile{
-
-    background:#00944a;
-    color:#fff;
-
-}
-
-.navbar-cta-mobile:hover{
-
-    background:#006a49;
-
+.navbar-shell.is-scrolled .navbar-logo {
+  height: 90px;
+  max-height: 90px;
 }
 
 /* ==============================
-   Botón hamburguesa
+   5. BOTÓN CTA (CONTÁCTANOS)
 ============================== */
-
-.navbar-burger{
-
-    color:#000306;
-
-    transition:
-        color .25s ease;
-
+.navbar-cta {
+  background: linear-gradient(
+    90deg,
+    var(--color-primario),
+    var(--color-primario-oscuro)
+  );
+  color: #ffffff !important;
+  font-size: 15px; /* <-- TAMAÑO ARREGLADO PARA EL BOTÓN EN PC */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  box-shadow: 0 6px 18px rgba(0, 148, 74, 0.30);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.navbar-shell.is-scrolled .navbar-burger{
+.navbar-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(0, 148, 74, 0.45);
+}
 
-    color:#ffffff;
+.navbar-cta-mobile {
+  background: var(--color-primario);
+  color: #ffffff !important;
+  font-size: 16px; /* <-- TAMAÑO DEL BOTÓN EN MÓVIL */
+  transition: background-color 0.25s ease;
+}
 
+.navbar-cta-mobile:hover {
+  background: var(--color-primario-oscuro);
+}
+
+/* ==============================
+   6. HAMBURGUESA ANIMADA A "X"
+============================== */
+.menu-icon {
+  width: 36px;
+  height: 36px;
+}
+
+.menu-icon .line {
+  transition: transform 0.35s ease, opacity 0.25s ease;
+  transform-origin: center;
+}
+
+#menu-btn.active .line1 {
+  transform: translateY(5px) rotate(45deg);
+}
+
+#menu-btn.active .line2 {
+  opacity: 0;
+}
+
+#menu-btn.active .line3 {
+  transform: translateY(-5px) rotate(-45deg);
 }
 
 /* ==========================================
-   RESPONSIVE
+   7. RESPONSIVE MÓVIL Y TABLET (NAVBAR)
 ========================================== */
-
-@media (max-width:768px){
-
-  /* Logo más pequeño */
-
-  .navbar-logo{
-
-      height: 75px;
-      max-height:75px;
-
-  }
-
-  .navbar-shell.is-scrolled .navbar-logo{
-
-      height:65px;
-      max-height:65px;
-
-  }
-
-  /* Cuando el menú está abierto */
-
-  .navbar-shell.menu-open .navbar-logo-container{
-
-      opacity:0;
-
-      transform:translateX(-30px);
-
-      pointer-events:none;
-
-  }
-
-/* ==========================================
-   NAVBAR RESPONSIVE
-========================================== */
-
 @media (max-width: 768px) {
-
-  /* Reservar espacio para el navbar fixed en mobile */
-  body {
-    padding-top: 110px;
+  .navbar-shell {
+    height: 85px;
+    padding: 0 16px;
   }
 
-  /* Botón hamburguesa */
-  .navbar-burger{
+  .navbar-shell.is-scrolled {
+    height: 75px;
+  }
+
+  .navbar-logo {
+    height: 75px;
+    max-height: 75px;
+  }
+
+  .navbar-shell.is-scrolled .navbar-logo {
+    height: 65px;
+    max-height: 65px;
+  }
+
+  .navbar-shell.menu-open .navbar-logo-container {
+    opacity: 0;
+    transform: translateX(-20px);
+    pointer-events: none;
+  }
+
+  .navbar-burger {
     display: flex;
     align-items: center;
     justify-content: center;
-
     width: 48px;
     height: 48px;
-
     padding: 0;
-
-    color: #000306;
-}
-
-  .navbar-shell.is-scrolled .navbar-burger {
-    color: #000306 !important;
   }
 
-  /* Enlaces del menú móvil */
-  .navbar-mobile-menu .navbar-link,
+  /* Enlaces móviles con tamaño de letra 18px para que sean fáciles de tocar */
   #mobile-menu .navbar-link,
-  .mobile-menu .navbar-link {
-    color: #000306 !important;
+  .navbar-mobile-menu .navbar-link {
+    color: var(--color-fondo-oscuro) !important;
+    font-size: 18px; /* <-- TAMAÑO ARREGLADO PARA CELULARES */
   }
 
-  /* Hover */
-  .navbar-mobile-menu .navbar-link:hover,
+  #mobile-menu .navbar-link::after {
+    display: none; 
+  }
+
   #mobile-menu .navbar-link:hover,
-  .mobile-menu .navbar-link:hover {
-    color: #00944a !important;
+  .navbar-mobile-menu .navbar-link:hover {
+    color: var(--color-primario) !important;
   }
 
-  /* Página activa */
-  .navbar-mobile-menu .navbar-link.is-active,
   #mobile-menu .navbar-link.is-active,
-  .mobile-menu .navbar-link.is-active {
-    color: #F09734 !important;
+  #mobile-menu .navbar-link[aria-current="page"] {
+    color: var(--color-acento-naranja) !important;
     font-weight: 700;
   }
-
-  /* Si usa aria-current="page" */
-  .navbar-mobile-menu .navbar-link[aria-current="page"],
-  #mobile-menu .navbar-link[aria-current="page"],
-  .mobile-menu .navbar-link[aria-current="page"] {
-    color: #F09734 !important;
-    font-weight: 700;
-  }
-
-}
-}
-/* ==========================================
-   HAMBURGUESA ANIMADA A X
-========================================== */
-
-.menu-icon{
-
-    width:36px;
-    height:36px;
-
-}
-
-
-.menu-icon .line{
-
-    transition:
-        transform .35s ease,
-        opacity .25s ease;
-
-    transform-origin:center;
-
-}
-
-
-/* Estado abierto */
-
-#menu-btn.active .line1{
-
-    transform:
-    translateY(6px)
-    rotate(45deg);
-
-}
-
-
-#menu-btn.active .line2{
-
-    opacity:0;
-
-}
-
-
-#menu-btn.active .line3{
-
-    transform:
-    translateY(-6px)
-    rotate(-45deg);
-
 }

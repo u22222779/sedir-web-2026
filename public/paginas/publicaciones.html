@@ -15,6 +15,7 @@
   <link href="/activos/css/navbar.css" rel="stylesheet" />
   <link href="/activos/css/footer.css" rel="stylesheet" />
   <link href="/activos/css/responsive.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
   <script id="tailwind-config">
     // Paleta y tipografías tomadas directo del Manual de Identidad Visual
     // de SEDIR. El sitio ya cuenta con los archivos de Franklin Gothic Demi
@@ -127,50 +128,40 @@
             la semana siguiente.
           </p>
 
-          <div class="space-y-5">
-            <div class="flex items-start gap-4">
-              <div class="sedir-icon w-11 h-11 shrink-0 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24"
-                  stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M9 12h6m-6 4h6M9 8h1M5 21h14a2 2 0 002-2V7.5L15.5 3H5a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <div>
-                <h3 class="font-display font-bold text-ink">Manuales técnicos</h3>
-                <p class="text-sm text-gray-500">Procedimientos de campo documentados paso a paso.</p>
-              </div>
-            </div>
+          <div class="space-y-6">
+  <!-- Ícono 1: Manuales técnicos -->
+  <div class="flex items-start gap-4">
+    <div class="w-12 h-12 bg-primary border-4 border-white rounded-tr-[16px] rounded-br-[16px] rounded-bl-[16px] flex items-center justify-center shadow-md flex-shrink-0">
+      <i class="fas fa-book text-white text-lg"></i>
+    </div>
+    <div>
+      <h3 class="font-display font-bold text-ink text-base mb-1">Manuales técnicos</h3>
+      <p class="text-sm text-gray-600 font-body">Procedimientos agronómicos explicados paso a paso para su correcta ejecución.</p>
+    </div>
+  </div>
 
-            <div class="flex items-start gap-4 ml-6">
-              <div class="sedir-icon w-11 h-11 shrink-0 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24"
-                  stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 20l9-5-9-5-9 5 9 5z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 12L3 7l9-5 9 5-9 5z" />
-                </svg>
-              </div>
-              <div>
-                <h3 class="font-display font-bold text-ink">Capacitación y webinars</h3>
-                <p class="text-sm text-gray-500">Expertos nacionales e internacionales, en vivo y grabado.</p>
-              </div>
-            </div>
+  <!-- Ícono 2: Capacitación y conferencias -->
+  <div class="flex items-start gap-4">
+    <div class="w-12 h-12 bg-primary border-4 border-white rounded-tr-[16px] rounded-br-[16px] rounded-bl-[16px] flex items-center justify-center shadow-md flex-shrink-0">
+      <i class="fas fa-chalkboard-user text-white text-lg"></i>
+    </div>
+    <div>
+      <h3 class="font-display font-bold text-ink text-base mb-1">Capacitación y webinars</h3>
+      <p class="text-sm text-gray-600 font-body">Expertos nacionales e internacionales, en vivo y grabado.</p>
+    </div>
+  </div>
 
-            <div class="flex items-start gap-4">
-              <div class="sedir-icon w-11 h-11 shrink-0 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24"
-                  stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-              </div>
-              <div>
-                <h3 class="font-display font-bold text-ink">Enfoque territorial</h3>
-                <p class="text-sm text-gray-500">Contenido pensado para la realidad del Valle de Nepeña.</p>
-              </div>
-            </div>
-          </div>
+  <!-- Ícono 3: Pertinencia territorial -->
+  <div class="flex items-start gap-4">
+    <div class="w-12 h-12 bg-primary border-4 border-white rounded-tr-[16px] rounded-br-[16px] rounded-bl-[16px] flex items-center justify-center shadow-md flex-shrink-0">
+      <i class="fas fa-map-location-dot text-white text-lg"></i>
+    </div>
+    <div>
+      <h3 class="font-display font-bold text-ink text-base mb-1">Enfoque territorial</h3>
+      <p class="text-sm text-gray-600 font-body">Contenido pensado para la realidad del Valle de Nepeña.</p>
+    </div>
+  </div>
+</div>
         </div>
       </div>
     </section>
@@ -368,30 +359,6 @@
       </div>
     </section>
     <!-- END: Biblioteca Virtual -->
-
-    <!-- BEGIN: Newsletter CTA -->
-    <section class="bg-primary-dark text-white py-16">
-      <div
-        class="max-w-7xl mx-auto px-6 md:px-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
-        <div>
-          <h2 class="font-display font-extrabold text-3xl md:text-4xl mb-3">¿Buscas material especializado?</h2>
-          <p class="text-gray-100/90 max-w-lg">
-            Suscríbete a nuestro boletín para recibir las últimas publicaciones técnicas directamente en tu correo.
-          </p>
-        </div>
-
-        <form id="publicaciones-newsletter-form" class="flex w-full max-w-md gap-3">
-          <input type="email" name="email" required placeholder="Tu correo electrónico"
-            class="flex-grow rounded-full px-5 py-3 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-secondary" />
-          <button type="submit"
-            class="bg-secondary text-white font-semibold px-6 py-3 rounded-full hover:brightness-95 transition whitespace-nowrap">
-            Suscribirme
-          </button>
-        </form>
-      </div>
-    </section>
-    <!-- END: Newsletter CTA -->
-
   </main>
 
   <div id="footer-container" data-component="/components/footer.html"></div>

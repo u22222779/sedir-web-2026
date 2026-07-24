@@ -1,32 +1,46 @@
 <!DOCTYPE html>
-
 <html lang="es">
+
 <head>
-  <title>.:: SEDIR ::.</title>
-  <link rel="icon" href="../activos/img_logos/logo-sedir-links.png" type="image/x-icon">
+    <title>.:: SEDIR - Últimas Noticias ::.</title>
+    <link rel="icon" href="../activos/img_logos/logo-sedir-links.png" type="image/x-icon">
 
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>SEDIR - Últimas Noticias</title>
-    <script>
+
+    <!-- Tailwind CSS Config -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
         tailwind.config = {
+            darkMode: "class",
             theme: {
                 extend: {
                     colors: {
+                        primary: "#00944A",
+                        "primary-dark": "#006A49",
+                        "primary-alt": "#009C63",
+                        brown: "#8C7855",
+                        secondary: "#F09734",
+                        ink: "#000306",
+                        cream: "#FBF7EE",
                         'sedir-green': '#00944a',
                         'sedir-dark-green': '#006a49',
                         'sedir-orange': '#f09734',
                         'sedir-gray': '#4a5568',
                         'sedir-light-gray': '#f7fafc',
+                    },
+                    fontFamily: {
+                        display: ["Montserrat", "sans-serif"],
+                        body: ["Montserrat Light", "sans-serif"]
                     }
                 }
             }
-        }
+        };
     </script>
 
+    <!-- Font Imports & Stylesheets -->
     <link href="../activos/css/fonts.css" rel="stylesheet" />
-
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
     <link href="../activos/css/style.css" rel="stylesheet" />
     <link href="../activos/css/navbar.css" rel="stylesheet" />
     <link href="../activos/css/hero.css" rel="stylesheet" />
@@ -35,21 +49,28 @@
     <link href="../activos/css/footer.css" rel="stylesheet" />
     <link href="../activos/css/responsive.css" rel="stylesheet" />
 
-
+    <style>
+        body {
+            font-family: 'Montserrat Light', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+        }
+    </style>
 </head>
 
-<body class="bg-white text-gray-800 noticias-page">
+<body class="bg-white text-gray-800 noticias-page antialiased">
     <div id="navbar-container" class="navbar-loading" data-component="/components/navbar.html"></div>
     <div id="hero-container" data-component="/components/hero-noticias.html"></div>
 
-    <main class="container mx-auto px-4 py-8 max-w-7xl">
+    <main class="container mx-auto px-4 py-12 max-w-7xl space-y-12">
         <div id="filtros-container" data-component="/components/filtros-noticias.html"></div>
         <div id="cards-template-container" data-component="/components/card-noticia.html" hidden></div>
         <div id="news-cards-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
     </main>
 
     <div id="footer-container" data-component="/components/footer.html"></div>
-  <div id="whatsapp-container" data-component="/components/whatsapp.html"></div>
+    <div id="whatsapp-container" data-component="/components/whatsapp.html"></div>
 
     <script src="/activos/js/components.js" defer></script>
     <script src="/activos/js/navbar.js" defer></script>

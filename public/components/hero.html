@@ -1,15 +1,40 @@
-<style>
-    /* ==========================
-   HERO SLIDESHOW
-========================== */
+<!-- Enlace a tus fuentes de Montserrat y Franklin Gothic Demi -->
+<link href="../activos/css/fonts.css" rel="stylesheet" />
 
+<style>
+    /* ==========================================
+       1. VARIABLES, PALETA & TIPOGRAFÍAS
+    ========================================== */
+    :root {
+        --color-primario: #00944a;       /* Verde Principal */
+        --color-primario-oscuro: #006A49;/* Verde Oscuro */
+        --color-tierra: #8C7855;         /* Tono Tierra / Cosecha */
+        --color-secundario-verde: #009C63;
+        --color-fondo-oscuro: #000306;   /* Fondo negro/azul profundo */
+        --color-acento-naranja: #F09734; /* Naranja Vibrante */
+
+        --font-montserrat: 'Montserrat', sans-serif;
+        --font-franklin: 'Franklin Gothic Demi', 'Franklin Gothic', sans-serif;
+    }
+
+    .hero-home * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* ==========================================
+       2. CONTENEDOR PANTALLA COMPLETA
+    ========================================= */
     .hero-home {
         position: relative;
         width: 100%;
-        height: 650px;
+        height: 100vh;
+        height: 100dvh; 
+        min-height: 520px; 
         overflow: hidden;
-        background: #000306;
-        box-shadow: 0 12px 24px -8px rgba(0, 0, 0, .35);
+        background-color: var(--color-fondo-oscuro);
+        box-shadow: 0 12px 30px rgba(0, 3, 6, 0.5);
     }
 
     #heroSlideshow {
@@ -22,271 +47,221 @@
     .hero-video {
         position: absolute;
         inset: 0;
-
         width: 100%;
         height: 100%;
-
         object-fit: cover;
-        object-position: center 40%;
+        object-position: center 35%; 
     }
 
+    /* ==========================================
+       3. OVERLAYS DEGRADADOS (ACLARADOS / OPCIÓN 1)
+    ========================================= */
+    /* Capa general: casi invisible, solo quita el brillo excesivo (bajó de 0.45 a 0.25) */
     .hero-overlay {
         position: absolute;
         inset: 0;
-        background: rgba(0, 0, 0, .35);
+        background: linear-gradient(
+            135deg, 
+            rgba(0, 3, 6, 0.05) 0%, 
+            rgba(0, 3, 6, 0.25) 100%
+        );
         pointer-events: none;
+        z-index: 1;
     }
 
+    /* Degradado inferior: sombra ligera solo tras el texto (bajó de 0.85 a 0.55) */
+    .hero-content-gradient {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 60%; 
+        background: linear-gradient(
+            to top, 
+            rgba(0, 3, 6, 0.55) 0%, 
+            rgba(0, 3, 6, 0.15) 50%, 
+            transparent 100%
+        );
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    /* Degradado superior: sombra suave para que el menú del sitio se lea bien (bajó de 0.60 a 0.35) */
+    .hero-top-gradient {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 140px;
+        background: linear-gradient(to bottom, rgba(0, 3, 6, 0.35) 0%, transparent 100%);
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    /* ==========================================
+       4. CONTENIDO (ESCRITORIO: CENTRADO VERTICAL, IZQUIERDA)
+    ========================================= */
     .hero-content {
         position: absolute;
         inset: 0;
         z-index: 2;
-
         display: flex;
-        align-items: center;
+        align-items: center; 
         justify-content: flex-start;
-
-        padding-left: 8%;
-        padding-bottom: 4.5rem;
-
-        transform: translateY(50px);
+        padding: 0 8%;
     }
 
-    .hero-buttons {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1rem;
-        max-width: 1280px;
-        margin-inline: auto;
+    .hero-info {
         width: 100%;
+        max-width: 780px; 
+        text-align: left;
+        opacity: 0;
+        animation: heroFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        animation-delay: 0.3s;
     }
 
-    .hero-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: .5rem;
-        padding: .9rem 2rem;
-        border-radius: 9999px;
-        font-weight: 700;
-        font-size: 1rem;
-        transition: all .2s ease;
+    .hero-description {
+        font-family: var(--font-montserrat);
+        font-weight: 600; 
+        font-size: clamp(1.75rem, 3.5vw, 3.1rem); 
+        line-height: 1.3; 
+        color: #FFFFFF;
+        text-wrap: balance;
+        /* Sombra de texto reforzada un poquito para proteger la lectura al haber menos oscuridad detrás */
+        text-shadow: 0 3px 14px rgba(0, 3, 6, 0.9); 
     }
 
-    .hero-btn-primary {
-        background: #00944A;
-        color: #fff;
+    .text-highlight {
+        font-family: var(--font-franklin);
+        font-weight: 400; 
+        color: var(--color-acento-naranja);
+        letter-spacing: -0.015em; 
+        text-shadow: 0 2px 12px rgba(240, 151, 52, 0.4), 0 3px 14px rgba(0, 3, 6, 0.95);
     }
 
-    .hero-btn-primary:hover {
-        background: #006A49;
+    .hero-info::after {
+        content: '';
+        display: block;
+        width: 90px; 
+        height: 3.5px; 
+        margin-top: 1.6rem;
+        background: linear-gradient(to right, var(--color-primario), var(--color-tierra));
+        border-radius: 99px;
+        box-shadow: 0 2px 6px rgba(0, 3, 6, 0.5);
     }
 
-    .hero-btn-secondary {
-        background: rgba(255, 255, 255, .1);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, .3);
-        color: #fff;
-    }
-
-    .hero-btn-secondary:hover {
-        background: rgba(255, 255, 255, .2);
-    }
-
-    @media (max-width:768px) {
-
-        .hero-home {
-            height: 420px;
+    /* ==========================================
+       5. ANIMACIONES
+    ========================================= */
+    @keyframes heroFadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
         }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
 
+    /* ==========================================
+       6. MÓVIL Y TABLET: CENTRADO ABSOLUTO
+    ========================================= */
+    @media (max-width: 768px) {
         .hero-video {
             object-position: center 30%;
         }
 
         .hero-content {
-            padding-left: 1.5rem;
-            padding-right: 1.5rem;
-            padding-bottom: 2.5rem;
+            padding: 0 6%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; 
+            align-items: center;       
+            text-align: center;
         }
 
-        .hero-btn {
-            padding: .75rem 1.5rem;
-            font-size: .9rem;
+        .hero-info {
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
         }
 
+        .hero-description {
+            width: 100%;
+            text-align: center;
+            margin: 0 auto;
+            font-size: clamp(1.35rem, 6vw, 1.85rem);
+            line-height: 1.4;
+        }
+
+        .hero-info::after {
+            margin: 1.3rem auto 0; 
+            width: 60px;
+        }
     }
 </style>
-<link href="../activos/css/fonts.css" rel="stylesheet" />
 
-<section class="hero-home">
-
+<section class="hero-home" aria-label="Innovación y Desarrollo para la Agricultura">
     <div id="heroSlideshow">
-
-        <video id="heroVideo" class="hero-video" autoplay muted playsinline preload="auto">
-
+        <video id="heroVideo" class="hero-video" autoplay muted playsinline preload="auto" aria-hidden="true">
             <source src="activos/videos/VIDEO.mp4" type="video/mp4">
-
+            Su navegador no soporta el video de fondo.
         </video>
-
     </div>
 
     <div class="hero-overlay"></div>
-
-    <div class="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/40 to-transparent pointer-events-none"></div>
+    <div class="hero-top-gradient"></div>
+    <div class="hero-content-gradient"></div>
 
     <div class="hero-content">
-
         <div class="hero-info">
-
             <p class="hero-description">
-  Innovación y desarrollo tecnológico para la
-  <span class="text-[#F09734] font-semibold">agricultura familiar</span>
-  y el
-  <span class="text-[#F09734] font-semibold">desarrollo rural sostenible</span>.
-</p>
-
+                Innovación y desarrollo tecnológico para la
+                <span class="text-highlight">agricultura familiar</span>
+                y el
+                <span class="text-highlight">desarrollo rural sostenible</span>.
+            </p>
         </div>
-
     </div>
-
 </section>
 
 <script>
-
     (function () {
-
         const video = document.getElementById("heroVideo");
-
         if (!video) return;
 
         const INICIO = 6;
         const FIN = 88;
 
         video.addEventListener("loadedmetadata", function () {
-            video.currentTime = INICIO;
+            if (video.duration >= INICIO) {
+                video.currentTime = INICIO;
+            }
         });
 
-        video.addEventListener("canplay", function () {
-            video.play().catch(() => { });
-        });
+        const startPlay = () => {
+            video.play().catch(error => {
+                console.warn("Autoplay de video intervenido por el navegador:", error);
+            });
+        };
+
+        video.addEventListener("canplay", startPlay, { once: true });
 
         video.addEventListener("timeupdate", function () {
-            if (video.currentTime >= FIN) {
+            if (video.currentTime >= FIN || video.currentTime < INICIO - 1) {
                 video.currentTime = INICIO;
-                video.play().catch(() => { });
+                startPlay();
             }
         });
 
         video.addEventListener("ended", function () {
             video.currentTime = INICIO;
-            video.play().catch(() => { });
+            startPlay();
         });
-
-        if (video.readyState >= 1 && video.currentTime < INICIO) {
-            video.currentTime = INICIO;
-        }
-
     })();
-
 </script>
-<style>
-    /* ==========================
-   HERO TEXT
-========================== */
-
-
-.hero-info {
-    max-width: 650px;
-    color: rgb(246, 246, 246);
-    animation: heroFade .8s ease forwards;
-    text-align: left;
-}
-
-    .hero-category {
-
-        display: inline-block;
-
-        font-size: .75rem;
-
-        font-weight: 700;
-
-        letter-spacing: .25em;
-
-        text-transform: uppercase;
-
-        color: #8FE3B0;
-
-        margin-bottom: 1rem;
-
-    }
-.hero-description {
-    font-family: "Montserrat", sans-serif;
-    font-weight: 800;
-    font-size: 2.6rem;
-    line-height: 1.7;
-    max-width: 600px;
-    color: rgba(255, 255, 255, .9);
-    text-align: left;
-}
-
-    .hero-btn {
-        font-family: "Montserrat", Arial, sans-serif;
-        font-weight: 600;
-    }
-
-
-
-
-    @keyframes heroFade {
-
-        from {
-
-            opacity: 0;
-
-            transform: translateY(30px);
-
-        }
-
-
-        to {
-
-            opacity: 1;
-
-            transform: translateY(0);
-
-        }
-
-    }
-@media (max-width:768px) {
-
-    .hero-home {
-        height: 420px;
-    }
-
-    .hero-video {
-        object-position: center 30%;
-    }
-
-    .hero-content {
-        justify-content: center;
-        align-items: center;
-        padding: 0 1.5rem;
-        transform: none;
-    }
-
-    .hero-info {
-        width: 100%;
-        max-width: 100%;
-        text-align: center;
-    }
-
-    .hero-description {
-        display: block;
-        font-size: 1.25rem;   /* ← Antes 1rem */
-        font-weight: 600;
-        line-height: 1.6;
-        max-width: 100%;
-        text-align: center;
-    }
-
-}
-</style>

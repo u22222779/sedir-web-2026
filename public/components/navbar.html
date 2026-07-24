@@ -1,254 +1,136 @@
-<!-- COMPONENT: Navbar -->
+<!-- COMPONENT: Navbar Global SEDIR -->
 <nav class="navbar-shell">
-
-  <div class="w-full px-4 sm:px-[40px] flex justify-between items-center">
+  <div class="w-full px-4 sm:px-[40px] flex justify-between items-center max-w-7xl mx-auto">
 
     <!-- LOGO -->
     <div class="navbar-logo-container flex items-center">
-
       <a href="/index.html" class="navbar-logo-pill">
-
         <img alt="SEDIR Logo" src="/activos/img_logos/logo-msi.png" class="navbar-logo">
-
       </a>
-
     </div>
 
     <!-- DESKTOP MENU -->
-    <div class="hidden md:flex items-center flex-nowrap gap-5">
-
-
-      <a class="navbar-link font-display font-medium text-[16px]" href="/index.html">
+<!-- Reemplaza esta línea en tu Navbar Desktop -->
+<div class="hidden md:flex items-center flex-nowrap gap-4 lg:gap-6">      
+      <a class="navbar-link font-display font-medium text-[15px]" href="/index.html">
         Inicio
       </a>
 
-
-      <a class="navbar-link font-display font-medium text-[16px]" href="../paginas/quienessomos.html">
-        Quienes somos
+      <a class="navbar-link font-display font-medium text-[15px]" href="../paginas/quienessomos.html">
+        Quiénes somos
       </a>
 
-
-      <a class="navbar-link font-display font-medium text-[16px]" href="../paginas/quehacemos.html">
-        Que hacemos
+      <a class="navbar-link font-display font-medium text-[15px]" href="../paginas/quehacemos.html">
+        Qué hacemos
       </a>
 
-
-      <a class="navbar-link font-display font-medium text-[16px]" href="../paginas/proyectos.html">
+      <a class="navbar-link font-display font-medium text-[15px]" href="../paginas/proyectos.html">
         Proyectos
       </a>
 
-
-      <a class="navbar-link font-display font-medium text-[16px]" href="../paginas/noticia.html">
+      <a class="navbar-link font-display font-medium text-[15px]" href="../paginas/noticia.html">
         Noticias
       </a>
 
-
-      <!-- PRODUCTOS -->
+      <!-- DROPDOWN: PRODUCTOS Y SERVICIOS -->
       <div class="relative inline-block group">
-
-
-        <button class="navbar-link font-display font-medium text-[16px] flex items-center gap-1 py-2">
-
+        <button class="navbar-link font-display font-medium text-[15px] flex items-center gap-1.5 py-2 focus:outline-none">
           Productos y Servicios
-
-          <span class="text-xs">
+          <span class="text-xs transition-transform duration-200 group-hover:rotate-180 inline-block">
             ▼
           </span>
-
         </button>
 
-
-
-        <div
-          class="absolute left-0 top-full hidden group-hover:block bg-white shadow-lg rounded-md min-w-[200px] z-50 border">
-
-
-          <a href="../paginas/productos.html" class="block px-4 py-3 text-gray-700 hover:bg-gray-100">
-
+        <!-- Menú desplegable Desktop -->
+        <div class="absolute left-0 top-full hidden group-hover:block bg-white shadow-xl rounded-lg min-w-[210px] z-50 border border-gray-100 py-2 mt-1">
+          <a href="../paginas/productos.html" class="block px-5 py-2.5 text-sm text-gray-700 hover:bg-green-50 hover:text-[#00944a] transition-colors font-medium">
             Productos
-
           </a>
-
-
-          <a href="../paginas/servicios.html" class="block px-4 py-3 text-gray-700 hover:bg-gray-100">
-
+          <a href="../paginas/servicios.html" class="block px-5 py-2.5 text-sm text-gray-700 hover:bg-green-50 hover:text-[#00944a] transition-colors font-medium">
             Servicios
-
           </a>
-
-
-          <a href="../paginas/publicaciones.html" class="block px-4 py-3 text-gray-700 hover:bg-gray-100">
-
+          <a href="../paginas/publicaciones.html" class="block px-5 py-2.5 text-sm text-gray-700 hover:bg-green-50 hover:text-[#00944a] transition-colors font-medium">
             Publicaciones
-
           </a>
-
-
         </div>
-
-
       </div>
 
-
-
-      <a class="navbar-cta px-6 py-2 rounded-full font-display font-semibold text-[16px]"
-        href="../paginas/contacto.html">
-
+      <!-- BOTÓN CTA DESKTOP -->
+      <a class="navbar-cta px-6 py-2.5 rounded-full font-display font-semibold text-[15px]" href="../paginas/contacto.html">
         Contáctanos
-
       </a>
 
-
     </div>
 
-
-
-
-    <!-- MOBILE BUTTON -->
-    <button id="menu-btn" class="md:hidden navbar-burger" type="button" aria-label="Abrir o cerrar menu">
-
-
+    <!-- MOBILE BUTTON (HAMBURGUESA) -->
+    <button id="menu-btn" class="md:hidden navbar-burger focus:outline-none" type="button" aria-label="Abrir o cerrar menú" aria-expanded="false">
       <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-
-
-        <path class="line line1" stroke-linecap="round" stroke-width="2" d="M5 7h14" />
-
-
-        <path class="line line2" stroke-linecap="round" stroke-width="2" d="M5 12h14" />
-
-
-        <path class="line line3" stroke-linecap="round" stroke-width="2" d="M5 17h14" />
-
-
+        <path class="line line1" stroke-linecap="round" stroke-width="2" d="M4 7h16" />
+        <path class="line line2" stroke-linecap="round" stroke-width="2" d="M4 12h16" />
+        <path class="line line3" stroke-linecap="round" stroke-width="2" d="M4 17h16" />
       </svg>
-
-
     </button>
 
-
   </div>
-
-
 </nav>
 
-
-
-
-
-<!-- MOBILE DRAWER -->
-
-<div id="mobile-menu"
-  class="fixed top-0 right-[-100%] w-[280px] h-full bg-white shadow-2xl z-[999] transition-all duration-300 ease-in-out md:hidden">
-
-
-
-  <!-- LOGO MOBILE -->
-
-  <div class="flex items-center p-6 border-b">
-
-
-    <img src="/activos/img_logos/logo-msi.png" class="h-10" alt="SEDIR Logo">
-
-
-  </div>
-
-
-
-
-  <!-- LINKS -->
-
-  <div class="flex flex-col p-6 gap-5 font-medium text-gray-700">
-
-
-    <a href="/index.html" class="navbar-link">
-      Inicio
-    </a>
-
-
-    <a href="../paginas/quienessomos.html" class="navbar-link">
-      Quienes Somos
-    </a>
-
-
-    <a href="../paginas/quehacemos.html" class="navbar-link">
-      Que hacemos
-    </a>
-
-
-    <a href="../paginas/proyectos.html" class="navbar-link">
-      Proyectos
-    </a>
-
-
-    <a href="../paginas/noticia.html" class="navbar-link">
-      Noticias
-    </a>
-
-
-    <a href="../paginas/publicaciones.html" class="navbar-link">
-      Publicaciones
-    </a>
-
-
-
-
-    <div>
-
-
-      <button id="mobileMenuBtn" type="button" class="navbar-link w-full text-left flex justify-between items-center">
-
-        Productos y Servicios
-
-        <span>
-          ▼
-        </span>
-
-
-      </button>
-
-
-
-
-      <div id="mobileSubmenu" class="hidden mt-4 pl-3 space-y-4">
-
-
-        <a href="../paginas/productos.html" class="navbar-link block">
-
-          Productos
-
-        </a>
-
-
-
-        <a href="../paginas/servicios.html" class="navbar-link block">
-
-          Servicios
-
-        </a>
-
-
-      </div>
-
-
+<!-- MOBILE DRAWER (PANEL LATERAL) -->
+<div id="mobile-menu" class="fixed top-0 right-[-100%] w-[280px] h-full bg-white shadow-2xl z-[999] transition-all duration-300 ease-in-out md:hidden flex flex-col justify-between">
+  
+  <div>
+    <!-- LOGO EN EL DRAWER -->
+    <div class="flex items-center justify-between p-6 border-b border-gray-100">
+      <img src="/activos/img_logos/logo-msi.png" class="h-10" alt="SEDIR Logo">
     </div>
 
+    <!-- ENLACES DEL DRAWER -->
+    <div class="flex flex-col p-6 gap-4 font-medium text-gray-700">
+      <a href="/index.html" class="navbar-link border-b border-gray-50 pb-2">
+        Inicio
+      </a>
+      <a href="../paginas/quienessomos.html" class="navbar-link border-b border-gray-50 pb-2">
+        Quiénes Somos
+      </a>
+      <a href="../paginas/quehacemos.html" class="navbar-link border-b border-gray-50 pb-2">
+        Qué hacemos
+      </a>
+      <a href="../paginas/proyectos.html" class="navbar-link border-b border-gray-50 pb-2">
+        Proyectos
+      </a>
+      <a href="../paginas/noticia.html" class="navbar-link border-b border-gray-50 pb-2">
+        Noticias
+      </a>
 
+      <!-- ACORDEÓN MÓVIL: PRODUCTOS Y SERVICIOS -->
+      <div class="border-b border-gray-50 pb-2">
+        <button id="mobileMenuBtn" type="button" class="navbar-link w-full text-left flex justify-between items-center py-1 focus:outline-none">
+          <span>Productos y Servicios</span>
+          <span class="text-xs">▼</span>
+        </button>
 
-
-    <a href="../paginas/contacto.html" class="navbar-cta-mobile text-center py-3 rounded-full mt-4">
-
-      Contáctanos
-
-    </a>
-
-
-
+        <div id="mobileSubmenu" class="hidden mt-3 pl-4 space-y-3 border-l-2 border-[#00944a]">
+          <a href="../paginas/productos.html" class="block text-sm text-gray-600 hover:text-[#00944a] font-medium">
+            Productos
+          </a>
+          <a href="../paginas/servicios.html" class="block text-sm text-gray-600 hover:text-[#00944a] font-medium">
+            Servicios
+          </a>
+          <a href="../paginas/publicaciones.html" class="block text-sm text-gray-600 hover:text-[#00944a] font-medium">
+            Publicaciones
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 
+  <!-- BOTÓN CTA EN EL PIE DEL DRAWER -->
+  <div class="p-6 border-t border-gray-100">
+    <a href="../paginas/contacto.html" class="navbar-cta-mobile block text-center py-3 rounded-full font-semibold shadow-md">
+      Contáctanos
+    </a>
+  </div>
 
 </div>
 
-
-
-
-<div id="overlay" class="fixed inset-0 bg-black/40 hidden z-[998] md:hidden"></div>
+<!-- OVERLAY OSCURO DE FONDO -->
+<div id="overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden z-[998] md:hidden transition-opacity duration-300"></div>

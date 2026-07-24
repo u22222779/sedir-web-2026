@@ -1,483 +1,431 @@
 <!DOCTYPE html>
-
 <html class="light" lang="es">
 
 <head>
-    <title>.:: SEDIR ::.</title>
+    <title>.:: SEDIR - Qué Hacemos ::.</title>
     <link rel="icon" href="../activos/img_logos/logo-sedir-links.png" type="image/x-icon">
 
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <script src="../activos/js/components.js"></script>
-    <script src="../activos/js/navbar.js"></script>
-    <script src="../activos/js/main.js"></script>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="../activos/css/style.css" rel="stylesheet" />
-    <link href="../activos/css/navbar.css" rel="stylesheet" />
-    <link href="../activos/css/footer.css" rel="stylesheet" />
-    <link href="../activos/css/responsive.css" rel="stylesheet" />
-  <link href="../activos/css/fonts.css" rel="stylesheet" />
-  <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
 
+    <!-- Tailwind CSS y Plugins -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!-- Configuración Oficial de Tailwind -->
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
-                    "colors": {
-                        "tertiary": "#5c5c5c",
-                        "error-container": "#ffdad6",
-                        "outline": "#6e7a6e",
-                        "surface-container-lowest": "#ffffff",
-                        "outline-variant": "#bdcabc",
-                        "on-surface-variant": "#3e4a3f",
-                        "primary-fixed": "#8afaa7",
-                        "inverse-on-surface": "#f0f1f2",
-                        "tertiary-fixed": "#e4e2e1",
-                        "on-secondary": "#ffffff",
-                        "on-tertiary": "#ffffff",
-                        "on-primary": "#ffffff",
-                        "tertiary-fixed-dim": "#c8c6c5",
-                        "on-error-container": "#93000a",
-                        "on-primary-fixed": "#00210c",
-                        "on-error": "#ffffff",
-                        "inverse-primary": "#6edd8d",
-                        "inverse-surface": "#2e3132",
-                        "on-primary-fixed-variant": "#005227",
-                        "surface-container-high": "#e7e8e9",
-                        "primary-container": "#008643",
-                        "on-background": "#191c1d",
-                        "surface-container": "#edeeef",
-                        "on-secondary-fixed-variant": "#304f00",
-                        "on-primary-container": "#f6fff3",
-                        "error": "#ba1a1a",
-                        "surface-tint": "#006d35",
-                        "tertiary-container": "#757474",
-                        "secondary-fixed": "#b8f568",
-                        "surface-dim": "#d9dadb",
-                        "primary": "#006b34",
+                    colors: {
+                        primary: "#00944A",
+                        "primary-dark": "#006A49",
+                        "primary-alt": "#009C63",
+                        orange: "#F09734", /* Color Naranja Institucional Oficial */
+                        secondary: "#F09734",
+                        ink: "#000306",
+                        cream: "#FBF7EE",
+                        surface: "#f8f9fa",
                         "on-surface": "#191c1d",
-                        "surface": "#f8f9fa",
-                        "on-tertiary-fixed-variant": "#474746",
-                        "on-secondary-container": "#467000",
-                        "on-secondary-fixed": "#112000",
-                        "surface-container-low": "#f3f4f5",
-                        "secondary-fixed-dim": "#9dd84f",
-                        "secondary-container": "#b8f568",
-                        "surface-container-highest": "#e1e3e4",
-                        "surface-variant": "#e1e3e4",
-                        "surface-bright": "#f8f9fa",
-                        "background": "#f8f9fa",
-                        "on-tertiary-fixed": "#1b1c1c",
-                        "primary-fixed-dim": "#6edd8d",
-                        "secondary": "#426900",
-                        "on-tertiary-container": "#fffcfb"
+                        "on-surface-variant": "#3e4a3f"
                     },
-                    "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                    "spacing": {
-                        "gutter": "24px",
-                        "margin-desktop": "64px",
-                        "unit": "4px",
-                        "container-max": "1280px",
-                        "margin-mobile": "16px"
-                    },
-                    "fontFamily": {
-                        "label-md": ["Montserrat-Light", "sans-serif"],
-                        "headline-lg-mobile": ["Montserrat", "sans-serif"],
-                        "body-lg": ["Montserrat-Light", "sans-serif"],
-                        "body-md": ["Montserrat-Light", "sans-serif"],
-                        "headline-xl": ["Montserrat", "sans-serif"],
-                        "headline-md": ["Montserrat", "sans-serif"],
-                        "headline-lg": ["Montserrat", "sans-serif"]
-                    },
-                    "fontSize": {
-                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
-                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
-                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
-                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
-                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
-                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
-                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }]
+                    fontFamily: {
+                        display: ["Montserrat", "sans-serif"],
+                        body: ["Montserrat Light", "sans-serif"]
                     }
-                },
-            },
-        }
+                }
+            }
+        };
     </script>
+
+    <!-- Fuentes y Hojas de Estilo -->
+    <link href="../activos/css/fonts.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+
+    <link href="../activos/css/style.css" rel="stylesheet" />
+    <link href="../activos/css/navbar.css" rel="stylesheet" />
+    <link href="../activos/css/footer.css" rel="stylesheet" />
+    <link href="../activos/css/responsive.css" rel="stylesheet" />
+
     <style>
+        body {
+            font-family: 'Montserrat Light', sans-serif;
+            font-size: 16px;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+        }
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
-
-        .custom-shadow {
-            box-shadow: 0 16px 32px -12px rgba(0, 107, 52, 0.06);
-        }
-
-        .section-number {
-            -webkit-text-stroke: 1px currentColor;
-            color: transparent;
-        }
-
         html {
             scroll-behavior: smooth;
+        }
+        
+        /* ==========================================================================
+           SISTEMA DE RADIOS ASIMÉTRICOS INSTITUCIONALES (Una esquina en 0px)
+           ========================================================================== */
+        .asym-tl-0-xl { border-radius: 0 50px 50px 50px; }
+        .asym-tr-0-xl { border-radius: 50px 0 50px 50px; }
+        .asym-tl-0-lg { border-radius: 0 32px 32px 32px; }
+        .asym-tr-0-lg { border-radius: 32px 0 32px 32px; }
+        .asym-bl-0-lg { border-radius: 32px 32px 32px 0; }
+        .asym-tl-0-md { border-radius: 0 20px 20px 20px; }
+        .asym-tr-0-md { border-radius: 20px 0 20px 20px; }
+        .asym-bl-0-md { border-radius: 20px 20px 20px 0; }
+        .asym-icon-box { border-radius: 0 16px 16px 16px; }
+
+        /* Efectos institucionales sutiles */
+        .institutional-card {
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .institutional-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 36px rgba(0, 106, 73, 0.12);
+        }
+        .img-zoom-container {
+            overflow: hidden;
+        }
+        .img-zoom-container img {
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .img-zoom-container:hover img {
+            transform: scale(1.05);
         }
     </style>
 </head>
 
-<body class="bg-background text-on-surface font-body-md">
-    <!-- Navigation Component -->
+<body class="bg-white text-gray-800 antialiased selection:bg-primary selection:text-white">
+    <!-- Componente de Navegación -->
     <div id="navbar-container" class="navbar-loading" data-component="/components/navbar.html"></div>
-    <!-- Hero Section -->
-    <header class="relative w-full h-auto min-h-[520px] sm:min-h-[560px] md:min-h-[385px] lg:min-h-[500px] py-12 sm:py-14 md:py-16 flex items-center justify-center overflow-hidden" style="background: #006A49;">
+
+    <!-- Hero Section Institucional -->
+    <header class="relative w-full min-h-[380px] md:min-h-[460px] flex items-center justify-center overflow-hidden bg-primary-dark">
         <div class="absolute inset-0 z-0">
-            <img alt="" class="w-full h-full object-cover opacity-30" src="../activos/img_quehacemos/Sem5-Portada02.jpg" />
+            <img alt="Sembramos desarrollo con propósito en el Valle de Nepeña" class="w-full h-full object-cover opacity-25" src="../activos/img_quehacemos/Sem5-Portada02.jpg" />
         </div>
-        <div class="absolute inset-0 hero-overlay"></div>
-        <div class="relative z-10 text-center px-4 sm:px-gutter max-w-4xl mx-auto">
-            <h1 class="text-[53px] sm:text-[44px] md:text-[62px] font-extrabold text-white leading-tight mb-4">Sembramos
-                <span class="text-[53px] sm:text-[44px] md:text-[62px] font-extrabold text-white leading-tight mb-3"
-                    style="color: #F09734;">desarrollo</span> con propósito
+        <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/50 to-transparent z-10"></div>
+        <div class="relative z-20 text-center px-4 sm:px-6 max-w-4xl mx-auto py-20">
+            
+            <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white leading-tight mb-6 font-display tracking-tight">
+                Sembramos <span class="text-orange" style="color: #F09734;">desarrollo</span> con propósito
             </h1>
-            <p
-                class="font-body-lg text-sm sm:text-base md:text-body-lg text-on-primary/90 mb-8 md:mb-10 max-w-2xl mx-auto">
-                Impulsamos el impacto social
-                a través de la capacitación, la transferencia tecnológica, la investigación aplicada y modelos
-                productivos sostenibles.</p>
+            <p class="text-base md:text-lg text-white/90 mb-10 max-w-2xl mx-auto font-body font-light leading-relaxed">
+                Impulsamos el impacto social en el Valle de Nepeña a través de la capacitación técnica, la transferencia tecnológica, la investigación científica y modelos productivos sostenibles.
+            </p>
             <div class="flex flex-wrap justify-center gap-3 md:gap-4">
                 <a href="#capacitacion"
-                    class="bg-transparent border-2 border-on-primary text-on-primary px-5 md:px-8 py-3 rounded-full font-label-md text-sm md:text-base hover:bg-on-primary hover:text-primary transition-all">
-                    Capacitación
+                    class="bg-white/10 backdrop-blur-sm border border-white/30 text-white px-6 py-3 rounded-full font-display font-semibold text-sm uppercase tracking-wider hover:bg-white hover:text-primary transition-all duration-300 shadow-sm">
+                    01. Capacitación
                 </a>
-
                 <a href="#asistencia-tecnica"
-                    class="bg-transparent border-2 border-on-primary text-on-primary px-5 md:px-8 py-3 rounded-full font-label-md text-sm md:text-base hover:bg-on-primary hover:text-primary transition-all">
-                    Asistencia técnica
+                    class="bg-white/10 backdrop-blur-sm border border-white/30 text-white px-6 py-3 rounded-full font-display font-semibold text-sm uppercase tracking-wider hover:bg-white hover:text-primary transition-all duration-300 shadow-sm">
+                    02. Transferencia Técnica
                 </a>
-
                 <a href="#investigacion"
-                    class="bg-transparent border-2 border-on-primary text-on-primary px-5 md:px-8 py-3 rounded-full font-label-md text-sm md:text-base hover:bg-on-primary hover:text-primary transition-all">
-                    Investigación aplicada
+                    class="bg-white/10 backdrop-blur-sm border border-white/30 text-white px-6 py-3 rounded-full font-display font-semibold text-sm uppercase tracking-wider hover:bg-white hover:text-primary transition-all duration-300 shadow-sm">
+                    03. Investigación Aplicada
                 </a>
             </div>
         </div>
     </header>
-    <!-- Section 01: Desarrollo de Capacidades -->
-    <section id="capacitacion" class="py-20 bg-surface relative">
-        <div class="max-w-container-max mx-auto px-gutter">
-            <div class="flex flex-col gap-6">
-                <div>
-                    <div class="flex items-center gap-4 mb-4">
-                        <span class="text-[64px] font-extrabold text-secondary leading-none"
-                            style="color: #F09734;">01</span>
+
+    <main class="w-full">
+
+        <!-- =========================================================================================
+             BLOQUE 1: DESARROLLO DE CAPACIDADES (FONDO BLANCO PURO)
+             ========================================================================================= -->
+        <section id="capacitacion" class="bg-white py-20 md:py-28 scroll-mt-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12">
+                
+                <!-- Encabezado -->
+                <div class="border-b border-gray-100 pb-6">
+                    <div class="flex items-center gap-5">
+                        <span class="text-5xl md:text-6xl font-extrabold text-orange font-display leading-none select-none" style="color: #F09734;">01</span>
+                        <div class="h-10 w-px bg-gray-200 hidden sm:block"></div>
                         <div>
-                            <span class="text-secondary font-bold uppercase tracking-widest text-xs"
-                                style="color: #F09734;">Programa</span>
-                            <h2 class="font-headline-lg text-headline-lg text-primary">Desarrollo de Capacidades</h2>
+                            <span class="text-orange font-display font-bold uppercase tracking-widest text-sm block mb-1" style="color: #F09734;">PROGRAMA INSTITUCIONAL</span>
+                            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-primary font-display tracking-tight">Desarrollo de Capacidades</h2>
                         </div>
                     </div>
                 </div>
-                <div class="h-px bg-[#F09734] mb-1"></div>
-                <div class="p-8 md:p-10
-            bg-[#009C63]/30
-            shadow-[0_8px_20px_rgba(0,0,0,0.25)]
-            border-l-4 border-l-[#009C63]
-            rounded-[0_60px_60px_60px]">
 
-                    <span class="font-bold text-primary text-xs uppercase mb-2 block">
-                        OBJETIVO
+                <!-- Objetivo -->
+                <div class="p-8 md:p-10 bg-[#F6FAF7] border-l-4 border-primary asym-tl-0-xl shadow-sm">
+                    <span class="font-display font-bold text-primary text-sm uppercase tracking-wider mb-3 block flex items-center gap-2">
+                        <i class="fas fa-bullseye text-base"></i> OBJETIVO ESTRATÉGICO
                     </span>
-
-                    <p class="text-on-surface-variant font-body-md">
-                        Fortalecer las capacidades de los agricultores y emprendedores para mejorar su productividad,
-                        sostenibilidad y resiliencia, a través de formación técnica, promoción de la agricultura
-                        sostenible y cooperación asociativa. </p>
-
+                    <p class="text-gray-700 font-body text-base md:text-lg leading-relaxed">
+                        Fortalecer las competencias técnicas y productivas de los agricultores y emprendedores locales para incrementar su competitividad, sostenibilidad y resiliencia climática, mediante programas de formación continua y cooperación asociativa.
+                    </p>
                 </div>
 
-                <div class="w-full flex flex-col md:flex-row gap-6 md:gap-8 items-start">
-                    <div class="w-full md:w-[48%] space-y-8">
+                <!-- Rejilla Principal -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+                    
+                    <!-- Tarjetas de Información -->
+                    <div class="lg:col-span-6 space-y-6">
 
                         <!-- Tarjeta 1 -->
-                        <div class="p-8 md:p-10 min-h-[260px]
-            rounded-[60px]
-            border-l-4 border-l-[#00944A]
-            bg-[#00944A]
-            text-white
-            shadow-[0_8px_20px_rgba(0,0,0,0.25)]">
-
-                            <div
-                                class="w-14 h-14 rounded-[0_20px_20px_20px] border-4 border-white flex items-center justify-center mb-6">
-                                <span class="material-symbols-outlined text-3xl">
-                                    school
-                                </span>
+                        <div class="bg-white p-8 border border-gray-200/80 shadow-md institutional-card asym-tl-0-lg flex flex-col justify-between group">
+                            <div class="w-12 h-12 bg-primary border-4 border-white asym-icon-box flex items-center justify-center shadow-md mb-6 group-hover:bg-primary-dark transition-colors">
+                                <span class="material-symbols-outlined text-white text-xl">school</span>
                             </div>
-
-                            <h3 class="text-2xl font-bold mb-4">
-                                Capacitación Técnica
-                            </h3>
-
-                            <p class="text-base leading-relaxed text-white/95">
-                                Proporcionamos formación técnica y productiva a actores locales,
-                                enfocándonos en mejores prácticas agrícolas, el uso eficiente de
-                                recursos y la implementación de tecnologías innovadoras.
+                            <h3 class="text-xl font-bold text-ink mb-3 font-display group-hover:text-primary transition-colors">Capacitación Técnica</h3>
+                            <p class="text-gray-600 font-body text-base leading-relaxed">
+                                Impartimos talleres teóricos y prácticos sobre el manejo agronómico de cultivos de alta rentabilidad, optimización del recurso hídrico, fertilización balanceada y buenas prácticas agrícolas para la agroexportación.
                             </p>
-
                         </div>
 
                         <!-- Tarjeta 2 -->
-                        <div class="p-8 md:p-10 min-h-[260px]
-                   rounded-[60px]
-                   border border-[#1D6A45]
-                   bg-[#00944A]
-                   text-white
-                   shadow-[0_8px_20px_rgba(0,0,0,0.25)]">
-
-                            <div
-                                class="w-14 h-14 rounded-[0_20px_20px_20px] border-4 border-white flex items-center justify-center mb-6">
-                                <span class="material-symbols-outlined text-3xl">
-                                    eco
-                                </span>
+                        <div class="bg-white p-8 border border-gray-200/80 shadow-md institutional-card asym-tl-0-lg flex flex-col justify-between group">
+                            <div class="w-12 h-12 bg-primary border-4 border-white asym-icon-box flex items-center justify-center shadow-md mb-6 group-hover:bg-primary-dark transition-colors">
+                                <span class="material-symbols-outlined text-white text-xl">eco</span>
                             </div>
-
-                            <h3 class="text-2xl font-bold mb-4">
-                                Promoción de la agricultura sostenible
-                            </h3>
-
-                            <p class="text-base leading-relaxed text-white/95">
-                                Enseñamos métodos agroecológicos y prácticas que respetan el
-                                medio ambiente, tales como el manejo integrado de plagas y la
-                                conservación del suelo, para fomentar una agricultura que
-                                promueva la salud del ecosistema.
+                            <h3 class="text-xl font-bold text-ink mb-3 font-display group-hover:text-primary transition-colors">Promoción de la Agricultura Sostenible</h3>
+                            <p class="text-gray-600 font-body text-base leading-relaxed">
+                                Fomentamos modelos agroecológicos que preservan el ecosistema del valle, priorizando el manejo integrado de plagas (MIP), la producción de abonos orgánicos y la conservación estructural del suelo agrícola.
                             </p>
-
                         </div>
 
                         <!-- Tarjeta 3 -->
-                        <div class="p-8 md:p-10 min-h-[260px]
-                   rounded-[60px]
-                   border border-[#006d4a]
-                   bg-[#00944A]
-                   text-white
-                   shadow-[0_8px_20px_rgba(0,0,0,0.25)]">
-
-                            <div
-                                class="w-14 h-14 rounded-[0_20px_20px_20px] border-4 border-white flex items-center justify-center mb-6">
-                                <span class="material-symbols-outlined text-3xl">
-                                    groups
-                                </span>
+                        <div class="bg-white p-8 border border-gray-200/80 shadow-md institutional-card asym-tl-0-lg flex flex-col justify-between group">
+                            <div class="w-12 h-12 bg-primary border-4 border-white asym-icon-box flex items-center justify-center shadow-md mb-6 group-hover:bg-primary-dark transition-colors">
+                                <span class="material-symbols-outlined text-white text-xl">groups</span>
                             </div>
-
-                            <h3 class="text-2xl font-bold mb-4">
-                                Fortalecimiento Asociativo
-                            </h3>
-
-                            <p class="text-base leading-relaxed text-white/95">
-                                Fomentamos la cooperación entre los agricultores, mejorando su
-                                acceso a mercados y recursos, y creando redes de apoyo que
-                                potencien su crecimiento colectivo.
+                            <h3 class="text-xl font-bold text-ink mb-3 font-display group-hover:text-primary transition-colors">Fortalecimiento Asociativo</h3>
+                            <p class="text-gray-600 font-body text-base leading-relaxed">
+                                Impulsamos la organización cooperativa y la formalización de asociaciones agrarias para optimizar estructuras de costos, facilitar el acceso a financiamiento y abrir canales de comercialización directa.
                             </p>
-
                         </div>
 
                     </div>
 
-                    <div class="w-full md:w-[52%] grid grid-cols-2 gap-4 items-start">
-
-                        <img class="w-full h-[400px] object-cover rounded-[16px] col-span-2 shadow-lg"
-                            src="../activos/img_quehacemos/asociatividad-08-25.jpg" alt="Asociatividad" />
-
-                        <img class="w-full h-[170px] object-cover rounded-[16px] shadow-lg"
-                            src="../activos/img_quehacemos/portada07.jpg" alt="Portada 07" />
-
-                        <img class="w-full h-[170px] object-cover rounded-[16px] shadow-lg"
-                            src="../activos/img_quehacemos/2025-parcelas-demostrativas.jpg" alt="Asociatividad" />
-
-                        <img class="w-full h-[350px] object-cover rounded-[16px] col-span-2 shadow-lg"
-                            src="../activos/img_quehacemos/Sem2-Portada01.jpg" alt="Seminario" />
-
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        </div>
-    </section>
-    <!-- Section 02: Transferencia de Tecnología Agrícola -->
-    <section id="asistencia-tecnica" class="py-20 text-white bg-gradient-to-b from-[#00944A] to-[#006A49]">
-        <div class="max-w-container-max mx-auto px-gutter">
-            <div class="flex items-center gap-4 mb-8">
-                <span class="text-[64px] font-extrabold text-[#f9a11b] leading-none">02</span>
-                <div>
-                    <span class="text-[#f9a11b] font-bold uppercase tracking-[0.35em] text-[11px]">PROGRAMA</span>
-                    <h2 class="font-headline-lg text-headline-lg text-white">Transferencia de Tecnología Agrícola</h2>
-                </div>
-            </div>
-
-            <div class="h-px bg-white/70 mb-7"></div>
-
-            <div
-                class="p-8 md:p-10 bg-[#009C63]/30 shadow-[0_8px_20px_rgba(0,0,0,0.25)] border-l-4 border-l-[#009C63] rounded-[0_60px_60px_60px] mb-10">
-                <span class="font-bold text-white text-xs uppercase mb-2 block">OBJETIVO</span>
-                <p class="text-white font-body-md">
-                    Mejorar la productividad y sostenibilidad del sector agropecuario mediante la difusión de
-                    conocimientos y tecnologías adaptadas a las necesidades de los productores.
-                </p>
-            </div>
-
-            <div class="w-full mb-10">
-                <img class="w-full h-[230px] md:h-[265px] object-cover rounded-[30px] shadow-[0_14px_28px_rgba(0,0,0,0.18)]"
-                    data-alt="A breathtaking panoramic view of a lush Peruvian valley with extensive agricultural plots. The fields show different stages of crop growth, creating a patchwork of greens and yellows. In the foreground, a group of technicians and farmers are observing a demonstration of a modern irrigation system. The atmosphere is one of progress, technical rigor, and collaboration."
-                    src="../activos/img_quehacemos/AsistenciaTecnica-instal05.jpg" />
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
-                <div
-                    class="overflow-hidden rounded-[24px] bg-white text-[#1c3f2a] shadow-[0_10px_24px_rgba(0,0,0,0.18)]">
-                    <img class="h-[180px] w-full object-cover" alt="Parcelas demostrativas"
-                        src="../activos/img_quehacemos/AsistenciaTecnica-fertiliz01.jpg" />
-                    <div class="p-5">
-                        <h3 class="font-body-md font-semibold text-[18px] text-[#1c5a36] mb-2">Parcelas Demostrativas
-                        </h3>
-                        <p class="text-[15px] leading-6 text-slate-600">Espacios de aprendizaje donde productores
-                            observan y evalúan nuevas técnicas agrícolas en tiempo real, incluyendo variedades mejoradas
-                            y prácticas agroecológicas.</p>
-                    </div>
-                </div>
-
-                <div
-                    class="overflow-hidden rounded-[24px] bg-white text-[#1c3f2a] shadow-[0_10px_24px_rgba(0,0,0,0.18)]">
-                    <img class="h-[180px] w-full object-cover" alt="Creación de contenidos"
-                        src="../activos/img_quehacemos/2025-captura-face.jpg" />
-                    <div class="p-5">
-                        <h3 class="font-body-md font-semibold text-[18px] text-[#1c5a36] mb-2">Creación de Contenidos
-                        </h3>
-                        <p class="text-[15px] leading-6 text-slate-600">Casos de éxito y buenas prácticas difundidos a
-                            través de videos, notas de prensa, entrevistas, webinars y redes sociales para democratizar
-                            el acceso al conocimiento.</p>
-                    </div>
-                </div>
-
-                <div
-                    class="overflow-hidden rounded-[24px] bg-white text-[#1c3f2a] shadow-[0_10px_24px_rgba(0,0,0,0.18)]">
-                    <img class="h-[180px] w-full object-cover" alt="Materiales impresos"
-                        src="../activos/img_quehacemos/publicaciobes-impresas2025.jpg" />
-                    <div class="p-5">
-                        <h3 class="font-body-md font-semibold text-[18px] text-[#1c5a36] mb-2">Materiales Impresos</h3>
-                        <p class="text-[15px] leading-6 text-slate-600">Revistas, boletines y trípticos con información
-                            clara para productores sin acceso a internet, garantizando el alcance del conocimiento a
-                            toda la comunidad.</p>
-                        <a href="/paginas/publicaciones.html"
-                            class="inline-block mt-4 text-[#118f4a] font-bold text-sm border-b border-[#118f4a] pb-1">Ver
-                            Galería →</a>
-                    </div>
-                </div>
-
-                <div
-                    class="overflow-hidden rounded-[24px] bg-white text-[#1c3f2a] shadow-[0_10px_24px_rgba(0,0,0,0.18)]">
-                    <img class="h-[180px] w-full object-cover" alt="Radio SEDIR"
-                        src="../activos/img_quehacemos/P1400114.JPG" />
-                    <div class="p-5">
-                        <h3 class="font-body-md font-semibold text-[18px] text-[#1c5a36] mb-2">Radio SEDIR</h3>
-                        <p class="text-[15px] leading-6 text-slate-600">Espacio dedicado a la difusión de información
-                            técnica, entrevistas con especialistas y programas educativos, llegando a más productores de
-                            manera accesible.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Section 03: Investigación Aplicada -->
-    <section id="investigacion" class="py-20 bg-surface">
-        <div class="max-w-container-max mx-auto px-gutter">
-            <div class="flex items-center gap-4 mb-8">
-                <span class="text-[64px] font-extrabold text-secondary leading-none" style="color: #F09734;">03</span>
-                <div>
-                    <span class="text-secondary font-bold uppercase tracking-widest text-xs"
-                        style="color: #F09734;">PROGRAMA</span>
-                    <h2 class="font-headline-lg text-headline-lg text-primary">Investigación Aplicada</h2>
-                </div>
-            </div>
-            <div class="h-px bg-[#F09734] mb-7"></div>
-            <div class="flex flex-col md:flex-row gap-8 items-start">
-                <!-- Columna izquierda: imágenes -->
-                <div class="w-full md:w-1/2 space-y-4">
-                    <img class="w-full h-[300px] md:h-[360px] object-cover rounded-[16px] shadow-lg"
-                        src="/activos/img_investigaciones/investigacion1-08-25.jpg"
-                        alt="Investigación - principal" />
-
-                    <div class="grid grid-cols-2 gap-4">
-                        <img class="w-full h-[180px] object-cover rounded-[12px] shadow-md"
-                            src="/activos/img_investigaciones/2025-IMG_6799.jpg"
-                            alt="lab 1" />
-                        <img class="w-full h-[180px] object-cover rounded-[12px] shadow-md"
-                            src="/activos/img_investigaciones/2025-IMG_7702.jpg"
-                            alt="lab 2" />
-                    </div>
-
-                    <img class="w-full h-[260px] md:h-[435px] object-cover rounded-[16px] shadow-lg"
-                        src="/activos/img_investigaciones/658118011_1352930200198810_5234688017026415160_n.jpg"
-                        alt="Investigación - secundaria" />
-                </div>
-
-                <!-- Columna derecha: objetivo y bloques de contenido -->
-                <div class="w-full md:w-1/2 space-y-6">
-                    <div class="p-8 md:p-10
-            bg-[#006A49]/20
-            shadow-[0_8px_20px_rgba(0,0,0,0.25)]
-            border-l-4 border-l-[#006d4a]
-            rounded-[0_60px_60px_60px]">
-                        <span class="font-bold text-primary text-xs uppercase mb-2 block">OBJETIVO</span>
-                        <p class="text-on-surface-variant font-body-md">Fomentar la investigación aplicada en el sector
-                            agropecuario y agroindustrial, impulsando la participación de estudiantes universitarios en
-                            proyectos de tesis que contribuyan a la innovación, sostenibilidad y mejora productiva en el
-                            valle de Nepeña.</p>
-                    </div>
-
-                    <div class="bg-[#006A49] text-white p-8 md:p-10 rounded-[60px] shadow-lg border border-[#006d4a]">
-                        <div
-                            class="w-14 h-14 rounded-[0_20px_20px_20px] border-4 border-white flex items-center justify-center mb-6">
-                            <span class="material-symbols-outlined text-3xl">science</span>
+                    <!-- Galería Fotográfica -->
+                    <div class="lg:col-span-6 grid grid-cols-2 gap-5">
+                        <div class="asym-tr-0-lg col-span-2 shadow-md border border-gray-100 img-zoom-container h-[300px]">
+                            <img class="w-full h-full object-cover" src="../activos/img_quehacemos/asociatividad-08-25.jpg" alt="Organización y asociatividad agraria en campo" />
                         </div>
-                        <h3 class="font-body-md font-semibold text-white mb-2">Investigación Agrícola</h3>
-                        <p class="text-white/90 font-body-md">Fomentamos la investigación como una herramienta
-                            fundamental para el desarrollo local, brindando recursos, asistencia técnica y espacios
-                            adecuados para que los estudiantes generen soluciones innovadoras a los desafíos del sector.
-                            Nuestra investigación agrícola se basa en tres principios esenciales: producción
-                            agroecológica, conservación del suelo y protección de la biodiversidad, asegurando así la
-                            sostenibilidad económica, social y ambiental.</p>
-                    </div>
-
-                    <div class="bg-[#006A49] text-white p-8 md:p-10 rounded-[60px] shadow-lg border border-[#006d4a]">
-                        <div
-                            class="w-14 h-14 rounded-[0_20px_20px_20px] border-4 border-white flex items-center justify-center mb-6">
-                            <span class="material-symbols-outlined text-3xl">precision_manufacturing</span>
+                        <div class="asym-tl-0-md shadow-md border border-gray-100 img-zoom-container h-[180px]">
+                            <img class="w-full h-full object-cover" src="../activos/img_quehacemos/portada07.jpg" alt="Sesión de capacitación de productores" />
                         </div>
-                        <h3 class="font-body-md font-semibold text-white mb-2">Desarrollo Agroindustrial</h3>
-                        <p class="text-white/90 font-body-md">Promovemos la transformación de materias primas locales en
-                            productos de alto valor agregado, fomentando la innovación y la competitividad del sector
-                            agroindustrial. Acompañamos a estudiantes en el diseño y mejora de productos sostenibles,
-                            fortaleciendo la cadena productiva y el desarrollo rural.
-                            Mediante alianzas con universidades y centros de investigación, aseguramos que los proyectos
-                            académicos tengan un impacto real en la mejora de prácticas agropecuarias y
-                            agroindustriales.</p>
+                        <div class="asym-tr-0-md shadow-md border border-gray-100 img-zoom-container h-[180px]">
+                            <img class="w-full h-full object-cover" src="../activos/img_quehacemos/2025-parcelas-demostrativas.jpg" alt="Validación técnica en parcelas demostrativas" />
+                        </div>
+                        <div class="asym-bl-0-lg col-span-2 shadow-md border border-gray-100 img-zoom-container h-[260px]">
+                            <img class="w-full h-full object-cover" src="../activos/img_quehacemos/Sem2-Portada01.jpg" alt="Seminario técnico agrario SEDIR" />
+                        </div>
                     </div>
 
                 </div>
 
             </div>
+        </section>
 
-        </div>
-    </section>
-    <!-- Footer Component -->
+        <!-- =========================================================================================
+             BLOQUE 2: TRANSFERENCIA DE TECNOLOGÍA AGRÍCOLA (FONDO VERDE INSTITUCIONAL PROFUNDO)
+             ========================================================================================= -->
+        <section id="asistencia-tecnica" class="bg-primary-dark text-white py-24 md:py-28 scroll-mt-16 relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col gap-12">
+                
+                <!-- Encabezado -->
+                <div class="flex items-center gap-5 border-b border-white/15 pb-6">
+                    <span class="text-5xl md:text-6xl font-extrabold text-orange font-display leading-none select-none" style="color: #F09734;">02</span>
+                    <div class="h-10 w-px bg-white/20 hidden sm:block"></div>
+                    <div>
+                        <span class="text-orange font-display font-bold uppercase tracking-widest text-sm block mb-1" style="color: #F09734;">PROGRAMA INSTITUCIONAL</span>
+                        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white font-display tracking-tight">Transferencia de Tecnología Agrícola</h2>
+                    </div>
+                </div>
+
+                <!-- Objetivo -->
+                <div class="p-8 md:p-10 bg-black/20 border-l-4 border-orange asym-tl-0-xl shadow-lg" style="border-left-color: #F09734;">
+                    <span class="font-display font-bold text-orange text-sm uppercase tracking-wider mb-3 block flex items-center gap-2" style="color: #F09734;">
+                        <i class="fas fa-bullseye text-base"></i> OBJETIVO ESTRATÉGICO
+                    </span>
+                    <p class="text-white/95 font-body text-base md:text-lg leading-relaxed">
+                        Elevar la eficiencia productiva, calidad del fruto y rentabilidad del productor del valle mediante la validación agronómica en campo y la difusión de paquetes tecnológicos adaptados a las condiciones agroclimáticas locales.
+                    </p>
+                </div>
+
+                <!-- Imagen Panorámica -->
+                <div class="w-full asym-tr-0-lg shadow-2xl border border-white/15 img-zoom-container h-[260px] md:h-[400px]">
+                    <img class="w-full h-full object-cover" src="../activos/img_quehacemos/AsistenciaTecnica-instal05.jpg" alt="Asistencia técnica personalizada en parcelas de cultivo" />
+                </div>
+
+                <!-- Tarjetas de Componentes -->
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+                    
+                    <!-- Componente 1 -->
+                    <article class="bg-white text-gray-800 shadow-xl flex flex-col justify-between institutional-card asym-tl-0-md group">
+                        <div class="img-zoom-container h-48 w-full bg-gray-100 border-b border-gray-100">
+                            <img class="h-full w-full object-cover" alt="Parcelas demostrativas en el Valle de Nepeña" src="../activos/img_quehacemos/AsistenciaTecnica-fertiliz01.jpg" />
+                        </div>
+                        <div class="p-7 flex-grow flex flex-col justify-between">
+                            <div>
+                                <span class="text-sm font-bold uppercase tracking-wider text-primary font-display block mb-1">ÁREA DE CAMPO</span>
+                                <h3 class="font-display font-bold text-lg text-ink mb-3 group-hover:text-primary transition-colors">Parcelas Demostrativas</h3>
+                                <p class="text-gray-600 font-body text-base leading-relaxed">
+                                    Unidades experimentales de campo donde los agricultores observan y comprueban en tiempo real la eficacia de sistemas de riego, podas de formación y planes de nutrición vegetal.
+                                </p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Componente 2 -->
+                    <article class="bg-white text-gray-800 shadow-xl flex flex-col justify-between institutional-card asym-tl-0-md group">
+                        <div class="img-zoom-container h-48 w-full bg-gray-100 border-b border-gray-100">
+                            <img class="h-full w-full object-cover" alt="Producción y difusión de material audiovisual agrario" src="../activos/img_quehacemos/2025-captura-face.jpg" />
+                        </div>
+                        <div class="p-7 flex-grow flex flex-col justify-between">
+                            <div>
+                                <span class="text-sm font-bold uppercase tracking-wider text-primary font-display block mb-1">COMUNICACIÓN TÉCNICA</span>
+                                <h3 class="font-display font-bold text-lg text-ink mb-3 group-hover:text-primary transition-colors">Creación de Contenidos</h3>
+                                <p class="text-gray-600 font-body text-base leading-relaxed">
+                                    Producción de reportajes de campo, tutoriales audiovisuales, infografías digitales y transmisiones en vivo para socializar alertas fitosanitarias y prácticas agrícolas.
+                                </p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Componente 3 -->
+                    <article class="bg-white text-gray-800 shadow-xl flex flex-col justify-between institutional-card asym-tl-0-md group">
+                        <div class="img-zoom-container h-48 w-full bg-gray-100 border-b border-gray-100">
+                            <img class="h-full w-full object-cover" alt="Publicaciones y manuales agrarios impresos" src="../activos/img_quehacemos/publicaciobes-impresas2025.jpg" />
+                        </div>
+                        <div class="p-7 flex-grow flex flex-col justify-between">
+                            <div>
+                                <span class="text-sm font-bold uppercase tracking-wider text-primary font-display block mb-1">FONDO EDITORIAL</span>
+                                <h3 class="font-display font-bold text-lg text-ink mb-3 group-hover:text-primary transition-colors">Materiales Impresos</h3>
+                                <p class="text-gray-600 font-body text-base leading-relaxed mb-6">
+                                    Edición y distribución gratuita de revistas especializadas, manuales técnicos de cultivo y boletines informativos para el productor agrario y estudiantes.
+                                </p>
+                            </div>
+                            <div class="pt-3 border-t border-gray-100 flex items-center justify-between">
+                                <a href="/paginas/publicaciones.html" class="inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-primary-dark font-display uppercase tracking-wider">
+                                    <span>Fondo Bibliográfico</span>
+                                    <i class="fas fa-arrow-right text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Componente 4 -->
+                    <article class="bg-white text-gray-800 shadow-xl flex flex-col justify-between institutional-card asym-tl-0-md group">
+                        <div class="img-zoom-container h-48 w-full bg-gray-100 border-b border-gray-100">
+                            <img class="h-full w-full object-cover" alt="Cabina de transmisión y production de Radio SEDIR" src="../activos/img_quehacemos/P1400114.JPG" />
+                        </div>
+                        <div class="p-7 flex-grow flex flex-col justify-between">
+                            <div>
+                                <span class="text-sm font-bold uppercase tracking-wider text-primary font-display block mb-1">DIFUSIÓN MASIVA</span>
+                                <h3 class="font-display font-bold text-lg text-ink mb-3 group-hover:text-primary transition-colors">Radio SEDIR</h3>
+                                <p class="text-gray-600 font-body text-base leading-relaxed">
+                                    Programación radial diseñada para llegar a zonas rurales apartadas, brindando consultoría en vivo con ingenieros agrónomos, cotizaciones de mercado y clima.
+                                </p>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- =========================================================================================
+             BLOQUE 3: INVESTIGACIÓN APLICADA (FONDO GRIS BOTÁNICO SUAVE)
+             ========================================================================================= -->
+        <section id="investigacion" class="bg-[#F3F6F4] py-24 md:py-28 scroll-mt-16 border-b border-gray-200/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12">
+                
+                <!-- Encabezado -->
+                <div class="border-b border-gray-300/60 pb-6">
+                    <div class="flex items-center gap-5">
+                        <span class="text-5xl md:text-6xl font-extrabold text-orange font-display leading-none select-none" style="color: #F09734;">03</span>
+                        <div class="h-10 w-px bg-gray-300 hidden sm:block"></div>
+                        <div>
+                            <span class="text-orange font-display font-bold uppercase tracking-widest text-sm block mb-1" style="color: #F09734;">PROGRAMA INSTITUCIONAL</span>
+                            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-primary font-display tracking-tight">Investigación Aplicada</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rejilla de Contenido -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+                    
+                    <!-- Columna Izquierda: Galería Científica -->
+                    <div class="lg:col-span-6 space-y-5">
+                        <div class="asym-tl-0-lg shadow-md border border-gray-200/80 img-zoom-container h-[300px] md:h-[360px]">
+                            <img class="w-full h-full object-cover" src="../activos/img_investigaciones/investigacion1-08-25.jpg" alt="Ensayos agrícolas de investigación en el Valle de Nepeña" />
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-5">
+                            <div class="asym-bl-0-md shadow-md border border-gray-200/80 img-zoom-container h-[180px]">
+                                <img class="w-full h-full object-cover" src="../activos/img_investigaciones/2025-IMG_6799.jpg" alt="Laboratorio e instrumentación agronómica" />
+                            </div>
+                            <div class="asym-tr-0-md shadow-md border border-gray-200/80 img-zoom-container h-[180px]">
+                                <img class="w-full h-full object-cover" src="../activos/img_investigaciones/2025-IMG_7702.jpg" alt="Evaluación fitosanitaria en cultivo" />
+                            </div>
+                        </div>
+
+                        <div class="asym-tl-0-lg shadow-md border border-gray-200/80 img-zoom-container h-[260px]">
+                            <img class="w-full h-full object-cover" src="../activos/img_investigaciones/658118011_1352930200198810_5234688017026415160_n.jpg" alt="Estudiantes universitarios desarrollando proyectos de investigación con SEDIR" />
+                        </div>
+                    </div>
+
+                    <!-- Columna Derecha: Objetivos y Líneas -->
+                    <div class="lg:col-span-6 space-y-6">
+                        
+                        <!-- Objetivo -->
+                        <div class="p-8 md:p-10 bg-white border-l-4 border-primary asym-tl-0-xl shadow-md">
+                            <span class="font-display font-bold text-primary text-sm uppercase tracking-wider mb-3 block flex items-center gap-2">
+                                <i class="fas fa-bullseye text-base"></i> OBJETIVO ESTRATÉGICO
+                            </span>
+                            <p class="text-gray-700 font-body text-base md:text-lg leading-relaxed">
+                                Generar y validar conocimiento científico aplicable que resuelva las problemáticas específicas del sector agropecuario y agroindustrial del valle, fomentando la articulación entre academia, empresa rural y productores.
+                            </p>
+                        </div>
+
+                        <!-- Línea 1 -->
+                        <div class="bg-white p-8 md:p-10 asym-tl-0-lg border border-gray-200/80 shadow-md institutional-card group">
+                            <div class="w-12 h-12 bg-primary border-4 border-white asym-icon-box flex items-center justify-center shadow-md mb-6 group-hover:bg-primary-dark transition-colors">
+                                <span class="material-symbols-outlined text-white text-xl">science</span>
+                            </div>
+                            <h3 class="font-display font-bold text-xl text-ink mb-3 group-hover:text-primary transition-colors">Investigación Agrícola y Biológica</h3>
+                            <p class="text-gray-600 font-body text-base leading-relaxed">
+                                Asesoramos y financiamos tesis de pregrado y posgrado enfocadas en el control biológico de plagas en frutales de exportación (palto, mango, cítricos), biotecnología vegetal, fertilidad del suelo y propagación de plántulas libres de patógenos en vivero.
+                            </p>
+                        </div>
+
+                        <!-- Línea 2 -->
+                        <div class="bg-white p-8 md:p-10 asym-tl-0-lg border border-gray-200/80 shadow-md institutional-card group">
+                            <div class="w-12 h-12 bg-primary border-4 border-white asym-icon-box flex items-center justify-center shadow-md mb-6 group-hover:bg-primary-dark transition-colors">
+                                <span class="material-symbols-outlined text-white text-xl">precision_manufacturing</span>
+                            </div>
+                            <h3 class="font-display font-bold text-xl text-ink mb-3 group-hover:text-primary transition-colors">Innovación y Desarrollo Agroindustrial</h3>
+                            <p class="text-gray-600 font-body text-base leading-relaxed">
+                                Promovemos el desarrollo de nuevos productos procesados a partir de frutos locales y cultivos andinos (néctares, destilados, harinas funcionales), estudiando parámetros de inocuidad alimentaria, vida útil, empaque y economía circular en el ámbito rural.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Componente de Pie de Página -->
     <div id="footer-container" data-component="/components/footer.html"></div>
-    <!-- WhatsApp floating button -->
+    <!-- Botón Flotante de WhatsApp -->
     <div id="whatsapp-container" data-component="/components/whatsapp.html"></div>
+
+    <!-- Scripts Operativos -->
+    <script src="/activos/js/components.js" defer></script>
+    <script src="/activos/js/navbar.js" defer></script>
+    <script src="/activos/js/main.js" defer></script>
 </body>
 
 </html>

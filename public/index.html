@@ -1,164 +1,58 @@
 <!DOCTYPE html>
-
 <html lang="es">
 
 <head>
-  <title>.:: SEDIR ::.</title>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>.:: SEDIR - Servicio para el Desarrollo Integral Rural ::.</title>
+  
   <link rel="icon" href="activos/img_logos/logo-sedir-links.png" type="image/x-icon">
+  
+  <!-- Hojas de Estilo y Fuentes -->
   <link rel="stylesheet" href="activos/css/fonts.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" />
+  
+  <link href="activos/css/style.css" rel="stylesheet" />
+  <link href="activos/css/navbar.css" rel="stylesheet" />
+  <link href="activos/css/hero.css" rel="stylesheet" />
+  <link href="activos/css/footer.css" rel="stylesheet" />
+  <link href="activos/css/animations.css" rel="stylesheet" />
+  <link href="activos/css/responsive.css" rel="stylesheet" />
 
-  <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <script src="activos/js/components.js"></script>
-    <script src="activos/js/proyectos.js"></script>
-    <script src="activos/js/noticias.js"></script>
-    <script src="activos/js/main.js"></script>
-
-    <script src="/activos/js/navbar.js" defer></script>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <script id="tailwind-config">
-      // Paleta y tipografías del Manual de Identidad Visual de SEDIR
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              primary: "#00944A",
-              "primary-dark": "#006A49",
-              "primary-alt": "#009C63",
-              brown: "#8C7855",
-              secondary: "#F09734",
-              ink: "#000306",
-              cream: "#FBF7EE"
-            },
-            fontFamily: {
-              display: ["Montserrat", "sans-serif"],
-              body: ["Montserrat Light", "sans-serif"]
-            }
+  <!-- Configuración de Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    // Paleta y tipografías del Manual de Identidad Visual de SEDIR
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#00944A",
+            "primary-dark": "#006A49",
+            "primary-alt": "#009C63",
+            brown: "#8C7855",
+            secondary: "#F09734",
+            ink: "#000306",
+            cream: "#FBF7EE"
+          },
+          fontFamily: {
+            display: ["Montserrat", "sans-serif"],
+            body: ["Montserrat Light", "sans-serif"],
+            franklin: ["Franklin Gothic Demi", "sans-serif"]
           }
         }
-      };
-    </script>
-    <style>
-      .material-symbols-outlined {
-        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
       }
-    </style>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-      rel="stylesheet" />
-    <link href="activos/css/style.css" rel="stylesheet" />
-    <link href="activos/css/navbar.css" rel="stylesheet" />
-    <link href="activos/css/hero.css" rel="stylesheet" />
-    <link href="activos/css/footer.css" rel="stylesheet" />
-    <link href="activos/css/animations.css" rel="stylesheet" />
-    <link href="activos/css/responsive.css" rel="stylesheet" />
-  </head>
+    };
+  </script>
 
-<body class="antialiased bg-gray-50">
-  <!-- BEGIN: Navigation Component -->
-  <div id="navbar-container" class="navbar-loading" data-component="/components/navbar.html"></div>
-
-  <!-- END: Navigation Component -->
-
-  <!-- BEGIN: Hero Component -->
-  <div id="hero-container" data-component="/components/hero.html"></div>
-  <!-- END: Hero Component -->
-
-  <!-- BEGIN: Infrastructure Bento Grid -->
-  <section class="py-16 md:py-24 bg-cream px-4 sm:px-6 lg:px-8" id="areas">
-    <div class="max-w-7xl mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[240px]">
-        <!-- Unidades Productivas -->
-        <a href="/paginas/unidades-productivas.html"
-          class="md:col-span-8 group relative overflow-hidden rounded-[30px] shadow-lg hover:shadow-xl transition-all duration-500 bg-brown">
-          <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-            style="background-image:url('activos/img_unidades_productivas/apicultura-08-25.jpg')"></div>
-          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-          <div class="absolute bottom-0 left-0 p-8">
-            <div class="text-xs uppercase tracking-wider mb-2 text-white/80 font-body">Gestión integrada</div>
-            <h3 class="font-display text-white text-2xl md:text-3xl font-bold mb-2">Unidades Productivas</h3>
-            <p class="font-body text-white/80 max-w-md text-sm">Centros de alta eficiencia optimizados para la
-              máxima producción sostenible.</p>
-          </div>
-        </a>
-
-        <!-- Investigación -->
-        <a href="/paginas/investigaciones.html"
-          class="md:col-span-4 group relative overflow-hidden rounded-[30px] shadow-lg hover:shadow-xl transition-all duration-500 bg-primary">
-          <div class="p-8 h-full flex flex-col justify-between relative z-10">
-            <div class="w-12 h-12 bg-white/15 rounded-xl flex items-center justify-center text-white">
-              <span class="material-symbols-outlined text-3xl">biotech</span>
-            </div>
-            <div>
-              <h3 class="font-display text-white text-2xl font-bold mb-2">Investigación</h3>
-              <p class="font-body text-white/80 text-sm">Nuevos hallazgos en fitopatología y mejora genética de
-                cultivos nativos.</p>
-            </div>
-          </div>
-          <div class="absolute inset-0 opacity-10 pointer-events-none">
-            <svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100">
-              <circle cx="50" cy="50" fill="none" r="40" stroke="white" stroke-width="0.5"></circle>
-              <circle cx="50" cy="50" fill="none" r="30" stroke="white" stroke-width="0.5"></circle>
-            </svg>
-          </div>
-        </a>
-
-        <!-- Condiciones de Clima -->
-        <a href="/paginas/clima.html"
-          class="md:col-span-4 group relative overflow-hidden rounded-[30px] shadow-lg hover:shadow-xl transition-all duration-500 bg-white border border-gray-100">
-          <div class="p-8">
-            <div class="flex justify-between items-start mb-4">
-              <span class="material-symbols-outlined text-primary text-4xl">thermostat</span>
-              <div class="text-right">
-                <span class="font-display text-4xl font-bold text-ink">24°C</span>
-                <p class="font-body text-xs text-gray-500 uppercase">Promedio Regional</p>
-              </div>
-            </div>
-            <h3 class="font-display text-2xl font-bold mb-2 text-ink">Condiciones de Clima</h3>
-            <p class="font-body text-gray-600 text-sm">Datos climáticos precisos para la toma de decisiones
-              agrícolas inteligentes.</p>
-          </div>
-          <div class="mt-auto px-8 pb-8">
-            <div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
-              <div class="w-[65%] h-full bg-primary"></div>
-            </div>
-          </div>
-        </a>
-
-        <!-- Publicaciones -->
-        <a href="/paginas/publicaciones.html"
-          class="md:col-span-8 group relative overflow-hidden rounded-[30px] shadow-lg hover:shadow-xl transition-all duration-500 bg-primary-dark">
-          <div class="absolute inset-0 bg-cover bg-center opacity-30 mix-blend-overlay"
-            style="background-image:url('activos/img_unidades_productivas/REV-ED-006.jpg')"></div>
-          <div class="relative z-10 p-8 h-full flex items-center justify-between">
-            <div class="max-w-md">
-              <h3 class="font-display text-white text-2xl md:text-3xl font-bold mb-2">Biblioteca Técnica</h3>
-              <p class="font-body text-white/80 text-sm">Accede a guías prácticas, manuales, boletines técnicos y
-                publicaciones científicas desarrolladas por expertos.</p>
-              <span class="mt-6 flex items-center gap-2 text-white font-bold hover:underline font-body">
-                Explorar Publicaciones
-                <span class="material-symbols-outlined">menu_book</span>
-              </span>
-
-            </div>
-            <div
-              class="hidden md:flex relative w-[300px] h-[220px] shrink-0 items-center justify-center overflow-visible">
-
-              <img src="activos/img_unidades_productivas/REV-ED-006.jpg" alt="Catálogo de publicaciones" class="absolute left-8 top-4 w-32 object-contain rotate-[8deg]
-           drop-shadow-[0_16px_25px_rgba(0,0,0,0.30)]
-           transition-all duration-500 group-hover:scale-105">
-
-            </div>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-  <!-- END: Infrastructure Bento Grid -->
   <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    
+    /* Estilos específicos de la sección Quiénes Somos */
     .about-section {
       --verde: #2f8f4e;
       --texto: #3a3a3a;
@@ -173,7 +67,6 @@
       align-items: center;
       flex-wrap: wrap;
     }
-
 
     .about-image img {
       width: 100%;
@@ -272,11 +165,9 @@
       .about-section {
         padding: 24px;
       }
-
       .about-section h2.title {
         font-size: 1.6rem;
       }
-
       .values-list {
         grid-template-columns: 1fr;
       }
@@ -287,10 +178,112 @@
     }
   </style>
 
+  <!-- Scripts del Core (Se cargan en el head para estar listos) -->
+  <script src="activos/js/components.js" defer></script>
+  <script src="activos/js/proyectos.js" defer></script>
+  <script src="activos/js/noticias.js" defer></script>
+  <script src="activos/js/navbar.js" defer></script>
+</head>
+
+<body class="antialiased bg-gray-50">
+
+  <!-- BEGIN: Navigation Component -->
+  <div id="navbar-container" class="navbar-loading" data-component="/components/navbar.html"></div>
+  <!-- END: Navigation Component -->
+
+  <!-- BEGIN: Hero Component -->
+  <div id="hero-container" data-component="/components/hero.html"></div>
+  <!-- END: Hero Component -->
+
+  <!-- BEGIN: Infrastructure Bento Grid -->
+  <section class="py-16 md:py-24 bg-cream px-4 sm:px-6 lg:px-8" id="areas">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[240px]">
+        
+        <!-- Unidades Productivas -->
+        <a href="/paginas/unidades-productivas.html"
+          class="md:col-span-8 group relative overflow-hidden rounded-[30px] shadow-lg hover:shadow-xl transition-all duration-500 bg-brown">
+          <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+            style="background-image:url('activos/img_unidades_productivas/apicultura-08-25.jpg')"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-8">
+            <div class="text-xs uppercase tracking-wider mb-2 text-white/80 font-body">Gestión integrada</div>
+            <h3 class="font-display text-white text-2xl md:text-3xl font-bold mb-2">Unidades Productivas</h3>
+            <p class="font-body text-white/80 max-w-md text-sm">Centros de alta eficiencia optimizados para la máxima producción sostenible.</p>
+          </div>
+        </a>
+
+        <!-- Investigación -->
+        <a href="/paginas/investigaciones.html"
+          class="md:col-span-4 group relative overflow-hidden rounded-[30px] shadow-lg hover:shadow-xl transition-all duration-500 bg-primary">
+          <div class="p-8 h-full flex flex-col justify-between relative z-10">
+            <div class="w-12 h-12 bg-white/15 rounded-xl flex items-center justify-center text-white">
+              <span class="material-symbols-outlined text-3xl">biotech</span>
+            </div>
+            <div>
+              <h3 class="font-display text-white text-2xl font-bold mb-2">Investigación</h3>
+              <p class="font-body text-white/80 text-sm">Nuevos hallazgos en fitopatología y mejora genética de cultivos nativos.</p>
+            </div>
+          </div>
+          <div class="absolute inset-0 opacity-10 pointer-events-none">
+            <svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" fill="none" r="40" stroke="white" stroke-width="0.5"></circle>
+              <circle cx="50" cy="50" fill="none" r="30" stroke="white" stroke-width="0.5"></circle>
+            </svg>
+          </div>
+        </a>
+
+        <!-- Condiciones de Clima -->
+        <a href="/paginas/clima.html"
+          class="md:col-span-4 group relative overflow-hidden rounded-[30px] shadow-lg hover:shadow-xl transition-all duration-500 bg-white border border-gray-100">
+          <div class="p-8">
+            <div class="flex justify-between items-start mb-4">
+              <span class="material-symbols-outlined text-primary text-4xl">thermostat</span>
+              <div class="text-right">
+                <span class="font-display text-4xl font-bold text-ink">24°C</span>
+                <p class="font-body text-xs text-gray-500 uppercase">Promedio Regional</p>
+              </div>
+            </div>
+            <h3 class="font-display text-2xl font-bold mb-2 text-ink">Condiciones de Clima</h3>
+            <p class="font-body text-gray-600 text-sm">Datos climáticos precisos para la toma de decisiones agrícolas inteligentes.</p>
+          </div>
+          <div class="mt-auto px-8 pb-8">
+            <div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+              <div class="w-[65%] h-full bg-primary"></div>
+            </div>
+          </div>
+        </a>
+
+        <!-- Publicaciones -->
+        <a href="/paginas/publicaciones.html"
+          class="md:col-span-8 group relative overflow-hidden rounded-[30px] shadow-lg hover:shadow-xl transition-all duration-500 bg-primary-dark">
+          <div class="absolute inset-0 bg-cover bg-center opacity-30 mix-blend-overlay"
+            style="background-image:url('activos/img_unidades_productivas/REV-ED-006.jpg')"></div>
+          <div class="relative z-10 p-8 h-full flex items-center justify-between">
+            <div class="max-w-md">
+              <h3 class="font-display text-white text-2xl md:text-3xl font-bold mb-2">Biblioteca Técnica</h3>
+              <p class="font-body text-white/80 text-sm">Accede a guías prácticas, manuales, boletines técnicos y publicaciones científicas desarrolladas por expertos.</p>
+              <span class="mt-6 flex items-center gap-2 text-white font-bold hover:underline font-body">
+                Explorar Publicaciones
+                <span class="material-symbols-outlined">menu_book</span>
+              </span>
+            </div>
+            <div class="hidden md:flex relative w-[300px] h-[220px] shrink-0 items-center justify-center overflow-visible">
+              <img src="activos/img_unidades_productivas/REV-ED-006.jpg" alt="Catálogo de publicaciones" 
+                class="absolute left-8 top-4 w-32 object-contain rotate-[8deg] drop-shadow-[0_16px_25px_rgba(0,0,0,0.30)] transition-all duration-500 group-hover:scale-105">
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+  <!-- END: Infrastructure Bento Grid -->
+
+  <!-- BEGIN: About Section (Quiénes Somos) -->
   <section class="about-section">
     <div class="about-image">
-      <img src="/activos/img_servicios/2025-abejas.jpg"
-        alt="Productores capacitándose en apicultura en el valle de Nepeña">
+      <img src="/activos/img_servicios/2025-abejas.jpg" alt="Productores capacitándose en apicultura en el valle de Nepeña">
     </div>
 
     <div class="about-content">
@@ -299,7 +292,7 @@
 
       <p>SEDIR es una organización dedicada a impulsar el desarrollo agropecuario y agroindustrial en el valle de
         Nepeña. Desde 2012, trabajamos fortaleciendo las capacidades de los productores agrícolas, promoviendo la
-        educación técnica y transfiriendo tecnología para mejorar la productividad y sostenibilidad del sector.</p>
+        educación técnica y transfiriendo tecnología para mejorar la productivity y sostenibilidad del sector.</p>
 
       <p>A través de proyectos innovadores, fomentamos la investigación, el uso responsable de los recursos naturales y
         la creación de valor agregado en la producción agrícola. Nuestra labor ha beneficiado a más de 4,000 familias e
@@ -319,229 +312,187 @@
       </a>
     </div>
   </section>
-  <!-- END: Impact Counters -->
+  <!-- END: About Section -->
 
+<!-- === SECCIÓN: QUÉ HACEMOS (DISEÑO INSTITUCIONAL SÓLIDO) === -->
+<section class="py-24 bg-[#F5FAF8]" id="que-hacemos" aria-label="Nuestros servicios y programas institucionales">
+  <div class="max-w-7xl mx-auto px-6">
 
+    <!-- Encabezado Institucional -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      
+      <span class="inline-flex items-center text-primary font-display font-bold uppercase tracking-widest text-sm mb-3">
+        <span class="w-2 h-2 rounded-full bg-primary mr-2.5"></span>
+        QUÉ HACEMOS
+      </span>
 
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-display font-extrabold text-ink tracking-tight">
+        Nuestros servicios y programas
+      </h2>
 
-  <!-- === QUÉ HACEMOS== -->
-  <section class="py-24 bg-[#F5FAF8]">
-    <div class="max-w-7xl mx-auto px-6">
+      <p class="mt-5 text-gray-600 text-base sm:text-lg leading-relaxed font-body max-w-2xl mx-auto">
+        Trabajamos en cuatro ejes estratégicos para impulsar el desarrollo integral del sector agropecuario del valle de Nepeña mediante investigación, innovación y asistencia técnica.
+      </p>
 
-      <!-- Encabezado -->
-      <div class="text-center max-w-3xl mx-auto mb-16">
+    </div>
 
-        <span class="inline-flex items-center text-primary font-bold uppercase tracking-widest text-sm">
-          <span class="w-2 h-2 rounded-full bg-primary mr-2"></span>
-          QUÉ HACEMOS
-        </span>
+    <!-- Rejilla Institucional de Servicios -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
 
-        <h2 class="mt-4 text-4xl lg:text- font-display font-extrabold text-ink">
-          Nuestros servicios y programas
-        </h2>
-
-        <p class="mt-5 text-gray-500 text-lg leading-8 font-montserrat-light">
-          Trabajamos en cuatro ejes estratégicos para impulsar el desarrollo
-          integral del sector agropecuario del valle de Nepeña mediante
-          investigación, innovación y asistencia técnica.
-        </p>
-
-      </div>
-
-      <!-- Tarjetas -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-
-        <!-- Card 1 -->
-        <div
-          class="group bg-white rounded-3xl p-8 border border-green-100 shadow-md hover:shadow-xl hover:-translate-y-2 transition duration-300">
-
-          <div
-            class="w-12 h-12 bg-primary border-4 border-white rounded-tr-[16px] rounded-br-[16px] rounded-bl-[16px] flex items-center justify-center shadow-lg mb-6">
+      <!-- Tarjeta 1: Capacitación -->
+      <div class="bg-white rounded-3xl p-8 border border-gray-200/80 shadow-sm flex flex-col justify-between h-full transition-shadow duration-300 hover:shadow-md">
+        <div>
+          <!-- ÍCONO INTACTO SEGÚN MANUAL OFICIAL -->
+          <div class="w-12 h-12 bg-primary border-4 border-white rounded-tr-[16px] rounded-br-[16px] rounded-bl-[16px] flex items-center justify-center shadow-lg mb-6">
             <i class="fas fa-users text-white text-lg"></i>
           </div>
 
-          <h3 class="font-display text-xl font-bold text-ink mb-4">
+          <h3 class="font-display text-xl font-bold text-ink mb-3 leading-snug">
             Capacitación y asistencia técnica
           </h3>
 
-          <p class="font-body text-gray-600 ">
-            Formación especializada en manejo de cultivos, injertos,
-            fumigación y polinización para productores del valle de
-            Nepeña mediante talleres prácticos y asesoría personalizada.
+          <p class="font-body text-gray-600 text-sm leading-relaxed mb-6">
+            Formación especializada en manejo de cultivos, injertos, fumigación y polinización para productores del valle de Nepeña mediante talleres prácticos y asesoría personalizada.
           </p>
-
         </div>
 
-        <!-- Card 2 -->
-        <div
-          class="group bg-white rounded-3xl p-8 border border-green-100 shadow-md hover:shadow-xl hover:-translate-y-2 transition duration-300">
+        <!-- Enlace Institucional Formal -->
+        <div class="pt-4 border-t border-gray-100 mt-auto">
+          <a href="/paginas/servicios.html" class="inline-flex items-center gap-2 text-primary hover:text-primary-dark font-display font-semibold text-sm transition-colors group">
+            <span>Conoce más</span>
+            <i class="fas fa-arrow-right text-xs transform group-hover:translate-x-1 transition-transform duration-200"></i>
+          </a>
+        </div>
+      </div>
 
-          <div
-            class="w-12 h-12 bg-primary border-4 border-white rounded-tr-[16px] rounded-br-[16px] rounded-bl-[16px] flex items-center justify-center shadow-lg mb-6">
-
+      <!-- Tarjeta 2: Investigación -->
+      <div class="bg-white rounded-3xl p-8 border border-gray-200/80 shadow-sm flex flex-col justify-between h-full transition-shadow duration-300 hover:shadow-md">
+        <div>
+          <!-- ÍCONO INTACTO SEGÚN MANUAL OFICIAL -->
+          <div class="w-12 h-12 bg-primary border-4 border-white rounded-tr-[16px] rounded-br-[16px] rounded-bl-[16px] flex items-center justify-center shadow-lg mb-6">
             <i class="fas fa-microscope text-white text-xl"></i>
           </div>
 
-          <h3 class="font-display text-xl font-bold text-ink mb-4">
+          <h3 class="font-display text-xl font-bold text-ink mb-3 leading-snug">
             Investigación aplicada
           </h3>
 
-          <p class="font-body text-gray-600 leading-7">
-            Desarrollo de proyectos orientados a mejorar la productividad
-            agrícola mediante investigación, innovación y transferencia
-            de conocimientos.
+          <p class="font-body text-gray-600 text-sm leading-relaxed mb-6">
+            Desarrollo de proyectos orientados a mejorar la productividad agrícola mediante investigación científica, innovación y transferencia de conocimientos en campo.
           </p>
-
         </div>
 
-        <!-- Card 3 -->
-        <div
-          class="group bg-white rounded-3xl p-8 border border-green-100 shadow-md hover:shadow-xl hover:-translate-y-2 transition duration-300">
+        <div class="pt-4 border-t border-gray-100 mt-auto">
+          <a href="/paginas/investigaciones.html" class="inline-flex items-center gap-2 text-primary hover:text-primary-dark font-display font-semibold text-sm transition-colors group">
+            <span>Conoce más</span>
+            <i class="fas fa-arrow-right text-xs transform group-hover:translate-x-1 transition-transform duration-200"></i>
+          </a>
+        </div>
+      </div>
 
-          <div
-            class="w-12 h-12 bg-primary border-4 border-white rounded-tr-[16px] rounded-br-[16px] rounded-bl-[16px] flex items-center justify-center shadow-lg mb-6">
-
+      <!-- Tarjeta 3: Transferencia Tecnológica -->
+      <div class="bg-white rounded-3xl p-8 border border-gray-200/80 shadow-sm flex flex-col justify-between h-full transition-shadow duration-300 hover:shadow-md">
+        <div>
+          <!-- ÍCONO INTACTO SEGÚN MANUAL OFICIAL -->
+          <div class="w-12 h-12 bg-primary border-4 border-white rounded-tr-[16px] rounded-br-[16px] rounded-bl-[16px] flex items-center justify-center shadow-lg mb-6">
             <i class="fas fa-layer-group text-white text-xl"></i>
           </div>
 
-          <h3 class="font-display text-xl font-bold text-ink mb-4">
+          <h3 class="font-display text-xl font-bold text-ink mb-3 leading-snug">
             Transferencia tecnológica
           </h3>
 
-          <p class="font-body text-gray-600 leading-7">
-            Implementamos tecnologías agrícolas, herramientas digitales,
-            sistemas de riego y buenas prácticas para incrementar la
-            productividad y sostenibilidad.
+          <p class="font-body text-gray-600 text-sm leading-relaxed mb-6">
+            Implementamos tecnologías agrícolas, herramientas digitales, sistemas de riego tecnificado y buenas prácticas para incrementar la productividad y sostenibilidad.
           </p>
-
         </div>
 
-        <!-- Card 4 -->
-        <div
-          class="group bg-white rounded-3xl p-8 border border-green-100 shadow-md hover:shadow-xl hover:-translate-y-2 transition duration-300">
+        <div class="pt-4 border-t border-gray-100 mt-auto">
+          <a href="/paginas/servicios.html" class="inline-flex items-center gap-2 text-primary hover:text-primary-dark font-display font-semibold text-sm transition-colors group">
+            <span>Conoce más</span>
+            <i class="fas fa-arrow-right text-xs transform group-hover:translate-x-1 transition-transform duration-200"></i>
+          </a>
+        </div>
+      </div>
 
-          <div
-            class="w-12 h-12 bg-primary border-4 border-white rounded-tr-[16px] rounded-br-[16px] rounded-bl-[16px] flex items-center justify-center shadow-lg mb-6">
-
+      <!-- Tarjeta 4: Publicaciones -->
+      <div class="bg-white rounded-3xl p-8 border border-gray-200/80 shadow-sm flex flex-col justify-between h-full transition-shadow duration-300 hover:shadow-md">
+        <div>
+          <!-- ÍCONO INTACTO SEGÚN MANUAL OFICIAL -->
+          <div class="w-12 h-12 bg-primary border-4 border-white rounded-tr-[16px] rounded-br-[16px] rounded-bl-[16px] flex items-center justify-center shadow-lg mb-6">
             <i class="fas fa-file-alt text-white text-xl"></i>
           </div>
 
-          <h3 class="font-display text-xl font-bold text-ink mb-4">
+          <h3 class="font-display text-xl font-bold text-ink mb-3 leading-snug">
             Publicaciones técnicas
           </h3>
 
-          <p class="font-body text-gray-600 leading-7">
-            Elaboramos revistas, boletines, manuales y documentos
-            técnicos con resultados de investigación para fortalecer
-            el conocimiento del sector agropecuario.
+          <p class="font-body text-gray-600 text-sm leading-relaxed mb-6">
+            Elaboramos revistas, boletines, manuales y documentos técnicos con resultados de investigación para fortalecer el conocimiento del sector agropecuario.
           </p>
-
         </div>
 
+        <div class="pt-4 border-t border-gray-100 mt-auto">
+          <a href="/paginas/publicaciones.html" class="inline-flex items-center gap-2 text-primary hover:text-primary-dark font-display font-semibold text-sm transition-colors group">
+            <span>Conoce más</span>
+            <i class="fas fa-arrow-right text-xs transform group-hover:translate-x-1 transition-transform duration-200"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+  <!-- BEGIN: Nuestro Impacto -->
+  <section class="py-20" style="background-color:#00563B;">
+    <div class="max-w-7xl mx-auto px-6">
+      
+      <div class="text-center mb-16">
+        <span class="inline-flex items-center text-[#F09734] font-bold uppercase tracking-[3px] text-sm">
+          <span class="w-2 h-2 rounded-full bg-[#F09734] mr-3"></span>
+          NUESTRO IMPACTO
+        </span>
+        <h2 class="mt-4 text-4xl lg:text-5xl font-bold text-white font-franklin">
+          Resultados que transforman vidas
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-8">
+        <!-- Cifra 1 -->
+        <div class="text-center lg:text-left">
+          <h3 class="text-5xl lg:text-6xl font-bold text-white font-franklin">4,000<span class="text-[#F09734]">+</span></h3>
+          <h4 class="mt-3 uppercase tracking-wide font-semibold text-white text-sm">Familias beneficiadas</h4>
+          <p class="mt-3 text-green-100/80 text-sm leading-6 font-body">Familias agricultoras que mejoraron su producción y calidad de vida</p>
+        </div>
+
+        <!-- Cifra 2 -->
+        <div class="text-center lg:text-left">
+          <h3 class="text-5xl lg:text-6xl font-bold text-white font-franklin">4,710<span class="text-[#F09734]">+</span></h3>
+          <h4 class="mt-3 uppercase tracking-wide font-semibold text-white text-sm">Agricultores y emprendedores</h4>
+          <p class="mt-3 text-green-100/80 text-sm leading-6 font-body">Beneficiarios directos del Proyecto de Cooperación LED-SEDIR (2013–2024)</p>
+        </div>
+
+        <!-- Cifra 3 -->
+        <div class="text-center lg:text-left">
+          <h3 class="text-5xl lg:text-6xl font-bold text-white font-franklin">665</h3>
+          <h4 class="mt-3 uppercase tracking-wide font-semibold text-white text-sm">Emprendedores formados</h4>
+          <p class="mt-3 text-green-100/80 text-sm leading-6 font-body">Participantes en formación especializada en cultivos, crianzas y agroindustria</p>
+        </div>
+
+        <!-- Cifra 4 -->
+        <div class="text-center lg:text-left">
+          <h3 class="text-5xl lg:text-6xl font-bold text-white font-franklin">450<span class="text-[#F09734]">+</span></h3>
+          <h4 class="mt-3 uppercase tracking-wide font-semibold text-white text-sm">Mujeres empoderadas</h4>
+          <p class="mt-3 text-green-100/80 text-sm leading-6 font-body">Mujeres integradas a la cadena productiva, liderando su desarrollo económico</p>
+        </div>
       </div>
 
     </div>
   </section>
+  <!-- END: Nuestro Impacto -->
 
-
-  <!-- ==========================================
-            NUESTRO IMPACTO
-=========================================== -->
-
-<section class="py-20" style="background-color:#00563B;">
-
-    <div class="max-w-7xl mx-auto px-6">
-
-        <!-- Encabezado -->
-        <div class="text-center mb-16">
-
-            <span class="inline-flex items-center text-[#F09734] font-bold uppercase tracking-[3px] text-sm">
-                <span class="w-2 h-2 rounded-full bg-[#F09734] mr-3"></span>
-                NUESTRO IMPACTO
-            </span>
-
-            <h2 class="mt-4 text-4xl lg:text-5xl font-bold text-white font-franklin-demi">
-                Resultados que transforman vidas
-            </h2>
-
-        </div>
-
-        <!-- Cifras -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-8">
-
-            <!-- CIFRA -->
-            <div class="text-center lg:text-left">
-
-                <h3 class="text-5xl lg:text-6xl font-bold text-white font-franklin-demi">
-                    4,000<span class="text-[#F09734]">+</span>
-                </h3>
-
-                <h4 class="mt-3 uppercase tracking-wide font-semibold text-white text-sm">
-                    Familias beneficiadas
-                </h4>
-
-                <p class="mt-3 text-green-100/80 text-sm leading-6 font-montserrat-light">
-                    Familias agricultoras que mejoraron su producción y calidad de vida
-                </p>
-
-            </div>
-
-            <!-- CIFRA -->
-            <div class="text-center lg:text-left">
-
-                <h3 class="text-5xl lg:text-6xl font-bold text-white font-franklin-demi">
-                    4,710<span class="text-[#F09734]">+</span>
-                </h3>
-
-                <h4 class="mt-3 uppercase tracking-wide font-semibold text-white text-sm">
-                    Agricultores y emprendedores
-                </h4>
-
-                <p class="mt-3 text-green-100/80 text-sm leading-6 font-montserrat-light">
-                    Beneficiarios directos del Proyecto de Cooperación LED-SEDIR (2013–2024)
-                </p>
-
-            </div>
-
-            <!-- CIFRA -->
-            <div class="text-center lg:text-left">
-
-                <h3 class="text-5xl lg:text-6xl font-bold text-white font-franklin-demi">
-                    665
-                </h3>
-
-                <h4 class="mt-3 uppercase tracking-wide font-semibold text-white text-sm">
-                    Emprendedores formados
-                </h4>
-
-                <p class="mt-3 text-green-100/80 text-sm leading-6 font-montserrat-light">
-                    Participantes en formación especializada en cultivos, crianzas y agroindustria
-                </p>
-
-            </div>
-
-            <!-- CIFRA -->
-            <div class="text-center lg:text-left">
-
-                <h3 class="text-5xl lg:text-6xl font-bold text-white font-franklin-demi">
-                    450<span class="text-[#F09734]">+</span>
-                </h3>
-
-                <h4 class="mt-3 uppercase tracking-wide font-semibold text-white text-sm">
-                    Mujeres empoderadas
-                </h4>
-
-                <p class="mt-3 text-green-100/80 text-sm leading-6 font-montserrat-light">
-                    Mujeres integradas a la cadena productiva, liderando su desarrollo económico
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
   <!-- BEGIN: Componentes Proyecto -->
   <div id="proyectos-container" data-component="/components/proyectos.html"></div>
   <!-- END: Componentes Proyecto -->
@@ -552,11 +503,11 @@
       <div class="flex justify-between items-end mb-12">
         <div>
           <div class="flex items-center gap-2 mb-4">
-            <span class="section-kicker-label font-bold text-sm tracking-wider uppercase">Noticias</span>
+            <span class="section-kicker-label font-bold text-sm tracking-wider uppercase text-primary">Noticias</span>
           </div>
           <h2 class="text-3xl lg:text-4xl font-bold text-gray-900">Últimas novedades</h2>
         </div>
-        <a class="hidden md:inline-flex projects-cta px-6 py-2 rounded-full font-medium transition-colors"
+        <a class="hidden md:inline-flex bg-primary text-white hover:bg-primary-dark px-6 py-2 rounded-full font-medium transition-colors"
           href="/paginas/noticia.html">
           Ver todas las noticias
         </a>
@@ -573,268 +524,107 @@
   <!-- BEGIN: Video Section -->
   <section class="py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
       <div class="text-center mb-12">
         <div class="flex items-center justify-center gap-2 mb-4">
-          <span class="section-kicker-label font-bold text-sm tracking-wider uppercase">
+          <span class="section-kicker-label font-bold text-sm tracking-wider uppercase text-red-600">
             CANAL OFICIAL
           </span>
         </div>
-
         <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
           Impulsando el conocimiento a través del contenido
         </h2>
-
         <p class="text-gray-600 max-w-2xl mx-auto">
           Nuestro canal de YouTube es una herramienta vital para la transferencia tecnológica. Compartimos técnicas,
           testimonios y avances científicos semanalmente.
         </p>
       </div>
 
-      <!-- VIDEO + CANAL -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
         <!-- VIDEO -->
         <div class="flex items-center justify-center h-full">
-
-          <div class="w-full overflow-hidden rounded-[15px]
-              shadow-[0_15px_40px_rgba(0,0,0,0.15)]
-              border border-gray-100 bg-white">
-
+          <div class="w-full overflow-hidden rounded-[15px] shadow-[0_15px_40px_rgba(0,0,0,0.15)] border border-gray-100 bg-white">
             <div class="aspect-video">
               <iframe class="w-full h-full" src="https://www.youtube.com/embed/C6ccbpTBqhA?start=5" title="SEDIR Agro"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen>
               </iframe>
             </div>
-
           </div>
-
         </div>
 
         <!-- IMAGEN CANAL -->
-        <a href="https://www.youtube.com/@SEDIRagro" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-[32px]
-           shadow-[0_15px_40px_rgba(0,0,0,0.15)]
-           h-[280px] md:h-[300px] lg:h-[500px]">
-
+        <a href="https://www.youtube.com/@SEDIRagro" target="_blank" rel="noopener noreferrer" 
+           class="group relative overflow-hidden rounded-[32px] shadow-[0_15px_40px_rgba(0,0,0,0.15)] h-[280px] md:h-[300px] lg:h-[500px]">
           <img src="/activos/img_canal/VISITA-CANAL.jpg" alt="Canal de YouTube SEDIR"
             class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-
-          <!-- Overlay -->
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
-
-          <!-- Play -->
+          
           <div class="absolute inset-0 flex items-center justify-center">
-            <div class="w-20 h-20 md:w-24 md:h-24
-               bg-red-600 rounded-full
-               flex items-center justify-center
-               shadow-2xl
-               group-hover:scale-110
-               transition duration-300">
-
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 md:w-12 md:h-12 text-white ml-1"
-                fill="currentColor" viewBox="0 0 24 24">
+            <div class="w-20 h-20 md:w-24 md:h-24 bg-red-600 rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 md:w-12 md:h-12 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M8 5v14l11-7z" />
               </svg>
-
             </div>
           </div>
 
-          <!-- Texto -->
           <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-            <span class="inline-block px-4 py-1 rounded-full bg-red-600 text-white text-sm font-semibold mb-3">
-              YouTube
-            </span>
-
-            <h3 class="text-white text-2xl md:text-3xl font-bold mb-2">
-              Visita nuestro canal
-            </h3>
-
-            <p class="text-white/90 text-sm md:text-base">
-              + 1,900 Suscriptores + videos, testimonios, capacitaciones y actividades realizadas por SEDIR.
-            </p>
+            <span class="inline-block px-4 py-1 rounded-full bg-red-600 text-white text-sm font-semibold mb-3">YouTube</span>
+            <h3 class="text-white text-2xl md:text-3xl font-bold mb-2">Visita nuestro canal</h3>
+            <p class="text-white/90 text-sm md:text-base">+ 1,900 Suscriptores + videos, testimonios, capacitaciones y actividades realizadas por SEDIR.</p>
           </div>
-
         </a>
-
       </div>
     </div>
   </section>
+  <!-- END: Video Section -->
+
   <!-- BEGIN: Strategic Partners -->
-  <section class="partners-bg py-16 md:py-20 text-white text-center">
+  <section class="partners-bg py-16 md:py-20 bg-ink text-white text-center">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-center gap-2 mb-4">
-        <span class="text-[#ffffff] font-bold text-sm md:text-base tracking-[0.2em] uppercase">
-          Sitios Recomendados
-        </span>
+      <div class="flex items-center justify-center gap-2 mb-8">
+        <span class="text-white font-bold text-sm md:text-base tracking-[0.2em] uppercase">Sitios Recomendados</span>
       </div>
-      <!-- CAROUSEL LOGOS -->
+      
       <div class="partners-carousel overflow-hidden">
         <div class="partners-carousel-track flex w-max gap-6 py-2">
+          <!-- Set 1 -->
           <div class="partners-carousel-set flex gap-6">
-            <div class="partners-logo-card">
-              <a href="https://www.gob.pe/senasa" target="_blank" rel="noopener noreferrer">
-                <img alt="SENASA" src="activos/img_aliados/Carrousel-Senasa.png" />
-              </a>
-            </div>
-
-            <div class="partners-logo-card">
-              <a href="https://www.redagricola.com" target="_blank" rel="noopener noreferrer">
-                <img alt="Red Agrícola" src="activos/img_aliados/Carrousel-RedAgricola.png" />
-              </a>
-            </div>
-
-            <div class="partners-logo-card">
-              <a href="https://promango.org" target="_blank" rel="noopener noreferrer">
-                <img alt="ProMango" src="activos/img_aliados/Carrousel-ProMango.png" />
-              </a>
-            </div>
-
-            <div class="partners-logo-card">
-              <a href="https://www.prohass.com.pe" target="_blank" rel="noopener noreferrer">
-                <img alt="ProHass" src="activos/img_aliados/Carrousel-Prohass.png" />
-              </a>
-            </div>
-
-            <div class="partners-logo-card">
-              <a href="https://www.portalfruticola.com" target="_blank" rel="noopener noreferrer">
-                <img alt="Portal Frutícola" src="activos/img_aliados/Carrousel-PortalFruticola.png" />
-              </a>
-            </div>
-
-            <div class="partners-logo-card">
-              <a href="https://www.lamolina.edu.pe" target="_blank" rel="noopener noreferrer">
-                <img alt="La Molina" src="activos/img_aliados/Carrousel-LaMolina.png" />
-              </a>
-            </div>
-
-            <div class="partners-logo-card">
-              <a href="https://www.gob.pe/inia" target="_blank" rel="noopener noreferrer">
-                <img alt="INIA" src="activos/img_aliados/Carrousel-Inia.png" />
-              </a>
-            </div>
-
-            <div class="partners-logo-card">
-              <a href="https://www.gob.pe" target="_blank" rel="noopener noreferrer">
-                <img alt="Gobierno Perú" src="activos/img_aliados/Carrousel-GobPe.png" />
-              </a>
-            </div>
-
-            <div class="partners-logo-card">
-              <a href="https://www.ciaorganico.net/" target="_blank" rel="noopener noreferrer">
-                <img alt="CIAO" src="activos/img_aliados/Carrousel-Ciao.png" />
-              </a>
-            </div>
-
-            <div class="partners-logo-card">
-              <a href="https://agronoticias.pe" target="_blank" rel="noopener noreferrer">
-                <img alt="Agronoticias" src="activos/img_aliados/Carrousel-Agronoticias.png" />
-              </a>
-            </div>
-
-            <div class="partners-logo-card">
-              <a href="https://agraria.pe/" target="_blank" rel="noopener noreferrer">
-                <img alt="Agraria" src="activos/img_aliados/Carrousel-Agraria.png" />
-              </a>
-            </div>
-
-            <div class="partners-logo-card">
-              <a href="https://exportemos.pe/" target="_blank" rel="noopener noreferrer">
-                <img alt="ADEX" src="activos/img_aliados/Carrousel-Adex.png" />
-              </a>
-            </div>
-
-            <div class="partners-logo-card">
-              <a href="https://acu.pe/" target="_blank" rel="noopener noreferrer">
-                <img alt="ACU" src="activos/img_aliados/Carrousel-ACU.png" />
-              </a>
-            </div>
+            <div class="partners-logo-card"><a href="https://www.gob.pe/senasa" target="_blank" rel="noopener noreferrer"><img alt="SENASA" src="activos/img_aliados/Carrousel-Senasa.png" /></a></div>
+            <div class="partners-logo-card"><a href="https://www.redagricola.com" target="_blank" rel="noopener noreferrer"><img alt="Red Agrícola" src="activos/img_aliados/Carrousel-RedAgricola.png" /></a></div>
+            <div class="partners-logo-card"><a href="https://promango.org" target="_blank" rel="noopener noreferrer"><img alt="ProMango" src="activos/img_aliados/Carrousel-ProMango.png" /></a></div>
+            <div class="partners-logo-card"><a href="https://www.prohass.com.pe" target="_blank" rel="noopener noreferrer"><img alt="ProHass" src="activos/img_aliados/Carrousel-Prohass.png" /></a></div>
+            <div class="partners-logo-card"><a href="https://www.portalfruticola.com" target="_blank" rel="noopener noreferrer"><img alt="Portal Frutícola" src="activos/img_aliados/Carrousel-PortalFruticola.png" /></a></div>
+            <div class="partners-logo-card"><a href="https://www.lamolina.edu.pe" target="_blank" rel="noopener noreferrer"><img alt="La Molina" src="activos/img_aliados/Carrousel-LaMolina.png" /></a></div>
+            <div class="partners-logo-card"><a href="https://www.gob.pe/inia" target="_blank" rel="noopener noreferrer"><img alt="INIA" src="activos/img_aliados/Carrousel-Inia.png" /></a></div>
+            <div class="partners-logo-card"><a href="https://www.gob.pe" target="_blank" rel="noopener noreferrer"><img alt="Gobierno Perú" src="activos/img_aliados/Carrousel-GobPe.png" /></a></div>
+            <div class="partners-logo-card"><a href="https://www.ciaorganico.net/" target="_blank" rel="noopener noreferrer"><img alt="CIAO" src="activos/img_aliados/Carrousel-Ciao.png" /></a></div>
+            <div class="partners-logo-card"><a href="https://agronoticias.pe" target="_blank" rel="noopener noreferrer"><img alt="Agronoticias" src="activos/img_aliados/Carrousel-Agronoticias.png" /></a></div>
+            <div class="partners-logo-card"><a href="https://agraria.pe/" target="_blank" rel="noopener noreferrer"><img alt="Agraria" src="activos/img_aliados/Carrousel-Agraria.png" /></a></div>
+            <div class="partners-logo-card"><a href="https://exportemos.pe/" target="_blank" rel="noopener noreferrer"><img alt="ADEX" src="activos/img_aliados/Carrousel-Adex.png" /></a></div>
+            <div class="partners-logo-card"><a href="https://acu.pe/" target="_blank" rel="noopener noreferrer"><img alt="ACU" src="activos/img_aliados/Carrousel-ACU.png" /></a></div>
           </div>
-
+          <!-- Set 2 (Clon para scroll infinito) -->
           <div class="partners-carousel-set flex gap-6" aria-hidden="true">
-            <div class="partners-logo-card">
-              <a href="https://www.gob.pe/senasa" target="_blank" rel="noopener noreferrer" tabindex="-1">
-                <img alt="SENASA" src="activos/img_aliados/Carrousel-Senasa.png" />
-              </a>
-            </div>
-
-            <div class="partners-logo-card">
-              <a href="https://www.redagricola.com" target="_blank" rel="noopener noreferrer" tabindex="-1">
-                <img alt="Red Agrícola" src="activos/img_aliados/Carrousel-RedAgricola.png" />
-              </a>
-            </div>
-
-            <div class="partners-logo-card">
-              <a href="https://promango.org" target="_blank" rel="noopener noreferrer" tabindex="-1">
-                <img alt="ProMango" src="activos/img_aliados/Carrousel-ProMango.png" />
-              </a>
-            </div>
-
-            <div class="partners-logo-card">
-              <a href="https://www.prohass.com.pe" target="_blank" rel="noopener noreferrer" tabindex="-1">
-                <img alt="ProHass" src="activos/img_aliados/Carrousel-Prohass.png" />
-              </a>
-            </div>
-
-            <div class="partners-logo-card">
-              <a href="https://www.portalfruticola.com" target="_blank" rel="noopener noreferrer" tabindex="-1">
-                <img alt="Portal Frutícola" src="activos/img_aliados/Carrousel-PortalFruticola.png" />
-              </a>
-            </div>
-
-            <div class="partners-logo-card">
-              <a href="https://www.lamolina.edu.pe" target="_blank" rel="noopener noreferrer" tabindex="-1">
-                <img alt="La Molina" src="activos/img_aliados/Carrousel-LaMolina.png" />
-              </a>
-            </div>
-
-            <div class="partners-logo-card">
-              <a href="https://www.gob.pe/inia" target="_blank" rel="noopener noreferrer" tabindex="-1">
-                <img alt="INIA" src="activos/img_aliados/Carrousel-Inia.png" />
-              </a>
-            </div>
-
-            <div class="partners-logo-card">
-              <a href="https://www.gob.pe" target="_blank" rel="noopener noreferrer" tabindex="-1">
-                <img alt="Gobierno Perú" src="activos/img_aliados/Carrousel-GobPe.png" />
-              </a>
-            </div>
-
-            <div class="partners-logo-card">
-              <a href="https://www.ciaorganico.net/" target="_blank" rel="noopener noreferrer" tabindex="-1">
-                <img alt="CIAO" src="activos/img_aliados/Carrousel-Ciao.png" />
-              </a>
-            </div>
-
-            <div class="partners-logo-card">
-              <a href="https://agronoticias.pe" target="_blank" rel="noopener noreferrer" tabindex="-1">
-                <img alt="Agronoticias" src="activos/img_aliados/Carrousel-Agronoticias.png" />
-              </a>
-            </div>
-
-            <div class="partners-logo-card">
-              <a href="https://agraria.pe/" target="_blank" rel="noopener noreferrer" tabindex="-1">
-                <img alt="Agraria" src="activos/img_aliados/Carrousel-Agraria.png" />
-              </a>
-            </div>
-
-            <div class="partners-logo-card">
-              <a href="https://exportemos.pe/" target="_blank" rel="noopener noreferrer" tabindex="-1">
-                <img alt="ADEX" src="activos/img_aliados/Carrousel-Adex.png" />
-              </a>
-            </div>
-
-            <div class="partners-logo-card">
-              <a href="https://acu.pe/" target="_blank" rel="noopener noreferrer" tabindex="-1">
-                <img alt="ACU" src="activos/img_aliados/Carrousel-ACU.png" />
-              </a>
-            </div>
+            <div class="partners-logo-card"><a href="https://www.gob.pe/senasa" target="_blank" rel="noopener noreferrer" tabindex="-1"><img alt="SENASA" src="activos/img_aliados/Carrousel-Senasa.png" /></a></div>
+            <div class="partners-logo-card"><a href="https://www.redagricola.com" target="_blank" rel="noopener noreferrer" tabindex="-1"><img alt="Red Agrícola" src="activos/img_aliados/Carrousel-RedAgricola.png" /></a></div>
+            <div class="partners-logo-card"><a href="https://promango.org" target="_blank" rel="noopener noreferrer" tabindex="-1"><img alt="ProMango" src="activos/img_aliados/Carrousel-ProMango.png" /></a></div>
+            <div class="partners-logo-card"><a href="https://www.prohass.com.pe" target="_blank" rel="noopener noreferrer" tabindex="-1"><img alt="ProHass" src="activos/img_aliados/Carrousel-Prohass.png" /></a></div>
+            <div class="partners-logo-card"><a href="https://www.portalfruticola.com" target="_blank" rel="noopener noreferrer" tabindex="-1"><img alt="Portal Frutícola" src="activos/img_aliados/Carrousel-PortalFruticola.png" /></a></div>
+            <div class="partners-logo-card"><a href="https://www.lamolina.edu.pe" target="_blank" rel="noopener noreferrer" tabindex="-1"><img alt="La Molina" src="activos/img_aliados/Carrousel-LaMolina.png" /></a></div>
+            <div class="partners-logo-card"><a href="https://www.gob.pe/inia" target="_blank" rel="noopener noreferrer" tabindex="-1"><img alt="INIA" src="activos/img_aliados/Carrousel-Inia.png" /></a></div>
+            <div class="partners-logo-card"><a href="https://www.gob.pe" target="_blank" rel="noopener noreferrer" tabindex="-1"><img alt="Gobierno Perú" src="activos/img_aliados/Carrousel-GobPe.png" /></a></div>
+            <div class="partners-logo-card"><a href="https://www.ciaorganico.net/" target="_blank" rel="noopener noreferrer" tabindex="-1"><img alt="CIAO" src="activos/img_aliados/Carrousel-Ciao.png" /></a></div>
+            <div class="partners-logo-card"><a href="https://agronoticias.pe" target="_blank" rel="noopener noreferrer" tabindex="-1"><img alt="Agronoticias" src="activos/img_aliados/Carrousel-Agronoticias.png" /></a></div>
+            <div class="partners-logo-card"><a href="https://agraria.pe/" target="_blank" rel="noopener noreferrer" tabindex="-1"><img alt="Agraria" src="activos/img_aliados/Carrousel-Agraria.png" /></a></div>
+            <div class="partners-logo-card"><a href="https://exportemos.pe/" target="_blank" rel="noopener noreferrer" tabindex="-1"><img alt="ADEX" src="activos/img_aliados/Carrousel-Adex.png" /></a></div>
+            <div class="partners-logo-card"><a href="https://acu.pe/" target="_blank" rel="noopener noreferrer" tabindex="-1"><img alt="ACU" src="activos/img_aliados/Carrousel-ACU.png" /></a></div>
           </div>
         </div>
       </div>
     </div>
   </section>
   <!-- END: Strategic Partners -->
+
   <!-- BEGIN: Contact Component -->
   <div id="contacto-container" data-component="/components/contacto.html"></div>
   <!-- END: Contact Component -->
@@ -843,11 +633,15 @@
   <div id="footer-container" data-component="/components/footer.html"></div>
   <!-- END: Footer Component -->
 
-  <script src="activos/js/menu.js"></script>
-  <script src="activos/js/slider.js"></script>
-  <script src="activos/js/counters.js"></script>
-  <script src="activos/js/form.js"></script>
+  <!-- BEGIN: WhatsApp Component -->
   <div id="whatsapp-container" data-component="/components/whatsapp.html"></div>
-</body>
+  <!-- END: WhatsApp Component -->
 
+  <!-- Scripts Secundarios y Animaciones de Interfaz -->
+  <script src="activos/js/menu.js" defer></script>
+  <script src="activos/js/slider.js" defer></script>
+  <script src="activos/js/counters.js" defer></script>
+  <script src="activos/js/form.js" defer></script>
+  <script src="activos/js/main.js" defer></script>
+</body>
 </html>

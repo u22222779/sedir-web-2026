@@ -1,68 +1,43 @@
 <!DOCTYPE html>
-<html lang="es" style="">
+<html lang="es">
 
 <head>
-    <title>.:: SEDIR ::.</title>
+    <title>.:: SEDIR - Nuestros Servicios ::.</title>
     <link rel="icon" href="../activos/img_logos/logo-sedir-links.png" type="image/x-icon">
 
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    
+    <!-- Tailwind CSS y Plugins -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#00944A",
+              "primary-dark": "#006A49",
+              "primary-alt": "#009C63",
+              brown: "#8C7855",
+              secondary: "#F09734",
+              ink: "#000306",
+              cream: "#FBF7EE"
+            },
+            fontFamily: {
+              display: ["Montserrat", "sans-serif"],
+              body: ["Montserrat Light", "sans-serif"],
+              franklin: ["Franklin Gothic Demi", "sans-serif"]
+            }
+          }
+        }
+      };
+    </script>
+
+    <!-- Hojas de Estilo y Fuentes -->
     <link href="../activos/css/fonts.css" rel="stylesheet" />
-
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style data-purpose="custom-colors">
-        :root {
-            --sedir-green: #009933;
-            --sedir-orange: #FF6600;
-            --bg-light: #F8F9FA;
-        }
-
-        .text-sedir-green {
-            color: var(--sedir-green);
-        }
-
-        .bg-sedir-green {
-            background-color: var(--sedir-green);
-        }
-
-        .text-sedir-orange {
-            color: var(--sedir-orange);
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .service-icon-box {
-            width: 60px;
-            height: 60px;
-            border-radius: 9999px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.95), rgba(168, 85, 247, 0.95));
-            color: #ffffff;
-            border: 1px solid rgba(255, 255, 255, 0.26);
-            box-shadow: 0 12px 28px rgba(67, 56, 202, 0.24);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
-            flex-shrink: 0;
-        }
-
-        .service-icon-box i {
-            font-size: 1.15rem;
-            line-height: 1;
-        }
-
-        .service-icon-box:hover {
-            transform: scale(1.04);
-            box-shadow: 0 16px 32px rgba(67, 56, 202, 0.32);
-            filter: saturate(1.08);
-        }
-    </style>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    
     <link href="../activos/css/style.css" rel="stylesheet" />
     <link href="../activos/css/navbar.css" rel="stylesheet" />
     <link href="../activos/css/hero.css" rel="stylesheet" />
@@ -70,251 +45,287 @@
     <link href="../activos/css/cards.css" rel="stylesheet" />
     <link href="../activos/css/footer.css" rel="stylesheet" />
     <link href="../activos/css/responsive.css" rel="stylesheet" />
+
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Contenedor de ícono oficial según manual institucional de SEDIR */
+        .service-icon-box {
+            width: 48px;
+            height: 48px;
+            background-color: #00944A;
+            border: 4px solid #ffffff;
+            border-top-right-radius: 16px;
+            border-bottom-right-radius: 16px;
+            border-bottom-left-radius: 16px;
+            border-top-left-radius: 0px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            flex-shrink: 0;
+        }
+
+        .service-icon-box i {
+            font-size: 1.1rem;
+            line-height: 1;
+        }
+    </style>
 </head>
 
-<body class="bg-white text-gray-800 font-sans">
+<body class="bg-white text-gray-800 antialiased">
+
+    <!-- BEGIN: Navbar Component -->
     <div id="navbar-container" class="navbar-loading" data-component="/components/navbar.html"></div>
+    <!-- END: Navbar Component -->
+
     <!-- BEGIN: Hero Section -->
-    <section class="relative overflow-hidden min-h-[220px] md:min-h-[400px] flex items-center"
-        style="background: #006A49;">
+    <section class="relative overflow-hidden min-h-[220px] md:min-h-[360px] flex items-center bg-[#006A49]">
         <div class="absolute inset-0 z-0">
-            <img alt="Agricultural Background" class="w-full h-full object-cover opacity-40"
+            <img alt="Agricultural Background" class="w-full h-full object-cover opacity-35"
                 src="/activos/img_productos/P1440228.JPG" />
         </div>
-        <div class="container mx-auto px-6 md:px-8 relative z-20 max-w-7xl w-full">
+        <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent z-10"></div>
+        <div class="container mx-auto px-6 md:px-8 relative z-20 max-w-7xl w-full py-12">
             <div class="max-w-3xl text-left">
-                <h1 class="text-[52px] md:text-[62px] font-extrabold text-white leading-none mb-3">
-                    Nuestros <span style="color: #F09734;">Servicios</span>
+                
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white font-display leading-tight mb-4">
+                    Nuestros <span class="text-[#F09734]">Servicios</span>
                 </h1>
-                <p class="text-sm md:text-base text-white/85 font-light max-w-xl">
-                    Soluciones integrales y profesionales para optimizar su producción agrícola y ganadera.
+                <p class="text-sm md:text-base text-white/90 font-light max-w-xl leading-relaxed">
+                    Soluciones integrales, asistencia técnica y asesoramiento profesional para optimizar la producción agrícola y ganadera del valle de Nepeña.
                 </p>
             </div>
         </div>
     </section>
     <!-- END: Hero Section -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-20">
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-20">
+
         <!-- BEGIN: Asesoría y Gestión Section -->
         <section>
-            <div class="flex items-center mb-8 border-b pb-2">
-                <i class="fas fa-shield-alt text-sedir-green text-xl mr-3"></i>
-                <h2 class="text-2xl font-bold text-sedir-green">Asesoría y Gestión</h2>
+            <div class="flex items-center mb-8 border-b border-gray-200 pb-3">
+                <i class="fas fa-shield-alt text-primary text-xl mr-3"></i>
+                <h2 class="text-2xl font-bold text-primary font-display">Asesoría y Gestión</h2>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto max-w-6xl">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Card 1 -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100 flex flex-col">
+                <div class="bg-white rounded-3xl shadow-sm overflow-hidden border border-gray-200/80 flex flex-col transition-shadow duration-300 hover:shadow-md">
                     <img alt="Asesoría Agrícola" class="w-full h-64 object-cover"
                         src="/activos/img_servicios/2025-Asesoria-agricola.jpg">
-                    <div class="p-6 flex-grow">
-                        <div class="flex items-center mb-4">
-                            <div class="service-icon-box mr-3">
-                                <i class="fas fa-tractor text-white"></i>
+                    <div class="p-8 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center mb-4">
+                                <div class="service-icon-box mr-4">
+                                    <i class="fas fa-tractor text-white"></i>
+                                </div>
+                                <h3 class="font-display font-bold text-xl text-ink">Asesoría Agrícola</h3>
                             </div>
-                            <h3 class="font-bold text-lg">Asesoría Agrícola</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed font-body">
+                                Brindamos acompañamiento y asesoramiento técnico a los agricultores para optimizar sus prácticas de cultivo, mejorando la calidad y el rendimiento de sus productos. Evaluamos factores como el clima, el suelo y las variedades de cultivo para ofrecer recomendaciones personalizadas.
+                            </p>
                         </div>
-                        <p class="text-gray-600 text-sm leading-relaxed">
-                            Brindamos acompañamiento y asesoramiento técnico a los agricultores para optimizar sus
-                            prácticas de cultivo, mejorando la calidad y el rendimiento de sus productos. Evaluamos
-                            factores como el clima, el suelo y las variedades de cultivo para ofrecer recomendaciones
-                            personalizadas.
-                        </p>
                     </div>
                 </div>
+
                 <!-- Card 2 -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100 flex flex-col">
+                <div class="bg-white rounded-3xl shadow-sm overflow-hidden border border-gray-200/80 flex flex-col transition-shadow duration-300 hover:shadow-md">
                     <img alt="Planes de Fertilización" class="w-full h-64 object-cover"
                         src="/activos/img_servicios/p1600476726438_31-03-21.jpg">
-                    <div class="p-6 flex-grow">
-                        <div class="flex items-center mb-4">
-                            <div class="service-icon-box mr-3">
-                                <i class="fas fa-seedling text-white"></i>
+                    <div class="p-8 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center mb-4">
+                                <div class="service-icon-box mr-4">
+                                    <i class="fas fa-seedling text-white"></i>
+                                </div>
+                                <h3 class="font-display font-bold text-xl text-ink">Planes de Fertilización</h3>
                             </div>
-                            <h3 class="font-bold text-lg">Planes de Fertilización</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed font-body">
+                                Diseñamos estrategias de fertilización personalizadas según las necesidades específicas de cada cultivo. Optimizamos la aplicación de nutrientes para mejorar la productividad y sostenibilidad de la explotación agrícola.
+                            </p>
                         </div>
-                        <p class="text-gray-600 text-sm leading-relaxed">
-                            Diseñamos estrategias de fertilización personalizadas según las necesidades específicas de
-                            cada cultivo. Optimizamos la aplicación de nutrientes para mejorar la productividad y
-                            sostenibilidad de la explotación agrícola.
-                        </p>
                     </div>
                 </div>
+
                 <!-- Card 3 -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100 flex flex-col">
+                <div class="bg-white rounded-3xl shadow-sm overflow-hidden border border-gray-200/80 flex flex-col transition-shadow duration-300 hover:shadow-md">
                     <img alt="Asesoría en Crianza de Cuyes" class="w-full h-64 object-cover"
                         src="/activos/img_servicios/2025-New003.jpg">
-                    <div class="p-6 flex-grow">
-                        <div class="flex items-center mb-4">
-                            <div class="service-icon-box mr-3">
-                                <i class="fas fa-paw text-white"></i>
+                    <div class="p-8 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center mb-4">
+                                <div class="service-icon-box mr-4">
+                                    <i class="fas fa-paw text-white"></i>
+                                </div>
+                                <h3 class="font-display font-bold text-xl text-ink">Asesoría en Crianza de Cuyes</h3>
                             </div>
-                            <h3 class="font-bold text-lg">Asesoría en Crianza de Cuyes</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed font-body">
+                                Brindamos asesoría en el manejo de la crianza, control sanitario y nutrición para optimizar la producción y rentabilidad de las (os) emprendedoras.
+                            </p>
                         </div>
-                        <p class="text-gray-600 text-sm leading-relaxed">
-                            Brindamos asesoría en el manejo de la crianza, control sanitario y nutrición para optimizar
-                            la producción y rentabilidad de las (os) emprendedoras.
-                        </p>
                     </div>
                 </div>
+
                 <!-- Card 4 -->
-                <div class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100 flex flex-col">
+                <div class="bg-white rounded-3xl shadow-sm overflow-hidden border border-gray-200/80 flex flex-col transition-shadow duration-300 hover:shadow-md">
                     <img alt="Asesoría en Apicultura" class="w-full h-64 object-cover"
                         src="/activos/img_servicios/2025-abejas.jpg">
-                    <div class="p-6 flex-grow">
-                        <div class="flex items-center mb-4">
-                            <div class="service-icon-box mr-3">
-                                <i class="fas fa-bug text-white"></i>
+                    <div class="p-8 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center mb-4">
+                                <div class="service-icon-box mr-4">
+                                    <i class="fas fa-bug text-white"></i>
+                                </div>
+                                <h3 class="font-display font-bold text-xl text-ink">Asesoría en Apicultura</h3>
                             </div>
-                            <h3 class="font-bold text-lg">Asesoría en Apicultura</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed font-body">
+                                Asistimos con asesoría en la instalación y manejo de apiarios, control de enfermedades y producción de miel, fomentando una apicultura sostenible.
+                            </p>
                         </div>
-                        <p class="text-gray-600 text-sm leading-relaxed">
-                            Asistimos con asesoría en la instalación y manejo de apiarios, control de enfermedades y
-                            producción de miel, fomentando una apicultura sostenible.
-                        </p>
                     </div>
                 </div>
             </div>
         </section>
         <!-- END: Asesoría y Gestión Section -->
+
         <!-- BEGIN: Sanidad y Protección Section -->
-        <section class="bg-[#f0fdf4] -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-12">
+        <section class="bg-[#F5FAF8] -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-16 rounded-3xl border border-green-100">
             <div class="max-w-7xl mx-auto">
-                <div class="flex items-center mb-8 border-b border-green-200 pb-2">
-                    <i class="fas fa-shield-virus text-sedir-green text-xl mr-3"></i>
-                    <h2 class="text-2xl font-bold text-sedir-green">Sanidad y Protección</h2>
+                <div class="flex items-center mb-8 border-b border-green-200 pb-3">
+                    <i class="fas fa-shield-virus text-primary text-xl mr-3"></i>
+                    <h2 class="text-2xl font-bold text-primary font-display">Sanidad y Protección</h2>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto">
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <!-- Card 1 -->
-                    <div class="bg-white rounded-lg shadow-sm overflow-hidden flex flex-col">
+                    <div class="bg-white rounded-3xl shadow-sm overflow-hidden border border-gray-200/80 flex flex-col transition-shadow duration-300 hover:shadow-md">
                         <img alt="Fumigaciones" class="w-full h-64 object-cover"
                             src="/activos/img_servicios/2025-IMG_3085.jpg">
-                        <div class="p-6 flex-grow">
-                            <div class="flex items-center mb-4">
-                                <div class="service-icon-box mr-3">
-                                    <i class="fas fa-spray-can text-white"></i>
+                        <div class="p-8 flex-grow flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center mb-4">
+                                    <div class="service-icon-box mr-4">
+                                        <i class="fas fa-spray-can text-white"></i>
+                                    </div>
+                                    <h3 class="font-display font-bold text-xl text-ink">Fumigaciones</h3>
                                 </div>
-                                <h3 class="font-bold text-lg">Fumigaciones</h3>
+                                <p class="text-gray-600 text-sm leading-relaxed font-body">
+                                    Realizamos aplicaciones seguras y efectivas de productos fitosanitarios para el control de plagas y enfermedades, protegiendo la salud de los cultivos. Usamos métodos y productos certificados que garantizan la inocuidad de los alimentos y el respeto al medio ambiente.
+                                </p>
                             </div>
-                            <p class="text-gray-600 text-sm leading-relaxed">
-                                Realizamos aplicaciones seguras y efectivas de productos fitosanitarios para el control
-                                de plagas y enfermedades, protegiendo la salud de los cultivos. Usamos métodos y
-                                productos certificados que garantizan la inocuidad de los alimentos y el respeto al
-                                medio ambiente.
-                            </p>
                         </div>
                     </div>
+
                     <!-- Card 2 -->
-                    <div class="bg-white rounded-lg shadow-sm overflow-hidden flex flex-col">
+                    <div class="bg-white rounded-3xl shadow-sm overflow-hidden border border-gray-200/80 flex flex-col transition-shadow duration-300 hover:shadow-md">
                         <img alt="Evaluación Sanitaria" class="w-full h-64 object-cover"
                             src="/activos/img_servicios/2025-injertoo.jpg">
-                        <div class="p-6 flex-grow">
-                            <div class="flex items-center mb-4">
-                                <div class="service-icon-box mr-3">
-                                    <i class="fas fa-microscope text-white"></i>
+                        <div class="p-8 flex-grow flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center mb-4">
+                                    <div class="service-icon-box mr-4">
+                                        <i class="fas fa-microscope text-white"></i>
+                                    </div>
+                                    <h3 class="font-display font-bold text-xl text-ink">Evaluación Sanitaria</h3>
                                 </div>
-                                <h3 class="font-bold text-lg">Evaluación Sanitaria</h3>
+                                <p class="text-gray-600 text-sm leading-relaxed font-body">
+                                    Llevamos a cabo inspecciones detalladas para diagnosticar el estado fitosanitario de los cultivos. Identificamos la presencia de plagas, enfermedades y deficiencias nutricionales, proponiendo soluciones adecuadas para mejorar la salud de las plantas.
+                                </p>
                             </div>
-                            <p class="text-gray-600 text-sm leading-relaxed">
-                                Llevamos a cabo inspecciones detalladas para diagnosticar el estado fitosanitario de los
-                                cultivos. Identificamos la presencia de plagas, enfermedades y deficiencias
-                                nutricionales, proponiendo soluciones adecuadas para mejorar la salud de las plantas.
-                            </p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
         <!-- END: Sanidad y Protección Section -->
+
         <!-- BEGIN: Técnicas de Cultivo Section -->
         <section>
-            <div class="flex items-center mb-8 border-b pb-2">
-                <i class="far fa-cut"></i>
-                <h2 class="text-2xl font-bold text-sedir-green">Técnicas de Cultivo</h2>
+            <div class="flex items-center mb-8 border-b border-gray-200 pb-3">
+                <i class="fas fa-seedling text-primary text-xl mr-3"></i>
+                <h2 class="text-2xl font-bold text-primary font-display">Técnicas de Cultivo</h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
-
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Card 1 -->
-                <div class="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-100 flex flex-col h-full">
+                <div class="bg-white rounded-3xl shadow-sm overflow-hidden border border-gray-200/80 flex flex-col h-full transition-shadow duration-300 hover:shadow-md">
                     <img src="/activos/img_servicios/2025-injertoo.jpg" alt="Injertos" class="w-full h-56 object-cover">
-
-                    <div class="p-6 flex-grow">
-                        <div class="flex items-center mb-4">
-                            <div class="service-icon-box mr-3">
-                                <i class="fas fa-cut text-white"></i>
+                    <div class="p-8 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center mb-4">
+                                <div class="service-icon-box mr-4">
+                                    <i class="fas fa-cut text-white"></i>
+                                </div>
+                                <h3 class="font-display font-bold text-xl text-ink">Injertos</h3>
                             </div>
-                            <h3 class="font-bold text-lg">Injertos</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed font-body">
+                                Aplicamos técnicas especializadas de injertación para mejorar la calidad y productividad de los cultivos. Mediante esta práctica, fortalecemos la resistencia de las plantas a enfermedades y adaptamos su desarrollo a diferentes condiciones climáticas y de suelo.
+                            </p>
                         </div>
-
-                        <p class="text-gray-600 text-sm leading-relaxed">
-                            Aplicamos técnicas especializadas de injertación para mejorar la calidad y productividad de
-                            los cultivos. Mediante esta práctica, fortalecemos la resistencia de las plantas a
-                            enfermedades y adaptamos su desarrollo a diferentes condiciones climáticas y de suelo.
-                        </p>
                     </div>
                 </div>
 
                 <!-- Card 2 -->
-                <div class="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-100 flex flex-col h-full">
+                <div class="bg-white rounded-3xl shadow-sm overflow-hidden border border-gray-200/80 flex flex-col h-full transition-shadow duration-300 hover:shadow-md">
                     <img src="/activos/img_servicios/2025-poda.jpg" alt="Podas" class="w-full h-56 object-cover">
-
-                    <div class="p-6 flex-grow">
-                        <div class="flex items-center mb-4">
-                            <div class="service-icon-box mr-3">
-                                <i class="fas fa-tree text-white"></i>
+                    <div class="p-8 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center mb-4">
+                                <div class="service-icon-box mr-4">
+                                    <i class="fas fa-tree text-white"></i>
+                                </div>
+                                <h3 class="font-display font-bold text-xl text-ink">Podas</h3>
                             </div>
-                            <h3 class="font-bold text-lg">Podas</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed font-body">
+                                Ejecutamos podas de formación, mantenimiento y producción para favorecer el crecimiento saludable de los árboles frutales y otros cultivos. Eliminamos ramas innecesarias o afectadas, mejorando la aireación y la exposición solar para obtener mejores cosechas.
+                            </p>
                         </div>
-
-                        <p class="text-gray-600 text-sm leading-relaxed">
-                            Ejecutamos podas de formación, mantenimiento y producción para favorecer el crecimiento
-                            saludable de los árboles frutales y otros cultivos. Eliminamos ramas innecesarias o
-                            afectadas, mejorando la aireación y la exposición solar para obtener mejores cosechas.
-                        </p>
                     </div>
                 </div>
 
                 <!-- Card 3 -->
-                <div class="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-100 flex flex-col h-full">
-                    <img src="/activos/img_servicios/2025-polinizacion.jpg" alt="Servicio de Polinización"
-                        class="w-full h-56 object-cover">
-
-                    <div class="p-6 flex-grow">
-                        <div class="flex items-center mb-4">
-                            <div class="service-icon-box mr-3">
-                                <i class="fas fa-fan text-white"></i>
+                <div class="bg-white rounded-3xl shadow-sm overflow-hidden border border-gray-200/80 flex flex-col h-full transition-shadow duration-300 hover:shadow-md">
+                    <img src="/activos/img_servicios/2025-polinizacion.jpg" alt="Servicio de Polinización" class="w-full h-56 object-cover">
+                    <div class="p-8 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center mb-4">
+                                <div class="service-icon-box mr-4">
+                                    <i class="fas fa-fan text-white"></i>
+                                </div>
+                                <h3 class="font-display font-bold text-xl text-ink">Servicio de Polinización</h3>
                             </div>
-                            <h3 class="font-bold text-lg">Servicio de Polinización</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed font-body">
+                                Ofrecemos polinización con colmenas de abejas para mejorar el rendimiento de los cultivos de palta, promoviendo la conservación de la biodiversidad y la sostenibilidad agrícola.
+                            </p>
                         </div>
-
-                        <p class="text-gray-600 text-sm leading-relaxed">
-                            Ofrecemos polinización con colmenas de abejas para mejorar el rendimiento de los cultivos de
-                            palta, promoviendo la conservación de la biodiversidad y la sostenibilidad agrícola.
-                        </p>
                     </div>
                 </div>
-
             </div>
         </section>
         <!-- END: Técnicas de Cultivo Section -->
+
         <!-- BEGIN: Servicios de Laboratorio Section -->
-        <section class="bg-gray-50 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-16">
+        <section class="bg-gray-50 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-16 rounded-3xl border border-gray-200/60">
             <div class="max-w-7xl mx-auto">
                 <div class="flex items-center mb-8">
-                    <i class="fas fa-flask text-sedir-green text-xl mr-3"></i>
-                    <h2 class="text-2xl font-bold text-sedir-green">Servicios de Laboratorio</h2>
+                    <i class="fas fa-flask text-primary text-xl mr-3"></i>
+                    <h2 class="text-2xl font-bold text-primary font-display">Servicios de Laboratorio</h2>
                 </div>
+                
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                    <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100 flex items-start space-x-4">
-                        <div class="service-icon-box mr-3">
+                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-200/80 flex items-start space-x-4">
+                        <div class="service-icon-box mr-2">
                             <i class="fas fa-vial text-white text-xl"></i>
                         </div>
-                        <p class="text-gray-600 leading-relaxed">
-                            Se realizan análisis de materia seca en palta, control de calidad de destilados de uva.
-                            (Brix/m3) además gestionamos el análisis de suelos y agua en laboratorios más reconocidos de
-                            nuestro país.
+                        <p class="text-gray-600 leading-relaxed text-sm sm:text-base font-body">
+                            Se realizan análisis de materia seca en palta, control de calidad de destilados de uva (Brix/m3) además gestionamos el análisis de suelos y agua en laboratorios más reconocidos de nuestro país.
                         </p>
                     </div>
-                    <div class="rounded-lg overflow-hidden shadow-md">
+                    <div class="rounded-3xl overflow-hidden shadow-sm border border-gray-200/80">
                         <img alt="Laboratorio SEDIR" class="w-full h-auto object-cover"
                             src="/activos/img_servicios/22025-IMG_6811.jpg">
                     </div>
@@ -322,10 +333,18 @@
             </div>
         </section>
         <!-- END: Servicios de Laboratorio Section -->
-    </main>
-    <div id="footer-container" data-component="/components/footer.html"></div>
-    <div id="whatsapp-container" data-component="/components/whatsapp.html"></div>
 
+    </main>
+
+    <!-- BEGIN: Footer Component -->
+    <div id="footer-container" data-component="/components/footer.html"></div>
+    <!-- END: Footer Component -->
+
+    <!-- BEGIN: WhatsApp Component -->
+    <div id="whatsapp-container" data-component="/components/whatsapp.html"></div>
+    <!-- END: WhatsApp Component -->
+
+    <!-- Scripts de Funcionalidad -->
     <script src="/activos/js/components.js" defer></script>
     <script src="/activos/js/navbar.js" defer></script>
     <script src="/activos/js/main.js" defer></script>

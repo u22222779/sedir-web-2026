@@ -2,7 +2,7 @@
 <html lang="es">
 
 <head>
-  <title>.:: SEDIR ::.</title>
+  <title>.:: SEDIR - Nuestros Productos ::.</title>
   <link rel="icon" href="../activos/img_logos/logo-sedir-links.png" type="image/x-icon">
 
   <meta charset="utf-8">
@@ -10,11 +10,33 @@
 
   <!-- Font Imports -->
   <link href="../activos/css/fonts.css" rel="stylesheet" />
-
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#00944A",
+            "primary-dark": "#006A49",
+            "primary-alt": "#009C63",
+            brown: "#8C7855",
+            secondary: "#F09734",
+            ink: "#000306",
+            cream: "#FBF7EE"
+          },
+          fontFamily: {
+            display: ["Montserrat", "sans-serif"],
+            body: ["Montserrat Light", "sans-serif"],
+            franklin: ["Franklin Gothic Demi", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
 
   <!-- Custom Stylesheets -->
   <link href="../activos/css/style.css" rel="stylesheet" />
@@ -27,9 +49,8 @@
   <link href="../activos/css/animations.css" rel="stylesheet" />
 
   <style>
-    /* Premium custom styling for products view */
     body {
-      font-family: 'Montserrat-Light', sans-serif;
+      font-family: 'Montserrat Light', sans-serif;
     }
 
     h1,
@@ -42,18 +63,11 @@
     }
 
     .hover-card-effect {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: box-shadow 0.25s ease;
     }
 
     .hover-card-effect:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-    }
-
-    .custom-badge-natural {
-      background: #fdfbf7;
-      border: 1px solid #e5d5bc;
-      color: #8c7855;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
     }
   </style>
 </head>
@@ -65,21 +79,21 @@
   <!-- END: Navigation Component -->
 
   <!-- BEGIN: Hero Section -->
-  <section class="relative overflow-hidden min-h-[300px] md:min-h-[400px] flex items-center"
-    style="background: #006A49;">
+  <section class="relative overflow-hidden min-h-[280px] md:min-h-[360px] flex items-center bg-primary-dark">
     <div class="absolute inset-0 z-0">
-      <img alt="Agricultural Background" class="w-full h-full object-cover opacity-40"
+      <img alt="Agricultural Background" class="w-full h-full object-cover opacity-35"
         src="/activos/img_productos/ArtMercados-organiz21.jpg" />
     </div>
-    <div class="container mx-auto px-6 md:px-8 relative z-20 max-w-7xl w-full">
-      <div class="max-w-4xl text-left">
-        <h1 class="text-[52px] md:text-[62px] font-extrabold text-white leading-none mb-4">
-          Nuestros <span class="text-[#F09734]">Productos</span>
+    <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent z-10"></div>
+    <div class="container mx-auto px-6 md:px-8 relative z-20 max-w-7xl w-full py-12">
+      <div class="max-w-3xl text-left">
+
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white font-display leading-tight mb-4">
+          Nuestros <span class="text-secondary">Productos</span>
         </h1>
-        <p class="text-sm md:text-base text-white/85 font-light max-w-2xl leading-relaxed">
-          En SEDIR, nos dedicamos al desarrollo integral rural ofreciendo productos agroindustriales premium y servicios
-          técnicos especializados. Nuestro compromiso es con la sostenibilidad, la innovación y el fortalecimiento de la
-          cadena de valor agrícola.
+        <p class="text-sm md:text-base text-white/90 font-light max-w-2xl leading-relaxed">
+          En SEDIR impulsamos el desarrollo integral rural ofreciendo productos agroindustriales y material genético
+          certificado. Nuestro compromiso es la sostenibilidad y la calidad del campo a su mesa.
         </p>
       </div>
     </div>
@@ -92,35 +106,16 @@
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
       <!-- Section Header -->
-      <div class="flex flex-col md:flex-row md:items-end justify-between border-b pb-4 mb-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-gray-200 pb-4 mb-10">
         <div>
-          <h2 id="linea-alimentos-heading" class="text-3xl font-bold text-gray-900 mb-2">
+          <h2 id="linea-alimentos-heading" class="text-2xl md:text-3xl font-bold text-ink mb-2 font-display">
             Línea Alimentos
           </h2>
-          <p class="text-gray-600 text-sm md:text-base">
-            Productos naturales procesados bajo altos estándares de calidad, del campo a su mesa.
+          <p class="text-gray-600 text-sm md:text-base font-body">
+            Productos naturales procesados bajo estrictos controles de calidad e inocuidad.
           </p>
         </div>
         <div class="mt-4 md:mt-0">
-          <span class="inline-flex items-center gap-3
-                 px-5 py-2
-                 rounded-full
-                 bg-white/90 backdrop-blur-md
-                 border border-emerald-200
-                 shadow-lg
-                 hover:-translate-y-0.5
-                 hover:shadow-xl
-                 transition-all duration-300">
-
-            <span
-              class="w-8 h-8 rounded-full bg-gradient-to-br from-green-500 to-emerald-700 flex items-center justify-center">
-              <i class="fas fa-seedling text-white text-sm"></i>
-            </span>
-
-            <span class="text-[#006a49] font-bold tracking-wider uppercase text-sm">
-              100% Natural
-            </span>
-          </span>
         </div>
       </div>
 
@@ -129,152 +124,178 @@
 
         <!-- Botón anterior -->
         <button id="alimentos-prev"
-          class="absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 flex items-center justify-center bg-white border border-gray-200 rounded-full shadow hover:bg-[#00944a] hover:text-white transition">
-          ❮
+          class="absolute -left-4 md:-left-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 flex items-center justify-center bg-white border border-gray-200 rounded-full shadow-md hover:bg-primary hover:text-white transition">
+          <i class="fas fa-chevron-left text-xs"></i>
         </button>
 
         <!-- Contenedor -->
-        <div class="overflow-hidden">
+        <div class="overflow-hidden py-2">
           <div id="alimentos-track" class="flex gap-8 transition-transform duration-500 ease-in-out"
             style="touch-action: pan-y;">
+
             <!-- CARD 1: Sedifruit -->
             <div
-              class="flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] bg-white rounded-[30px] border border-gray-100 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
+              class="flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] bg-white rounded-3xl border border-gray-200/80 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
               <div>
                 <img src="../activos/img_productos/2025-Sedifruit.jpg" alt="Sedifruit"
-                  class="w-full h-56 object-contain object-center bg-slate-50">
+                  class="w-full h-56 object-contain object-center bg-gray-50/50 p-4">
                 <div class="p-6">
                   <div class="flex items-center justify-between mb-3">
-                    <span class="text-sm font-bold text-[#00944a]">Composición: Productos</span>
-                    <span class="px-2.5 py-0.5 text-sm font-bold rounded-full bg-[#006A49] text-white">Natural</span>
+                    <span class="text-xs font-bold uppercase tracking-wider text-primary font-display">Composición:
+                      Procesado</span>
+                    <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-primary text-white">Natural</span>
                   </div>
 
-                  <h3 class="text-xl font-bold text-gray-900 mb-3">
+                  <h3 class="text-xl font-bold text-ink mb-2 font-display">
                     Sedifruit
                   </h3>
 
-                  <p class="text-gray-600 text-sm leading-relaxed">
-                    Elaboradas con frutas seleccionadas de la zona, conservando su sabor,
-                    aroma y propiedades naturales para acompañar desayunos y postres.
+                  <p class="text-gray-600 text-sm leading-relaxed font-body">
+                    Elaboradas con frutas seleccionadas de la zona, conservando su sabor, aroma y propiedades naturales
+                    para desayunos y postres.
                   </p>
                 </div>
               </div>
 
               <div class="p-6 pt-0">
                 <a href="/paginas/contacto.html"
-                  class="inline-flex items-center text-sm font-semibold text-[#00944a] hover:text-[#006a49] transition-colors group">
-                  Para mas Informacion →
-                  <svg class="w-4 h-4 ml-1.5 transform group-hover:translate-x-1 transition-transform" fill="none"
-                    stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                  </svg>
+                  class="inline-flex items-center text-sm font-semibold text-primary hover:text-primary-dark transition-colors group font-display">
+                  <span>Solicitar Información</span>
+                  <i
+                    class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
                 </a>
               </div>
             </div>
+
             <!-- CARD 2: Miel de Abeja -->
             <div
-              class="flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] bg-white rounded-[30px] border border-gray-100 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
+              class="flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] bg-white rounded-3xl border border-gray-200/80 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
               <div>
                 <img id="miel-img" src="../activos/img_productos/2025-Mieldeabeja2800gr.jpg" alt="Miel de Abeja"
-                  class="w-full h-56 object-contain object-center bg-slate-50">
+                  class="w-full h-56 object-contain object-center bg-gray-50/50 p-4">
                 <div class="p-6">
                   <div class="flex items-center justify-between mb-3">
-                    <span class="text-sm font-bold text-[#00944a]">Composición: Productos</span>
-                    <span class="px-2.5 py-0.5 text-sm font-bold rounded-full bg-[#006A49] text-white">Orgánico</span>
+                    <span class="text-xs font-bold uppercase tracking-wider text-primary font-display">Composición:
+                      Apícola</span>
+                    <span
+                      class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-primary-dark text-white">Orgánico</span>
                   </div>
-                  <h3 id="miel-title" class="text-xl font-bold text-gray-900 mb-3">Miel de Abeja</h3>
-                  <p id="miel-desc" class="text-gray-600 text-sm leading-relaxed">
-                    Pura y natural, recolectada de colmenas manejadas de forma sostenible. Rica en antioxidantes y con
-                    propiedades antibacterianas.
+                  <h3 id="miel-title" class="text-xl font-bold text-ink mb-2 font-display">Miel de Abeja</h3>
+                  <p id="miel-desc" class="text-gray-600 text-sm leading-relaxed font-body">
+                    Pura y natural, recolectada de colmenas manejadas de forma sostenible en el valle. Rica en
+                    antioxidantes y propiedades nutritivas.
                   </p>
                 </div>
               </div>
               <div class="p-6 pt-0">
-                <a href="/paginas/contacto.html" class="inline-flex items-center text-sm font-semibold text-[#00944a]">
-                  Para mas Informacion →
+                <a href="/paginas/contacto.html"
+                  class="inline-flex items-center text-sm font-semibold text-primary hover:text-primary-dark transition-colors group font-display">
+                  <span>Solicitar Información</span>
+                  <i
+                    class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
                 </a>
               </div>
             </div>
 
             <!-- CARD 3: Néctar de Frutas -->
             <div
-              class="flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] bg-white rounded-[30px] border border-gray-100 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
+              class="flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] bg-white rounded-3xl border border-gray-200/80 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
               <div>
                 <img id="nectar-img" src="../activos/img_productos/Nectar-y-mermelada.jpg" alt="Néctar de Frutas"
-                  class="w-full h-56 object-contain object-center bg-slate-50">
+                  class="w-full h-56 object-contain object-center bg-gray-50/50 p-4">
                 <div class="p-6">
-                  <span class="text-sm font-bold text-[#00944a]">Composición: Productos</span>
-                  <h3 id="nectar-title" class="text-xl font-bold text-gray-900 my-3">Néctar de Frutas</h3>
-                  <p id="nectar-desc" class="text-gray-600 text-sm leading-relaxed">
-                    Elaborados con la mejor selección de frutas locales,
-                    manteniendo su sabor original y valor nutricional.
+                  <div class="flex items-center justify-between mb-3">
+                    <span class="text-xs font-bold uppercase tracking-wider text-primary font-display">Composición:
+                      Bebida</span>
+                    <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-primary text-white">Natural</span>
+                  </div>
+                  <h3 id="nectar-title" class="text-xl font-bold text-ink mb-2 font-display">Néctar de Frutas</h3>
+                  <p id="nectar-desc" class="text-gray-600 text-sm leading-relaxed font-body">
+                    Elaborados con la mejor selección de frutas locales, manteniendo su sabor original y valor
+                    nutricional sin aditivos nocivos.
                   </p>
                 </div>
               </div>
               <div class="p-6 pt-0">
-                <a href="/paginas/contacto.html" class="inline-flex items-center text-sm font-semibold text-[#00944a]">
-                  Para mas Informacion →
+                <a href="/paginas/contacto.html"
+                  class="inline-flex items-center text-sm font-semibold text-primary hover:text-primary-dark transition-colors group font-display">
+                  <span>Solicitar Información</span>
+                  <i
+                    class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
                 </a>
               </div>
             </div>
 
             <!-- CARD 4: Destilados y Licores -->
             <div
-              class="flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] bg-white rounded-[30px] border border-gray-100 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
+              class="flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] bg-white rounded-3xl border border-gray-200/80 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
               <div>
                 <img id="destilados-img" src="../activos/img_productos/2025-EspiritudeUva.jpg"
-                  alt="Destilados y Licores" class="w-full h-56 object-contain object-center bg-slate-50">
+                  alt="Destilados y Licores" class="w-full h-56 object-contain object-center bg-gray-50/50 p-4">
                 <div class="p-6">
-                  <span class="text-sm font-bold text-[#00944a]">Composición: Productos</span>
-                  <h3 id="destilados-title" class="text-xl font-bold text-gray-900 my-3">Destilados y Licores</h3>
-                  <p id="destilados-desc" class="text-gray-600 text-sm leading-relaxed mb-3">
-                    Fino destilado de uva y exquisitos licores de fruta,
-                    elaborados artesanalmente.
+                  <div class="flex items-center justify-between mb-3">
+                    <span class="text-xs font-bold uppercase tracking-wider text-primary font-display">Composición:
+                      Agroindustrial</span>
+                    <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-brown text-white">Artesanal</span>
+                  </div>
+                  <h3 id="destilados-title" class="text-xl font-bold text-ink mb-2 font-display">Destilados y Licores
+                  </h3>
+                  <p id="destilados-desc" class="text-gray-600 text-sm leading-relaxed mb-4 font-body">
+                    Fino destilado de uva y exquisitos licores de fruta, elaborados bajo estrictos parámetros
+                    artesanales del valle.
                   </p>
                   <div id="destilados-tags" class="flex flex-wrap gap-2">
-                    <span class="px-2 py-1 text-sm rounded-full bg-slate-100">Uva</span>
-                    <span class="px-2 py-1 text-sm rounded-full bg-slate-100">Coknat</span>
+                    <span class="px-2.5 py-1 text-xs font-medium rounded-md bg-gray-100 text-gray-700">Uva</span>
+                    <span class="px-2.5 py-1 text-xs font-medium rounded-md bg-gray-100 text-gray-700">Licores</span>
                   </div>
                 </div>
               </div>
               <div class="p-6 pt-0">
-                <a href="/paginas/contacto.html" class="inline-flex items-center text-sm font-semibold text-[#00944a]">
-                  Para mas Informacion →
+                <a href="/paginas/contacto.html"
+                  class="inline-flex items-center text-sm font-semibold text-primary hover:text-primary-dark transition-colors group font-display">
+                  <span>Solicitar Información</span>
+                  <i
+                    class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
                 </a>
               </div>
             </div>
 
             <!-- CARD 5: Aguaymanto-Propoleo-Chia -->
             <div
-              class="flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] bg-white rounded-[30px] border border-gray-100 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
+              class="flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] bg-white rounded-3xl border border-gray-200/80 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
               <div>
                 <img src="../activos/img_productos/Aguaymanto-Propoleo-Chia.jpg" alt="Aguaymanto-Propoleo-Chia"
-                  class="w-full h-56 object-contain object-center bg-slate-50">
+                  class="w-full h-56 object-contain object-center bg-gray-50/50 p-4">
                 <div class="p-6">
                   <div class="flex items-center justify-between mb-3">
-                    <span class="text-sm font-bold text-[#00944a]">Composición: Productos</span>
-                    <span class="px-2.5 py-0.5 text-sm font-bold rounded-full bg-[#006A49] text-white">Premium</span>
+                    <span class="text-xs font-bold uppercase tracking-wider text-primary font-display">Composición:
+                      Funcional</span>
+                    <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-primary text-white">Premium</span>
                   </div>
-                  <h3 class="text-xl font-bold text-gray-900 mb-3">Aguaymanto-Propoleo-Chia</h3>
-                  <p class="text-gray-600 text-sm leading-relaxed">
-                    Aguaymanto-Propoleo-Chia seleccionado de altura, con aroma intenso y sabor increble,
-                    producido por agricultores locales.
+                  <h3 class="text-xl font-bold text-ink mb-2 font-display">Aguaymanto - Própolis - Chía</h3>
+                  <p class="text-gray-600 text-sm leading-relaxed font-body">
+                    Combinación seleccionada de origen natural, con propiedades nutricionales valiosas para el bienestar
+                    diario.
                   </p>
                 </div>
               </div>
               <div class="p-6 pt-0">
-                <a href="/paginas/contacto.html" class="inline-flex items-center text-sm font-semibold text-[#00944a]">
-                  Para mas Informacion →
+                <a href="/paginas/contacto.html"
+                  class="inline-flex items-center text-sm font-semibold text-primary hover:text-primary-dark transition-colors group font-display">
+                  <span>Solicitar Información</span>
+                  <i
+                    class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
                 </a>
               </div>
             </div>
+
           </div>
         </div>
 
         <!-- Botón siguiente -->
         <button id="alimentos-next"
-          class="absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 flex items-center justify-center bg-white border border-gray-200 rounded-full shadow hover:bg-[#00944a] hover:text-white transition">
-          ❯
+          class="absolute -right-4 md:-right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 flex items-center justify-center bg-white border border-gray-200 rounded-full shadow-md hover:bg-primary hover:text-white transition">
+          <i class="fas fa-chevron-right text-xs"></i>
         </button>
 
       </div>
@@ -283,9 +304,10 @@
       <div id="alimentos-dots" class="flex justify-center gap-2 mt-6"></div>
 
     </section>
+
+    <!-- Script Carrusel -->
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-
         const track = document.getElementById("alimentos-track");
         const cards = track.children;
         const prevBtn = document.getElementById("alimentos-prev");
@@ -304,49 +326,31 @@
 
         function createDots() {
           dotsContainer.innerHTML = "";
-
           for (let i = 0; i <= maxIndex; i++) {
             const dot = document.createElement("button");
-
-            dot.className =
-              i === 0
-                ? "w-5 h-2.5 rounded-full bg-[#00944a] transition-all"
-                : "w-2.5 h-2.5 rounded-full bg-gray-300 transition-all";
-
+            dot.className = i === 0
+              ? "w-6 h-2 rounded-full bg-primary transition-all"
+              : "w-2 h-2 rounded-full bg-gray-300 transition-all";
             dot.addEventListener("click", () => moveTo(i));
-
             dotsContainer.appendChild(dot);
           }
         }
 
         function updateDots() {
           [...dotsContainer.children].forEach((dot, index) => {
-            dot.className =
-              index === currentIndex
-                ? "w-5 h-2.5 rounded-full bg-[#00944a] transition-all"
-                : "w-2.5 h-2.5 rounded-full bg-gray-300 transition-all";
+            dot.className = index === currentIndex
+              ? "w-6 h-2 rounded-full bg-primary transition-all"
+              : "w-2 h-2 rounded-full bg-gray-300 transition-all";
           });
         }
 
         function moveTo(index) {
           currentIndex = Math.max(0, Math.min(index, maxIndex));
-
-          // Recalcular maxIndex y ancho según breakpoints actuales
-          maxIndex = Math.max(
-            0,
-            cards.length - getVisibleCards()
-          );
-
-          const cardWidth =
-            cards[0].getBoundingClientRect().width + gap;
-
-
-          track.style.transform =
-            `translateX(-${currentIndex * cardWidth}px)`;
-
+          maxIndex = Math.max(0, cards.length - getVisibleCards());
+          const cardWidth = cards[0].getBoundingClientRect().width + gap;
+          track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
           prevBtn.disabled = currentIndex === 0;
           nextBtn.disabled = currentIndex === maxIndex;
-
           updateDots();
         }
 
@@ -354,121 +358,100 @@
         nextBtn.addEventListener("click", () => moveTo(currentIndex + 1));
 
         window.addEventListener("resize", () => {
-          maxIndex = Math.max(
-            0,
-            cards.length - getVisibleCards()
-          );
-
-          if (currentIndex > maxIndex) {
-            currentIndex = maxIndex;
-          }
-
+          maxIndex = Math.max(0, cards.length - getVisibleCards());
+          if (currentIndex > maxIndex) currentIndex = maxIndex;
           createDots();
           moveTo(currentIndex);
         });
 
         createDots();
         moveTo(0);
+
         let startX = 0;
         let endX = 0;
-
-        track.addEventListener("touchstart", (e) => {
-          startX = e.touches[0].clientX;
-        });
-
-        track.addEventListener("touchmove", (e) => {
-          endX = e.touches[0].clientX;
-        });
-
+        track.addEventListener("touchstart", (e) => { startX = e.touches[0].clientX; });
+        track.addEventListener("touchmove", (e) => { endX = e.touches[0].clientX; });
         track.addEventListener("touchend", () => {
           const distance = startX - endX;
-
-          // sensibilidad mínima
           if (Math.abs(distance) < 50) return;
-
-          if (distance > 0) {
-            // deslizó hacia la izquierda
-            moveTo(currentIndex + 1);
-          } else {
-            // deslizó hacia la derecha
-            moveTo(currentIndex - 1);
-          }
+          if (distance > 0) moveTo(currentIndex + 1);
+          else moveTo(currentIndex - 1);
         });
       });
     </script>
+
     <!-- ================= SECTION 2: LÍNEA NO ALIMENTOS E INSUMOS ================= -->
-    <section class="bg-[#f4f8f4] border-t border-b border-gray-100 py-16">
+    <section class="bg-gray-50 border-t border-b border-gray-200/60 py-16">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
         <!-- Section Header -->
-        <div class="border-b border-gray-200 pb-4 mb-8">
-          <h2 id="linea-noalimentos-heading" class="text-3xl font-bold text-gray-900 mb-2">Línea No Alimentos Agrícola e
-            Insumos</h2>
-          <p class="text-gray-600 text-sm md:text-base">Material genético de alta calidad y soluciones para potenciar su
-            producción agrícola.</p>
+        <div class="border-b border-gray-200 pb-4 mb-10">
+          <h2 id="linea-noalimentos-heading" class="text-2xl md:text-3xl font-bold text-ink mb-2 font-display">
+            Línea No Alimentos Agrícola e Insumos
+          </h2>
+          <p class="text-gray-600 text-sm md:text-base font-body">
+            Material genético certificado y soluciones técnicas para potenciar la producción agrícola regional.
+          </p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
 
           <!-- LEFT / MIDDLE COLUMN: Plants & Trees (Spans 2 columns) -->
-          <div class="lg:col-span-2 space-y-6">
+          <div class="lg:col-span-2 space-y-8">
 
-            <!-- PLANTONES DE PALTO (Horizontal card layout) -->
+            <!-- PLANTONES DE PALTO -->
             <div
-              class="bg-white rounded-[30px] border border-gray-100 shadow-sm p-6 flex flex-col md:flex-row gap-6 hover-card-effect">
+              class="bg-white rounded-3xl border border-gray-200/80 shadow-sm p-6 sm:p-8 flex flex-col md:flex-row gap-8 hover-card-effect">
               <div class="md:w-1/3 flex-shrink-0">
                 <img id="palto-img" src="../activos/img_productos/vivero-frutícola-01.jpg" alt="Plantones de Palto"
-                  class="w-full h-48 md:h-full object-cover rounded-[20px]" />
+                  class="w-full h-48 md:h-full object-cover rounded-2xl shadow-inner" />
               </div>
               <div class="flex-grow flex flex-col justify-between space-y-4">
                 <div>
-                  <div class="flex items-center gap-2 text-[#00944a] mb-2">
-                    <i class="fas fa-leaf text-sm"></i>
-                    <span class="text-sm font-bold uppercase tracking-wider">Certificado</span>
+                  <div class="flex items-center gap-2 text-primary mb-2">
+                    <i class="fas fa-certificate text-sm"></i>
+                    <span class="text-xs font-bold uppercase tracking-wider font-display">VIVERO</span>
                   </div>
-                  <h3 id="palto-title" class="text-xl font-bold text-gray-900 mb-2">Plantones de Palto</h3>
-                  <p id="palto-desc" class="text-gray-600 text-sm leading-relaxed mb-4">
-                    Plantas vigorosas, injertadas y libres de patógenos, listas para campo definitivo.
+                  <h3 id="palto-title" class="text-xl font-bold text-ink mb-2 font-display">Plantones de Palto</h3>
+                  <p id="palto-desc" class="text-gray-600 text-sm leading-relaxed mb-4 font-body">
+                    Plantas vigorosas, injertadas bajo rigurosos controles sanitarios y libres de patógenos, listas para
+                    establecimiento en campo definitivo.
                   </p>
 
                   <!-- Palto variety tags -->
-                  <div id="palto-tags" class="flex flex-wrap gap-2.5 mb-4">
-
+                  <div id="palto-tags" class="flex flex-wrap gap-2 mb-4">
                     <button
-                      data-info="Alta resistencia a enfermedades y buen desarrollo radicular. Ideal como portainjerto por su vigor y adaptación."
-                      class="variedad px-3.5 py-2 text-sm font-semibold rounded-full bg-blue-100 text-blue-800 min-h-[40px] flex items-center justify-center">
+                      data-info="Alta resistencia a patógenos de suelo y vigor radicular superior. Ideal como portainjerto."
+                      class="variedad px-3 py-1.5 text-xs font-semibold rounded-lg bg-emerald-50 text-primary border border-emerald-200 transition-colors">
                       Zutano
                     </button>
-
                     <button
-                      data-info="Variedad adaptada a diferentes condiciones climáticas, con buen crecimiento inicial y producción estable."
-                      class="variedad px-3.5 py-2 text-sm font-semibold rounded-full bg-slate-100 text-slate-600 min-h-[40px] flex items-center justify-center">
+                      data-info="Adaptado a condiciones climáticas variables, mostrando un desarrollo inicial equilibrado."
+                      class="variedad px-3 py-1.5 text-xs font-semibold rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors">
                       Mexicano
                     </button>
-
-                    <button data-info="Alta tolerancia a enfermedades del suelo y buena productividad."
-                      class="variedad px-3.5 py-2 text-sm font-semibold rounded-full bg-slate-100 text-slate-600 min-h-[40px] flex items-center justify-center">
+                    <button
+                      data-info="Excelente tolerancia a problemas radiculares comunes y buena afinidad de injerto."
+                      class="variedad px-3 py-1.5 text-xs font-semibold rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors">
                       Duke 7
                     </button>
-
                     <button
-                      data-info="La más demandada en el mercado, con frutos de alta calidad y buen rendimiento productivo."
-                      class="variedad px-3.5 py-2 text-sm font-semibold rounded-full bg-green-100 text-green-800 min-h-[40px] flex items-center justify-center">
+                      data-info="La variedad comercial de mayor demanda internacional, con excelente rendimiento productivo."
+                      class="variedad px-3 py-1.5 text-xs font-semibold rounded-lg bg-emerald-50 text-primary border border-emerald-200 transition-colors">
                       Hass
                     </button>
-
                     <button
-                      data-info="Fruto de buen tamaño y excelente sabor, ideal para el consumo en el mercado nacional."
-                      class="variedad px-3.5 py-2 text-sm font-semibold rounded-full bg-green-100 text-green-800 min-h-[40px] flex items-center justify-center">
+                      data-info="Fruto de calibre adecuado y excelente calidad organoléptica para el mercado local y de exportación."
+                      class="variedad px-3 py-1.5 text-xs font-semibold rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors">
                       Fuerte
                     </button>
-
-                    <button data-info="Producción abundante y frutos de gran tamaño."
-                      class="variedad px-3.5 py-2 text-sm font-semibold rounded-full bg-slate-100 text-slate-600 min-h-[40px] flex items-center justify-center">
+                    <button data-info="Variedad caracterizada por su abundante producción y frutos de gran tamaño."
+                      class="variedad px-3 py-1.5 text-xs font-semibold rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors">
                       Nabal
                     </button>
-
-                    <button data-info="Excelente calidad de fruto y buena adaptación a diversas condiciones."
-                      class="variedad px-3.5 py-2 text-sm font-semibold rounded-full bg-slate-100 text-slate-600 min-h-[40px] flex items-center justify-center">
+                    <button
+                      data-info="Óptima adaptabilidad a diferentes pisos ecológicos del valle y excelente calidad de fruto."
+                      class="variedad px-3 py-1.5 text-xs font-semibold rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors">
                       Villacampa
                     </button>
                   </div>
@@ -476,177 +459,146 @@
 
                 <!-- Highlight badge bottom -->
                 <div
-                  class="bg-gray-50 border border-gray-100 rounded-[15px] p-3 text-sm leading-relaxed text-gray-600 flex items-center gap-2"
-                  <i class="fas fa-shield-halved text-emerald-600 text-sm"></i>
-
-                  <span id="info-variedad">
-                    Seleccione una variedad para conocer sus características.
-                  </span>
-
+                  class="bg-gray-50 border border-gray-200/60 rounded-xl p-3.5 text-xs sm:text-sm leading-relaxed text-gray-600 flex items-center gap-2 font-body">
+                  <i class="fas fa-info-circle text-primary text-sm flex-shrink-0"></i>
+                  <span id="info-variedad">Seleccione una variedad para visualizar sus especificaciones técnicas.</span>
                 </div>
               </div>
             </div>
 
             <!-- TWO-COLUMN GRID BELOW PALTO -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
               <!-- PLANTONES DE MANGO -->
               <div
-                class="bg-white rounded-[30px] border border-gray-100 shadow-sm p-6 flex flex-col justify-between hover-card-effect">
+                class="bg-white rounded-3xl border border-gray-200/80 shadow-sm p-6 sm:p-8 flex flex-col justify-between hover-card-effect">
                 <div>
-                  <h3 id="mango-title" class="text-lg font-bold text-gray-900 mb-2">Plantones de Mango</h3>
+                  <h3 id="mango-title" class="text-lg font-bold text-ink mb-3 font-display">Plantones de Mango</h3>
 
                   <!-- Mango tags -->
                   <div id="mango-tags" class="flex flex-wrap gap-2 mb-4">
-
                     <button
-                      class="variedad-mango px-3 py-2 text-sm font-semibold rounded-full bg-blue-100 text-blue-800 min-h-[36px] flex items-center justify-center"
-                      data-info=" Alta resistencia a enfermedades y buen desarrollo radicular.">
+                      class="variedad-mango px-3 py-1.5 text-xs font-semibold rounded-lg bg-emerald-50 text-primary border border-emerald-200 transition-colors"
+                      data-info="Patrón vigoroso con alta adaptabilidad a suelos diversos y excelente desarrollo radicular.">
                       Camboyano
                     </button>
-
                     <button
-                      class="variedad-mango px-3 py-2 text-sm font-semibold rounded-full bg-slate-100 text-slate-600 min-h-[36px] flex items-center justify-center"
-                      data-info="Proporciona vigor y mejora la calidad de los frutos por su sabor dulce, buena textura y aceptación comercial.">
+                      class="variedad-mango px-3 py-1.5 text-xs font-semibold rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors"
+                      data-info="Fruto aromático de sabor dulce distintivo, muy apreciado en el mercado nacional.">
                       Manzano
                     </button>
-
                     <button
-                      class="variedad-mango px-3 py-2 text-sm font-semibold rounded-full bg-slate-100 text-slate-600 min-h-[36px] flex items-center justify-center"
-                      data-info="Fruto dulce, jugoso y sin fibras, ideal para la exportación.">
+                      class="variedad-mango px-3 py-1.5 text-xs font-semibold rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors"
+                      data-info="Fruto de pulpa consistente, libre de fibras y de alta demanda para agroexportación.">
                       Kent
                     </button>
-
                     <button
-                      class="variedad-mango px-3 py-2 text-sm font-semibold rounded-full bg-slate-100 text-slate-600 min-h-[36px] flex items-center justify-center"
-                      data-info="Producción prolongada y frutos de gran tamaño.">
+                      class="variedad-mango px-3 py-1.5 text-xs font-semibold rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors"
+                      data-info="Variedad tardía que garantiza cosecha prolongada con frutos de gran tamaño.">
                       Keitt
                     </button>
-
                     <button
-                      class="variedad-mango px-3 py-2 text-sm font-semibold rounded-full bg-slate-100 text-slate-600 min-h-[36px] flex items-center justify-center"
-                      data-info="Fruto de textura cremosa y sabor exquisito.">
+                      class="variedad-mango px-3 py-1.5 text-xs font-semibold rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors"
+                      data-info="Fruto de textura suave y calidad excepcional para consumo directo.">
                       Edward
                     </button>
-
                   </div>
 
-                  <!-- Único bloque de descripción (antes había dos elementos con el mismo id) -->
                   <div
-                    class="bg-gray-50 border border-gray-100 rounded-[15px] p-3 text-sm leading-relaxed text-gray-600 flex items-start gap-2 mb-4"
-                    <i class="fas fa-shield-halved text-emerald-600 text-sm mt-0.5"></i>
-                    <span id="mango-desc">Seleccione una variedad para conocer sus características.</span>
+                    class="bg-gray-50 border border-gray-200/60 rounded-xl p-3.5 text-xs sm:text-sm leading-relaxed text-gray-600 flex items-start gap-2 mb-4 font-body">
+                    <i class="fas fa-info-circle text-primary text-sm mt-0.5 flex-shrink-0"></i>
+                    <span id="mango-desc">Seleccione una variedad para visualizar sus especificaciones técnicas.</span>
                   </div>
                 </div>
 
-                <!-- Custom Vector Sprout Cycle Graphic -->
-                <div class="flex items-center justify-center py-2">
-                  <img src="../activos/img_productos/plantas-injertadas-Mango.png" alt="Economía Circular"
-                    class="object-contain">
+                <div class="flex items-center justify-center pt-2">
+                  <img src="../activos/img_productos/plantas-injertadas-Mango.png" alt="Plantones de Mango"
+                    class="object-contain max-h-36">
                 </div>
               </div>
 
               <!-- PLANTONES DE LÚCUMA -->
-              <div class="bg-white rounded-[30px] border border-gray-100 shadow-sm p-6 hover-card-effect">
-                <h3 id="lucuma-title" class="text-lg font-bold text-gray-900 mb-3">Plantones de Lúcuma</h3>
-                <p id="lucuma-desc" class="text-gray-600 text-sm leading-relaxed mb-4">
-                  Seleccionados para su adaptabilidad y producción:
-                </p>
+              <div
+                class="bg-white rounded-3xl border border-gray-200/80 shadow-sm p-6 sm:p-8 flex flex-col justify-between hover-card-effect">
+                <div>
+                  <h3 id="lucuma-title" class="text-lg font-bold text-ink mb-3 font-display">Plantones de Lúcuma</h3>
+                  <p id="lucuma-desc" class="text-gray-600 text-sm leading-relaxed mb-4 font-body">
+                    Material genético seleccionado para garantizar adaptabilidad climática y alto rendimiento
+                    productivo:
+                  </p>
 
-                <ul class="space-y-3.5 text-sm text-gray-700">
-                  <li class="flex items-start gap-2.5">
-                    <span class="text-[#00944a] mt-0.5"><i class="fas fa-circle-check"></i></span>
-                    <span class="text-sm leading-relaxed"><strong>Porta injerto Palo:</strong> Excelente vigor y
-                      resistencia a suelos difíciles.</span>
-                  </li>
-                  <li class="flex items-start gap-2.5">
-                    <span class="text-[#00944a] mt-0.5"><i class="fas fa-circle-check"></i></span>
-                    <span class="text-sm leading-relaxed"><strong>Variedad Seda:</strong> Fruto de pulpa suave y dulce,
-                      ideal para postres.</span>
-                  </li>
-                  <li class="flex items-start gap-2.5">
-                    <span class="text-[#00944a] mt-0.5"><i class="fas fa-circle-check"></i></span>
-                    <span class="text-sm leading-relaxed"><strong>Variedad Beltrán:</strong> Buena producción y frutos
-                      de alta calidad.</span>
-                  </li>
-                </ul>
+                  <ul class="space-y-3 text-sm text-gray-700 font-body">
+                    <li class="flex items-start gap-2.5">
+                      <span class="text-primary mt-0.5"><i class="fas fa-check-circle"></i></span>
+                      <span><strong>Portainjerto Palo:</strong> Excelente vigor estructural y alta tolerancia a suelos
+                        complejos.</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                      <span class="text-primary mt-0.5"><i class="fas fa-check-circle"></i></span>
+                      <span><strong>Variedad Seda:</strong> Fruto de pulpa tersa, suave y dulce, ideal para la industria
+                        repostera.</span>
+                    </li>
+                    <li class="flex items-start gap-2.5">
+                      <span class="text-primary mt-0.5"><i class="fas fa-check-circle"></i></span>
+                      <span><strong>Variedad Beltrán:</strong> Rendimiento comercial constante y frutos de óptima
+                        calidad.</span>
+                    </li>
+                  </ul>
+                </div>
               </div>
 
             </div>
 
           </div>
 
-          <!-- RIGHT COLUMN: Other Insumos (Spans 1 column) -->
+          <!-- RIGHT COLUMN: Other Insumos -->
           <div class="lg:col-span-1">
             <div
-              class="bg-white rounded-[30px] border border-gray-100 shadow-sm p-6 h-full flex flex-col justify-between hover-card-effect">
+              class="bg-white rounded-3xl border border-gray-200/80 shadow-sm p-6 sm:p-8 h-full flex flex-col justify-between hover-card-effect">
               <div>
-                <h3 class="text-lg font-bold text-gray-900 border-b pb-4 mb-6">Otros Insumos Agropecuarios</h3>
+                <h3 class="text-lg font-bold text-ink border-b border-gray-200 pb-4 mb-6 font-display">
+                  Otros Insumos Agropecuarios
+                </h3>
 
                 <div class="space-y-8">
-                  <!-- Insumo 1: Semilla de Gulupa -->
+
+                  <!-- Insumo 1: Semilla de Gulupa (Ícono temático: Hoja / Planta) -->
                   <div class="flex gap-4 items-start">
                     <div
-                      class="w-10 h-10 rounded-xl bg-[#e6f4ed] text-[#00944a] flex items-center justify-center flex-shrink-0">
-                      <i class="fas fa-leaf text-base"></i>
+                      class="w-12 h-12 bg-primary border-4 border-white rounded-tr-[16px] rounded-br-[16px] rounded-bl-[16px] flex items-center justify-center shadow-md flex-shrink-0">
+                      <i class="fas fa-seedling text-white text-lg"></i>
                     </div>
                     <div>
-                      <h4 id="gulupa-title" class="font-bold text-sm text-gray-900 mb-1">Semilla de Gulupa</h4>
-                      <p id="gulupa-desc" class="text-sm text-gray-600 leading-relaxed">
-                        Semillas certificadas para cultivos de alta rentabilidad, ideales para producción comercial de
-                        maracuyá morado.
+                      <h4 id="gulupa-title" class="font-bold text-base text-ink mb-1 font-display">Semilla de Gulupa
+                      </h4>
+                      <p id="gulupa-desc" class="text-xs sm:text-sm text-gray-600 leading-relaxed font-body">
+                        Semillas seleccionadas para cultivos de alta rentabilidad y demanda comercial externa.
                       </p>
                     </div>
                   </div>
 
-                  <!-- Insumo 2: Compost Orgánico -->
-                  <div class="flex gap-4 items-start">
-                    <div
-                      class="w-10 h-10 rounded-xl bg-[#fdfbf7] text-[#8c7855] flex items-center justify-center flex-shrink-0">
-                      <i class="fas fa-seedling text-base"></i>
-                    </div>
-                    <div>
-                      <h4 id="compost-title" class="font-bold text-sm text-gray-900 mb-1">Compost Orgánico</h4>
-                      <p id="compost-desc" class="text-sm text-gray-600 leading-relaxed">
-                        Fertilizante orgánico ideal para mejorar la calidad del suelo y potenciar el crecimiento de
-                        cultivos, enriqueciendo los suelos con nutrientes esenciales.
-                      </p>
-                    </div>
-                  </div>
-
-                  <!-- Insumo 3: Cuyes Reproductores -->
-                  <div class="flex gap-4 items-start">
-                    <div
-                      class="w-10 h-10 rounded-xl bg-[#e6f4ed] text-[#00944a] flex items-center justify-center flex-shrink-0">
-                      <i class="fas fa-paw text-base"></i>
-                    </div>
-                    <div class="flex-grow">
-                      <h4 id="cuyes-title" class="font-bold text-sm text-gray-900 mb-1">Cuyes Reproductores</h4>
-                      <p id="cuyes-desc" class="text-sm text-gray-600 leading-relaxed mb-3">
-                        Ofrecemos cuyes de razas mejoradas para producción:
-                      </p>
-                      <!-- Subtags inside Cuyes -->
-                      <div class="space-y-3">
-                        <div>
-                          <span
-                            class="inline-block px-2 py-0.5 text-sm font-bold rounded bg-[#e6f4ed] text-[#00944a] mb-0.5">RAZA
-                            PERÚ</span>
-                          <p class="text-sm text-gray-500 leading-tight">Excelente tasa de crecimiento y conversión
-                            alimenticia, ideal para producción comercial.</p>
-                        </div>
-                        <div>
-                          <span
-                            class="inline-block px-2 py-0.5 text-sm font-bold rounded bg-[#e6f4ed] text-[#00944a] mb-0.5">INTI</span>
-                          <p class="text-sm text-gray-500 leading-tight">Destacada por su alta prolificidad y buena
-                            calidad de carne.</p>
-                        </div>
-                        <div>
-                          <span
-                            class="inline-block px-2 py-0.5 text-sm font-bold rounded bg-[#e6f4ed] text-[#00944a] mb-0.5">INKA</span>
-                          <p class="text-sm text-gray-500 leading-tight">Caracterizada por su resistencia y óptimo
-                            rendimiento productivo.</p>
-                        </div>
+                  <!-- Insumo 2: Compost Orgánico (Ícono temático: Abono / Tierra / Capas) -->
+                  <div class="space-y-4 pt-4 border-t border-gray-100">
+                    <div class="flex gap-4 items-start">
+                      <div
+                        class="w-12 h-12 bg-primary border-4 border-white rounded-tr-[16px] rounded-br-[16px] rounded-bl-[16px] flex items-center justify-center shadow-md flex-shrink-0">
+                        <i class="fas fa-mountain text-white text-lg"></i>
                       </div>
+                      <div>
+                        <h4 id="compost-title" class="font-bold text-base text-ink mb-1 font-display">Compost Orgánico
+                        </h4>
+                        <p id="compost-desc" class="text-xs sm:text-sm text-gray-600 leading-relaxed font-body">
+                          Enmienda orgánica orientada a mejorar la estructura del suelo y optimizar la retención de
+                          humedad.
+                        </p>
+                      </div>
+                    </div>
+
+                    <!-- Imagen institucional de soporte -->
+                    <div class="rounded-2xl overflow-hidden border border-gray-200/60 shadow-sm mt-3">
+                      <img src="../activos/img_unidades_productivas/compostera.jpg"
+                        alt="Producción de Compost Orgánico SEDIR"
+                        class="w-full h-40 object-cover hover:scale-105 transition-transform duration-500">
                     </div>
                   </div>
 
@@ -654,174 +606,116 @@
               </div>
             </div>
           </div>
-
         </div>
+      </div>
+      </div>
       </div>
     </section>
 
-    <!-- ================= SECTION 3: OTROS PRODUCTOS (Scalable Fallback Grid) ================= -->
+    <!-- ================= SECTION 3: OTROS PRODUCTOS ================= -->
     <section id="otros-productos-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 hidden">
-      <div class="border-b pb-4 mb-8">
-        <h2 class="text-2xl font-bold text-gray-900 mb-2">Más Productos</h2>
-        <p class="text-gray-600 text-sm">Otras soluciones y productos disponibles.</p>
+      <div class="border-b border-gray-200 pb-4 mb-8">
+        <h2 class="text-2xl font-bold text-ink mb-2 font-display">Más Productos</h2>
+        <p class="text-gray-600 text-sm font-body">Otras soluciones agropecuarias disponibles en nuestro registro.</p>
       </div>
       <div id="otros-productos-container" class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- New products will be dynamically loaded here if added in database -->
+        <!-- Contenido dinámico por API -->
       </div>
     </section>
   </main>
   <!-- END: Main Page Content -->
+
   <!-- BEGIN: Footer Component -->
   <div id="footer-container" data-component="/components/footer.html"></div>
   <div id="whatsapp-container" data-component="/components/whatsapp.html"></div>
   <!-- END: Footer Component -->
 
-  <!-- Component Bootstrap Scripts -->
+  <!-- Scripts -->
   <script src="/activos/js/components.js" defer></script>
   <script src="/activos/js/navbar.js" defer></script>
   <script src="/activos/js/main.js" defer></script>
 
-  <!-- Variedades: Palto (RQ1) y Mango (RQ2) - selección con resaltado -->
+  <!-- Script de Interacción de Variedades -->
   <script>
-
     document.querySelectorAll("[data-info]").forEach(boton => {
-
       boton.addEventListener("click", function () {
-
         const informacion = this.getAttribute("data-info");
         const esPalto = this.classList.contains("variedad");
         const grupo = esPalto ? "variedad" : "variedad-mango";
         const destino = esPalto ? "info-variedad" : "mango-desc";
 
-        // Actualiza el texto de características
         document.getElementById(destino).textContent = informacion;
 
-        // Resalta el botón seleccionado dentro de su propio grupo
         document.querySelectorAll(`.${grupo}`).forEach(btn => {
-          btn.classList.remove("bg-blue-100", "text-blue-800", "bg-green-100", "text-green-800");
-          btn.classList.add("bg-slate-100", "text-slate-600");
+          btn.classList.remove("bg-emerald-50", "text-primary", "border", "border-emerald-200");
+          btn.classList.add("bg-gray-100", "text-gray-700");
         });
 
-        this.classList.remove("bg-slate-100", "text-slate-600");
-        this.classList.add("bg-blue-100", "text-blue-800");
-
+        this.classList.remove("bg-gray-100", "text-gray-700");
+        this.classList.add("bg-emerald-50", "text-primary", "border", "border-emerald-200");
       });
-
     });
-
   </script>
 
-  <!-- Dynamic Database Data Binding Script -->
+  <!-- Script de Enlace con Base de Datos Dinámica -->
   <script>
     async function bindDynamicProducts() {
       try {
-        console.log('Fetching dynamic products from API...');
         const response = await fetch('/api/productos');
-        if (!response.ok) {
-          throw new Error('No se pudo cargar la lista de productos de la base de datos.');
-        }
-
+        if (!response.ok) throw new Error('Error al conectar con la API de productos.');
         const productos = await response.json();
-        console.log('API Products loaded:', productos);
-
-        const mappedNames = new Set([
-          'miel de abeja',
-          'nectar de frutas',
-          'nectar de fruta',
-          'néctar de frutas',
-          'destilados y licores',
-          'destilados',
-          'plantones de palto',
-          'palto',
-          'plantones de mango',
-          'mango',
-          'plantones de lucuma',
-          'plantones de lúcuma',
-          'lúcuma',
-          'lucuma',
-          'semilla de gulupa',
-          'gulupa',
-          'compost organico',
-          'compost orgánico',
-          'compost',
-          'cuyes reproductores',
-          'cuyes'
-        ]);
 
         const otrosProductos = [];
 
         productos.forEach(producto => {
           const nameNormalized = producto.nombre.toLowerCase().trim()
-            .normalize("NFD").replace(/[\u0300-\u036f]/g, ""); // strip accents
+            .normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
           let matched = false;
 
-          // 1. Miel de Abeja
           if (nameNormalized === 'miel de abeja') {
             updateElementText('miel-title', producto.nombre);
             updateElementText('miel-desc', producto.descripcion);
             updateElementImage('miel-img', producto.imagen_url);
             matched = true;
-          }
-          // 2. Nectar de Frutas
-          else if (nameNormalized.includes('nectar')) {
+          } else if (nameNormalized.includes('nectar')) {
             updateElementText('nectar-title', producto.nombre);
             updateElementText('nectar-desc', producto.descripcion);
             updateElementImage('nectar-img', producto.imagen_url);
             matched = true;
-          }
-          // 3. Destilados y Licores
-          else if (nameNormalized.includes('destilado') || nameNormalized.includes('licores')) {
+          } else if (nameNormalized.includes('destilado') || nameNormalized.includes('licores')) {
             updateElementText('destilados-title', producto.nombre);
             updateElementText('destilados-desc', producto.descripcion);
             updateElementImage('destilados-img', producto.imagen_url);
-
             if (producto.etiquetas && producto.etiquetas.length > 0) {
               const tagsContainer = document.getElementById('destilados-tags');
               if (tagsContainer) {
                 tagsContainer.innerHTML = producto.etiquetas.map(t =>
-                  `<span class="px-2.5 py-0.5 text-sm font-semibold rounded-full bg-slate-100 text-slate-600">${t}</span>`
+                  `<span class="px-2.5 py-1 text-xs font-medium rounded-md bg-gray-100 text-gray-700">${t}</span>`
                 ).join('');
               }
             }
             matched = true;
-          }
-          // 4. Plantones de Palto
-          else if (nameNormalized.includes('palto')) {
+          } else if (nameNormalized.includes('palto')) {
             updateElementText('palto-title', producto.nombre);
             updateElementText('palto-desc', producto.descripcion);
-            updateElementImage('', producto.imagen_url);
-            // NOTA: no se sobrescribe #palto-tags (botones de variedad) ni
-            // #info-variedad; esos los controla el script de selección de
-            // variedades, no la API.
             matched = true;
-          }
-          // 5. Plantones de Mango
-          else if (nameNormalized.includes('mango')) {
+          } else if (nameNormalized.includes('mango')) {
             updateElementText('mango-title', producto.nombre);
-            // NOTA: no se sobrescribe #mango-tags ni #mango-desc por la misma razón.
             matched = true;
-          }
-          // 6. Plantones de Lúcuma
-          else if (nameNormalized.includes('lucuma')) {
+          } else if (nameNormalized.includes('lucuma')) {
             updateElementText('lucuma-title', producto.nombre);
             updateElementText('lucuma-desc', producto.descripcion);
             matched = true;
-          }
-          // 7. Semilla de Gulupa
-          else if (nameNormalized.includes('gulupa')) {
+          } else if (nameNormalized.includes('gulupa')) {
             updateElementText('gulupa-title', producto.nombre);
             updateElementText('gulupa-desc', producto.descripcion);
             matched = true;
-          }
-          // 8. Compost Orgánico
-          else if (nameNormalized.includes('compost')) {
+          } else if (nameNormalized.includes('compost')) {
             updateElementText('compost-title', producto.nombre);
             updateElementText('compost-desc', producto.descripcion);
             matched = true;
-          }
-          // 9. Cuyes Reproductores
-          else if (nameNormalized.includes('cuyes') || nameNormalized.includes('cuye')) {
+          } else if (nameNormalized.includes('cuyes') || nameNormalized.includes('cuye')) {
             updateElementText('cuyes-title', producto.nombre);
             updateElementText('cuyes-desc', producto.descripcion);
             matched = true;
@@ -832,7 +726,6 @@
           }
         });
 
-        // If there are other products added dynamically in the database, render them at the bottom
         if (otrosProductos.length > 0) {
           const section = document.getElementById('otros-productos-section');
           const container = document.getElementById('otros-productos-container');
@@ -840,42 +733,32 @@
           if (section && container) {
             section.classList.remove('hidden');
             container.innerHTML = otrosProductos.map(p => `
-              <div class="bg-white rounded-[30px] border border-gray-100 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
+              <div class="bg-white rounded-3xl border border-gray-200/85 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect">
                 <div>
-                  ${p.imagen_url ? `
-                    <div class="relative">
-                      <img src="${p.imagen_url}" alt="${p.nombre}" class="w-full h-56 object-cover" />
-                    </div>
-                  ` : ''}
+                  ${p.imagen_url ? `<img src="${p.imagen_url}" alt="${p.nombre}" class="w-full h-56 object-cover bg-gray-50" />` : ''}
                   <div class="p-6">
-                    <div class="flex items-center justify-between mb-3">
-                      <span class="text-sm font-bold text-[#00944a]">${p.nombre_categoria || 'Insumo'}</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">${p.nombre}</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4">${p.descripcion}</p>
-                    
+                    <span class="text-xs font-bold uppercase tracking-wider text-primary font-display">${p.nombre_categoria || 'Insumo'}</span>
+                    <h3 class="text-xl font-bold text-ink my-2 font-display">${p.nombre}</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-4 font-body">${p.descripcion}</p>
                     ${p.etiquetas && p.etiquetas.length > 0 ? `
                       <div class="flex flex-wrap gap-2 mb-2">
-                        ${p.etiquetas.map(t => `<span class="px-2.5 py-0.5 text-sm font-semibold rounded-full bg-slate-100 text-slate-600">${t}</span>`).join('')}
+                        ${p.etiquetas.map(t => `<span class="px-2.5 py-1 text-xs font-medium rounded-md bg-gray-100 text-gray-700">${t}</span>`).join('')}
                       </div>
                     ` : ''}
                   </div>
                 </div>
                 <div class="p-6 pt-0">
-                  <a href="/paginas/contacto.html" class="inline-flex items-center text-sm font-semibold text-[#00944a] hover:text-[#006a49] transition-colors group">
-                    Solicitar Cotización
-                    <svg class="w-4 h-4 ml-1.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                    </svg>
+                  <a href="/paginas/contacto.html" class="inline-flex items-center text-sm font-semibold text-primary hover:text-primary-dark transition-colors group font-display">
+                    <span>Solicitar Cotización</span>
+                    <i class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
                   </a>
                 </div>
               </div>
             `).join('');
           }
         }
-
       } catch (err) {
-        console.warn('Dynamic product loading offline, using preset static content:', err.message);
+        console.warn('Carga dinámica offline, usando contenido estático base:', err.message);
       }
     }
 
@@ -885,39 +768,18 @@
     }
 
     function updateElementImage(id, src) {
-
       const el = document.getElementById(id);
-
       if (!el || !src) return;
-
-
-      // Si la BD devuelve solamente el nombre del archivo
       if (!src.startsWith("/") && !src.startsWith("http")) {
-
         src = "/activos/img_productos/" + src;
-
       }
-
-
-      console.log("Imagen cargada:", src);
-
       el.src = src;
-
-
-      // Si falla la imagen, mostrar una alternativa
       el.onerror = function () {
-
-        console.error("No existe la imagen:", src);
-
         this.src = "/activos/img_productos/default-producto.jpg";
-
       };
-
     }
 
-    // Bind products after DOM is ready
     document.addEventListener("DOMContentLoaded", () => {
-      // Execute the binder script
       bindDynamicProducts();
     });
   </script>
