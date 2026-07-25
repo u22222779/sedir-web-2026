@@ -28,12 +28,27 @@ async function initEstacionHistorica() {
   const root = document.getElementById("estacion-historica");
   if (!root) return;
 
+  const resultsContainer = document.getElementById("estacion-resultados");
+  if (resultsContainer) {
+    resultsContainer.innerHTML = `
+      <div class="col-span-full flex items-center justify-center gap-2 text-sm text-gray-400 py-10">
+        <span class="material-symbols-outlined animate-spin text-xl leading-none">progress_activity</span>
+        Cargando registro histórico...
+      </div>`;
+  }
+
   try {
     const res = await fetch(ESTACION_MANIFEST_URL);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
     estacionManifest = await res.json();
   } catch (err) {
     console.error("No se pudo cargar el histórico de la estación:", err);
-    root.innerHTML = '<p class="text-sm text-red-600">No se pudo cargar el histórico en este momento.</p>';
+    if (resultsContainer) {
+      resultsContainer.innerHTML = `
+        <div class="col-span-full bg-red-50 border border-red-200 text-red-700 rounded-xl p-4 text-sm">
+          No se pudo cargar el histórico en este momento. Intenta recargar la página.
+        </div>`;
+    }
     return;
   }
 
@@ -57,7 +72,9 @@ function renderEstacionForm() {
   const years = getAvailableYears();
   const now = new Date();
   const defaultYear = years.includes(String(now.getFullYear())) ? String(now.getFullYear()) : years[0];
-  const defaultMonth = String(now.getMonth()).padStart(2, "0") === "00" ? "12" : String(now.getMonth()).padStart(2, "0");
+  // now.getMonth() es base 0 (enero = 0, julio = 6); sumamos 1 para obtener
+  // el número de mes real (01-12) y evitar que quede desfasado un mes.
+  const defaultMonth = String(now.getMonth() + 1).padStart(2, "0");
 
   yearSelect.innerHTML = years.map((y) => `<option value="${y}" ${y === defaultYear ? "selected" : ""}>${y}</option>`).join("");
   monthSelect.innerHTML = MESES_ESTACION.map(([val, label]) =>
