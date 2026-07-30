@@ -102,6 +102,8 @@
             box-shadow: 0 16px 32px rgba(0, 106, 73, 0.12);
         }
     </style>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 
 <body class="antialiased bg-gray-50 text-gray-800 flex flex-col min-h-screen">
@@ -207,9 +209,10 @@
         </section>
 
         <!-- Proyecto Río Loco (Alineado exactamente al diseño gráfico) -->
-        <section class="py-24 bg-[#006A49] text-white relative overflow-hidden">
+        <section class="py-24 bg-[#006A49] text-white relative overflow-hidden" style="background-image: url('../activos/img_logos/logo_LED.png'); background-repeat: repeat; background-size: 200px;">
             <!-- Patrón de fondo de marca de agua y textura de overlay -->
-            <div class="absolute inset-0 opacity-15 mix-blend-overlay bg-[url('/activos/img_proyectos/Apicultura4.jpg')] bg-cover bg-center pointer-events-none"></div>
+            <div class="absolute inset-0 bg-[#006A49]/90"></div>
+            <div class="absolute inset-0 opacity-15 mix-blend-overlay bg-cover bg-center pointer-events-none"></div>
             <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 24px 24px;"></div>
 
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -397,6 +400,8 @@
     <!-- Footer -->
     <div id="footer-container" data-component="/components/footer.html"></div>
     <div id="whatsapp-container" data-component="/components/whatsapp.html"></div>
+  <!-- Radio Component -->
+  <div id="radio-container" data-component="/components/radio.html"></div>
 
     <script src="../activos/js/menu.js"></script>
 </body>
