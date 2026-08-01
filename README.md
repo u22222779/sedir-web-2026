@@ -56,9 +56,10 @@ La API queda disponible en:
 http://localhost:3000
 ```
 
-Endpoint de verificacion:
+Endpoints de verificacion:
 
-- `GET /health`
+- `GET /health`: liveness check. Confirma que el proceso Express esta arriba. No depende de servicios externos.
+- `GET /health/ready`: readiness check. Verifica ademas la conexion a PostgreSQL (`SELECT 1;`). Responde `200` si todo esta bien, `503` si la base de datos no responde.
 
 ## Conexion esperada
 

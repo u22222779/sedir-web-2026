@@ -60,6 +60,28 @@ describe("Pruebas funcionales — rutas backend", () => {
     });
   });
 
+  describe("GET /health/ready", () => {
+    test("responde 200 con estado ok cuando la base de datos responde", async () => {
+      pool.query.mockResolvedValueOnce({ rows: [{ "?column?": 1 }] });
+
+      const respuesta = await request(app).get("/health/ready");
+
+      expect(respuesta.status).toBe(200);
+      expect(respuesta.body.status).toBe("ok");
+      expect(respuesta.body.checks.database).toBe("ok");
+    });
+
+    test("responde 503 con estado degraded cuando la base de datos falla", async () => {
+      pool.query.mockRejectedValueOnce(new Error("conexión rechazada"));
+
+      const respuesta = await request(app).get("/health/ready");
+
+      expect(respuesta.status).toBe(503);
+      expect(respuesta.body.status).toBe("degraded");
+      expect(respuesta.body.checks.database).toBe("error");
+    });
+  });
+
   // --------------------------------------------------------------------
   // Auth
   // --------------------------------------------------------------------
