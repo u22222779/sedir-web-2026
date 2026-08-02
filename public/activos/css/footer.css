@@ -1,4 +1,8 @@
 /* SECTION: Footer */
+footer {
+  font-family: 'Montserrat', sans-serif;
+}
+
 footer a {
   transition: color 0.3s ease, background-color 0.3s ease;
 }

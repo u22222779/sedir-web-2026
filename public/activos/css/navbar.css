@@ -82,6 +82,11 @@
   width: 100%;
 }
 
+/* Ocultar línea naranja en el botón del menú desplegable */
+.group > .navbar-link::after {
+  display: none;
+}
+
 .navbar-burger {
   color: #ffffff;
   transition: color 0.25s ease;
@@ -140,16 +145,22 @@
 }
 
 .navbar-logo {
-  height: 100px;
-  max-height: 100px;
+  height: 70px;
+  max-height: 70px;
   width: auto;
   object-fit: contain;
   transition: height 0.3s ease;
 }
 
-.navbar-shell.is-scrolled .navbar-logo {
-  height: 90px;
-  max-height: 90px;
+/* LOGO VISIBILITY TOGGLE */
+.logo-scrolled {
+  display: none;
+}
+.navbar-shell.is-scrolled .logo-default {
+  display: none;
+}
+.navbar-shell.is-scrolled .logo-scrolled {
+  display: block;
 }
 
 /* ==============================
@@ -226,13 +237,8 @@
   }
 
   .navbar-logo {
-    height: 75px;
-    max-height: 75px;
-  }
-
-  .navbar-shell.is-scrolled .navbar-logo {
-    height: 65px;
-    max-height: 65px;
+    height: 50px;
+    max-height: 50px;
   }
 
   .navbar-shell.menu-open .navbar-logo-container {
@@ -248,6 +254,16 @@
     width: 48px;
     height: 48px;
     padding: 0;
+  }
+
+  /* Cambiar color del icono de menú a oscuro cuando el panel está abierto */
+  .navbar-shell.menu-open .navbar-burger {
+    color: var(--color-fondo-oscuro);
+  }
+
+  /* Forzar fuente en el menú lateral para evitar overrides de la página */
+  #mobile-menu {
+    font-family: 'Montserrat', sans-serif;
   }
 
   /* Enlaces móviles con tamaño de letra 18px para que sean fáciles de tocar */

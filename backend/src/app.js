@@ -22,7 +22,7 @@ app.use(securityHeaders);
 app.use(compression());
 app.use(express.json({ limit: '100kb' }));
 app.use(express.urlencoded({ extended: true, limit: '100kb' }));
-app.use(express.static(path.join(__dirname, '..', '..', 'public')));
+app.use(express.static(path.join(__dirname, '..', '..', 'public'), { extensions: ['html'] }));
 
 app.use(healthRoutes);
 app.use('/api', apiRateLimiter);
