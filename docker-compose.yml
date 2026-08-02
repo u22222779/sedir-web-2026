@@ -1,5 +1,16 @@
-# Local Postgres service removed. This project expects an external PostgreSQL
-# instance configured via environment variables in `backend/.env` (PGHOST,
-# PGPORT, PGUSER, PGPASSWORD, PGDATABASE, PGSSL). If you need a local Docker
-# Postgres for development, re-add the service block here or run a separate
-# Postgres container and map credentials accordingly.
+services:
+  postgres:
+    image: postgres:13
+    container_name: sedir-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Gadiel01
+      POSTGRES_DB: Datos
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  postgres-data:
