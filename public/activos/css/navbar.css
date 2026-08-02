@@ -256,6 +256,16 @@
     padding: 0;
   }
 
+  /* Cambiar color del icono de menú a oscuro cuando el panel está abierto */
+  .navbar-shell.menu-open .navbar-burger {
+    color: var(--color-fondo-oscuro);
+  }
+
+  /* Forzar fuente en el menú lateral para evitar overrides de la página */
+  #mobile-menu {
+    font-family: 'Montserrat', sans-serif;
+  }
+
   /* Enlaces móviles con tamaño de letra 18px para que sean fáciles de tocar */
   #mobile-menu .navbar-link,
   .navbar-mobile-menu .navbar-link {
