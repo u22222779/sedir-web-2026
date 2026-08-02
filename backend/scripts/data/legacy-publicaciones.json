@@ -66,7 +66,7 @@
     "tipo": "boletin",
     "titulo": "Boletín Jul 2024",
     "descripcion": "Boletín informativo con actividades institucionales y recomendaciones técnicas.",
-    "imagen_portada": "https://sedir.org.pe/imgs/tit-edicionJUL-2024.jpg",
+    "imagen_portada": "/activos/img_boletines/boletin-jul-2024.jpg",
     "archivo_url": "https://online.fliphtml5.com/jgvew/xupc/",
     "orden": 15,
     "fecha": "2024-07-01"
@@ -75,7 +75,7 @@
     "tipo": "boletin",
     "titulo": "Boletín Abr 2024",
     "descripcion": "Boletín informativo con actividades institucionales y recomendaciones técnicas.",
-    "imagen_portada": "https://sedir.org.pe/imgs/tit-edicionABR-2024.jpg",
+    "imagen_portada": "/activos/img_boletines/boletin-abril-2024.jpg",
     "archivo_url": "https://online.fliphtml5.com/jgvew/qvgo/",
     "orden": 14,
     "fecha": "2024-04-01"
@@ -84,7 +84,7 @@
     "tipo": "boletin",
     "titulo": "Boletín Oct 2023",
     "descripcion": "Boletín informativo con actividades institucionales y recomendaciones técnicas.",
-    "imagen_portada": "https://sedir.org.pe/imgs/tit-edicionOCT-2023.jpg",
+    "imagen_portada": "/activos/img_boletines/boletin-oct-2023.jpg",
     "archivo_url": "https://online.fliphtml5.com/jgvew/xngq/",
     "orden": 13,
     "fecha": "2023-10-01"
@@ -93,7 +93,7 @@
     "tipo": "boletin",
     "titulo": "Boletín Jul 2023",
     "descripcion": "Boletín informativo con actividades institucionales y recomendaciones técnicas.",
-    "imagen_portada": "https://sedir.org.pe/imgs/tit-edicionJUL-2023.jpg",
+    "imagen_portada": "/activos/img_boletines/boletin-jul-2023.jpg",
     "archivo_url": "https://online.fliphtml5.com/jgvew/saxi/",
     "orden": 12,
     "fecha": "2023-07-01"
@@ -102,7 +102,7 @@
     "tipo": "boletin",
     "titulo": "Boletín May 2023",
     "descripcion": "Boletín informativo con actividades institucionales y recomendaciones técnicas.",
-    "imagen_portada": "https://sedir.org.pe/imgs/tit-edicionMAY-2023.jpg",
+    "imagen_portada": "/activos/img_boletines/boletin-may-2023.jpg",
     "archivo_url": "https://online.fliphtml5.com/jgvew/jeag/",
     "orden": 11,
     "fecha": "2023-05-01"
@@ -111,7 +111,7 @@
     "tipo": "boletin",
     "titulo": "Boletín Oct 2022",
     "descripcion": "Boletín informativo con actividades institucionales y recomendaciones técnicas.",
-    "imagen_portada": "https://sedir.org.pe/imgs/tit-edicionOCT-2022.jpg",
+    "imagen_portada": "/activos/img_boletines/boletin-oct-2022.jpg",
     "archivo_url": "https://online.fliphtml5.com/mfao/lsjk/",
     "orden": 10,
     "fecha": "2022-10-01"
@@ -120,7 +120,7 @@
     "tipo": "boletin",
     "titulo": "Boletín Jul 2022",
     "descripcion": "Boletín informativo con actividades institucionales y recomendaciones técnicas.",
-    "imagen_portada": "https://sedir.org.pe/imgs/tit-edicionJUL-2022.jpg",
+    "imagen_portada": "/activos/img_boletines/boletin-jul-2022.jpg",
     "archivo_url": "https://online.fliphtml5.com/mfao/iryg/",
     "orden": 9,
     "fecha": "2022-07-01"
@@ -129,7 +129,7 @@
     "tipo": "boletin",
     "titulo": "Boletín Abr 2022",
     "descripcion": "Boletín informativo con actividades institucionales y recomendaciones técnicas.",
-    "imagen_portada": "https://sedir.org.pe/imgs/tit-edicionABR-2022.jpg",
+    "imagen_portada": "/activos/img_boletines/boletin-abr-2022.jpg",
     "archivo_url": "https://online.fliphtml5.com/mfao/akwe/",
     "orden": 8,
     "fecha": "2022-04-01"
@@ -138,7 +138,7 @@
     "tipo": "boletin",
     "titulo": "Boletín Set 2021",
     "descripcion": "Boletín informativo con actividades institucionales y recomendaciones técnicas.",
-    "imagen_portada": "https://sedir.org.pe/imgs/tit-edicionSET-2021.jpg",
+    "imagen_portada": "/activos/img_boletines/boletin-set-2021.jpg",
     "archivo_url": "https://online.fliphtml5.com/mfao/ravw/",
     "orden": 7,
     "fecha": "2021-09-01"
@@ -147,7 +147,7 @@
     "tipo": "boletin",
     "titulo": "Boletín Dic 2020",
     "descripcion": "Boletín informativo con actividades institucionales y recomendaciones técnicas.",
-    "imagen_portada": "https://sedir.org.pe/imgs/tit-edicionDIC-2020.jpg",
+    "imagen_portada": "/activos/img_boletines/boletin-dic-2020.jpg",
     "archivo_url": "https://online.fliphtml5.com/mfao/ihlr/",
     "orden": 6,
     "fecha": "2020-12-01"
@@ -156,7 +156,7 @@
     "tipo": "boletin",
     "titulo": "Boletín Ago 2020",
     "descripcion": "Boletín informativo con actividades institucionales y recomendaciones técnicas.",
-    "imagen_portada": "https://sedir.org.pe/imgs/tit-edicionAGO-2020.jpg",
+    "imagen_portada": "/activos/img_boletines/boletin-ago-2020.jpg",
     "archivo_url": "https://online.fliphtml5.com/mfao/syqa/",
     "orden": 5,
     "fecha": "2020-08-01"
@@ -165,7 +165,7 @@
     "tipo": "boletin",
     "titulo": "Boletín Abr 2020",
     "descripcion": "Boletín informativo con actividades institucionales y recomendaciones técnicas.",
-    "imagen_portada": "https://sedir.org.pe/imgs/tit-edicionABR-2020.jpg",
+    "imagen_portada": "/activos/img_boletines/boletin-abr-2020.jpg",
     "archivo_url": "https://online.fliphtml5.com/mfao/bqoe/",
     "orden": 4,
     "fecha": "2020-04-01"
@@ -174,7 +174,7 @@
     "tipo": "boletin",
     "titulo": "Boletín Oct 2019",
     "descripcion": "Boletín informativo con actividades institucionales y recomendaciones técnicas.",
-    "imagen_portada": "https://sedir.org.pe/imgs/tit-edicionOCT-2019.jpg",
+    "imagen_portada": "/activos/img_boletines/boletin-oct-2019.jpg",
     "archivo_url": "https://online.fliphtml5.com/mfao/woci/",
     "orden": 3,
     "fecha": "2019-10-01"
@@ -183,7 +183,7 @@
     "tipo": "boletin",
     "titulo": "Boletín edición 2",
     "descripcion": "Boletín informativo con actividades institucionales y recomendaciones técnicas.",
-    "imagen_portada": "https://sedir.org.pe/imgs/tit-edicion2.jpg",
+    "imagen_portada": "/activos/img_boletines/boletin-edicion2.jpg",
     "archivo_url": "https://online.fliphtml5.com/mfao/ngyn/",
     "orden": 2,
     "fecha": null
@@ -192,7 +192,7 @@
     "tipo": "boletin",
     "titulo": "Boletín edición 1",
     "descripcion": "Boletín informativo con actividades institucionales y recomendaciones técnicas.",
-    "imagen_portada": "https://sedir.org.pe/imgs/tit-edicion3.jpg",
+    "imagen_portada": "/activos/img_boletines/Boletin-edicion1.jpg",
     "archivo_url": "https://online.fliphtml5.com/mfao/nftd/",
     "orden": 1,
     "fecha": null
