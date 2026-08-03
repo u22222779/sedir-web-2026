@@ -22,8 +22,21 @@
     STORAGE_WIND_KEY: "sedir_wlpro_viento_v1",
     STORAGE_TEMP_KEY: "sedir_wlpro_temperatura_v1",
     MAX_BAROMETER_AGE_MS: 6 * 60 * 60 * 1000,  // Ventana de 6 horas
-    MAX_WIND_AGE_MS: 24 * 60 * 60 * 1000,      // Ventana de 24 horas (Día)
+    MAX_WIND_AGE_MS: 30 * 24 * 60 * 60 * 1000, // Ventana de 30 días para la rosa de vientos
     MAX_TEMP_AGE_MS: 24 * 60 * 60 * 1000,      // Ventana de 24 horas para alta/baja relativa
+    MAX_DAY_AGE_MS: 24 * 60 * 60 * 1000,       // Ventana genérica de 24 horas (Día) para otras métricas
+    STORAGE_KEYS: {
+      windchill: "sedir_wlpro_windchill_v1",
+      heatindex: "sedir_wlpro_heatindex_v1",
+      dewpoint: "sedir_wlpro_dewpoint_v1",
+      wetbulb: "sedir_wlpro_wetbulb_v1",
+      windspeed: "sedir_wlpro_windspeed_v1",
+      humedad: "sedir_wlpro_humedad_v1",
+      solar: "sedir_wlpro_solar_v1",
+      uv: "sedir_wlpro_uv_v1",
+      lluviaDia: "sedir_wlpro_lluvia_dia_v1",
+      lluviaTasa: "sedir_wlpro_lluvia_tasa_v1",
+    },
     COLORS: {
       // Paleta institucional (Manual de Identidad Visual SEDIR): una sola
       // familia cromática (verde institucional + neutros de tinta) en vez
@@ -202,6 +215,46 @@
         return Array.isArray(data) ? data.filter(i => now - i.t <= CONFIG.MAX_WIND_AGE_MS) : [];
       } catch (e) { return []; }
     }
+
+    static getWindHistoryByPeriod(period = "24h") {
+      const history = this.getWindHistory();
+      if (!history.length) return [];
+      const now = Date.now();
+      const periodMs = {
+        "24h": 24 * 60 * 60 * 1000,
+        "7d": 7 * 24 * 60 * 60 * 1000,
+        "30d": 30 * 24 * 60 * 60 * 1000,
+      }[period] || (24 * 60 * 60 * 1000);
+      return history.filter(item => now - item.t <= periodMs);
+    }
+
+    static _getGenericHistory(storageKey, maxAgeMs) {
+      try {
+        const data = JSON.parse(localStorage.getItem(storageKey) || "[]");
+        const now = Date.now();
+        return Array.isArray(data) ? data.filter(i => now - i.t <= maxAgeMs) : [];
+      } catch (e) { return []; }
+    }
+
+    static _recordGeneric(storageKey, value, maxAgeMs) {
+      if (typeof value !== "number" || Number.isNaN(value)) return this._getGenericHistory(storageKey, maxAgeMs);
+      let history = this._getGenericHistory(storageKey, maxAgeMs);
+      const now = Date.now();
+      history.push({ t: now, v: PhysicsConverter.round(value, 1) });
+      history = history.filter(item => now - item.t <= maxAgeMs);
+      try { localStorage.setItem(storageKey, JSON.stringify(history)); } catch (e) {}
+      return history;
+    }
+
+    static recordAndGetStats(metricKey, value, maxAgeMs = CONFIG.MAX_DAY_AGE_MS) {
+      const storageKey = CONFIG.STORAGE_KEYS[metricKey];
+      const current = PhysicsConverter.round(value, 1);
+      if (!storageKey) return { current, low: current, high: current };
+      const history = this._recordGeneric(storageKey, value, maxAgeMs);
+      if (!history.length) return { current, low: current, high: current };
+      const vals = history.map(h => h.v);
+      return { current, low: Math.min(...vals), high: Math.max(...vals) };
+    }
   }
 
   // ==========================================================================
@@ -225,9 +278,10 @@
       const size = 220;
       const cx = size / 2, cy = size / 2, r = 80;
       const hasData = typeof dirDeg === "number";
+      const angle = hasData ? Math.round(dirDeg) : null;
 
       let svg = `<svg viewBox="0 0 ${size} ${size}" class="w-full max-w-[200px] h-auto mx-auto select-none" xmlns="http://www.w3.org/2000/svg">`;
-      
+
       // Grilla de compás y ejes
       svg += `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${CONFIG.COLORS.BORDER_GRID}" stroke-width="1"/>`;
       svg += `<circle cx="${cx}" cy="${cy}" r="${r * 0.5}" fill="none" stroke="${CONFIG.COLORS.BORDER_GRID}" stroke-width="1" stroke-dasharray="3 3"/>`;
@@ -241,16 +295,16 @@
         svg += `<path d="${this._createSectorPath(cx, cy, r * 0.95, dirDeg - 18, dirDeg + 18)}" fill="${CONFIG.COLORS.WIND_VECTOR}" fill-opacity="0.9" stroke="#0284C7" stroke-width="1"/>`;
       }
 
-      // Nomenclatura externa idéntica a la imagen (norte, SE, S, SUDOESTE, W, noroeste, nordeste)
+      // Nomenclatura externa idéntica a la imagen
       const labels = [
-        { text: "norte", angle: 0, rOffset: 16, bold: false },
-        { text: "nordeste", angle: 45, rOffset: 16, bold: false },
-        { text: "E", angle: 90, rOffset: 14, bold: false },
-        { text: "SE", angle: 135, rOffset: 14, bold: false },
-        { text: "S", angle: 180, rOffset: 14, bold: false },
-        { text: "SUDOESTE", angle: 225, rOffset: 20, bold: false },
-        { text: "W", angle: 270, rOffset: 14, bold: false },
-        { text: "noroeste", angle: 315, rOffset: 18, bold: false },
+        { text: "norte", angle: 0, rOffset: 16 },
+        { text: "nordeste", angle: 45, rOffset: 16 },
+        { text: "E", angle: 90, rOffset: 14 },
+        { text: "SE", angle: 135, rOffset: 14 },
+        { text: "S", angle: 180, rOffset: 14 },
+        { text: "SUDOESTE", angle: 225, rOffset: 20 },
+        { text: "W", angle: 270, rOffset: 14 },
+        { text: "noroeste", angle: 315, rOffset: 18 },
       ];
 
       labels.forEach(l => {
@@ -259,14 +313,29 @@
       });
 
       svg += `</svg>`;
-      return svg;
+
+      return `
+        <div class="flex flex-col items-center w-full">
+          <div class="text-[11px] font-semibold text-slate-600 uppercase tracking-[0.18em] mb-1">Cedo Moro</div>
+          ${svg}
+          <div class="mt-2 text-[11px] font-bold text-slate-700 uppercase tracking-wide">
+            Dirección del viento: ${hasData ? `${angle}°` : "--"}
+          </div>
+        </div>
+      `;
     }
 
     // Panel 4: Rosa de los vientos multicapa (Clon exacto de la tarjeta 4 con leyenda)
-    static renderWindRosePro(historyData, currentDir, currentSpeed) {
+    static renderWindRosePro(historyData, currentDir, currentSpeed, period = "24h") {
       // Si el historial está vacío en el primer minuto, generamos una semilla realista basada en el dato actual
       let data = historyData.length > 0 ? historyData : [{ d: currentDir || 135, s: currentSpeed || 2.5 }];
-      
+
+      const periodLabel = {
+        "24h": "DÍA",
+        "7d": "SEMANA",
+        "30d": "MES",
+      }[period] || "DÍA";
+
       const sectors = 8;
       const sectorAngle = 360 / sectors;
       const counts = Array.from({ length: sectors }, () => Array(CONFIG.WIND_SPEED_BINS.length).fill(0));
@@ -330,7 +399,7 @@
       svg += `</svg>`;
 
       // Subtítulo y Leyenda de colores idéntica a WeatherLink Pro
-      svg += `<div class="text-[11px] font-bold text-slate-600 uppercase tracking-wider mt-1 mb-2">DÍA</div>`;
+      svg += `<div class="text-[11px] font-bold text-slate-600 uppercase tracking-wider mt-1 mb-2">${periodLabel}</div>`;
       svg += `<div class="grid grid-cols-2 gap-x-2 gap-y-1.5 w-full max-w-[210px] px-1">`;
       CONFIG.WIND_SPEED_BINS.forEach(bin => {
         svg += `<div class="flex items-center justify-center py-0.5 px-1.5 rounded text-[10px] font-bold text-white shadow-sm" style="background-color: ${bin.color}">${bin.label}</div>`;
@@ -349,12 +418,62 @@
       // Guarda referencias { svg, ...escalas/selecciones } por contenedor,
       // para actualizar datos sin destruir y recrear el SVG en cada refresco.
       this.charts = new Map();
+      this.tooltipEl = null;
     }
 
     _clear(containerId) {
       const el = document.getElementById(containerId);
       if (el) el.innerHTML = "";
       this.charts.delete(containerId);
+    }
+
+    _ensureTooltip() {
+      if (this.tooltipEl && document.body.contains(this.tooltipEl)) return this.tooltipEl;
+      let el = document.getElementById("wl-tooltip-global");
+      if (!el) {
+        el = document.createElement("div");
+        el.id = "wl-tooltip-global";
+        el.className = "wl-chart-tooltip";
+        document.body.appendChild(el);
+      }
+      this.tooltipEl = el;
+      return el;
+    }
+
+    _tooltipHTML(title, current, low, high, unit = "") {
+      const fmt = (v) => (typeof v === "number" && !Number.isNaN(v))
+        ? `${v.toFixed(1).replace(".", ",")}${unit ? " " + unit : ""}`
+        : "--";
+      return `
+        <div class="wl-chart-tooltip-title">${title}</div>
+        <div class="wl-chart-tooltip-row"><span>Corriente</span><b>${fmt(current)}</b></div>
+        <div class="wl-chart-tooltip-row wl-chart-tooltip-low"><span>Baja</span><b>${fmt(low)}</b></div>
+        <div class="wl-chart-tooltip-row wl-chart-tooltip-high"><span>Alta</span><b>${fmt(high)}</b></div>
+      `;
+    }
+
+    _showTooltip(html, evt) {
+      const el = this._ensureTooltip();
+      el.innerHTML = html;
+      el.style.display = "block";
+      this._moveTooltip(evt);
+    }
+
+    _moveTooltip(evt) {
+      const el = this.tooltipEl;
+      if (!el || typeof evt?.clientX !== "number") return;
+      const pad = 16;
+      const rect = el.getBoundingClientRect();
+      let x = evt.clientX + pad;
+      let y = evt.clientY + pad;
+      if (x + rect.width > window.innerWidth - 8) x = evt.clientX - rect.width - pad;
+      if (y + rect.height > window.innerHeight - 8) y = evt.clientY - rect.height - pad;
+      el.style.left = `${Math.max(8, x)}px`;
+      el.style.top = `${Math.max(8, y)}px`;
+    }
+
+    _hideTooltip() {
+      if (this.tooltipEl) this.tooltipEl.style.display = "none";
     }
 
     // Crea (o reutiliza) el <svg> responsivo de un contenedor, con viewBox
@@ -437,6 +556,7 @@
         .attr("x", d => x(d.label))
         .attr("width", x.bandwidth())
         .attr("fill", d => d.color)
+        .style("cursor", "pointer")
         .transition().duration(300)
         .attr("y", d => y(Math.max(d.val ?? 0, 0)))
         .attr("height", d => innerH - y(Math.max(d.val ?? 0, 0)));
@@ -450,6 +570,13 @@
         .attr("y", d => y(Math.max(d.val ?? 0, 0)) - 8)
         .text(d => d.val != null ? d.val.toFixed(1).replace(".", ",") : "--");
 
+      merged
+        .on("mousemove", (event, d) => {
+          const html = this._tooltipHTML(d.label, d.val, d.low ?? d.val, d.high ?? d.val, "°C");
+          this._showTooltip(html, event);
+        })
+        .on("mouseleave", () => this._hideTooltip());
+
       bars.exit().remove();
       this.charts.set(containerId, { type: "temp-bars" });
     }
@@ -457,7 +584,7 @@
     // ------------------------------------------------------------------
     // Panel 5: Barras de lluvia (Día / Tasa)
     // ------------------------------------------------------------------
-    renderRainBars(containerId, categories, values, maxVal = 5) {
+    renderRainBars(containerId, categories, values, maxVal = 5, stats = []) {
       if (!document.getElementById(containerId)) return;
       const width = 320, height = 180;
       const margin = { top: 22, right: 10, bottom: 26, left: 36 };
@@ -467,7 +594,12 @@
       const svg = this._svg(containerId, width, height);
       if (!svg) return;
 
-      const items = categories.map((c, i) => ({ label: c, val: values[i] }));
+      const items = categories.map((c, i) => ({
+        label: c,
+        val: values[i],
+        low: stats[i]?.low,
+        high: stats[i]?.high,
+      }));
       const x = d3.scaleBand().domain(categories).range([0, innerW]).padding(0.5);
       const domainMax = Math.max(maxVal, d3.max(values) + 1 || maxVal);
       const y = d3.scaleLinear().domain([0, domainMax]).range([innerH, 0]);
@@ -502,6 +634,7 @@
       merged.select(".bar-rect")
         .attr("x", d => x(d.label) + x.bandwidth() / 2 - 18)
         .attr("width", 36)
+        .style("cursor", "pointer")
         .transition().duration(300)
         .attr("y", d => y(Math.max(d.val ?? 0, 0)))
         .attr("height", d => innerH - y(Math.max(d.val ?? 0, 0)));
@@ -515,6 +648,13 @@
         .attr("y", d => y(Math.max(d.val ?? 0, 0)) - 8)
         .text(d => d.val != null ? d.val.toFixed(1).replace(".", ",") : "--");
 
+      merged
+        .on("mousemove", (event, d) => {
+          const html = this._tooltipHTML(d.label, d.val, d.low ?? d.val, d.high ?? d.val, "mm");
+          this._showTooltip(html, event);
+        })
+        .on("mouseleave", () => this._hideTooltip());
+
       bars.exit().remove();
       this.charts.set(containerId, { type: "rain-bars" });
     }
@@ -525,7 +665,7 @@
     renderGauge(containerId, value, options = {}) {
       const el = document.getElementById(containerId);
       if (!el) return;
-      const { max = 100, unit = "", color = CONFIG.COLORS.HUMIDITY_GREEN, decimals = 1 } = options;
+      const { max = 100, unit = "", color = CONFIG.COLORS.HUMIDITY_GREEN, decimals = 1, label = "", low, high } = options;
       const isValid = typeof value === "number" && !Number.isNaN(value);
       const frac = isValid ? Math.max(0, Math.min(1, value / max)) : 0;
       const textVal = isValid ? `${value.toFixed(decimals).replace(".", ",")} ${unit}`.trim() : "--";
@@ -562,9 +702,20 @@
           .attr("font-weight", 700)
           .attr("fill", CONFIG.COLORS.TEXT_DARK);
 
+        svg.style("cursor", "pointer")
+          .on("mousemove", (event) => {
+            const st = this.charts.get(containerId);
+            if (!st || !st.tooltip) return;
+            const { label: tLabel, current, low: tLow, high: tHigh, unit: tUnit } = st.tooltip;
+            this._showTooltip(this._tooltipHTML(tLabel, current, tLow, tHigh, tUnit), event);
+          })
+          .on("mouseleave", () => this._hideTooltip());
+
         this.charts.set(containerId, { type: "gauge", g, arcGen: d3.arc().innerRadius(innerR).outerRadius(outerR).startAngle(startAngle) });
         state = this.charts.get(containerId);
       }
+
+      state.tooltip = { label, current: isValid ? value : null, low, high, unit };
 
       const targetAngle = startAngle + frac * (endAngle - startAngle);
       const fillPath = state.g.select(".gauge-fill");
@@ -622,6 +773,14 @@
         g.append("path").attr("class", "area-path").attr("fill", `url(#${gradientId})`);
         g.append("path").attr("class", "line-path").attr("fill", "none")
           .attr("stroke", CONFIG.COLORS.BAROMETER_LINE).attr("stroke-width", 2);
+        g.append("line").attr("class", "hover-line")
+          .attr("stroke", CONFIG.COLORS.TEXT_MUTED).attr("stroke-width", 1)
+          .attr("stroke-dasharray", "3 3").style("opacity", 0).style("pointer-events", "none");
+        g.append("circle").attr("class", "hover-dot").attr("r", 4)
+          .attr("fill", CONFIG.COLORS.BAROMETER_LINE).attr("stroke", "#FFF").attr("stroke-width", 1.5)
+          .style("opacity", 0).style("pointer-events", "none");
+        g.append("rect").attr("class", "hover-capture")
+          .attr("fill", "transparent").style("cursor", "crosshair");
       } else {
         g = svg.select("g.plot-area");
       }
@@ -651,6 +810,37 @@
       g.select(".line-path").datum(historyData).transition().duration(300).attr("d", lineGen);
       g.select(".area-path").datum(historyData).transition().duration(300).attr("d", areaGen);
 
+      const periodLow = d3.min(historyData, d => d.v);
+      const periodHigh = d3.max(historyData, d => d.v);
+      const bisectDate = d3.bisector(d => new Date(d.t)).left;
+
+      g.select(".hover-capture")
+        .attr("x", 0).attr("y", 0).attr("width", innerW).attr("height", innerH)
+        .on("mousemove", (event) => {
+          const [mx] = d3.pointer(event);
+          const x0 = x.invert(mx);
+          let i = bisectDate(historyData, x0, 1);
+          const dPrev = historyData[i - 1];
+          const dNext = historyData[i];
+          const dPoint = !dNext ? dPrev : !dPrev ? dNext
+            : (x0 - new Date(dPrev.t) > new Date(dNext.t) - x0 ? dNext : dPrev);
+          if (!dPoint) return;
+
+          const px = x(new Date(dPoint.t));
+          const py = y(dPoint.v);
+          g.select(".hover-line").attr("x1", px).attr("x2", px).attr("y1", 0).attr("y2", innerH).style("opacity", 1);
+          g.select(".hover-dot").attr("cx", px).attr("cy", py).style("opacity", 1);
+
+          const timeLabel = new Date(dPoint.t).toLocaleTimeString("es-PE", { hour: "2-digit", minute: "2-digit" });
+          const html = this._tooltipHTML(`Presión — ${timeLabel}`, dPoint.v, periodLow, periodHigh, "mb");
+          this._showTooltip(html, event);
+        })
+        .on("mouseleave", () => {
+          g.select(".hover-line").style("opacity", 0);
+          g.select(".hover-dot").style("opacity", 0);
+          this._hideTooltip();
+        });
+
       this.charts.set(containerId, { type: "barometer" });
     }
 
@@ -667,13 +857,52 @@
     constructor() {
       this.charts = new ChartManager();
       this.timer = null;
+      this.lastWindSnapshot = null;
     }
 
     init() {
       if (!document.getElementById("wl-temp")) return;
+
+      document.querySelectorAll(".rose-period-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const period = btn.dataset.rosePeriod || "24h";
+          const windRoseEl = document.getElementById("wl-wind-rose");
+          if (!windRoseEl) return;
+          windRoseEl.dataset.period = period;
+          this.renderWindRoseCard(period);
+        });
+      });
+
       window.addEventListener("beforeunload", () => this.destroy());
       this.fetchData();
       this.timer = setInterval(() => this.fetchData(), CONFIG.REFRESH_INTERVAL_MS);
+    }
+
+    renderWindRoseCard(period = "24h") {
+      const windRoseEl = document.getElementById("wl-wind-rose");
+      if (!windRoseEl || !this.lastWindSnapshot) return;
+
+      const { currentDir, currentSpeed, history } = this.lastWindSnapshot;
+      const filteredHistory = TelemetryStorage.getWindHistoryByPeriod(period);
+      windRoseEl.dataset.period = period;
+      windRoseEl.innerHTML = WindVectorRenderer.renderWindRosePro(
+        filteredHistory.length ? filteredHistory : history,
+        currentDir,
+        currentSpeed,
+        period
+      );
+
+      document.querySelectorAll(".rose-period-btn").forEach((btn) => {
+        const isActive = btn.dataset.rosePeriod === period;
+        btn.classList.toggle("bg-white", isActive);
+        btn.classList.toggle("shadow-sm", isActive);
+        btn.classList.toggle("border", isActive);
+        btn.classList.toggle("border-slate-200", isActive);
+        btn.classList.toggle("text-slate-700", isActive);
+        btn.classList.toggle("text-slate-600", !isActive);
+        btn.classList.toggle("bg-transparent", !isActive);
+        btn.classList.toggle("shadow-none", !isActive);
+      });
     }
 
     async fetchData() {
@@ -748,22 +977,43 @@
         if (windRoseEl) {
           const currentMs = PhysicsConverter.mphToMs(d.viento_velocidad_mph);
           const windHistory = TelemetryStorage.recordWind(d.viento_direccion, currentMs);
-          windRoseEl.innerHTML = WindVectorRenderer.renderWindRosePro(windHistory, d.viento_direccion, currentMs);
+          this.lastWindSnapshot = {
+            currentDir: d.viento_direccion,
+            currentSpeed: currentMs,
+            history: windHistory,
+          };
+          this.renderWindRoseCard(windRoseEl.dataset.period || "24h");
         }
       });
 
+      const windChillStats = TelemetryStorage.recordAndGetStats("windchill", PhysicsConverter.fToC(d.wind_chill_f));
+      const heatIndexStats = TelemetryStorage.recordAndGetStats("heatindex", PhysicsConverter.fToC(d.heat_index_f));
+      const dewPointStats = TelemetryStorage.recordAndGetStats("dewpoint", PhysicsConverter.fToC(d.dew_point_f));
+      const wetBulbStats = TelemetryStorage.recordAndGetStats("wetbulb", PhysicsConverter.fToC(d.wet_bulb_f));
+
+      const windSpeedMs = PhysicsConverter.round(PhysicsConverter.mphToMs(d.viento_velocidad_mph), 1);
+      const windSpeedStats = TelemetryStorage.recordAndGetStats("windspeed", windSpeedMs);
+      const humedadStats = TelemetryStorage.recordAndGetStats("humedad", d.humedad);
+      const solarStats = TelemetryStorage.recordAndGetStats("solar", d.radiacion_solar_wm2);
+      const uvStats = TelemetryStorage.recordAndGetStats("uv", d.uv);
+
+      const rainDayMmRaw = PhysicsConverter.round(PhysicsConverter.inToMm(d.lluvia_dia_in), 1) || 0.0;
+      const rainRateMmRaw = PhysicsConverter.round(PhysicsConverter.inToMm(d.lluvia_tasa_in_h), 1) || 0.0;
+      const rainDayStats = TelemetryStorage.recordAndGetStats("lluviaDia", rainDayMmRaw);
+      const rainRateStats = TelemetryStorage.recordAndGetStats("lluviaTasa", rainRateMmRaw);
+
       // Panel 1: Barras de temperaturas del aire
       this.charts.renderTempBars("wl-chart-temp", [
-        { label: "Outside Temp", val: PhysicsConverter.round(PhysicsConverter.fToC(d.temperatura_f)), color: CONFIG.COLORS.TEMP_OUTSIDE },
-        { label: "Wind Chill",   val: PhysicsConverter.round(PhysicsConverter.fToC(d.wind_chill_f)),  color: CONFIG.COLORS.TEMP_WINDCHILL },
-        { label: "Heat Index",   val: PhysicsConverter.round(PhysicsConverter.fToC(d.heat_index_f)),  color: CONFIG.COLORS.TEMP_HEATINDEX },
-        { label: "Dew Point",    val: PhysicsConverter.round(PhysicsConverter.fToC(d.dew_point_f)),   color: CONFIG.COLORS.TEMP_DEWPOINT },
-        { label: "Wet Bulb",     val: PhysicsConverter.round(PhysicsConverter.fToC(d.wet_bulb_f)),    color: CONFIG.COLORS.TEMP_WETBULB },
+        { label: "Outside Temp", val: PhysicsConverter.round(PhysicsConverter.fToC(d.temperatura_f)), color: CONFIG.COLORS.TEMP_OUTSIDE, low: tempMinValue, high: tempMaxValue },
+        { label: "Wind Chill",   val: PhysicsConverter.round(PhysicsConverter.fToC(d.wind_chill_f)),  color: CONFIG.COLORS.TEMP_WINDCHILL, low: windChillStats.low, high: windChillStats.high },
+        { label: "Heat Index",   val: PhysicsConverter.round(PhysicsConverter.fToC(d.heat_index_f)),  color: CONFIG.COLORS.TEMP_HEATINDEX, low: heatIndexStats.low, high: heatIndexStats.high },
+        { label: "Dew Point",    val: PhysicsConverter.round(PhysicsConverter.fToC(d.dew_point_f)),   color: CONFIG.COLORS.TEMP_DEWPOINT, low: dewPointStats.low, high: dewPointStats.high },
+        { label: "Wet Bulb",     val: PhysicsConverter.round(PhysicsConverter.fToC(d.wet_bulb_f)),    color: CONFIG.COLORS.TEMP_WETBULB, low: wetBulbStats.low, high: wetBulbStats.high },
       ]);
 
       // Panel 2: Gauge de Velocidad del viento (m/s)
-      this.charts.renderGauge("wl-gauge-viento", PhysicsConverter.round(PhysicsConverter.mphToMs(d.viento_velocidad_mph)), {
-        max: 15, unit: "m/s", color: CONFIG.COLORS.WIND_GAUGE, decimals: 1
+      this.charts.renderGauge("wl-gauge-viento", windSpeedMs, {
+        max: 15, unit: "m/s", color: CONFIG.COLORS.WIND_GAUGE, decimals: 1, label: "Viento", low: windSpeedStats.low, high: windSpeedStats.high
       });
 
       // Panel 5: Lluvia actual (día y tasa), únicamente con datos reales que
@@ -773,11 +1023,11 @@
       const rainDayMm = PhysicsConverter.round(PhysicsConverter.inToMm(d.lluvia_dia_in), 1) || 0.0;
       const rainRateMm = PhysicsConverter.round(PhysicsConverter.inToMm(d.lluvia_tasa_in_h), 1) || 0.0;
 
-      this.charts.renderRainBars("wl-chart-lluvia-actual", ["Día", "Tasa"], [rainDayMm, rainRateMm], 4.0);
+      this.charts.renderRainBars("wl-chart-lluvia-actual", ["Día", "Tasa"], [rainDayMm, rainRateMm], 4.0, [rainDayStats, rainRateStats]);
 
       // Panel 7: Gauge de Humedad (%)
       this.charts.renderGauge("wl-gauge-humedad", PhysicsConverter.round(d.humedad, 1), {
-        max: 100, unit: "%", color: CONFIG.COLORS.HUMIDITY_GREEN, decimals: 1
+        max: 100, unit: "%", color: CONFIG.COLORS.HUMIDITY_GREEN, decimals: 1, label: "Humedad", low: humedadStats.low, high: humedadStats.high
       });
 
       // Panel 8: Barómetro (Tendencia de presión atmosférica en directo)
@@ -787,11 +1037,11 @@
 
       // Panel 9 y 10: Radiación Solar y UV
       this.charts.renderGauge("wl-gauge-solar", PhysicsConverter.round(d.radiacion_solar_wm2, 0), {
-        max: 1200, unit: "W/m²", color: CONFIG.COLORS.SOLAR_RED, decimals: 0
+        max: 1200, unit: "W/m²", color: CONFIG.COLORS.SOLAR_RED, decimals: 0, label: "Radiación Solar", low: solarStats.low, high: solarStats.high
       });
       if (document.getElementById("wl-gauge-uv")) {
         this.charts.renderGauge("wl-gauge-uv", PhysicsConverter.round(d.uv, 1), {
-          max: 12, unit: "", color: CONFIG.COLORS.UV_COLOR, decimals: 1
+          max: 12, unit: "", color: CONFIG.COLORS.UV_COLOR, decimals: 1, label: "Índice UV", low: uvStats.low, high: uvStats.high
         });
       }
     }

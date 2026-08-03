@@ -287,6 +287,58 @@ body.estacion-lightbox-open {
   height: 0;
 }
 
+/* ============================================================================
+   Dashboard de Clima — Tooltip flotante "Corriente / Baja / Alta"
+   Aparece al pasar el cursor sobre cualquiera de los gráficos del dashboard.
+   ============================================================================ */
+.wl-chart-tooltip {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+  min-width: 148px;
+  padding: 0.6rem 0.75rem;
+  border-radius: 0.6rem;
+  background: #20302B;
+  color: #F5F3EC;
+  box-shadow: 0 8px 24px rgba(32, 48, 43, 0.28);
+  font-size: 0.75rem;
+  line-height: 1.35;
+}
+
+.wl-chart-tooltip-title {
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #A9C4B8;
+  margin-bottom: 0.35rem;
+}
+
+.wl-chart-tooltip-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.wl-chart-tooltip-row span {
+  color: #C7D3CC;
+}
+
+.wl-chart-tooltip-row b {
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.wl-chart-tooltip-low b {
+  color: #9FC7FF;
+}
+
+.wl-chart-tooltip-high b {
+  color: #FFC98C;
+}
+
 /* Hero content max width */
 .clima-hero-content {
   max-width: 1296px;

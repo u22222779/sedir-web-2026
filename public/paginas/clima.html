@@ -187,11 +187,15 @@
             <div id="wl-gauge-solar" class="flex justify-center items-center h-full"></div>
           </div>
 
-          <!-- Rosa de los vientos (24h) -->
+          <!-- Rosa de los vientos -->
           <div class="tremor-card">
-            <div class="flex items-center justify-between mb-1">
+            <div class="flex items-center justify-between gap-2 mb-1">
               <h3 class="font-semibold text-gray-800 text-sm">Rosa de los vientos</h3>
-              <span class="tremor-badge tremor-badge-neutral">Últimas 24h</span>
+              <div class="flex items-center gap-1 rounded-full bg-slate-100 p-1">
+                <button type="button" data-rose-period="24h" class="rose-period-btn rounded-full px-2.5 py-1 text-[10px] font-bold text-slate-700 bg-white shadow-sm border border-slate-200">24h</button>
+                <button type="button" data-rose-period="7d" class="rose-period-btn rounded-full px-2.5 py-1 text-[10px] font-bold text-slate-600">7d</button>
+                <button type="button" data-rose-period="30d" class="rose-period-btn rounded-full px-2.5 py-1 text-[10px] font-bold text-slate-600">30d</button>
+              </div>
             </div>
             <div id="wl-wind-rose" class="flex justify-center items-center h-full"></div>
           </div>
