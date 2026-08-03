@@ -38,38 +38,38 @@
       lluviaTasa: "sedir_wlpro_lluvia_tasa_v1",
     },
     COLORS: {
-      // Paleta institucional (Manual de Identidad Visual SEDIR): una sola
-      // familia cromática (verde institucional + neutros de tinta) en vez
-      // de colores saturados dispares, para una lectura más técnica/seria.
-      TEMP_OUTSIDE: "#00302B",    // Ink / tinta oscura — variable principal
-      TEMP_WINDCHILL: "#3F5F58",  // Slate verdoso oscuro
-      TEMP_HEATINDEX: "#8C7855",  // Marrón institucional
-      TEMP_DEWPOINT: "#006A49",   // Verde institucional oscuro
-      TEMP_WETBULB: "#7C9992",    // Gris verdoso claro
+      // Paleta corporativa diferenciada por categoría (alineada al diseño
+      // de referencia WeatherLink Pro): cada variable tiene su propio color
+      // distintivo para una lectura rápida de un vistazo.
+      TEMP_OUTSIDE: "#DC2626",    // Rojo — temperatura exterior
+      TEMP_WINDCHILL: "#2563EB",  // Azul — sensación de frío por viento
+      TEMP_HEATINDEX: "#F59E0B",  // Naranja — índice de calor
+      TEMP_DEWPOINT: "#16A34A",   // Verde — punto de rocío
+      TEMP_WETBULB: "#38BDF8",    // Celeste — bulbo húmedo
 
       // Colores instrumentales generales
-      WIND_GAUGE: "#425A54",      // Pizarra verdosa neutra
-      WIND_VECTOR: "#006A49",     // Verde institucional oscuro
-      HUMIDITY_GREEN: "#00944A",  // Verde institucional (primary)
-      BAROMETER_LINE: "#20302B",  // Tinta / carbón verdoso
-      SOLAR_RED: "#8C7855",       // Marrón institucional (radiación)
-      UV_COLOR: "#6E5A3B",        // Marrón oscuro (UV)
-      RAIN_BLUE: "#425A54",       // Pizarra verdosa (precipitación)
+      WIND_GAUGE: "#16A34A",      // Verde — velocidad del viento
+      WIND_VECTOR: "#2563EB",     // Azul — vector de dirección
+      HUMIDITY_GREEN: "#16A34A",  // Verde — humedad
+      BAROMETER_LINE: "#1F2937",  // Carbón — presión atmosférica
+      SOLAR_RED: "#DC2626",       // Rojo — radiación solar
+      UV_COLOR: "#7C3AED",        // Púrpura — índice UV
+      RAIN_BLUE: "#2563EB",       // Azul — precipitación
       BORDER_GRID: "#E4E1D6",     // Líneas divisorias cálidas y suaves
       TEXT_DARK: "#20302B",
       TEXT_MUTED: "#6B7A73",
     },
-    // Rangos de velocidad para la Rosa de los Vientos (m/s): rampa
-    // secuencial de un solo tono (claro → oscuro) según intensidad, en vez
-    // de un arcoíris de colores sin relación entre sí.
+    // Rangos de velocidad para la Rosa de los Vientos (m/s): paleta
+    // multicolor idéntica a la leyenda de WeatherLink Pro, para
+    // diferenciar cada rango de un vistazo.
     WIND_SPEED_BINS: [
-      { label: "0,0 - 0,9 m/s", min: 0.0, max: 0.9, color: "#D7E4DD" },
-      { label: "0,9 - 1,8 m/s", min: 0.9, max: 1.8, color: "#A9C4B8" },
-      { label: "1,8 - 2,7 m/s", min: 1.8, max: 2.7, color: "#6FA290" },
-      { label: "2,7 - 3,6 m/s", min: 2.7, max: 3.6, color: "#009C63" },
-      { label: "3,6 - 4,5 m/s", min: 3.6, max: 4.5, color: "#00944A" },
-      { label: "4,5 - 8,9 m/s", min: 4.5, max: 8.9, color: "#006A49" },
-      { label: "> 8,9 m/s",     min: 8.9, max: 999, color: "#20302B" },
+      { label: "0,0 - 0,9 m/s", min: 0.0, max: 0.9, color: "#16A34A" },
+      { label: "0,9 - 1,8 m/s", min: 0.9, max: 1.8, color: "#8FA998" },
+      { label: "1,8 - 2,7 m/s", min: 1.8, max: 2.7, color: "#2E86C1" },
+      { label: "2,7 - 3,6 m/s", min: 2.7, max: 3.6, color: "#C39BD3" },
+      { label: "3,6 - 4,5 m/s", min: 3.6, max: 4.5, color: "#F39C12" },
+      { label: "4,5 - 8,9 m/s", min: 4.5, max: 8.9, color: "#E74C3C" },
+      { label: "> 8,9 m/s",     min: 8.9, max: 999, color: "#1C2833" },
     ]
   };
 
@@ -446,9 +446,9 @@
         : "--";
       return `
         <div class="wl-chart-tooltip-title">${title}</div>
-        <div class="wl-chart-tooltip-row"><span>Corriente</span><b>${fmt(current)}</b></div>
-        <div class="wl-chart-tooltip-row wl-chart-tooltip-low"><span>Baja</span><b>${fmt(low)}</b></div>
-        <div class="wl-chart-tooltip-row wl-chart-tooltip-high"><span>Alta</span><b>${fmt(high)}</b></div>
+        <div class="wl-chart-tooltip-row"><span>Actual</span><b>${fmt(current)}</b></div>
+        <div class="wl-chart-tooltip-row wl-chart-tooltip-low"><span>Bajo</span><b>${fmt(low)}</b></div>
+        <div class="wl-chart-tooltip-row wl-chart-tooltip-high"><span>Alto</span><b>${fmt(high)}</b></div>
       `;
     }
 

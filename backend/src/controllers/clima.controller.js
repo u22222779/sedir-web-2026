@@ -120,7 +120,7 @@ function resumirClimaActual(raw) {
     wet_bulb_f: campos.wet_bulb ?? null,
     humedad: campos.hum ?? null,
     presion_barometrica_in: campos.bar_sea_level ?? campos.bar_absolute ?? null,
-    viento_velocidad_mph: campos.wind_speed_last ?? campos.wind_speed_avg_last_10_min ?? null,
+    viento_velocidad_mph: campos.wind_speed_avg_last_10_min ?? campos.wind_speed_last ?? null,
     viento_rafaga_mph: campos.wind_speed_hi_last_10_min ?? null,
     viento_direccion: campos.wind_dir_last ?? campos.wind_dir_scalar_avg_last_10_min ?? null,
     lluvia_dia_in: campos.rainfall_daily_in ?? campos.rain_day_in ?? null,
