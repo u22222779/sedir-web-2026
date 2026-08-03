@@ -54,6 +54,7 @@ async function initEstacionHistorica() {
 
   renderEstacionForm();
   attachEstacionEvents();
+  initEstacionLightbox();
 }
 
 function getAvailableYears() {
@@ -132,7 +133,9 @@ function buscarEstacionHistorico() {
             src="${ESTACION_IMG_BASE}${fname}"
             alt="Gráfico de ${varInfo.label} - ${monthLabel(month)} ${year}"
             loading="lazy"
-            class="w-full h-auto object-contain bg-gray-50"
+            class="w-full h-auto object-contain bg-gray-50 estacion-img"
+            title="Doble clic para ampliar"
+            data-caption="${varInfo.label} — ${monthLabel(month)} ${year}"
           />
         </div>
       `);
@@ -153,5 +156,112 @@ function monthLabel(monthValue) {
   const found = MESES_ESTACION.find(([val]) => val === monthValue);
   return found ? found[1] : monthValue;
 }
+
+/**
+ * Lightbox de doble clic/doble toque para las imágenes del histórico.
+ * - Doble clic (o doble toque en móvil) sobre una imagen -> se abre en grande.
+ * - Doble clic/toque de nuevo sobre la imagen ampliada, un toque sobre el
+ *   fondo oscuro, o el botón "✕" -> se cierra y todo vuelve a su lugar.
+ *
+ * En vez de depender del evento nativo `dblclick` (que en algunos
+ * navegadores móviles es lento o inconsistente al doble-tocar), se mide el
+ * tiempo entre dos `click` seguidos sobre el mismo elemento: el evento
+ * `click` sí se dispara de forma confiable tanto con mouse como al tocar
+ * la pantalla, así que este mismo código funciona igual en PC y celular.
+ */
+function initEstacionLightbox() {
+  const resultsContainer = document.getElementById("estacion-resultados");
+  if (!resultsContainer || resultsContainer.dataset.lightboxReady) return;
+  resultsContainer.dataset.lightboxReady = "true";
+
+  const DOBLE_TOQUE_MS = 400;
+
+  const overlay = document.createElement("div");
+  overlay.id = "estacion-lightbox";
+  overlay.className = "estacion-lightbox hidden";
+  overlay.innerHTML = `
+    <button type="button" class="estacion-lightbox__cerrar" aria-label="Cerrar imagen ampliada">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+    <figure class="estacion-lightbox__figure">
+      <img class="estacion-lightbox__img" alt="" />
+      <figcaption class="estacion-lightbox__caption"></figcaption>
+    </figure>
+    <span class="estacion-lightbox__hint">Doble toque en la imagen, o el botón ✕, para cerrar</span>
+  `;
+  document.body.appendChild(overlay);
+
+  const imgEl = overlay.querySelector(".estacion-lightbox__img");
+  const captionEl = overlay.querySelector(".estacion-lightbox__caption");
+  const cerrarBtn = overlay.querySelector(".estacion-lightbox__cerrar");
+
+  function abrir(src, caption) {
+    imgEl.src = src;
+    imgEl.alt = caption || "";
+    captionEl.textContent = caption || "";
+    overlay.classList.remove("hidden");
+    document.body.classList.add("estacion-lightbox-open");
+  }
+
+  function cerrar() {
+    overlay.classList.add("hidden");
+    document.body.classList.remove("estacion-lightbox-open");
+    imgEl.src = "";
+  }
+
+  // --- Detector de doble clic / doble toque, reutilizable ---
+  function crearDetectorDobleToque(alDetectar) {
+    let ultimoObjetivo = null;
+    let ultimaVez = 0;
+
+    return function manejarClick(e, objetivo) {
+      const ahora = Date.now();
+      if (ultimoObjetivo === objetivo && ahora - ultimaVez < DOBLE_TOQUE_MS) {
+        ultimoObjetivo = null;
+        ultimaVez = 0;
+        alDetectar(e, objetivo);
+      } else {
+        ultimoObjetivo = objetivo;
+        ultimaVez = ahora;
+      }
+    };
+  }
+
+  // Abrir: doble clic/toque sobre cualquier imagen del histórico (delegado,
+  // porque las tarjetas se regeneran en cada búsqueda).
+  const detectarAperturaDoble = crearDetectorDobleToque((e, img) => {
+    abrir(img.src, img.dataset.caption || img.alt);
+  });
+
+  resultsContainer.addEventListener("click", (e) => {
+    const img = e.target.closest(".estacion-img");
+    if (!img) return;
+    detectarAperturaDoble(e, img);
+  });
+
+  // Cerrar: doble clic/toque sobre la imagen ya ampliada.
+  const detectarCierreDoble = crearDetectorDobleToque(cerrar);
+  imgEl.addEventListener("click", (e) => {
+    e.stopPropagation();
+    detectarCierreDoble(e, imgEl);
+  });
+
+  // Cerrar: un solo toque/clic sobre el fondo oscuro (fuera de la imagen).
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) cerrar();
+  });
+
+  // Cerrar: botón "✕", siempre visible (para quien no descubra el gesto).
+  cerrarBtn.addEventListener("click", cerrar);
+
+  // Cerrar: tecla Escape, por accesibilidad en teclado.
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !overlay.classList.contains("hidden")) {
+      cerrar();
+    }
+  });
+}
+
+
 
 document.addEventListener("DOMContentLoaded", initEstacionHistorica);

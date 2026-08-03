@@ -98,6 +98,54 @@
   }
 
   // ==========================================================================
+  // 2b. SEMÁFORO AGRÍCOLA — traduce cada número a una palabra + color simple,
+  // para que alguien sin conocimientos técnicos entienda de un vistazo si el
+  // valor es normal o si requiere atención. Umbrales generales de referencia;
+  // un ingeniero agrónomo de SEDIR puede ajustarlos según el cultivo.
+  // ==========================================================================
+  class AgroThresholds {
+    static badge(label, tono) {
+      const clases = {
+        bien: "tremor-badge tremor-badge-live",
+        cuidado: "tremor-badge tremor-badge-warning",
+        alerta: "tremor-badge tremor-badge-up",
+        info: "tremor-badge tremor-badge-neutral",
+      };
+      return { label, className: clases[tono] || clases.info };
+    }
+
+    static temperatura(celsius) {
+      if (typeof celsius !== "number" || Number.isNaN(celsius)) return this.badge("--", "info");
+      if (celsius < 12) return this.badge("Frío", "cuidado");
+      if (celsius > 32) return this.badge("Calor alto", "alerta");
+      if (celsius > 28) return this.badge("Cálido", "cuidado");
+      return this.badge("Normal", "bien");
+    }
+
+    static viento(ms) {
+      if (typeof ms !== "number" || Number.isNaN(ms)) return this.badge("--", "info");
+      if (ms > 5.5) return this.badge("Evitar fumigar", "alerta");
+      if (ms > 3) return this.badge("Con cuidado", "cuidado");
+      return this.badge("Ideal p/ fumigar", "bien");
+    }
+
+    static humedad(pct) {
+      if (typeof pct !== "number" || Number.isNaN(pct)) return this.badge("--", "info");
+      if (pct > 88) return this.badge("Riesgo hongos", "alerta");
+      if (pct < 35) return this.badge("Ambiente seco", "cuidado");
+      return this.badge("Normal", "bien");
+    }
+
+    static uv(indice) {
+      if (typeof indice !== "number" || Number.isNaN(indice)) return this.badge("--", "info");
+      if (indice >= 8) return this.badge("Muy alto", "alerta");
+      if (indice >= 6) return this.badge("Protegerse", "cuidado");
+      if (indice >= 3) return this.badge("Moderado", "cuidado");
+      return this.badge("Bajo", "bien");
+    }
+  }
+
+  // ==========================================================================
   // 3. MOTOR DE PERSISTENCIA EN CACHÉ LOCAL (HISTORIAL Y TENDENCIAS)
   // ==========================================================================
   class TelemetryStorage {
@@ -673,6 +721,22 @@
         for (const [id, val] of Object.entries(domMap)) {
           const el = document.getElementById(id);
           if (el) el.textContent = val;
+        }
+
+        // Semáforo agrícola: número + palabra simple + color, sin necesidad
+        // de interpretar un gráfico técnico.
+        const pills = {
+          "wl-temp-status": AgroThresholds.temperatura(tempCurrentC),
+          "wl-viento-status": AgroThresholds.viento(PhysicsConverter.mphToMs(d.viento_velocidad_mph)),
+          "wl-humedad-status": AgroThresholds.humedad(d.humedad),
+          "wl-uv-status": AgroThresholds.uv(d.uv),
+        };
+        for (const [id, pill] of Object.entries(pills)) {
+          const el = document.getElementById(id);
+          if (el) {
+            el.textContent = pill.label;
+            el.className = pill.className;
+          }
         }
 
         // Panel 3: Dirección instantánea vectorial

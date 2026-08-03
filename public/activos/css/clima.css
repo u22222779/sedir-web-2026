@@ -88,8 +88,111 @@ body.clima-page {
   background: #f3f4f6;
   color: #6b7280;
 }
-.tremor-divider {
-  border-top: 1px solid #f3f4f6;
+.tremor-badge-warning {
+  background: #fef3c7;
+  color: #92400e;
+}
+/* ==========================================================================
+   LIGHTBOX — Histórico de la estación meteorológica (doble clic para ampliar)
+   ========================================================================== */
+.estacion-img {
+  cursor: zoom-in;
+}
+
+.estacion-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 2rem;
+  background: rgba(0, 3, 6, 0.86);
+  cursor: zoom-out;
+  animation: estacion-lightbox-fade 0.18s ease;
+}
+
+.estacion-lightbox.hidden {
+  display: none;
+}
+
+.estacion-lightbox__figure {
+  margin: 0;
+  max-width: min(92vw, 1100px);
+  max-height: 82vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.estacion-lightbox__img {
+  max-width: 100%;
+  max-height: 78vh;
+  object-fit: contain;
+  border-radius: 1rem;
+  background: #fff;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+}
+
+.estacion-lightbox__caption {
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-align: center;
+  opacity: 0.9;
+}
+
+.estacion-lightbox__hint {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.75rem;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.estacion-lightbox__cerrar {
+  position: absolute;
+  top: max(1rem, env(safe-area-inset-top));
+  right: max(1rem, env(safe-area-inset-right));
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.estacion-lightbox__cerrar:hover,
+.estacion-lightbox__cerrar:active {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
+}
+
+.estacion-lightbox__cerrar .material-symbols-outlined {
+  font-size: 24px;
+  line-height: 1;
+}
+
+body.estacion-lightbox-open {
+  overflow: hidden;
+}
+
+@keyframes estacion-lightbox-fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 /* Pulso sutil del punto de estado "en línea" ya definido en el badge live/offline */
