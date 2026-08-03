@@ -13,43 +13,50 @@
   "use strict";
 
   // ==========================================================================
-  // 1. CONFIGURACIÓN DEL SISTEMA Y PALETA ESTÍLO WEATHERLINK PRO
+  // 1. CONFIGURACIÓN DEL SISTEMA Y PALETA INSTITUCIONAL SEDIR
   // ==========================================================================
   const CONFIG = {
     API_URL: "/api/clima/actual",
     REFRESH_INTERVAL_MS: 60 * 1000, // 1 minuto
     STORAGE_BAROMETER_KEY: "sedir_wlpro_barometro_v1",
     STORAGE_WIND_KEY: "sedir_wlpro_viento_v1",
+    STORAGE_TEMP_KEY: "sedir_wlpro_temperatura_v1",
     MAX_BAROMETER_AGE_MS: 6 * 60 * 60 * 1000,  // Ventana de 6 horas
     MAX_WIND_AGE_MS: 24 * 60 * 60 * 1000,      // Ventana de 24 horas (Día)
+    MAX_TEMP_AGE_MS: 24 * 60 * 60 * 1000,      // Ventana de 24 horas para alta/baja relativa
     COLORS: {
-      // Paleta idéntica al gráfico de temperaturas de WeatherLink Pro
-      TEMP_OUTSIDE: "#DC2626",   // Rojo intenso
-      TEMP_WINDCHILL: "#1E3A8A", // Azul marino
-      TEMP_HEATINDEX: "#D97706", // Ámbar / Naranja
-      TEMP_DEWPOINT: "#10B981",  // Verde esmeralda
-      TEMP_WETBULB: "#3B82F6",   // Azul cielo
-      
+      // Paleta institucional (Manual de Identidad Visual SEDIR): una sola
+      // familia cromática (verde institucional + neutros de tinta) en vez
+      // de colores saturados dispares, para una lectura más técnica/seria.
+      TEMP_OUTSIDE: "#00302B",    // Ink / tinta oscura — variable principal
+      TEMP_WINDCHILL: "#3F5F58",  // Slate verdoso oscuro
+      TEMP_HEATINDEX: "#8C7855",  // Marrón institucional
+      TEMP_DEWPOINT: "#006A49",   // Verde institucional oscuro
+      TEMP_WETBULB: "#7C9992",    // Gris verdoso claro
+
       // Colores instrumentales generales
-      WIND_GAUGE: "#64748B",     // Pizarra neutro
-      WIND_VECTOR: "#0284C7",    // Azul directriz
-      HUMIDITY_GREEN: "#0E7490", // Teal hídrico
-      BAROMETER_LINE: "#1E293B", // Gris oscuro / Carbón
-      SOLAR_RED: "#DC2626",      // Rojo radiación
-      RAIN_BLUE: "#0284C7",      // Azul precipitación
-      BORDER_GRID: "#E2E8F0",    // Líneas divisorias suaves
-      TEXT_DARK: "#1E293B",
-      TEXT_MUTED: "#64748B",
+      WIND_GAUGE: "#425A54",      // Pizarra verdosa neutra
+      WIND_VECTOR: "#006A49",     // Verde institucional oscuro
+      HUMIDITY_GREEN: "#00944A",  // Verde institucional (primary)
+      BAROMETER_LINE: "#20302B",  // Tinta / carbón verdoso
+      SOLAR_RED: "#8C7855",       // Marrón institucional (radiación)
+      UV_COLOR: "#6E5A3B",        // Marrón oscuro (UV)
+      RAIN_BLUE: "#425A54",       // Pizarra verdosa (precipitación)
+      BORDER_GRID: "#E4E1D6",     // Líneas divisorias cálidas y suaves
+      TEXT_DARK: "#20302B",
+      TEXT_MUTED: "#6B7A73",
     },
-    // Rangos de velocidad para la Rosa de los Vientos (m/s) según leyenda oficial
+    // Rangos de velocidad para la Rosa de los Vientos (m/s): rampa
+    // secuencial de un solo tono (claro → oscuro) según intensidad, en vez
+    // de un arcoíris de colores sin relación entre sí.
     WIND_SPEED_BINS: [
-      { label: "0,0 - 0,9 m/s", min: 0.0, max: 0.9, color: "#10B981" },
-      { label: "0,9 - 1,8 m/s", min: 0.9, max: 1.8, color: "#8B5CF6" },
-      { label: "1,8 - 2,7 m/s", min: 1.8, max: 2.7, color: "#3B82F6" },
-      { label: "2,7 - 3,6 m/s", min: 2.7, max: 3.6, color: "#EC4899" },
-      { label: "3,6 - 4,5 m/s", min: 3.6, max: 4.5, color: "#F59E0B" },
-      { label: "4,5 - 8,9 m/s", min: 4.5, max: 8.9, color: "#EF4444" },
-      { label: "> 8,9 m/s",     min: 8.9, max: 999, color: "#1E293B" },
+      { label: "0,0 - 0,9 m/s", min: 0.0, max: 0.9, color: "#D7E4DD" },
+      { label: "0,9 - 1,8 m/s", min: 0.9, max: 1.8, color: "#A9C4B8" },
+      { label: "1,8 - 2,7 m/s", min: 1.8, max: 2.7, color: "#6FA290" },
+      { label: "2,7 - 3,6 m/s", min: 2.7, max: 3.6, color: "#009C63" },
+      { label: "3,6 - 4,5 m/s", min: 3.6, max: 4.5, color: "#00944A" },
+      { label: "4,5 - 8,9 m/s", min: 4.5, max: 8.9, color: "#006A49" },
+      { label: "> 8,9 m/s",     min: 8.9, max: 999, color: "#20302B" },
     ]
   };
 
@@ -112,6 +119,24 @@
       } catch (e) { return []; }
     }
 
+    static recordTemperature(celsius) {
+      if (typeof celsius !== "number" || Number.isNaN(celsius)) return this.getTemperatureHistory();
+      let history = this.getTemperatureHistory();
+      const now = Date.now();
+      history.push({ t: now, v: PhysicsConverter.round(celsius, 1) });
+      history = history.filter(item => now - item.t <= CONFIG.MAX_TEMP_AGE_MS);
+      try { localStorage.setItem(CONFIG.STORAGE_TEMP_KEY, JSON.stringify(history)); } catch (e) {}
+      return history;
+    }
+
+    static getTemperatureHistory() {
+      try {
+        const data = JSON.parse(localStorage.getItem(CONFIG.STORAGE_TEMP_KEY) || "[]");
+        const now = Date.now();
+        return Array.isArray(data) ? data.filter(i => now - i.t <= CONFIG.MAX_TEMP_AGE_MS) : [];
+      } catch (e) { return []; }
+    }
+
     static recordWind(dirDeg, speedMs) {
       if (typeof dirDeg !== "number" || typeof speedMs !== "number") return this.getWindHistory();
       let history = this.getWindHistory();
@@ -160,8 +185,8 @@
       svg += `<circle cx="${cx}" cy="${cy}" r="${r * 0.5}" fill="none" stroke="${CONFIG.COLORS.BORDER_GRID}" stroke-width="1" stroke-dasharray="3 3"/>`;
       svg += `<line x1="${cx}" y1="${cy - r}" x2="${cx}" y2="${cy + r}" stroke="${CONFIG.COLORS.BORDER_GRID}" stroke-width="1"/>`;
       svg += `<line x1="${cx - r}" y1="${cy}" x2="${cx + r}" y2="${cy}" stroke="${CONFIG.COLORS.BORDER_GRID}" stroke-width="1"/>`;
-      svg += `<line x1="${cx - r*0.7}" y1="${cy - r*0.7}" x2="${cx + r*0.7}" y2="${cy + r*0.7}" stroke="#F1F5F9" stroke-width="1"/>`;
-      svg += `<line x1="${cx + r*0.7}" y1="${cy - r*0.7}" x2="${cx - r*0.7}" y2="${cy + r*0.7}" stroke="#F1F5F9" stroke-width="1"/>`;
+      svg += `<line x1="${cx - r*0.7}" y1="${cy - r*0.7}" x2="${cx + r*0.7}" y2="${cy + r*0.7}" stroke="#EDEAE0" stroke-width="1"/>`;
+      svg += `<line x1="${cx + r*0.7}" y1="${cy - r*0.7}" x2="${cx - r*0.7}" y2="${cy + r*0.7}" stroke="#EDEAE0" stroke-width="1"/>`;
 
       // Sector directriz azul (Wedge del viento actual)
       if (hasData) {
@@ -215,13 +240,13 @@
       // Círculos concéntricos de frecuencia (0%, 25%)
       svg += `<circle cx="${cx}" cy="${cy}" r="${maxR}" fill="none" stroke="${CONFIG.COLORS.BORDER_GRID}" stroke-width="1"/>`;
       svg += `<circle cx="${cx}" cy="${cy}" r="${maxR * 0.5}" fill="none" stroke="${CONFIG.COLORS.BORDER_GRID}" stroke-width="1"/>`;
-      svg += `<text x="${cx + 4}" y="${cy - maxR * 0.5}" font-size="9" fill="#94A3B8">0%</text>`;
-      svg += `<text x="${cx + 4}" y="${cy - maxR + 10}" font-size="9" fill="#94A3B8">25%</text>`;
+      svg += `<text x="${cx + 4}" y="${cy - maxR * 0.5}" font-size="9" fill="${CONFIG.COLORS.TEXT_MUTED}">0%</text>`;
+      svg += `<text x="${cx + 4}" y="${cy - maxR + 10}" font-size="9" fill="${CONFIG.COLORS.TEXT_MUTED}">25%</text>`;
 
       // Ejes camuflados
       for (let a = 0; a < 360; a += 45) {
         const p = this._polarToCartesian(cx, cy, maxR, a);
-        svg += `<line x1="${cx}" y1="${cy}" x2="${p.x}" y2="${p.y}" stroke="#F1F5F9" stroke-width="1"/>`;
+        svg += `<line x1="${cx}" y1="${cy}" x2="${p.x}" y2="${p.y}" stroke="#EDEAE0" stroke-width="1"/>`;
       }
 
       // Dibujar pétalos apilados por sector
@@ -269,177 +294,320 @@
   }
 
   // ==========================================================================
-  // 5. MOTOR DE GRÁFICOS APEXCHARTS (GESTIÓN SIN PARPARDEOS)
+  // 5. MOTOR DE GRÁFICOS D3.JS (SVG NATIVO, SIN PARPADEOS)
   // ==========================================================================
   class ChartManager {
     constructor() {
+      // Guarda referencias { svg, ...escalas/selecciones } por contenedor,
+      // para actualizar datos sin destruir y recrear el SVG en cada refresco.
       this.charts = new Map();
     }
 
-    // Panel 1: Gráfico de barras de temperatura con valores flotantes en el tope
+    _clear(containerId) {
+      const el = document.getElementById(containerId);
+      if (el) el.innerHTML = "";
+      this.charts.delete(containerId);
+    }
+
+    // Crea (o reutiliza) el <svg> responsivo de un contenedor, con viewBox
+    // para que escale de forma fluida sin depender del ancho en píxeles.
+    _svg(containerId, width, height) {
+      const el = document.getElementById(containerId);
+      if (!el) return null;
+      let svg = d3.select(el).select("svg");
+      if (svg.empty()) {
+        svg = d3.select(el)
+          .append("svg")
+          .attr("viewBox", `0 0 ${width} ${height}`)
+          .attr("width", "100%")
+          .attr("height", height)
+          .attr("font-family", "inherit")
+          .style("overflow", "visible");
+      }
+      return svg;
+    }
+
+    // ------------------------------------------------------------------
+    // Panel 1: Barras de temperatura (Outside Temp, Wind Chill, etc.)
+    // ------------------------------------------------------------------
     renderTempBars(containerId, items) {
       if (!document.getElementById(containerId)) return;
-      const categories = items.map(i => i.label);
-      const values = items.map(i => typeof i.val === "number" ? i.val : null);
-      const colors = items.map(i => i.color);
+      const width = 460, height = 210;
+      const margin = { top: 24, right: 10, bottom: 34, left: 32 };
+      const innerW = width - margin.left - margin.right;
+      const innerH = height - margin.top - margin.bottom;
 
-      if (!this.charts.has(containerId)) {
-        const options = {
-          chart: { type: "bar", height: 210, toolbar: { show: false }, fontFamily: "inherit", animations: { speed: 350 } },
-          series: [{ name: "Temperatura", data: values }],
-          plotOptions: { bar: { distributed: true, borderRadius: 2, columnWidth: "55%" } },
-          colors: colors,
-          dataLabels: {
-            enabled: true,
-            formatter: (v) => v != null ? `${v.toFixed(1).replace(".", ",")}` : "--",
-            style: { fontSize: "12px", fontWeight: 700, colors: ["#334155"] },
-            offsetY: -20,
-          },
-          xaxis: {
-            categories: categories,
-            labels: { rotate: -25, trim: false, style: { fontSize: "11px", fontWeight: 600, colors: "#64748B" } },
-            axisBorder: { color: CONFIG.COLORS.BORDER_GRID },
-            axisTicks: { show: false }
-          },
-          yaxis: {
-            labels: { formatter: (v) => `${v.toFixed(0)} °C`, style: { fontSize: "10.5px", colors: "#94A3B8" } },
-            max: (max) => Math.max(30, max + 5)
-          },
-          grid: { borderColor: "#F8FAFC" },
-          legend: { show: false },
-          tooltip: { enabled: false }
-        };
-        const chart = new ApexCharts(document.getElementById(containerId), options);
-        chart.render();
-        this.charts.set(containerId, chart);
-      } else {
-        const chart = this.charts.get(containerId);
-        chart.updateOptions({ colors, xaxis: { categories } }, false, false);
-        chart.updateSeries([{ data: values }]);
+      const svg = this._svg(containerId, width, height);
+      if (!svg) return;
+
+      const x = d3.scaleBand()
+        .domain(items.map(d => d.label))
+        .range([0, innerW])
+        .padding(0.35);
+
+      const maxVal = Math.max(30, d3.max(items, d => d.val ?? 0) + 5);
+      const y = d3.scaleLinear().domain([0, maxVal]).range([innerH, 0]);
+
+      let g = svg.select("g.plot-area");
+      if (g.empty()) {
+        g = svg.append("g").attr("class", "plot-area")
+          .attr("transform", `translate(${margin.left},${margin.top})`);
+        g.append("g").attr("class", "axis-y");
+        g.append("g").attr("class", "axis-x").attr("transform", `translate(0,${innerH})`);
+        g.append("g").attr("class", "bars");
       }
+
+      // Eje Y (líneas de referencia sutiles, sin marco pesado)
+      g.select(".axis-y")
+        .call(d3.axisLeft(y).ticks(4).tickSize(-innerW).tickFormat(v => `${v.toFixed(0)}°C`))
+        .call(sel => sel.select(".domain").remove())
+        .call(sel => sel.selectAll(".tick line").attr("stroke", CONFIG.COLORS.BORDER_GRID))
+        .call(sel => sel.selectAll(".tick text")
+          .attr("fill", CONFIG.COLORS.TEXT_MUTED)
+          .attr("font-size", "10px")
+          .attr("dx", "-4"));
+
+      // Eje X
+      g.select(".axis-x")
+        .call(d3.axisBottom(x).tickSize(0))
+        .call(sel => sel.select(".domain").attr("stroke", CONFIG.COLORS.BORDER_GRID))
+        .call(sel => sel.selectAll(".tick text")
+          .attr("fill", CONFIG.COLORS.TEXT_MUTED)
+          .attr("font-size", "10.5px")
+          .attr("font-weight", 600)
+          .attr("transform", "rotate(-20)")
+          .style("text-anchor", "end"));
+
+      // Barras + etiqueta de valor
+      const bars = g.select(".bars").selectAll("g.bar-group").data(items, d => d.label);
+      const barsEnter = bars.enter().append("g").attr("class", "bar-group");
+      barsEnter.append("rect").attr("class", "bar-rect").attr("rx", 3);
+      barsEnter.append("text").attr("class", "bar-label").attr("text-anchor", "middle");
+
+      const merged = barsEnter.merge(bars);
+      merged.select(".bar-rect")
+        .attr("x", d => x(d.label))
+        .attr("width", x.bandwidth())
+        .attr("fill", d => d.color)
+        .transition().duration(300)
+        .attr("y", d => y(Math.max(d.val ?? 0, 0)))
+        .attr("height", d => innerH - y(Math.max(d.val ?? 0, 0)));
+
+      merged.select(".bar-label")
+        .attr("x", d => x(d.label) + x.bandwidth() / 2)
+        .attr("fill", CONFIG.COLORS.TEXT_DARK)
+        .attr("font-size", "11.5px")
+        .attr("font-weight", 600)
+        .transition().duration(300)
+        .attr("y", d => y(Math.max(d.val ?? 0, 0)) - 8)
+        .text(d => d.val != null ? d.val.toFixed(1).replace(".", ",") : "--");
+
+      bars.exit().remove();
+      this.charts.set(containerId, { type: "temp-bars" });
     }
 
-    // Panel 5 y 6: Gráficos de barras para lluvia (Actual y Total)
+    // ------------------------------------------------------------------
+    // Panel 5: Barras de lluvia (Día / Tasa)
+    // ------------------------------------------------------------------
     renderRainBars(containerId, categories, values, maxVal = 5) {
       if (!document.getElementById(containerId)) return;
-      if (!this.charts.has(containerId)) {
-        const options = {
-          chart: { type: "bar", height: 180, toolbar: { show: false }, fontFamily: "inherit", animations: { speed: 300 } },
-          series: [{ name: "Precipitación", data: values }],
-          plotOptions: { bar: { borderRadius: 2, columnWidth: "35%", distributed: false } },
-          colors: [CONFIG.COLORS.RAIN_BLUE],
-          dataLabels: {
-            enabled: true,
-            formatter: (v) => v != null ? `${v.toFixed(1).replace(".", ",")}` : "--",
-            style: { fontSize: "11px", fontWeight: 700, colors: ["#334155"] },
-            offsetY: -18,
-          },
-          xaxis: {
-            categories: categories,
-            labels: { style: { fontSize: "11px", fontWeight: 600, colors: "#64748B" } },
-            axisBorder: { color: CONFIG.COLORS.BORDER_GRID },
-            axisTicks: { show: false }
-          },
-          yaxis: {
-            labels: { formatter: (v) => `${v.toFixed(1).replace(".", ",")} mm`, style: { fontSize: "10px", colors: "#94A3B8" } },
-            max: (max) => Math.max(maxVal, max + 1)
-          },
-          grid: { borderColor: "#F8FAFC" },
-          tooltip: { enabled: false }
-        };
-        const chart = new ApexCharts(document.getElementById(containerId), options);
-        chart.render();
-        this.charts.set(containerId, chart);
-      } else {
-        this.charts.get(containerId).updateSeries([{ data: values }]);
+      const width = 320, height = 180;
+      const margin = { top: 22, right: 10, bottom: 26, left: 36 };
+      const innerW = width - margin.left - margin.right;
+      const innerH = height - margin.top - margin.bottom;
+
+      const svg = this._svg(containerId, width, height);
+      if (!svg) return;
+
+      const items = categories.map((c, i) => ({ label: c, val: values[i] }));
+      const x = d3.scaleBand().domain(categories).range([0, innerW]).padding(0.5);
+      const domainMax = Math.max(maxVal, d3.max(values) + 1 || maxVal);
+      const y = d3.scaleLinear().domain([0, domainMax]).range([innerH, 0]);
+
+      let g = svg.select("g.plot-area");
+      if (g.empty()) {
+        g = svg.append("g").attr("class", "plot-area")
+          .attr("transform", `translate(${margin.left},${margin.top})`);
+        g.append("g").attr("class", "axis-y");
+        g.append("g").attr("class", "axis-x").attr("transform", `translate(0,${innerH})`);
+        g.append("g").attr("class", "bars");
       }
+
+      g.select(".axis-y")
+        .call(d3.axisLeft(y).ticks(4).tickSize(-innerW).tickFormat(v => `${v.toFixed(1).replace(".", ",")} mm`))
+        .call(sel => sel.select(".domain").remove())
+        .call(sel => sel.selectAll(".tick line").attr("stroke", "#F5F3EC"))
+        .call(sel => sel.selectAll(".tick text").attr("fill", CONFIG.COLORS.TEXT_MUTED).attr("font-size", "9.5px"));
+
+      g.select(".axis-x")
+        .call(d3.axisBottom(x).tickSize(0))
+        .call(sel => sel.select(".domain").attr("stroke", CONFIG.COLORS.BORDER_GRID))
+        .call(sel => sel.selectAll(".tick text")
+          .attr("fill", CONFIG.COLORS.TEXT_MUTED).attr("font-size", "11px").attr("font-weight", 600));
+
+      const bars = g.select(".bars").selectAll("g.bar-group").data(items, d => d.label);
+      const barsEnter = bars.enter().append("g").attr("class", "bar-group");
+      barsEnter.append("rect").attr("class", "bar-rect").attr("rx", 3).attr("fill", CONFIG.COLORS.RAIN_BLUE);
+      barsEnter.append("text").attr("class", "bar-label").attr("text-anchor", "middle");
+
+      const merged = barsEnter.merge(bars);
+      merged.select(".bar-rect")
+        .attr("x", d => x(d.label) + x.bandwidth() / 2 - 18)
+        .attr("width", 36)
+        .transition().duration(300)
+        .attr("y", d => y(Math.max(d.val ?? 0, 0)))
+        .attr("height", d => innerH - y(Math.max(d.val ?? 0, 0)));
+
+      merged.select(".bar-label")
+        .attr("x", d => x(d.label) + x.bandwidth() / 2)
+        .attr("fill", CONFIG.COLORS.TEXT_DARK)
+        .attr("font-size", "11px")
+        .attr("font-weight", 700)
+        .transition().duration(300)
+        .attr("y", d => y(Math.max(d.val ?? 0, 0)) - 8)
+        .text(d => d.val != null ? d.val.toFixed(1).replace(".", ",") : "--");
+
+      bars.exit().remove();
+      this.charts.set(containerId, { type: "rain-bars" });
     }
 
-    // Gauge Semicircular de estilo WeatherLink Pro (Humedad, Viento, Solar)
+    // ------------------------------------------------------------------
+    // Gauges semicirculares (Viento, Humedad, UV, Radiación solar)
+    // ------------------------------------------------------------------
     renderGauge(containerId, value, options = {}) {
-      if (!document.getElementById(containerId)) return;
-      const { max = 100, unit = "", color = "#0E7490", decimals = 1 } = options;
+      const el = document.getElementById(containerId);
+      if (!el) return;
+      const { max = 100, unit = "", color = CONFIG.COLORS.HUMIDITY_GREEN, decimals = 1 } = options;
       const isValid = typeof value === "number" && !Number.isNaN(value);
-      const pct = isValid ? Math.max(0, Math.min(100, (value / max) * 100)) : 0;
+      const frac = isValid ? Math.max(0, Math.min(1, value / max)) : 0;
       const textVal = isValid ? `${value.toFixed(decimals).replace(".", ",")} ${unit}`.trim() : "--";
 
-      if (!this.charts.has(containerId)) {
-        const chartOptions = {
-          chart: { type: "radialBar", height: 180, sparkline: { enabled: true } },
-          series: [pct],
-          plotOptions: {
-            radialBar: {
-              startAngle: -90, endAngle: 90,
-              hollow: { size: "65%" },
-              track: { background: "#E2E8F0", strokeWidth: "100%" },
-              dataLabels: {
-                name: { show: false },
-                value: { offsetY: 0, fontSize: "22px", fontWeight: 800, color: "#1E293B", formatter: () => textVal }
-              }
-            }
-          },
-          fill: { colors: [color] },
-          stroke: { lineCap: "round" }
-        };
-        const chart = new ApexCharts(document.getElementById(containerId), chartOptions);
-        chart.render();
-        this.charts.set(containerId, chart);
-      } else {
-        const chart = this.charts.get(containerId);
-        chart.updateOptions({ fill: { colors: [color] }, plotOptions: { radialBar: { dataLabels: { value: { formatter: () => textVal } } } } }, false, false);
-        chart.updateSeries([pct]);
+      const size = 170;
+      const cx = size / 2, cyOffset = size * 0.56;
+      const outerR = size * 0.42, innerR = outerR * 0.65;
+
+      const startAngle = -Math.PI / 2, endAngle = Math.PI / 2;
+
+      let svg = d3.select(el).select("svg");
+      let state = this.charts.get(containerId);
+
+      if (svg.empty() || !state || state.type !== "gauge") {
+        el.innerHTML = "";
+        svg = d3.select(el).append("svg")
+          .attr("viewBox", `0 0 ${size} ${size * 0.72}`)
+          .attr("width", "100%")
+          .style("max-width", "200px")
+          .style("display", "block")
+          .style("margin", "0 auto");
+
+        const g = svg.append("g").attr("transform", `translate(${cx},${cyOffset})`);
+
+        const track = d3.arc().innerRadius(innerR).outerRadius(outerR).startAngle(startAngle).endAngle(endAngle);
+        g.append("path").attr("class", "gauge-track").attr("d", track).attr("fill", CONFIG.COLORS.BORDER_GRID);
+
+        g.append("path").attr("class", "gauge-fill").attr("fill", color);
+
+        g.append("text").attr("class", "gauge-value")
+          .attr("text-anchor", "middle")
+          .attr("y", -6)
+          .attr("font-size", "19px")
+          .attr("font-weight", 700)
+          .attr("fill", CONFIG.COLORS.TEXT_DARK);
+
+        this.charts.set(containerId, { type: "gauge", g, arcGen: d3.arc().innerRadius(innerR).outerRadius(outerR).startAngle(startAngle) });
+        state = this.charts.get(containerId);
       }
+
+      const targetAngle = startAngle + frac * (endAngle - startAngle);
+      const fillPath = state.g.select(".gauge-fill");
+      const prevAngle = fillPath.datum() ?? startAngle;
+
+      fillPath.datum(targetAngle)
+        .transition().duration(400)
+        .attrTween("d", function (d) {
+          const interpolate = d3.interpolate(prevAngle, d);
+          return t => state.arcGen.endAngle(interpolate(t))();
+        });
+
+      state.g.select(".gauge-fill").attr("fill", color);
+      state.g.select(".gauge-value").text(textVal);
     }
 
-    // Panel 8: Barómetro en línea oscura con degradado y Tooltip preciso
+    // ------------------------------------------------------------------
+    // Panel 8: Barómetro — área con degradado y eje temporal
+    // ------------------------------------------------------------------
     renderBarometer(containerId, historyData) {
       const el = document.getElementById(containerId);
       if (!el) return;
+
       if (!historyData || historyData.length < 2) {
-        if (this.charts.has(containerId)) { this.charts.get(containerId).destroy(); this.charts.delete(containerId); }
-        el.innerHTML = `<div class="flex items-center justify-center text-xs text-slate-400 font-medium h-[180px]">Reuniendo lecturas barométricas en tiempo real...</div>`;
+        this._clear(containerId);
+        el.innerHTML = `<div class="flex items-center justify-center text-xs font-medium h-[190px]" style="color:${CONFIG.COLORS.TEXT_MUTED}">Reuniendo lecturas barométricas en tiempo real...</div>`;
         return;
       }
 
-      const series = historyData.map(i => ({ x: i.t, y: i.v }));
-      if (!this.charts.has(containerId)) {
+      const width = 460, height = 190;
+      const margin = { top: 16, right: 14, bottom: 26, left: 44 };
+      const innerW = width - margin.left - margin.right;
+      const innerH = height - margin.top - margin.bottom;
+
+      let svg = d3.select(el).select("svg");
+      let g;
+      const gradientId = `barometro-gradient-${containerId}`;
+
+      if (svg.empty()) {
         el.innerHTML = "";
-        const options = {
-          chart: { type: "area", height: 190, toolbar: { show: false }, animations: { speed: 300 }, fontFamily: "inherit" },
-          series: [{ name: "Presión", data: series }],
-          xaxis: {
-            type: "datetime",
-            labels: { datetimeUTC: false, format: "h A", style: { fontSize: "10.5px", colors: "#64748B", fontWeight: 600 } },
-            axisBorder: { color: CONFIG.COLORS.BORDER_GRID }
-          },
-          yaxis: {
-            labels: { formatter: (v) => `${v.toFixed(1).replace(".", ",")} mb`, style: { fontSize: "10px", colors: "#94A3B8" } },
-            tickAmount: 4
-          },
-          stroke: { curve: "smooth", width: 2.2, colors: [CONFIG.COLORS.BAROMETER_LINE] },
-          fill: {
-            type: "gradient",
-            gradient: { shadeIntensity: 1, opacityFrom: 0.25, opacityTo: 0.0, stops: [0, 95, 100] },
-            colors: [CONFIG.COLORS.BAROMETER_LINE]
-          },
-          grid: { borderColor: "#F1F5F9" },
-          tooltip: {
-            theme: "dark",
-            x: { format: "h:mm A" },
-            y: { formatter: (v) => `${v.toFixed(1).replace(".", ",")} mb` }
-          },
-          markers: { size: 0, hover: { size: 5, sizeOffset: 2 } }
-        };
-        const chart = new ApexCharts(el, options);
-        chart.render();
-        this.charts.set(containerId, chart);
+        svg = d3.select(el).append("svg")
+          .attr("viewBox", `0 0 ${width} ${height}`)
+          .attr("width", "100%")
+          .attr("height", height);
+
+        const defs = svg.append("defs");
+        const gradient = defs.append("linearGradient")
+          .attr("id", gradientId).attr("x1", "0").attr("y1", "0").attr("x2", "0").attr("y2", "1");
+        gradient.append("stop").attr("offset", "0%").attr("stop-color", CONFIG.COLORS.BAROMETER_LINE).attr("stop-opacity", 0.25);
+        gradient.append("stop").attr("offset", "100%").attr("stop-color", CONFIG.COLORS.BAROMETER_LINE).attr("stop-opacity", 0);
+
+        g = svg.append("g").attr("class", "plot-area").attr("transform", `translate(${margin.left},${margin.top})`);
+        g.append("g").attr("class", "axis-y");
+        g.append("g").attr("class", "axis-x").attr("transform", `translate(0,${innerH})`);
+        g.append("path").attr("class", "area-path").attr("fill", `url(#${gradientId})`);
+        g.append("path").attr("class", "line-path").attr("fill", "none")
+          .attr("stroke", CONFIG.COLORS.BAROMETER_LINE).attr("stroke-width", 2);
       } else {
-        this.charts.get(containerId).updateSeries([{ data: series }]);
+        g = svg.select("g.plot-area");
       }
+
+      const x = d3.scaleTime()
+        .domain(d3.extent(historyData, d => new Date(d.t)))
+        .range([0, innerW]);
+      const y = d3.scaleLinear()
+        .domain([d3.min(historyData, d => d.v) - 0.5, d3.max(historyData, d => d.v) + 0.5])
+        .range([innerH, 0]);
+
+      g.select(".axis-y")
+        .call(d3.axisLeft(y).ticks(4).tickSize(-innerW).tickFormat(v => `${v.toFixed(1).replace(".", ",")} mb`))
+        .call(sel => sel.select(".domain").remove())
+        .call(sel => sel.selectAll(".tick line").attr("stroke", "#EDEAE0"))
+        .call(sel => sel.selectAll(".tick text").attr("fill", CONFIG.COLORS.TEXT_MUTED).attr("font-size", "10px"));
+
+      g.select(".axis-x")
+        .call(d3.axisBottom(x).ticks(6).tickFormat(d3.timeFormat("%-I %p")).tickSize(0))
+        .call(sel => sel.select(".domain").attr("stroke", CONFIG.COLORS.BORDER_GRID))
+        .call(sel => sel.selectAll(".tick text")
+          .attr("fill", CONFIG.COLORS.TEXT_MUTED).attr("font-size", "10.5px").attr("font-weight", 600));
+
+      const lineGen = d3.line().x(d => x(new Date(d.t))).y(d => y(d.v)).curve(d3.curveMonotoneX);
+      const areaGen = d3.area().x(d => x(new Date(d.t))).y0(innerH).y1(d => y(d.v)).curve(d3.curveMonotoneX);
+
+      g.select(".line-path").datum(historyData).transition().duration(300).attr("d", lineGen);
+      g.select(".area-path").datum(historyData).transition().duration(300).attr("d", areaGen);
+
+      this.charts.set(containerId, { type: "barometer" });
     }
 
     destroyAll() {
-      this.charts.forEach(c => c.destroy());
+      this.charts.forEach((_, containerId) => this._clear(containerId));
       this.charts.clear();
     }
   }
@@ -473,11 +641,19 @@
     }
 
     updateDashboard(d) {
+      const tempCurrentC = PhysicsConverter.fToC(d.temperatura_f);
+      const tempHistory = TelemetryStorage.recordTemperature(tempCurrentC);
+      const tempMaxRel = tempHistory.length ? Math.max(...tempHistory.map(item => item.v)) : tempCurrentC;
+      const tempMinRel = tempHistory.length ? Math.min(...tempHistory.map(item => item.v)) : tempCurrentC;
+
+      const tempMaxValue = d.temperatura_max_f ? PhysicsConverter.fToC(d.temperatura_max_f) : tempMaxRel;
+      const tempMinValue = d.temperatura_min_f ? PhysicsConverter.fToC(d.temperatura_min_f) : tempMinRel;
+
       // 1. Textos e indicadores numéricos en DOM
       const domMap = {
-        "wl-temp": PhysicsConverter.format(PhysicsConverter.fToC(d.temperatura_f), 1, "°C"),
-        "wl-temp-max": PhysicsConverter.format(PhysicsConverter.fToC(d.temperatura_max_f), 1, "°C"),
-        "wl-temp-min": PhysicsConverter.format(PhysicsConverter.fToC(d.temperatura_min_f), 1, "°C"),
+        "wl-temp": PhysicsConverter.format(tempCurrentC, 1, "°C"),
+        "wl-temp-max": PhysicsConverter.format(tempMaxValue, 1, "°C"),
+        "wl-temp-min": PhysicsConverter.format(tempMinValue, 1, "°C"),
         "wl-sensacion": PhysicsConverter.format(PhysicsConverter.fToC(d.sensacion_termica_f), 1, "°C"),
         "wl-humedad": PhysicsConverter.format(d.humedad, 1, "%"),
         "wl-presion": PhysicsConverter.format(PhysicsConverter.inHgToHpa(d.presion_barometrica_in), 1, "mb"),
@@ -489,8 +665,8 @@
         "wl-uv": PhysicsConverter.format(d.uv, 1),
         "wl-solar": PhysicsConverter.format(d.radiacion_solar_wm2, 0, "W/m²"),
         "wl-actualizado": d.actualizado ? `Última actualización: ${new Date(d.actualizado).toLocaleString("es-PE", { dateStyle: "long", timeStyle: "short" })}` : "--",
-        "wl-temp-max-hora": d.temperatura_max_hora ? `a las ${d.temperatura_max_hora}` : "",
-        "wl-temp-min-hora": d.temperatura_min_hora ? `a las ${d.temperatura_min_hora}` : "",
+        "wl-temp-max-hora": d.temperatura_max_hora ? `a las ${d.temperatura_max_hora}` : "Relativa reciente",
+        "wl-temp-min-hora": d.temperatura_min_hora ? `a las ${d.temperatura_min_hora}` : "Relativa reciente",
       };
 
       requestAnimationFrame(() => {
@@ -551,7 +727,7 @@
       });
       if (document.getElementById("wl-gauge-uv")) {
         this.charts.renderGauge("wl-gauge-uv", PhysicsConverter.round(d.uv, 1), {
-          max: 12, unit: "", color: "#D97706", decimals: 1
+          max: 12, unit: "", color: CONFIG.COLORS.UV_COLOR, decimals: 1
         });
       }
     }

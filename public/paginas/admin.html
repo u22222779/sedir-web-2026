@@ -50,6 +50,28 @@
       box-shadow: 0 0 0 4px rgba(0, 148, 74, .08);
     }
 
+    .dashboard-kpi {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #ffffff 0%, #f8fbf9 100%);
+    }
+
+    .dashboard-kpi::after {
+      content: '';
+      position: absolute;
+      inset: auto -30px -30px auto;
+      width: 120px;
+      height: 120px;
+      border-radius: 999px;
+      background: rgba(0, 148, 74, 0.08);
+    }
+
+    .dashboard-list-item {
+      border: 1px solid #e9f3ed;
+      border-radius: 14px;
+      background: #fbfdfb;
+    }
+
     .btn-primary {
       background: #00944a;
       color: #fff;
@@ -295,21 +317,120 @@
     }
 
     function dashboardView() {
+      const latestNoticias = [...appState.noticias]
+        .sort((a, b) => new Date(b.fecha || 0) - new Date(a.fecha || 0))
+        .slice(0, 3);
+
+      const latestProyectos = [...appState.proyectos]
+        .sort((a, b) => new Date(b.fecha_inicio || 0) - new Date(a.fecha_inicio || 0))
+        .slice(0, 3);
+
+      const totalItems = appState.noticias.length + appState.proyectos.length;
+
       return `
         <section class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-          <div class="card bg-white p-6 border border-slate-100">
-            <p class="text-sm text-slate-500">Noticias</p>
-            <p class="mt-2 text-3xl font-bold text-slate-900">${appState.noticias.length}</p>
+          <div class="card dashboard-kpi bg-white p-6 border border-slate-100">
+            <div class="flex items-center justify-between gap-3">
+              <div>
+                <p class="text-sm text-slate-500">Noticias</p>
+                <p class="mt-2 text-3xl font-bold text-slate-900">${appState.noticias.length}</p>
+              </div>
+              <div class="flex h-11 w-11 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600">
+                <span class="material-symbols-outlined">article</span>
+              </div>
+            </div>
           </div>
-          <div class="card bg-white p-6 border border-slate-100">
-            <p class="text-sm text-slate-500">Proyectos</p>
-            <p class="mt-2 text-3xl font-bold text-slate-900">${appState.proyectos.length}</p>
+
+          <div class="card dashboard-kpi bg-white p-6 border border-slate-100">
+            <div class="flex items-center justify-between gap-3">
+              <div>
+                <p class="text-sm text-slate-500">Proyectos</p>
+                <p class="mt-2 text-3xl font-bold text-slate-900">${appState.proyectos.length}</p>
+              </div>
+              <div class="flex h-11 w-11 items-center justify-center rounded-2xl bg-sky-50 text-sky-600">
+                <span class="material-symbols-outlined">folder_open</span>
+              </div>
+            </div>
           </div>
-          <div class="card bg-white p-6 border border-slate-100 md:col-span-2 xl:col-span-2">
+
+          <div class="card dashboard-kpi bg-white p-6 border border-slate-100">
+            <div class="flex items-center justify-between gap-3">
+              <div>
+                <p class="text-sm text-slate-500">Contenido total</p>
+                <p class="mt-2 text-3xl font-bold text-slate-900">${totalItems}</p>
+              </div>
+              <div class="flex h-11 w-11 items-center justify-center rounded-2xl bg-amber-50 text-amber-600">
+                <span class="material-symbols-outlined">auto_awesome</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card dashboard-kpi bg-white p-6 border border-slate-100 md:col-span-2 xl:col-span-1">
             <p class="text-sm text-slate-500">Estado</p>
-            <p class="mt-2 text-lg font-semibold text-slate-900">Panel listo para publicar cambios inmediatos</p>
-            <p class="mt-2 text-sm text-slate-500">Las páginas públicas leen directamente la API, así que cada alta, edición o borrado se refleja al instante al recargar.</p>
+            <p class="mt-2 text-lg font-semibold text-slate-900">Panel operativo</p>
+            <p class="mt-2 text-sm text-slate-500">Publicación inmediata y edición simple para el sitio público.</p>
           </div>
+        </section>
+
+        <section class="grid gap-4 xl:grid-cols-[1.3fr_0.7fr]">
+          <div class="card bg-white p-6 border border-slate-100">
+            <div class="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+              <div>
+                <p class="text-sm uppercase tracking-[0.24em] text-slate-400">Resumen operativo</p>
+                <h2 class="mt-1 text-xl font-bold text-slate-900">Contenido en vivo</h2>
+              </div>
+              <span class="inline-flex rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">Actualizado</span>
+            </div>
+
+            <div class="mt-5 grid gap-4 md:grid-cols-2">
+              <div class="rounded-2xl bg-slate-50 p-4">
+                <div class="flex items-center justify-between gap-3">
+                  <h3 class="text-sm font-semibold text-slate-700">Últimas noticias</h3>
+                  <span class="text-xs text-slate-500">${latestNoticias.length} registros</span>
+                </div>
+                <div class="mt-3 space-y-2">
+                  ${latestNoticias.map((item) => `
+                    <div class="dashboard-list-item p-3">
+                      <p class="text-sm font-semibold text-slate-900">${escapeHtml(item.titulo)}</p>
+                      <p class="mt-1 text-xs text-slate-500">${formatDate(item.fecha)}</p>
+                    </div>
+                  `).join('') || '<p class="text-sm text-slate-500">No hay noticias cargadas todavía.</p>'}
+                </div>
+              </div>
+
+              <div class="rounded-2xl bg-slate-50 p-4">
+                <div class="flex items-center justify-between gap-3">
+                  <h3 class="text-sm font-semibold text-slate-700">Últimos proyectos</h3>
+                  <span class="text-xs text-slate-500">${latestProyectos.length} registros</span>
+                </div>
+                <div class="mt-3 space-y-2">
+                  ${latestProyectos.map((item) => `
+                    <div class="dashboard-list-item p-3">
+                      <p class="text-sm font-semibold text-slate-900">${escapeHtml(item.nombre)}</p>
+                      <p class="mt-1 text-xs text-slate-500">${formatDate(item.fecha_inicio)}</p>
+                    </div>
+                  `).join('') || '<p class="text-sm text-slate-500">No hay proyectos cargados todavía.</p>'}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <aside class="card bg-white p-6 border border-slate-100">
+            <p class="text-sm uppercase tracking-[0.24em] text-slate-400">Acciones rápidas</p>
+            <h2 class="mt-1 text-xl font-bold text-slate-900">Gestión ágil</h2>
+            <div class="mt-5 space-y-3">
+              <a href="#" data-view="noticias" class="nav-link block rounded-2xl bg-emerald-600 px-4 py-3 text-sm font-semibold text-white text-center hover:bg-emerald-700">
+                Gestionar noticias
+              </a>
+              <a href="#" data-view="proyectos" class="nav-link block rounded-2xl bg-sky-600 px-4 py-3 text-sm font-semibold text-white text-center hover:bg-sky-700">
+                Gestionar proyectos
+              </a>
+              <div class="rounded-2xl bg-slate-50 p-4">
+                <p class="text-sm font-semibold text-slate-800">Flujo recomendado</p>
+                <p class="mt-2 text-sm text-slate-500">Actualiza contenido desde esta vista y el público lo verá al recargar la página correspondiente.</p>
+              </div>
+            </div>
+          </aside>
         </section>
       `;
     }
