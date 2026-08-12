@@ -62,6 +62,13 @@
         html {
             scroll-behavior: smooth;
         }
+        /* Evitar espacios en blanco al navegar por anclas con navbar fijo */
+        section[id] {
+            scroll-margin-top: 100px; /* compensa la altura del navbar en escritorio */
+        }
+        @media (max-width: 768px) {
+            section[id] { scroll-margin-top: 85px; } /* compensa navbar en móvil */
+        }
         
         /* ==========================================================================
            SISTEMA DE RADIOS ASIMÉTRICOS INSTITUCIONALES (Una esquina en 0px)
@@ -100,36 +107,52 @@
     <!-- Componente de Navegación -->
     <div id="navbar-container" class="navbar-loading" data-component="/components/navbar.html"></div>
 
-    <!-- Hero Section Institucional -->
-    <header class="relative w-full min-h-[380px] md:min-h-[460px] flex items-center justify-center overflow-hidden bg-primary-dark">
-        <div class="absolute inset-0 z-0">
-            <img alt="Sembramos desarrollo con propósito en el Valle de Nepeña" class="w-full h-full object-cover opacity-25" src="../activos/img_quehacemos/Sem5-Portada02.jpg" />
+<header class="relative w-full min-h-[380px] md:min-h-[460px] flex items-center justify-center overflow-hidden bg-[#00563B]">
+
+    <!-- Imagen de fondo -->
+    <div class="absolute inset-0 z-0">
+        <img
+            src="../activos/img_quehacemos/Sem5-Portada02.jpg"
+            alt="Sembramos desarrollo con propósito en el Valle de Nepeña"
+            class="w-full h-full object-cover opacity-25"
+        />
+    </div>
+
+    <!-- Degradado -->
+    <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/50 to-transparent z-10"></div>
+
+    <!-- Contenido centrado -->
+    <div class="relative z-20 w-full max-w-5xl mx-auto px-4 sm:px-6 text-center">
+
+        <!-- Título -->
+        <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white leading-tight mb-6 font-display tracking-tight">
+            Sembramos
+            <span style="color: #F09734;">desarrollo</span>
+            con propósito
+        </h1>
+
+        <!-- Botones -->
+        <div class="flex flex-wrap justify-center items-center gap-3 md:gap-4">
+
+            <a href="#capacitacion"
+                class="bg-white/10 backdrop-blur-sm border border-white/30 text-white px-5 md:px-6 py-3 rounded-full font-display font-semibold text-sm uppercase tracking-wider hover:bg-white hover:text-primary transition-all duration-300 shadow-sm">
+                01. Desarrollo de Capacidades
+            </a>
+
+            <a href="#asistencia-tecnica"
+                class="bg-white/10 backdrop-blur-sm border border-white/30 text-white px-5 md:px-6 py-3 rounded-full font-display font-semibold text-sm uppercase tracking-wider hover:bg-white hover:text-primary transition-all duration-300 shadow-sm">
+                02. Transferencia Tecnológica
+            </a>
+
+            <a href="#investigacion"
+                class="bg-white/10 backdrop-blur-sm border border-white/30 text-white px-5 md:px-6 py-3 rounded-full font-display font-semibold text-sm uppercase tracking-wider hover:bg-white hover:text-primary transition-all duration-300 shadow-sm">
+                03. Investigación Aplicada
+            </a>
+
         </div>
-        <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/50 to-transparent z-10"></div>
-        <div class="relative z-20 text-center px-4 sm:px-6 max-w-4xl mx-auto pt-40 pb-20">
-            
-            <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white leading-tight mb-6 font-display tracking-tight">
-                Sembramos <span class="text-orange" style="color: #F09734;">desarrollo</span> con propósito
-            </h1>
-            <p class="text-base md:text-lg text-white/90 mb-10 max-w-2xl mx-auto font-body font-light leading-relaxed">
-                Impulsamos el impacto social en el Valle de Nepeña a través de la capacitación técnica, la transferencia tecnológica, la investigación científica y modelos productivos sostenibles.
-            </p>
-            <div class="flex flex-wrap justify-center gap-3 md:gap-4">
-                <a href="#capacitacion"
-                    class="bg-white/10 backdrop-blur-sm border border-white/30 text-white px-6 py-3 rounded-full font-display font-semibold text-sm uppercase tracking-wider hover:bg-white hover:text-primary transition-all duration-300 shadow-sm">
-                    01. Capacitación
-                </a>
-                <a href="#asistencia-tecnica"
-                    class="bg-white/10 backdrop-blur-sm border border-white/30 text-white px-6 py-3 rounded-full font-display font-semibold text-sm uppercase tracking-wider hover:bg-white hover:text-primary transition-all duration-300 shadow-sm">
-                    02. Transferencia Técnica
-                </a>
-                <a href="#investigacion"
-                    class="bg-white/10 backdrop-blur-sm border border-white/30 text-white px-6 py-3 rounded-full font-display font-semibold text-sm uppercase tracking-wider hover:bg-white hover:text-primary transition-all duration-300 shadow-sm">
-                    03. Investigación Aplicada
-                </a>
-            </div>
-        </div>
-    </header>
+    </div>
+
+</header>
 
     <main class="w-full">
 

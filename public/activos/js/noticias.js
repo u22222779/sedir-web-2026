@@ -90,7 +90,7 @@ function toNoticiasCards(items) {
 
 function renderHomeNoticias(items) {
   var container = document.getElementById('home-news-container');
-  var noticiasDestacadas = getLatestNoticiasByCategory(items);
+  var noticiasDestacadas = getLatestNoticiasByCategory(items).slice(0, 3);
 
   if (!container) {
     return;
