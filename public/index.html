@@ -53,6 +53,15 @@
       font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
     }
 
+    /* Reservar el espacio del hero mientras el componente carga:
+       evita que el contenido inferior (bento grid) se vea arriba y el posterior layout shift */
+    #hero-container {
+      height: 100vh;
+      height: 100dvh;
+      min-height: 520px;
+      background: radial-gradient(circle at center, #006A49 0%, #000306 100%);
+    }
+
     /* Estilos específicos de la sección Quiénes Somos */
  .about-section {
   --verde: #2f8f4e;
