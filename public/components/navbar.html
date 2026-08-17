@@ -2,17 +2,17 @@
 <nav class="navbar-shell">
   <div class="w-full px-4 sm:px-[40px] flex justify-between items-center max-w-7xl mx-auto">
 
-    <!-- LOGO -->
-    <div class="navbar-logo-container flex items-center">
-      <a href="/index.html" class="navbar-logo-pill">
-        <img alt="SEDIR Logo" src="/activos/img_logos/Logo-White.svg" class="navbar-logo logo-default">
-        <img alt="SEDIR Logo" src="/activos/img_logos/Logo-Brown.svg" class="navbar-logo logo-scrolled">
-      </a>
-    </div>
+<!-- LOGO -->
+<div class="navbar-logo-container flex items-center">
+  <a href="/index.html" class="navbar-logo-pill">
+    <img alt="SEDIR Logo" src="/activos/img_logos/blanco.jpg" class="navbar-logo logo-default" style="height: 120px; width: auto;">
+    <img alt="SEDIR Logo" src="/activos/img_logos/Logo-Brown.svg" class="navbar-logo logo-scrolled" style="height: 120px; width: auto;">
+  </a>
+</div>
 
     <!-- DESKTOP MENU -->
-<!-- Reemplaza esta línea en tu Navbar Desktop -->
-<div class="hidden md:flex items-center flex-nowrap gap-4 lg:gap-6">      
+    <!-- Reemplaza esta línea en tu Navbar Desktop -->
+    <div class="hidden md:flex items-center flex-nowrap gap-4 lg:gap-6">
       <a class="navbar-link font-display font-medium text-[15px]" href="/index.html">
         Inicio
       </a>
@@ -35,7 +35,8 @@
 
       <!-- DROPDOWN: PRODUCTOS Y SERVICIOS -->
       <div class="relative inline-block group">
-        <button class="navbar-link font-display font-medium text-[15px] flex items-center gap-1.5 py-2 focus:outline-none">
+        <button
+          class="navbar-link font-display font-medium text-[15px] flex items-center gap-1.5 py-2 focus:outline-none">
           Productos y Servicios
           <span class="text-xs transition-transform duration-200 group-hover:rotate-180 inline-block">
             ▼
@@ -43,28 +44,34 @@
         </button>
 
         <!-- Menú desplegable Desktop -->
-        <div class="absolute left-0 top-full hidden group-hover:block bg-white shadow-xl rounded-[20px] min-w-[210px] z-50 border border-gray-100 py-2 overflow-hidden">
-          <a href="../paginas/productos.html" class="block px-5 py-2.5 text-sm text-gray-700 hover:bg-green-50 hover:text-[#00944a] transition-colors font-medium">
+        <div
+          class="absolute left-0 top-full hidden group-hover:block bg-white shadow-xl rounded-[20px] min-w-[210px] z-50 border border-gray-100 py-2 overflow-hidden">
+          <a href="../paginas/productos.html"
+            class="block px-5 py-2.5 text-sm text-gray-700 hover:bg-green-50 hover:text-[#00944a] transition-colors font-medium">
             Productos
           </a>
-          <a href="../paginas/servicios.html" class="block px-5 py-2.5 text-sm text-gray-700 hover:bg-green-50 hover:text-[#00944a] transition-colors font-medium">
+          <a href="../paginas/servicios.html"
+            class="block px-5 py-2.5 text-sm text-gray-700 hover:bg-green-50 hover:text-[#00944a] transition-colors font-medium">
             Servicios
           </a>
-          <a href="../paginas/publicaciones.html" class="block px-5 py-2.5 text-sm text-gray-700 hover:bg-green-50 hover:text-[#00944a] transition-colors font-medium">
+          <a href="../paginas/publicaciones.html"
+            class="block px-5 py-2.5 text-sm text-gray-700 hover:bg-green-50 hover:text-[#00944a] transition-colors font-medium">
             Publicaciones
           </a>
         </div>
       </div>
 
       <!-- BOTÓN CTA DESKTOP -->
-      <a class="navbar-cta px-6 py-2.5 rounded-full font-display font-semibold text-[15px]" href="../paginas/contacto.html">
+      <a class="navbar-cta px-6 py-2.5 rounded-full font-display font-semibold text-[15px]"
+        href="../paginas/contacto.html">
         Contáctanos
       </a>
 
     </div>
 
     <!-- MOBILE BUTTON (HAMBURGUESA) -->
-    <button id="menu-btn" class="md:hidden navbar-burger focus:outline-none" type="button" aria-label="Abrir o cerrar menú" aria-expanded="false">
+    <button id="menu-btn" class="md:hidden navbar-burger focus:outline-none" type="button"
+      aria-label="Abrir o cerrar menú" aria-expanded="false">
       <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
         <path class="line line1" stroke-linecap="round" stroke-width="2" d="M4 7h16" />
         <path class="line line2" stroke-linecap="round" stroke-width="2" d="M4 12h16" />
@@ -76,8 +83,9 @@
 </nav>
 
 <!-- MOBILE DRAWER (PANEL LATERAL) -->
-<div id="mobile-menu" class="fixed top-0 right-[-100%] w-[280px] h-full bg-white shadow-2xl z-[999] transition-all duration-300 ease-in-out md:hidden flex flex-col justify-between">
-  
+<div id="mobile-menu"
+  class="fixed top-0 right-[-100%] w-[280px] h-full bg-white shadow-2xl z-[999] transition-all duration-300 ease-in-out md:hidden flex flex-col justify-between">
+
   <div>
     <!-- LOGO EN EL DRAWER -->
     <div class="flex items-center justify-between p-6 border-b border-gray-100">
@@ -104,7 +112,8 @@
 
       <!-- ACORDEÓN MÓVIL: PRODUCTOS Y SERVICIOS -->
       <div class="border-b border-gray-50 pb-2">
-        <button id="mobileMenuBtn" type="button" class="navbar-link w-full text-left flex justify-between items-center py-1 focus:outline-none">
+        <button id="mobileMenuBtn" type="button"
+          class="navbar-link w-full text-left flex justify-between items-center py-1 focus:outline-none">
           <span>Productos y Servicios</span>
           <span class="text-xs">▼</span>
         </button>
@@ -126,7 +135,8 @@
 
   <!-- BOTÓN CTA EN EL PIE DEL DRAWER -->
   <div class="p-6 border-t border-gray-100">
-    <a href="../paginas/contacto.html" class="navbar-cta-mobile block text-center py-3 rounded-full font-semibold shadow-md">
+    <a href="../paginas/contacto.html"
+      class="navbar-cta-mobile block text-center py-3 rounded-full font-semibold shadow-md">
       Contáctanos
     </a>
   </div>
@@ -134,4 +144,5 @@
 </div>
 
 <!-- OVERLAY OSCURO DE FONDO -->
-<div id="overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden z-[998] md:hidden transition-opacity duration-300"></div>
+<div id="overlay"
+  class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden z-[998] md:hidden transition-opacity duration-300"></div>

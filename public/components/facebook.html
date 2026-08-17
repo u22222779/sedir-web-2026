@@ -1,0 +1,137 @@
+<!-- ============ FACEBOOK ============ -->
+<style>
+.sedir-facebook-container {
+  position: fixed;
+  bottom: 24px;
+  right: 32px;
+  z-index: 150;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-end;
+  gap: 15px;
+  pointer-events: none; /* El contenedor entero no bloquea clicks por defecto */
+}
+
+.sedir-facebook-button {
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  pointer-events: auto; /* El botón SIEMPRE es clickeable */
+}
+
+.sedir-facebook-player {
+  width: 320px;
+  height: 580px;
+  max-width: 85vw;
+  max-height: 75vh;
+  background: white;
+  padding: 6px;
+  border-radius: 1.75rem;
+  border: 1px solid #1877F2;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px) scale(0.9);
+  transform-origin: bottom right;
+  transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+  position: relative;
+  pointer-events: none; /* Sigue sin capturar clicks mientras está oculto */
+}
+
+.sedir-facebook-player.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+  pointer-events: auto; /* Solo captura clicks cuando está visible */
+}
+  .sedir-facebook-player iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 1.4rem;
+    display: block;
+  }
+
+  .sedir-facebook-button {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+  }
+
+  .sedir-facebook-close {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid white;
+    background: #1877F2;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 20;
+    pointer-events: auto;
+  }
+
+  @media (max-width: 768px) {
+    .sedir-facebook-container {
+      right: 20px;
+      bottom: 14px;
+    }
+
+    .sedir-facebook-player {
+      width: 300px;
+      max-width: calc(100vw - 100px);
+    }
+  }
+</style>
+
+<div class="sedir-facebook-container">
+  <button
+    id="sedirFacebookToggle"
+    type="button"
+    class="sedir-facebook-button bg-[#1877F2] text-white rounded-full shadow-xl hover:bg-[#145dc4] transition-colors flex items-center justify-center"
+    aria-label="Ver Facebook de SEDIR">
+    <i class="fab fa-facebook-f text-[32px]"></i>
+  </button>
+
+  <div id="sedirFacebookPlayer" class="sedir-facebook-player">
+    <button
+      id="sedirFacebookClose"
+      type="button"
+      class="sedir-facebook-close"
+      aria-label="Cerrar Facebook">
+      <i class="fas fa-times"></i>
+    </button>
+    <iframe
+      src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FSEDIR.Agro&tabs=timeline&width=300&height=570&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false"
+      scrolling="no"
+      frameborder="0"
+      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+<script>
+(function () {
+  const player = document.getElementById('sedirFacebookPlayer');
+  const toggle = document.getElementById('sedirFacebookToggle');
+  const close = document.getElementById('sedirFacebookClose');
+
+  if (!player || !toggle || !close) return;
+
+  toggle.addEventListener('click', function () {
+    player.classList.toggle('is-visible');
+  });
+
+  close.addEventListener('click', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    player.classList.remove('is-visible');
+  });
+})();
+</script>

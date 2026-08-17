@@ -1,14 +1,16 @@
+<!-- ============ RADIO SEDIR ============ -->
 <style>
   .radio-player-container {
     position: fixed;
-    bottom: 105px;
+    bottom: 184px;
     right: 32px;
-    z-index: 100; /* Elevado para asegurar que esté sobre el navbar móvil */
+    z-index: 150;
     display: flex;
-    flex-direction: row-reverse; /* Alinea los elementos en fila, botón a la derecha */
+    flex-direction: row-reverse;
     align-items: flex-end;
-    gap: 15px; /* Espacio entre el botón y el player */
+    gap: 15px;
   }
+
   .radio-player {
     background-color: #F09734;
     color: white;
@@ -23,7 +25,7 @@
     position: relative;
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
   }
-  /* Triángulo apuntando al botón (ajustado a la derecha) */
+
   .radio-player::after {
     content: '';
     position: absolute;
@@ -35,35 +37,40 @@
     border-bottom: 10px solid transparent;
     border-left: 10px solid #F09734;
   }
-  
-  /* Lógica: Mostrar player cuando el contenedor tiene hover */
+
   .radio-player-container:hover .radio-player {
     opacity: 1;
     visibility: visible;
     transform: translateX(0) scale(1);
   }
-  
-  /* Estilo para el audio */
+
   audio {
     filter: invert(1) hue-rotate(180deg);
     border-radius: 0.5rem;
   }
+
+  @media (max-width: 768px) {
+    .radio-player-container {
+      right: 20px;
+      bottom: 174px;
+    }
+  }
 </style>
 
-<!-- Radio SEDIR floating container -->
 <div class="radio-player-container">
-    <!-- Button -->
-    <button class="radio-button bg-[#F09734] text-white p-4 rounded-full shadow-xl hover:bg-[#d6852a] transition-colors flex items-center justify-center w-[64px] h-[64px] shrink-0"
-        aria-label="Escuchar Radio SEDIR">
-        <i class="fas fa-radio text-[32px]"></i>
-    </button>
-    
-    <!-- Player -->
-    <div class="radio-player">
-        <h4 class="text-sm font-bold text-white mb-3 text-center font-display">Radio SEDIR en Vivo</h4>
-        <audio controls class="h-10 w-full">
-            <source src="https://radio.sistemasandinos.org/7516/stream" type="audio/mpeg">
-            Tu navegador no soporta audio.
-        </audio>
-    </div>
+  <button
+    class="radio-button bg-[#F09734] text-white p-4 rounded-full shadow-xl hover:bg-[#d6852a] transition-colors flex items-center justify-center w-[64px] h-[64px] shrink-0"
+    aria-label="Escuchar Radio SEDIR">
+    <i class="fas fa-radio text-[32px]"></i>
+  </button>
+
+  <div class="radio-player">
+    <h4 class="text-sm font-bold text-white mb-3 text-center font-display">
+      Radio SEDIR en Vivo
+    </h4>
+    <audio controls class="h-10 w-full">
+      <source src="https://radio.sistemasandinos.org/7516/stream" type="audio/mpeg">
+      Tu navegador no soporta audio.
+    </audio>
+  </div>
 </div>

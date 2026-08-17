@@ -9,8 +9,8 @@ async function startServer() {
   try {
     await testConnection();
 
-    const server = app.listen(PORT, () => {
-      console.log(`Servidor escuchando en http://localhost:${PORT}`);
+    const server = app.listen(PORT, '0.0.0.0', () => {
+      console.log(`Servidor escuchando en http://0.0.0.0:${PORT}`);
     });
 
     server.on('error', (error) => {

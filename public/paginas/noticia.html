@@ -7,9 +7,9 @@
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-    <meta name="description" content="Últimas noticias, proyectos y novedades del Servicio para el Desarrollo Integral Rural (SEDIR)." />
+    <meta name="description"
+        content="Últimas noticias, proyectos y novedades del Servicio para el Desarrollo Integral Rural (SEDIR)." />
 
-    <!-- Tailwind CSS Config (Optimizando Container y Queries) -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <script id="tailwind-config">
         tailwind.config = {
@@ -39,7 +39,6 @@
         };
     </script>
 
-    <!-- Font Imports & Stylesheets -->
     <link href="../activos/css/fonts.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet" />
     <link href="../activos/css/style.css" rel="stylesheet" />
@@ -53,46 +52,75 @@
     <style>
         body {
             font-family: 'Montserrat Light', sans-serif;
-            text-rendering: optimizeLegibility;
-            -webkit-font-smoothing: antialiased;
         }
-        h1, h2, h3, h4, h5, h6 {
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             font-family: 'Montserrat', sans-serif;
         }
-        /* Prevención de desbordamiento horizontal en móviles */
-        html, body {
+
+        html,
+        body {
             overflow-x: hidden;
             width: 100%;
         }
     </style>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" />
 </head>
 
 <body class="bg-white text-gray-800 noticias-page antialiased min-h-screen flex flex-col justify-between">
     <!-- Componente Navbar -->
-    <header id="navbar-container" class="navbar-loading sticky top-0 z-50 w-full" data-component="/components/navbar.html"></header>
-    
-    <!-- Componente Hero -->
-    <div id="hero-container" class="w-full overflow-hidden" data-component="/components/hero-noticias.html"></div>
+    <header id="navbar-container" class="navbar-loading sticky top-0 z-50 w-full"
+        data-component="/components/navbar.html"></header>
+
+    <!-- Hero Noticias -->
+    <header class="relative w-full h-[400px] md:h-[430px] rounded-bl-none flex items-center justify-center overflow-hidden"
+      style="background: #006a49">
+
+      <!-- Imagen de fondo -->
+      <div class="absolute inset-0 z-0">
+        <img src="/activos/img_noticias/P1340490.JPG" alt="Últimas Noticias"
+          class="w-full h-full object-cover opacity-60" />
+      </div>
+
+      <!-- Capa oscura sutil, como en el original -->
+      <div class="absolute inset-0 bg-transparent z-10"></div>
+
+      <!-- Contenido -->
+      <div class="relative z-20 w-full max-w-[1606px] mx-auto px-6 md:px-12 lg:px-[100px] flex items-center">
+        <div class="w-full md:w-1/2 text-left">
+          <h1 class="font-montserrat text-2xl sm:text-3xl md:text-[38px] text-white leading-[1.15] font-extrabold"
+            style="font-weight: 700 !important; font-family: 'Montserrat', sans-serif !important;">
+            Últimas Noticias
+            <span class="text-[#F09734]">
+              del Sector Agropecuario
+            </span>
+          </h1>
+        </div>
+      </div>
+    </header>
 
     <!-- Contenido Principal -->
-    <!-- Optimizado: px-4 en móvil, px-6 en tablet, px-8 en escritorio para respiración visual -->
-    <main class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 space-y-8 sm:space-y-12 flex-grow">
-        
-        <!-- Contenedor de Filtros (Con soporte para scroll horizontal en pantallas chicas) -->
-        <section id="filtros-container" class="w-full overflow-x-auto pb-2 scrollbar-none" data-component="/components/filtros-noticias.html"></section>
-        
-        <!-- Template Oculto -->
-        <div id="cards-template-container" data-component="/components/card-noticia.html" hidden aria-hidden="true"></div>
-        
-        <!-- Grilla Responsiva de Noticias -->
-        <!-- 1 col (Móvil) -> 2 cols (Tablet >=768px) -> 3 cols (Escritorio >=1024px) -->
-        <!-- Se optimizó el gap: 4 (16px) en móvil, 6 (24px) en tablet, 8 (32px) en escritorio -->
-        <section id="news-cards-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 w-full" aria-label="Listado de noticias y artículos">
-            
-            <!-- Estado de carga visual (Skeleton Loader temporal mientras el JS inyecta las cards) -->
-            <div id="loading-state" class="col-span-full flex flex-col items-center justify-center py-12 text-gray-400 space-y-3">
+    <main
+        class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 space-y-8 sm:space-y-12 flex-grow">
+
+        <section id="filtros-container" class="w-full overflow-x-auto pb-2 scrollbar-none"
+            data-component="/components/filtros-noticias.html"></section>
+
+        <div id="cards-template-container" data-component="/components/card-noticia.html" hidden aria-hidden="true">
+        </div>
+
+        <section id="news-cards-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 w-full"
+            aria-label="Listado de noticias y artículos">
+
+            <div id="loading-state"
+                class="col-span-full flex flex-col items-center justify-center py-12 text-gray-400 space-y-3">
                 <i class="fa-solid fa-spinner fa-spin text-3xl text-primary"></i>
                 <p class="text-sm font-medium animate-pulse">Cargando noticias...</p>
             </div>
@@ -100,15 +128,16 @@
         </section>
     </main>
 
-    <!-- Componente Footer -->
     <footer id="footer-container" class="w-full mt-auto" data-component="/components/footer.html"></footer>
-    
-    <!-- Componente WhatsApp flotante -->
-    <div id="whatsapp-container" class="fixed bottom-4 right-4 z-40" data-component="/components/whatsapp.html"></div>
-  <!-- Radio Component -->
+  <!-- BEGIN: Radio Component -->
   <div id="radio-container" data-component="/components/radio.html"></div>
+   
+  <!-- BEGIN: WhatsApp Component -->
+  <div id="whatsapp-container" data-component="/components/whatsapp.html"></div>
+  
+  <!-- Facebook Component -->
+  <div id="facebook-container" data-component="/components/facebook.html"></div>
 
-    <!-- Scripts -->
     <script src="/activos/js/components.js" defer></script>
     <script src="/activos/js/navbar.js" defer></script>
     <script src="/activos/js/filtros.js" defer></script>
