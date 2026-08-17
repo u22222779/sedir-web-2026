@@ -4,7 +4,9 @@ const {
   obtenerWebinars,
   obtenerWebinarPorId,
   obtenerFiltrosWebinar,
+  actualizarUrlYoutubeWebinar,
 } = require('../controllers/webinar.controller');
+const { requireAuth, requireAdmin } = require('../middleware/auth.middleware');
 
 const router = express.Router();
 
@@ -12,5 +14,5 @@ const router = express.Router();
 router.get('/filtros', obtenerFiltrosWebinar);
 router.get('/', obtenerWebinars);
 router.get('/:id', obtenerWebinarPorId);
-
+router.put('/:id/youtube', requireAuth, requireAdmin, actualizarUrlYoutubeWebinar);
 module.exports = router;

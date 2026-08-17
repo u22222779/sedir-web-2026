@@ -107,6 +107,75 @@ async function obtenerWebinarPorId(req, res) {
   }
 }
 
+function esUrlYoutubeValida(url) {
+  const normalizada = String(url || '').trim();
+
+  if (!normalizada) {
+    return false;
+  }
+
+  try {
+    const parsed = new URL(normalizada);
+    const host = parsed.hostname.replace(/^www\./, '');
+    return ['youtube.com', 'youtu.be', 'm.youtube.com'].includes(host);
+  } catch {
+    return false;
+  }
+}
+
+async function actualizarUrlYoutubeWebinar(req, res) {
+  try {
+    const id = parsePositiveInteger(req.params.id);
+
+    if (!id) {
+      return res.status(400).json({
+        error: 'El id del webinar debe ser un número entero válido',
+      });
+    }
+
+    const urlYoutube = String(req.body.url_youtube || '').trim();
+
+    if (!esUrlYoutubeValida(urlYoutube)) {
+      return res.status(400).json({
+        error: 'url_youtube debe ser un enlace válido de YouTube (youtube.com o youtu.be)',
+      });
+    }
+
+    const result = await pool.query(
+      `
+        UPDATE webinar
+        SET url_youtube = $1
+        WHERE id_webinar = $2
+        RETURNING
+          id_webinar AS id,
+          codigo,
+          fecha,
+          categoria,
+          tema,
+          subtemas,
+          expositor,
+          especialidad,
+          afiche,
+          url_youtube,
+          url_pdf
+      `,
+      [urlYoutube, id]
+    );
+
+    if (!result.rows.length) {
+      return res.status(404).json({
+        error: 'Webinar no encontrado',
+      });
+    }
+
+    res.json(result.rows[0]);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+}
+
 async function obtenerFiltrosWebinar(req, res) {
   try {
     const [aniosResult, categoriasResult] = await Promise.all([
@@ -142,4 +211,5 @@ module.exports = {
   obtenerWebinars,
   obtenerWebinarPorId,
   obtenerFiltrosWebinar,
+  actualizarUrlYoutubeWebinar,
 };

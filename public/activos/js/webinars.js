@@ -22,16 +22,42 @@ function crearTarjetaWebinar(w) {
     <div class="h-40 w-full overflow-hidden bg-mint">
       <img src="${escapeHtml(w.afiche || '')}" alt="${escapeHtml(w.tema || '')}" class="w-full h-full object-cover" loading="lazy" />
     </div>
+
     <div class="p-5 flex flex-col flex-grow">
-      <span class="inline-block bg-primary/10 text-primary text-xs font-bold px-3 py-1 rounded-full w-fit mb-3">${escapeHtml(w.categoria || '')}</span>
-      <h3 class="font-display font-bold text-base text-gray-900 mb-2 leading-snug">${escapeHtml(w.tema || '')}</h3>
-      <p class="text-xs text-gray-500 mb-4">${formatFechaWebinar(w.fecha)}${w.expositor ? ' · ' + escapeHtml(w.expositor) : ''}</p>
+
+      <span class="inline-block bg-primary/10 text-primary text-xs font-bold px-3 py-1 rounded-full w-fit mb-3">
+        ${escapeHtml(w.categoria || '')}
+      </span>
+
+      <h3 class="font-display font-bold text-base text-gray-900 mb-2 leading-snug">
+        ${escapeHtml(w.tema || '')}
+      </h3>
+
+      <p class="text-xs text-gray-500 mb-4">
+        ${formatFechaWebinar(w.fecha)}
+        ${w.expositor ? ' · ' + escapeHtml(w.expositor) : ''}
+      </p>
+
       <div class="mt-auto flex flex-col gap-2">
-        ${w.url_youtube ? `<a href="${escapeHtml(w.url_youtube)}" target="_blank" rel="noopener" class="text-center bg-primary text-white text-sm font-semibold px-4 py-2 rounded-full hover:bg-primary-dark transition-colors">Ver grabación</a>` : ''}
-        ${w.url_pdf ? `<a href="${escapeHtml(w.url_pdf)}" target="_blank" rel="noopener" class="text-center border border-gray-300 text-gray-700 text-sm font-semibold px-4 py-2 rounded-full hover:border-primary hover:text-primary transition-colors">Descargar PDF</a>` : ''}
+        ${
+          w.url_youtube
+            ? `
+              <a
+                href="${escapeHtml(w.url_youtube)}"
+                target="_blank"
+                rel="noopener"
+                class="text-center bg-primary text-white text-sm font-semibold px-4 py-2 rounded-full hover:bg-primary-dark transition-colors"
+              >
+                Ver grabación
+              </a>
+            `
+            : ''
+        }
       </div>
+
     </div>
   `;
+
   return article;
 }
 

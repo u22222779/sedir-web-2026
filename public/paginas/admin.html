@@ -166,6 +166,7 @@
       <a href="#" data-view="dashboard" class="nav-link block py-2.5 px-3 rounded-xl hover:bg-slate-50">Dashboard</a>
       <a href="#" data-view="noticias" class="nav-link block py-2.5 px-3 rounded-xl hover:bg-slate-50">Noticias</a>
       <a href="#" data-view="proyectos" class="nav-link block py-2.5 px-3 rounded-xl hover:bg-slate-50">Proyectos</a>
+      <a href="#" data-view="webinars" class="nav-link block py-2.5 px-3 rounded-xl hover:bg-slate-50">Webinars</a>
     </nav>
     <div class="mt-8 pt-6 border-t border-slate-100 space-y-3">
       <div class="text-sm text-slate-500">
@@ -180,7 +181,9 @@
     <header class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between mb-8">
       <h1 class="text-3xl font-bold text-slate-900">CRUD de noticias y proyectos</h1>
     </header>
-    <div class="hidden" id="status-line">Listo para administrar contenido público</div>
+    <div id="status-line" class="fixed top-6 right-6 z-50 opacity-0 pointer-events-none translate-y-[-8px] transition-all duration-300 bg-emerald-600 text-white text-sm font-semibold px-5 py-3 rounded-2xl shadow-xl">
+      Listo para administrar contenido público
+    </div>
 
     <section id="main-content" class="space-y-6"></section>
   </main>
@@ -193,8 +196,10 @@
       view: 'dashboard',
       noticias: [],
       proyectos: [],
+      webinars: [],
       editingNoticiaId: null,
       editingProyectoId: null,
+      editingWebinarYoutubeId: null,
       authUser: null,
     };
 
@@ -220,8 +225,19 @@
       clearAuth();
     });
 
+    let statusTimeoutId = null;
+
     function setStatus(message) {
       statusLine.textContent = message;
+      statusLine.classList.remove('opacity-0', 'translate-y-[-8px]', 'pointer-events-none');
+
+      if (statusTimeoutId) {
+        clearTimeout(statusTimeoutId);
+      }
+
+      statusTimeoutId = setTimeout(function () {
+        statusLine.classList.add('opacity-0', 'translate-y-[-8px]', 'pointer-events-none');
+      }, 2500);
     }
 
     function escapeHtml(value) {
@@ -594,6 +610,43 @@
       `;
     }
 
+    function webinarYoutubeForm(model) {
+      if (!model) {
+        return '<p class="text-sm text-slate-500">Selecciona "Editar YouTube" en la tabla para agregar o corregir el enlace.</p>';
+      }
+
+      const index = appState.webinars.findIndex((item) => String(item.id) === String(model.id));
+      const total = appState.webinars.length;
+      const isFirst = index <= 0;
+      const isLast = index === -1 || index >= total - 1;
+
+      return `
+        <input type="hidden" name="id" value="${escapeHtml(model.id)}" />
+        <div class="flex items-center justify-between gap-3">
+          <button type="button" data-nav-webinar="prev" ${isFirst ? 'disabled' : ''} class="inline-flex items-center gap-1 text-sm font-semibold text-slate-600 disabled:opacity-30 disabled:cursor-not-allowed hover:text-primary">
+            <span class="material-symbols-outlined text-lg">arrow_back</span> Anterior
+          </button>
+          <span class="text-xs text-slate-400 font-semibold">${index + 1} de ${total}</span>
+          <button type="button" data-nav-webinar="next" ${isLast ? 'disabled' : ''} class="inline-flex items-center gap-1 text-sm font-semibold text-slate-600 disabled:opacity-30 disabled:cursor-not-allowed hover:text-primary">
+            Siguiente <span class="material-symbols-outlined text-lg">arrow_forward</span>
+          </button>
+        </div>
+        <div>
+          <p class="text-sm font-semibold text-slate-600">Webinar</p>
+          <p class="mt-1 text-slate-900 font-semibold">${escapeHtml(model.tema)}</p>
+          <p class="text-xs text-slate-500">${escapeHtml(model.codigo || '')} · ${formatDate(model.fecha)}</p>
+        </div>
+        <div>
+          <label class="text-sm font-semibold text-slate-600">Enlace de YouTube *</label>
+          <input class="field mt-2" type="url" name="url_youtube" placeholder="https://www.youtube.com/watch?v=..." required value="${escapeHtml(model.url_youtube || '')}" />
+        </div>
+        <div class="flex flex-wrap gap-3 pt-2">
+          <button class="btn-primary rounded-full px-5 py-3 font-semibold" type="submit">Guardar enlace</button>
+          <button type="button" data-reset-form class="rounded-full px-5 py-3 font-semibold border border-slate-200">Cancelar</button>
+        </div>
+      `;
+    }
+
     function noticiasRows() {
       if (!appState.noticias.length) {
         return '<tr><td colspan="4" class="py-14 text-center text-slate-400">No hay noticias registradas</td></tr>';
@@ -639,6 +692,38 @@
                 <button class="px-3 py-1.5 rounded-full border border-slate-200 text-sm font-semibold" data-edit-proyecto="${item.id}">Editar</button>
                 <button class="px-3 py-1.5 rounded-full bg-red-600 text-white text-sm font-semibold" data-delete-proyecto="${item.id}">Eliminar</button>
               </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function webinarsRows() {
+      if (!appState.webinars.length) {
+        return '<tr><td colspan="5" class="py-14 text-center text-slate-400">No hay webinars registrados</td></tr>';
+      }
+
+      return appState.webinars.map(function (item, index) {
+        const isEditing = String(appState.editingWebinarYoutubeId) === String(item.id);
+        const rowClasses = isEditing
+          ? 'border-b border-slate-100 align-top bg-emerald-50 ring-1 ring-inset ring-emerald-200'
+          : 'border-b border-slate-100 align-top';
+
+        return `
+          <tr class="${rowClasses}">
+            <td class="py-4 pr-4 text-slate-400 font-semibold">${index + 1}</td>
+            <td class="py-4 pr-4">
+              <div class="font-semibold text-slate-900">${escapeHtml(item.tema)}</div>
+              <div class="text-xs text-slate-500">${escapeHtml(item.codigo || '')}</div>
+            </td>
+            <td class="py-4 pr-4 whitespace-nowrap">${formatDate(item.fecha)}</td>
+            <td class="py-4 pr-4">
+              ${item.url_youtube
+                ? `<a href="${escapeHtml(item.url_youtube)}" target="_blank" rel="noopener" class="text-emerald-600 font-semibold text-sm hover:underline">Ver enlace</a>`
+                : '<span class="text-xs text-red-500 font-semibold">Sin enlace</span>'}
+            </td>
+            <td class="py-4 pr-4">
+              <button class="px-3 py-1.5 rounded-full border text-sm font-semibold transition-colors ${isEditing ? 'border-emerald-600 bg-emerald-600 text-white' : 'border-slate-200'}" data-edit-webinar-youtube="${item.id}">${isEditing ? 'Editando...' : 'Editar YouTube'}</button>
             </td>
           </tr>
         `;
@@ -721,6 +806,42 @@
             </div>
           </section>
         `;
+        return;
+      }
+
+      if (appState.view === 'webinars') {
+        content.innerHTML = `
+          <section class="grid gap-6 xl:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
+            <div class="card bg-white p-6 md:p-7">
+              <div class="flex items-start justify-between gap-4 mb-5">
+                <div>
+                  <h2 class="text-2xl font-bold text-slate-900">Webinars</h2>
+                  <p class="text-slate-500 mt-1">Cada webinar usa su propio afiche e enlace de YouTube, alojados en SEDIR.</p>
+                </div>
+              </div>
+              <div id="webinars-scroll-container" class="overflow-x-auto overflow-y-auto max-h-[560px] pr-1">
+                <table class="w-full text-left">
+                  <thead class="text-xs uppercase tracking-wider text-slate-400 border-b border-slate-200 sticky top-0 bg-white">
+                    <tr>
+                      <th class="py-3 pr-4">#</th>
+                      <th class="py-3 pr-4">Webinar</th>
+                      <th class="py-3 pr-4">Fecha</th>
+                      <th class="py-3 pr-4">YouTube</th>
+                      <th class="py-3 pr-4">Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody class="text-slate-700">${webinarsRows()}</tbody>
+                </table>
+              </div>
+            </div>
+            <div class="card bg-white p-6 md:p-7">
+              <h3 class="text-lg font-bold text-slate-900 mb-4">Editar enlace de YouTube</h3>
+              <form id="webinar-youtube-form" class="space-y-4" novalidate>
+                ${webinarYoutubeForm(appState.editingWebinarYoutubeId ? appState.webinars.find((item) => String(item.id) === String(appState.editingWebinarYoutubeId)) : null)}
+              </form>
+            </div>
+          </section>
+        `;
       }
     }
 
@@ -732,6 +853,10 @@
       appState.proyectos = await requestJson('/api/proyectos');
     }
 
+    async function loadWebinars() {
+      appState.webinars = await requestJson('/api/webinars');
+    }
+
     async function loadData(view) {
       setStatus('Cargando datos...');
       if (view === 'dashboard' || view === 'noticias') {
@@ -740,14 +865,30 @@
       if (view === 'dashboard' || view === 'proyectos') {
         await loadProyectos();
       }
+      if (view === 'webinars') {
+        await loadWebinars();
+      }
       setStatus('Datos actualizados');
+    }
+
+    function rerenderPreservingScroll() {
+      const scrollContainer = document.getElementById('webinars-scroll-container');
+      const scrollTop = scrollContainer ? scrollContainer.scrollTop : 0;
+
+      renderView();
+      bindEvents();
+
+      const restoredContainer = document.getElementById('webinars-scroll-container');
+      if (restoredContainer) {
+        restoredContainer.scrollTop = scrollTop;
+      }
     }
 
     function resetEditing() {
       appState.editingNoticiaId = null;
       appState.editingProyectoId = null;
-      renderView();
-      bindEvents();
+      appState.editingWebinarYoutubeId = null;
+      rerenderPreservingScroll();
     }
 
     async function saveNoticia(form) {
@@ -794,6 +935,23 @@
       setStatus('Proyecto guardado');
     }
 
+    async function saveWebinarYoutube(form) {
+      const data = Object.fromEntries(new FormData(form).entries());
+
+      if (!data.url_youtube) {
+        throw new Error('El enlace de YouTube es obligatorio');
+      }
+
+      await requestJson(`/api/webinars/${data.id}/youtube`, {
+        method: 'PUT',
+        body: JSON.stringify({ url_youtube: data.url_youtube }),
+      });
+
+      await loadWebinars();
+      rerenderPreservingScroll();
+      setStatus('Enlace de YouTube guardado');
+    }
+
     async function deleteNoticia(id) {
       if (!confirm('¿Eliminar esta noticia?')) return;
       await requestJson(`/api/noticias/${id}`, { method: 'DELETE' });
@@ -828,6 +986,25 @@
       setStatus('Editando proyecto');
     }
 
+    function editWebinarYoutube(id) {
+      appState.view = 'webinars';
+      appState.editingWebinarYoutubeId = id;
+      rerenderPreservingScroll();
+      setStatus('Editando enlace de YouTube');
+    }
+
+    function navigateWebinar(step) {
+      const index = appState.webinars.findIndex((item) => String(item.id) === String(appState.editingWebinarYoutubeId));
+      if (index === -1) return;
+
+      const nextIndex = index + step;
+      if (nextIndex < 0 || nextIndex >= appState.webinars.length) return;
+
+      appState.editingWebinarYoutubeId = appState.webinars[nextIndex].id;
+      rerenderPreservingScroll();
+      setStatus('Editando enlace de YouTube');
+    }
+
     function bindEvents() {
       document.querySelectorAll('[data-edit-noticia]').forEach(function (button) {
         button.addEventListener('click', function () {
@@ -844,6 +1021,19 @@
       document.querySelectorAll('[data-edit-proyecto]').forEach(function (button) {
         button.addEventListener('click', function () {
           editProyecto(button.dataset.editProyecto);
+        });
+      });
+
+      document.querySelectorAll('[data-edit-webinar-youtube]').forEach(function (button) {
+        button.addEventListener('click', function () {
+          editWebinarYoutube(button.dataset.editWebinarYoutube);
+        });
+      });
+
+      document.querySelectorAll('[data-nav-webinar]').forEach(function (button) {
+        button.addEventListener('click', function () {
+          const step = button.dataset.navWebinar === 'next' ? 1 : -1;
+          navigateWebinar(step);
         });
       });
 
@@ -880,12 +1070,27 @@
 
         proyectoFormEl.querySelector('[data-reset-form]')?.addEventListener('click', resetEditing);
       }
+
+      const webinarYoutubeFormEl = document.getElementById('webinar-youtube-form');
+      if (webinarYoutubeFormEl) {
+        webinarYoutubeFormEl.addEventListener('submit', async function (event) {
+          event.preventDefault();
+          try {
+            await saveWebinarYoutube(webinarYoutubeFormEl);
+          } catch (error) {
+            alert(error.message);
+          }
+        });
+
+        webinarYoutubeFormEl.querySelector('[data-reset-form]')?.addEventListener('click', resetEditing);
+      }
     }
 
     async function loadView(view) {
       appState.view = view;
       appState.editingNoticiaId = null;
       appState.editingProyectoId = null;
+      appState.editingWebinarYoutubeId = null;
       await loadData(view);
       renderView();
       bindEvents();
