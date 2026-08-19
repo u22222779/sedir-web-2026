@@ -114,201 +114,309 @@
 </header>
   <!-- BEGIN: Main Page Content -->
   <main class="space-y-16 py-16">
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <!-- Section Header -->
+  <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-gray-200 pb-4 mb-10">
+    <div>
+      <h1 id="linea-alimentos-heading" class="text-2xl md:text-3xl font-bold text-ink mb-2 font-display">
+        Línea Alimentos
+      </h1>
+      <p class="text-gray-600 text-sm md:text-base font-body">
+        Productos naturales procesados bajo estrictos controles de calidad e inocuidad.
+      </p>
+    </div>
+    <div class="mt-4 md:mt-0"></div>
+  </div>
 
-      <!-- Section Header -->
-      <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-gray-200 pb-4 mb-10">
-        <div>
-          <h1 id="linea-alimentos-heading" class="text-2xl md:text-3xl font-bold text-ink mb-2 font-display">
-            Línea Alimentos
-          </h1>
-          <p class="text-gray-600 text-sm md:text-base font-body">
-            Productos naturales procesados bajo estrictos controles de calidad e inocuidad.
-          </p>
-        </div>
-        <div class="mt-4 md:mt-0">
-        </div>
-      </div>
+  <!-- CARRUSEL -->
+  <div class="relative">
 
-      <!-- CARRUSEL -->
-      <div class="relative">
+    <button id="alimentos-prev"
+      class="absolute -left-4 md:-left-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 flex items-center justify-center bg-white border border-gray-200 rounded-full shadow-md hover:bg-primary hover:text-white transition">
+      <i class="fas fa-chevron-left text-xs"></i>
+    </button>
 
-        <!-- Botón anterior -->
-        <button id="alimentos-prev"
-          class="absolute -left-4 md:-left-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 flex items-center justify-center bg-white border border-gray-200 rounded-full shadow-md hover:bg-primary hover:text-white transition">
-          <i class="fas fa-chevron-left text-xs"></i>
-        </button>
+    <div class="overflow-hidden py-2">
+      <div id="alimentos-track" class="flex gap-8 transition-transform duration-500 ease-in-out" style="touch-action: pan-y;">
 
-        <!-- Contenedor -->
-        <div class="overflow-hidden py-2">
-          <div id="alimentos-track" class="flex gap-8 transition-transform duration-500 ease-in-out"
-            style="touch-action: pan-y;">
-
-            <!-- CARD 1: Sedifruit -->
-            <div
-              class="flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] bg-white rounded-3xl border border-gray-200/80 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
-              <div>
-                <img src="../activos/img_productos/2025-Sedifruit.jpg" alt="Sedifruit"
-                  class="w-full h-56 object-contain object-center bg-gray-50/50 p-4">
-                <div class="p-6">
-                  <div class="flex items-center justify-between mb-3">
-                    <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-primary text-white">Natural</span>
-                  </div>
-
-                  <h3 class="text-xl font-bold text-ink mb-2 font-display">
-                    Refresco
-                  </h3>
-
-                  <p class="text-gray-600 text-sm leading-relaxed font-body">
-                    Elaboradas con frutas seleccionadas de la zona, conservando su sabor, aroma y propiedades naturales
-                    para desayunos y postres.
-                  </p>
-                </div>
+        <!-- 1: Miel -->
+        <div class="flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] bg-white rounded-3xl border border-gray-200/80 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
+          <div>
+            <img src="../activos/img_productos/Miel.jpg" alt="Miel" class="w-full h-56 object-contain object-center bg-gray-50/50 p-4">
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-3">
+                <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-primary text-white">Orgánico</span>
               </div>
-
-              <div class="p-6 pt-0">
-                <a href="/paginas/contacto.html"
-                  class="inline-flex items-center text-sm font-semibold text-primary hover:text-primary-dark transition-colors group font-display">
-                  <span>Solicitar Información</span>
-                  <i
-                    class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
-                </a>
-              </div>
+              <h3 class="text-xl font-bold text-ink mb-2 font-display">Miel</h3>
+              <p class="text-gray-600 text-sm leading-relaxed font-body">Pura y natural, recolectada de colmenas manejadas de forma sostenible en el valle.</p>
             </div>
-
-            <!-- CARD 2: Miel de Abeja -->
-            <div
-              class="flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] bg-white rounded-3xl border border-gray-200/80 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
-              <div>
-                <img id="miel-img" src="../activos/img_productos/2025-Mieldeabeja2800gr.jpg" alt="Miel de Abeja"
-                  class="w-full h-56 object-contain object-center bg-gray-50/50 p-4">
-                <div class="p-6">
-                  <div class="flex items-center justify-between mb-3">
-                    
-                    <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-primary text-white">Orgánico</span>
-                  </div>
-                  <h3 id="miel-title" class="text-xl font-bold text-ink mb-2 font-display">Miel de Abeja</h3>
-                  <p id="miel-desc" class="text-gray-600 text-sm leading-relaxed font-body">
-                    Pura y natural, recolectada de colmenas manejadas de forma sostenible en el valle. Rica en
-                    antioxidantes y propiedades nutritivas.
-                  </p>
-                </div>
-              </div>
-              <div class="p-6 pt-0">
-                <a href="/paginas/contacto.html"
-                  class="inline-flex items-center text-sm font-semibold text-primary hover:text-primary-dark transition-colors group font-display">
-                  <span>Solicitar Información</span>
-                  <i
-                    class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
-                </a>
-              </div>
-            </div>
-
-            <!-- CARD 3: Néctar de Frutas -->
-            <div
-              class="flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] bg-white rounded-3xl border border-gray-200/80 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
-              <div>
-                <img id="nectar-img" src="../activos/img_productos/Nectar-y-mermelada.jpg" alt="Néctar de Frutas"
-                  class="w-full h-56 object-contain object-center bg-gray-50/50 p-4">
-                <div class="p-6">
-                  <div class="flex items-center justify-between mb-3">
-                
-                    <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-primary text-white">Natural</span>
-                  </div>
-                  <h3 id="nectar-title" class="text-xl font-bold text-ink mb-2 font-display">Néctar de Frutas</h3>
-                  <p id="nectar-desc" class="text-gray-600 text-sm leading-relaxed font-body">
-                    Elaborados con la mejor selección de frutas locales, manteniendo su sabor original y valor
-                    nutricional sin aditivos nocivos.
-                  </p>
-                </div>
-              </div>
-              <div class="p-6 pt-0">
-                <a href="/paginas/contacto.html"
-                  class="inline-flex items-center text-sm font-semibold text-primary hover:text-primary-dark transition-colors group font-display">
-                  <span>Solicitar Información</span>
-                  <i
-                    class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
-                </a>
-              </div>
-            </div>
-
-            <!-- CARD 4: Destilados y Licores -->
-            <div
-              class="flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] bg-white rounded-3xl border border-gray-200/80 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
-              <div>
-                <img id="destilados-img" src="../activos/img_productos/2025-EspiritudeUva.jpg"
-                  alt="Destilados y Licores" class="w-full h-56 object-contain object-center bg-gray-50/50 p-4">
-                <div class="p-6">
-                  <div class="flex items-center justify-between mb-3">
-                    <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-primary text-white">Artesanal</span>
-                  </div>
-                  <h3 id="destilados-title" class="text-xl font-bold text-ink mb-2 font-display">Destilados y Licores
-                  </h3>
-                  <p id="destilados-desc" class="text-gray-600 text-sm leading-relaxed mb-4 font-body">
-                    Fino destilado de uva y exquisitos licores de fruta, elaborados bajo estrictos parámetros
-                    artesanales del valle.
-                  </p>
-                  <div id="destilados-tags" class="flex flex-wrap gap-2">
-                    <span class="px-2.5 py-1 text-xs font-medium rounded-md bg-gray-100 text-gray-700">Uva</span>
-                    <span class="px-2.5 py-1 text-xs font-medium rounded-md bg-gray-100 text-gray-700">Licores</span>
-                  </div>
-                </div>
-              </div>
-              <div class="p-6 pt-0">
-                <a href="/paginas/contacto.html"
-                  class="inline-flex items-center text-sm font-semibold text-primary hover:text-primary-dark transition-colors group font-display">
-                  <span>Solicitar Información</span>
-                  <i
-                    class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
-                </a>
-              </div>
-            </div>
-
-            <!-- CARD 5: Aguaymanto-Propoleo-Chia -->
-            <div
-              class="flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] bg-white rounded-3xl border border-gray-200/80 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
-              <div>
-                <img src="../activos/img_productos/Aguaymanto-Propoleo-Chia.jpg" alt="Aguaymanto-Propoleo-Chia"
-                  class="w-full h-56 object-contain object-center bg-gray-50/50 p-4">
-                <div class="p-6">
-                  <div class="flex items-center justify-between mb-3">
-                    
-                    <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-primary text-white">Premium</span>
-                  </div>
-                  <h3 class="text-xl font-bold text-ink mb-2 font-display">Aguaymanto - Própolis - Chía</h3>
-                  <p class="text-gray-600 text-sm leading-relaxed font-body">
-                    Combinación seleccionada de origen natural, con propiedades nutricionales valiosas para el bienestar
-                    diario.
-                  </p>
-                </div>
-              </div>
-              <div class="p-6 pt-0">
-                <a href="/paginas/contacto.html"
-                  class="inline-flex items-center text-sm font-semibold text-primary hover:text-primary-dark transition-colors group font-display">
-                  <span>Solicitar Información</span>
-                  <i
-                    class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
-                </a>
-              </div>
-            </div>
-
+          </div>
+          <div class="p-6 pt-0">
+            <a href="/paginas/contacto.html" class="inline-flex items-center text-sm font-semibold text-primary hover:text-primary-dark transition-colors group font-display">
+              <span>Solicitar Información</span>
+              <i class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+            </a>
           </div>
         </div>
 
-        <!-- Botón siguiente -->
-        <button id="alimentos-next"
-          class="absolute -right-4 md:-right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 flex items-center justify-center bg-white border border-gray-200 rounded-full shadow-md hover:bg-primary hover:text-white transition">
-          <i class="fas fa-chevron-right text-xs"></i>
-        </button>
+        <!-- 2: Néctar de Guayaba -->
+        <div class="flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] bg-white rounded-3xl border border-gray-200/80 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
+          <div>
+            <img src="../activos/img_productos/Nectar 2_Guayaba.jpg" alt="Néctar de Guayaba" class="w-full h-56 object-contain object-center bg-gray-50/50 p-4">
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-3">
+                <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-primary text-white">Natural</span>
+              </div>
+              <h3 class="text-xl font-bold text-ink mb-2 font-display">Néctar de Guayaba</h3>
+              <p class="text-gray-600 text-sm leading-relaxed font-body">Elaborado con guayaba seleccionada del valle, conservando su sabor y valor nutricional.</p>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <a href="/paginas/contacto.html" class="inline-flex items-center text-sm font-semibold text-primary hover:text-primary-dark transition-colors group font-display">
+              <span>Solicitar Información</span>
+              <i class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 3: Néctar de Maracuyá -->
+        <div class="flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] bg-white rounded-3xl border border-gray-200/80 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
+          <div>
+            <img src="../activos/img_productos/nectar 1_Maracuya.jpg" alt="Néctar de Maracuyá" class="w-full h-56 object-contain object-center bg-gray-50/50 p-4">
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-3">
+                <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-primary text-white">Natural</span>
+              </div>
+              <h3 class="text-xl font-bold text-ink mb-2 font-display">Néctar de Maracuyá</h3>
+              <p class="text-gray-600 text-sm leading-relaxed font-body">Elaborado con maracuyá fresca del valle, manteniendo su sabor original.</p>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <a href="/paginas/contacto.html" class="inline-flex items-center text-sm font-semibold text-primary hover:text-primary-dark transition-colors group font-display">
+              <span>Solicitar Información</span>
+              <i class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 4: Mermelada de Guayaba -->
+        <div class="flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] bg-white rounded-3xl border border-gray-200/80 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
+          <div>
+            <img src="../activos/img_productos/Mermelada guayaba 2 (280).jpg" alt="Mermelada de Guayaba" class="w-full h-56 object-contain object-center bg-gray-50/50 p-4">
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-3">
+                <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-primary text-white">Artesanal</span>
+              </div>
+              <h3 class="text-xl font-bold text-ink mb-2 font-display">Mermelada de Guayaba</h3>
+              <p class="text-gray-600 text-sm leading-relaxed font-body">Preparada con guayaba del valle bajo procesos artesanales, conservando su sabor natural.</p>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <a href="/paginas/contacto.html" class="inline-flex items-center text-sm font-semibold text-primary hover:text-primary-dark transition-colors group font-display">
+              <span>Solicitar Información</span>
+              <i class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 5: Deshidratado de Aguaymanto -->
+        <div class="flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] bg-white rounded-3xl border border-gray-200/80 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
+          <div>
+            <img src="../activos/img_productos/deshidratado_Aguaimanto.jpg" alt="Deshidratado de Aguaymanto" class="w-full h-56 object-contain object-center bg-gray-50/50 p-4">
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-3">
+                <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-primary text-white">Premium</span>
+              </div>
+              <h3 class="text-xl font-bold text-ink mb-2 font-display">Deshidratado de Aguaymanto</h3>
+              <p class="text-gray-600 text-sm leading-relaxed font-body">Fruta seleccionada del valle, procesada mediante deshidratado natural.</p>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <a href="/paginas/contacto.html" class="inline-flex items-center text-sm font-semibold text-primary hover:text-primary-dark transition-colors group font-display">
+              <span>Solicitar Información</span>
+              <i class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 6: Deshidratado de Mango -->
+        <div class="flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] bg-white rounded-3xl border border-gray-200/80 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
+          <div>
+            <img src="../activos/img_productos/deshiradrato_Mango.jpg" alt="Deshidratado de Mango" class="w-full h-56 object-contain object-center bg-gray-50/50 p-4">
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-3">
+                <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-primary text-white">Natural</span>
+              </div>
+              <h3 class="text-xl font-bold text-ink mb-2 font-display">Deshidratado de Mango</h3>
+              <p class="text-gray-600 text-sm leading-relaxed font-body">Mango del valle procesado mediante deshidratado natural, conservando su sabor.</p>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <a href="/paginas/contacto.html" class="inline-flex items-center text-sm font-semibold text-primary hover:text-primary-dark transition-colors group font-display">
+              <span>Solicitar Información</span>
+              <i class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 7: Destilados -->
+        <div class="flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] bg-white rounded-3xl border border-gray-200/80 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
+          <div>
+            <img src="../activos/img_productos/2025-EspiritudeUva.jpg" alt="Destilados" class="w-full h-56 object-contain object-center bg-gray-50/50 p-4">
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-3">
+                <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-primary text-white">Artesanal</span>
+              </div>
+              <h3 class="text-xl font-bold text-ink mb-2 font-display">Destilados</h3>
+              <p class="text-gray-600 text-sm leading-relaxed mb-4 font-body">Fino destilado de uva y exquisitos licores de fruta, elaborados bajo parámetros artesanales del valle.</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-2.5 py-1 text-xs font-medium rounded-md bg-gray-100 text-gray-700">Uva</span>
+                <span class="px-2.5 py-1 text-xs font-medium rounded-md bg-gray-100 text-gray-700">Licores</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <a href="/paginas/contacto.html" class="inline-flex items-center text-sm font-semibold text-primary hover:text-primary-dark transition-colors group font-display">
+              <span>Solicitar Información</span>
+              <i class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 8: Cocktail Maracuyá (hoy) -->
+        <div class="flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] bg-white rounded-3xl border border-gray-200/80 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
+          <div>
+            <img src="../activos/img_productos/2025-Cocktail_maracuya.png" alt="Cocktail de Maracuyá" class="w-full h-56 object-contain object-center bg-gray-50/50 p-4">
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-3">
+                <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-primary text-white">Artesanal</span>
+              </div>
+              <h3 class="text-xl font-bold text-ink mb-2 font-display">Cocktail de Maracuyá</h3>
+              <p class="text-gray-600 text-sm leading-relaxed font-body">Elaborado con maracuyá del valle, ideal para compartir en cualquier ocasión.</p>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <a href="/paginas/contacto.html" class="inline-flex items-center text-sm font-semibold text-primary hover:text-primary-dark transition-colors group font-display">
+              <span>Solicitar Información</span>
+              <i class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 9: Cocktail Tuna Roja (hoy) -->
+        <div class="flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] bg-white rounded-3xl border border-gray-200/80 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
+          <div>
+            <img src="../activos/img_productos/2025-Cocktail_tuna_roja.jpg" alt="Cocktail de Tuna Roja" class="w-full h-56 object-contain object-center bg-gray-50/50 p-4">
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-3">
+                <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-primary text-white">Artesanal</span>
+              </div>
+              <h3 class="text-xl font-bold text-ink mb-2 font-display">Cocktail de Tuna Roja</h3>
+              <p class="text-gray-600 text-sm leading-relaxed font-body">Preparado con tuna roja del valle, de sabor intenso y color natural.</p>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <a href="/paginas/contacto.html" class="inline-flex items-center text-sm font-semibold text-primary hover:text-primary-dark transition-colors group font-display">
+              <span>Solicitar Información</span>
+              <i class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 10: Refresco (hoy) -->
+        <div class="flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] bg-white rounded-3xl border border-gray-200/80 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
+          <div>
+            <img src="../activos/img_productos/Refresco.jpg" alt="Refresco" class="w-full h-56 object-contain object-center bg-gray-50/50 p-4">
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-3">
+                <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-primary text-white">Natural</span>
+              </div>
+              <h3 class="text-xl font-bold text-ink mb-2 font-display">Refresco</h3>
+              <p class="text-gray-600 text-sm leading-relaxed font-body">Elaborado con frutas seleccionadas de la zona, conservando su sabor y propiedades naturales.</p>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <a href="/paginas/contacto.html" class="inline-flex items-center text-sm font-semibold text-primary hover:text-primary-dark transition-colors group font-display">
+              <span>Solicitar Información</span>
+              <i class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 11: Néctar Gulupa (hoy) -->
+        <div class="flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] bg-white rounded-3xl border border-gray-200/80 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
+          <div>
+            <img src="../activos/img_productos/Nectar Gulupa.jpg" alt="Néctar de Gulupa" class="w-full h-56 object-contain object-center bg-gray-50/50 p-4">
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-3">
+                <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-primary text-white">Natural</span>
+              </div>
+              <h3 class="text-xl font-bold text-ink mb-2 font-display">Néctar de Gulupa</h3>
+              <p class="text-gray-600 text-sm leading-relaxed font-body">Elaborado con gulupa del valle, de sabor único y alto valor nutricional.</p>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <a href="/paginas/contacto.html" class="inline-flex items-center text-sm font-semibold text-primary hover:text-primary-dark transition-colors group font-display">
+              <span>Solicitar Información</span>
+              <i class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 12: Chía (hoy) -->
+        <div class="flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] bg-white rounded-3xl border border-gray-200/80 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
+          <div>
+            <img src="../activos/img_productos/Chia.jpg" alt="Chía" class="w-full h-56 object-contain object-center bg-gray-50/50 p-4">
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-3">
+                <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-primary text-white">Premium</span>
+              </div>
+              <h3 class="text-xl font-bold text-ink mb-2 font-display">Chía</h3>
+              <p class="text-gray-600 text-sm leading-relaxed font-body">Semillas de chía del valle, ricas en fibra y ácidos grasos esenciales.</p>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <a href="/paginas/contacto.html" class="inline-flex items-center text-sm font-semibold text-primary hover:text-primary-dark transition-colors group font-display">
+              <span>Solicitar Información</span>
+              <i class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 13: Propóleo 50ml (hoy) -->
+        <div class="flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] bg-white rounded-3xl border border-gray-200/80 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
+          <div>
+            <img src="../activos/img_productos/2025-Propóleo50 ml.jpg" alt="Propóleo 50ml" class="w-full h-56 object-contain object-center bg-gray-50/50 p-4">
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-3">
+                <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-primary text-white">Orgánico</span>
+              </div>
+              <h3 class="text-xl font-bold text-ink mb-2 font-display">Propóleo 50ml</h3>
+              <p class="text-gray-600 text-sm leading-relaxed font-body">Extracto de própolis del valle, reconocido por sus propiedades naturales.</p>
+            </div>
+          </div>
+          <div class="p-6 pt-0">
+            <a href="/paginas/contacto.html" class="inline-flex items-center text-sm font-semibold text-primary hover:text-primary-dark transition-colors group font-display">
+              <span>Solicitar Información</span>
+              <i class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+            </a>
+          </div>
+        </div>
 
       </div>
+    </div>
 
-      <!-- Indicadores -->
-      <div id="alimentos-dots" class="flex justify-center gap-2 mt-6"></div>
+    <button id="alimentos-next"
+      class="absolute -right-4 md:-right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 flex items-center justify-center bg-white border border-gray-200 rounded-full shadow-md hover:bg-primary hover:text-white transition">
+      <i class="fas fa-chevron-right text-xs"></i>
+    </button>
 
-    </section>
+  </div>
 
+  <div id="alimentos-dots" class="flex justify-center gap-2 mt-6"></div>
+
+</section>
     <!-- Script Carrusel -->
     <script>
       document.addEventListener("DOMContentLoaded", () => {
@@ -349,14 +457,17 @@
         }
 
         function moveTo(index) {
-          currentIndex = Math.max(0, Math.min(index, maxIndex));
-          maxIndex = Math.max(0, cards.length - getVisibleCards());
-          const cardWidth = cards[0].getBoundingClientRect().width + gap;
-          track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-          prevBtn.disabled = currentIndex === 0;
-          nextBtn.disabled = currentIndex === maxIndex;
-          updateDots();
-        }
+  currentIndex = Math.max(0, Math.min(index, maxIndex));
+  maxIndex = Math.max(0, cards.length - getVisibleCards());
+  const cardWidth = cards[0].getBoundingClientRect().width + gap;
+  track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+
+  // Oculta por completo las flechas en los extremos, en vez de solo deshabilitarlas
+  prevBtn.classList.toggle("hidden", currentIndex === 0);
+  nextBtn.classList.toggle("hidden", currentIndex === maxIndex);
+
+  updateDots();
+}
 
         prevBtn.addEventListener("click", () => moveTo(currentIndex - 1));
         nextBtn.addEventListener("click", () => moveTo(currentIndex + 1));
