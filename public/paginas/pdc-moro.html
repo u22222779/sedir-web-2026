@@ -137,16 +137,19 @@
 
     <div class="bg-[#006A49] h-[110px] md:h-[130px]"></div>
 
-    <main class="grow py-10 md:py-16"><br><br>
+    <main class="grow py-10 md:py-16">
         <div class="max-w-[1280px] mx-auto px-6">
 
-            <!-- ENLACE VOLVER -->
-            <div class="mb-8">
-                <a href="../paginas/pdc.html" class="inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-primary-dark transition-colors">
-                    <span class="material-symbols-outlined text-lg">arrow_back</span>
-                    Volver atrás
-                </a>
-            </div>
+            <!-- Volver -->
+            <button onclick="history.back()"
+                class="inline-flex items-center gap-2 mb-5 bg-transparent border-2 border-[#006A49] text-[#006A49] text-sm font-bold px-6 py-2 rounded-full hover:bg-[#006A49] hover:text-white transition-all overflow-hidden group">
+
+                <span class="material-symbols-outlined text-lg group-hover:-translate-x-1 transition-transform">
+                    chevron_left
+                </span>
+
+                Volver atrás
+            </button>
 
             <!-- CABECERA INSTITUCIONAL -->
             <header class="mb-10 border-b-2 border-primary/20 pb-10 text-center md:text-left">
