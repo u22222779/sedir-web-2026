@@ -141,7 +141,15 @@
   background: transparent;
   border: none;
   border-radius: 999px;
-  padding: 12px 24px 12px 12px;
+  padding: 20px 24px 12px 12px;
+  margin-left: -35px;
+}
+
+@media (max-width: 768px) {
+  .navbar-logo-pill {
+    margin-left: -12px;
+    padding-top: 18px;
+  }
 }
 
 .navbar-logo {
@@ -220,7 +228,7 @@
 ========================================== */
 @media (max-width: 768px) {
   .navbar-shell {
-    height: 85px;
+    height: 90px;
     padding: 0 16px;
   }
 
@@ -246,6 +254,7 @@
     width: 48px;
     height: 48px;
     padding: 0;
+    padding-top: 9px;
   }
 
   /* Cambiar color del icono de menú a oscuro cuando el panel está abierto */
