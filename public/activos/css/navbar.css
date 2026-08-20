@@ -271,7 +271,7 @@
   #mobile-menu .navbar-link,
   .navbar-mobile-menu .navbar-link {
     color: var(--color-fondo-oscuro) !important;
-    font-size: 18px; /* <-- TAMAÑO ARREGLADO PARA CELULARES */
+    font-size: 16px; /* <-- TAMAÑO ARREGLADO PARA CELULARES */
   }
 
   #mobile-menu .navbar-link::after {
