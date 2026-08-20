@@ -103,5 +103,10 @@ window.initNavbar = function () {
     };
 
     window.addEventListener("scroll", actualizarEstadoScroll, { passive: true });
+
+// Ejecutar una vez al cargar/refrescar, para que el navbar
+// refleje el scroll actual de la página (evita que quede
+// transparente si se refresca estando a mitad de página).
+actualizarEstadoScroll();
   }
 };
