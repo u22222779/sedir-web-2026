@@ -211,17 +211,9 @@
   transform-origin: center;
 }
 
-#menu-btn.active .line1 {
-  transform: translateY(5px) rotate(45deg);
-}
-
-#menu-btn.active .line2 {
-  opacity: 0;
-}
-
-#menu-btn.active .line3 {
-  transform: translateY(-5px) rotate(-45deg);
-}
+/* El ícono ya no se transforma en X: el cierre se hace con el botón
+   dedicado dentro del drawer (#close-menu). Se deja la clase .active
+   en el JS por compatibilidad de estado, pero sin efecto visual aquí. */
 
 /* ==========================================
    7. RESPONSIVE MÓVIL Y TABLET (NAVBAR)
@@ -237,8 +229,8 @@
   }
 
   .navbar-logo {
-    height: 50px;
-    max-height: 50px;
+    height: 58px;
+    max-height: 58px;
   }
 
   .navbar-shell.menu-open .navbar-logo-container {

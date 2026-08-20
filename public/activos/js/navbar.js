@@ -1,5 +1,6 @@
 window.initNavbar = function () {
   const menuBtn = document.getElementById("menu-btn");
+  const closeBtn = document.getElementById("close-menu");
   const mobileMenu = document.getElementById("mobile-menu");
   const overlay = document.getElementById("overlay");
   const mobileMenuBtn = document.getElementById("mobileMenuBtn");
@@ -59,17 +60,66 @@ window.initNavbar = function () {
     }
   };
 
+  // Cerrar con el botón X del drawer
+  if (closeBtn) {
+    closeBtn.onclick = cerrarMenu;
+  }
+
   // Cerrar si tocan el fondo oscuro (overlay)
   if (overlay) {
     overlay.onclick = cerrarMenu;
   }
 
   // ===============================
+  // 3.1 Cerrar el drawer al hacer click en cualquier enlace de dentro
+  //     (incluido el logo). Si el logo apunta a inicio y ya estás ahí,
+  //     no navega: solo cierra el drawer y vuelve al video (hero).
+  // ===============================
+  const rutaActual = window.location.pathname;
+  const esInicio = rutaActual === "/" || rutaActual === "/index.html";
+
+  const irAlHero = function (e) {
+    e.preventDefault();
+    const hero = document.querySelector(".hero-home");
+    if (hero) {
+      hero.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+  // Logo del navbar superior (desktop): si ya estás en inicio, no navega, vuelve al video
+  if (esInicio) {
+    document.querySelectorAll(".js-logo-home").forEach(function (logoLink) {
+      if (mobileMenu && mobileMenu.contains(logoLink)) return; // el del drawer se maneja aparte
+      logoLink.addEventListener("click", irAlHero);
+    });
+  }
+
+  if (mobileMenu) {
+    mobileMenu.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function (e) {
+        if (esInicio && link.classList.contains("js-logo-home")) {
+          irAlHero(e);
+        }
+
+        cerrarMenu();
+      });
+    });
+  }
+
+  // ===============================
   // 4. Submenú móvil
   // ===============================
   if (mobileMenuBtn && mobileSubmenu) {
+    const mobileMenuChevron = document.getElementById("mobileMenuChevron");
+
     mobileMenuBtn.onclick = () => {
-      mobileSubmenu.classList.toggle("hidden");
+      const abierto = mobileSubmenu.classList.toggle("hidden") === false;
+
+      if (mobileMenuChevron) {
+        mobileMenuChevron.classList.toggle("rotate-180", abierto);
+      }
     };
   }
 
@@ -103,10 +153,5 @@ window.initNavbar = function () {
     };
 
     window.addEventListener("scroll", actualizarEstadoScroll, { passive: true });
-
-// Ejecutar una vez al cargar/refrescar, para que el navbar
-// refleje el scroll actual de la página (evita que quede
-// transparente si se refresca estando a mitad de página).
-actualizarEstadoScroll();
   }
 };

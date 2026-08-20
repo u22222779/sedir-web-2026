@@ -1,31 +1,5 @@
-/* SECTION: Mobile Menu */
+/* SECTION: Mobile Menu (solo utilidades de enlace activo; abrir/cerrar lo maneja navbar.js) */
 function initMenu() {
-  var menuBtn = document.getElementById("menu-btn");
-  var closeBtn = document.getElementById("close-menu");
-  var mobileMenu = document.getElementById("mobile-menu");
-  var overlay = document.getElementById("overlay");
-
-  if (!menuBtn || !closeBtn || !mobileMenu || !overlay) {
-    return;
-  }
-
-  var openMenu = function () {
-    mobileMenu.style.right = "0";
-    overlay.classList.remove("hidden");
-  };
-
-  var closeMenu = function () {
-    mobileMenu.style.right = "-100%";
-    overlay.classList.add("hidden");
-  };
-
-  menuBtn.addEventListener("click", openMenu);
-  closeBtn.addEventListener("click", closeMenu);
-  overlay.addEventListener("click", closeMenu);
-
-  document.querySelectorAll("#mobile-menu a").forEach(function (link) {
-    link.addEventListener("click", closeMenu);
-  });
 
   var normalizePath = function (value) {
     var path = value.split("?")[0].split("#")[0];
@@ -86,11 +60,16 @@ function initMenu() {
     });
 
     var ctaLink = document.querySelector('.navbar-cta[href]');
+
     if (ctaLink) {
       ctaLink.removeAttribute('aria-current');
       ctaLink.style.boxShadow = '';
 
-      var ctaUrl = new URL(ctaLink.getAttribute('href'), window.location.origin);
+      var ctaUrl = new URL(
+        ctaLink.getAttribute('href'),
+        window.location.origin
+      );
+
       var ctaPath = normalizePath(ctaUrl.pathname);
 
       if (ctaPath === currentPath) {
