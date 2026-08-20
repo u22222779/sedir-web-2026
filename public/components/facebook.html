@@ -133,5 +133,14 @@
     e.stopPropagation();
     player.classList.remove('is-visible');
   });
+
+  // Abrir automáticamente el panel de Facebook solo al entrar al index
+  var path = window.location.pathname;
+  var esIndex = path === '/' || path === '/index.html' || /\/index\.html$/.test(path);
+  if (esIndex) {
+    setTimeout(function () {
+      player.classList.add('is-visible');
+    }, 900);
+  }
 })();
 </script>
