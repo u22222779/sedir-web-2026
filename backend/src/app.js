@@ -11,6 +11,7 @@ const productoRoutes = require('./routes/producto.routes');
 const climaRoutes = require("./routes/clima.routes");
 const publicacionRoutes = require('./routes/publicacion.routes');
 const webinarRoutes = require('./routes/webinar.routes');
+const uploadRoutes = require('./routes/upload.routes');
 const { notFoundHandler, errorHandler } = require('./middleware/errorHandler');
 const { apiRateLimiter, securityHeaders } = require('./middleware/security.middleware');
 
@@ -34,6 +35,7 @@ app.use('/api/productos', productoRoutes);
 app.use("/api/clima", climaRoutes);
 app.use('/api/publicaciones', publicacionRoutes);
 app.use('/api/webinars', webinarRoutes);
+app.use('/api/upload', uploadRoutes);
 
 app.use(notFoundHandler);
 app.use(errorHandler);
