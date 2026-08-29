@@ -392,3 +392,31 @@ section{
     }
 
 }
+
+/* ==========================================
+   TRANSICIÓN SUAVE ENTRE PÁGINAS (View Transitions API)
+   Cross-fade nativo del navegador al navegar entre páginas
+   del mismo sitio. En navegadores sin soporte, la navegación
+   sigue funcionando normal (no rompe nada).
+========================================== */
+@view-transition {
+    navigation: auto;
+}
+
+/* La página vieja se queda visible tal cual (sin desvanecer) para que
+   nunca deje ver el fondo blanco de por medio. Solo la nueva aparece
+   encima, con un fade-in suave. */
+::view-transition-new(root) {
+    animation: sedir-fade-in .25s ease both;
+}
+
+@keyframes sedir-fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    ::view-transition-new(root) {
+        animation: none;
+    }
+}

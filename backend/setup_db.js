@@ -229,6 +229,18 @@ async function run() {
       ON CONFLICT (id_categoria_producto) DO NOTHING
     `);
 
+    // Categorías específicas de la Línea Alimentos, pedidas por el Ing.
+    await pool.query(`
+      INSERT INTO categoria_producto (id_categoria_producto, nombre_linea)
+      VALUES
+        (3, 'Bebidas No Alcohólicas'),
+        (4, 'Bebidas Alcohólicas'),
+        (5, 'Apícola'),
+        (6, 'Deshidratados'),
+        (7, 'Otros')
+      ON CONFLICT (id_categoria_producto) DO NOTHING
+    `);
+
     console.log('Seeding initial products...');
     
     // Alimentos
@@ -238,8 +250,8 @@ async function run() {
         1, 
         'Miel de Abeja', 
         'Producto a partir de néctares de árboles frutícolas y flores silvestres. Pura, natural y rica en nutrientes, cosechada con técnicas apícolas sostenibles.', 
-        '/activos/img_productos/2025-Mieldeabeja2800gr.jpg', 
-        1
+        '/activos/img_productos/2025-Miel.jpg', 
+        5
       )
       ON CONFLICT (id_producto) DO UPDATE SET 
         nombre = EXCLUDED.nombre,
@@ -254,8 +266,8 @@ async function run() {
         2, 
         'Néctar de Frutas', 
         'Elaborados con la mejor selección de frutas locales, manteniendo su sabor original y valor nutricional. Ideal para el consumo diario.', 
-        '/activos/img_productos/Nectar-y-mermelada.jpg', 
-        1
+        '/activos/img_productos/Nectar 1_Maracuya.jpg', 
+        3
       )
       ON CONFLICT (id_producto) DO UPDATE SET 
         nombre = EXCLUDED.nombre,
@@ -271,7 +283,7 @@ async function run() {
         'Destilados y Licores', 
         'Fino destilado de uva y exquisitos licores de fruta (Coknat), elaborados artesanalmente con técnicas tradicionales para un sabor inigualable.', 
         '/activos/img_productos/2025-EspiritudeUva.jpg', 
-        1
+        4
       )
       ON CONFLICT (id_producto) DO UPDATE SET 
         nombre = EXCLUDED.nombre,

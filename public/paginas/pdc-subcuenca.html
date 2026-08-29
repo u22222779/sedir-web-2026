@@ -155,7 +155,22 @@
 </head>
 
 <body class="bg-white text-gray-800 noticias-page">
-    <div id="navbar-container" class="navbar-loading" data-component="/components/navbar.html"></div>
+<!-- BEGIN: Navigation Component -->
+  <div id="navbar-container" class="navbar-loading" data-component="/components/navbar.html"></div>
+<script>
+(function () {
+  try {
+    var html = sessionStorage.getItem('sedirNavbarHTML');
+    var el = document.getElementById('navbar-container');
+    if (html && el) {
+      el.innerHTML = html;
+      el.classList.remove('navbar-loading');
+      el.classList.add('navbar-loaded');
+    }
+  } catch (e) {}
+})();
+</script>
+  <!-- END: Navigation Component -->
 
     <div class="bg-[#006A49] h-[110px] md:h-[130px]"></div>
 

@@ -133,8 +133,23 @@
 </head>
 
 <body class="bg-background text-on-surface font-body-md flex flex-col min-h-screen antialiased">
-  <!-- Componente de Navegación -->
+  <!-- BEGIN: Navigation Component -->
   <div id="navbar-container" class="navbar-loading" data-component="/components/navbar.html"></div>
+<script>
+(function () {
+  try {
+    var html = sessionStorage.getItem('sedirNavbarHTML');
+    var el = document.getElementById('navbar-container');
+    if (html && el) {
+      el.innerHTML = html;
+      el.classList.remove('navbar-loading');
+      el.classList.add('navbar-loaded');
+    }
+  } catch (e) {}
+})();
+</script>
+  <!-- END: Navigation Component -->
+
 
   <!-- Contenido Principal -->
   <main class="grow bg-[linear-gradient(90deg,#00944A,#00B159)]">
@@ -152,18 +167,20 @@
       <!-- Capa oscura sutil, como en el original -->
       <div class="absolute inset-0 bg-transparent z-10"></div>
 
-      <div class="relative z-20 w-full max-w-[1606px] mx-auto px-6 md:px-12 lg:px-[100px] flex items-center">
-        <div class="w-full md:w-1/2 text-left">
-          <h1 class="font-montserrat text-3xl sm:text-4xl md:text-[44px] text-white font-extrabold leading-none">
-            Quiénes Somos
-          </h1>
-          <p class="font-montserrat italic text-lg sm:text-xl md:text-[22px] text-white leading-snug mt-3">
-            <span class="font-semibold">Promovemos el</span>
-            <span class="text-[#F09734] not-italic font-bold">desarrollo agropecuario y agroindustrial</span>
-            <span class="font-semibold">en el valle de Nepeña</span>
-          </p>
-        </div>
-      </div>
+<div class="relative z-20 w-full max-w-[1606px] mx-auto px-6 md:px-12 lg:px-[100px] flex items-center">
+  <div class="w-full md:w-1/2 text-left translate-y-16">
+    <h1 class="font-montserrat text-3xl sm:text-4xl md:text-[44px] text-white font-extrabold leading-none">
+      Quiénes Somos
+    </h1>
+
+    <p class="font-montserrat italic text-lg sm:text-xl md:text-[22px] text-white leading-snug mt-3">
+  <span class="font-semibold">Promovemos el</span>
+  <span class="text-[#F09734] not-italic font-bold"> desarrollo agropecuario y</span><br>
+  <span class="text-[#F09734] not-italic font-bold">agroindustrial</span>
+  <span class="font-semibold"> en el valle de Nepeña</span>
+</p>
+  </div>
+</div>
     </header>
 
     <!-- Contenedor principal: Quiénes Somos -->

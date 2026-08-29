@@ -70,664 +70,264 @@
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
     }
   </style>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 
-<body class="bg-gray-50 text-gray-800 antialiased">
-
+<body class="bg-[#FFFFFF] text-gray-800 antialiased">
   <!-- BEGIN: Navigation Component -->
   <div id="navbar-container" class="navbar-loading" data-component="/components/navbar.html"></div>
+  <script>
+    (function () {
+      try {
+        var html = sessionStorage.getItem('sedirNavbarHTML');
+        var el = document.getElementById('navbar-container');
+        if (html && el) {
+          el.innerHTML = html;
+          el.classList.remove('navbar-loading');
+          el.classList.add('navbar-loaded');
+        }
+      } catch (e) { }
+    })();
+  </script>
   <!-- END: Navigation Component -->
 
-<!-- COMPONENT: Hero Productos -->
-<header
-  class="relative w-full h-[400px] md:h-[430px] flex items-center justify-center overflow-hidden"
-  style="background: #006a49">
+  <!-- COMPONENT: Hero Productos -->
+  <header class="relative w-full h-[400px] md:h-[430px] flex items-center justify-center overflow-hidden"
+    style="background: #006a49">
 
-  <!-- Imagen de fondo -->
-  <div class="absolute inset-0 z-0">
-    <img
-      src="/activos/img_productos/ArtMercados-organiz21.jpg"
-      alt="Productos SEDIR"
-      class="w-full h-full object-cover opacity-60" />
-  </div>
-
-  <!-- Capa para priorizar imagen -->
-  <div class="absolute inset-0 bg-transparent z-10"></div>
-
-  <!-- Contenido -->
-  <div class="relative z-20 w-full max-w-[1606px] mx-auto px-6 md:px-12 lg:px-[100px] flex items-center">
-    <div class="w-full md:w-1/2 text-left">
-
-      <!-- Título -->
-      <h1
-        class="font-montserrat text-3xl sm:text-4xl md:text-[44px] text-white font-extrabold leading-none">
-        Nuestros 
-        <span class="text-[#F09734]">Productos</span>
-      </h1>
-      <p class="font-montserrat italic text-lg sm:text-xl md:text-[22px] text-white font-semibold leading-snug mt-3">
-        Calidad 
-       <span class="text-[#F09734] not-italic font-bold">y valor desde el </span> campo
-      </p>
-
+    <!-- Imagen de fondo -->
+    <div class="absolute inset-0 z-0">
+      <img src="/activos/img_productos/ArtMercados-organiz21.jpg" alt="Productos SEDIR"
+        class="w-full h-full object-cover opacity-60" />
     </div>
-  </div>
-</header>
-  <!-- BEGIN: Main Page Content -->
-  <main class="space-y-16 py-16">
-<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-  <!-- Section Header -->
-  <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-gray-200 pb-4 mb-10">
-    <div>
-      <h1 id="linea-alimentos-heading" class="text-2xl md:text-3xl font-bold text-ink mb-2 font-display">
-        Línea Alimentos
-      </h1>
-      <p class="text-gray-600 text-sm md:text-base font-body">
-        Productos naturales procesados bajo estrictos controles de calidad e inocuidad.
-      </p>
-    </div>
-    <div class="mt-4 md:mt-0"></div>
-  </div>
+    <!-- Capa para priorizar imagen -->
+    <div class="absolute inset-0 bg-transparent z-10"></div>
 
-  <!-- CARRUSEL -->
-  <div class="relative">
+    <!-- Contenido -->
+    <div class="relative z-20 w-full max-w-[1606px] mx-auto px-6 md:px-12 lg:px-[100px] flex items-center">
+      <div class="w-full md:w-1/2 text-left translate-y-16">
 
-    <button id="alimentos-prev"
-      class="absolute -left-4 md:-left-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 flex items-center justify-center bg-white border border-gray-200 rounded-full shadow-md hover:bg-primary hover:text-white transition">
-      <i class="fas fa-chevron-left text-xs"></i>
-    </button>
-
-    <div class="overflow-hidden py-2">
-      <div id="alimentos-track" class="flex gap-8 transition-transform duration-500 ease-in-out" style="touch-action: pan-y;">
-
-        <!-- 1: Miel -->
-        <div class="flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] bg-white rounded-3xl border border-gray-200/80 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
-          <div>
-            <img src="../activos/img_productos/Miel.jpg" alt="Miel" class="w-full h-56 object-contain object-center bg-gray-50/50 p-4">
-            <div class="p-6">
-              <div class="flex items-center justify-between mb-3">
-                <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-primary text-white">Orgánico</span>
-              </div>
-              <h3 class="text-xl font-bold text-ink mb-2 font-display">Miel</h3>
-              <p class="text-gray-600 text-sm leading-relaxed font-body">Pura y natural, recolectada de colmenas manejadas de forma sostenible en el valle.</p>
-            </div>
-          </div>
-          <div class="p-6 pt-0">
-            <a href="/paginas/contacto.html" class="inline-flex items-center text-sm font-semibold text-primary hover:text-primary-dark transition-colors group font-display">
-              <span>Solicitar Información</span>
-              <i class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- 2: Néctar de Guayaba -->
-        <div class="flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] bg-white rounded-3xl border border-gray-200/80 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
-          <div>
-            <img src="../activos/img_productos/Nectar 2_Guayaba.jpg" alt="Néctar de Guayaba" class="w-full h-56 object-contain object-center bg-gray-50/50 p-4">
-            <div class="p-6">
-              <div class="flex items-center justify-between mb-3">
-                <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-primary text-white">Natural</span>
-              </div>
-              <h3 class="text-xl font-bold text-ink mb-2 font-display">Néctar de Guayaba</h3>
-              <p class="text-gray-600 text-sm leading-relaxed font-body">Elaborado con guayaba seleccionada del valle, conservando su sabor y valor nutricional.</p>
-            </div>
-          </div>
-          <div class="p-6 pt-0">
-            <a href="/paginas/contacto.html" class="inline-flex items-center text-sm font-semibold text-primary hover:text-primary-dark transition-colors group font-display">
-              <span>Solicitar Información</span>
-              <i class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- 3: Néctar de Maracuyá -->
-        <div class="flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] bg-white rounded-3xl border border-gray-200/80 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
-          <div>
-            <img src="../activos/img_productos/nectar 1_Maracuya.jpg" alt="Néctar de Maracuyá" class="w-full h-56 object-contain object-center bg-gray-50/50 p-4">
-            <div class="p-6">
-              <div class="flex items-center justify-between mb-3">
-                <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-primary text-white">Natural</span>
-              </div>
-              <h3 class="text-xl font-bold text-ink mb-2 font-display">Néctar de Maracuyá</h3>
-              <p class="text-gray-600 text-sm leading-relaxed font-body">Elaborado con maracuyá fresca del valle, manteniendo su sabor original.</p>
-            </div>
-          </div>
-          <div class="p-6 pt-0">
-            <a href="/paginas/contacto.html" class="inline-flex items-center text-sm font-semibold text-primary hover:text-primary-dark transition-colors group font-display">
-              <span>Solicitar Información</span>
-              <i class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- 4: Mermelada de Guayaba -->
-        <div class="flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] bg-white rounded-3xl border border-gray-200/80 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
-          <div>
-            <img src="../activos/img_productos/Mermelada guayaba 2 (280).jpg" alt="Mermelada de Guayaba" class="w-full h-56 object-contain object-center bg-gray-50/50 p-4">
-            <div class="p-6">
-              <div class="flex items-center justify-between mb-3">
-                <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-primary text-white">Artesanal</span>
-              </div>
-              <h3 class="text-xl font-bold text-ink mb-2 font-display">Mermelada de Guayaba</h3>
-              <p class="text-gray-600 text-sm leading-relaxed font-body">Preparada con guayaba del valle bajo procesos artesanales, conservando su sabor natural.</p>
-            </div>
-          </div>
-          <div class="p-6 pt-0">
-            <a href="/paginas/contacto.html" class="inline-flex items-center text-sm font-semibold text-primary hover:text-primary-dark transition-colors group font-display">
-              <span>Solicitar Información</span>
-              <i class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- 5: Deshidratado de Aguaymanto -->
-        <div class="flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] bg-white rounded-3xl border border-gray-200/80 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
-          <div>
-            <img src="../activos/img_productos/deshidratado_Aguaimanto.jpg" alt="Deshidratado de Aguaymanto" class="w-full h-56 object-contain object-center bg-gray-50/50 p-4">
-            <div class="p-6">
-              <div class="flex items-center justify-between mb-3">
-                <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-primary text-white">Premium</span>
-              </div>
-              <h3 class="text-xl font-bold text-ink mb-2 font-display">Deshidratado de Aguaymanto</h3>
-              <p class="text-gray-600 text-sm leading-relaxed font-body">Fruta seleccionada del valle, procesada mediante deshidratado natural.</p>
-            </div>
-          </div>
-          <div class="p-6 pt-0">
-            <a href="/paginas/contacto.html" class="inline-flex items-center text-sm font-semibold text-primary hover:text-primary-dark transition-colors group font-display">
-              <span>Solicitar Información</span>
-              <i class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- 6: Deshidratado de Mango -->
-        <div class="flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] bg-white rounded-3xl border border-gray-200/80 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
-          <div>
-            <img src="../activos/img_productos/deshiradrato_Mango.jpg" alt="Deshidratado de Mango" class="w-full h-56 object-contain object-center bg-gray-50/50 p-4">
-            <div class="p-6">
-              <div class="flex items-center justify-between mb-3">
-                <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-primary text-white">Natural</span>
-              </div>
-              <h3 class="text-xl font-bold text-ink mb-2 font-display">Deshidratado de Mango</h3>
-              <p class="text-gray-600 text-sm leading-relaxed font-body">Mango del valle procesado mediante deshidratado natural, conservando su sabor.</p>
-            </div>
-          </div>
-          <div class="p-6 pt-0">
-            <a href="/paginas/contacto.html" class="inline-flex items-center text-sm font-semibold text-primary hover:text-primary-dark transition-colors group font-display">
-              <span>Solicitar Información</span>
-              <i class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- 7: Destilados -->
-        <div class="flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] bg-white rounded-3xl border border-gray-200/80 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
-          <div>
-            <img src="../activos/img_productos/2025-EspiritudeUva.jpg" alt="Destilados" class="w-full h-56 object-contain object-center bg-gray-50/50 p-4">
-            <div class="p-6">
-              <div class="flex items-center justify-between mb-3">
-                <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-primary text-white">Artesanal</span>
-              </div>
-              <h3 class="text-xl font-bold text-ink mb-2 font-display">Destilados</h3>
-              <p class="text-gray-600 text-sm leading-relaxed mb-4 font-body">Fino destilado de uva y exquisitos licores de fruta, elaborados bajo parámetros artesanales del valle.</p>
-              <div class="flex flex-wrap gap-2">
-                <span class="px-2.5 py-1 text-xs font-medium rounded-md bg-gray-100 text-gray-700">Uva</span>
-                <span class="px-2.5 py-1 text-xs font-medium rounded-md bg-gray-100 text-gray-700">Licores</span>
-              </div>
-            </div>
-          </div>
-          <div class="p-6 pt-0">
-            <a href="/paginas/contacto.html" class="inline-flex items-center text-sm font-semibold text-primary hover:text-primary-dark transition-colors group font-display">
-              <span>Solicitar Información</span>
-              <i class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- 8: Cocktail Maracuyá (hoy) -->
-        <div class="flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] bg-white rounded-3xl border border-gray-200/80 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
-          <div>
-            <img src="../activos/img_productos/2025-Cocktail_maracuya.png" alt="Cocktail de Maracuyá" class="w-full h-56 object-contain object-center bg-gray-50/50 p-4">
-            <div class="p-6">
-              <div class="flex items-center justify-between mb-3">
-                <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-primary text-white">Artesanal</span>
-              </div>
-              <h3 class="text-xl font-bold text-ink mb-2 font-display">Cocktail de Maracuyá</h3>
-              <p class="text-gray-600 text-sm leading-relaxed font-body">Elaborado con maracuyá del valle, ideal para compartir en cualquier ocasión.</p>
-            </div>
-          </div>
-          <div class="p-6 pt-0">
-            <a href="/paginas/contacto.html" class="inline-flex items-center text-sm font-semibold text-primary hover:text-primary-dark transition-colors group font-display">
-              <span>Solicitar Información</span>
-              <i class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- 9: Cocktail Tuna Roja (hoy) -->
-        <div class="flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] bg-white rounded-3xl border border-gray-200/80 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
-          <div>
-            <img src="../activos/img_productos/2025-Cocktail_tuna_roja.jpg" alt="Cocktail de Tuna Roja" class="w-full h-56 object-contain object-center bg-gray-50/50 p-4">
-            <div class="p-6">
-              <div class="flex items-center justify-between mb-3">
-                <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-primary text-white">Artesanal</span>
-              </div>
-              <h3 class="text-xl font-bold text-ink mb-2 font-display">Cocktail de Tuna Roja</h3>
-              <p class="text-gray-600 text-sm leading-relaxed font-body">Preparado con tuna roja del valle, de sabor intenso y color natural.</p>
-            </div>
-          </div>
-          <div class="p-6 pt-0">
-            <a href="/paginas/contacto.html" class="inline-flex items-center text-sm font-semibold text-primary hover:text-primary-dark transition-colors group font-display">
-              <span>Solicitar Información</span>
-              <i class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- 10: Refresco (hoy) -->
-        <div class="flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] bg-white rounded-3xl border border-gray-200/80 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
-          <div>
-            <img src="../activos/img_productos/Refresco.jpg" alt="Refresco" class="w-full h-56 object-contain object-center bg-gray-50/50 p-4">
-            <div class="p-6">
-              <div class="flex items-center justify-between mb-3">
-                <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-primary text-white">Natural</span>
-              </div>
-              <h3 class="text-xl font-bold text-ink mb-2 font-display">Refresco</h3>
-              <p class="text-gray-600 text-sm leading-relaxed font-body">Elaborado con frutas seleccionadas de la zona, conservando su sabor y propiedades naturales.</p>
-            </div>
-          </div>
-          <div class="p-6 pt-0">
-            <a href="/paginas/contacto.html" class="inline-flex items-center text-sm font-semibold text-primary hover:text-primary-dark transition-colors group font-display">
-              <span>Solicitar Información</span>
-              <i class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- 11: Néctar Gulupa (hoy) -->
-        <div class="flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] bg-white rounded-3xl border border-gray-200/80 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
-          <div>
-            <img src="../activos/img_productos/Nectar Gulupa.jpg" alt="Néctar de Gulupa" class="w-full h-56 object-contain object-center bg-gray-50/50 p-4">
-            <div class="p-6">
-              <div class="flex items-center justify-between mb-3">
-                <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-primary text-white">Natural</span>
-              </div>
-              <h3 class="text-xl font-bold text-ink mb-2 font-display">Néctar de Gulupa</h3>
-              <p class="text-gray-600 text-sm leading-relaxed font-body">Elaborado con gulupa del valle, de sabor único y alto valor nutricional.</p>
-            </div>
-          </div>
-          <div class="p-6 pt-0">
-            <a href="/paginas/contacto.html" class="inline-flex items-center text-sm font-semibold text-primary hover:text-primary-dark transition-colors group font-display">
-              <span>Solicitar Información</span>
-              <i class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- 12: Chía (hoy) -->
-        <div class="flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] bg-white rounded-3xl border border-gray-200/80 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
-          <div>
-            <img src="../activos/img_productos/Chia.jpg" alt="Chía" class="w-full h-56 object-contain object-center bg-gray-50/50 p-4">
-            <div class="p-6">
-              <div class="flex items-center justify-between mb-3">
-                <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-primary text-white">Premium</span>
-              </div>
-              <h3 class="text-xl font-bold text-ink mb-2 font-display">Chía</h3>
-              <p class="text-gray-600 text-sm leading-relaxed font-body">Semillas de chía del valle, ricas en fibra y ácidos grasos esenciales.</p>
-            </div>
-          </div>
-          <div class="p-6 pt-0">
-            <a href="/paginas/contacto.html" class="inline-flex items-center text-sm font-semibold text-primary hover:text-primary-dark transition-colors group font-display">
-              <span>Solicitar Información</span>
-              <i class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- 13: Propóleo 50ml (hoy) -->
-        <div class="flex-none w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-64px)/3)] bg-white rounded-3xl border border-gray-200/80 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect group">
-          <div>
-            <img src="../activos/img_productos/2025-Propóleo50 ml.jpg" alt="Propóleo 50ml" class="w-full h-56 object-contain object-center bg-gray-50/50 p-4">
-            <div class="p-6">
-              <div class="flex items-center justify-between mb-3">
-                <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-primary text-white">Orgánico</span>
-              </div>
-              <h3 class="text-xl font-bold text-ink mb-2 font-display">Propóleo 50ml</h3>
-              <p class="text-gray-600 text-sm leading-relaxed font-body">Extracto de própolis del valle, reconocido por sus propiedades naturales.</p>
-            </div>
-          </div>
-          <div class="p-6 pt-0">
-            <a href="/paginas/contacto.html" class="inline-flex items-center text-sm font-semibold text-primary hover:text-primary-dark transition-colors group font-display">
-              <span>Solicitar Información</span>
-              <i class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
-            </a>
-          </div>
-        </div>
+        <!-- Título -->
+        <h1 class="font-montserrat text-3xl sm:text-4xl md:text-[44px] text-white font-extrabold leading-none">
+          Nuestros Productos
+        </h1>
+        <p class="font-montserrat italic text-lg sm:text-xl md:text-[22px] text-white font-semibold leading-snug mt-3">
+          Calidad y valor desde el campo
+        </p>
 
       </div>
     </div>
-
-    <button id="alimentos-next"
-      class="absolute -right-4 md:-right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 flex items-center justify-center bg-white border border-gray-200 rounded-full shadow-md hover:bg-primary hover:text-white transition">
-      <i class="fas fa-chevron-right text-xs"></i>
-    </button>
-
-  </div>
-
-  <div id="alimentos-dots" class="flex justify-center gap-2 mt-6"></div>
-
-</section>
-    <!-- Script Carrusel -->
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const track = document.getElementById("alimentos-track");
-        const cards = track.children;
-        const prevBtn = document.getElementById("alimentos-prev");
-        const nextBtn = document.getElementById("alimentos-next");
-        const dotsContainer = document.getElementById("alimentos-dots");
-
-        function getVisibleCards() {
-          if (window.innerWidth < 768) return 1;
-          if (window.innerWidth < 1024) return 2;
-          return 3;
-        }
-        const gap = 32;
-
-        let currentIndex = 0;
-        let maxIndex = Math.max(0, cards.length - getVisibleCards());
-
-        function createDots() {
-          dotsContainer.innerHTML = "";
-          for (let i = 0; i <= maxIndex; i++) {
-            const dot = document.createElement("button");
-            dot.className = i === 0
-              ? "w-6 h-2 rounded-full bg-primary transition-all"
-              : "w-2 h-2 rounded-full bg-gray-300 transition-all";
-            dot.addEventListener("click", () => moveTo(i));
-            dotsContainer.appendChild(dot);
-          }
-        }
-
-        function updateDots() {
-          [...dotsContainer.children].forEach((dot, index) => {
-            dot.className = index === currentIndex
-              ? "w-6 h-2 rounded-full bg-primary transition-all"
-              : "w-2 h-2 rounded-full bg-gray-300 transition-all";
-          });
-        }
-
-        function moveTo(index) {
-  currentIndex = Math.max(0, Math.min(index, maxIndex));
-  maxIndex = Math.max(0, cards.length - getVisibleCards());
-  const cardWidth = cards[0].getBoundingClientRect().width + gap;
-  track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-
-  // Oculta por completo las flechas en los extremos, en vez de solo deshabilitarlas
-  prevBtn.classList.toggle("hidden", currentIndex === 0);
-  nextBtn.classList.toggle("hidden", currentIndex === maxIndex);
-
-  updateDots();
-}
-
-        prevBtn.addEventListener("click", () => moveTo(currentIndex - 1));
-        nextBtn.addEventListener("click", () => moveTo(currentIndex + 1));
-
-        window.addEventListener("resize", () => {
-          maxIndex = Math.max(0, cards.length - getVisibleCards());
-          if (currentIndex > maxIndex) currentIndex = maxIndex;
-          createDots();
-          moveTo(currentIndex);
-        });
-
-        createDots();
-        moveTo(0);
-
-        let startX = 0;
-        let endX = 0;
-        track.addEventListener("touchstart", (e) => { startX = e.touches[0].clientX; });
-        track.addEventListener("touchmove", (e) => { endX = e.touches[0].clientX; });
-        track.addEventListener("touchend", () => {
-          const distance = startX - endX;
-          if (Math.abs(distance) < 50) return;
-          if (distance > 0) moveTo(currentIndex + 1);
-          else moveTo(currentIndex - 1);
-        });
-      });
-    </script>
-
+  </header>
+  <!-- BEGIN: Main Page Content -->
+  <main class="space-y-16 py-16">
+    <!-- ================= SECTION 1: CARRUSEL DE PRODUCTOS POR CATEGORÍA ================= -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="border-b border-gray-200 pb-4 mb-10">
+        <h1 class="text-2xl md:text-3xl font-bold text-ink mb-2 font-display">Línea Alimentos</h1>
+        <p class="text-gray-600 text-sm md:text-base font-body">Productos naturales procesados bajo estrictos controles
+          de calidad e inocuidad, organizados por categoría.</p>
+      </div>
+      <div id="carrusel-productos-container" data-component="/components/carrusel-productos.html"></div>
+    </section>
     <!-- ================= SECTION 2: LÍNEA NO ALIMENTOS E INSUMOS ================= -->
-    <section class="bg-gray-50 border-t border-b border-gray-200/60 py-16">
+    <section class="bg-gray-50 border-t border-gray-200 py-16">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <!-- Section Header -->
-        <div class="border-b border-gray-200 pb-4 mb-10">
+        <div class="mb-10">
           <h2 id="linea-noalimentos-heading" class="text-2xl md:text-3xl font-bold text-ink mb-2 font-display">
-            Línea No Alimentos Agrícola e Insumos
+            Línea No Alimentos
           </h2>
-          <p class="text-gray-600 text-sm md:text-base font-body">
-            Material genético certificado y soluciones técnicas para potenciar la producción agrícola regional.
+
+          <p class="text-gray-600 text-sm md:text-base font-body max-w-3xl">
+            Material genético e insumos seleccionados para contribuir al desarrollo
+            y productividad de las actividades agrícolas.
           </p>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
 
-          <!-- LEFT / MIDDLE COLUMN: Plants & Trees (Spans 2 columns) -->
-          <div class="lg:col-span-2 space-y-8">
+        <!-- CONTENIDO -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
 
-            <!-- PLANTONES DE PALTO -->
-            <div
-              class="bg-white rounded-3xl border border-gray-200/80 shadow-sm p-6 sm:p-8 flex flex-col md:flex-row gap-8 hover-card-effect">
-              <div class="md:w-1/3 flex-shrink-0">
-                <img id="palto-img" src="../activos/img_productos/vivero-frutícola-01.jpg" alt="Plantones de Palto"
-                  class="w-full h-48 md:h-full object-cover rounded-2xl shadow-inner" />
-              </div>
-              <div class="flex-grow flex flex-col justify-between space-y-4">
-                <div>
-                  <div class="flex items-center gap-2 text-primary mb-2">
-                    <i class="fas fa-certificate text-sm"></i>
-                    <span class="text-xs font-bold uppercase tracking-wider font-display">VIVERO</span>
-                  </div>
-                  <h3 id="palto-title" class="text-xl font-bold text-ink mb-2 font-display">Plantones de Palto</h3>
-                  <p id="palto-desc" class="text-gray-600 text-sm leading-relaxed mb-4 font-body">
-                    Plantas vigorosas, injertadas bajo rigurosos controles sanitarios y libres de patógenos, listas para
-                    establecimiento en campo definitivo.
-                  </p>
 
-                  <!-- Palto variety tags -->
-                  <div id="palto-tags" class="flex flex-wrap gap-2 mb-4">
-                    <button
-                      data-info="Alta resistencia a patógenos de suelo y vigor radicular superior. Ideal como portainjerto."
-                      class="variedad px-3 py-1.5 text-xs font-semibold rounded-lg bg-emerald-50 text-primary border border-emerald-200 transition-colors">
-                      Zutano
-                    </button>
-                    <button
-                      data-info="Adaptado a condiciones climáticas variables, mostrando un desarrollo inicial equilibrado."
-                      class="variedad px-3 py-1.5 text-xs font-semibold rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors">
-                      Mexicano
-                    </button>
-                    <button
-                      data-info="Excelente tolerancia a problemas radiculares comunes y buena afinidad de injerto."
-                      class="variedad px-3 py-1.5 text-xs font-semibold rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors">
-                      Duke 7
-                    </button>
-                    <button
-                      data-info="La variedad comercial de mayor demanda internacional, con excelente rendimiento productivo."
-                      class="variedad px-3 py-1.5 text-xs font-semibold rounded-lg bg-emerald-50 text-primary border border-emerald-200 transition-colors">
-                      Hass
-                    </button>
-                    <button
-                      data-info="Fruto de calibre adecuado y excelente calidad organoléptica para el mercado local y de exportación."
-                      class="variedad px-3 py-1.5 text-xs font-semibold rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors">
-                      Fuerte
-                    </button>
-                    <button data-info="Variedad caracterizada por su abundante producción y frutos de gran tamaño."
-                      class="variedad px-3 py-1.5 text-xs font-semibold rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors">
-                      Nabal
-                    </button>
-                    <button
-                      data-info="Óptima adaptabilidad a diferentes pisos ecológicos del valle y excelente calidad de fruto."
-                      class="variedad px-3 py-1.5 text-xs font-semibold rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors">
-                      Villacampa
-                    </button>
-                  </div>
-                </div>
+          <!-- ================= PLANTONES ================= -->
+          <div class="lg:col-span-2">
 
-                <!-- Highlight badge bottom -->
-                <div
-                  class="bg-gray-50 border border-gray-200/60 rounded-xl p-3.5 text-xs sm:text-sm leading-relaxed text-gray-600 flex items-center gap-2 font-body">
-                  <i class="fas fa-info-circle text-primary text-sm flex-shrink-0"></i>
-                  <span id="info-variedad">Seleccione una variedad para visualizar sus especificaciones técnicas.</span>
-                </div>
-              </div>
+            <div class="mb-6">
+              <h3 class="text-[22px] font-bold text-ink font-display">
+                Plantones frutales
+              </h3>
+
+              <p class="text-sm text-gray-600 mt-1 font-body">
+                Plantones seleccionados e injertados para el establecimiento de
+                cultivos frutales.
+              </p>
             </div>
 
-            <!-- TWO-COLUMN GRID BELOW PALTO -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
-              <!-- PLANTONES DE MANGO -->
-              <div
-                class="bg-white rounded-3xl border border-gray-200/80 shadow-sm p-6 sm:p-8 flex flex-col justify-between hover-card-effect">
-                <div>
-                  <h3 id="mango-title" class="text-lg font-bold text-ink mb-3 font-display">Plantones de Mango</h3>
+            <!-- PALTO -->
+            <article class="flex flex-col md:flex-row gap-6 pb-8 border-b border-gray-300">
 
-                  <!-- Mango tags -->
-                  <div id="mango-tags" class="flex flex-wrap gap-2 mb-4">
-                    <button
-                      class="variedad-mango px-3 py-1.5 text-xs font-semibold rounded-lg bg-emerald-50 text-primary border border-emerald-200 transition-colors"
-                      data-info="Patrón vigoroso con alta adaptabilidad a suelos diversos y excelente desarrollo radicular.">
-                      Camboyano
-                    </button>
-                    <button
-                      class="variedad-mango px-3 py-1.5 text-xs font-semibold rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors"
-                      data-info="Fruto aromático de sabor dulce distintivo, muy apreciado en el mercado nacional.">
-                      Manzano
-                    </button>
-                    <button
-                      class="variedad-mango px-3 py-1.5 text-xs font-semibold rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors"
-                      data-info="Fruto de pulpa consistente, libre de fibras y de alta demanda para agroexportación.">
-                      Kent
-                    </button>
-                    <button
-                      class="variedad-mango px-3 py-1.5 text-xs font-semibold rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors"
-                      data-info="Variedad tardía que garantiza cosecha prolongada con frutos de gran tamaño.">
-                      Keitt
-                    </button>
-                    <button
-                      class="variedad-mango px-3 py-1.5 text-xs font-semibold rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors"
-                      data-info="Fruto de textura suave y calidad excepcional para consumo directo.">
-                      Edward
-                    </button>
-                  </div>
-
-                  <div
-                    class="bg-gray-50 border border-gray-200/60 rounded-xl p-3.5 text-xs sm:text-sm leading-relaxed text-gray-600 flex items-start gap-2 mb-4 font-body">
-                    <i class="fas fa-info-circle text-primary text-sm mt-0.5 flex-shrink-0"></i>
-                    <span id="mango-desc">Seleccione una variedad para visualizar sus especificaciones técnicas.</span>
-                  </div>
-                </div>
-
-                <div class="flex items-center justify-center pt-2">
-                  <img src="../activos/img_productos/plantas-injertadas-Mango.png" alt="Plantones de Mango"
-                    class="object-contain max-h-36">
-                </div>
+              <div class="md:w-2/5 flex-shrink-0">
+                <img id="palto-img" src="../activos/img_productos/vivero-palta.jpg" alt="Plantones de Palto"
+                  class="w-full aspect-[16/9] object-cover rounded-2xl" />
               </div>
 
-              <!-- PLANTONES DE LÚCUMA -->
-              <div
-                class="bg-white rounded-3xl border border-gray-200/80 shadow-sm p-6 sm:p-8 flex flex-col justify-between hover-card-effect">
-                <div>
-                  <h3 id="lucuma-title" class="text-lg font-bold text-ink mb-3 font-display">Plantones de Lúcuma</h3>
-                  <p id="lucuma-desc" class="text-gray-600 text-sm leading-relaxed mb-4 font-body">
-                    Material genético seleccionado para garantizar adaptabilidad climática y alto rendimiento
-                    productivo:
-                  </p>
+              <div class="flex-1">
 
-                  <ul class="space-y-3 text-sm text-gray-700 font-body">
-                    <li class="flex items-start gap-2.5">
-                      <span class="text-primary mt-0.5"><i class="fas fa-check-circle"></i></span>
-                      <span><strong>Portainjerto Palo:</strong> Excelente vigor estructural y alta tolerancia a suelos
-                        complejos.</span>
-                    </li>
-                    <li class="flex items-start gap-2.5">
-                      <span class="text-primary mt-0.5"><i class="fas fa-check-circle"></i></span>
-                      <span><strong>Variedad Seda:</strong> Fruto de pulpa tersa, suave y dulce, ideal para la industria
-                        repostera.</span>
-                    </li>
-                    <li class="flex items-start gap-2.5">
-                      <span class="text-primary mt-0.5"><i class="fas fa-check-circle"></i></span>
-                      <span><strong>Variedad Beltrán:</strong> Rendimiento comercial constante y frutos de óptima
-                        calidad.</span>
-                    </li>
-                  </ul>
-                </div>
+                <h4 id="palto-title" class="text-xl font-bold text-ink mb-2 font-display">
+                  Plantones de Palto
+                </h4>
+
+                <p id="palto-desc" class="text-sm text-gray-600 leading-relaxed font-body mb-4">
+                  Plantas vigorosas e injertadas bajo controles sanitarios,
+                  seleccionadas para su establecimiento en campo definitivo.
+                </p>
+
+                <p class="text-sm text-gray-500 font-body">
+                  <span class="font-semibold text-gray-700">Variedades:</span>
+                  Zutano, Mexicano, Duke 7, Hass, Fuerte, Nabal y Villacampa.
+                </p>
+
+                <a href="../activos/docs/Ficha Técnica_Palta_SEDIR.pdf"
+                  class="inline-flex items-center mt-4 text-sm font-semibold text-[#00733F] hover:text-[#F09734] transition-colors">
+                  Consultar ficha técnica
+                  <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                </a>
+
               </div>
 
-            </div>
+            </article>
+
+
+            <!-- MANGO -->
+            <article class="flex flex-col sm:flex-row gap-6 py-8 border-b border-gray-300">
+
+              <div class="md:w-2/5 flex-shrink-0">
+                <img src="../activos/img_productos/vivero-mango.jpg" alt="Plantones de Mango"
+                  class="w-full aspect-[16/9] object-cover rounded-2xl" />
+              </div>
+
+              <div class="flex-1">
+
+                <h4 id="mango-title" class="text-xl font-bold text-ink mb-2 font-display">
+                  Plantones de Mango
+                </h4>
+
+                <p class="text-sm text-gray-600 leading-relaxed font-body">
+                  Plantones injertados de variedades seleccionadas para favorecer
+                  un buen desarrollo y rendimiento productivo.
+                </p>
+
+                <p class="text-sm text-gray-500 mt-3 font-body">
+                  <span class="font-semibold text-gray-700">Variedades:</span>
+                  Camboyano, Manzano, Kent, Keitt y Edward.
+                </p>
+
+                <a href="../activos/docs/Ficha Técnica_Mango_SEDIR.pdf"
+                  class="inline-flex items-center mt-4 text-sm font-semibold text-[#00733F] hover:text-[#F09734] transition-colors">
+                  Consultar ficha técnica
+                  <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                </a>
+
+              </div>
+
+            </article>
+
+
+            <!-- LÚCUMA -->
+            <article class="flex flex-col sm:flex-row gap-6 py-8">
+
+              <div class="md:w-2/5 flex-shrink-0">
+                <img id="lucuma-img" src="../activos/img_productos/vivero-lucuma.jpg" alt="Plantones de Lúcuma"
+                  class="w-full aspect-[16/9] object-cover rounded-2xl" />
+              </div>
+
+              <div class="flex-1">
+
+                <h4 id="lucuma-title" class="text-xl font-bold text-ink mb-2 font-display">
+                  Plantones de Lúcuma
+                </h4>
+
+                <p id="lucuma-desc" class="text-sm text-gray-600 leading-relaxed font-body">
+                  Material genético seleccionado para favorecer la adaptación
+                  del cultivo y obtener frutos de buena calidad comercial.
+                </p>
+
+                <p class="text-sm text-gray-500 mt-3 font-body">
+                  <span class="font-semibold text-gray-700">Material disponible:</span>
+                  Portainjerto Palo, Seda y Beltrán.
+                </p>
+
+              </div>
+
+            </article>
 
           </div>
 
-          <!-- RIGHT COLUMN: Other Insumos -->
-          <div class="lg:col-span-1">
-            <div
-              class="bg-white rounded-3xl border border-gray-200/80 shadow-sm p-6 sm:p-8 h-full flex flex-col justify-between hover-card-effect">
-              <div>
-                <h3 class="text-lg font-bold text-ink border-b border-gray-200 pb-4 mb-6 font-display">
-                  Otros Insumos Agropecuarios
-                </h3>
 
-                <div class="space-y-8">
+          <!-- ================= INSUMOS ================= -->
+          <aside class="lg:border-l lg:border-gray-300 lg:pl-10">
 
-                  <!-- Insumo 1: Semilla de Gulupa (Ícono temático: Hoja / Planta) -->
-                  <div class="flex gap-4 items-start">
-                    <div
-                      class="w-12 h-12 bg-primary border-4 border-white rounded-tr-[16px] rounded-br-[16px] rounded-bl-[16px] flex items-center justify-center shadow-md flex-shrink-0">
-                      <i class="fas fa-seedling text-white text-lg"></i>
-                    </div>
-                    <div>
-                      <h4 id="gulupa-title" class="font-bold text-base text-ink mb-1 font-display">Semilla de Gulupa
-                      </h4>
-                      <p id="gulupa-desc" class="text-xs sm:text-sm text-gray-600 leading-relaxed font-body">
-                        Semillas seleccionadas para cultivos de alta rentabilidad y demanda comercial externa.
-                      </p>
-                    </div>
-                  </div>
+            <div class="mb-6">
+              <h3 class="text-[22px] font-bold text-ink font-display">
+                Otros insumos agropecuarios
+              </h3>
 
-                  <!-- Insumo 2: Compost (Ícono temático: Abono / Tierra / Capas) -->
-                  <div class="space-y-4 pt-4 border-t border-gray-100">
-                    <div class="flex gap-4 items-start">
-                      <div
-                        class="w-12 h-12 bg-primary border-4 border-white rounded-tr-[16px] rounded-br-[16px] rounded-bl-[16px] flex items-center justify-center shadow-md flex-shrink-0">
-                        <i class="fas fa-mountain text-white text-lg"></i>
-                      </div>
-                      <div>
-                        <h4 id="compost-title" class="font-bold text-base text-ink mb-1 font-display">Compost
-                        </h4>
-                        <p id="compost-desc" class="text-xs sm:text-sm text-gray-600 leading-relaxed font-body">
-                          Enmienda orgánica orientada a mejorar la estructura del suelo y optimizar la retención de
-                          humedad.
-                        </p>
-                      </div>
-                    </div>
-
-                    <!-- Imagen institucional de soporte -->
-                    <div class="rounded-2xl overflow-hidden border border-gray-200/60 shadow-sm mt-3">
-                      <img src="../activos/img_unidades_productivas/compostera.jpg"
-                        alt="Producción de Compost SEDIR"
-                        class="w-full h-40 object-cover hover:scale-105 transition-transform duration-500">
-                    </div>
-                  </div>
-
-                </div>
-              </div>
+              <p class="text-sm text-gray-600 mt-1 font-body">
+                Insumos destinados a complementar las actividades productivas.
+              </p>
             </div>
-          </div>
+
+
+            <!-- GULUPA -->
+            <article class="pb-7 border-b border-gray-300">
+
+              <h4 id="gulupa-title" class="text-lg font-bold text-ink mb-2 font-display">
+                Semilla de Gulupa
+              </h4>
+
+              <p id="gulupa-desc" class="text-sm text-gray-600 leading-relaxed font-body">
+                Semillas seleccionadas para el establecimiento de cultivos
+                orientados a mercados de alta demanda.
+              </p>
+
+          
+
+            </article>
+
+
+            <!-- COMPOST -->
+            <article class="pt-7">
+
+              <h4 id="compost-title" class="text-lg font-bold text-ink mb-2 font-display">
+                Compost
+              </h4>
+
+              <p id="compost-desc" class="text-sm text-gray-600 leading-relaxed font-body mb-5">
+                Enmienda orgánica que contribuye a mejorar las condiciones
+                físicas del suelo y favorecer la retención de humedad.
+              </p>
+
+              <div class="rounded-2xl overflow-hidden">
+                <img src="../activos/img_unidades_productivas/compostera.jpg" alt="Producción de Compost SEDIR"
+                  class="w-full h-44 object-cover" />
+              </div>
+
+          
+
+            </article>
+
+          </aside>
+
         </div>
-      </div>
-      </div>
+
       </div>
     </section>
+
 
     <!-- ================= SECTION 3: OTROS PRODUCTOS ================= -->
     <section id="otros-productos-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 hidden">
@@ -747,10 +347,10 @@
 
   <!-- BEGIN: Radio Component -->
   <div id="radio-container" data-component="/components/radio.html"></div>
-   
+
   <!-- BEGIN: WhatsApp Component -->
   <div id="whatsapp-container" data-component="/components/whatsapp.html"></div>
-  
+
   <!-- Facebook Component -->
   <div id="facebook-container" data-component="/components/facebook.html"></div>
   <!-- Scripts -->
@@ -796,30 +396,7 @@
 
           let matched = false;
 
-          if (nameNormalized === 'miel de abeja') {
-            updateElementText('miel-title', producto.nombre);
-            updateElementText('miel-desc', producto.descripcion);
-            updateElementImage('miel-img', producto.imagen_url);
-            matched = true;
-          } else if (nameNormalized.includes('nectar')) {
-            updateElementText('nectar-title', producto.nombre);
-            updateElementText('nectar-desc', producto.descripcion);
-            updateElementImage('nectar-img', producto.imagen_url);
-            matched = true;
-          } else if (nameNormalized.includes('destilado') || nameNormalized.includes('licores')) {
-            updateElementText('destilados-title', producto.nombre);
-            updateElementText('destilados-desc', producto.descripcion);
-            updateElementImage('destilados-img', producto.imagen_url);
-            if (producto.etiquetas && producto.etiquetas.length > 0) {
-              const tagsContainer = document.getElementById('destilados-tags');
-              if (tagsContainer) {
-                tagsContainer.innerHTML = producto.etiquetas.map(t =>
-                  `<span class="px-2.5 py-1 text-xs font-medium rounded-md bg-gray-100 text-gray-700">${t}</span>`
-                ).join('');
-              }
-            }
-            matched = true;
-          } else if (nameNormalized.includes('palto')) {
+          if (nameNormalized.includes('palto')) {
             updateElementText('palto-title', producto.nombre);
             updateElementText('palto-desc', producto.descripcion);
             matched = true;
@@ -844,7 +421,17 @@
             matched = true;
           }
 
-          if (!matched) {
+          // Los que clasifica el carrusel de categorías (miel/néctar/refresco/
+          // destilados/cocktail/deshidratados) no deben repetirse aquí abajo.
+          const yaClasificadoPorCarrusel =
+            nameNormalized.includes('miel') || nameNormalized.includes('propol') ||
+            nameNormalized.includes('nectar') || nameNormalized.includes('refresco') ||
+            nameNormalized.includes('bebida') || nameNormalized.includes('jugo') ||
+            nameNormalized.includes('destilado') || nameNormalized.includes('licor') ||
+            nameNormalized.includes('cocktail') || nameNormalized.includes('vino') ||
+            nameNormalized.includes('deshidrat');
+
+          if (!matched && !yaClasificadoPorCarrusel) {
             otrosProductos.push(producto);
           }
         });

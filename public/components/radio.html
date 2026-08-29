@@ -1,17 +1,26 @@
-<!-- ============ RADIO SEDIR ============ -->
 <style>
   .radio-player-container {
     position: fixed;
     bottom: 184px;
     right: 32px;
     z-index: 150;
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: flex-end;
-    gap: 15px;
+    /* Fijamos el tamaño exacto del contenedor al tamaño del botón */
+    width: 64px;
+    height: 64px;
+  }
+
+  .radio-button {
+    cursor: pointer;
+    position: relative;
+    z-index: 2; /* Mantiene el botón por encima */
   }
 
   .radio-player {
+    /* Lo posicionamos de forma absoluta fuera del flujo normal */
+    position: absolute;
+    right: calc(100% + 15px); /* 100% (ancho del botón) + 15px de separación */
+    bottom: 0; /* Lo alineamos a la base del botón */
+    
     background-color: #F09734;
     color: white;
     opacity: 0;
@@ -22,14 +31,13 @@
     width: 260px;
     border-radius: 1rem;
     padding: 1rem;
-    position: relative;
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
   }
 
   .radio-player::after {
     content: '';
     position: absolute;
-    bottom: 22px;
+    bottom: 22px; /* Alineado exactamente al centro del botón de 64px */
     right: -10px;
     width: 0;
     height: 0;
@@ -38,7 +46,7 @@
     border-left: 10px solid #F09734;
   }
 
-  .radio-player-container:hover .radio-player {
+  .radio-player-container.is-open .radio-player {
     opacity: 1;
     visibility: visible;
     transform: translateX(0) scale(1);
@@ -57,10 +65,10 @@
   }
 </style>
 
-<div class="radio-player-container">
+<div class="radio-player-container" id="radioPlayerContainer">
   <button
     class="radio-button bg-[#F09734] text-white p-4 rounded-full shadow-xl hover:bg-[#d6852a] transition-colors flex items-center justify-center w-[64px] h-[64px] shrink-0"
-    aria-label="Escuchar Radio SEDIR">
+    aria-label="Escuchar Radio SEDIR" aria-expanded="false" id="radioButton">
     <i class="fas fa-radio text-[32px]"></i>
   </button>
 
@@ -74,3 +82,25 @@
     </audio>
   </div>
 </div>
+
+<script>
+(function () {
+  var container = document.getElementById('radioPlayerContainer');
+  var button = document.getElementById('radioButton');
+
+  if (!container || !button) return;
+
+  button.addEventListener('click', function () {
+    var abierto = container.classList.toggle('is-open');
+    button.setAttribute('aria-expanded', abierto ? 'true' : 'false');
+  });
+
+  // Cerrar si se hace click fuera del reproductor
+  document.addEventListener('click', function (e) {
+    if (!container.contains(e.target)) {
+      container.classList.remove('is-open');
+      button.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
+</script>

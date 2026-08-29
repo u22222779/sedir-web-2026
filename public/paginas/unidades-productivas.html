@@ -68,21 +68,17 @@
   CARD
 =========================*/
 
-        .planton-card {
-            position: relative;
-            width: 100%;
-            max-width: 355px;
-            aspect-ratio: 3 / 4;
-            margin: 0 auto;
-
-            border-radius: 32px;
-            overflow: hidden;
-            box-sizing: border-box;
-
-            background: #f2efe9;
-            box-shadow: 0 10px 30px rgba(29, 29, 29, .10);
-            transition: transform .4s cubic-bezier(.22, .61, .36, 1), box-shadow .4s ease;
-        }
+.planton-card {
+    position: relative;
+    width: 100%;
+    max-width: 280px; /* Mantiene el tamaño ajustado de la indicación anterior */
+    aspect-ratio: 3 / 4;
+    margin: 0;
+    border-radius: 64px 5px 64px 64px;
+    overflow: hidden;
+    box-sizing: border-box;
+    transition: transform .4s cubic-bezier(.22, .61, .36, 1), box-shadow .4s ease;
+}
 
         .planton-card:hover {
             transform: translateY(-6px);
@@ -127,28 +123,48 @@
   NOMBRE SOBRE LA IMAGEN
 =========================*/
 
-.planton-face-name {
-    position: absolute;
-    left: 24px;
-    top: 28px;
-    z-index: 2;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 700;
-    font-size: 17px;
-    color: #FFFFFF;
-    letter-spacing: -0.01em;
-    text-shadow: 0 2px 8px rgba(0, 3, 6, .55);
-    pointer-events: none;
-}
+        .planton-face-name {
+            position: absolute;
+            left: 16px;
+            bottom: 16px;
+            z-index: 3;
 
-.planton-face-name span {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: flex-start;
+
+            padding: 8px 13px;
+            border: 1px solid rgba(255, 255, 255, 0.75);
+            border-radius: 12px;
+
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(5px);
+
+            color: #000306;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.2;
+
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        .planton-face-name>span {
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            color: #00733F;
+            margin-bottom: 3px;
+        }
+
+        .planton-face-name span {
     display: block;
     font-family: "Montserrat", sans-serif;
     font-weight: 600;
     font-size: 11.5px;
     letter-spacing: .14em;
     text-transform: uppercase;
-    color: #F09734;
+    color: #00944A; /* Nuevo color verde */
     margin-bottom: 2px;
 }
 
@@ -443,8 +459,8 @@
 
         .planton-carousel-track {
             display: flex;
+            justify-content: flex-start;
             gap: 24px;
-            transition: transform .5s cubic-bezier(.22, .61, .36, 1);
         }
 
         .planton-carousel-track>.planton-card {
@@ -515,22 +531,34 @@
 
 <body class="bg-background text-[#191c1d] font-body-md">
 
-    <!-- Navigation Component -->
+    <!-- BEGIN: Navigation Component -->
     <div id="navbar-container" class="navbar-loading" data-component="/components/navbar.html"></div>
+    <script>
+            (function () {
+                try {
+                    var html = sessionStorage.getItem('sedirNavbarHTML');
+                    var el = document.getElementById('navbar-container');
+                    if (html && el) {
+                        el.innerHTML = html;
+                        el.classList.remove('navbar-loading');
+                        el.classList.add('navbar-loaded');
+                    }
+                } catch (e) { }
+            })();
+    </script>
+    <!-- END: Navigation Component -->
 
-    <header class="relative w-full h-[400px] md:h-[430px] flex items-center justify-center overflow-hidden"
+
+  <header class="relative w-full h-[400px] md:h-[430px] flex items-center justify-center overflow-hidden"
         style="background: #006a49">
         <!-- Imagen de fondo -->
         <div class="absolute inset-0 z-0">
-            <div class="grid grid-cols-5 w-full h-full opacity-60">
-                <img src="../activos/img_unidades_productivas/foto_a-web269876_12-08-23.jpg"
+            <div class="grid grid-cols-3 w-full h-full opacity-60">
+                <img src="../activos/img_productos/vivero-palta.jpg"
                     class="w-full h-full object-cover" alt="" />
-                <img src="../activos/img_unidades_productivas/compostera.jpg" class="w-full h-full object-cover"
+                <img src="../activos/img_unidades_productivas/portada_apicultura.jpeg" class="w-full h-full object-cover"
                     alt="" />
-                <img src="../activos/img_unidades_productivas/apicultura-08-25.jpg" class="w-full h-full object-cover"
-                    alt="" />
-                <img src="../activos/img_servicios/2025-abejas.jpg" class="w-full h-full object-cover" alt="" />
-                <img src="../activos/img_productos/portada_refresco.jpg" class="w-full h-full object-cover" alt="" />
+                <img src="../activos/img_unidades_productivas/portada_licor.jpeg" class="w-full h-full object-cover" alt="" />
             </div>
         </div>
 
@@ -539,21 +567,25 @@
 
         <!-- Contenido -->
         <div class="relative z-20 w-full max-w-[1606px] mx-auto px-6 md:px-12 lg:px-[100px] flex items-center">
-            <div class="w-full md:w-1/2 text-left">
+            <div class="w-full md:w-1/2 text-left translate-y-16">
+
                 <button onclick="history.back()"
-                    class="inline-flex items-center gap-2 mb-5 bg-transparent border-2 border-white text-white text-sm font-bold px-6 py-2 rounded-full hover:bg-white hover:text-[#006a49] transition-all overflow-hidden group">
-                    <span
-                        class="material-symbols-outlined text-lg group-hover:-translate-x-1 transition-transform">chevron_left</span>
+                    class="absolute -top-16 left-0 inline-flex items-center gap-2 bg-transparent border-2 border-white text-white text-sm font-bold px-6 py-2 rounded-full hover:bg-white hover:text-[#006a49] transition-all overflow-hidden group">
+                    <span class="material-symbols-outlined text-lg group-hover:-translate-x-1 transition-transform">
+                        chevron_left
+                    </span>
                     Volver
                 </button>
-                <!-- Título -->
+
                 <h1 class="font-montserrat text-3xl sm:text-4xl md:text-[44px] text-white font-extrabold leading-none">
                     Unidades Productivas
                 </h1>
+
                 <p
                     class="font-montserrat italic text-lg sm:text-xl md:text-[22px] text-white font-semibold leading-snug mt-3">
                     Espacios de producción sostenible al servicio del productor.
                 </p>
+
             </div>
         </div>
     </header>
@@ -575,7 +607,11 @@
                     <div class="w-16 h-1 mt-4 mb-6 rounded-full" style="background:#F09734;"></div>
 
                     <p class="max-w-3xl text-[#333333] font-montserrat-light leading-7">
-                        En nuestro Vivero Frutícola nos especializamos en la producción y comercialización de plantones de alta calidad, garantizando variedades seleccionadas y adaptadas a diferentes condiciones agroclimáticas. Contamos con una infraestructura apropiada y técnicas avanzadas de propagación que aseguran el vigor, sanidad y productividad de nuestros plantones. Nuestro compromiso es ofrecer productos que impulsen el desarrollo de la agricultura sostenible y rentable.
+                        En nuestro Vivero Frutícola nos especializamos en la producción y comercialización de plantones
+                        de alta calidad, garantizando variedades seleccionadas y adaptadas a diferentes condiciones
+                        agroclimáticas. Contamos con una infraestructura apropiada y técnicas avanzadas de propagación
+                        que aseguran el vigor, sanidad y productividad de nuestros plantones. Nuestro compromiso es
+                        ofrecer productos que impulsen el desarrollo de la agricultura sostenible y rentable.
                     </p>
                 </div>
 
@@ -583,7 +619,7 @@
                 <!-- IMAGEN -->
                 <div class="relative overflow-hidden w-full mx-auto mt-8"
                     style="max-width:420px; height:260px; border-radius:32px 0 32px 32px; box-shadow:0 18px 40px rgba(0,0,0,.12);">
-                    <img src="../activos/img_unidades_productivas/foto_a-web269876_12-08-23.jpg"
+                    <img src="../activos/img_productos/vivero-palta.jpg"
                         class="w-full h-full object-cover" alt="Vivero Frutícola SEDIR" />
                 </div>
             </div>
@@ -615,222 +651,263 @@
                         <div class="planton-carousel-viewport">
                             <div class="planton-carousel-track">
 
-                        <!-- CARD 1 · Zutano -->
-                        <div class="planton-card">
-                            <div class="planton-card-face" onclick="togglePlantonCard(this)">
-                                <img class="planton-img" src="/activos/img_unidades_productivas/porta-injerto-Zutano.png" alt="zunato">
-                                <span class="planton-face-name"><span>PORTA INJERTO</span>Zutano</span>
-                                <button type="button" class="planton-arrow-btn" aria-label="Ver información de Zutano">
-                                    <span class="material-symbols-outlined">arrow_downward</span>
-                                </button>
-                            </div>
-                            <div class="planton-card-panel">
-                                <button type="button" class="planton-panel-back" onclick="closePlantonCard(this)" aria-label="Volver a la imagen">
-                                    <span class="material-symbols-outlined">arrow_back</span>
-                                </button>
-                                <div class="planton-panel-inner">
-                                    <div class="flex items-center gap-4 mb-4">
-                                        <span class="planton-card-icon">
-                                            <img src="/activos/img_icon/aguacate.png" alt="Palta" class="w-7 h-7 object-contain">
-                                        </span>
-                                        <div>
-                                            <span class="planton-label">PORTA INJERTO</span>
-                                            <h3 class="planton-title">Zutano</h3>
+                                <!-- CARD 1 · Zutano -->
+                                <div class="planton-card">
+                                    <div class="planton-card-face" onclick="togglePlantonCard(this)">
+                                        <img class="planton-img"
+                                            src="/activos/img_unidades_productivas/porta-injerto-Zutano.jpg"
+                                            alt="zunato">
+                                        <span class="planton-face-name"><span>PORTA <br>INJERTO</span>Zutano</span>
+                                        <button type="button" class="planton-arrow-btn"
+                                            aria-label="Ver información de Zutano">
+                                            <span class="material-symbols-outlined">arrow_downward</span>
+                                        </button>
+                                    </div>
+                                    <div class="planton-card-panel">
+                                        <button type="button" class="planton-panel-back"
+                                            onclick="closePlantonCard(this)" aria-label="Volver a la imagen">
+                                            <span class="material-symbols-outlined">arrow_back</span>
+                                        </button>
+                                        <div class="planton-panel-inner">
+                                            <div class="flex items-center gap-4 mb-4">
+                                                <span class="planton-card-icon">
+                                                    <img src="/activos/img_icon/aguacate.png" alt="Palta"
+                                                        class="w-7 h-7 object-contain">
+                                                </span>
+                                                <div>
+                                                    <span class="planton-label">PORTA INJERTO</span>
+                                                    <h3 class="planton-title">Zutano</h3>
+                                                </div>
+                                            </div>
+                                            <div class="planton-panel-scroll">
+                                                <ul class="planton-list">
+                                                    <li>- Planta vigorosa, precoz.</li>
+                                                    <li>- Se adapta sin dificultad a climas fríos.</li>
+                                                    <li>- Tolerancia media a sales, pero sensible a suelos con mal
+                                                        drenaje.</li>
+                                                    <li>- Tolerancia media a <em>Phytophthora cinnamomi</em>, por su
+                                                        vigor y alta
+                                                        capacidad de
+                                                        producción de raíces.</li>
+                                                    <li>- Buena afinidad y productiva con la variedad Hass.</li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="planton-panel-scroll">
-                                        <ul class="planton-list">
-                                    <li>- Planta vigorosa, precoz.</li>
-                                    <li>- Se adapta sin dificultad a climas fríos.</li>
-                                    <li>- Tolerancia media a sales, pero sensible a suelos con mal drenaje.</li>
-                                    <li>- Tolerancia media a <em>Phytophthora cinnamomi</em>, por su vigor y alta
-                                        capacidad de
-                                        producción de raíces.</li>
-                                    <li>- Buena afinidad y productiva con la variedad Hass.</li>
-                                </ul>
-                                    </div>
                                 </div>
-                            </div>
-                        </div>
 
-                        <!-- CARD 2 · Mexicano / Duke7 -->
-                        <div class="planton-card">
-                            <div class="planton-card-face" onclick="togglePlantonCard(this)">
-                                <img class="planton-img" src="/activos/img_unidades_productivas/porta-injerto-Mexicano.png" alt="Mexicano / Duke7">
-                                <span class="planton-face-name"><span>PORTA INJERTO</span>Mexicano / Duke7</span>
-                                <button type="button" class="planton-arrow-btn" aria-label="Ver información de Mexicano / Duke7">
-                                    <span class="material-symbols-outlined">arrow_downward</span>
-                                </button>
-                            </div>
-                            <div class="planton-card-panel">
-                                <button type="button" class="planton-panel-back" onclick="closePlantonCard(this)" aria-label="Volver a la imagen">
-                                    <span class="material-symbols-outlined">arrow_back</span>
-                                </button>
-                                <div class="planton-panel-inner">
-                                    <div class="flex items-center gap-4 mb-4">
-                                        <span class="planton-card-icon">
-                                            <img src="/activos/img_icon/aguacate.png" alt="Palta" class="w-7 h-7 object-contain">
-                                        </span>
-                                        <div>
-                                            <span class="planton-label">PORTA INJERTO</span>
-                                            <h3 class="planton-title">Mexicano / Duke7</h3>
+                                <!-- CARD 2 · Mexicano / Duke7 -->
+                                <div class="planton-card">
+                                    <div class="planton-card-face" onclick="togglePlantonCard(this)">
+                                        <img class="planton-img"
+                                            src="/activos/img_unidades_productivas/porta-injerto-Mexicano.jpg"
+                                            alt="Mexicano / Duke7">
+                                        <span class="planton-face-name"><span>PORTA <br>INJERTO</span>Mexicano<br>
+                                             / Duke7</span>
+                                        <button type="button" class="planton-arrow-btn"
+                                            aria-label="Ver información de Mexicano / Duke7">
+                                            <span class="material-symbols-outlined">arrow_downward</span>
+                                        </button>
+                                    </div>
+                                    <div class="planton-card-panel">
+                                        <button type="button" class="planton-panel-back"
+                                            onclick="closePlantonCard(this)" aria-label="Volver a la imagen">
+                                            <span class="material-symbols-outlined">arrow_back</span>
+                                        </button>
+                                        <div class="planton-panel-inner">
+                                            <div class="flex items-center gap-4 mb-4">
+                                                <span class="planton-card-icon">
+                                                    <img src="/activos/img_icon/aguacate.png" alt="Palta"
+                                                        class="w-7 h-7 object-contain">
+                                                </span>
+                                                <div>
+                                                    <span class="planton-label">PORTA INJERTO</span>
+                                                    <h3 class="planton-title">Mexicano / Duke7</h3>
+                                                </div>
+                                            </div>
+                                            <div class="planton-panel-scroll">
+                                                <ul class="planton-list">
+                                                    <li>- Buena tolerancia al frío (hasta -2 °C).</li>
+                                                    <li>- Funciona muy bien en zonas altoandinas, en suelos franco
+                                                        arenosos.</li>
+                                                    <li>- Sensible al hongo <em>Phytophthora cinnamomi</em>.</li>
+                                                    <li>- Sensible a la salinidad.</li>
+                                                    <li>- Buena afinidad con la variedad Hass y Fuerte.</li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="planton-panel-scroll">
-                                        <ul class="planton-list">
-                                    <li>- Buena tolerancia al frío (hasta -2 °C).</li>
-                                    <li>- Funciona muy bien en zonas altoandinas, en suelos franco arenosos.</li>
-                                    <li>- Sensible al hongo <em>Phytophthora cinnamomi</em>.</li>
-                                    <li>- Sensible a la salinidad.</li>
-                                    <li>- Buena afinidad con la variedad Hass y Fuerte.</li>
-                                </ul>
-                                    </div>
                                 </div>
-                            </div>
-                        </div>
 
-                        <!-- CARD 3 · Hass -->
-                        <div class="planton-card">
-                            <div class="planton-card-face" onclick="togglePlantonCard(this)">
-                                <img class="planton-img" src="/activos/img_unidades_productivas/Palta_Hass.jpeg" alt="Palta Hass">
-                                <span class="planton-face-name"><span>CULTIVAR</span>Hass</span>
-                                <button type="button" class="planton-arrow-btn" aria-label="Ver información de Hass">
-                                    <span class="material-symbols-outlined">arrow_downward</span>
-                                </button>
-                            </div>
-                            <div class="planton-card-panel">
-                                <button type="button" class="planton-panel-back" onclick="closePlantonCard(this)" aria-label="Volver a la imagen">
-                                    <span class="material-symbols-outlined">arrow_back</span>
-                                </button>
-                                <div class="planton-panel-inner">
-                                    <div class="flex items-center gap-4 mb-4">
-                                        <span class="planton-card-icon">
-                                            <img src="/activos/img_icon/aguacate.png" alt="Palta" class="w-7 h-7 object-contain">
-                                        </span>
-                                        <div>
-                                            <span class="planton-label">CULTIVAR</span>
-                                            <h3 class="planton-title">Hass</h3>
+                                <!-- CARD 3 · Hass -->
+                                <div class="planton-card">
+                                    <div class="planton-card-face" onclick="togglePlantonCard(this)">
+                                        <img class="planton-img" src="/activos/img_unidades_productivas/Palta_Hass.jpeg"
+                                            alt="Palta Hass">
+                                        <span class="planton-face-name"><span>CULTIVAR</span>Hass</span>
+                                        <button type="button" class="planton-arrow-btn"
+                                            aria-label="Ver información de Hass">
+                                            <span class="material-symbols-outlined">arrow_downward</span>
+                                        </button>
+                                    </div>
+                                    <div class="planton-card-panel">
+                                        <button type="button" class="planton-panel-back"
+                                            onclick="closePlantonCard(this)" aria-label="Volver a la imagen">
+                                            <span class="material-symbols-outlined">arrow_back</span>
+                                        </button>
+                                        <div class="planton-panel-inner">
+                                            <div class="flex items-center gap-4 mb-4">
+                                                <span class="planton-card-icon">
+                                                    <img src="/activos/img_icon/aguacate.png" alt="Palta"
+                                                        class="w-7 h-7 object-contain">
+                                                </span>
+                                                <div>
+                                                    <span class="planton-label">CULTIVAR</span>
+                                                    <h3 class="planton-title">Hass</h3>
+                                                </div>
+                                            </div>
+                                            <div class="planton-panel-scroll">
+                                                <ul class="planton-list">
+                                                    <li>La más demandada a nivel mundial por su excelente sabor, textura
+                                                        cremosa y alto
+                                                        contenido de aceite. Su piel rugosa permite una buena
+                                                        manipulación y transporte,
+                                                        con
+                                                        una vida postcosecha prolongada.</li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="planton-panel-scroll">
-                                        <ul class="planton-list">
-                                    <li>La más demandada a nivel mundial por su excelente sabor, textura cremosa y alto
-                                        contenido de aceite. Su piel rugosa permite una buena manipulación y transporte,
-                                        con
-                                        una vida postcosecha prolongada.</li>
-                                </ul>
-                                    </div>
                                 </div>
-                            </div>
-                        </div>
 
-                        <!-- CARD 4 · Fuerte -->
-                        <div class="planton-card">
-                            <div class="planton-card-face" onclick="togglePlantonCard(this)">
-                                <img class="planton-img" src="/activos/img_unidades_productivas/Palta_Fuerte.jpeg" alt="Palta Fuerte">
-                                <span class="planton-face-name"><span>CULTIVAR</span>Fuerte</span>
-                                <button type="button" class="planton-arrow-btn" aria-label="Ver información de Fuerte">
-                                    <span class="material-symbols-outlined">arrow_downward</span>
-                                </button>
-                            </div>
-                            <div class="planton-card-panel">
-                                <button type="button" class="planton-panel-back" onclick="closePlantonCard(this)" aria-label="Volver a la imagen">
-                                    <span class="material-symbols-outlined">arrow_back</span>
-                                </button>
-                                <div class="planton-panel-inner">
-                                    <div class="flex items-center gap-4 mb-4">
-                                        <span class="planton-card-icon">
-                                            <img src="/activos/img_icon/aguacate.png" alt="Palta" class="w-7 h-7 object-contain">
-                                        </span>
-                                        <div>
-                                            <span class="planton-label">CULTIVAR</span>
-                                            <h3 class="planton-title">Fuerte</h3>
+                                <!-- CARD 4 · Fuerte -->
+                                <div class="planton-card">
+                                    <div class="planton-card-face" onclick="togglePlantonCard(this)">
+                                        <img class="planton-img"
+                                            src="/activos/img_unidades_productivas/Palta_Fuerte.jpeg"
+                                            alt="Palta Fuerte">
+                                        <span class="planton-face-name"><span>CULTIVAR</span>Fuerte</span>
+                                        <button type="button" class="planton-arrow-btn"
+                                            aria-label="Ver información de Fuerte">
+                                            <span class="material-symbols-outlined">arrow_downward</span>
+                                        </button>
+                                    </div>
+                                    <div class="planton-card-panel">
+                                        <button type="button" class="planton-panel-back"
+                                            onclick="closePlantonCard(this)" aria-label="Volver a la imagen">
+                                            <span class="material-symbols-outlined">arrow_back</span>
+                                        </button>
+                                        <div class="planton-panel-inner">
+                                            <div class="flex items-center gap-4 mb-4">
+                                                <span class="planton-card-icon">
+                                                    <img src="/activos/img_icon/aguacate.png" alt="Palta"
+                                                        class="w-7 h-7 object-contain">
+                                                </span>
+                                                <div>
+                                                    <span class="planton-label">CULTIVAR</span>
+                                                    <h3 class="planton-title">Fuerte</h3>
+                                                </div>
+                                            </div>
+                                            <div class="planton-panel-scroll">
+                                                <ul class="planton-list">
+                                                    <li>Fruto de tamaño mediano a grande con piel lisa y fina de color
+                                                        verde oscuro. Su
+                                                        pulpa es cremosa, con menor contenido de aceite que la Hass,
+                                                        pero con un sabor
+                                                        suave
+                                                        y agradable. Es resistente a bajas temperaturas. Es la variedad
+                                                        más preferida en
+                                                        el
+                                                        mercado nacional.</li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="planton-panel-scroll">
-                                        <ul class="planton-list">
-                                    <li>Fruto de tamaño mediano a grande con piel lisa y fina de color verde oscuro. Su
-                                        pulpa es cremosa, con menor contenido de aceite que la Hass, pero con un sabor
-                                        suave
-                                        y agradable. Es resistente a bajas temperaturas. Es la variedad más preferida en
-                                        el
-                                        mercado nacional.</li>
-                                </ul>
-                                    </div>
                                 </div>
-                            </div>
-                        </div>
 
-                        <!-- CARD 5 · Nabal -->
-                        <div class="planton-card">
-                            <div class="planton-card-face" onclick="togglePlantonCard(this)">
-                                <img class="planton-img" src="/activos/img_unidades_productivas/palta_nabal.jpg" alt="Nabal">
-                                <span class="planton-face-name"><span>CULTIVAR</span>Nabal</span>
-                                <button type="button" class="planton-arrow-btn" aria-label="Ver información de Nabal">
-                                    <span class="material-symbols-outlined">arrow_downward</span>
-                                </button>
-                            </div>
-                            <div class="planton-card-panel">
-                                <button type="button" class="planton-panel-back" onclick="closePlantonCard(this)" aria-label="Volver a la imagen">
-                                    <span class="material-symbols-outlined">arrow_back</span>
-                                </button>
-                                <div class="planton-panel-inner">
-                                    <div class="flex items-center gap-4 mb-4">
-                                        <span class="planton-card-icon">
-                                            <img src="/activos/img_icon/aguacate.png" alt="Palta" class="w-7 h-7 object-contain">
-                                        </span>
-                                        <div>
-                                            <span class="planton-label">CULTIVAR</span>
-                                            <h3 class="planton-title">Nabal</h3>
+                                <!-- CARD 5 · Nabal -->
+                                <div class="planton-card">
+                                    <div class="planton-card-face" onclick="togglePlantonCard(this)">
+                                        <img class="planton-img" src="/activos/img_unidades_productivas/palta_nabal.jpg"
+                                            alt="Nabal">
+                                        <span class="planton-face-name"><span>CULTIVAR</span>Nabal</span>
+                                        <button type="button" class="planton-arrow-btn"
+                                            aria-label="Ver información de Nabal">
+                                            <span class="material-symbols-outlined">arrow_downward</span>
+                                        </button>
+                                    </div>
+                                    <div class="planton-card-panel">
+                                        <button type="button" class="planton-panel-back"
+                                            onclick="closePlantonCard(this)" aria-label="Volver a la imagen">
+                                            <span class="material-symbols-outlined">arrow_back</span>
+                                        </button>
+                                        <div class="planton-panel-inner">
+                                            <div class="flex items-center gap-4 mb-4">
+                                                <span class="planton-card-icon">
+                                                    <img src="/activos/img_icon/aguacate.png" alt="Palta"
+                                                        class="w-7 h-7 object-contain">
+                                                </span>
+                                                <div>
+                                                    <span class="planton-label">CULTIVAR</span>
+                                                    <h3 class="planton-title">Nabal</h3>
+                                                </div>
+                                            </div>
+                                            <div class="planton-panel-scroll">
+                                                <ul class="planton-list">
+                                                    <li>Produce frutos grandes y redondeados con alto contenido de pulpa
+                                                        y excelente
+                                                        sabor.
+                                                        Su piel es gruesa y resistente, lo que permite una mayor vida
+                                                        postcosecha. Se
+                                                        adapta
+                                                        bien a climas cálidos.</li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="planton-panel-scroll">
-                                        <ul class="planton-list">
-                                    <li>Produce frutos grandes y redondeados con alto contenido de pulpa y excelente
-                                        sabor.
-                                        Su piel es gruesa y resistente, lo que permite una mayor vida postcosecha. Se
-                                        adapta
-                                        bien a climas cálidos.</li>
-                                </ul>
-                                    </div>
                                 </div>
-                            </div>
-                        </div>
 
-                        <!-- CARD 6 · Villacampa -->
-                        <div class="planton-card">
-                            <div class="planton-card-face" onclick="togglePlantonCard(this)">
-                                <img class="planton-img" src="/activos/img_unidades_productivas/palta_Villacampa.jpg" alt="Villacampa">
-                                <span class="planton-face-name"><span>CULTIVAR</span>Villacampa</span>
-                                <button type="button" class="planton-arrow-btn" aria-label="Ver información de Villacampa">
-                                    <span class="material-symbols-outlined">arrow_downward</span>
-                                </button>
-                            </div>
-                            <div class="planton-card-panel">
-                                <button type="button" class="planton-panel-back" onclick="closePlantonCard(this)" aria-label="Volver a la imagen">
-                                    <span class="material-symbols-outlined">arrow_back</span>
-                                </button>
-                                <div class="planton-panel-inner">
-                                    <div class="flex items-center gap-4 mb-4">
-                                        <span class="planton-card-icon">
-                                            <img src="/activos/img_icon/aguacate.png" alt="Palta" class="w-7 h-7 object-contain">
-                                        </span>
-                                        <div>
-                                            <span class="planton-label">CULTIVAR</span>
-                                            <h3 class="planton-title">Villacampa</h3>
+                                <!-- CARD 6 · Villacampa -->
+                                <div class="planton-card">
+                                    <div class="planton-card-face" onclick="togglePlantonCard(this)">
+                                        <img class="planton-img"
+                                            src="/activos/img_unidades_productivas/palta_Villacampa.jpg"
+                                            alt="Villacampa">
+                                        <span class="planton-face-name"><span>CULTIVAR</span>Villacampa</span>
+                                        <button type="button" class="planton-arrow-btn"
+                                            aria-label="Ver información de Villacampa">
+                                            <span class="material-symbols-outlined">arrow_downward</span>
+                                        </button>
+                                    </div>
+                                    <div class="planton-card-panel">
+                                        <button type="button" class="planton-panel-back"
+                                            onclick="closePlantonCard(this)" aria-label="Volver a la imagen">
+                                            <span class="material-symbols-outlined">arrow_back</span>
+                                        </button>
+                                        <div class="planton-panel-inner">
+                                            <div class="flex items-center gap-4 mb-4">
+                                                <span class="planton-card-icon">
+                                                    <img src="/activos/img_icon/aguacate.png" alt="Palta"
+                                                        class="w-7 h-7 object-contain">
+                                                </span>
+                                                <div>
+                                                    <span class="planton-label">CULTIVAR</span>
+                                                    <h3 class="planton-title">Villacampa</h3>
+                                                </div>
+                                            </div>
+                                            <div class="planton-panel-scroll">
+                                                <ul class="planton-list">
+                                                    <li>Fruto mediano a grande con piel lisa verde oscuro. Pulpa cremosa
+                                                        y sabor suave.
+                                                        Resistente a bajas temperaturas. La variedad más preferida en el
+                                                        mercado
+                                                        nacional.
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="planton-panel-scroll">
-                                        <ul class="planton-list">
-                                    <li>Fruto mediano a grande con piel lisa verde oscuro. Pulpa cremosa y sabor suave.
-                                        Resistente a bajas temperaturas. La variedad más preferida en el mercado
-                                        nacional.
-                                    </li>
-                                </ul>
-                                    </div>
                                 </div>
-                            </div>
-                        </div>
 
                             </div>
                         </div>
@@ -857,145 +934,167 @@
                         <div class="planton-carousel-viewport">
                             <div class="planton-carousel-track">
 
-                        <!-- CARD 1 · Camboyano / Manzano -->
-                        <div class="planton-card">
-                            <div class="planton-card-face" onclick="togglePlantonCard(this)">
-                                <img class="planton-img" src="/activos/img_unidades_productivas/porta-injerto-Camboyano-Manzano.png" alt="Camboyano / Manzano">
-                                <span class="planton-face-name"><span>PORTA INJERTO</span>Camboyano / Manzano</span>
-                                <button type="button" class="planton-arrow-btn" aria-label="Ver información de Camboyano / Manzano">
-                                    <span class="material-symbols-outlined">arrow_downward</span>
-                                </button>
-                            </div>
-                            <div class="planton-card-panel">
-                                <button type="button" class="planton-panel-back" onclick="closePlantonCard(this)" aria-label="Volver a la imagen">
-                                    <span class="material-symbols-outlined">arrow_back</span>
-                                </button>
-                                <div class="planton-panel-inner">
-                                    <div class="flex items-center gap-4 mb-4">
-                                        <span class="planton-card-icon">
-                                            <img src="/activos/img_icon/mango.png" alt="Mango" class="w-7 h-7 object-contain">
-                                        </span>
-                                        <div>
-                                            <span class="planton-label">PORTA INJERTO</span>
-                                            <h3 class="planton-title">Camboyano / Manzano</h3>
+                                <!-- CARD 1 · Camboyano / Manzano -->
+                                <div class="planton-card">
+                                    <div class="planton-card-face" onclick="togglePlantonCard(this)">
+                                        <img class="planton-img"
+                                            src="/activos/img_unidades_productivas/porta-injerto-Camboyano-Manzano.jpg"
+                                            alt="Camboyano / Manzano">
+                                        <span class="planton-face-name"><span>PORTA <br>INJERTO</span>Camboyanob<br> /
+                                            Manzano</span>
+                                        <button type="button" class="planton-arrow-btn"
+                                            aria-label="Ver información de Camboyano / Manzano">
+                                            <span class="material-symbols-outlined">arrow_downward</span>
+                                        </button>
+                                    </div>
+                                    <div class="planton-card-panel">
+                                        <button type="button" class="planton-panel-back"
+                                            onclick="closePlantonCard(this)" aria-label="Volver a la imagen">
+                                            <span class="material-symbols-outlined">arrow_back</span>
+                                        </button>
+                                        <div class="planton-panel-inner">
+                                            <div class="flex items-center gap-4 mb-4">
+                                                <span class="planton-card-icon">
+                                                    <img src="/activos/img_icon/mango.png" alt="Mango"
+                                                        class="w-7 h-7 object-contain">
+                                                </span>
+                                                <div>
+                                                    <span class="planton-label">PORTA INJERTO</span>
+                                                    <h3 class="planton-title">Camboyano / Manzano</h3>
+                                                </div>
+                                            </div>
+                                            <div class="planton-panel-scroll">
+                                                <ul class="planton-list">
+                                                    <li>- Capacidad enanizante (plantas de fácil manejo a baja altura).
+                                                    </li>
+                                                    <li>- Es poliembriónica.</li>
+                                                    <li>- Inductor de elevado rendimiento.</li>
+                                                    <li>- Adaptación a suelos críticos.</li>
+                                                    <li>- Resistente al estrés hídrico y salinidad.</li>
+                                                    <li>- Buena afinidad con la variedad Kent, Keitt y Tommy Atkins.
+                                                    </li>
+                                                    <li>- Mejora la calidad de la fruta.</li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="planton-panel-scroll">
-                                        <ul class="planton-list">
-                                    <li>- Capacidad enanizante (plantas de fácil manejo a baja altura).</li>
-                                    <li>- Es poliembriónica.</li>
-                                    <li>- Inductor de elevado rendimiento.</li>
-                                    <li>- Adaptación a suelos críticos.</li>
-                                    <li>- Resistente al estrés hídrico y salinidad.</li>
-                                    <li>- Buena afinidad con la variedad Kent, Keitt y Tommy Atkins.</li>
-                                    <li>- Mejora la calidad de la fruta.</li>
-                                </ul>
-                                    </div>
                                 </div>
-                            </div>
-                        </div>
 
-                        <!-- CARD 2 · Kent -->
-                        <div class="planton-card">
-                            <div class="planton-card-face" onclick="togglePlantonCard(this)">
-                                <img class="planton-img" src="/activos/img_unidades_productivas/Mango_Kent.jpeg" alt="Kent">
-                                <span class="planton-face-name"><span>CULTIVAR</span>Kent</span>
-                                <button type="button" class="planton-arrow-btn" aria-label="Ver información de Kent">
-                                    <span class="material-symbols-outlined">arrow_downward</span>
-                                </button>
-                            </div>
-                            <div class="planton-card-panel">
-                                <button type="button" class="planton-panel-back" onclick="closePlantonCard(this)" aria-label="Volver a la imagen">
-                                    <span class="material-symbols-outlined">arrow_back</span>
-                                </button>
-                                <div class="planton-panel-inner">
-                                    <div class="flex items-center gap-4 mb-4">
-                                        <span class="planton-card-icon">
-                                            <img src="/activos/img_icon/mango.png" alt="Mango" class="w-7 h-7 object-contain">
-                                        </span>
-                                        <div>
-                                            <span class="planton-label">CULTIVAR</span>
-                                            <h3 class="planton-title">Kent</h3>
+                                <!-- CARD 2 · Kent -->
+                                <div class="planton-card">
+                                    <div class="planton-card-face" onclick="togglePlantonCard(this)">
+                                        <img class="planton-img" src="/activos/img_unidades_productivas/Mango_Kent.jpeg"
+                                            alt="Kent">
+                                        <span class="planton-face-name"><span>CULTIVAR</span>Kent</span>
+                                        <button type="button" class="planton-arrow-btn"
+                                            aria-label="Ver información de Kent">
+                                            <span class="material-symbols-outlined">arrow_downward</span>
+                                        </button>
+                                    </div>
+                                    <div class="planton-card-panel">
+                                        <button type="button" class="planton-panel-back"
+                                            onclick="closePlantonCard(this)" aria-label="Volver a la imagen">
+                                            <span class="material-symbols-outlined">arrow_back</span>
+                                        </button>
+                                        <div class="planton-panel-inner">
+                                            <div class="flex items-center gap-4 mb-4">
+                                                <span class="planton-card-icon">
+                                                    <img src="/activos/img_icon/mango.png" alt="Mango"
+                                                        class="w-7 h-7 object-contain">
+                                                </span>
+                                                <div>
+                                                    <span class="planton-label">CULTIVAR</span>
+                                                    <h3 class="planton-title">Kent</h3>
+                                                </div>
+                                            </div>
+                                            <div class="planton-panel-scroll">
+                                                <ul class="planton-list">
+                                                    <li>Mango de gran tamaño, pulpa jugosa y sin fibra, la más común
+                                                        para
+                                                        exportación en nuestro país. Su piel es de color amarillo con
+                                                        tonalidades rojizas y su sabor es dulce y aromático.</li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="planton-panel-scroll">
-                                        <ul class="planton-list">
-                                    <li>Mango de gran tamaño, pulpa jugosa y sin fibra, la más común para
-                                        exportación en nuestro país. Su piel es de color amarillo con
-                                        tonalidades rojizas y su sabor es dulce y aromático.</li>
-                                </ul>
-                                    </div>
                                 </div>
-                            </div>
-                        </div>
 
-                        <!-- CARD 3 · Keitt -->
-                        <div class="planton-card">
-                            <div class="planton-card-face" onclick="togglePlantonCard(this)">
-                                <img class="planton-img" src="/activos/img_unidades_productivas/Mango_Keitt.jpeg" alt="Keitt">
-                                <span class="planton-face-name"><span>CULTIVAR</span>Keitt</span>
-                                <button type="button" class="planton-arrow-btn" aria-label="Ver información de Keitt">
-                                    <span class="material-symbols-outlined">arrow_downward</span>
-                                </button>
-                            </div>
-                            <div class="planton-card-panel">
-                                <button type="button" class="planton-panel-back" onclick="closePlantonCard(this)" aria-label="Volver a la imagen">
-                                    <span class="material-symbols-outlined">arrow_back</span>
-                                </button>
-                                <div class="planton-panel-inner">
-                                    <div class="flex items-center gap-4 mb-4">
-                                        <span class="planton-card-icon">
-                                            <img src="/activos/img_icon/mango.png" alt="Mango" class="w-7 h-7 object-contain">
-                                        </span>
-                                        <div>
-                                            <span class="planton-label">CULTIVAR</span>
-                                            <h3 class="planton-title">Keitt</h3>
+                                <!-- CARD 3 · Keitt -->
+                                <div class="planton-card">
+                                    <div class="planton-card-face" onclick="togglePlantonCard(this)">
+                                        <img class="planton-img"
+                                            src="/activos/img_unidades_productivas/Mango_Keitt.jpeg" alt="Keitt">
+                                        <span class="planton-face-name"><span>CULTIVAR</span>Keitt</span>
+                                        <button type="button" class="planton-arrow-btn"
+                                            aria-label="Ver información de Keitt">
+                                            <span class="material-symbols-outlined">arrow_downward</span>
+                                        </button>
+                                    </div>
+                                    <div class="planton-card-panel">
+                                        <button type="button" class="planton-panel-back"
+                                            onclick="closePlantonCard(this)" aria-label="Volver a la imagen">
+                                            <span class="material-symbols-outlined">arrow_back</span>
+                                        </button>
+                                        <div class="planton-panel-inner">
+                                            <div class="flex items-center gap-4 mb-4">
+                                                <span class="planton-card-icon">
+                                                    <img src="/activos/img_icon/mango.png" alt="Mango"
+                                                        class="w-7 h-7 object-contain">
+                                                </span>
+                                                <div>
+                                                    <span class="planton-label">CULTIVAR</span>
+                                                    <h3 class="planton-title">Keitt</h3>
+                                                </div>
+                                            </div>
+                                            <div class="planton-panel-scroll">
+                                                <ul class="planton-list">
+                                                    <li>Frutos grandes con poca fibra, de excelente sabor y buena vida
+                                                        postcosecha. Su piel es gruesa y resistente, de color verde con
+                                                        un ligero matiz rosado cuando madura.</li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="planton-panel-scroll">
-                                        <ul class="planton-list">
-                                    <li>Frutos grandes con poca fibra, de excelente sabor y buena vida
-                                        postcosecha. Su piel es gruesa y resistente, de color verde con
-                                        un ligero matiz rosado cuando madura.</li>
-                                </ul>
-                                    </div>
                                 </div>
-                            </div>
-                        </div>
 
-                        <!-- CARD 4 · Edward -->
-                        <div class="planton-card">
-                            <div class="planton-card-face" onclick="togglePlantonCard(this)">
-                                <img class="planton-img" src="/activos/img_unidades_productivas/mango_Edward.jpg" alt="Edward">
-                                <span class="planton-face-name"><span>CULTIVAR</span>Edward</span>
-                                <button type="button" class="planton-arrow-btn" aria-label="Ver información de Edward">
-                                    <span class="material-symbols-outlined">arrow_downward</span>
-                                </button>
-                            </div>
-                            <div class="planton-card-panel">
-                                <button type="button" class="planton-panel-back" onclick="closePlantonCard(this)" aria-label="Volver a la imagen">
-                                    <span class="material-symbols-outlined">arrow_back</span>
-                                </button>
-                                <div class="planton-panel-inner">
-                                    <div class="flex items-center gap-4 mb-4">
-                                        <span class="planton-card-icon">
-                                            <img src="/activos/img_icon/mango.png" alt="Mango" class="w-7 h-7 object-contain">
-                                        </span>
-                                        <div>
-                                            <span class="planton-label">CULTIVAR</span>
-                                            <h3 class="planton-title">Edward</h3>
+                                <!-- CARD 4 · Edward -->
+                                <div class="planton-card">
+                                    <div class="planton-card-face" onclick="togglePlantonCard(this)">
+                                        <img class="planton-img"
+                                            src="/activos/img_unidades_productivas/mango_Edward.jpg" alt="Edward">
+                                        <span class="planton-face-name"><span>CULTIVAR</span>Edward</span>
+                                        <button type="button" class="planton-arrow-btn"
+                                            aria-label="Ver información de Edward">
+                                            <span class="material-symbols-outlined">arrow_downward</span>
+                                        </button>
+                                    </div>
+                                    <div class="planton-card-panel">
+                                        <button type="button" class="planton-panel-back"
+                                            onclick="closePlantonCard(this)" aria-label="Volver a la imagen">
+                                            <span class="material-symbols-outlined">arrow_back</span>
+                                        </button>
+                                        <div class="planton-panel-inner">
+                                            <div class="flex items-center gap-4 mb-4">
+                                                <span class="planton-card-icon">
+                                                    <img src="/activos/img_icon/mango.png" alt="Mango"
+                                                        class="w-7 h-7 object-contain">
+                                                </span>
+                                                <div>
+                                                    <span class="planton-label">CULTIVAR</span>
+                                                    <h3 class="planton-title">Edward</h3>
+                                                </div>
+                                            </div>
+                                            <div class="planton-panel-scroll">
+                                                <ul class="planton-list">
+                                                    <li>Conocida por su dulzura y textura cremosa, altamente apreciada
+                                                        en
+                                                        el mercado. Su piel es de color amarillo-naranja con tonos
+                                                        rojizos y su pulpa es densa y aromática.</li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="planton-panel-scroll">
-                                        <ul class="planton-list">
-                                    <li>Conocida por su dulzura y textura cremosa, altamente apreciada en
-                                        el mercado. Su piel es de color amarillo-naranja con tonos
-                                        rojizos y su pulpa es densa y aromática.</li>
-                                </ul>
-                                    </div>
                                 </div>
-                            </div>
-                        </div>
 
                             </div>
                         </div>
@@ -1020,113 +1119,129 @@
                         <div class="planton-carousel-viewport">
                             <div class="planton-carousel-track">
 
-                        <!-- CARD 1 · Palo -->
-                        <div class="planton-card">
-                            <div class="planton-card-face" onclick="togglePlantonCard(this)">
-                                <img class="planton-img" src="/activos/img_unidades_productivas/porta-injerto-Lucuma (1).png" alt="Palo">
-                                <span class="planton-face-name"><span>PORTA INJERTO</span>Palo</span>
-                                <button type="button" class="planton-arrow-btn" aria-label="Ver información de Palo">
-                                    <span class="material-symbols-outlined">arrow_downward</span>
-                                </button>
-                            </div>
-                            <div class="planton-card-panel">
-                                <button type="button" class="planton-panel-back" onclick="closePlantonCard(this)" aria-label="Volver a la imagen">
-                                    <span class="material-symbols-outlined">arrow_back</span>
-                                </button>
-                                <div class="planton-panel-inner">
-                                    <div class="flex items-center gap-4 mb-4">
-                                        <span class="planton-card-icon">
-                                            <img src="/activos/img_icon/lucuma.png" alt="Lúcuma" class="w-7 h-7 object-contain">
-                                        </span>
-                                        <div>
-                                            <span class="planton-label">PORTA INJERTO</span>
-                                            <h3 class="planton-title">Palo</h3>
+                                <!-- CARD 1 · Palo -->
+                                <div class="planton-card">
+                                    <div class="planton-card-face" onclick="togglePlantonCard(this)">
+                                        <img class="planton-img"
+                                            src="/activos/img_unidades_productivas/porta-injerto-Lucuma.jpg"
+                                            alt="Palo">
+                                        <span class="planton-face-name"><span>PORTA <br>INJERTO</span>Palo</span>
+                                        <button type="button" class="planton-arrow-btn"
+                                            aria-label="Ver información de Palo">
+                                            <span class="material-symbols-outlined">arrow_downward</span>
+                                        </button>
+                                    </div>
+                                    <div class="planton-card-panel">
+                                        <button type="button" class="planton-panel-back"
+                                            onclick="closePlantonCard(this)" aria-label="Volver a la imagen">
+                                            <span class="material-symbols-outlined">arrow_back</span>
+                                        </button>
+                                        <div class="planton-panel-inner">
+                                            <div class="flex items-center gap-4 mb-4">
+                                                <span class="planton-card-icon">
+                                                    <img src="/activos/img_icon/lucuma.png" alt="Lúcuma"
+                                                        class="w-7 h-7 object-contain">
+                                                </span>
+                                                <div>
+                                                    <span class="planton-label">PORTA INJERTO</span>
+                                                    <h3 class="planton-title">Palo</h3>
+                                                </div>
+                                            </div>
+                                            <div class="planton-panel-scroll">
+                                                <ul class="planton-list">
+                                                    <li>- Se adapta muy bien a suelos de buen drenaje: Franco – arenoso,
+                                                        arenosos y
+                                                        rocosos.</li>
+                                                    <li>- Tolera suelos moderadamente salinos y calcáreos.</li>
+                                                    <li>- Suelos con un pH de 6 a 7
+                                                </ul>li>
+                                                <li>- Se desarrolla en climas tropicales y subtropicales.</li>
+                                                <li>- El rango de temperatura donde se desarrolla comprende de 8 a 27 ºC
+                                                    y humedad de
+                                                    80% a 90%.</li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="planton-panel-scroll">
-                                        <ul class="planton-list">
-                                    <li>- Se adapta muy bien a suelos de buen drenaje: Franco – arenoso, arenosos y
-                                        rocosos.</li>
-                                    <li>- Tolera suelos moderadamente salinos y calcáreos.</li>
-                                    <li>- Suelos con un pH de 6 a 7
-                                </ul>li>
-                                <li>- Se desarrolla en climas tropicales y subtropicales.</li>
-                                <li>- El rango de temperatura donde se desarrolla comprende de 8 a 27 ºC y humedad de
-                                    80% a 90%.</li>
-                                </ul>
-                                    </div>
                                 </div>
-                            </div>
-                        </div>
 
-                        <!-- CARD 2 · Seda -->
-                        <div class="planton-card">
-                            <div class="planton-card-face" onclick="togglePlantonCard(this)">
-                                <img class="planton-img" src="/activos/img_unidades_productivas/lucuma seda.jpg" alt="Seda">
-                                <span class="planton-face-name"><span>CULTIVAR</span>Seda</span>
-                                <button type="button" class="planton-arrow-btn" aria-label="Ver información de Seda">
-                                    <span class="material-symbols-outlined">arrow_downward</span>
-                                </button>
-                            </div>
-                            <div class="planton-card-panel">
-                                <button type="button" class="planton-panel-back" onclick="closePlantonCard(this)" aria-label="Volver a la imagen">
-                                    <span class="material-symbols-outlined">arrow_back</span>
-                                </button>
-                                <div class="planton-panel-inner">
-                                    <div class="flex items-center gap-4 mb-4">
-                                        <span class="planton-card-icon">
-                                            <img src="/activos/img_icon/lucuma.png" alt="Lúcuma" class="w-7 h-7 object-contain">
-                                        </span>
-                                        <div>
-                                            <span class="planton-label">CULTIVAR</span>
-                                            <h3 class="planton-title">Seda</h3>
+                                <!-- CARD 2 · Seda -->
+                                <div class="planton-card">
+                                    <div class="planton-card-face" onclick="togglePlantonCard(this)">
+                                        <img class="planton-img" src="/activos/img_unidades_productivas/lucuma seda.jpg"
+                                            alt="Seda">
+                                        <span class="planton-face-name"><span>CULTIVAR</span>Seda</span>
+                                        <button type="button" class="planton-arrow-btn"
+                                            aria-label="Ver información de Seda">
+                                            <span class="material-symbols-outlined">arrow_downward</span>
+                                        </button>
+                                    </div>
+                                    <div class="planton-card-panel">
+                                        <button type="button" class="planton-panel-back"
+                                            onclick="closePlantonCard(this)" aria-label="Volver a la imagen">
+                                            <span class="material-symbols-outlined">arrow_back</span>
+                                        </button>
+                                        <div class="planton-panel-inner">
+                                            <div class="flex items-center gap-4 mb-4">
+                                                <span class="planton-card-icon">
+                                                    <img src="/activos/img_icon/lucuma.png" alt="Lúcuma"
+                                                        class="w-7 h-7 object-contain">
+                                                </span>
+                                                <div>
+                                                    <span class="planton-label">CULTIVAR</span>
+                                                    <h3 class="planton-title">Seda</h3>
+                                                </div>
+                                            </div>
+                                            <div class="planton-panel-scroll">
+                                                <ul class="planton-list">
+                                                    <li>De pulpa fina, dulce y de textura suave, ideal para la
+                                                        producción
+                                                        de harinas, helados y postres. Su piel es delgada y su contenido
+                                                        de humedad es mayor en comparación con otras variedades.</li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="planton-panel-scroll">
-                                        <ul class="planton-list">
-                                    <li>De pulpa fina, dulce y de textura suave, ideal para la producción
-                                        de harinas, helados y postres. Su piel es delgada y su contenido
-                                        de humedad es mayor en comparación con otras variedades.</li>
-                                </ul>
-                                    </div>
                                 </div>
-                            </div>
-                        </div>
 
-                        <!-- CARD 3 · Beltrán -->
-                        <div class="planton-card">
-                            <div class="planton-card-face" onclick="togglePlantonCard(this)">
-                                <img class="planton-img" src="/activos/img_unidades_productivas/lucuma beltran.jpg" alt="Beltrán">
-                                <span class="planton-face-name"><span>CULTIVAR</span>Beltrán</span>
-                                <button type="button" class="planton-arrow-btn" aria-label="Ver información de Beltrán">
-                                    <span class="material-symbols-outlined">arrow_downward</span>
-                                </button>
-                            </div>
-                            <div class="planton-card-panel">
-                                <button type="button" class="planton-panel-back" onclick="closePlantonCard(this)" aria-label="Volver a la imagen">
-                                    <span class="material-symbols-outlined">arrow_back</span>
-                                </button>
-                                <div class="planton-panel-inner">
-                                    <div class="flex items-center gap-4 mb-4">
-                                        <span class="planton-card-icon">
-                                            <img src="/activos/img_icon/lucuma.png" alt="Lúcuma" class="w-7 h-7 object-contain">
-                                        </span>
-                                        <div>
-                                            <span class="planton-label">CULTIVAR</span>
-                                            <h3 class="planton-title">Beltrán</h3>
+                                <!-- CARD 3 · Beltrán -->
+                                <div class="planton-card">
+                                    <div class="planton-card-face" onclick="togglePlantonCard(this)">
+                                        <img class="planton-img"
+                                            src="/activos/img_unidades_productivas/lucuma beltran.jpg" alt="Beltrán">
+                                        <span class="planton-face-name"><span>CULTIVAR</span>Beltrán</span>
+                                        <button type="button" class="planton-arrow-btn"
+                                            aria-label="Ver información de Beltrán">
+                                            <span class="material-symbols-outlined">arrow_downward</span>
+                                        </button>
+                                    </div>
+                                    <div class="planton-card-panel">
+                                        <button type="button" class="planton-panel-back"
+                                            onclick="closePlantonCard(this)" aria-label="Volver a la imagen">
+                                            <span class="material-symbols-outlined">arrow_back</span>
+                                        </button>
+                                        <div class="planton-panel-inner">
+                                            <div class="flex items-center gap-4 mb-4">
+                                                <span class="planton-card-icon">
+                                                    <img src="/activos/img_icon/lucuma.png" alt="Lúcuma"
+                                                        class="w-7 h-7 object-contain">
+                                                </span>
+                                                <div>
+                                                    <span class="planton-label">CULTIVAR</span>
+                                                    <h3 class="planton-title">Beltrán</h3>
+                                                </div>
+                                            </div>
+                                            <div class="planton-panel-scroll">
+                                                <ul class="planton-list">
+                                                    <li>Reconocida por su buen tamaño y alta productividad, con frutos
+                                                        de excelente sabor. Su pulpa es densa y de color amarillo
+                                                        intenso, con un alto contenido de almidón y un dulzor
+                                                        característico.</li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="planton-panel-scroll">
-                                        <ul class="planton-list">
-                                    <li>Reconocida por su buen tamaño y alta productividad, con frutos
-                                        de excelente sabor. Su pulpa es densa y de color amarillo
-                                        intenso, con un alto contenido de almidón y un dulzor
-                                        característico.</li>
-                                </ul>
-                                    </div>
                                 </div>
-                            </div>
-                        </div>
 
                             </div>
                         </div>
@@ -1154,41 +1269,46 @@
                         <div class="planton-carousel-viewport">
                             <div class="planton-carousel-track">
 
-                        <!-- CARD 1 · Semilla y plantones -->
-                        <div class="planton-card">
-                            <div class="planton-card-face" onclick="togglePlantonCard(this)">
-                                <img class="planton-img" src="/activos/img_unidades_productivas/Plantones_Gulupa.jpg" alt="Gulupa">
-                                <span class="planton-face-name"><span>SEMILLA Y PLANTONES</span>Gulupa</span>
-                                <button type="button" class="planton-arrow-btn" aria-label="Ver información de Gulupa">
-                                    <span class="material-symbols-outlined">arrow_downward</span>
-                                </button>
-                            </div>
-                            <div class="planton-card-panel">
-                                <button type="button" class="planton-panel-back" onclick="closePlantonCard(this)" aria-label="Volver a la imagen">
-                                    <span class="material-symbols-outlined">arrow_back</span>
-                                </button>
-                                <div class="planton-panel-inner">
-                                    <div class="flex items-center gap-4 mb-4">
-                                        <span class="planton-card-icon">
-                                            <img src="/activos/img_icon/gulupa.png" alt="Gulupa" class="w-7 h-7 object-contain">
-                                        </span>
-                                        <div>
-                                            <span class="planton-label">SEMILLA Y PLANTONES</span>
-                                            <h3 class="planton-title">Gulupa</h3>
+                                <!-- CARD 1 · Semilla y plantones -->
+                                <div class="planton-card">
+                                    <div class="planton-card-face" onclick="togglePlantonCard(this)">
+                                        <img class="planton-img"
+                                            src="/activos/img_unidades_productivas/Plantones_Gulupa.jpg" alt="Gulupa">
+                                        <span class="planton-face-name"><span>SEMILLA Y <br>PLANTONES</span>Gulupa</span>
+                                        <button type="button" class="planton-arrow-btn"
+                                            aria-label="Ver información de Gulupa">
+                                            <span class="material-symbols-outlined">arrow_downward</span>
+                                        </button>
+                                    </div>
+                                    <div class="planton-card-panel">
+                                        <button type="button" class="planton-panel-back"
+                                            onclick="closePlantonCard(this)" aria-label="Volver a la imagen">
+                                            <span class="material-symbols-outlined">arrow_back</span>
+                                        </button>
+                                        <div class="planton-panel-inner">
+                                            <div class="flex items-center gap-4 mb-4">
+                                                <span class="planton-card-icon">
+                                                    <img src="/activos/img_icon/gulupa.png" alt="Gulupa"
+                                                        class="w-7 h-7 object-contain">
+                                                </span>
+                                                <div>
+                                                    <span class="planton-label">SEMILLA Y PLANTONES</span>
+                                                    <h3 class="planton-title">Gulupa</h3>
+                                                </div>
+                                            </div>
+                                            <div class="planton-panel-scroll">
+                                                <ul class="planton-list">
+                                                    <li>- Semillas y plantones de gulupa de alta calidad, seleccionados
+                                                        para garantizar una germinación óptima y un desarrollo vigoroso
+                                                        de la planta.</li>
+                                                    <li>- Alto contenido en antioxidantes.</li>
+                                                    <li>- Excelente demanda en mercados nacionales e internacionales.
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="planton-panel-scroll">
-                                        <ul class="planton-list">
-                                    <li>- Semillas y plantones de gulupa de alta calidad, seleccionados
-                                        para garantizar una germinación óptima y un desarrollo vigoroso
-                                        de la planta.</li>
-                                    <li>- Alto contenido en antioxidantes.</li>
-                                    <li>- Excelente demanda en mercados nacionales e internacionales.</li>
-                                </ul>
-                                    </div>
                                 </div>
-                            </div>
-                        </div>
 
                             </div>
                         </div>
@@ -1569,7 +1689,7 @@
                 <!-- IMAGEN -->
                 <div class="relative overflow-hidden w-full mx-auto"
                     style="max-width:420px; height:260px; border-radius:32px 0 32px 32px; box-shadow:0 18px 40px rgba(0,0,0,.12);">
-                    <img src="/activos/img_productos/ArtMercados-organiz21.jpg" class="w-full h-full object-cover"
+                    <img src="../activos/img_unidades_productivas/valor_agregado_aguaymanto.jpeg" class="w-full h-full object-cover"
                         alt="Valor Agregado SEDIR" />
                 </div>
             </div>
@@ -1699,7 +1819,7 @@
                             al mercado productos con alto valor funcional y comercial.
                         </p>
                     </div>
-<br>
+                    <br>
                     <div class="relative rounded-[28px] overflow-hidden w-full max-w-[420px] mx-auto">
                         <img src="../activos/docs/ValorAgregado2025.jpg" class="w-full h-auto block"
                             alt="Catálogo SEDIR" />
@@ -1732,25 +1852,25 @@
     <div id="facebook-container" data-component="/components/facebook.html"></div>
 
     <script>
-            (function () {
-                var tabs = document.querySelectorAll('.tab-planton');
-                var panels = document.querySelectorAll('.planton-panel');
+        (function () {
+            var tabs = document.querySelectorAll('.tab-planton');
+            var panels = document.querySelectorAll('.planton-panel');
 
-                tabs.forEach(function (tab) {
-                    tab.addEventListener('click', function () {
-                        tabs.forEach(function (t) { t.classList.remove('activo'); });
-                        panels.forEach(function (p) { p.classList.remove('activo'); });
+            tabs.forEach(function (tab) {
+                tab.addEventListener('click', function () {
+                    tabs.forEach(function (t) { t.classList.remove('activo'); });
+                    panels.forEach(function (p) { p.classList.remove('activo'); });
 
-                        tab.classList.add('activo');
-                        document.getElementById(tab.dataset.target).classList.add('activo');
+                    tab.classList.add('activo');
+                    document.getElementById(tab.dataset.target).classList.add('activo');
 
-                        document.querySelectorAll('.planton-card.abierto').forEach(function (c) {
-                            c.classList.remove('abierto');
-                        });
-                        plantonCardAbierto = null;
+                    document.querySelectorAll('.planton-card.abierto').forEach(function (c) {
+                        c.classList.remove('abierto');
                     });
+                    plantonCardAbierto = null;
                 });
-            })();
+            });
+        })();
 
         var plantonCardAbierto = null;
 

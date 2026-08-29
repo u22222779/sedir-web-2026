@@ -50,20 +50,56 @@ async function loadComponentsFromDataAttributes() {
 
       // Special handling for navbar to avoid FOUC: reserve space, hide, then fade-in
       if (target.id === "navbar-container" || (componentPath && componentPath.indexOf('navbar.html') !== -1)) {
+        var yaHidratado = target.classList.contains('navbar-loaded') && target.innerHTML.trim() !== '';
+
         try {
-          target.classList.add('navbar-loading');
-          var response = await fetch(componentPath);
-          if (!response.ok) {
-            throw new Error("No se pudo cargar " + componentPath);
+          if (yaHidratado) {
+            // Un <script> inline ya pintó el navbar desde sessionStorage antes de que
+            // este archivo (deferred) corriera: no lo volvemos a tocar, cero parpadeo.
+            // Solo refrescamos la caché en segundo plano por si el navbar cambió.
+            fetch(componentPath).then(function (response) {
+              if (response.ok) {
+                response.text().then(function (html) {
+                  sessionStorage.setItem('sedirNavbarHTML', html);
+                });
+              }
+            }).catch(function () {});
+          } else {
+            var cachedNavbar = sessionStorage.getItem('sedirNavbarHTML');
+
+            if (cachedNavbar) {
+              // Ya lo tenemos en esta sesión: se pinta al instante, sin fetch y sin parpadeo
+              target.innerHTML = cachedNavbar;
+              executeInjectedScripts(target);
+              target.classList.remove('navbar-loading');
+              target.classList.add('navbar-loaded');
+
+              // Refresca la caché en segundo plano por si el navbar cambió
+              fetch(componentPath).then(function (response) {
+                if (response.ok) {
+                  response.text().then(function (html) {
+                    sessionStorage.setItem('sedirNavbarHTML', html);
+                  });
+                }
+              }).catch(function () {});
+            } else {
+              target.classList.add('navbar-loading');
+              var response = await fetch(componentPath);
+              if (!response.ok) {
+                throw new Error("No se pudo cargar " + componentPath);
+              }
+
+              var html = await response.text();
+              target.innerHTML = html;
+              executeInjectedScripts(target);
+              sessionStorage.setItem('sedirNavbarHTML', html);
+
+              requestAnimationFrame(function () {
+                target.classList.remove('navbar-loading');
+                target.classList.add('navbar-loaded');
+              });
+            }
           }
-
-          target.innerHTML = await response.text();
-          executeInjectedScripts(target);
-
-          requestAnimationFrame(function () {
-            target.classList.remove('navbar-loading');
-            target.classList.add('navbar-loaded');
-          });
         } catch (error) {
           console.error(error);
         }
@@ -101,11 +137,31 @@ async function loadNavbar() {
   if (!container) return;
 
   try {
+    var cachedNavbar = sessionStorage.getItem('sedirNavbarHTML');
+
+    if (cachedNavbar) {
+      container.innerHTML = cachedNavbar;
+      executeInjectedScripts(container);
+      container.classList.remove('navbar-loading');
+      container.classList.add('navbar-loaded');
+
+      fetch('/components/navbar.html').then(function (response) {
+        if (response.ok) {
+          response.text().then(function (html) {
+            sessionStorage.setItem('sedirNavbarHTML', html);
+          });
+        }
+      }).catch(function () {});
+      return;
+    }
+
     container.classList.add('navbar-loading');
     var response = await fetch('/components/navbar.html');
     if (!response.ok) throw new Error('No se pudo cargar /components/navbar.html');
-    container.innerHTML = await response.text();
+    var html = await response.text();
+    container.innerHTML = html;
     executeInjectedScripts(container);
+    sessionStorage.setItem('sedirNavbarHTML', html);
 
     requestAnimationFrame(function () {
       container.classList.remove('navbar-loading');

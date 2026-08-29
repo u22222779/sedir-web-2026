@@ -1,0 +1,509 @@
+<!-- ============================================================
+     COMPONENTE: Carrusel de Productos por Categoría
+     Categorías: Bebidas No Alcohólicas, Bebidas Alcohólicas,
+     Apícola, Deshidratados, Otros.
+     Base de productos reales + fusión con /api/productos (para que
+     lo que se cree/edite desde el panel administrativo también
+     aparezca aquí, clasificado automáticamente por categoría).
+============================================================ -->
+<style>
+    .prodcat-section {
+        max-width: 80rem;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+
+    @media (min-width: 640px) {
+        .prodcat-section {
+            padding: 0 1.5rem;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .prodcat-section {
+            padding: 0 2rem;
+        }
+    }
+
+    .prodcat-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        border-bottom: 1px solid #E5E7EB;
+        padding-bottom: 20px;
+        margin-bottom: 32px;
+    }
+
+    .prodcat-tab {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        font-size: 13.5px;
+        padding: 10px 20px;
+        border-radius: 9999px;
+        border: 1px solid #E5E7EB;
+        background: #FFFFFF;
+        color: #4B5563;
+        cursor: pointer;
+        transition: all .2s ease;
+        white-space: nowrap;
+    }
+
+    .prodcat-tab:hover {
+        border-color: #00944A;
+        color: #00944A;
+    }
+
+    .prodcat-tab.activo {
+        background: #00944A;
+        border-color: #00944A;
+        color: #FFFFFF;
+    }
+
+    .prodcat-panel {
+        display: none;
+    }
+
+    .prodcat-panel.activo {
+        display: block;
+    }
+
+    .prodcat-carousel {
+        position: relative;
+    }
+
+    .prodcat-viewport {
+        overflow: hidden;
+        padding: 4px 2px;
+    }
+
+    .prodcat-track {
+        display: flex;
+        gap: 32px;
+        transition: transform .5s ease-in-out;
+        touch-action: pan-y;
+    }
+
+    .prodcat-card {
+        flex: none;
+        background: #FFFFFF;
+        border: 1px solid rgba(229, 231, 235, .8);
+        border-radius: 2rem 0 2rem 2rem;
+        box-shadow: 0 1px 2px rgba(0, 3, 6, .04);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: transform .3s ease, box-shadow .3s ease;
+    }
+
+    .prodcat-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 24px rgba(0, 3, 6, .08);
+    }
+
+    .prodcat-card img {
+        width: 100%;
+        height: 224px;
+        object-fit: contain;
+        object-position: center;
+        background: rgba(249, 250, 251, .5);
+        padding: 16px;
+    }
+
+    .prodcat-card-body {
+        padding: 24px;
+    }
+
+    .prodcat-badge {
+        display: inline-block;
+        padding: 2px 10px;
+        font-size: 11px;
+        font-weight: 700;
+        border-radius: 9999px;
+        background: #00944A;
+        color: #FFFFFF;
+        margin-bottom: 12px;
+    }
+
+    .prodcat-card h3 {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        font-size: 20px;
+        color: #000306;
+        margin-bottom: 8px;
+    }
+
+    .prodcat-card p {
+        font-family: "Montserrat Light", sans-serif;
+        font-size: 14px;
+        line-height: 1.6;
+        color: #4B5563;
+    }
+
+    .prodcat-card-footer {
+        padding: 0 24px 24px;
+    }
+
+    .prodcat-card-footer a {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        color: #00944A;
+        text-decoration: none;
+    }
+
+    .prodcat-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        border-radius: 9999px;
+        border: 1px solid #E5E7EB;
+        background: #FFFFFF;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0, 3, 6, .1);
+        z-index: 5;
+        transition: background .2s ease, color .2s ease;
+    }
+
+    .prodcat-btn:hover {
+        background: #00944A;
+        color: #FFFFFF;
+    }
+
+    .prodcat-btn.oculto {
+        display: none;
+    }
+
+    .prodcat-prev {
+        left: -18px;
+    }
+
+    .prodcat-next {
+        right: -18px;
+    }
+
+    @media (max-width: 1024px) {
+        .prodcat-prev {
+            left: -8px;
+        }
+
+        .prodcat-next {
+            right: -8px;
+        }
+    }
+
+    .prodcat-dots {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 24px;
+    }
+
+    .prodcat-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 9999px;
+        background: #D1D5DB;
+        border: none;
+        cursor: pointer;
+        transition: all .2s ease;
+        padding: 0;
+    }
+
+    .prodcat-dot.activo {
+        width: 24px;
+        background: #00944A;
+    }
+
+    .prodcat-empty {
+        text-align: center;
+        padding: 64px 24px;
+        color: #6B7280;
+        font-family: "Montserrat", sans-serif;
+        font-size: 15px;
+    }
+</style>
+
+<section class="prodcat-section">
+    <div class="prodcat-tabs" id="prodcatTabs"></div>
+    <div id="prodcatPanels"></div>
+</section>
+
+<script>
+    (function () {
+        var CATEGORIAS = [
+            { slug: "bebidas-no-alcoholicas", nombre: "Bebidas No Alcohólicas" },
+            { slug: "bebidas-alcoholicas", nombre: "Bebidas Alcohólicas" },
+            { slug: "apicola", nombre: "Apícola" },
+            { slug: "deshidratados", nombre: "Deshidratados" },
+            { slug: "otros", nombre: "Otros" },
+        ];
+
+        // Catálogo real de la Línea Alimentos, ya clasificado por categoría.
+        // Sirve de base aunque la API no responda o esté vacía.
+        var BASE = [
+            { nombre: "Miel", categoria: "apicola", imagen: "../activos/img_productos/Miel.jpg", badge: "Orgánico", desc: "Pura y natural, recolectada de colmenas manejadas de forma sostenible en el valle." },
+            { nombre: "Propóleo 50ml", categoria: "apicola", imagen: "../activos/img_productos/2025-Propóleo50 ml.jpg", badge: "Orgánico", desc: "Extracto de própolis del valle, reconocido por sus propiedades naturales." },
+            { nombre: "Néctar de Guayaba", categoria: "bebidas-no-alcoholicas", imagen: "../activos/img_productos/Nectar 2_Guayaba.jpg", badge: "Natural", desc: "Elaborado con guayaba seleccionada del valle, conservando su sabor y valor nutricional." },
+            { nombre: "Néctar de Maracuyá", categoria: "bebidas-no-alcoholicas", imagen: "../activos/img_productos/nectar 1_Maracuya.jpg", badge: "Natural", desc: "Elaborado con maracuyá fresca del valle, manteniendo su sabor original." },
+            { nombre: "Néctar de Gulupa", categoria: "bebidas-no-alcoholicas", imagen: "../activos/img_productos/Nectar Gulupa.jpg", badge: "Natural", desc: "Elaborado con gulupa del valle, de sabor único y alto valor nutricional." },
+            { nombre: "Refresco", categoria: "bebidas-no-alcoholicas", imagen: "../activos/img_productos/Refresco.jpg", badge: "Natural", desc: "Elaborado con frutas seleccionadas de la zona, conservando su sabor y propiedades naturales." },
+            { nombre: "Destilados", categoria: "bebidas-alcoholicas", imagen: "../activos/img_productos/2025-EspiritudeUva.jpg", badge: "Artesanal", desc: "Fino destilado de uva y exquisitos licores de fruta, elaborados bajo parámetros artesanales del valle." },
+            { nombre: "Cocktail de Maracuyá", categoria: "bebidas-alcoholicas", imagen: "../activos/img_productos/2025-Cocktail_maracuya.png", badge: "Artesanal", desc: "Elaborado con maracuyá del valle, ideal para compartir en cualquier ocasión." },
+            { nombre: "Cocktail de Tuna Roja", categoria: "bebidas-alcoholicas", imagen: "../activos/img_productos/2025-Cocktail_tuna_roja.jpg", badge: "Artesanal", desc: "Preparado con tuna roja del valle, de sabor intenso y color natural." },
+            { nombre: "Deshidratado de Aguaymanto", categoria: "deshidratados", imagen: "../activos/img_productos/deshidratado_Aguaimanto.jpg", badge: "Premium", desc: "Fruta seleccionada del valle, procesada mediante deshidratado natural." },
+            { nombre: "Deshidratado de Mango", categoria: "deshidratados", imagen: "../activos/img_productos/deshiradrato_Mango.jpg", badge: "Natural", desc: "Mango del valle procesado mediante deshidratado natural, conservando su sabor." },
+            { nombre: "Mermelada de Guayaba", categoria: "otros", imagen: "../activos/img_productos/Mermelada guayaba 2 (280).jpg", badge: "Artesanal", desc: "Preparada con guayaba del valle bajo procesos artesanales, conservando su sabor natural." },
+            { nombre: "Chía", categoria: "otros", imagen: "../activos/img_productos/Chia.jpg", badge: "Premium", desc: "Semillas de chía del valle, ricas en fibra y ácidos grasos esenciales." },
+        ];
+
+        function normalizar(txt) {
+            return String(txt || "").toLowerCase().trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        }
+
+        // Clasifica un producto que venga de la API y no coincida con la base,
+        // por palabras clave en el nombre (igual criterio que ya usaba la página).
+        function clasificarPorNombre(nombre) {
+            var n = normalizar(nombre);
+            if (n.indexOf("miel") !== -1 || n.indexOf("propol") !== -1 || n.indexOf("cera") !== -1) return "apicola";
+            if (n.indexOf("deshidrat") !== -1) return "deshidratados";
+            if (n.indexOf("destilad") !== -1 || n.indexOf("licor") !== -1 || n.indexOf("cocktail") !== -1 || n.indexOf("vino") !== -1) return "bebidas-alcoholicas";
+            if (n.indexOf("nectar") !== -1 || n.indexOf("refresco") !== -1 || n.indexOf("bebida") !== -1 || n.indexOf("jugo") !== -1) return "bebidas-no-alcoholicas";
+            return null; // no es un producto de esta línea (ej. plantones, compost, cuyes)
+        }
+
+        function resolverImagen(src) {
+            if (!src) return "../activos/img_productos/default-producto.jpg";
+            if (src.startsWith("/") || src.startsWith("http") || src.startsWith("..")) return src;
+            return "/activos/img_productos/" + src;
+        }
+
+        async function construirCatalogo() {
+            var porCategoria = {};
+            CATEGORIAS.forEach(function (c) { porCategoria[c.slug] = []; });
+
+            var usados = {};
+            BASE.forEach(function (p) {
+                porCategoria[p.categoria].push(p);
+                usados[normalizar(p.nombre)] = true;
+            });
+
+            try {
+                var res = await fetch("/api/productos");
+                if (res.ok) {
+                    var productosApi = await res.json();
+                    productosApi.forEach(function (p) {
+                        var key = normalizar(p.nombre);
+                        if (usados[key]) return; // ya está en la base, evita duplicados
+
+                        var slug = clasificarPorNombre(p.nombre);
+                        if (!slug) return; // no pertenece a esta línea de productos
+
+                        porCategoria[slug].push({
+                            nombre: p.nombre,
+                            categoria: slug,
+                            imagen: resolverImagen(p.imagen_url),
+                            badge: "Nuevo",
+                            desc: p.descripcion || "",
+                        });
+                        usados[key] = true;
+                    });
+                }
+            } catch (e) {
+                console.warn("No se pudo cargar /api/productos, se muestra solo el catálogo base:", e.message);
+            }
+
+            return porCategoria;
+        }
+
+        function tarjetaHTML(p) {
+            return (
+                '<div class="prodcat-card">' +
+                '<div>' +
+                '<img src="' + p.imagen + '" alt="' + p.nombre + '" loading="lazy" onerror="this.src=\'../activos/img_productos/default-producto.jpg\'">' +
+                '<div class="prodcat-card-body">' +
+                (p.badge ? '<span class="prodcat-badge">' + p.badge + '</span>' : '') +
+                '<h3>' + p.nombre + '</h3>' +
+                '<p>' + (p.desc || '') + '</p>' +
+                '</div>' +
+                '</div>' +
+                '<div class="prodcat-card-footer">' +
+                '<a href="/paginas/contacto.html"><span>Solicitar Información</span> →</a>' +
+                '</div>' +
+                '</div>'
+            );
+        }
+
+        function armarPanel(cat, productos) {
+            if (!productos.length) {
+                return (
+                    '<div class="prodcat-panel" data-panel="' + cat.slug + '">' +
+                    '<div class="prodcat-empty">Próximamente nuevos productos en ' + cat.nombre + '.</div>' +
+                    '</div>'
+                );
+            }
+
+            return (
+                '<div class="prodcat-panel" data-panel="' + cat.slug + '">' +
+                '<div class="prodcat-carousel">' +
+                '<button type="button" class="prodcat-btn prodcat-prev" data-dir="-1" aria-label="Anterior"><i class="fas fa-chevron-left text-xs"></i></button>' +
+                '<div class="prodcat-viewport">' +
+                '<div class="prodcat-track">' +
+                productos.map(tarjetaHTML).join("") +
+                '</div>' +
+                '</div>' +
+                '<button type="button" class="prodcat-btn prodcat-next" data-dir="1" aria-label="Siguiente"><i class="fas fa-chevron-right text-xs"></i></button>' +
+                '</div>' +
+                '<div class="prodcat-dots"></div>' +
+                '</div>'
+            );
+        }
+
+        function initCarousel(panel) {
+            var track = panel.querySelector(".prodcat-track");
+            var viewport = panel.querySelector(".prodcat-viewport");
+            var prevBtn = panel.querySelector(".prodcat-prev");
+            var nextBtn = panel.querySelector(".prodcat-next");
+            var dotsBox = panel.querySelector(".prodcat-dots");
+            if (!track) return null;
+
+            var cards = Array.prototype.slice.call(track.children);
+            var GAP = 32;
+            var index = 0;
+
+            function visibles() {
+                var w = window.innerWidth;
+                if (w < 768) return 1;
+                if (w < 1024) return 2;
+                return 3;
+            }
+
+            function maxIndex() {
+                return Math.max(0, cards.length - visibles());
+            }
+
+            function crearDots() {
+                dotsBox.innerHTML = "";
+                for (var i = 0; i <= maxIndex(); i++) {
+                    var dot = document.createElement("button");
+                    dot.type = "button";
+                    dot.className = "prodcat-dot" + (i === 0 ? " activo" : "");
+                    dot.addEventListener("click", function (idx) {
+                        return function () { moveTo(idx); };
+                    }(i));
+                    dotsBox.appendChild(dot);
+                }
+            }
+
+            function actualizarDots() {
+                Array.prototype.forEach.call(dotsBox.children, function (dot, i) {
+                    dot.classList.toggle("activo", i === index);
+                });
+            }
+
+            function moveTo(i) {
+                index = Math.max(0, Math.min(i, maxIndex()));
+                var pv = visibles();
+                var vpWidth = viewport.clientWidth;
+                var cardWidth = (vpWidth - GAP * (pv - 1)) / pv;
+
+                cards.forEach(function (c) {
+                    c.style.width = cardWidth + "px";
+                });
+
+                track.style.transform = "translateX(-" + (index * (cardWidth + GAP)) + "px)";
+                prevBtn.classList.toggle("oculto", cards.length <= pv || index === 0);
+                nextBtn.classList.toggle("oculto", cards.length <= pv || index === maxIndex());
+                dotsBox.style.display = cards.length <= pv ? "none" : "flex";
+                actualizarDots();
+            }
+
+            prevBtn.addEventListener("click", function () { moveTo(index - 1); });
+            nextBtn.addEventListener("click", function () { moveTo(index + 1); });
+            window.addEventListener("resize", function () {
+                crearDots();
+                moveTo(Math.min(index, maxIndex()));
+            });
+
+            var startX = 0, endX = 0;
+            track.addEventListener("touchstart", function (e) { startX = e.touches[0].clientX; });
+            track.addEventListener("touchmove", function (e) { endX = e.touches[0].clientX; });
+            track.addEventListener("touchend", function () {
+                var dist = startX - endX;
+                if (Math.abs(dist) < 50) return;
+                moveTo(dist > 0 ? index + 1 : index - 1);
+            });
+
+            crearDots();
+            moveTo(0);
+
+            return { recalcular: function () { moveTo(index); } };
+        }
+
+        async function render() {
+            var tabsBox = document.getElementById("prodcatTabs");
+            var panelsBox = document.getElementById("prodcatPanels");
+            if (!tabsBox || !panelsBox) return;
+
+            var porCategoria = await construirCatalogo();
+
+            tabsBox.innerHTML = CATEGORIAS.map(function (c, i) {
+                return '<button type="button" class="prodcat-tab' + (i === 0 ? ' activo' : '') + '" data-tab="' + c.slug + '">' + c.nombre + '</button>';
+            }).join("");
+
+            panelsBox.innerHTML = CATEGORIAS.map(function (c) {
+                return armarPanel(c, porCategoria[c.slug]);
+            }).join("");
+
+            var carruseles = {};
+
+            // Activar primero la primera pestaña
+            var primerPanel = panelsBox.querySelector(
+                '[data-panel="' + CATEGORIAS[0].slug + '"]'
+            );
+
+            primerPanel.classList.add("activo");
+
+            // Inicializar el carrusel de la primera pestaña cuando ya es visible
+            if (primerPanel.querySelector(".prodcat-track")) {
+                carruseles[CATEGORIAS[0].slug] = initCarousel(primerPanel);
+            }
+
+            tabsBox.querySelectorAll(".prodcat-tab").forEach(function (tab) {
+                tab.addEventListener("click", function () {
+                    var slug = tab.getAttribute("data-tab");
+
+                    tabsBox.querySelectorAll(".prodcat-tab").forEach(function (t) { t.classList.remove("activo"); });
+                    tab.classList.add("activo");
+
+                    panelsBox.querySelectorAll(".prodcat-panel").forEach(function (p) { p.classList.remove("activo"); });
+                    var panelActivo = panelsBox.querySelector('[data-panel="' + slug + '"]');
+                    panelActivo.classList.add("activo");
+
+                    // El panel ya está visible, ahora sí podemos medir correctamente su ancho
+                    if (!carruseles[slug]) {
+                        if (panelActivo.querySelector(".prodcat-track")) {
+                            carruseles[slug] = initCarousel(panelActivo);
+                        }
+                    } else {
+                        carruseles[slug].recalcular();
+                    }
+                });
+            });
+        }
+
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", render);
+        } else {
+            render();
+        }
+    })();
+</script>

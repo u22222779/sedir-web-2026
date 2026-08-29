@@ -79,12 +79,25 @@
 
 <body class="bg-white text-gray-800 antialiased">
 
-    <!-- BEGIN: Navbar Component -->
+    <!-- BEGIN: Navigation Component -->
     <div id="navbar-container" class="navbar-loading" data-component="/components/navbar.html"></div>
-    <!-- END: Navbar Component -->
+    <script>
+        (function () {
+            try {
+                var html = sessionStorage.getItem('sedirNavbarHTML');
+                var el = document.getElementById('navbar-container');
+                if (html && el) {
+                    el.innerHTML = html;
+                    el.classList.remove('navbar-loading');
+                    el.classList.add('navbar-loaded');
+                }
+            } catch (e) { }
+        })();
+    </script>
+    <!-- END: Navigation Component -->
+
     <!-- COMPONENT: Hero Servicios -->
-    <header
-        class="relative w-full h-[400px] md:h-[430px] flex items-center justify-center overflow-hidden"
+    <header class="relative w-full h-[400px] md:h-[430px] flex items-center justify-center overflow-hidden"
         style="background: #006a49">
 
         <!-- Imagen de fondo -->
@@ -98,16 +111,16 @@
 
         <!-- Contenido -->
         <div class="relative z-20 w-full max-w-[1606px] mx-auto px-6 md:px-12 lg:px-[100px] flex items-center">
-            <div class="w-full md:w-1/2 text-left">
-
+            <div class="w-full md:w-1/2 text-left translate-y-16">
                 <!-- Título -->
-                <h1
-                    class="font-montserrat text-3xl sm:text-4xl md:text-[44px] text-white font-extrabold leading-none">
-                    Nuestros 
+                <h1 class="font-montserrat text-3xl sm:text-4xl md:text-[44px] text-white font-extrabold leading-none">
+                    Nuestros
                     <span class="text-[#F09734]">Servicios</span>
                 </h1>
-                <p class="font-montserrat italic text-lg sm:text-xl md:text-[22px] text-white font-semibold leading-snug mt-3">
-                    Tecnología y experiencia para una agricultura sostenible
+                <p
+                    class="font-montserrat italic text-lg sm:text-xl md:text-[22px] text-white font-semibold leading-snug mt-3">
+                    Tecnología y experiencia para una
+                    <span class="text-[#F09734] not-italic font-bold">agricultura sostenible</span>
                 </p>
 
             </div>
@@ -117,80 +130,79 @@
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-20">
 
         <!-- BEGIN: Asesoría y Gestión Section -->
-<section>
-    <div class="flex items-center mb-8 border-b border-gray-200 pb-3">
-        <i class="fas fa-shield-alt text-primary text-xl mr-3"></i>
-        <h2 class="text-2xl font-bold text-primary font-display">Asesoría y Gestión</h2>
-    </div>
+        <section>
+            <div class="flex items-center mb-8 border-b border-gray-200 pb-3">
+                <h2 class="text-2xl font-bold text-primary font-display">Asesoría y Gestión</h2>
+            </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Card 1 -->
-        <div
-            class="bg-white rounded-3xl shadow-sm overflow-hidden border border-gray-200/80 flex flex-col transition-shadow duration-300 hover:shadow-md">
-            <img alt="Asesoría Agrícola" class="w-full h-64 object-cover"
-                src="/activos/img_servicios/2025-Asesoria-agricola.jpg">
-            <div class="p-8 flex-grow flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center mb-4">
-                        <div class="service-icon-box mr-4">
-                            <i class="fas fa-tractor text-white"></i>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div
+                    class="bg-white rounded-3xl shadow-sm overflow-hidden border border-gray-200/80 flex flex-col transition-shadow duration-300 hover:shadow-md">
+                    <img alt="Asesoría Agrícola" class="w-full h-64 object-cover"
+                        src="/activos/img_servicios/2025-Asesoria-agricola.jpg">
+                    <div class="p-8 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center mb-4">
+                                <div class="service-icon-box mr-4">
+                                    <i class="fas fa-tractor text-white"></i>
+                                </div>
+                                <h3 class="font-display font-bold text-xl text-ink">Asesoría Agrícola</h3>
+                            </div>
+                            <p class="text-gray-600 text-sm leading-relaxed font-body">
+                                Brindamos acompañamiento y asesoramiento técnico a los agricultores para optimizar sus
+                                prácticas de cultivo, mejorando la calidad y el rendimiento de sus productos. Evaluamos
+                                factores como el clima, el suelo y las variedades de cultivo para ofrecer
+                                recomendaciones personalizadas.
+                            </p>
                         </div>
-                        <h3 class="font-display font-bold text-xl text-ink">Asesoría Agrícola</h3>
                     </div>
-                    <p class="text-gray-600 text-sm leading-relaxed font-body">
-                        Brindamos acompañamiento y asesoramiento técnico a los agricultores para optimizar sus
-                        prácticas de cultivo, mejorando la calidad y el rendimiento de sus productos. Evaluamos
-                        factores como el clima, el suelo y las variedades de cultivo para ofrecer
-                        recomendaciones personalizadas.
-                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div
+                    class="bg-white rounded-3xl shadow-sm overflow-hidden border border-gray-200/80 flex flex-col transition-shadow duration-300 hover:shadow-md">
+                    <img alt="Planes de Fertilización" class="w-full h-64 object-cover"
+                        src="../activos/img_servicios/AsistenciaTecnica-fertiliz01.jpg">
+                    <div class="p-8 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center mb-4">
+                                <div class="service-icon-box mr-4">
+                                    <i class="fas fa-seedling text-white"></i>
+                                </div>
+                                <h3 class="font-display font-bold text-xl text-ink">Planes de Fertilización</h3>
+                            </div>
+                            <p class="text-gray-600 text-sm leading-relaxed font-body">
+                                Diseñamos estrategias de fertilización personalizadas según las necesidades específicas
+                                de cada cultivo. Optimizamos la aplicación de nutrientes para mejorar la productividad y
+                                sostenibilidad de la explotación agrícola.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div
+                    class="bg-white rounded-3xl shadow-sm overflow-hidden border border-gray-200/80 flex flex-col transition-shadow duration-300 hover:shadow-md">
+                    <img alt="Asesoría en Apicultura" class="w-full h-64 object-cover"
+                        src="/activos/img_servicios/2025-abejas.jpg">
+                    <div class="p-8 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center mb-4">
+                                <div class="service-icon-box mr-4">
+                                    <i class="fas fa-bug text-white"></i>
+                                </div>
+                                <h3 class="font-display font-bold text-xl text-ink">Asesoría en Apicultura</h3>
+                            </div>
+                            <p class="text-gray-600 text-sm leading-relaxed font-body">
+                                Asistimos con asesoría en la instalación y manejo de apiarios, control de enfermedades y
+                                producción de miel, fomentando una apicultura sostenible.
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Card 2 -->
-        <div
-            class="bg-white rounded-3xl shadow-sm overflow-hidden border border-gray-200/80 flex flex-col transition-shadow duration-300 hover:shadow-md">
-            <img alt="Planes de Fertilización" class="w-full h-64 object-cover"
-                src="../activos/img_servicios/AsistenciaTecnica-fertiliz01.jpg">
-            <div class="p-8 flex-grow flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center mb-4">
-                        <div class="service-icon-box mr-4">
-                            <i class="fas fa-seedling text-white"></i>
-                        </div>
-                        <h3 class="font-display font-bold text-xl text-ink">Planes de Fertilización</h3>
-                    </div>
-                    <p class="text-gray-600 text-sm leading-relaxed font-body">
-                        Diseñamos estrategias de fertilización personalizadas según las necesidades específicas
-                        de cada cultivo. Optimizamos la aplicación de nutrientes para mejorar la productividad y
-                        sostenibilidad de la explotación agrícola.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Card 4 -->
-        <div
-            class="bg-white rounded-3xl shadow-sm overflow-hidden border border-gray-200/80 flex flex-col transition-shadow duration-300 hover:shadow-md">
-            <img alt="Asesoría en Apicultura" class="w-full h-64 object-cover"
-                src="/activos/img_servicios/2025-abejas.jpg">
-            <div class="p-8 flex-grow flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center mb-4">
-                        <div class="service-icon-box mr-4">
-                            <i class="fas fa-bug text-white"></i>
-                        </div>
-                        <h3 class="font-display font-bold text-xl text-ink">Asesoría en Apicultura</h3>
-                    </div>
-                    <p class="text-gray-600 text-sm leading-relaxed font-body">
-                        Asistimos con asesoría en la instalación y manejo de apiarios, control de enfermedades y
-                        producción de miel, fomentando una apicultura sostenible.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+        </section>
         <!-- END: Asesoría y Gestión Section -->
 
         <!-- BEGIN: Sanidad y Protección Section -->
@@ -198,7 +210,6 @@
             class="bg-[#F5FAF8] -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-16 rounded-3xl border border-green-100">
             <div class="max-w-7xl mx-auto">
                 <div class="flex items-center mb-8 border-b border-green-200 pb-3">
-                    <i class="fas fa-shield-virus text-primary text-xl mr-3"></i>
                     <h2 class="text-2xl font-bold text-primary font-display">Sanidad y Protección</h2>
                 </div>
 
@@ -256,7 +267,6 @@
         <!-- BEGIN: Técnicas de Cultivo Section -->
         <section>
             <div class="flex items-center mb-8 border-b border-gray-200 pb-3">
-                <i class="fas fa-seedling text-primary text-xl mr-3"></i>
                 <h2 class="text-2xl font-bold text-primary font-display">Técnicas de Cultivo</h2>
             </div>
 
@@ -328,57 +338,309 @@
         </section>
         <!-- END: Técnicas de Cultivo Section -->
 
-        <!-- BEGIN: Servicios de Laboratorio Section -->
+        <!-- BEGIN: Investigación y Laboratorio Section -->
+        <!-- BEGIN: Investigación y Laboratorio Section -->
         <section
-            class="bg-gray-50 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-16 rounded-3xl border border-gray-200/60">
+            class="bg-gray-50 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-16 rounded-3xl border border-gray-200/60 relative">
+
+            <!-- Estilos específicos para ocultar scrollbar del carrusel -->
+            <style>
+                .hide-scrollbar::-webkit-scrollbar {
+                    display: none;
+                }
+
+                .hide-scrollbar {
+                    -ms-overflow-style: none;
+                    scrollbar-width: none;
+                }
+            </style>
+
             <div class="max-w-7xl mx-auto">
 
-                <!-- Título de la sección -->
-                <div class="flex items-center mb-8">
-                    <i class="fas fa-flask text-primary text-xl mr-3"></i>
-                    <h2 class="text-2xl font-bold text-primary font-display">
-                        Servicios de Laboratorio
-                    </h2>
+                <!-- Título y Enfoque de la Sección -->
+                <div class="flex items-center mb-8 border-b border-green-200 pb-3">
+                    <h2 class="text-2xl font-bold text-primary font-display">Sanidad y Protección</h2>
                 </div>
+                <div>
+                    <p class="text-gray-600 leading-relaxed text-base font-body">
+                        Nuestro compromiso va más allá de la asistencia en campo. En SEDIR respaldamos cada proceso
+                        productivo con rigor científico. Contamos con instalaciones, equipos y parcelas experimentales
+                        donde analizamos, medimos y validamos soluciones tecnológicas diseñadas específicamente para
+                        elevar la competitividad del sector agroindustrial de la región.
+                    </p>
+                </div><br>
 
-                <!-- Contenido -->
+                <!-- Servicio Principal (Materia Seca) -->
                 <div
-                    class="grid grid-cols-1 md:grid-cols-[2fr_3fr] items-stretch bg-white rounded-3xl shadow-sm border border-gray-200/80 overflow-hidden">
-
-                    <!-- Imagen -->
-                    <div class="min-h-64">
-                        <img src="/activos/img_servicios/22025-IMG_6811.jpg" alt="Laboratorio SEDIR"
+                    class="grid grid-cols-1 md:grid-cols-[2fr_3fr] items-stretch bg-white rounded-3xl shadow-sm border border-gray-200/80 overflow-hidden mb-16">
+                    <div class="min-h-[250px] md:min-h-full">
+                        <img src="../activos/img_servicios/1_materia_seca.jpg" alt="Análisis de Materia Seca SEDIR"
                             class="w-full h-full object-cover">
                     </div>
 
-                    <!-- Servicio -->
                     <div class="p-8 lg:p-12 flex items-center">
-                        <div class="flex items-start gap-4">
-
-                            <!-- Icono -->
+                        <div class="flex items-start gap-5">
                             <div class="service-icon-box flex-shrink-0">
                                 <i class="fas fa-vial text-white text-xl"></i>
                             </div>
 
-                            <!-- Información -->
+
                             <div class="flex-1">
-                                <h3 class="font-display font-bold text-xl text-ink mb-3">
+                                <h3 class="font-display font-bold text-2xl text-gray-900 mb-3">
                                     Análisis de materia seca
                                 </h3>
-
-                                <p class="text-gray-600 leading-relaxed text-sm sm:text-base font-body">
+                                <p class="text-gray-600 leading-relaxed text-base font-body">
                                     Se realizan análisis de materia seca en palta, control de calidad
                                     de destilados de uva (Brix/m3), además gestionamos el análisis
                                     de suelos y agua en laboratorios más reconocidos de nuestro país.
+
                                 </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Galería de Investigación (Carrusel con Modal) -->
+                <div>
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="font-display font-bold text-xl text-gray-800">
+                            Evidencia de nuestra labor investigativa
+                        </h3>
+                        <!-- Controles móviles visibles -->
+                        <div class="flex gap-2 md:hidden">
+                            <button onclick="scrollGallery(-1)"
+                                class="w-10 h-10 rounded-full bg-white border border-gray-200 shadow-sm flex items-center justify-center text-primary"><i
+                                    class="fas fa-chevron-left"></i></button>
+                            <button onclick="scrollGallery(1)"
+                                class="w-10 h-10 rounded-full bg-white border border-gray-200 shadow-sm flex items-center justify-center text-primary"><i
+                                    class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="relative group">
+                        <!-- Controles Desktop -->
+                        <button onclick="scrollGallery(-1)"
+                            class="absolute -left-5 top-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-lg items-center justify-center text-primary hover:bg-primary hover:text-white transition-all z-10 hidden md:flex opacity-0 group-hover:opacity-100">
+                            <i class="fas fa-chevron-left text-lg"></i>
+                        </button>
+
+                        <button onclick="scrollGallery(1)"
+                            class="absolute -right-5 top-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-lg items-center justify-center text-primary hover:bg-primary hover:text-white transition-all z-10 hidden md:flex opacity-0 group-hover:opacity-100">
+                            <i class="fas fa-chevron-right text-lg"></i>
+                        </button>
+
+                        <!-- Contenedor del Carrusel -->
+                        <div id="investigation-gallery"
+                            class="flex overflow-x-auto snap-x snap-mandatory gap-5 pb-6 pt-2 hide-scrollbar scroll-smooth">
+
+                            <!-- Item de Galería (Repetir para cada imagen) -->
+                            <!-- Para implementar las imágenes reales, reemplaza la ruta en el 'src' y en el 'onclick' -->
+
+                            <div class="snap-start shrink-0 w-[280px] md:w-[320px] aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer relative group/item shadow-sm border border-gray-100"
+                                onclick="openImageModal('../activos/img_servicios/IMG_3484.jpeg')">
+                                <img src="../activos/img_servicios/IMG_3484.jpeg" alt="Investigación SEDIR"
+                                    class="w-full h-full object-cover transition-transform duration-700 group-hover/item:scale-110">
+                                <div
+                                    class="absolute inset-0 bg-black/40 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <span
+                                        class="text-white font-montserrat text-sm font-medium bg-white/20 backdrop-blur-md border border-white/40 px-5 py-2.5 rounded-full"><i
+                                            class="fas fa-expand-alt mr-2"></i>Ampliar</span>
+                                </div>
+                            </div>
+
+                            <div class="snap-start shrink-0 w-[280px] md:w-[320px] aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer relative group/item shadow-sm border border-gray-100"
+                                onclick="openImageModal('../activos/img_servicios/IMG_E1888.JPG.jpeg')">
+                                <img src="../activos/img_servicios/IMG_E1888.JPG.jpeg" alt="Investigación SEDIR"
+                                    class="w-full h-full object-cover transition-transform duration-700 group-hover/item:scale-110">
+                                <div
+                                    class="absolute inset-0 bg-black/40 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <span
+                                        class="text-white font-montserrat text-sm font-medium bg-white/20 backdrop-blur-md border border-white/40 px-5 py-2.5 rounded-full"><i
+                                            class="fas fa-expand-alt mr-2"></i>Ampliar</span>
+                                </div>
+                            </div>
+
+                            <div class="snap-start shrink-0 w-[280px] md:w-[320px] aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer relative group/item shadow-sm border border-gray-100"
+                                onclick="openImageModal('../activos/img_servicios/IMG_E1889.JPG.jpeg')">
+                                <img src="../activos/img_servicios/IMG_E1889.JPG.jpeg" alt="Investigación SEDIR"
+                                    class="w-full h-full object-cover transition-transform duration-700 group-hover/item:scale-110">
+                                <div
+                                    class="absolute inset-0 bg-black/40 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <span
+                                        class="text-white font-montserrat text-sm font-medium bg-white/20 backdrop-blur-md border border-white/40 px-5 py-2.5 rounded-full"><i
+                                            class="fas fa-expand-alt mr-2"></i>Ampliar</span>
+                                </div>
+                            </div>
+
+                            <div class="snap-start shrink-0 w-[280px] md:w-[320px] aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer relative group/item shadow-sm border border-gray-100"
+                                onclick="openImageModal('../activos/img_servicios/IMG_E1890.JPG.jpeg')">
+                                <img src="../activos/img_servicios/IMG_E1890.JPG.jpeg" alt="Investigación SEDIR"
+                                    class="w-full h-full object-cover transition-transform duration-700 group-hover/item:scale-110">
+                                <div
+                                    class="absolute inset-0 bg-black/40 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <span
+                                        class="text-white font-montserrat text-sm font-medium bg-white/20 backdrop-blur-md border border-white/40 px-5 py-2.5 rounded-full"><i
+                                            class="fas fa-expand-alt mr-2"></i>Ampliar</span>
+                                </div>
+                            </div>
+
+                            <div class="snap-start shrink-0 w-[280px] md:w-[320px] aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer relative group/item shadow-sm border border-gray-100"
+                                onclick="openImageModal('../activos/img_servicios/IMG_E1891.JPG.jpeg')">
+                                <img src="../activos/img_servicios/IMG_E1891.JPG.jpeg" alt="Investigación SEDIR"
+                                    class="w-full h-full object-cover transition-transform duration-700 group-hover/item:scale-110">
+                                <div
+                                    class="absolute inset-0 bg-black/40 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <span
+                                        class="text-white font-montserrat text-sm font-medium bg-white/20 backdrop-blur-md border border-white/40 px-5 py-2.5 rounded-full"><i
+                                            class="fas fa-expand-alt mr-2"></i>Ampliar</span>
+                                </div>
+                            </div>
+
+                            <div class="snap-start shrink-0 w-[280px] md:w-[320px] aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer relative group/item shadow-sm border border-gray-100"
+                                onclick="openImageModal('../activos/img_servicios/IMG_E1913.JPG.jpeg')">
+                                <img src="../activos/img_servicios/IMG_E1913.JPG.jpeg" alt="Investigación SEDIR"
+                                    class="w-full h-full object-cover transition-transform duration-700 group-hover/item:scale-110">
+                                <div
+                                    class="absolute inset-0 bg-black/40 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <span
+                                        class="text-white font-montserrat text-sm font-medium bg-white/20 backdrop-blur-md border border-white/40 px-5 py-2.5 rounded-full"><i
+                                            class="fas fa-expand-alt mr-2"></i>Ampliar</span>
+                                </div>
+                            </div>
+
+                            <div class="snap-start shrink-0 w-[280px] md:w-[320px] aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer relative group/item shadow-sm border border-gray-100"
+                                onclick="openImageModal('../activos/img_servicios/IMG_E2297.JPG.jpeg')">
+                                <img src="../activos/img_servicios/IMG_E2297.JPG.jpeg" alt="Investigación SEDIR"
+                                    class="w-full h-full object-cover transition-transform duration-700 group-hover/item:scale-110">
+                                <div
+                                    class="absolute inset-0 bg-black/40 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <span
+                                        class="text-white font-montserrat text-sm font-medium bg-white/20 backdrop-blur-md border border-white/40 px-5 py-2.5 rounded-full"><i
+                                            class="fas fa-expand-alt mr-2"></i>Ampliar</span>
+                                </div>
+                            </div>
+
+                            <div class="snap-start shrink-0 w-[280px] md:w-[320px] aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer relative group/item shadow-sm border border-gray-100"
+                                onclick="openImageModal('../activos/img_servicios/IMG_E2829.JPG.jpeg')">
+                                <img src="../activos/img_servicios/IMG_E2829.JPG.jpeg" alt="Investigación SEDIR"
+                                    class="w-full h-full object-cover transition-transform duration-700 group-hover/item:scale-110">
+                                <div
+                                    class="absolute inset-0 bg-black/40 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <span
+                                        class="text-white font-montserrat text-sm font-medium bg-white/20 backdrop-blur-md border border-white/40 px-5 py-2.5 rounded-full"><i
+                                            class="fas fa-expand-alt mr-2"></i>Ampliar</span>
+                                </div>
+                            </div>
+
+                            <div class="snap-start shrink-0 w-[280px] md:w-[320px] aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer relative group/item shadow-sm border border-gray-100"
+                                onclick="openImageModal('../activos/img_servicios/IMG_E3198.JPG.jpeg')">
+                                <img src="../activos/img_servicios/IMG_E3198.JPG.jpeg" alt="Investigación SEDIR"
+                                    class="w-full h-full object-cover transition-transform duration-700 group-hover/item:scale-110">
+                                <div
+                                    class="absolute inset-0 bg-black/40 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <span
+                                        class="text-white font-montserrat text-sm font-medium bg-white/20 backdrop-blur-md border border-white/40 px-5 py-2.5 rounded-full"><i
+                                            class="fas fa-expand-alt mr-2"></i>Ampliar</span>
+                                </div>
+                            </div>
+
+                            <div class="snap-start shrink-0 w-[280px] md:w-[320px] aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer relative group/item shadow-sm border border-gray-100"
+                                onclick="openImageModal('../activos/img_servicios/IMG_E3643.JPG.jpeg')">
+                                <img src="../activos/img_servicios/IMG_E3643.JPG.jpeg" alt="Investigación SEDIR"
+                                    class="w-full h-full object-cover transition-transform duration-700 group-hover/item:scale-110">
+                                <div
+                                    class="absolute inset-0 bg-black/40 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <span
+                                        class="text-white font-montserrat text-sm font-medium bg-white/20 backdrop-blur-md border border-white/40 px-5 py-2.5 rounded-full"><i
+                                            class="fas fa-expand-alt mr-2"></i>Ampliar</span>
+                                </div>
+                            </div>
+
+                            <div class="snap-start shrink-0 w-[280px] md:w-[320px] aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer relative group/item shadow-sm border border-gray-100"
+                                onclick="openImageModal('../activos/img_servicios/Investigación 1.JPG.jpeg')">
+                                <img src="../activos/img_servicios/Investigación 1.JPG.jpeg" alt="Investigación SEDIR"
+                                    class="w-full h-full object-cover transition-transform duration-700 group-hover/item:scale-110">
+                                <div
+                                    class="absolute inset-0 bg-black/40 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <span
+                                        class="text-white font-montserrat text-sm font-medium bg-white/20 backdrop-blur-md border border-white/40 px-5 py-2.5 rounded-full"><i
+                                            class="fas fa-expand-alt mr-2"></i>Ampliar</span>
+                                </div>
                             </div>
 
                         </div>
                     </div>
-
                 </div>
             </div>
+
+            <!-- Modal (Lightbox) Estructura Oculta -->
+            <div id="image-modal" class="fixed inset-0 z-[100] hidden items-center justify-center">
+                <!-- Fondo oscuro -->
+                <div class="absolute inset-0 bg-black/90 backdrop-blur-sm cursor-pointer" onclick="closeImageModal()">
+                </div>
+
+                <!-- Botón cerrar -->
+                <button onclick="closeImageModal()"
+                    class="absolute top-6 right-6 text-white/70 hover:text-white transition-colors text-4xl z-10 cursor-pointer">
+                    <i class="fas fa-times"></i>
+                </button>
+
+                <!-- Contenedor de la Imagen -->
+                <div class="relative z-10 p-4 max-w-5xl w-full flex justify-center opacity-0 scale-95 transition-all duration-300"
+                    id="modal-content">
+                    <img id="modal-image" src="" alt="Vista ampliada"
+                        class="max-w-full max-h-[85vh] object-contain rounded-xl shadow-2xl border border-white/10">
+                </div>
+            </div>
+
+            <!-- Script de lógica para Carrusel y Modal -->
+            <script>
+                function scrollGallery(direction) {
+                    const container = document.getElementById('investigation-gallery');
+                    // Calcula cuánto hacer scroll (el tamaño de una imagen + gap)
+                    const scrollAmount = container.clientWidth > 768 ? 340 * 2 : 300;
+                    container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+                }
+
+                function openImageModal(imgSrc) {
+                    const modal = document.getElementById('image-modal');
+                    const modalImg = document.getElementById('modal-image');
+                    const modalContent = document.getElementById('modal-content');
+
+                    modalImg.src = imgSrc;
+                    modal.classList.remove('hidden');
+                    modal.classList.add('flex');
+
+                    // Animación de entrada
+                    setTimeout(() => {
+                        modalContent.classList.remove('opacity-0', 'scale-95');
+                        modalContent.classList.add('opacity-100', 'scale-100');
+                    }, 10);
+                }
+
+                function closeImageModal() {
+                    const modal = document.getElementById('image-modal');
+                    const modalContent = document.getElementById('modal-content');
+
+                    // Animación de salida
+                    modalContent.classList.remove('opacity-100', 'scale-100');
+                    modalContent.classList.add('opacity-0', 'scale-95');
+
+                    setTimeout(() => {
+                        modal.classList.add('hidden');
+                        modal.classList.remove('flex');
+                        document.getElementById('modal-image').src = '';
+                    }, 300);
+                }
+
+                // Cerrar modal con la tecla Escape
+                document.addEventListener('keydown', function (event) {
+                    if (event.key === "Escape") closeImageModal();
+                });
+            </script>
         </section>
+        <!-- END: Investigación y Laboratorio Section -->
+        <!-- END: Investigación y Laboratorio Section -->
         <!-- END: Servicios de Laboratorio Section -->
 
     </main>
@@ -387,17 +649,17 @@
     <div id="footer-container" data-component="/components/footer.html"></div>
     <!-- END: Footer Component -->
 
-     <!-- BEGIN: Footer Component -->
-  <!-- END: Footer Component -->
+    <!-- BEGIN: Footer Component -->
+    <!-- END: Footer Component -->
 
-  <!-- BEGIN: Radio Component -->
-  <div id="radio-container" data-component="/components/radio.html"></div>
-   
-  <!-- BEGIN: WhatsApp Component -->
-  <div id="whatsapp-container" data-component="/components/whatsapp.html"></div>
-  
-  <!-- Facebook Component -->
-  <div id="facebook-container" data-component="/components/facebook.html"></div>
+    <!-- BEGIN: Radio Component -->
+    <div id="radio-container" data-component="/components/radio.html"></div>
+
+    <!-- BEGIN: WhatsApp Component -->
+    <div id="whatsapp-container" data-component="/components/whatsapp.html"></div>
+
+    <!-- Facebook Component -->
+    <div id="facebook-container" data-component="/components/facebook.html"></div>
     <!-- END: Radio Component -->
 
     <!-- Scripts de Funcionalidad -->

@@ -63,35 +63,35 @@
     }
 
     /* Estilos específicos de la sección Quiénes Somos */
- .about-section {
-  --verde: #2f8f4e;
-  --texto: #3a3a3a;
-  --texto-suave: #55575c;
-  --boton: #8a7a63;
-  --boton-hover: #7a6b56;
+    .about-section {
+      --verde: #2f8f4e;
+      --texto: #3a3a3a;
+      --texto-suave: #55575c;
+      --boton: #8a7a63;
+      --boton-hover: #7a6b56;
 
-  background: White;
-  margin: 0 auto;
-  padding: clamp(48px, 7vw, 120px) clamp(24px, 4vw, 64px);
-  display: flex;
-  gap: clamp(28px, 4vw, 120px);
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  width: 100%;
-}
+      background: White;
+      margin: 0 auto;
+      padding: clamp(48px, 7vw, 120px) clamp(24px, 4vw, 64px);
+      display: flex;
+      gap: clamp(28px, 4vw, 120px);
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      width: 100%;
+    }
 
-.about-image {
-  overflow: hidden;
-  border-radius: 0 40px 40px 40px;
-}
+    .about-image {
+      overflow: hidden;
+      border-radius: 0 40px 40px 40px;
+    }
 
-.about-image img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-}
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
 
     .about-content {
       flex: 1 1 420px;
@@ -223,6 +223,19 @@
 
   <!-- BEGIN: Navigation Component -->
   <div id="navbar-container" class="navbar-loading" data-component="/components/navbar.html"></div>
+  <script>
+    (function () {
+      try {
+        var html = sessionStorage.getItem('sedirNavbarHTML');
+        var el = document.getElementById('navbar-container');
+        if (html && el) {
+          el.innerHTML = html;
+          el.classList.remove('navbar-loading');
+          el.classList.add('navbar-loaded');
+        }
+      } catch (e) { }
+    })();
+  </script>
   <!-- END: Navigation Component -->
 
   <!-- BEGIN: Hero Component -->
@@ -285,7 +298,7 @@
 
           <!-- Imagen de fondo -->
           <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-[1.02]"
-            style="background-image: url('activos/img_estacion_meteorologica/FONDO_CLIMA.jpg');">
+            style="background-image: url('activos/img_estacion_meteorologica/portada_clima.jpg');">
           </div>
 
           <!-- Degradado -->
@@ -318,7 +331,7 @@
         <!-- Publicaciones -->
         <a href="/paginas/publicaciones.html"
           class="md:col-span-8 group relative overflow-hidden rounded-[30px] shadow-lg hover:shadow-xl transition-all duration-500 bg-primary-dark">
-          <div class="absolute inset-0 bg-cover bg-center opacity-30 mix-blend-overlay"
+          <div class="absolute inset-0 bg-cover bg-center opacity-100 mix-blend-overlay"
             style="background-image:url('activos/img_unidades_productivas/PUBLI.jpg')"></div>
           <div class="relative z-10 p-8 h-full flex items-center justify-between">
             <div class="max-w-md">
@@ -344,15 +357,19 @@
   <!-- END: Infrastructure Bento Grid -->
 
   <!-- BEGIN: About Section (Quiénes Somos) -->
-  <section class="about-section">
-    <div class="about-image asym-tl-0-xl shadow-lg border border-gray-200 overflow-hidden">
-  <img
-    src="/activos/img_servicios/2025-abejas.jpg"
-    alt="SEDIR"
-  />
-</div>
+  <section class="about-section flex flex-col lg:flex-row items-center gap-10 max-w-7xl mx-auto px-4 py-12">
+    
+    <!-- 50% PARA LA IMAGEN -->
+    <div class="about-image asym-tl-0-xl shadow-lg border border-gray-200 overflow-hidden w-full lg:w-1/2">
+      <img
+        src="/activos/img_quienessomos/portada_index.jpg"
+        alt="SEDIR"
+        class="w-full h-auto object-cover"
+      />
+    </div>
 
-    <div class="about-content">
+    <!-- 50% PARA EL TEXTO -->
+    <div class="about-content w-full lg:w-1/2">
       <p class="eyebrow">Quiénes somos</p>
       <h2 class="title">Más de una década transformando el agro</h2>
 
@@ -373,11 +390,11 @@
         <li>Sostenibilidad</li>
       </ul>
 
-      <a href="/paginas/quienessomos.html" class="cta-button">
+      <a href="/paginas/quienessomos.html" class="cta-button inline-block mt-4">
         Conoce más sobre SEDIR
       </a>
     </div>
-  </section>
+</section>
   <!-- END: About Section -->
 
   <!-- === SECCIÓN: QUÉ HACEMOS (DISEÑO INSTITUCIONAL SÓLIDO) === -->
@@ -811,7 +828,7 @@
   <!-- END: Strategic Partners -->
 
   <!-- BEGIN: Contact Component -->
-  <div id="contacto-container" data-component="/components/contacto.html"></div>
+  <div id="contacto-container" data-component="/components/index_contacto.html"></div>
   <!-- END: Contact Component -->
 
   <!-- BEGIN: Footer Component -->
@@ -820,10 +837,10 @@
 
   <!-- BEGIN: Radio Component -->
   <div id="radio-container" data-component="/components/radio.html"></div>
-   
+
   <!-- BEGIN: WhatsApp Component -->
   <div id="whatsapp-container" data-component="/components/whatsapp.html"></div>
-  
+
   <!-- Facebook Component -->
   <div id="facebook-container" data-component="/components/facebook.html"></div>
 
