@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<title>.:: SEDIR ::.</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="https://www.sedir.org.pe/css/style.css" />
+<link rel="icon" type="image/png" sizes="32x32" href="https://www.sedir.org.pe/favicon_32x32.png">
+<meta name="keywords" content="">
+<meta name="description" content="">
+    <!-- Open Graph -->
+		<meta property="og:type" content="article"> 
+		<meta property="og:site_name" content="sedir.org.pe"> 
+		<meta property="og:title" content="El año frío de 2024 garantiza una buena floración para el mango"> 
+		<meta property="og:description" content="Las bajas temperaturas del 2024 garantizarán una buena floración de mango a diferencia de la última campaña en donde la cosech">
+		<meta property="og:url" content="https://sedir.org.pe/noticia/432/el-ano-frio-de-2024-garantiza-una-buena-floracion-para-el-mango"> 
+		<meta property="og:image" content="https://sedir.org.pe/cpanel/sum/img-uploads/foto_1563292_21-05-24.jpg">
+		<meta content="100134106679300" property="fb:admin">
+		<meta content="473245603047221" property="fb:app_id">
+	<!-- fin Open Graph --> 
+<link rel='stylesheet' id='superhero-carrois-gothic-css' href='https://fonts.googleapis.com/css?family=Carrois+Gothic&ver=4.4.1-alpha-36109' type='text/css' media='all' />
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    window.smartlook||(function(d) {
+    var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
+    var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';
+    c.charset='utf-8';c.src='//rec.getsmartlook.com/recorder.js';h.appendChild(c);
+    })(document);
+    smartlook('init', '19aa725ffd5a672733a2bb35bb706a0d8655996c');
+</script>
+    
+<!--EFECTO HIGHSLIDE DE IMAGENES-->  
+<script type="text/javascript" src="../highslide/highslide-with-gallery.js"></script>
+<link rel="stylesheet" type="text/css" href="../highslide/highslide.css" />  
+
+<!-- The sticky MENU PEGAJOSO-->
+<script type="text/javascript">
+    var sidebar = document.getElementById('sidebar');
+    Stickyfill.add(sidebar);
+</script>
+    
+<style>    
+    /* The sticky MENU PEGAJOSO(facebook) */
+    .sidebar {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 15px;
+    }
+    /* The sticky */
+     .notitex{
+        color: #5b6d5a;
+        font-size: 14px;
+        font-family: 'Roboto', sans-serif, Arial;
+        text-align: justify;
+        line-height: 22px;
+     }
+    .notitex img{
+        max-width:600px;
+        border: 1px solid #A9A8A8;
+    }     
+     .notitit{
+        padding: 0 0 6px 0;
+        font-weight: bolder;
+        color: #5f7d5d;
+        font-size: 19px;
+        /*font-family: Carrois Gothic; *
+        /*line-height: 20px; */
+     }
+       /* GOOGLE FONT */ 
+    h1 {
+        font-family: 'Montserrat', sans-serif;
+        line-height: 40px;
+    }   
+      .notidate{
+        color: #869686;
+        font-size: 13px;
+        font-family: 'Roboto', sans-serif, Arial;
+        line-height: 18px;
+     }   
+     .noti-detallee{
+        width: 1050px;
+        display: flex;
+        margin: auto;
+        box-sizing: border-box;
+        padding: 0 0 20px;
+     }   
+
+  
+ </style>  
+  <!--ICONS-->
+<link rel="stylesheet" type="text/css" media="screen" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css">   
+  <!--MENU RESPONSIVE-->
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximun-scale=1.0, minimun-scale=1.0">
+    <link rel="stylesheet" href="https://sedir.org.pe/css/estiloresponsive.css">  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <!--GOOGLE FONT-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet">
+  
+</head>
+	
+<body>
+<div id="fb-root"></div><!--app facebook plugin pagina-->
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v3.0&appId=473245603047221";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>    
+    
+    
+<div id="boxed_layout">
+	<div id="top_bg">
+		        <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Responsive con Submenú</title>
+    <link rel="stylesheet" href="https://sedir.org.pe/sedirhead/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"><!-- iconos con prefijo bi -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"> <!-- iconos con prefijo fas -->
+    
+</head>
+<body>
+    <header style="min-height: 0px;">
+        <nav class="navbar" style="padding: 0!important;margin: 0;">
+            <div class="logo" style="background-color: #fffaed;padding-left: 20px;">
+                <a href="https://www.sedir.org.pe/"><img class="https://www.sedir.org.pe/" src="https://sedir.org.pe/imgs/logo-msi.png" alt="" title="" style="width: 320px;"></a>
+            </div>
+            <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+            <ul class="nav-links">
+                <li style="border-right: 2px solid #85cd88;"><a href="https://www.sedir.org.pe/"><i class="fas fa-home"></i> Inicio</a></li> 
+                <li style="border-right: 2px solid #85cd88;"><a href="https://www.sedir.org.pe/nosotros.php" target="_self"><i class="fas fa-tools"></i> Nosotros </a></li>
+                <li class="dropdown" style="border-right: 2px solid #85cd88;">
+                    <a href="#"><i class="fas fa-seedling"></i> Qué hacemos <i class="bi-chevron-down"></i></a>
+                    <ul class="submenu">
+                        <li style="margin-left: 0px;"><a href="https://www.sedir.org.pe/programa-desarrollo-de-capacidades.php" target="_self">Programa de Desarrollo de Capacidades</a></li>
+                        <li style="margin-left: 0px;"><a href="https://www.sedir.org.pe/transferencia-tecnologia-agricola.php" target="_self">Transferencia de Tecnología Agrícola</a></li>
+                        <li style="margin-left: 0px;"><a href="https://www.sedir.org.pe/investigacion-aplicada.php" target="_self">Investigación Aplicada</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown" style="border-right: 2px solid #85cd88;">
+                    <a href="#"><i class="fas fa-users"></i> Proyectos <i class="bi-chevron-down"></i></a>
+                    <ul class="submenu">
+                        <li style="margin-left: 0px;"><a href="https://www.sedir.org.pe/fortalecimiento-de-la-actividad-agricola.php" target="_self">Fortalecimiento de la actividad agrícola </a></li>
+                        <li style="margin-left: 0px;"><a href="https://www.sedir.org.pe/fortalecimiento-de-capacidadaes-productivas.php" target="_self">Fortalecimiento de capacidades productivas </a></li>
+                    </ul>
+                </li>                
+
+                <li class="dropdown" style="border-right: 2px solid #85cd88;">
+                    <a href="#"><i class="fas fa-cloud-arrow-up"></i> Productos Servicios <i class="bi-chevron-down"></i></a>
+                    <ul class="submenu">
+                        <li style="margin-left: 0px;"><a href="https://www.sedir.org.pe/productos.php" target="_self">Productos</a></li>
+                        <li style="margin-left: 0px;"><a href="https://www.sedir.org.pe/servicios.php" target="_self">Servicios </a></li>
+                    </ul>
+                </li> 
+
+                <li><a href="https://www.sedir.org.pe/contacto.php" target="_self"><i class="fas fa-envelope"></i> Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <script src="https://sedir.org.pe/sedirhead/script.js"></script>
+</body>
+</html>
+
+         <div style="width: 100%; margin: auto; margin-left: -10px; clear: both; background: url(https://sedir.org.pe/slide/images/shadow_top.png) no-repeat top center;
+    padding: 30px 0 0 0;
+"></div> 
+
+					
+		<section style="width:1080px; background-color: #FFF;margin: auto;">
+
+            <div class="">
+            <div class="noti-detallee" >
+                <div  class="noticias" style="width:60%; padding:8px; ">
+                    <div style="display:flex; justify-content:space-between;">
+                        <div> 
+                            <div style="padding:15px 0; ">
+                                 <img src="https://www.sedir.org.pe/noticias/imgs/title_ultimasnoti.jpg" alt="">
+                                 <!-- <h1><strong class="notitit es">Programa de Desarrollo de Capacidades</strong></h1> -->
+                            </div>
+                        </div> 
+                        <div> 
+                            <a href="https://www.sedir.org.pe/" target="_self" class="vermas">
+                                <div style="padding:15px;" class="vermas"><img src="https://www.sedir.org.pe/imgs/volver.jpg" alt=""></div>
+                            </a>
+                        </div>                        
+                    </div> 
+                    
+                    
+                         
+                    <!-- Your share button code -->
+                  <div class="fb-share-button" 
+                    data-href="https://sedir.org.pe/noticia/432/el-ano-frio-de-2024-garantiza-una-buena-floracion-para-el-mango" 
+                    data-layout="button_count" data-size="large">
+                  </div>                     
+
+                    <div style="padding:15px 0 0 0; ">
+                       
+                        <div class="notitex" style="font-size: 12px;">21-05-2024                        </div>
+                    </div>
+                            <strong class="notitit"><h1>El año frío de 2024 garantiza una buena floración para el mango</h1></strong>
+                            
+                            <p class="notitex"><strong><i>SEDIR te cuenta cómo va la temperatura y qué deben hacer quienes podaron y no podaron sus campos en marzo y abril</i></strong></p>
+                    
+                    <div style="padding:15px 0 0 0; ">
+                        <!--         <img src="imgs/noti02-grande.jpg" alt="" width="600">-->
+                        <img src="https://sedir.org.pe/cpanel/sum/img-uploads/foto_1563292_21-05-24.jpg" style="width:600px; overflow:hidden;border: 1px solid #A9A8A8;">
+                    </div>
+                    
+                    
+                    <div style="padding:15px 0 0 0; ">
+                        <div class="notitex"><p>Las bajas temperaturas del 2024 garantizarán una buena floración de mango a diferencia de la última campaña en donde la cosecha nacional se redujo drásticamente, hasta en un <b>70 %</b> , debido al clima caluroso que impidió la floración de las plantas.&nbsp;</p><p><b><i>“Estamos entrando a una época de frío. Para la floración del mango necesitamos una temperatura de menos de 16 °C y desde abril ya se nota un claro descenso respecto al año pasado. El 2025 será un año con mucho mango”</i></b>, explicó el asesor agrícola del <b>Servicio para el Desarrollo Integral Rural (SEDIR)</b>, ingeniero agrónomo Carlos Córdova Castañeda. Hay que añadir que los campos que no produjeron ahora tendrán producción y la incorporación de nuevas hectáreas de mango se sumarán al volumen exportable.</p><p><img src="http://sedir.org.pe/cpanel/sum/img-uploads/FOTO_2291_21-05-24.jpg" style="width: 700px;"><br></p><p>La estación meteorológica de <b>SEDIR</b>, institución que brinda soporte técnico a pequeños productores de Moro y Pamparomás en Áncash, registró en abril una temperatura mínima de <b>19.14 °C</b> por debajo de los<b> 21.33 °C</b> que se consignó en el mismo periodo del año pasado. Mientras que hasta la mitad de mayo ya se ha detectado una temperatura mínima de <b>16.57 °C </b>a diferencia de los <b>18.40 °C</b> de 2023.&nbsp;</p><p>La tendencia es a la baja y será más notorio en los siguientes meses hasta llegar a menos de <b>16 °C</b> que necesita la planta de mango para florear.&nbsp;</p><p><img src="http://sedir.org.pe/cpanel/sum/img-uploads/FOTO_345_21-05-24.jpg" style="width: 700px;"><br></p><p><br></p><p><b><u>Podar y no podar</u></b></p><p>Córdova Castañeda explicó que los productores que podaron la planta luego de la cosecha, entre marzo y abril, tendrán una floración tardía que llegará a setiembre y no será necesaria eliminarla. En el caso de Moro, sí podrán eliminarla para demorar la fecha de cosecha (hasta abril aproximadamente) con la finalidad de evitar juntarse con la producción de Piura, Lambayeque y Casma. Los agricultores que no podaron en esos meses tendrán una flor muy adelantada en julio y en setiembre solo podrían tener manguillo.</p><p><b><i>“Los productores que no podaron lamentablemente van a perder producción porque tendrán que eliminar la fruta cuajada o manguillo y eso es bastante pérdida en dinero”</i></b>, puntualizó el especialista. Añadió que por eso es importante que los agricultores cuenten con sus propias estaciones meteorológicas para tener datos del clima y saber qué hacer y qué no hacer con los cultivos.&nbsp;</p><p><img src="http://sedir.org.pe/cpanel/sum/img-uploads/FOTO_4813_21-05-24.jpg" style="width: 700px;"><br></p><p><br></p><p><b><u>Qué hacer</u></b></p><p>Los productores que podaron sus plantas, y actualmente tienen brotes tiernos en formación, deben mantener el riego para la maduración lenta de los brotes y florear en agosto o setiembre para botar solo un porcentaje de flores para demorar la cosecha.</p><p><b><i>“A partir del 20 de setiembre (aproximadamente) solo se deben botar las flores más adelantadas, grandes, amarillas y ya cuajando. Y las que vienen a partir del 20 de setiembre, las que recién están reventando, ya las dejo. Eso es lo ideal”</i></b>, puntualizó el asesor de <b>SEDIR,</b> <i>Carlos Córdova</i>.</p><p>Y los productores que no podaron sus plantas de mango ya no les queda mucho por hacer y solo deben esperar para eliminar las flores, tendrán que mantener el riego y todavía no deben agostar (quitar el agua) los campos para tratar de demorar la floración. Tampoco deben aplicar sulfato de potasio ni maduradores.&nbsp;</p><p>Las actividades de <b>SEDIR</b> se desarrollan en el marco del proyecto de cooperación con la <b>Fundación Servicio de Liechtenstein para el Desarrollo (LED)</b>.</p><p><img src="http://sedir.org.pe/cpanel/sum/img-uploads/FOTO_5147_21-05-24.jpg" style="width: 700px;"><br></p></div>
+                    </div>
+
+                         
+                        <!-- Your share button code -->
+                        <div class="fb-share-button" 
+                            data-href="https://sedir.org.pe/noticia/432/el-ano-frio-de-2024-garantiza-una-buena-floracion-para-el-mango" 
+                            data-layout="button_count" data-size="large">
+                        </div>                                      
+      
+        	     </div>
+
+                <!-- COLUMNA RIGHT con Side bar-sticky Pegajoso-->
+
+                 <div id="sidebar" class="sidebar" style="width:40%; padding:12px; box-sizing: border-box; height:850px; background-color:#ebebeb; text-align: center; overflow:hidden;" >
+                    <div style="padding:0 0 35px;">
+                        <a href="https://www.sedir.org.pe/revista-detalle.php" target="_blank">
+                            <img src="https://sedir.org.pe/revista/img/REVISTA_FLYER_edVI.jpg" style="width:90%;  overflow:hidden;border: 1px solid #A9A8A8;">        
+                        </a>
+                    </div>
+                    <!-- pag FACEBOOK Sidebar - sticky Pegajoso-->
+                    <div class="fb-page" style="text-align:center;" data-href="https://www.facebook.com/SEDIR.Agro" data-tabs="timeline" data-width="355" data-height="500" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/www.sedir.org.pe/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/www.sedir.org.pe/">Servicio para el Desarrollo Integral Rural - SEDIR</a></blockquote></div>
+                    
+                </div>
+                
+                
+            </div>
+              
+            
+            </div>
+
+		</section>
+		
+		
+		<!--footer-->	
+					<div id="footer_coms">
+			<div class="casa-footer">
+				<a href="https://www.sedir.org.pe/" target="_top">
+					<img src="https://www.sedir.org.pe/imgs/home.png" alt="">
+				</a>
+			</div>
+                    <div style="color: #e1ef6d; line-height: 15px;display:flex; justify-content: left;font-size: 12px; position: absolute; top: 0px;">
+
+                            <div class="loguito">
+                                <a href="https://www.sedir.org.pe/" target="_top">
+                                    <img src="https://www.sedir.org.pe/imgs/logo-sedir-png1.png" style="margin: 0;padding: 6px 0 0 55px; width: 150px;">
+                                </a>                               
+                            </div> 
+                    </div>	
+                    
+                    				
+				<div class="wrapper typefont">
+
+					<div class="direccion" style="text-align:right;transform: scaleY(1.2);color: #fff;justify-content: right;padding-top: 50px; padding-right: 20px; margin: 10px; line-height: 18px; height: 100px; text-align: left; ">
+            
+                        
+                        <div><strong>Sede Central:</strong> Fundo Bellavista Parcela 291</div>
+                        <div>(a 500 metros del portal de ingreso a Moro)</div>
+                        <div><strong>Telef.:</strong>962118628
+    					<img src="https://www.sedir.org.pe/imgs/telefonol-icon-footer.jpg" style="margin: 0 0 -2px;padding: 0 13px 0 0;transform: scaleY(1.2);width: 18px; height: 13px;"></div>
+
+                     
+                    </div>
+
+                    <div class="led" style="color: #e1ef6d; line-height: 15px;display:flex;justify-content: right;text-align: right;right: 20px; margin: -40px 0 0 15px;font-size: 12px; position: absolute; top: 75px;">
+
+                            <div>
+                                <!-- <a href="https://www.led.li/" target="_top">
+                                    <img src="https://www.sedir.org.pe/imgs/logo-led.png" style="margin: 0;padding: 6px 0 0 55px;">
+                                </a>                                -->
+                                 <a href="https://www.sedir.org.pe/cpanel/sum/sesion/" target="_top">   
+                                    <img src="https://www.sedir.org.pe/imgs/acceso-icon-footer.jpg" style="margin: 0 0 -6px;;transform: scaleY(1.2);width: 29px; height: 19px;">                    
+                                 </a>                               
+                            </div> 
+                    </div>
+                    
+
+                                       
+                    
+                    
+				</div>
+				   
+		</div>
+
+		<!--fin de footer-->		
+
+			
+
+	</div>
+</div>
+    <!--MENU RESPONSIVE-->
+    <script src="https://www.sedir.org.pe/js/menu.js"></script>
+
+    <script src="https://www.sedir.org.pe/js/over.js" type="text/javascript"></script>
+    <script src="https://www.sedir.org.pe/js/idioma.js" type="text/javascript"></script>
+</body>
+</html>

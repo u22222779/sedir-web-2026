@@ -238,272 +238,264 @@
 </section>
 
 <script>
-    (function () {
-        var CATEGORIAS = [
-            { slug: "bebidas-no-alcoholicas", nombre: "Bebidas No Alcohólicas" },
-            { slug: "bebidas-alcoholicas", nombre: "Bebidas Alcohólicas" },
-            { slug: "apicola", nombre: "Apícola" },
-            { slug: "deshidratados", nombre: "Deshidratados" },
-            { slug: "otros", nombre: "Otros" },
-        ];
+(function () {
+    var CATEGORIAS = [
+        { slug: "bebidas-no-alcoholicas", nombre: "Bebidas No Alcohólicas" },
+        { slug: "bebidas-alcoholicas", nombre: "Bebidas Alcohólicas" },
+        { slug: "apicola", nombre: "Apícola" },
+        { slug: "deshidratados", nombre: "Deshidratados" },
+        { slug: "otros", nombre: "Otros" },
+    ];
 
-        // Catálogo real de la Línea Alimentos, ya clasificado por categoría.
-        // Sirve de base aunque la API no responda o esté vacía.
-        var BASE = [
-            { nombre: "Miel", categoria: "apicola", imagen: "../activos/img_productos/Miel.jpg", badge: "Orgánico", desc: "Pura y natural, recolectada de colmenas manejadas de forma sostenible en el valle." },
-            { nombre: "Propóleo 50ml", categoria: "apicola", imagen: "../activos/img_productos/2025-Propóleo50 ml.jpg", badge: "Orgánico", desc: "Extracto de própolis del valle, reconocido por sus propiedades naturales." },
-            { nombre: "Néctar de Guayaba", categoria: "bebidas-no-alcoholicas", imagen: "../activos/img_productos/Nectar 2_Guayaba.jpg", badge: "Natural", desc: "Elaborado con guayaba seleccionada del valle, conservando su sabor y valor nutricional." },
-            { nombre: "Néctar de Maracuyá", categoria: "bebidas-no-alcoholicas", imagen: "../activos/img_productos/nectar 1_Maracuya.jpg", badge: "Natural", desc: "Elaborado con maracuyá fresca del valle, manteniendo su sabor original." },
-            { nombre: "Néctar de Gulupa", categoria: "bebidas-no-alcoholicas", imagen: "../activos/img_productos/Nectar Gulupa.jpg", badge: "Natural", desc: "Elaborado con gulupa del valle, de sabor único y alto valor nutricional." },
-            { nombre: "Refresco", categoria: "bebidas-no-alcoholicas", imagen: "../activos/img_productos/Refresco.jpg", badge: "Natural", desc: "Elaborado con frutas seleccionadas de la zona, conservando su sabor y propiedades naturales." },
-            { nombre: "Destilados", categoria: "bebidas-alcoholicas", imagen: "../activos/img_productos/2025-EspiritudeUva.jpg", badge: "Artesanal", desc: "Fino destilado de uva y exquisitos licores de fruta, elaborados bajo parámetros artesanales del valle." },
-            { nombre: "Cocktail de Maracuyá", categoria: "bebidas-alcoholicas", imagen: "../activos/img_productos/2025-Cocktail_maracuya.png", badge: "Artesanal", desc: "Elaborado con maracuyá del valle, ideal para compartir en cualquier ocasión." },
-            { nombre: "Cocktail de Tuna Roja", categoria: "bebidas-alcoholicas", imagen: "../activos/img_productos/2025-Cocktail_tuna_roja.jpg", badge: "Artesanal", desc: "Preparado con tuna roja del valle, de sabor intenso y color natural." },
-            { nombre: "Deshidratado de Aguaymanto", categoria: "deshidratados", imagen: "../activos/img_productos/deshidratado_Aguaimanto.jpg", badge: "Premium", desc: "Fruta seleccionada del valle, procesada mediante deshidratado natural." },
-            { nombre: "Deshidratado de Mango", categoria: "deshidratados", imagen: "../activos/img_productos/deshiradrato_Mango.jpg", badge: "Natural", desc: "Mango del valle procesado mediante deshidratado natural, conservando su sabor." },
-            { nombre: "Mermelada de Guayaba", categoria: "otros", imagen: "../activos/img_productos/Mermelada guayaba 2 (280).jpg", badge: "Artesanal", desc: "Preparada con guayaba del valle bajo procesos artesanales, conservando su sabor natural." },
-            { nombre: "Chía", categoria: "otros", imagen: "../activos/img_productos/Chia.jpg", badge: "Premium", desc: "Semillas de chía del valle, ricas en fibra y ácidos grasos esenciales." },
-        ];
+    // Catálogo real de la Línea Alimentos, ya clasificado por categoría.
+    // Sirve de base aunque la API no responda o esté vacía.
+    var BASE = [
+        { nombre: "Miel", categoria: "apicola", imagen: "../activos/img_productos/Miel.jpg", badge: "Orgánico", desc: "Pura y natural, recolectada de colmenas manejadas de forma sostenible en el valle." },
+        { nombre: "Propóleo 50ml", categoria: "apicola", imagen: "../activos/img_productos/2025-Propóleo50 ml.jpg", badge: "Orgánico", desc: "Extracto de própolis del valle, reconocido por sus propiedades naturales." },
+        { nombre: "Néctar de Guayaba", categoria: "bebidas-no-alcoholicas", imagen: "../activos/img_productos/Nectar 2_Guayaba.jpg", badge: "Natural", desc: "Elaborado con guayaba seleccionada del valle, conservando su sabor y valor nutricional." },
+        { nombre: "Néctar de Maracuyá", categoria: "bebidas-no-alcoholicas", imagen: "../activos/img_productos/nectar 1_Maracuya.jpg", badge: "Natural", desc: "Elaborado con maracuyá fresca del valle, manteniendo su sabor original." },
+        { nombre: "Néctar de Gulupa", categoria: "bebidas-no-alcoholicas", imagen: "../activos/img_productos/Nectar Gulupa.jpg", badge: "Natural", desc: "Elaborado con gulupa del valle, de sabor único y alto valor nutricional." },
+        { nombre: "Refresco", categoria: "bebidas-no-alcoholicas", imagen: "../activos/img_productos/Refresco.jpg", badge: "Natural", desc: "Elaborado con frutas seleccionadas de la zona, conservando su sabor y propiedades naturales." },
+        { nombre: "Destilados", categoria: "bebidas-alcoholicas", imagen: "../activos/img_productos/2025-EspiritudeUva.jpg", badge: "Artesanal", desc: "Fino destilado de uva y exquisitos licores de fruta, elaborados bajo parámetros artesanales del valle." },
+        { nombre: "Cocktail de Maracuyá", categoria: "bebidas-alcoholicas", imagen: "../activos/img_productos/2025-Cocktail_maracuya.png", badge: "Artesanal", desc: "Elaborado con maracuyá del valle, ideal para compartir en cualquier ocasión." },
+        { nombre: "Cocktail de Tuna Roja", categoria: "bebidas-alcoholicas", imagen: "../activos/img_productos/2025-Cocktail_tuna_roja.jpg", badge: "Artesanal", desc: "Preparado con tuna roja del valle, de sabor intenso y color natural." },
+        { nombre: "Deshidratado de Aguaymanto", categoria: "deshidratados", imagen: "../activos/img_productos/deshidratado_Aguaimanto.jpg", badge: "Premium", desc: "Fruta seleccionada del valle, procesada mediante deshidratado natural." },
+        { nombre: "Deshidratado de Mango", categoria: "deshidratados", imagen: "../activos/img_productos/deshiradrato_Mango.jpg", badge: "Natural", desc: "Mango del valle procesado mediante deshidratado natural, conservando su sabor." },
+        { nombre: "Mermelada de Guayaba", categoria: "otros", imagen: "../activos/img_productos/Mermelada guayaba 2 (280).jpg", badge: "Artesanal", desc: "Preparada con guayaba del valle bajo procesos artesanales, conservando su sabor natural." },
+        { nombre: "Chía", categoria: "otros", imagen: "../activos/img_productos/Chia.jpg", badge: "Premium", desc: "Semillas de chía del valle, ricas en fibra y ácidos grasos esenciales." },
+    ];
 
-        function normalizar(txt) {
-            return String(txt || "").toLowerCase().trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-        }
+    function normalizar(txt) {
+        return String(txt || "").toLowerCase().trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    }
 
-        // Clasifica un producto que venga de la API y no coincida con la base,
-        // por palabras clave en el nombre (igual criterio que ya usaba la página).
-        function clasificarPorNombre(nombre) {
-            var n = normalizar(nombre);
-            if (n.indexOf("miel") !== -1 || n.indexOf("propol") !== -1 || n.indexOf("cera") !== -1) return "apicola";
-            if (n.indexOf("deshidrat") !== -1) return "deshidratados";
-            if (n.indexOf("destilad") !== -1 || n.indexOf("licor") !== -1 || n.indexOf("cocktail") !== -1 || n.indexOf("vino") !== -1) return "bebidas-alcoholicas";
-            if (n.indexOf("nectar") !== -1 || n.indexOf("refresco") !== -1 || n.indexOf("bebida") !== -1 || n.indexOf("jugo") !== -1) return "bebidas-no-alcoholicas";
-            return null; // no es un producto de esta línea (ej. plantones, compost, cuyes)
-        }
+    // Clasifica un producto que venga de la API y no coincida con la base,
+    // por palabras clave en el nombre (igual criterio que ya usaba la página).
+    function clasificarPorNombre(nombre) {
+        var n = normalizar(nombre);
+        if (n.indexOf("miel") !== -1 || n.indexOf("propol") !== -1 || n.indexOf("cera") !== -1) return "apicola";
+        if (n.indexOf("deshidrat") !== -1) return "deshidratados";
+        if (n.indexOf("destilad") !== -1 || n.indexOf("licor") !== -1 || n.indexOf("cocktail") !== -1 || n.indexOf("vino") !== -1) return "bebidas-alcoholicas";
+        if (n.indexOf("nectar") !== -1 || n.indexOf("refresco") !== -1 || n.indexOf("bebida") !== -1 || n.indexOf("jugo") !== -1) return "bebidas-no-alcoholicas";
+        return null; // no es un producto de esta línea (ej. plantones, compost, cuyes)
+    }
 
-        function resolverImagen(src) {
-            if (!src) return "../activos/img_productos/default-producto.jpg";
-            if (src.startsWith("/") || src.startsWith("http") || src.startsWith("..")) return src;
-            return "/activos/img_productos/" + src;
-        }
+    function resolverImagen(src) {
+        if (!src) return "../activos/img_productos/default-producto.jpg";
+        if (src.startsWith("/") || src.startsWith("http") || src.startsWith("..")) return src;
+        return "/activos/img_productos/" + src;
+    }
 
-        async function construirCatalogo() {
-            var porCategoria = {};
-            CATEGORIAS.forEach(function (c) { porCategoria[c.slug] = []; });
+    async function construirCatalogo() {
+        var porCategoria = {};
+        CATEGORIAS.forEach(function (c) { porCategoria[c.slug] = []; });
 
-            var usados = {};
-            BASE.forEach(function (p) {
-                porCategoria[p.categoria].push(p);
-                usados[normalizar(p.nombre)] = true;
-            });
+        var usados = {};
+        BASE.forEach(function (p) {
+            porCategoria[p.categoria].push(p);
+            usados[normalizar(p.nombre)] = true;
+        });
 
-            try {
-                var res = await fetch("/api/productos");
-                if (res.ok) {
-                    var productosApi = await res.json();
-                    productosApi.forEach(function (p) {
-                        var key = normalizar(p.nombre);
-                        if (usados[key]) return; // ya está en la base, evita duplicados
+        try {
+            var res = await fetch("/api/productos");
+            if (res.ok) {
+                var productosApi = await res.json();
+                productosApi.forEach(function (p) {
+                    var key = normalizar(p.nombre);
+                    if (usados[key]) return; // ya está en la base, evita duplicados
 
-                        var slug = clasificarPorNombre(p.nombre);
-                        if (!slug) return; // no pertenece a esta línea de productos
+                    var slug = clasificarPorNombre(p.nombre);
+                    if (!slug) return; // no pertenece a esta línea de productos
 
-                        porCategoria[slug].push({
-                            nombre: p.nombre,
-                            categoria: slug,
-                            imagen: resolverImagen(p.imagen_url),
-                            badge: "Nuevo",
-                            desc: p.descripcion || "",
-                        });
-                        usados[key] = true;
+                    porCategoria[slug].push({
+                        nombre: p.nombre,
+                        categoria: slug,
+                        imagen: resolverImagen(p.imagen_url),
+                        badge: "Nuevo",
+                        desc: p.descripcion || "",
                     });
-                }
-            } catch (e) {
-                console.warn("No se pudo cargar /api/productos, se muestra solo el catálogo base:", e.message);
+                    usados[key] = true;
+                });
             }
-
-            return porCategoria;
+        } catch (e) {
+            console.warn("No se pudo cargar /api/productos, se muestra solo el catálogo base:", e.message);
         }
 
-        function tarjetaHTML(p) {
-            return (
-                '<div class="prodcat-card">' +
-                '<div>' +
-                '<img src="' + p.imagen + '" alt="' + p.nombre + '" loading="lazy" onerror="this.src=\'../activos/img_productos/default-producto.jpg\'">' +
-                '<div class="prodcat-card-body">' +
-                (p.badge ? '<span class="prodcat-badge">' + p.badge + '</span>' : '') +
-                '<h3>' + p.nombre + '</h3>' +
-                '<p>' + (p.desc || '') + '</p>' +
-                '</div>' +
-                '</div>' +
-                '<div class="prodcat-card-footer">' +
-                '<a href="/paginas/contacto.html"><span>Solicitar Información</span> →</a>' +
-                '</div>' +
-                '</div>'
-            );
-        }
+        return porCategoria;
+    }
 
-        function armarPanel(cat, productos) {
-            if (!productos.length) {
-                return (
-                    '<div class="prodcat-panel" data-panel="' + cat.slug + '">' +
-                    '<div class="prodcat-empty">Próximamente nuevos productos en ' + cat.nombre + '.</div>' +
-                    '</div>'
-                );
-            }
+    function tarjetaHTML(p) {
+        return (
+            '<div class="prodcat-card">' +
+            '<div>' +
+            '<img src="' + p.imagen + '" alt="' + p.nombre + '" loading="lazy" onerror="this.src=\'../activos/img_productos/default-producto.jpg\'">' +
+            '<div class="prodcat-card-body">' +
+            (p.badge ? '<span class="prodcat-badge">' + p.badge + '</span>' : '') +
+            '<h3>' + p.nombre + '</h3>' +
+            '<p>' + (p.desc || '') + '</p>' +
+            '</div>' +
+            '</div>' +
+            '<div class="prodcat-card-footer">' +
+            '<a href="/paginas/contacto.html"><span>Solicitar Información</span> →</a>' +
+            '</div>' +
+            '</div>'
+        );
+    }
 
+    function armarPanel(cat, productos) {
+        if (!productos.length) {
             return (
                 '<div class="prodcat-panel" data-panel="' + cat.slug + '">' +
-                '<div class="prodcat-carousel">' +
-                '<button type="button" class="prodcat-btn prodcat-prev" data-dir="-1" aria-label="Anterior"><i class="fas fa-chevron-left text-xs"></i></button>' +
-                '<div class="prodcat-viewport">' +
-                '<div class="prodcat-track">' +
-                productos.map(tarjetaHTML).join("") +
-                '</div>' +
-                '</div>' +
-                '<button type="button" class="prodcat-btn prodcat-next" data-dir="1" aria-label="Siguiente"><i class="fas fa-chevron-right text-xs"></i></button>' +
-                '</div>' +
-                '<div class="prodcat-dots"></div>' +
+                '<div class="prodcat-empty">Próximamente nuevos productos en ' + cat.nombre + '.</div>' +
                 '</div>'
             );
         }
 
-        function initCarousel(panel) {
-            var track = panel.querySelector(".prodcat-track");
-            var viewport = panel.querySelector(".prodcat-viewport");
-            var prevBtn = panel.querySelector(".prodcat-prev");
-            var nextBtn = panel.querySelector(".prodcat-next");
-            var dotsBox = panel.querySelector(".prodcat-dots");
-            if (!track) return null;
+        return (
+            '<div class="prodcat-panel" data-panel="' + cat.slug + '">' +
+            '<div class="prodcat-carousel">' +
+            '<button type="button" class="prodcat-btn prodcat-prev" data-dir="-1" aria-label="Anterior"><i class="fas fa-chevron-left text-xs"></i></button>' +
+            '<div class="prodcat-viewport">' +
+            '<div class="prodcat-track">' +
+            productos.map(tarjetaHTML).join("") +
+            '</div>' +
+            '</div>' +
+            '<button type="button" class="prodcat-btn prodcat-next" data-dir="1" aria-label="Siguiente"><i class="fas fa-chevron-right text-xs"></i></button>' +
+            '</div>' +
+            '<div class="prodcat-dots"></div>' +
+            '</div>'
+        );
+    }
 
-            var cards = Array.prototype.slice.call(track.children);
-            var GAP = 32;
-            var index = 0;
+    function initCarousel(panel) {
+        var track = panel.querySelector(".prodcat-track");
+        var viewport = panel.querySelector(".prodcat-viewport");
+        var prevBtn = panel.querySelector(".prodcat-prev");
+        var nextBtn = panel.querySelector(".prodcat-next");
+        var dotsBox = panel.querySelector(".prodcat-dots");
+        if (!track) return null;
 
-            function visibles() {
-                var w = window.innerWidth;
-                if (w < 768) return 1;
-                if (w < 1024) return 2;
-                return 3;
+        var cards = Array.prototype.slice.call(track.children);
+        var GAP = 32;
+        var index = 0;
+
+        function visibles() {
+            var w = window.innerWidth;
+            if (w < 768) return 1;
+            if (w < 1024) return 2;
+            return 3;
+        }
+
+        function maxIndex() {
+            return Math.max(0, cards.length - visibles());
+        }
+
+        function crearDots() {
+            dotsBox.innerHTML = "";
+            for (var i = 0; i <= maxIndex(); i++) {
+                var dot = document.createElement("button");
+                dot.type = "button";
+                dot.className = "prodcat-dot" + (i === 0 ? " activo" : "");
+                dot.addEventListener("click", function (idx) {
+                    return function () { moveTo(idx); };
+                }(i));
+                dotsBox.appendChild(dot);
             }
+        }
 
-            function maxIndex() {
-                return Math.max(0, cards.length - visibles());
-            }
+        function actualizarDots() {
+            Array.prototype.forEach.call(dotsBox.children, function (dot, i) {
+                dot.classList.toggle("activo", i === index);
+            });
+        }
 
-            function crearDots() {
-                dotsBox.innerHTML = "";
-                for (var i = 0; i <= maxIndex(); i++) {
-                    var dot = document.createElement("button");
-                    dot.type = "button";
-                    dot.className = "prodcat-dot" + (i === 0 ? " activo" : "");
-                    dot.addEventListener("click", function (idx) {
-                        return function () { moveTo(idx); };
-                    }(i));
-                    dotsBox.appendChild(dot);
-                }
-            }
+        function moveTo(i) {
+            index = Math.max(0, Math.min(i, maxIndex()));
+            var pv = visibles();
+            var vpWidth = viewport.clientWidth;
+            var cardWidth = (vpWidth - GAP * (pv - 1)) / pv;
 
-            function actualizarDots() {
-                Array.prototype.forEach.call(dotsBox.children, function (dot, i) {
-                    dot.classList.toggle("activo", i === index);
-                });
-            }
-
-            function moveTo(i) {
-                index = Math.max(0, Math.min(i, maxIndex()));
-                var pv = visibles();
-                var vpWidth = viewport.clientWidth;
-                var cardWidth = (vpWidth - GAP * (pv - 1)) / pv;
-
-                cards.forEach(function (c) {
-                    c.style.width = cardWidth + "px";
-                });
-
-                track.style.transform = "translateX(-" + (index * (cardWidth + GAP)) + "px)";
-                prevBtn.classList.toggle("oculto", cards.length <= pv || index === 0);
-                nextBtn.classList.toggle("oculto", cards.length <= pv || index === maxIndex());
-                dotsBox.style.display = cards.length <= pv ? "none" : "flex";
-                actualizarDots();
-            }
-
-            prevBtn.addEventListener("click", function () { moveTo(index - 1); });
-            nextBtn.addEventListener("click", function () { moveTo(index + 1); });
-            window.addEventListener("resize", function () {
-                crearDots();
-                moveTo(Math.min(index, maxIndex()));
+            cards.forEach(function (c) {
+                c.style.width = cardWidth + "px";
             });
 
-            var startX = 0, endX = 0;
-            track.addEventListener("touchstart", function (e) { startX = e.touches[0].clientX; });
-            track.addEventListener("touchmove", function (e) { endX = e.touches[0].clientX; });
-            track.addEventListener("touchend", function () {
-                var dist = startX - endX;
-                if (Math.abs(dist) < 50) return;
-                moveTo(dist > 0 ? index + 1 : index - 1);
-            });
+            track.style.transform = "translateX(-" + (index * (cardWidth + GAP)) + "px)";
+            prevBtn.classList.toggle("oculto", cards.length <= pv || index === 0);
+            nextBtn.classList.toggle("oculto", cards.length <= pv || index === maxIndex());
+            dotsBox.style.display = cards.length <= pv ? "none" : "flex";
+            actualizarDots();
+        }
 
+        prevBtn.addEventListener("click", function () { moveTo(index - 1); });
+        nextBtn.addEventListener("click", function () { moveTo(index + 1); });
+        window.addEventListener("resize", function () {
             crearDots();
-            moveTo(0);
+            moveTo(Math.min(index, maxIndex()));
+        });
 
-            return { recalcular: function () { moveTo(index); } };
-        }
+        var startX = 0, endX = 0;
+        track.addEventListener("touchstart", function (e) { startX = e.touches[0].clientX; });
+        track.addEventListener("touchmove", function (e) { endX = e.touches[0].clientX; });
+        track.addEventListener("touchend", function () {
+            var dist = startX - endX;
+            if (Math.abs(dist) < 50) return;
+            moveTo(dist > 0 ? index + 1 : index - 1);
+        });
 
-        async function render() {
-            var tabsBox = document.getElementById("prodcatTabs");
-            var panelsBox = document.getElementById("prodcatPanels");
-            if (!tabsBox || !panelsBox) return;
+        crearDots();
+        moveTo(0);
 
-            var porCategoria = await construirCatalogo();
+        return { recalcular: function () { moveTo(index); } };
+    }
 
-            tabsBox.innerHTML = CATEGORIAS.map(function (c, i) {
-                return '<button type="button" class="prodcat-tab' + (i === 0 ? ' activo' : '') + '" data-tab="' + c.slug + '">' + c.nombre + '</button>';
-            }).join("");
+    async function render() {
+        var tabsBox = document.getElementById("prodcatTabs");
+        var panelsBox = document.getElementById("prodcatPanels");
+        if (!tabsBox || !panelsBox) return;
 
-            panelsBox.innerHTML = CATEGORIAS.map(function (c) {
-                return armarPanel(c, porCategoria[c.slug]);
-            }).join("");
+        var porCategoria = await construirCatalogo();
 
-            var carruseles = {};
+        tabsBox.innerHTML = CATEGORIAS.map(function (c, i) {
+            return '<button type="button" class="prodcat-tab' + (i === 0 ? ' activo' : '') + '" data-tab="' + c.slug + '">' + c.nombre + '</button>';
+        }).join("");
 
-            // Activar primero la primera pestaña
-            var primerPanel = panelsBox.querySelector(
-                '[data-panel="' + CATEGORIAS[0].slug + '"]'
-            );
+        panelsBox.innerHTML = CATEGORIAS.map(function (c) {
+            return armarPanel(c, porCategoria[c.slug]);
+        }).join("");
 
-            primerPanel.classList.add("activo");
+        // Se marca visible el primer panel ANTES de inicializar los carruseles:
+        // si se mide el ancho estando oculto (display:none), da 0 y calcula mal
+        // cuántas tarjetas entran por fila.
+        panelsBox.querySelector('[data-panel="' + CATEGORIAS[0].slug + '"]').classList.add("activo");
 
-            // Inicializar el carrusel de la primera pestaña cuando ya es visible
-            if (primerPanel.querySelector(".prodcat-track")) {
-                carruseles[CATEGORIAS[0].slug] = initCarousel(primerPanel);
+        var carruseles = {};
+        CATEGORIAS.forEach(function (c) {
+            var panel = panelsBox.querySelector('[data-panel="' + c.slug + '"]');
+            if (panel && panel.querySelector(".prodcat-track")) {
+                carruseles[c.slug] = initCarousel(panel);
             }
+        });
 
-            tabsBox.querySelectorAll(".prodcat-tab").forEach(function (tab) {
-                tab.addEventListener("click", function () {
-                    var slug = tab.getAttribute("data-tab");
+        tabsBox.querySelectorAll(".prodcat-tab").forEach(function (tab) {
+            tab.addEventListener("click", function () {
+                var slug = tab.getAttribute("data-tab");
 
-                    tabsBox.querySelectorAll(".prodcat-tab").forEach(function (t) { t.classList.remove("activo"); });
-                    tab.classList.add("activo");
+                tabsBox.querySelectorAll(".prodcat-tab").forEach(function (t) { t.classList.remove("activo"); });
+                tab.classList.add("activo");
 
-                    panelsBox.querySelectorAll(".prodcat-panel").forEach(function (p) { p.classList.remove("activo"); });
-                    var panelActivo = panelsBox.querySelector('[data-panel="' + slug + '"]');
-                    panelActivo.classList.add("activo");
+                panelsBox.querySelectorAll(".prodcat-panel").forEach(function (p) { p.classList.remove("activo"); });
+                var panelActivo = panelsBox.querySelector('[data-panel="' + slug + '"]');
+                panelActivo.classList.add("activo");
 
-                    // El panel ya está visible, ahora sí podemos medir correctamente su ancho
-                    if (!carruseles[slug]) {
-                        if (panelActivo.querySelector(".prodcat-track")) {
-                            carruseles[slug] = initCarousel(panelActivo);
-                        }
-                    } else {
-                        carruseles[slug].recalcular();
-                    }
-                });
+                if (carruseles[slug]) carruseles[slug].recalcular();
             });
-        }
+        });
+    }
 
-        if (document.readyState === "loading") {
-            document.addEventListener("DOMContentLoaded", render);
-        } else {
-            render();
-        }
-    })();
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", render);
+    } else {
+        render();
+    }
+})();
 </script>

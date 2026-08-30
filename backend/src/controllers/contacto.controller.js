@@ -1,4 +1,5 @@
 const pool = require('../config/database');
+const { notificarNuevoContacto } = require('../services/notificaciones.service');
 
 function sanitizeText(value) {
   return String(value || '')
@@ -79,10 +80,25 @@ async function crearContacto(req, res) {
       ]
     );
 
-    return res.status(201).json({
+    res.status(201).json({
       message: 'Mensaje registrado correctamente',
       contacto: result.rows[0],
     });
+
+    // Aviso por correo y WhatsApp: va DESPUÉS de responder al visitante,
+    // para que un correo lento (o caído) nunca retrase ni rompa el envío
+    // del formulario. Si falla, solo queda en el log del servidor; el
+    // mensaje ya está a salvo en la base de datos.
+    notificarNuevoContacto(result.rows[0]).then((resultado) => {
+      if (!resultado.correo.enviado) {
+        console.warn('[contacto] Aviso por correo no enviado:', resultado.correo.motivo);
+      }
+      if (!resultado.whatsapp.enviado) {
+        console.warn('[contacto] Aviso por WhatsApp no enviado:', resultado.whatsapp.motivo);
+      }
+    });
+
+    return;
   } catch (error) {
     return res.status(500).json({
       error: error.message,
