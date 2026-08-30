@@ -113,7 +113,7 @@ function renderHomeNoticias(items) {
           </div>
           <h3 class="text-lg font-bold text-gray-900 mb-3 leading-snug">${escapeHtml(item.titulo || '')}</h3>
           <p class="text-gray-600 text-sm mb-6 flex-grow line-clamp-3">${escapeHtml(stripHtml(item.contenido).slice(0, 160))}</p>
-          <a class="readmore-link font-semibold text-sm flex items-center gap-2 group-hover:gap-3 transition-all" href="/paginas/noticia-detalle.html?id=${encodeURIComponent(item.id)}">Leer más</a>
+          <a class="readmore-link font-semibold text-sm flex items-center gap-2 group-hover:gap-3 transition-all" href="/noticia?id=${encodeURIComponent(item.id)}">Leer más</a>
         </div>
       </article>
     `;
@@ -193,7 +193,7 @@ async function renderNoticiasCards() {
       }
       e.preventDefault();
       if (node.dataset.id) {
-        window.location.href = '/paginas/noticia-detalle.html?id=' + encodeURIComponent(node.dataset.id);
+        window.location.href = '/noticia?id=' + encodeURIComponent(node.dataset.id);
       }
     });
   });

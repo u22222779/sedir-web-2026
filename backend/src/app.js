@@ -14,16 +14,36 @@ const webinarRoutes = require('./routes/webinar.routes');
 const uploadRoutes = require('./routes/upload.routes');
 const { notFoundHandler, errorHandler } = require('./middleware/errorHandler');
 const { apiRateLimiter, securityHeaders } = require('./middleware/security.middleware');
+const { cleanUrls } = require('./middleware/clean-urls.middleware');
 
 const app = express();
+const publicDir = path.join(__dirname, '..', '..', 'public');
 
 app.disable('x-powered-by');
+
+// Detrás de Apache/Passenger (cPanel) o cualquier proxy, para que
+// req.secure y x-forwarded-proto funcionen correctamente.
+app.set('trust proxy', 1);
+
+// Forzar HTTPS en producción (deja localhost sin tocar en desarrollo)
+app.use((req, res, next) => {
+  const isProd = process.env.NODE_ENV === 'production';
+  const isSecure = req.secure || req.headers['x-forwarded-proto'] === 'https';
+  if (isProd && !isSecure) {
+    return res.redirect(301, `https://${req.headers.host}${req.originalUrl}`);
+  }
+  next();
+});
 
 app.use(securityHeaders);
 app.use(compression());
 app.use(express.json({ limit: '100kb' }));
 app.use(express.urlencoded({ extended: true, limit: '100kb' }));
-app.use(express.static(path.join(__dirname, '..', '..', 'public'), { extensions: ['html'] }));
+
+// URLs limpias: /contacto en vez de /paginas/contacto.html
+app.use(cleanUrls(publicDir));
+
+app.use(express.static(publicDir, { extensions: ['html'] }));
 
 app.use(healthRoutes);
 app.use('/api', apiRateLimiter);
