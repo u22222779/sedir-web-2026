@@ -2,6 +2,7 @@ node_modules/
 .atl/
 AGENTS.md
 
-# Imágenes subidas desde el panel administrativo (contenido de runtime)
-public/activos/img_uploads/*
-!public/activos/img_uploads/.gitkeep
+# Variables de entorno (contiene contraseñas y API keys reales, nunca subir)
+.env
+backend/.env
+*.env
