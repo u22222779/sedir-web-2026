@@ -29,6 +29,9 @@
     .card {
       border-radius: 20px;
       box-shadow: 0 14px 40px rgba(15, 23, 42, .08);
+      max-width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
     }
 
     .nav-link.active {
@@ -309,7 +312,9 @@
       .content {
         margin-left: 0 !important;
         width: 100%;
-        padding: 18px;
+        max-width: 100vw;
+        padding: 16px;
+        box-sizing: border-box;
       }
 
     }
@@ -345,7 +350,11 @@
     @media (max-width:640px) {
 
       .content {
-        padding: 15px;
+        padding: 12px;
+      }
+
+      .card {
+        padding: 16px !important;
       }
 
       h1 {
@@ -459,7 +468,7 @@
 
   <main class="content p-4 md:p-6 lg:p-8">
     <header class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between mb-8">
-      <h1 class="text-3xl font-bold text-slate-900">CRUD de noticias y proyectos</h1>
+      <h1 class="text-3xl font-bold text-slate-900">Panel de Administración General</h1>
     </header>
     <div id="status-line" class="fixed top-6 right-6 z-50 opacity-0 pointer-events-none translate-y-[-8px] transition-all duration-300 bg-emerald-600 text-white text-sm font-semibold px-5 py-3 rounded-2xl shadow-xl">
       Listo para administrar contenido público
@@ -500,11 +509,15 @@
       webinars: [],
       editingNoticiaId: null,
       editingProyectoId: null,
-      editingWebinarYoutubeId: null,
       authUser: null,
       noticiasViewMode: 'list', // 'list' | 'form'
       noticiasPage: 1,
       noticiasPerPage: 10,
+      proyectosViewMode: 'list', // 'list' | 'form'
+      proyectosPage: 1,
+      proyectosPerPage: 10,
+      webinarsMobileMode: 'list', // 'list' | 'form'
+      editingWebinarId: null,
     };
 
     const content = document.getElementById('main-content');
@@ -962,78 +975,221 @@
 
     function proyectoForm(model) {
       const data = model || { nombre: '', descripcion: '', fecha_inicio: '', fecha_fin: '', estado: '', beneficiarios: '', imagen: '' };
+      const isEditing = Boolean(model);
       return `
-        <input type="hidden" name="id" value="${escapeHtml(data.id || '')}" />
-        <div>
-          <label class="text-sm font-semibold text-slate-600">Nombre *</label>
-          <input class="field mt-2" name="nombre" required value="${escapeHtml(data.nombre)}" />
-        </div>
-        <div>
-          <label class="text-sm font-semibold text-slate-600">Descripción *</label>
-          <textarea class="field mt-2 min-h-40" name="descripcion" required>${escapeHtml(data.descripcion)}</textarea>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-4 mb-5 border-b border-slate-100">
           <div>
-            <label class="text-sm font-semibold text-slate-600">Fecha inicio *</label>
+            <h3 class="text-xl font-bold text-slate-900">${isEditing ? 'Editar proyecto' : 'Crear nuevo proyecto'}</h3>
+            <p class="text-xs text-slate-500 mt-0.5">${isEditing ? 'Modifica los datos del proyecto seleccionado' : 'Completa la información para registrar un nuevo proyecto'}</p>
+          </div>
+          <button type="button" data-cancel-proyecto class="text-xs font-semibold text-slate-600 hover:text-slate-900 inline-flex items-center gap-1.5 border border-slate-200 px-3.5 py-2 rounded-full hover:bg-slate-50 transition self-start sm:self-auto">
+            <span class="material-symbols-outlined text-base">arrow_back</span>
+            Volver a la lista
+          </button>
+        </div>
+
+        <input type="hidden" name="id" value="${escapeHtml(data.id || '')}" />
+
+        <div>
+          <label class="text-sm font-semibold text-slate-700">Nombre del proyecto *</label>
+          <input class="field mt-2" name="nombre" placeholder="Nombre descriptivo del proyecto" required value="${escapeHtml(data.nombre)}" />
+        </div>
+
+        <div>
+          <label class="text-sm font-semibold text-slate-700">Descripción *</label>
+          <textarea class="field mt-2 min-h-32" name="descripcion" placeholder="Detalles, objetivos o alcance del proyecto..." required>${escapeHtml(data.descripcion)}</textarea>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="text-sm font-semibold text-slate-700">Fecha inicio *</label>
             <input class="field mt-2" type="date" name="fecha_inicio" required value="${escapeHtml((data.fecha_inicio || '').slice(0, 10))}" />
           </div>
           <div>
-            <label class="text-sm font-semibold text-slate-600">Fecha fin *</label>
+            <label class="text-sm font-semibold text-slate-700">Fecha fin *</label>
             <input class="field mt-2" type="date" name="fecha_fin" required value="${escapeHtml((data.fecha_fin || '').slice(0, 10))}" />
           </div>
         </div>
-        <div>
-          <label class="text-sm font-semibold text-slate-600">Estado *</label>
-          <input class="field mt-2" name="estado" required value="${escapeHtml(data.estado)}" />
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="text-sm font-semibold text-slate-700">Estado *</label>
+            <input class="field mt-2" name="estado" placeholder="Ej. En ejecución, Finalizado, etc." required value="${escapeHtml(data.estado)}" />
+          </div>
+          <div>
+            <label class="text-sm font-semibold text-slate-700">Beneficiarios *</label>
+            <input class="field mt-2" name="beneficiarios" placeholder="Ej. 150 familias productoras" required value="${escapeHtml(data.beneficiarios)}" />
+          </div>
         </div>
+
         <div>
-          <label class="text-sm font-semibold text-slate-600">Beneficiarios *</label>
-          <input class="field mt-2" name="beneficiarios" required value="${escapeHtml(data.beneficiarios)}" />
+          <label class="text-sm font-semibold text-slate-700">Imagen *</label>
+          <div class="image-upload-field mt-2" data-image-field="imagen">
+            <input
+              class="field"
+              name="imagen"
+              placeholder="Pega una URL o sube una imagen abajo"
+              required
+              value="${escapeHtml(data.imagen)}" />
+            <div class="image-upload-row">
+              <label class="image-upload-btn">
+                <input type="file" accept="image/jpeg,image/png,image/webp,image/gif,image/svg+xml"
+                  data-image-file-input class="hidden" />
+                📤 Subir imagen desde mi computadora
+              </label>
+              <span class="image-upload-status" data-image-status></span>
+            </div>
+            <div class="image-upload-preview-wrap" data-image-preview-wrap ${data.imagen ? '' : 'style="display:none;"'}>
+              <img class="image-upload-preview" data-image-preview src="${escapeHtml(data.imagen || '')}" alt="Vista previa" />
+              <button type="button" class="image-upload-remove" data-image-remove title="Quitar imagen">✕ Quitar</button>
+            </div>
+          </div>
         </div>
-        <div>
-          <label class="text-sm font-semibold text-slate-600">Imagen *</label>
-          <input class="field mt-2" name="imagen" required value="${escapeHtml(data.imagen)}" />
-        </div>
-        <div class="flex flex-wrap gap-3 pt-2">
-          <button class="btn-primary rounded-full px-5 py-3 font-semibold" type="submit">${model ? 'Actualizar proyecto' : 'Crear proyecto'}</button>
-          ${model ? '<button type="button" data-reset-form class="rounded-full px-5 py-3 font-semibold border border-slate-200">Cancelar</button>' : ''}
+
+        <div class="flex flex-wrap items-center gap-3 pt-4 border-t border-slate-100">
+          <button
+            class="btn-primary rounded-full px-6 py-3 font-semibold text-sm inline-flex items-center justify-center gap-2 shadow-sm transition"
+            type="submit">
+            <span class="material-symbols-outlined text-lg">${isEditing ? 'check_circle' : 'publish'}</span>
+            ${isEditing ? 'Actualizar proyecto' : 'Crear proyecto'}
+          </button>
+          <button type="button" data-cancel-proyecto class="rounded-full px-5 py-3 font-semibold text-sm border border-slate-200 text-slate-700 hover:bg-slate-50 transition inline-flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-base">close</span>
+            Cancelar y volver
+          </button>
         </div>
       `;
     }
 
-    function webinarYoutubeForm(model) {
-      if (!model) {
-        return '<p class="text-sm text-slate-500">Selecciona "Editar YouTube" en la tabla para agregar o corregir el enlace.</p>';
-      }
-
-      const index = appState.webinars.findIndex((item) => String(item.id) === String(model.id));
-      const total = appState.webinars.length;
-      const isFirst = index <= 0;
-      const isLast = index === -1 || index >= total - 1;
+    function webinarForm(model) {
+      const data = model || {
+        tema: '',
+        categoria: '',
+        fecha: '',
+        codigo: '',
+        expositor: '',
+        especialidad: '',
+        subtemas: '',
+        afiche: '',
+        url_youtube: '',
+        url_pdf: '',
+      };
+      const isEditing = Boolean(model);
 
       return `
-        <input type="hidden" name="id" value="${escapeHtml(model.id)}" />
-        <div class="flex items-center justify-between gap-3">
-          <button type="button" data-nav-webinar="prev" ${isFirst ? 'disabled' : ''} class="inline-flex items-center gap-1 text-sm font-semibold text-slate-600 disabled:opacity-30 disabled:cursor-not-allowed hover:text-primary">
-            <span class="material-symbols-outlined text-lg">arrow_back</span> Anterior
-          </button>
-          <span class="text-xs text-slate-400 font-semibold">${index + 1} de ${total}</span>
-          <button type="button" data-nav-webinar="next" ${isLast ? 'disabled' : ''} class="inline-flex items-center gap-1 text-sm font-semibold text-slate-600 disabled:opacity-30 disabled:cursor-not-allowed hover:text-primary">
-            Siguiente <span class="material-symbols-outlined text-lg">arrow_forward</span>
-          </button>
+        <div class="flex items-center justify-between pb-4 mb-4 border-b border-slate-100">
+          <div>
+            <h3 class="text-lg md:text-xl font-bold text-slate-900">${isEditing ? 'Editar webinar' : 'Crear nuevo webinar'}</h3>
+            <p class="text-xs text-slate-500 mt-0.5">${isEditing ? 'Modifica los datos del webinar seleccionado' : 'Completa la información para publicar un webinar'}</p>
+          </div>
+          <div class="flex items-center gap-2">
+            ${isEditing ? `
+              <button type="button" data-reset-webinar-form class="text-xs font-semibold text-slate-600 hover:text-slate-900 inline-flex items-center gap-1 border border-slate-200 px-3 py-1.5 rounded-full hover:bg-slate-50 transition" title="Limpiar y crear nuevo">
+                <span class="material-symbols-outlined text-sm">add</span> Nuevo
+              </button>
+            ` : ''}
+            <button type="button" data-cancel-webinar class="xl:hidden text-xs font-semibold text-slate-600 hover:text-slate-900 inline-flex items-center gap-1 border border-slate-200 px-3 py-1.5 rounded-full hover:bg-slate-50 transition">
+              <span class="material-symbols-outlined text-sm">arrow_back</span> Volver
+            </button>
+          </div>
         </div>
+
+        <input type="hidden" name="id" value="${escapeHtml(data.id || '')}" />
+
         <div>
-          <p class="text-sm font-semibold text-slate-600">Webinar</p>
-          <p class="mt-1 text-slate-900 font-semibold">${escapeHtml(model.tema)}</p>
-          <p class="text-xs text-slate-500">${escapeHtml(model.codigo || '')} · ${formatDate(model.fecha)}</p>
+          <label class="text-xs font-bold uppercase tracking-wider text-slate-600">Tema / Título del webinar *</label>
+          <input class="field mt-1.5 text-sm" name="tema" placeholder="Ej. FENÓMENO EL NIÑO: IMPACTO Y MANEJO EN EL AGRO" required value="${escapeHtml(data.tema)}" />
         </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div>
+            <label class="text-xs font-bold uppercase tracking-wider text-slate-600">Categoría *</label>
+            <input class="field mt-1.5 text-sm" name="categoria" placeholder="Ej. Producción Agrícola, Riego..." required value="${escapeHtml(data.categoria)}" list="webinar-categorias-list" />
+            <datalist id="webinar-categorias-list">
+              <option value="Producción Agrícola">
+              <option value="Manejo Integrado">
+              <option value="Riego Tecnificado">
+              <option value="Postcosecha">
+              <option value="Capacitación">
+            </datalist>
+          </div>
+          <div>
+            <label class="text-xs font-bold uppercase tracking-wider text-slate-600">Fecha del evento *</label>
+            <input class="field mt-1.5 text-sm" type="date" name="fecha" required value="${escapeHtml((data.fecha || '').slice(0, 10))}" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div>
+            <label class="text-xs font-bold uppercase tracking-wider text-slate-600">Código de webinar</label>
+            <input class="field mt-1.5 text-sm" name="codigo" placeholder="Ej. webi-065" value="${escapeHtml(data.codigo || '')}" />
+          </div>
+          <div>
+            <label class="text-xs font-bold uppercase tracking-wider text-slate-600">Ponente / Expositor</label>
+            <input class="field mt-1.5 text-sm" name="expositor" placeholder="Ej. Ing. Juan Pérez" value="${escapeHtml(data.expositor || '')}" />
+          </div>
+        </div>
+
         <div>
-          <label class="text-sm font-semibold text-slate-600">Enlace de YouTube *</label>
-          <input class="field mt-2" type="url" name="url_youtube" placeholder="https://www.youtube.com/watch?v=..." required value="${escapeHtml(model.url_youtube || '')}" />
+          <label class="text-xs font-bold uppercase tracking-wider text-slate-600">Especialidad / Cargo del expositor</label>
+          <input class="field mt-1.5 text-sm" name="especialidad" placeholder="Ej. Especialista en sanidad vegetal - UNALM" value="${escapeHtml(data.especialidad || '')}" />
         </div>
-        <div class="flex flex-wrap gap-3 pt-2">
-          <button class="btn-primary rounded-full px-5 py-3 font-semibold" type="submit">Guardar enlace</button>
-          <button type="button" data-reset-form class="rounded-full px-5 py-3 font-semibold border border-slate-200">Cancelar</button>
+
+        <div>
+          <label class="text-xs font-bold uppercase tracking-wider text-slate-600">Subtemas / Puntos a tratar</label>
+          <textarea class="field mt-1.5 text-sm min-h-20" name="subtemas" placeholder="Puntos principales tratados en la conferencia...">${escapeHtml(data.subtemas || '')}</textarea>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div>
+            <label class="text-xs font-bold uppercase tracking-wider text-slate-600">Enlace de YouTube</label>
+            <input class="field mt-1.5 text-sm" type="url" name="url_youtube" placeholder="https://www.youtube.com/watch?v=..." value="${escapeHtml(data.url_youtube || '')}" />
+          </div>
+          <div>
+            <label class="text-xs font-bold uppercase tracking-wider text-slate-600">Enlace a PDF / Material</label>
+            <input class="field mt-1.5 text-sm" type="url" name="url_pdf" placeholder="https://drive.google.com/..." value="${escapeHtml(data.url_pdf || '')}" />
+          </div>
+        </div>
+
+        <div>
+          <label class="text-xs font-bold uppercase tracking-wider text-slate-600">Afiche publicitario</label>
+          <div class="image-upload-field mt-1.5" data-image-field="afiche">
+            <input
+              class="field text-sm"
+              name="afiche"
+              placeholder="Pega la URL de la imagen o sube un archivo abajo"
+              value="${escapeHtml(data.afiche || '')}" />
+            <div class="image-upload-row">
+              <label class="image-upload-btn">
+                <input type="file" accept="image/jpeg,image/png,image/webp,image/gif,image/svg+xml"
+                  data-image-file-input class="hidden" />
+                📤 Subir afiche
+              </label>
+              <span class="image-upload-status" data-image-status></span>
+            </div>
+            <div class="image-upload-preview-wrap" data-image-preview-wrap ${data.afiche ? '' : 'style="display:none;"'}>
+              <img class="image-upload-preview" data-image-preview src="${escapeHtml(data.afiche || '')}" alt="Vista previa del afiche" />
+              <button type="button" class="image-upload-remove" data-image-remove title="Quitar afiche">✕ Quitar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-3 pt-4 border-t border-slate-100">
+          <button
+            class="btn-primary rounded-full px-6 py-2.5 font-semibold text-sm inline-flex items-center justify-center gap-2 shadow-sm transition"
+            type="submit">
+            <span class="material-symbols-outlined text-lg">${isEditing ? 'check_circle' : 'publish'}</span>
+            ${isEditing ? 'Actualizar webinar' : 'Crear webinar'}
+          </button>
+          ${isEditing ? `
+            <button type="button" data-reset-webinar-form class="rounded-full px-4 py-2.5 font-semibold text-sm border border-slate-200 text-slate-700 hover:bg-slate-50 transition inline-flex items-center gap-1.5">
+              Limpiar
+            </button>
+          ` : ''}
+          <button type="button" data-cancel-webinar class="xl:hidden rounded-full px-4 py-2.5 font-semibold text-sm border border-slate-200 text-slate-700 hover:bg-slate-50 transition inline-flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-base">close</span>
+            Cancelar y volver
+          </button>
         </div>
       `;
     }
@@ -1183,28 +1339,250 @@
       `;
     }
 
-    function proyectosRows() {
-      if (!appState.proyectos.length) {
+    function proyectosCards(proyectosList) {
+      const items = proyectosList || appState.proyectos;
+      if (!items.length) {
+        return `
+          <div class="py-12 px-4 text-center bg-slate-50 rounded-2xl border border-dashed border-slate-200">
+            <span class="material-symbols-outlined text-4xl text-slate-300 mx-auto mb-2 block">folder_open</span>
+            <p class="text-sm font-medium text-slate-600">No hay proyectos registrados aún.</p>
+            <p class="text-xs text-slate-400 mt-1">Comienza agregando un nuevo proyecto para la web.</p>
+            <button type="button" data-create-proyecto class="mt-4 inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-emerald-600 text-white text-xs font-semibold shadow-xs hover:bg-emerald-700 transition">
+              <span class="material-symbols-outlined text-base">add_circle</span> Crear el primer proyecto
+            </button>
+          </div>
+        `;
+      }
+
+      return items.map(function (item) {
+        const fechaInicio = formatDate(item.fecha_inicio);
+        const fechaFin = formatDate(item.fecha_fin);
+        const fechasTexto = (fechaInicio || fechaFin) ? `${fechaInicio} - ${fechaFin}` : 'Fechas no definidas';
+
+        return `
+          <article class="bg-white border border-slate-200 rounded-2xl p-4 shadow-xs space-y-3">
+            <div class="flex items-start justify-between gap-2.5">
+              <div class="min-w-0 flex-1">
+                <h4 class="font-bold text-slate-900 text-base leading-snug break-words">
+                  ${escapeHtml(item.nombre)}
+                </h4>
+              </div>
+              <span class="inline-flex items-center shrink-0 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-100">
+                ${escapeHtml(item.estado || 'Activo')}
+              </span>
+            </div>
+
+            <div class="space-y-1.5 text-xs text-slate-600 pt-1">
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-base text-slate-400 shrink-0">calendar_today</span>
+                <span class="truncate">${fechasTexto}</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-base text-slate-400 shrink-0">groups</span>
+                <span class="truncate">${escapeHtml(item.beneficiarios || 'Sin especificar')}</span>
+              </div>
+            </div>
+
+            ${item.descripcion ? `
+              <p class="text-xs text-slate-500 line-clamp-2 pt-1 border-t border-slate-100 break-words">
+                ${escapeHtml(stripHtml(item.descripcion))}
+              </p>
+            ` : ''}
+
+            <div class="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100">
+              <button
+                type="button"
+                data-edit-proyecto="${item.id}"
+                class="w-full py-2.5 px-3 rounded-xl border border-slate-200 text-xs font-semibold text-slate-700 hover:bg-slate-50 active:bg-slate-100 transition inline-flex items-center justify-center gap-1.5">
+                <span class="material-symbols-outlined text-base text-slate-500">edit</span>
+                Editar
+              </button>
+              <button
+                type="button"
+                data-delete-proyecto="${item.id}"
+                class="w-full py-2.5 px-3 rounded-xl bg-red-50 hover:bg-red-100 active:bg-red-200 text-red-600 border border-red-100 text-xs font-semibold transition inline-flex items-center justify-center gap-1.5">
+                <span class="material-symbols-outlined text-base text-red-500">delete</span>
+                Eliminar
+              </button>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    function proyectosRows(proyectosList) {
+      const items = proyectosList || appState.proyectos;
+      if (!items.length) {
         return '<tr><td colspan="5" class="py-14 text-center text-slate-400">No hay proyectos registrados</td></tr>';
       }
 
-      return appState.proyectos.map(function (item) {
+      return items.map(function (item) {
         return `
           <tr class="border-b border-slate-100 align-top">
             <td class="py-4 pr-4">
               <div class="font-semibold text-slate-900">${escapeHtml(item.nombre)}</div>
-              <div class="text-xs text-slate-500 max-w-xl">${escapeHtml(stripHtml(item.descripcion).slice(0, 110))}</div>
+              <div class="text-xs text-slate-500 max-w-xl line-clamp-2">${escapeHtml(stripHtml(item.descripcion))}</div>
             </td>
-            <td class="py-4 pr-4 whitespace-nowrap">${formatDate(item.fecha_inicio)} - ${formatDate(item.fecha_fin)}</td>
-            <td class="py-4 pr-4">${escapeHtml(item.estado)}</td>
-            <td class="py-4 pr-4">${escapeHtml(item.beneficiarios)}</td>
-            <td class="py-4 pr-4">
+            <td class="py-4 pr-4 whitespace-nowrap text-sm text-slate-600">${formatDate(item.fecha_inicio)} - ${formatDate(item.fecha_fin)}</td>
+            <td class="py-4 pr-4"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-100">${escapeHtml(item.estado || 'Activo')}</span></td>
+            <td class="py-4 pr-4 text-sm text-slate-600">${escapeHtml(item.beneficiarios || '-')}</td>
+            <td class="py-4 pr-4 whitespace-nowrap">
               <div class="flex gap-2">
-                <button class="px-3 py-1.5 rounded-full border border-slate-200 text-sm font-semibold" data-edit-proyecto="${item.id}">Editar</button>
-                <button class="px-3 py-1.5 rounded-full bg-red-600 text-white text-sm font-semibold" data-delete-proyecto="${item.id}">Eliminar</button>
+                <button class="px-3 py-1.5 rounded-full border border-slate-200 text-sm font-semibold hover:bg-slate-50 transition" data-edit-proyecto="${item.id}">Editar</button>
+                <button class="px-3 py-1.5 rounded-full bg-red-600 hover:bg-red-700 text-white text-sm font-semibold transition" data-delete-proyecto="${item.id}">Eliminar</button>
               </div>
             </td>
           </tr>
+        `;
+      }).join('');
+    }
+
+    function proyectosPagination(totalItems, currentPage, perPage) {
+      const totalPages = Math.max(1, Math.ceil(totalItems / perPage));
+      if (totalPages <= 1) {
+        return '';
+      }
+
+      const start = (currentPage - 1) * perPage + 1;
+      const end = Math.min(currentPage * perPage, totalItems);
+
+      const isFirst = currentPage <= 1;
+      const isLast = currentPage >= totalPages;
+
+      const delta = 1;
+      const range = [];
+      for (let i = Math.max(2, currentPage - delta); i <= Math.min(totalPages - 1, currentPage + delta); i++) {
+        range.push(i);
+      }
+
+      if (currentPage - delta > 2) {
+        range.unshift('...');
+      }
+      if (currentPage + delta < totalPages - 1) {
+        range.push('...');
+      }
+
+      range.unshift(1);
+      if (totalPages > 1) {
+        range.push(totalPages);
+      }
+
+      const pagesHtml = range.map(function (p) {
+        if (p === '...') {
+          return '<span class="px-2 py-1 text-xs text-slate-400">...</span>';
+        }
+        const active = p === currentPage;
+        return `
+          <button type="button" data-proyecto-page="${p}" class="w-8 h-8 rounded-full text-xs font-semibold flex items-center justify-center transition ${active ? 'bg-emerald-600 text-white shadow-sm' : 'border border-slate-200 text-slate-600 hover:bg-slate-50'}">
+            ${p}
+          </button>
+        `;
+      }).join('');
+
+      return `
+        <div class="mt-6 pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm">
+          <div class="text-xs text-slate-500 font-medium text-center sm:text-left">
+            Mostrando <span class="font-bold text-slate-700">${start}</span> a <span class="font-bold text-slate-700">${end}</span> de <span class="font-bold text-slate-700">${totalItems}</span> proyectos
+          </div>
+          <div class="flex items-center gap-1.5">
+            <button type="button" data-proyecto-page="prev" ${isFirst ? 'disabled' : ''} class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full border border-slate-200 text-xs font-semibold text-slate-700 hover:bg-slate-50 disabled:opacity-30 disabled:cursor-not-allowed transition">
+              <span class="material-symbols-outlined text-sm">arrow_back</span>
+              <span class="hidden xs:inline">Anterior</span>
+            </button>
+            
+            <div class="hidden sm:flex items-center gap-1">
+              ${pagesHtml}
+            </div>
+            <div class="sm:hidden text-xs font-bold text-slate-700 px-2">
+              Pág. ${currentPage} de ${totalPages}
+            </div>
+
+            <button type="button" data-proyecto-page="next" ${isLast ? 'disabled' : ''} class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full border border-slate-200 text-xs font-semibold text-slate-700 hover:bg-slate-50 disabled:opacity-30 disabled:cursor-not-allowed transition">
+              <span class="hidden xs:inline">Siguiente</span>
+              <span class="material-symbols-outlined text-sm">arrow_forward</span>
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    function webinarsCards(webinarsList) {
+      const items = webinarsList || appState.webinars;
+      if (!items.length) {
+        return `
+          <div class="py-12 px-4 text-center bg-slate-50 rounded-2xl border border-dashed border-slate-200">
+            <span class="material-symbols-outlined text-4xl text-slate-300 mx-auto mb-2 block">smart_display</span>
+            <p class="text-sm font-medium text-slate-600">No hay webinars registrados aún.</p>
+            <p class="text-xs text-slate-400 mt-1">Comienza agregando un nuevo webinar para la web.</p>
+            <button type="button" data-create-webinar class="mt-4 inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-emerald-600 text-white text-xs font-semibold shadow-xs hover:bg-emerald-700 transition">
+              <span class="material-symbols-outlined text-base">add_circle</span> Crear el primer webinar
+            </button>
+          </div>
+        `;
+      }
+
+      return items.map(function (item) {
+        const isEditing = String(appState.editingWebinarId) === String(item.id);
+        const cardBorder = isEditing
+          ? 'border-emerald-500 ring-2 ring-emerald-200 bg-emerald-50/40'
+          : 'border-slate-200 bg-white';
+
+        return `
+          <article class="border rounded-2xl p-4 shadow-xs space-y-3 transition-all ${cardBorder}">
+            <div class="flex items-start justify-between gap-2.5">
+              <div class="min-w-0 flex-1">
+                <div class="flex items-center gap-2 mb-1 flex-wrap">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800">
+                    ${escapeHtml(item.categoria || 'Webinar')}
+                  </span>
+                  ${item.codigo ? `<span class="text-xs text-slate-400 font-mono">${escapeHtml(item.codigo)}</span>` : ''}
+                </div>
+                <h4 class="font-bold text-slate-900 text-base leading-snug break-words">
+                  ${escapeHtml(item.tema)}
+                </h4>
+              </div>
+            </div>
+
+            <div class="space-y-1.5 text-xs text-slate-600 pt-1">
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-base text-slate-400 shrink-0">calendar_today</span>
+                <span>${formatDate(item.fecha) || 'Fecha por definir'}</span>
+              </div>
+              ${item.expositor ? `
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-base text-slate-400 shrink-0">person</span>
+                  <span class="truncate">${escapeHtml(item.expositor)}${item.especialidad ? ` · ${escapeHtml(item.especialidad)}` : ''}</span>
+                </div>
+              ` : ''}
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-base text-red-500 shrink-0">smart_display</span>
+                ${item.url_youtube ? `
+                  <a href="${escapeHtml(item.url_youtube)}" target="_blank" rel="noopener" class="text-emerald-700 font-semibold hover:underline truncate">
+                    Ver en YouTube ↗
+                  </a>
+                ` : `
+                  <span class="text-slate-400 italic">Sin enlace de YouTube</span>
+                `}
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100">
+              <button
+                type="button"
+                data-edit-webinar="${item.id}"
+                class="w-full py-2.5 px-3 rounded-xl border text-xs font-semibold transition inline-flex items-center justify-center gap-1.5 ${isEditing ? 'border-emerald-600 bg-emerald-600 text-white shadow-xs' : 'border-slate-200 text-slate-700 hover:bg-slate-50'}">
+                <span class="material-symbols-outlined text-base">${isEditing ? 'check' : 'edit'}</span>
+                ${isEditing ? 'Editando' : 'Editar'}
+              </button>
+              <button
+                type="button"
+                data-delete-webinar="${item.id}"
+                class="w-full py-2.5 px-3 rounded-xl bg-red-50 hover:bg-red-100 active:bg-red-200 text-red-600 border border-red-100 text-xs font-semibold transition inline-flex items-center justify-center gap-1.5">
+                <span class="material-symbols-outlined text-base text-red-500">delete</span>
+                Eliminar
+              </button>
+            </div>
+          </article>
         `;
       }).join('');
     }
@@ -1215,26 +1593,43 @@
       }
 
       return appState.webinars.map(function (item, index) {
-        const isEditing = String(appState.editingWebinarYoutubeId) === String(item.id);
+        const isEditing = String(appState.editingWebinarId) === String(item.id);
         const rowClasses = isEditing
           ? 'border-b border-slate-100 align-top bg-emerald-50 ring-1 ring-inset ring-emerald-200'
-          : 'border-b border-slate-100 align-top';
+          : 'border-b border-slate-100 align-top hover:bg-slate-50/60 transition';
 
         return `
           <tr class="${rowClasses}">
-            <td class="py-4 pr-4 text-slate-400 font-semibold">${index + 1}</td>
-            <td class="py-4 pr-4">
-              <div class="font-semibold text-slate-900">${escapeHtml(item.tema)}</div>
-              <div class="text-xs text-slate-500">${escapeHtml(item.codigo || '')}</div>
+            <td class="py-3.5 pr-3 pl-3 text-slate-400 font-semibold text-xs">${index + 1}</td>
+            <td class="py-3.5 pr-4">
+              <div class="font-semibold text-slate-900 text-sm leading-snug break-words">${escapeHtml(item.tema)}</div>
+              <div class="text-xs text-slate-500 mt-1 flex items-center gap-2 flex-wrap">
+                ${item.codigo ? `<span class="bg-slate-100 px-1.5 py-0.5 rounded text-[11px] font-mono text-slate-600">${escapeHtml(item.codigo)}</span>` : ''}
+                <span class="bg-emerald-50 text-emerald-700 px-1.5 py-0.5 rounded text-[11px] font-semibold">${escapeHtml(item.categoria || 'Webinar')}</span>
+                ${item.expositor ? `<span>· ${escapeHtml(item.expositor)}</span>` : ''}
+              </div>
             </td>
-            <td class="py-4 pr-4 whitespace-nowrap">${formatDate(item.fecha)}</td>
-            <td class="py-4 pr-4">
+            <td class="py-3.5 pr-4 whitespace-nowrap text-xs text-slate-600">${formatDate(item.fecha) || '-'}</td>
+            <td class="py-3.5 pr-4 whitespace-nowrap text-xs">
               ${item.url_youtube
-                ? `<a href="${escapeHtml(item.url_youtube)}" target="_blank" rel="noopener" class="text-emerald-600 font-semibold text-sm hover:underline">Ver enlace</a>`
-                : '<span class="text-xs text-red-500 font-semibold">Sin enlace</span>'}
+                ? `<a href="${escapeHtml(item.url_youtube)}" target="_blank" rel="noopener" class="text-emerald-700 font-semibold hover:underline inline-flex items-center gap-1"><span class="material-symbols-outlined text-sm text-red-500">smart_display</span> Ver video</a>`
+                : '<span class="text-slate-400 italic">Sin enlace</span>'}
             </td>
-            <td class="py-4 pr-4">
-              <button class="px-3 py-1.5 rounded-full border text-sm font-semibold transition-colors ${isEditing ? 'border-emerald-600 bg-emerald-600 text-white' : 'border-slate-200'}" data-edit-webinar-youtube="${item.id}">${isEditing ? 'Editando...' : 'Editar YouTube'}</button>
+            <td class="py-3.5 pr-2 whitespace-nowrap">
+              <div class="flex gap-1.5">
+                <button
+                  type="button"
+                  data-edit-webinar="${item.id}"
+                  class="px-3 py-1.5 rounded-full border text-xs font-semibold transition ${isEditing ? 'border-emerald-600 bg-emerald-600 text-white shadow-xs' : 'border-slate-200 text-slate-700 hover:bg-white'}">
+                  ${isEditing ? 'Editando' : 'Editar'}
+                </button>
+                <button
+                  type="button"
+                  data-delete-webinar="${item.id}"
+                  class="px-2.5 py-1.5 rounded-full bg-red-50 hover:bg-red-100 text-red-600 border border-red-100 text-xs font-semibold transition inline-flex items-center justify-center" title="Eliminar webinar">
+                  <span class="material-symbols-outlined text-sm">delete</span>
+                </button>
+              </div>
             </td>
           </tr>
         `;
@@ -1325,70 +1720,134 @@
       }
 
       if (appState.view === 'proyectos') {
-        content.innerHTML = `
-          <section class="grid gap-6 xl:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
-            <div class="card bg-white p-6 md:p-7">
-              <div class="flex items-start justify-between gap-4 mb-5">
-                <div>
-                  <h2 class="text-2xl font-bold text-slate-900">Proyectos</h2>
-                  <p class="text-slate-500 mt-1">Gestiona el contenido de la sección pública de proyectos.</p>
+        const totalProyectos = appState.proyectos.length;
+        const totalPages = Math.max(1, Math.ceil(totalProyectos / appState.proyectosPerPage));
+        if (appState.proyectosPage > totalPages) {
+          appState.proyectosPage = totalPages;
+        }
+        const startIndex = (appState.proyectosPage - 1) * appState.proyectosPerPage;
+        const endIndex = startIndex + appState.proyectosPerPage;
+        const paginatedProyectos = appState.proyectos.slice(startIndex, endIndex);
+
+        const isFormMode = appState.proyectosViewMode === 'form';
+        const editingItem = appState.editingProyectoId
+          ? appState.proyectos.find((item) => String(item.id) === String(appState.editingProyectoId))
+          : null;
+
+        content.innerHTML = isFormMode
+          ? `
+            <section class="w-full">
+              <!-- Editor de Proyectos a ancho completo -->
+              <div id="proyectos-editor-card" class="card bg-white p-5 md:p-8">
+                <form id="proyecto-form" class="space-y-4" novalidate>
+                  ${proyectoForm(editingItem)}
+                </form>
+              </div>
+            </section>
+          `
+          : `
+            <section class="w-full">
+              <!-- Lista de Proyectos a ancho completo -->
+              <div id="proyectos-list-card" class="card bg-white p-5 md:p-7">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-5">
+                  <div>
+                    <h2 class="text-2xl font-bold text-slate-900">Proyectos</h2>
+                    <p class="text-slate-500 text-sm mt-1">Gestiona el contenido de la sección pública de proyectos (${totalProyectos} proyectos registrados).</p>
+                  </div>
+                  <button
+                    type="button"
+                    id="btn-crear-proyecto"
+                    data-create-proyecto
+                    class="btn-primary rounded-full px-5 py-2.5 font-semibold text-sm inline-flex items-center justify-center gap-2 shadow-sm transition hover:shadow-md self-start sm:self-auto w-full sm:w-auto">
+                    <span class="material-symbols-outlined text-lg">add_circle</span>
+                    Crear un proyecto
+                  </button>
                 </div>
+
+                <!-- Vista móvil: Cards sin desbordamiento horizontal -->
+                <div class="md:hidden space-y-3">
+                  ${proyectosCards(paginatedProyectos)}
+                </div>
+
+                <!-- Vista tablet/desktop: Tabla estructurada con ancho completo -->
+                <div class="hidden md:block overflow-x-auto">
+                  <table class="w-full text-left">
+                    <thead class="text-xs uppercase tracking-wider text-slate-400 border-b border-slate-200">
+                      <tr>
+                        <th class="py-3 pr-4">Nombre</th>
+                        <th class="py-3 pr-4">Fechas</th>
+                        <th class="py-3 pr-4">Estado</th>
+                        <th class="py-3 pr-4">Beneficiarios</th>
+                        <th class="py-3 pr-4">Acciones</th>
+                      </tr>
+                    </thead>
+                    <tbody class="text-slate-700">${proyectosRows(paginatedProyectos)}</tbody>
+                  </table>
+                </div>
+
+                <!-- Paginación -->
+                ${proyectosPagination(totalProyectos, appState.proyectosPage, appState.proyectosPerPage)}
               </div>
-              <div class="overflow-x-auto">
-                <table class="w-full text-left">
-                  <thead class="text-xs uppercase tracking-wider text-slate-400 border-b border-slate-200">
-                    <tr>
-                      <th class="py-3 pr-4">Nombre</th>
-                      <th class="py-3 pr-4">Fechas</th>
-                      <th class="py-3 pr-4">Estado</th>
-                      <th class="py-3 pr-4">Beneficiarios</th>
-                      <th class="py-3 pr-4">Acciones</th>
-                    </tr>
-                  </thead>
-                  <tbody class="text-slate-700">${proyectosRows()}</tbody>
-                </table>
-              </div>
-            </div>
-            <div class="card bg-white p-6 md:p-7">
-              <form id="proyecto-form" class="space-y-4" novalidate>
-                ${proyectoForm(appState.editingProyectoId ? appState.proyectos.find((item) => String(item.id) === String(appState.editingProyectoId)) : null)}
-              </form>
-            </div>
-          </section>
-        `;
+            </section>
+          `;
         return;
       }
 
       if (appState.view === 'webinars') {
+        const totalWebinars = appState.webinars.length;
+        const isMobileFormMode = appState.webinarsMobileMode === 'form';
+        const editingItem = appState.editingWebinarId
+          ? appState.webinars.find((item) => String(item.id) === String(appState.editingWebinarId))
+          : null;
+
         content.innerHTML = `
-          <section class="grid gap-6 xl:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
-            <div class="card bg-white p-6 md:p-7">
-              <div class="flex items-start justify-between gap-4 mb-5">
-                <div>
-                  <h2 class="text-2xl font-bold text-slate-900">Webinars</h2>
-                  <p class="text-slate-500 mt-1">Cada webinar usa su propio afiche e enlace de YouTube, alojados en SEDIR.</p>
+          <section class="w-full">
+            <div class="grid gap-6 xl:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
+              <!-- Columna izquierda: Listado de webinars (en móviles se oculta si estamos en modo formulario) -->
+              <div id="webinars-list-card" class="card bg-white p-5 md:p-7 ${isMobileFormMode ? 'hidden xl:block' : 'block'}">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-5">
+                  <div>
+                    <h2 class="text-2xl font-bold text-slate-900">Webinars</h2>
+                    <p class="text-slate-500 text-sm mt-1">Gestiona las conferencias y transmisiones de SEDIR (${totalWebinars} registrados).</p>
+                  </div>
+                  <button
+                    type="button"
+                    id="btn-crear-webinar"
+                    data-create-webinar
+                    class="btn-primary rounded-full px-5 py-2.5 font-semibold text-sm inline-flex items-center justify-center gap-2 shadow-sm transition hover:shadow-md self-start sm:self-auto w-full sm:w-auto">
+                    <span class="material-symbols-outlined text-lg">add_circle</span>
+                    Crear un webinar
+                  </button>
+                </div>
+
+                <!-- Vista móvil: Cards táctiles sin desbordamiento horizontal -->
+                <div class="md:hidden space-y-3">
+                  ${webinarsCards()}
+                </div>
+
+                <!-- Vista tablet y escritorio: Tabla con scroll contenido -->
+                <div id="webinars-scroll-container" class="hidden md:block overflow-x-auto overflow-y-auto max-h-[620px] pr-1 border border-slate-100 rounded-2xl">
+                  <table class="w-full text-left">
+                    <thead class="text-xs uppercase tracking-wider text-slate-400 border-b border-slate-200 sticky top-0 bg-white shadow-2xs">
+                      <tr>
+                        <th class="py-3 pr-3 pl-3">#</th>
+                        <th class="py-3 pr-4">Webinar / Tema</th>
+                        <th class="py-3 pr-4">Fecha</th>
+                        <th class="py-3 pr-4">YouTube</th>
+                        <th class="py-3 pr-2">Acciones</th>
+                      </tr>
+                    </thead>
+                    <tbody class="text-slate-700">${webinarsRows()}</tbody>
+                  </table>
                 </div>
               </div>
-              <div id="webinars-scroll-container" class="overflow-x-auto overflow-y-auto max-h-[560px] pr-1">
-                <table class="w-full text-left">
-                  <thead class="text-xs uppercase tracking-wider text-slate-400 border-b border-slate-200 sticky top-0 bg-white">
-                    <tr>
-                      <th class="py-3 pr-4">#</th>
-                      <th class="py-3 pr-4">Webinar</th>
-                      <th class="py-3 pr-4">Fecha</th>
-                      <th class="py-3 pr-4">YouTube</th>
-                      <th class="py-3 pr-4">Acciones</th>
-                    </tr>
-                  </thead>
-                  <tbody class="text-slate-700">${webinarsRows()}</tbody>
-                </table>
+
+              <!-- Columna derecha: Editor rápido (en desktop siempre visible; en móviles visible solo si mobileMode === 'form') -->
+              <div id="webinars-editor-card" class="card bg-white p-5 md:p-7 ${isMobileFormMode ? 'block' : 'hidden xl:block'}">
+                <form id="webinar-form" class="space-y-4" novalidate>
+                  ${webinarForm(editingItem)}
+                </form>
               </div>
-            </div>
-            <div class="card bg-white p-6 md:p-7">
-              <h3 class="text-lg font-bold text-slate-900 mb-4">Editar enlace de YouTube</h3>
-              <form id="webinar-youtube-form" class="space-y-4" novalidate>
-                ${webinarYoutubeForm(appState.editingWebinarYoutubeId ? appState.webinars.find((item) => String(item.id) === String(appState.editingWebinarYoutubeId)) : null)}
-              </form>
             </div>
           </section>
         `;
@@ -1408,7 +1867,6 @@
     }
 
     async function loadData(view) {
-      setStatus('Cargando datos...');
       if (view === 'dashboard' || view === 'noticias') {
         await loadNoticias();
       }
@@ -1418,7 +1876,6 @@
       if (view === 'webinars') {
         await loadWebinars();
       }
-      setStatus('Datos actualizados');
     }
 
     function rerenderPreservingScroll() {
@@ -1437,8 +1894,10 @@
     function resetEditing() {
       appState.editingNoticiaId = null;
       appState.editingProyectoId = null;
-      appState.editingWebinarYoutubeId = null;
+      appState.editingWebinarId = null;
       appState.noticiasViewMode = 'list';
+      appState.proyectosViewMode = 'list';
+      appState.webinarsMobileMode = 'list';
       rerenderPreservingScroll();
     }
 
@@ -1490,26 +1949,38 @@
 
       await loadProyectos();
       appState.editingProyectoId = null;
+      appState.proyectosViewMode = 'list';
       renderView();
       bindEvents();
-      setStatus('Proyecto guardado');
+      setStatus('Proyecto guardado con éxito');
     }
 
-    async function saveWebinarYoutube(form) {
+    async function saveWebinar(form) {
       const data = Object.fromEntries(new FormData(form).entries());
 
-      if (!data.url_youtube) {
-        throw new Error('El enlace de YouTube es obligatorio');
+      if (!data.tema || !data.categoria || !data.fecha) {
+        throw new Error('El tema, la categoría y la fecha son obligatorios');
       }
 
-      await requestJson(`/api/webinars/${data.id}/youtube`, {
-        method: 'PUT',
-        body: JSON.stringify({ url_youtube: data.url_youtube }),
+      const isNew = !data.id;
+      const endpoint = data.id ? `/api/webinars/${data.id}` : '/api/webinars';
+      const method = data.id ? 'PUT' : 'POST';
+      delete data.id;
+
+      await requestJson(endpoint, {
+        method,
+        body: JSON.stringify(data),
       });
 
       await loadWebinars();
+      appState.editingWebinarId = null;
+      appState.webinarsMobileMode = 'list';
       rerenderPreservingScroll();
-      setStatus('Enlace de YouTube guardado');
+      setStatus(isNew ? 'Webinar creado con éxito' : 'Webinar guardado con éxito');
+      const listCard = document.getElementById('webinars-list-card');
+      if (listCard) {
+        listCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
 
     function showConfirmModal({ title, text, itemText, confirmText, onConfirm }) {
@@ -1688,28 +2159,135 @@
     function editProyecto(id) {
       appState.view = 'proyectos';
       appState.editingProyectoId = id;
+      appState.proyectosViewMode = 'form';
       renderView();
       bindEvents();
       setStatus('Editando proyecto');
+      const editorCard = document.getElementById('proyectos-editor-card');
+      if (editorCard) {
+        editorCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const firstInput = editorCard.querySelector('input[name="nombre"]');
+        if (firstInput) firstInput.focus();
+      }
     }
 
-    function editWebinarYoutube(id) {
+    function startCreateProyecto() {
+      appState.view = 'proyectos';
+      appState.editingProyectoId = null;
+      appState.proyectosViewMode = 'form';
+      renderView();
+      bindEvents();
+      setStatus('Creando nuevo proyecto');
+      const editorCard = document.getElementById('proyectos-editor-card');
+      if (editorCard) {
+        editorCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const firstInput = editorCard.querySelector('input[name="nombre"]');
+        if (firstInput) firstInput.focus();
+      }
+    }
+
+    function cancelProyecto() {
+      appState.editingProyectoId = null;
+      appState.proyectosViewMode = 'list';
+      renderView();
+      bindEvents();
+      setStatus('Edición cancelada');
+      const listCard = document.getElementById('proyectos-list-card');
+      if (listCard) {
+        listCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function setProyectoPage(pageTarget) {
+      const totalPages = Math.max(1, Math.ceil(appState.proyectos.length / appState.proyectosPerPage));
+      if (pageTarget === 'prev') {
+        appState.proyectosPage = Math.max(1, appState.proyectosPage - 1);
+      } else if (pageTarget === 'next') {
+        appState.proyectosPage = Math.min(totalPages, appState.proyectosPage + 1);
+      } else {
+        const parsed = Number(pageTarget);
+        if (!isNaN(parsed) && parsed >= 1 && parsed <= totalPages) {
+          appState.proyectosPage = parsed;
+        }
+      }
+      renderView();
+      bindEvents();
+      const listCard = document.getElementById('proyectos-list-card');
+      if (listCard) {
+        listCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function editWebinar(id) {
       appState.view = 'webinars';
-      appState.editingWebinarYoutubeId = id;
+      appState.editingWebinarId = id;
+      appState.webinarsMobileMode = 'form';
       rerenderPreservingScroll();
-      setStatus('Editando enlace de YouTube');
+      setStatus('Editando webinar');
+      const editorCard = document.getElementById('webinars-editor-card');
+      if (editorCard) {
+        editorCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const firstInput = editorCard.querySelector('input[name="tema"]');
+        if (firstInput) firstInput.focus();
+      }
     }
 
-    function navigateWebinar(step) {
-      const index = appState.webinars.findIndex((item) => String(item.id) === String(appState.editingWebinarYoutubeId));
-      if (index === -1) return;
-
-      const nextIndex = index + step;
-      if (nextIndex < 0 || nextIndex >= appState.webinars.length) return;
-
-      appState.editingWebinarYoutubeId = appState.webinars[nextIndex].id;
+    function startCreateWebinar() {
+      appState.view = 'webinars';
+      appState.editingWebinarId = null;
+      appState.webinarsMobileMode = 'form';
       rerenderPreservingScroll();
-      setStatus('Editando enlace de YouTube');
+      setStatus('Creando nuevo webinar');
+      const editorCard = document.getElementById('webinars-editor-card');
+      if (editorCard) {
+        editorCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const firstInput = editorCard.querySelector('input[name="tema"]');
+        if (firstInput) firstInput.focus();
+      }
+    }
+
+    function cancelWebinar() {
+      appState.editingWebinarId = null;
+      appState.webinarsMobileMode = 'list';
+      rerenderPreservingScroll();
+      setStatus('Edición cancelada');
+      const listCard = document.getElementById('webinars-list-card');
+      if (listCard) {
+        listCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function resetWebinarForm() {
+      appState.editingWebinarId = null;
+      rerenderPreservingScroll();
+      setStatus('Formulario listo para nuevo webinar');
+      const editorCard = document.getElementById('webinars-editor-card');
+      if (editorCard) {
+        const firstInput = editorCard.querySelector('input[name="tema"]');
+        if (firstInput) firstInput.focus();
+      }
+    }
+
+    function deleteWebinar(id) {
+      const webinar = appState.webinars.find((item) => String(item.id) === String(id));
+      const itemTitle = webinar ? webinar.tema : `Webinar #${id}`;
+
+      showConfirmModal({
+        title: '¿Eliminar webinar?',
+        text: 'El webinar será eliminado permanentemente del portal web.',
+        itemText: itemTitle,
+        confirmText: 'Sí, eliminar',
+        onConfirm: async function () {
+          await requestJson(`/api/webinars/${id}`, { method: 'DELETE' });
+          await loadWebinars();
+          if (String(appState.editingWebinarId) === String(id)) {
+            appState.editingWebinarId = null;
+            appState.webinarsMobileMode = 'list';
+          }
+          rerenderPreservingScroll();
+          setStatus('Webinar eliminado con éxito');
+        },
+      });
     }
 
     function initRichTextEditor() {
@@ -1888,22 +2466,57 @@
         });
       });
 
+      document.querySelectorAll('[data-create-proyecto]').forEach(function (button) {
+        button.addEventListener('click', function () {
+          startCreateProyecto();
+        });
+      });
+
+      document.querySelectorAll('[data-cancel-proyecto]').forEach(function (button) {
+        button.addEventListener('click', function () {
+          cancelProyecto();
+        });
+      });
+
+      document.querySelectorAll('[data-proyecto-page]').forEach(function (button) {
+        button.addEventListener('click', function () {
+          setProyectoPage(button.dataset.proyectoPage);
+        });
+      });
+
       document.querySelectorAll('[data-edit-proyecto]').forEach(function (button) {
         button.addEventListener('click', function () {
           editProyecto(button.dataset.editProyecto);
         });
       });
 
-      document.querySelectorAll('[data-edit-webinar-youtube]').forEach(function (button) {
+      document.querySelectorAll('[data-create-webinar]').forEach(function (button) {
         button.addEventListener('click', function () {
-          editWebinarYoutube(button.dataset.editWebinarYoutube);
+          startCreateWebinar();
         });
       });
 
-      document.querySelectorAll('[data-nav-webinar]').forEach(function (button) {
+      document.querySelectorAll('[data-cancel-webinar]').forEach(function (button) {
         button.addEventListener('click', function () {
-          const step = button.dataset.navWebinar === 'next' ? 1 : -1;
-          navigateWebinar(step);
+          cancelWebinar();
+        });
+      });
+
+      document.querySelectorAll('[data-reset-webinar-form]').forEach(function (button) {
+        button.addEventListener('click', function () {
+          resetWebinarForm();
+        });
+      });
+
+      document.querySelectorAll('[data-edit-webinar]').forEach(function (button) {
+        button.addEventListener('click', function () {
+          editWebinar(button.dataset.editWebinar);
+        });
+      });
+
+      document.querySelectorAll('[data-delete-webinar]').forEach(function (button) {
+        button.addEventListener('click', function () {
+          deleteWebinar(button.dataset.deleteWebinar);
         });
       });
 
@@ -1940,21 +2553,30 @@
           }
         });
 
-        proyectoFormEl.querySelector('[data-reset-form]')?.addEventListener('click', resetEditing);
+        proyectoFormEl.querySelectorAll('[data-cancel-proyecto], [data-reset-form]').forEach(function (btn) {
+          btn.addEventListener('click', cancelProyecto);
+        });
+        initImageUploadFields();
       }
 
-      const webinarYoutubeFormEl = document.getElementById('webinar-youtube-form');
-      if (webinarYoutubeFormEl) {
-        webinarYoutubeFormEl.addEventListener('submit', async function (event) {
+      const webinarFormEl = document.getElementById('webinar-form');
+      if (webinarFormEl) {
+        webinarFormEl.addEventListener('submit', async function (event) {
           event.preventDefault();
           try {
-            await saveWebinarYoutube(webinarYoutubeFormEl);
+            await saveWebinar(webinarFormEl);
           } catch (error) {
             alert(error.message);
           }
         });
 
-        webinarYoutubeFormEl.querySelector('[data-reset-form]')?.addEventListener('click', resetEditing);
+        webinarFormEl.querySelectorAll('[data-cancel-webinar]').forEach(function (btn) {
+          btn.addEventListener('click', cancelWebinar);
+        });
+        webinarFormEl.querySelectorAll('[data-reset-webinar-form]').forEach(function (btn) {
+          btn.addEventListener('click', resetWebinarForm);
+        });
+        initImageUploadFields();
       }
     }
 
@@ -1962,10 +2584,18 @@
       appState.view = view;
       appState.editingNoticiaId = null;
       appState.editingProyectoId = null;
-      appState.editingWebinarYoutubeId = null;
+      appState.editingWebinarId = null;
       if (view === 'noticias') {
         appState.noticiasViewMode = 'list';
         appState.noticiasPage = 1;
+      }
+      if (view === 'proyectos') {
+        appState.proyectosViewMode = 'list';
+        appState.proyectosPage = 1;
+      }
+      if (view === 'webinars') {
+        appState.webinarsMobileMode = 'list';
+        appState.editingWebinarId = null;
       }
       await loadData(view);
       renderView();
