@@ -303,24 +303,20 @@
     @media (max-width:1024px) {
 
       .sidebar {
-        position: relative !important;
-        width: 100%;
-        height: auto;
-        border-right: none;
-        border-bottom: 1px solid #e5e7eb;
+        display: none !important;
       }
 
       .content {
-        margin-left: 0;
+        margin-left: 0 !important;
         width: 100%;
-        padding: 20px;
+        padding: 18px;
       }
 
     }
 
     @media (max-width:768px) {
 
-      header {
+      .content > header {
         text-align: center;
       }
 
@@ -365,13 +361,83 @@
       }
 
     }
+
+    .line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
   </style>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 
 <body class="bg-slate-50 min-h-screen">
-  <div class="sidebar lg:fixed lg:inset-y-0 lg:left-0 bg-white border-r border-slate-100 p-6 overflow-y-auto">
+  <!-- Barra superior móvil (< 1024px) -->
+  <header class="lg:hidden sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 px-4 py-3 flex items-center justify-between shadow-xs">
+    <div class="flex items-center gap-2.5">
+      <img src="../activos/img_logos/logo-msi.png" alt="SEDIR" class="h-8 object-contain" />
+      <span class="text-xs uppercase tracking-[0.2em] font-bold text-slate-500">Panel Admin</span>
+    </div>
+    <button
+      type="button"
+      id="mobile-menu-btn"
+      aria-label="Desplegar opciones"
+      class="inline-flex items-center justify-center w-10 h-10 rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-100 hover:text-emerald-700 transition focus:outline-none focus:ring-2 focus:ring-emerald-500">
+      <span class="material-symbols-outlined text-2xl">menu</span>
+    </button>
+  </header>
+
+  <!-- Overlay y Menú lateral derecho desplegable para móvil -->
+  <div id="mobile-menu-overlay" class="lg:hidden fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-xs opacity-0 pointer-events-none transition-opacity duration-300"></div>
+
+  <aside id="mobile-menu-drawer" class="lg:hidden fixed inset-y-0 right-0 z-50 w-72 max-w-[85vw] bg-white shadow-2xl p-6 flex flex-col justify-between translate-x-full transition-transform duration-300 ease-in-out">
+    <div>
+      <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-5">
+        <img src="../activos/img_logos/logo-msi.png" alt="SEDIR" class="h-7 object-contain" />
+        <button
+          type="button"
+          id="mobile-menu-close"
+          aria-label="Cerrar menú"
+          class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 transition">
+          <span class="material-symbols-outlined text-xl">close</span>
+        </button>
+      </div>
+
+      <nav class="space-y-1.5 text-slate-700">
+        <a href="#" data-view="dashboard" class="nav-link flex items-center gap-3 py-3 px-3.5 rounded-xl hover:bg-slate-50 transition">
+          <span class="material-symbols-outlined text-xl">dashboard</span>
+          <span class="font-semibold text-sm">Dashboard</span>
+        </a>
+        <a href="#" data-view="noticias" class="nav-link flex items-center gap-3 py-3 px-3.5 rounded-xl hover:bg-slate-50 transition">
+          <span class="material-symbols-outlined text-xl">article</span>
+          <span class="font-semibold text-sm">Noticias</span>
+        </a>
+        <a href="#" data-view="proyectos" class="nav-link flex items-center gap-3 py-3 px-3.5 rounded-xl hover:bg-slate-50 transition">
+          <span class="material-symbols-outlined text-xl">folder_open</span>
+          <span class="font-semibold text-sm">Proyectos</span>
+        </a>
+        <a href="#" data-view="webinars" class="nav-link flex items-center gap-3 py-3 px-3.5 rounded-xl hover:bg-slate-50 transition">
+          <span class="material-symbols-outlined text-xl">smart_display</span>
+          <span class="font-semibold text-sm">Webinars</span>
+        </a>
+      </nav>
+    </div>
+
+    <div class="pt-5 border-t border-slate-100 space-y-3">
+      <div class="text-xs text-slate-500">
+        Sesión activa: <span class="session-user-label font-bold text-slate-800">-</span>
+      </div>
+      <a href="/paginas/login.html" class="logout-action inline-flex items-center gap-1.5 text-sm font-semibold text-red-600 hover:text-red-700">
+        <span class="material-symbols-outlined text-base">logout</span>
+        Cerrar sesión
+      </a>
+    </div>
+  </aside>
+
+  <!-- Sidebar desktop tradicional a la izquierda (>= 1024px) -->
+  <div class="sidebar hidden lg:block lg:fixed lg:inset-y-0 lg:left-0 bg-white border-r border-slate-100 p-6 overflow-y-auto">
     <div class="mb-5 text-center">
       <img src="../activos/img_logos/logo-msi.png" alt="SEDIR" class="h-12 object-contain mx-auto" />
       <p class="mt-3 text-xs uppercase tracking-[0.3em] text-slate-400">Panel admin</p>
@@ -384,9 +450,9 @@
     </nav>
     <div class="mt-8 pt-6 border-t border-slate-100 space-y-3">
       <div class="text-sm text-slate-500">
-        Sesión activa: <span id="session-user" class="font-semibold text-slate-700">-</span>
+        Sesión activa: <span class="session-user-label font-semibold text-slate-700" id="session-user">-</span>
       </div>
-      <a href="/paginas/login.html" id="logout-link" class="inline-flex text-sm font-semibold text-red-600">Cerrar
+      <a href="/paginas/login.html" class="logout-action inline-flex text-sm font-semibold text-red-600" id="logout-link">Cerrar
         sesión</a>
     </div>
   </div>
@@ -397,6 +463,27 @@
     </header>
     <div id="status-line" class="fixed top-6 right-6 z-50 opacity-0 pointer-events-none translate-y-[-8px] transition-all duration-300 bg-emerald-600 text-white text-sm font-semibold px-5 py-3 rounded-2xl shadow-xl">
       Listo para administrar contenido público
+    </div>
+
+    <!-- Modal de confirmación para eliminar -->
+    <div id="confirm-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-200">
+      <div id="confirm-modal-box" class="card bg-white w-full max-w-md p-6 sm:p-7 text-center rounded-3xl shadow-2xl scale-95 transition-transform duration-200">
+        <div class="w-14 h-14 rounded-full bg-red-50 text-red-600 flex items-center justify-center mx-auto mb-4 border border-red-100">
+          <span class="material-symbols-outlined text-2xl">delete_forever</span>
+        </div>
+        <h3 id="confirm-modal-title" class="text-xl font-bold text-slate-900">¿Eliminar noticia?</h3>
+        <p id="confirm-modal-text" class="text-sm text-slate-500 mt-1.5">Esta acción no se puede deshacer y el contenido se eliminará permanentemente.</p>
+        <div id="confirm-modal-item" class="p-3 my-4 bg-slate-50 border border-slate-100 rounded-2xl text-xs sm:text-sm font-semibold text-slate-800 text-left line-clamp-2"></div>
+        <div class="grid grid-cols-2 gap-3 pt-2">
+          <button type="button" id="confirm-modal-cancel" class="w-full py-2.5 px-4 rounded-full border border-slate-200 text-slate-700 font-semibold text-sm hover:bg-slate-50 transition">
+            Cancelar
+          </button>
+          <button type="button" id="confirm-modal-accept" class="w-full py-2.5 px-4 rounded-full bg-red-600 hover:bg-red-700 text-white font-semibold text-sm transition shadow-sm inline-flex items-center justify-center gap-1.5">
+            <span class="material-symbols-outlined text-base">delete</span>
+            <span>Eliminar</span>
+          </button>
+        </div>
+      </div>
     </div>
 
     <section id="main-content" class="space-y-6"></section>
@@ -415,12 +502,14 @@
       editingProyectoId: null,
       editingWebinarYoutubeId: null,
       authUser: null,
+      noticiasViewMode: 'list', // 'list' | 'form'
+      noticiasPage: 1,
+      noticiasPerPage: 10,
     };
 
     const content = document.getElementById('main-content');
     const statusLine = document.getElementById('status-line');
     const sessionUser = document.getElementById('session-user');
-    const navLinks = Array.from(document.querySelectorAll('[data-view]'));
 
     function getToken() {
       return localStorage.getItem(AUTH_TOKEN_KEY) || '';
@@ -432,11 +521,16 @@
     }
 
     function updateSessionUserLabel() {
-      sessionUser.textContent = appState.authUser?.nombre || appState.authUser?.email || 'admin';
+      const userLabel = appState.authUser?.nombre || appState.authUser?.email || 'admin';
+      document.querySelectorAll('.session-user-label, #session-user').forEach(function (el) {
+        el.textContent = userLabel;
+      });
     }
 
-    document.getElementById('logout-link').addEventListener('click', function () {
-      clearAuth();
+    document.querySelectorAll('.logout-action, #logout-link').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        clearAuth();
+      });
     });
 
     let statusTimeoutId = null;
@@ -646,10 +740,10 @@
             <p class="text-sm uppercase tracking-[0.24em] text-slate-400">Acciones rápidas</p>
             <h2 class="mt-1 text-xl font-bold text-slate-900">Gestión ágil</h2>
             <div class="mt-5 space-y-3">
-              <a href="#" data-view="noticias" class="nav-link block rounded-2xl bg-emerald-600 px-4 py-3 text-sm font-semibold text-white text-center hover:bg-emerald-700">
+              <a href="#" data-view="noticias" class="block rounded-2xl bg-emerald-600 px-4 py-3 text-sm font-semibold text-white text-center hover:bg-emerald-700 transition shadow-sm">
                 Gestionar noticias
               </a>
-              <a href="#" data-view="proyectos" class="nav-link block rounded-2xl bg-sky-600 px-4 py-3 text-sm font-semibold text-white text-center hover:bg-sky-700">
+              <a href="#" data-view="proyectos" class="block rounded-2xl bg-sky-600 px-4 py-3 text-sm font-semibold text-white text-center hover:bg-sky-700 transition shadow-sm">
                 Gestionar proyectos
               </a>
               <div class="rounded-2xl bg-slate-50 p-4">
@@ -707,8 +801,30 @@
         id_categoria_noticia: ''
       };
 
+      const isEditing = Boolean(model && model.id);
+
       return `
     <input type="hidden" name="id" value="${escapeHtml(data.id || '')}" />
+
+    <div class="flex items-center justify-between gap-3 pb-4 mb-4 border-b border-slate-100">
+      <div class="flex items-center gap-2.5">
+        <button type="button" data-cancel-noticia class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 transition" title="Volver a la lista">
+          <span class="material-symbols-outlined text-lg">arrow_back</span>
+        </button>
+        <div>
+          <h3 class="text-xl font-bold text-slate-900 leading-tight">
+            ${isEditing ? 'Editar Noticia' : 'Crear Nueva Noticia'}
+          </h3>
+          <p class="text-xs text-slate-500">
+            ${isEditing ? `Modificando noticia ID #${escapeHtml(data.id)}` : 'Completa los campos para publicar una nueva noticia'}
+          </p>
+        </div>
+      </div>
+      <button type="button" data-cancel-noticia class="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 hover:text-slate-900 px-3.5 py-1.5 rounded-full border border-slate-200 hover:bg-slate-50 transition">
+        <span class="material-symbols-outlined text-sm">arrow_back</span>
+        <span>Volver a la lista</span>
+      </button>
+    </div>
 
     <div>
       <label class="text-sm font-semibold text-slate-600">
@@ -828,17 +944,18 @@
       </select>
     </div>
 
-    <div class="flex flex-wrap gap-3 pt-2">
+    <div class="flex flex-wrap items-center gap-3 pt-4 border-t border-slate-100">
       <button
-        class="btn-primary rounded-full px-5 py-3 font-semibold"
+        class="btn-primary rounded-full px-6 py-3 font-semibold text-sm inline-flex items-center justify-center gap-2 shadow-sm transition"
         type="submit">
-        ${model ? 'Actualizar noticia' : 'Crear noticia'}
+        <span class="material-symbols-outlined text-lg">${isEditing ? 'check_circle' : 'publish'}</span>
+        ${isEditing ? 'Actualizar noticia' : 'Crear noticia'}
       </button>
 
-      ${model
-          ? '<button type="button" data-reset-form class="rounded-full px-5 py-3 font-semibold border border-slate-200">Cancelar</button>'
-          : ''
-        }
+      <button type="button" data-cancel-noticia class="rounded-full px-5 py-3 font-semibold text-sm border border-slate-200 text-slate-700 hover:bg-slate-50 transition inline-flex items-center gap-1.5">
+        <span class="material-symbols-outlined text-base">close</span>
+        Cancelar y volver
+      </button>
     </div>
   `;
     }
@@ -921,29 +1038,149 @@
       `;
     }
 
-    function noticiasRows() {
-      if (!appState.noticias.length) {
+    function getCategoriaLabel(item) {
+      if (item.nombre_categoria) return item.nombre_categoria;
+      const map = {
+        '1': 'Agricultura',
+        '2': 'Capacitación',
+        '3': 'Proyectos',
+        '4': 'Institucional',
+        '5': 'Eventos',
+      };
+      return map[String(item.id_categoria_noticia)] || 'General';
+    }
+
+    function noticiasCards(items) {
+      if (!items || !items.length) {
+        return '<div class="py-12 text-center text-slate-400 bg-white rounded-2xl border border-slate-100">No hay noticias para mostrar</div>';
+      }
+
+      return items.map(function (item) {
+        const isEditing = String(appState.editingNoticiaId) === String(item.id);
+        return `
+          <div class="card p-4 bg-white border border-slate-100 rounded-2xl shadow-sm transition ${isEditing ? 'ring-2 ring-emerald-500 bg-emerald-50/40' : ''}">
+            <div class="flex items-center justify-between gap-2 mb-2">
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-100">
+                ${escapeHtml(getCategoriaLabel(item))}
+              </span>
+              <span class="text-xs text-slate-500 whitespace-nowrap">${formatDate(item.fecha)}</span>
+            </div>
+            <h3 class="font-bold text-slate-900 text-base leading-snug line-clamp-2 mb-1.5">${escapeHtml(item.titulo)}</h3>
+            <p class="text-xs text-slate-500 line-clamp-2 mb-3.5">${escapeHtml(stripHtml(item.contenido || ''))}</p>
+            <div class="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100">
+              <button type="button" class="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl border border-emerald-600/30 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 text-xs font-bold transition" data-edit-noticia="${item.id}">
+                <span class="material-symbols-outlined text-base">edit</span>
+                Editar
+              </button>
+              <button type="button" class="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-red-50 hover:bg-red-100 text-red-600 border border-red-200/60 text-xs font-bold transition" data-delete-noticia="${item.id}">
+                <span class="material-symbols-outlined text-base">delete</span>
+                Eliminar
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function noticiasRows(items) {
+      if (!items || !items.length) {
         return '<tr><td colspan="4" class="py-14 text-center text-slate-400">No hay noticias registradas</td></tr>';
       }
 
-      return appState.noticias.map(function (item) {
+      return items.map(function (item) {
+        const isEditing = String(appState.editingNoticiaId) === String(item.id);
         return `
-          <tr class="border-b border-slate-100 align-top">
+          <tr class="border-b border-slate-100 align-top ${isEditing ? 'bg-emerald-50/50' : 'hover:bg-slate-50/60'} transition">
             <td class="py-4 pr-4">
-              <div class="font-semibold text-slate-900">${escapeHtml(item.titulo)}</div>
-              <div class="text-xs text-slate-500 max-w-xl">${escapeHtml(stripHtml(item.contenido).slice(0, 110))}</div>
+              <div class="font-semibold text-slate-900 line-clamp-2">${escapeHtml(item.titulo)}</div>
+              <div class="text-xs text-slate-500 max-w-xl line-clamp-2 mt-0.5">${escapeHtml(stripHtml(item.contenido || ''))}</div>
             </td>
-            <td class="py-4 pr-4 whitespace-nowrap">${formatDate(item.fecha)}</td>
-            <td class="py-4 pr-4">${escapeHtml(item.nombre_categoria || item.id_categoria_noticia)}</td>
+            <td class="py-4 pr-4 whitespace-nowrap text-sm text-slate-600">${formatDate(item.fecha)}</td>
             <td class="py-4 pr-4">
-              <div class="flex gap-2">
-                <button class="px-3 py-1.5 rounded-full border border-slate-200 text-sm font-semibold" data-edit-noticia="${item.id}">Editar</button>
-                <button class="px-3 py-1.5 rounded-full bg-red-600 text-white text-sm font-semibold" data-delete-noticia="${item.id}">Eliminar</button>
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-100">
+                ${escapeHtml(getCategoriaLabel(item))}
+              </span>
+            </td>
+            <td class="py-4 pr-4">
+              <div class="flex items-center gap-2">
+                <button class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full border border-slate-200 hover:border-emerald-500 hover:text-emerald-700 text-slate-700 text-xs font-semibold transition" data-edit-noticia="${item.id}">
+                  <span class="material-symbols-outlined text-sm">edit</span> Editar
+                </button>
+                <button class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-red-600 hover:bg-red-700 text-white text-xs font-semibold transition" data-delete-noticia="${item.id}">
+                  <span class="material-symbols-outlined text-sm">delete</span> Eliminar
+                </button>
               </div>
             </td>
           </tr>
         `;
       }).join('');
+    }
+
+    function noticiasPagination(totalItems, currentPage, perPage) {
+      if (totalItems <= perPage) return '';
+
+      const totalPages = Math.max(1, Math.ceil(totalItems / perPage));
+      const start = (currentPage - 1) * perPage + 1;
+      const end = Math.min(totalItems, currentPage * perPage);
+
+      const isFirst = currentPage <= 1;
+      const isLast = currentPage >= totalPages;
+
+      const delta = 1;
+      const range = [];
+      for (let i = Math.max(2, currentPage - delta); i <= Math.min(totalPages - 1, currentPage + delta); i++) {
+        range.push(i);
+      }
+
+      if (currentPage - delta > 2) {
+        range.unshift('...');
+      }
+      if (currentPage + delta < totalPages - 1) {
+        range.push('...');
+      }
+
+      range.unshift(1);
+      if (totalPages > 1) {
+        range.push(totalPages);
+      }
+
+      const pagesHtml = range.map(function (p) {
+        if (p === '...') {
+          return '<span class="px-2 py-1 text-xs text-slate-400">...</span>';
+        }
+        const active = p === currentPage;
+        return `
+          <button type="button" data-noticia-page="${p}" class="w-8 h-8 rounded-full text-xs font-semibold flex items-center justify-center transition ${active ? 'bg-emerald-600 text-white shadow-sm' : 'border border-slate-200 text-slate-600 hover:bg-slate-50'}">
+            ${p}
+          </button>
+        `;
+      }).join('');
+
+      return `
+        <div class="mt-6 pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm">
+          <div class="text-xs text-slate-500 font-medium text-center sm:text-left">
+            Mostrando <span class="font-bold text-slate-700">${start}</span> a <span class="font-bold text-slate-700">${end}</span> de <span class="font-bold text-slate-700">${totalItems}</span> noticias
+          </div>
+          <div class="flex items-center gap-1.5">
+            <button type="button" data-noticia-page="prev" ${isFirst ? 'disabled' : ''} class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full border border-slate-200 text-xs font-semibold text-slate-700 hover:bg-slate-50 disabled:opacity-30 disabled:cursor-not-allowed transition">
+              <span class="material-symbols-outlined text-sm">arrow_back</span>
+              <span class="hidden xs:inline">Anterior</span>
+            </button>
+            
+            <div class="hidden sm:flex items-center gap-1">
+              ${pagesHtml}
+            </div>
+            <div class="sm:hidden text-xs font-bold text-slate-700 px-2">
+              Pág. ${currentPage} de ${totalPages}
+            </div>
+
+            <button type="button" data-noticia-page="next" ${isLast ? 'disabled' : ''} class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full border border-slate-200 text-xs font-semibold text-slate-700 hover:bg-slate-50 disabled:opacity-30 disabled:cursor-not-allowed transition">
+              <span class="hidden xs:inline">Siguiente</span>
+              <span class="material-symbols-outlined text-sm">arrow_forward</span>
+            </button>
+          </div>
+        </div>
+      `;
     }
 
     function proyectosRows() {
@@ -1005,7 +1242,7 @@
     }
 
     function renderView() {
-      navLinks.forEach(function (link) {
+      document.querySelectorAll('.nav-link[data-view]').forEach(function (link) {
         link.classList.toggle('active', link.dataset.view === appState.view);
       });
 
@@ -1015,36 +1252,75 @@
       }
 
       if (appState.view === 'noticias') {
-        content.innerHTML = `
-          <section class="grid gap-6 xl:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
-            <div class="card bg-white p-6 md:p-7">
-              <div class="flex items-start justify-between gap-4 mb-5">
-                <div>
-                  <h2 class="text-2xl font-bold text-slate-900">Noticias</h2>
-                  <p class="text-slate-500 mt-1">Gestiona el contenido de la página pública de noticias.</p>
+        const totalNoticias = appState.noticias.length;
+        const totalPages = Math.max(1, Math.ceil(totalNoticias / appState.noticiasPerPage));
+        if (appState.noticiasPage > totalPages) {
+          appState.noticiasPage = totalPages;
+        }
+        const startIndex = (appState.noticiasPage - 1) * appState.noticiasPerPage;
+        const endIndex = startIndex + appState.noticiasPerPage;
+        const paginatedNoticias = appState.noticias.slice(startIndex, endIndex);
+
+        const isFormMode = appState.noticiasViewMode === 'form';
+        const editingItem = appState.editingNoticiaId
+          ? appState.noticias.find((item) => String(item.id) === String(appState.editingNoticiaId))
+          : null;
+
+        content.innerHTML = isFormMode
+          ? `
+            <section class="w-full">
+              <!-- Editor de Noticias a ancho completo -->
+              <div id="noticias-editor-card" class="card bg-white p-5 md:p-8">
+                <form id="noticia-form" class="space-y-4" novalidate>
+                  ${noticiaForm(editingItem)}
+                </form>
+              </div>
+            </section>
+          `
+          : `
+            <section class="w-full">
+              <!-- Lista de Noticias a ancho completo (sin columna de editor a la derecha) -->
+              <div id="noticias-list-card" class="card bg-white p-5 md:p-7">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-5">
+                  <div>
+                    <h2 class="text-2xl font-bold text-slate-900">Noticias</h2>
+                    <p class="text-slate-500 text-sm mt-1">Gestiona el contenido de la página pública (${totalNoticias} noticias registradas).</p>
+                  </div>
+                  <button
+                    type="button"
+                    id="btn-crear-noticia"
+                    data-create-noticia
+                    class="btn-primary rounded-full px-5 py-2.5 font-semibold text-sm inline-flex items-center justify-center gap-2 shadow-sm transition hover:shadow-md self-start sm:self-auto w-full sm:w-auto">
+                    <span class="material-symbols-outlined text-lg">add_circle</span>
+                    Crear una noticia
+                  </button>
                 </div>
+
+                <!-- Vista móvil: Cards sin desbordamiento horizontal -->
+                <div class="md:hidden space-y-3">
+                  ${noticiasCards(paginatedNoticias)}
+                </div>
+
+                <!-- Vista tablet/desktop: Tabla estructurada con ancho completo -->
+                <div class="hidden md:block overflow-x-auto">
+                  <table class="w-full text-left">
+                    <thead class="text-xs uppercase tracking-wider text-slate-400 border-b border-slate-200">
+                      <tr>
+                        <th class="py-3 pr-4">Título</th>
+                        <th class="py-3 pr-4">Fecha</th>
+                        <th class="py-3 pr-4">Categoría</th>
+                        <th class="py-3 pr-4">Acciones</th>
+                      </tr>
+                    </thead>
+                    <tbody class="text-slate-700">${noticiasRows(paginatedNoticias)}</tbody>
+                  </table>
+                </div>
+
+                <!-- Paginación -->
+                ${noticiasPagination(totalNoticias, appState.noticiasPage, appState.noticiasPerPage)}
               </div>
-              <div class="overflow-x-auto">
-                <table class="w-full text-left">
-                  <thead class="text-xs uppercase tracking-wider text-slate-400 border-b border-slate-200">
-                    <tr>
-                      <th class="py-3 pr-4">Título</th>
-                      <th class="py-3 pr-4">Fecha</th>
-                      <th class="py-3 pr-4">Categoría</th>
-                      <th class="py-3 pr-4">Acciones</th>
-                    </tr>
-                  </thead>
-                  <tbody class="text-slate-700">${noticiasRows()}</tbody>
-                </table>
-              </div>
-            </div>
-            <div class="card bg-white p-6 md:p-7">
-              <form id="noticia-form" class="space-y-4" novalidate>
-                ${noticiaForm(appState.editingNoticiaId ? appState.noticias.find((item) => String(item.id) === String(appState.editingNoticiaId)) : null)}
-              </form>
-            </div>
-          </section>
-        `;
+            </section>
+          `;
         return;
       }
 
@@ -1162,6 +1438,7 @@
       appState.editingNoticiaId = null;
       appState.editingProyectoId = null;
       appState.editingWebinarYoutubeId = null;
+      appState.noticiasViewMode = 'list';
       rerenderPreservingScroll();
     }
 
@@ -1171,6 +1448,7 @@
         throw new Error('Todos los campos de noticia son obligatorios');
       }
 
+      const isNew = !data.id;
       const endpoint = data.id ? `/api/noticias/${data.id}` : '/api/noticias';
       const method = data.id ? 'PUT' : 'POST';
       delete data.id;
@@ -1182,9 +1460,17 @@
 
       await loadNoticias();
       appState.editingNoticiaId = null;
+      appState.noticiasViewMode = 'list';
+      if (isNew) {
+        appState.noticiasPage = 1;
+      }
       renderView();
       bindEvents();
-      setStatus('Noticia guardada');
+      setStatus(isNew ? 'Noticia creada con éxito' : 'Noticia guardada');
+      const listCard = document.getElementById('noticias-list-card');
+      if (listCard) {
+        listCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
 
     async function saveProyecto(form) {
@@ -1226,30 +1512,177 @@
       setStatus('Enlace de YouTube guardado');
     }
 
-    async function deleteNoticia(id) {
-      if (!confirm('¿Eliminar esta noticia?')) return;
-      await requestJson(`/api/noticias/${id}`, { method: 'DELETE' });
-      await loadNoticias();
-      renderView();
-      bindEvents();
-      setStatus('Noticia eliminada');
+    function showConfirmModal({ title, text, itemText, confirmText, onConfirm }) {
+      const modal = document.getElementById('confirm-modal');
+      const box = document.getElementById('confirm-modal-box');
+      const titleEl = document.getElementById('confirm-modal-title');
+      const textEl = document.getElementById('confirm-modal-text');
+      const itemEl = document.getElementById('confirm-modal-item');
+      const cancelBtn = document.getElementById('confirm-modal-cancel');
+      const acceptBtn = document.getElementById('confirm-modal-accept');
+
+      if (!modal || !box) return;
+
+      titleEl.textContent = title || '¿Confirmar eliminación?';
+      textEl.textContent = text || 'Esta acción no se puede deshacer.';
+      if (itemText) {
+        itemEl.textContent = itemText;
+        itemEl.classList.remove('hidden');
+      } else {
+        itemEl.classList.add('hidden');
+      }
+
+      const labelSpan = acceptBtn.querySelector('span:last-child');
+      labelSpan.textContent = confirmText || 'Eliminar';
+      acceptBtn.disabled = false;
+
+      function closeModal() {
+        modal.classList.add('opacity-0', 'pointer-events-none');
+        box.classList.add('scale-95');
+        box.classList.remove('scale-100');
+        cleanup();
+      }
+
+      async function handleConfirm() {
+        acceptBtn.disabled = true;
+        labelSpan.textContent = 'Eliminando...';
+        try {
+          await onConfirm();
+          closeModal();
+        } catch (error) {
+          alert(error.message || 'Error al eliminar');
+          acceptBtn.disabled = false;
+          labelSpan.textContent = confirmText || 'Eliminar';
+        }
+      }
+
+      function handleKeydown(e) {
+        if (e.key === 'Escape') closeModal();
+      }
+
+      function handleBackdrop(e) {
+        if (e.target === modal) closeModal();
+      }
+
+      function cleanup() {
+        cancelBtn.removeEventListener('click', closeModal);
+        acceptBtn.removeEventListener('click', handleConfirm);
+        document.removeEventListener('keydown', handleKeydown);
+        modal.removeEventListener('click', handleBackdrop);
+      }
+
+      cancelBtn.addEventListener('click', closeModal);
+      acceptBtn.addEventListener('click', handleConfirm);
+      document.addEventListener('keydown', handleKeydown);
+      modal.addEventListener('click', handleBackdrop);
+
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      box.classList.remove('scale-95');
+      box.classList.add('scale-100');
     }
 
-    async function deleteProyecto(id) {
-      if (!confirm('¿Eliminar este proyecto?')) return;
-      await requestJson(`/api/proyectos/${id}`, { method: 'DELETE' });
-      await loadProyectos();
-      renderView();
-      bindEvents();
-      setStatus('Proyecto eliminado');
+    function deleteNoticia(id) {
+      const noticia = appState.noticias.find((item) => String(item.id) === String(id));
+      const itemTitle = noticia ? noticia.titulo : `Noticia #${id}`;
+
+      showConfirmModal({
+        title: '¿Eliminar noticia?',
+        text: 'La noticia será eliminada permanentemente del portal web.',
+        itemText: itemTitle,
+        confirmText: 'Sí, eliminar',
+        onConfirm: async function () {
+          await requestJson(`/api/noticias/${id}`, { method: 'DELETE' });
+          await loadNoticias();
+          const totalPages = Math.max(1, Math.ceil(appState.noticias.length / appState.noticiasPerPage));
+          if (appState.noticiasPage > totalPages) {
+            appState.noticiasPage = totalPages;
+          }
+          renderView();
+          bindEvents();
+          setStatus('Noticia eliminada con éxito');
+        },
+      });
+    }
+
+    function deleteProyecto(id) {
+      const proyecto = appState.proyectos.find((item) => String(item.id) === String(id));
+      const itemTitle = proyecto ? proyecto.nombre : `Proyecto #${id}`;
+
+      showConfirmModal({
+        title: '¿Eliminar proyecto?',
+        text: 'El proyecto será eliminado permanentemente del sistema.',
+        itemText: itemTitle,
+        confirmText: 'Sí, eliminar',
+        onConfirm: async function () {
+          await requestJson(`/api/proyectos/${id}`, { method: 'DELETE' });
+          await loadProyectos();
+          renderView();
+          bindEvents();
+          setStatus('Proyecto eliminado con éxito');
+        },
+      });
     }
 
     function editNoticia(id) {
       appState.view = 'noticias';
       appState.editingNoticiaId = id;
+      appState.noticiasViewMode = 'form';
       renderView();
       bindEvents();
       setStatus('Editando noticia');
+      const editorCard = document.getElementById('noticias-editor-card');
+      if (editorCard) {
+        editorCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const firstInput = editorCard.querySelector('input[name="titulo"]');
+        if (firstInput) firstInput.focus();
+      }
+    }
+
+    function startCreateNoticia() {
+      appState.view = 'noticias';
+      appState.editingNoticiaId = null;
+      appState.noticiasViewMode = 'form';
+      renderView();
+      bindEvents();
+      setStatus('Creando nueva noticia');
+      const editorCard = document.getElementById('noticias-editor-card');
+      if (editorCard) {
+        editorCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const firstInput = editorCard.querySelector('input[name="titulo"]');
+        if (firstInput) firstInput.focus();
+      }
+    }
+
+    function cancelNoticia() {
+      appState.editingNoticiaId = null;
+      appState.noticiasViewMode = 'list';
+      renderView();
+      bindEvents();
+      setStatus('Edición cancelada');
+      const listCard = document.getElementById('noticias-list-card');
+      if (listCard) {
+        listCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function setNoticiaPage(pageTarget) {
+      const totalPages = Math.max(1, Math.ceil(appState.noticias.length / appState.noticiasPerPage));
+      if (pageTarget === 'prev') {
+        appState.noticiasPage = Math.max(1, appState.noticiasPage - 1);
+      } else if (pageTarget === 'next') {
+        appState.noticiasPage = Math.min(totalPages, appState.noticiasPage + 1);
+      } else {
+        const parsed = Number(pageTarget);
+        if (!isNaN(parsed) && parsed >= 1 && parsed <= totalPages) {
+          appState.noticiasPage = parsed;
+        }
+      }
+      renderView();
+      bindEvents();
+      const listCard = document.getElementById('noticias-list-card');
+      if (listCard) {
+        listCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
 
     function editProyecto(id) {
@@ -1425,6 +1858,24 @@
     }
 
     function bindEvents() {
+      document.querySelectorAll('[data-create-noticia]').forEach(function (button) {
+        button.addEventListener('click', function () {
+          startCreateNoticia();
+        });
+      });
+
+      document.querySelectorAll('[data-cancel-noticia]').forEach(function (button) {
+        button.addEventListener('click', function () {
+          cancelNoticia();
+        });
+      });
+
+      document.querySelectorAll('[data-noticia-page]').forEach(function (button) {
+        button.addEventListener('click', function () {
+          setNoticiaPage(button.dataset.noticiaPage);
+        });
+      });
+
       document.querySelectorAll('[data-edit-noticia]').forEach(function (button) {
         button.addEventListener('click', function () {
           editNoticia(button.dataset.editNoticia);
@@ -1473,7 +1924,7 @@
           }
         });
 
-        noticiaFormEl.querySelector('[data-reset-form]')?.addEventListener('click', resetEditing);
+        noticiaFormEl.querySelector('[data-reset-form]')?.addEventListener('click', cancelNoticia);
         initRichTextEditor();
         initImageUploadFields();
       }
@@ -1512,16 +1963,74 @@
       appState.editingNoticiaId = null;
       appState.editingProyectoId = null;
       appState.editingWebinarYoutubeId = null;
+      if (view === 'noticias') {
+        appState.noticiasViewMode = 'list';
+        appState.noticiasPage = 1;
+      }
       await loadData(view);
       renderView();
       bindEvents();
     }
 
-    navLinks.forEach(function (link) {
-      link.addEventListener('click', async function (event) {
+    function openMobileMenu() {
+      const drawer = document.getElementById('mobile-menu-drawer');
+      const overlay = document.getElementById('mobile-menu-overlay');
+      if (drawer) {
+        drawer.classList.remove('translate-x-full');
+        drawer.classList.add('translate-x-0');
+      }
+      if (overlay) {
+        overlay.classList.remove('opacity-0', 'pointer-events-none');
+        overlay.classList.add('opacity-100', 'pointer-events-auto');
+      }
+      document.body.classList.add('overflow-hidden', 'lg:overflow-auto');
+    }
+
+    function closeMobileMenu() {
+      const drawer = document.getElementById('mobile-menu-drawer');
+      const overlay = document.getElementById('mobile-menu-overlay');
+      if (drawer) {
+        drawer.classList.remove('translate-x-0');
+        drawer.classList.add('translate-x-full');
+      }
+      if (overlay) {
+        overlay.classList.remove('opacity-100', 'pointer-events-auto');
+        overlay.classList.add('opacity-0', 'pointer-events-none');
+      }
+      document.body.classList.remove('overflow-hidden', 'lg:overflow-auto');
+    }
+
+    document.addEventListener('click', async function (event) {
+      if (event.target.closest('#mobile-menu-btn')) {
         event.preventDefault();
-        await loadView(link.dataset.view);
-      });
+        openMobileMenu();
+        return;
+      }
+
+      if (event.target.closest('#mobile-menu-close') || event.target.closest('#mobile-menu-overlay')) {
+        event.preventDefault();
+        closeMobileMenu();
+        return;
+      }
+
+      const logoutAction = event.target.closest('.logout-action, #logout-link');
+      if (logoutAction) {
+        event.preventDefault();
+        clearAuth();
+        return;
+      }
+
+      const link = event.target.closest('[data-view]');
+      if (!link) return;
+      event.preventDefault();
+      closeMobileMenu();
+      await loadView(link.dataset.view);
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        closeMobileMenu();
+      }
     });
 
     (async function init() {
