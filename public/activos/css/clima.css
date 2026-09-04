@@ -15,7 +15,20 @@ body.clima-page {
   border: 1px solid #e5e7eb; /* gray-200 */
   border-radius: 0.75rem; /* rounded-xl */
   padding: 1.25rem;
+  min-width: 0;
+  overflow: hidden;
   transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.tremor-card svg,
+.tremor-card canvas {
+  max-width: 100%;
+}
+
+@media (max-width: 640px) {
+  .tremor-card {
+    padding: 1rem;
+  }
 }
 .tremor-card:hover {
   box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);

@@ -127,7 +127,7 @@
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-20">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16 space-y-20">
 
         <!-- BEGIN: Asesoría y Gestión Section -->
         <section>
@@ -138,8 +138,8 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Card 1 -->
                 <div
-                    class="bg-white rounded-3xl shadow-sm overflow-hidden border border-gray-200/80 flex flex-col transition-shadow duration-300 hover:shadow-md">
-                    <img alt="Asesoría Agrícola" class="w-full h-64 object-cover"
+                    class="bg-white rounded-3xl shadow-sm overflow-hidden border border-gray-200/80 flex flex-col h-full transition-shadow duration-300 hover:shadow-md">
+                    <img alt="Asesoría Agrícola" class="w-full h-56 object-cover"
                         src="/activos/img_servicios/Asesoría Agrícola.JPG (2).jpeg">
                     <div class="p-8 flex-grow flex flex-col justify-between">
                         <div>
@@ -161,8 +161,8 @@
 
                 <!-- Card 2 -->
                 <div
-                    class="bg-white rounded-3xl shadow-sm overflow-hidden border border-gray-200/80 flex flex-col transition-shadow duration-300 hover:shadow-md">
-                    <img alt="Planes de Fertilización" class="w-full h-64 object-cover"
+                    class="bg-white rounded-3xl shadow-sm overflow-hidden border border-gray-200/80 flex flex-col h-full transition-shadow duration-300 hover:shadow-md">
+                    <img alt="Planes de Fertilización" class="w-full h-56 object-cover"
                         src="../activos/img_servicios/AsistenciaTecnica-fertiliz01.jpg">
                     <div class="p-8 flex-grow flex flex-col justify-between">
                         <div>
@@ -183,8 +183,8 @@
 
                 <!-- Card 4 -->
                 <div
-                    class="bg-white rounded-3xl shadow-sm overflow-hidden border border-gray-200/80 flex flex-col transition-shadow duration-300 hover:shadow-md">
-                    <img alt="Asesoría en Apicultura" class="w-full h-64 object-cover"
+                    class="bg-white rounded-3xl shadow-sm overflow-hidden border border-gray-200/80 flex flex-col h-full transition-shadow duration-300 hover:shadow-md">
+                    <img alt="Asesoría en Apicultura" class="w-full h-56 object-cover"
                         src="/activos/img_servicios/P2310113.JPG.jpeg">
                     <div class="p-8 flex-grow flex flex-col justify-between">
                         <div>
@@ -210,7 +210,7 @@
             class="bg-[#F5FAF8] -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-16 rounded-3xl border border-green-100">
             <div class="max-w-7xl mx-auto">
                 <div class="flex items-center mb-8 border-b border-green-200 pb-3">
-                    <h2 class="text-2xl font-bold text-primary font-display">Sanidad y Protección</h2>
+                    <h2 class="text-2xl font-bold text-primary font-display">Investigación y Laboratorio</h2>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -270,7 +270,7 @@
                 <h2 class="text-2xl font-bold text-primary font-display">Técnicas de Cultivo</h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Card 1 -->
                 <div
                     class="bg-white rounded-3xl shadow-sm overflow-hidden border border-gray-200/80 flex flex-col h-full transition-shadow duration-300 hover:shadow-md">
@@ -352,6 +352,16 @@
                 .hide-scrollbar {
                     -ms-overflow-style: none;
                     scrollbar-width: none;
+                }
+
+                #investigation-gallery>div {
+                    width: 220px;
+                }
+
+                @media (min-width: 768px) {
+                    #investigation-gallery>div {
+                        width: 260px;
+                    }
                 }
             </style>
 
@@ -572,27 +582,86 @@
                     </div>
                 </div>
             </div>
+<!-- ==========================================
+     MODAL LIGHTBOX - IMAGEN AMPLIADA
+========================================== -->
 
-            <!-- Modal (Lightbox) Estructura Oculta -->
-            <div id="image-modal" class="fixed inset-0 z-[100] hidden items-center justify-center">
-                <!-- Fondo oscuro -->
-                <div class="absolute inset-0 bg-black/90 backdrop-blur-sm cursor-pointer" onclick="closeImageModal()">
-                </div>
+<div id="image-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
 
-                <!-- Botón cerrar -->
-                <button onclick="closeImageModal()"
-                    class="absolute top-6 right-6 text-white/70 hover:text-white transition-colors text-4xl z-10 cursor-pointer">
-                    <i class="fas fa-times"></i>
-                </button>
+    <!-- Fondo oscuro -->
+    <div
+        class="absolute inset-0 bg-black/90 backdrop-blur-sm cursor-pointer"
+        onclick="closeImageModal()">
+    </div>
 
-                <!-- Contenedor de la Imagen -->
-                <div class="relative z-10 p-4 max-w-5xl w-full flex justify-center opacity-0 scale-95 transition-all duration-300"
-                    id="modal-content">
-                    <img id="modal-image" src="" alt="Vista ampliada"
-                        class="max-w-full max-h-[85vh] object-contain rounded-xl shadow-2xl border border-white/10">
-                </div>
-            </div>
 
+    <!-- ==========================================
+         CONTENEDOR PRINCIPAL DE LA IMAGEN
+    =========================================== -->
+    <div
+        id="modal-content"
+        class="relative z-10
+               w-full max-w-4xl
+               flex justify-center items-center
+               p-2 sm:p-4
+               mt-8 sm:mt-10
+               opacity-0 scale-95
+               transition-all duration-300">
+
+
+        <!-- ==========================================
+             IMAGEN AMPLIADA
+        =========================================== -->
+        <div class="relative inline-block">
+
+            <img
+                id="modal-image"
+                src=""
+                alt="Vista ampliada"
+                class="block
+                       max-w-full
+                       max-h-[70vh]
+                       sm:max-h-[75vh]
+                       w-auto
+                       h-auto
+                       object-contain
+                       rounded-xl
+                       shadow-2xl
+                       border border-white/10">
+
+
+            <!-- ==========================================
+                 BOTÓN X DENTRO DE LA IMAGEN
+            =========================================== -->
+            <button
+                type="button"
+                onclick="closeImageModal()"
+                aria-label="Cerrar imagen"
+                class="absolute
+                       top-2 right-2
+                       sm:top-3 sm:right-3
+                       w-9 h-9
+                       sm:w-10 sm:h-10
+                       flex items-center justify-center
+                       rounded-full
+                       bg-black/60
+                       text-white
+                       text-xl sm:text-2xl
+                       hover:bg-black/80
+                       hover:scale-110
+                       transition-all duration-200
+                       z-20
+                       cursor-pointer">
+
+                <i class="fas fa-times"></i>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
             <!-- Script de lógica para Carrusel y Modal -->
             <script>
                 function scrollGallery(direction) {

@@ -145,11 +145,15 @@
   margin-left: -35px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1023px) {
   .navbar-logo-pill {
     margin-left: -12px;
     padding-top: 18px;
   }
+}
+
+.navbar-drawer {
+  width: min(280px, 88vw);
 }
 
 .navbar-logo {
@@ -226,7 +230,7 @@
 /* ==========================================
    7. RESPONSIVE MÓVIL Y TABLET (NAVBAR)
 ========================================== */
-@media (max-width: 768px) {
+@media (max-width: 1023px) {
   .navbar-shell {
     height: 90px;
     padding: 0 16px;
@@ -287,5 +291,26 @@
   #mobile-menu .navbar-link[aria-current="page"] {
     color: var(--color-acento-naranja) !important;
     font-weight: 700;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1023px) {
+  .navbar-shell {
+    height: 116px;
+    padding: 0 24px;
+  }
+
+  .navbar-shell.is-scrolled {
+    height: 96px;
+  }
+
+  .navbar-logo {
+    height: 78px;
+    max-height: 78px;
+  }
+
+  .navbar-burger {
+    width: 62px;
+    height: 62px;
   }
 }

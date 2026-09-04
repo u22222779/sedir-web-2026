@@ -122,18 +122,20 @@
     </div>
   </header>
   <!-- BEGIN: Main Page Content -->
-  <main class="space-y-16 py-16">
+  <main class="space-y-0 pt-0 pb-0">
     <!-- ================= SECTION 1: CARRUSEL DE PRODUCTOS POR CATEGORÍA ================= -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="border-b border-gray-200 pb-4 mb-10">
-        <h1 class="text-2xl md:text-3xl font-bold text-ink mb-2 font-display">Línea Alimentos</h1>
-        <p class="text-gray-600 text-sm md:text-base font-body">Productos naturales procesados bajo estrictos controles
-          de calidad e inocuidad, organizados por categoría.</p>
+    <section class="bg-[#F5FAF8] py-14">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="border-b border-green-200 pb-5 mb-10">
+          <h1 class="text-2xl md:text-3xl font-bold text-ink mb-2 font-display">Línea Alimentos</h1>
+          <p class="text-gray-600 text-sm md:text-base font-body max-w-3xl">Productos naturales procesados bajo estrictos controles
+            de calidad e inocuidad, organizados por categoría.</p>
+        </div>
+        <div id="carrusel-productos-container" data-component="/components/carrusel-productos.html"></div>
       </div>
-      <div id="carrusel-productos-container" data-component="/components/carrusel-productos.html"></div>
     </section>
     <!-- ================= SECTION 2: LÍNEA NO ALIMENTOS E INSUMOS ================= -->
-    <section class="bg-gray-50 border-t border-gray-200 py-16">
+    <section class="bg-gray-50 py-16">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <!-- Section Header -->
@@ -193,7 +195,7 @@
                 </p>
 
                 <a href="../activos/docs/Ficha Técnica_Palta_SEDIR.pdf"
-                  class="inline-flex items-center mt-4 text-sm font-semibold text-[#00733F] hover:text-[#F09734] transition-colors">
+                  class="inline-flex items-center mt-4 px-4 py-2 text-sm font-semibold text-white bg-[#00944A] hover:bg-[#006A49] rounded-full transition-colors">
                   Consultar ficha técnica
                   <i class="fas fa-arrow-right ml-2 text-xs"></i>
                 </a>
@@ -228,7 +230,7 @@
                 </p>
 
                 <a href="../activos/docs/Ficha Técnica_Mango_SEDIR.pdf"
-                  class="inline-flex items-center mt-4 text-sm font-semibold text-[#00733F] hover:text-[#F09734] transition-colors">
+                  class="inline-flex items-center mt-4 px-4 py-2 text-sm font-semibold text-white bg-[#00944A] hover:bg-[#006A49] rounded-full transition-colors">
                   Consultar ficha técnica
                   <i class="fas fa-arrow-right ml-2 text-xs"></i>
                 </a>
@@ -328,17 +330,6 @@
       </div>
     </section>
 
-
-    <!-- ================= SECTION 3: OTROS PRODUCTOS ================= -->
-    <section id="otros-productos-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 hidden">
-      <div class="border-b border-gray-200 pb-4 mb-8">
-        <h2 class="text-2xl font-bold text-ink mb-2 font-display">Más Productos</h2>
-        <p class="text-gray-600 text-sm font-body">Otras soluciones agropecuarias disponibles en nuestro registro.</p>
-      </div>
-      <div id="otros-productos-container" class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- Contenido dinámico por API -->
-      </div>
-    </section>
   </main>
   <!-- END: Main Page Content -->
 
@@ -388,85 +379,27 @@
         if (!response.ok) throw new Error('Error al conectar con la API de productos.');
         const productos = await response.json();
 
-        const otrosProductos = [];
-
         productos.forEach(producto => {
           const nameNormalized = producto.nombre.toLowerCase().trim()
             .normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
-          let matched = false;
-
           if (nameNormalized.includes('palto')) {
             updateElementText('palto-title', producto.nombre);
             updateElementText('palto-desc', producto.descripcion);
-            matched = true;
           } else if (nameNormalized.includes('mango')) {
             updateElementText('mango-title', producto.nombre);
-            matched = true;
           } else if (nameNormalized.includes('lucuma')) {
             updateElementText('lucuma-title', producto.nombre);
             updateElementText('lucuma-desc', producto.descripcion);
-            matched = true;
           } else if (nameNormalized.includes('gulupa')) {
             updateElementText('gulupa-title', producto.nombre);
             updateElementText('gulupa-desc', producto.descripcion);
-            matched = true;
           } else if (nameNormalized.includes('compost')) {
             updateElementText('compost-title', producto.nombre);
             updateElementText('compost-desc', producto.descripcion);
-            matched = true;
-          } else if (nameNormalized.includes('cuyes') || nameNormalized.includes('cuye')) {
-            updateElementText('cuyes-title', producto.nombre);
-            updateElementText('cuyes-desc', producto.descripcion);
-            matched = true;
           }
 
-          // Los que clasifica el carrusel de categorías (miel/néctar/refresco/
-          // destilados/cocktail/deshidratados) no deben repetirse aquí abajo.
-          const yaClasificadoPorCarrusel =
-            nameNormalized.includes('miel') || nameNormalized.includes('propol') ||
-            nameNormalized.includes('nectar') || nameNormalized.includes('refresco') ||
-            nameNormalized.includes('bebida') || nameNormalized.includes('jugo') ||
-            nameNormalized.includes('destilado') || nameNormalized.includes('licor') ||
-            nameNormalized.includes('cocktail') || nameNormalized.includes('vino') ||
-            nameNormalized.includes('deshidrat');
-
-          if (!matched && !yaClasificadoPorCarrusel) {
-            otrosProductos.push(producto);
-          }
         });
-
-        if (otrosProductos.length > 0) {
-          const section = document.getElementById('otros-productos-section');
-          const container = document.getElementById('otros-productos-container');
-
-          if (section && container) {
-            section.classList.remove('hidden');
-            container.innerHTML = otrosProductos.map(p => `
-              <div class="bg-white rounded-3xl border border-gray-200/85 shadow-sm overflow-hidden flex flex-col justify-between hover-card-effect">
-                <div>
-                  ${p.imagen_url ? `<img src="${p.imagen_url}" alt="${p.nombre}" class="w-full h-56 object-cover bg-gray-50" />` : ''}
-                  <div class="p-6">
-                    <span class="text-xs font-bold uppercase tracking-wider text-primary font-display">${p.nombre_categoria || 'Insumo'}</span>
-                    <h3 class="text-xl font-bold text-ink my-2 font-display">${p.nombre}</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-4 font-body">${p.descripcion}</p>
-                    ${p.etiquetas && p.etiquetas.length > 0 ? `
-                      <div class="flex flex-wrap gap-2 mb-2">
-                        ${p.etiquetas.map(t => `<span class="px-2.5 py-1 text-xs font-medium rounded-md bg-gray-100 text-gray-700">${t}</span>`).join('')}
-                      </div>
-                    ` : ''}
-                  </div>
-                </div>
-                <div class="p-6 pt-0">
-                  <a href="/contacto" class="inline-flex items-center text-sm font-semibold text-primary hover:text-primary-dark transition-colors group font-display">
-                    <span>Solicitar Cotización</span>
-                    <i class="fas fa-arrow-right text-xs ml-2 transform group-hover:translate-x-1 transition-transform"></i>
-                  </a>
-                </div>
-              </div>
-            `).join('');
-          }
-        }
       } catch (err) {
         console.warn('Carga dinámica offline, usando contenido estático base:', err.message);
       }

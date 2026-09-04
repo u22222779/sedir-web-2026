@@ -5,14 +5,14 @@
 <!-- LOGO -->
 <div class="navbar-logo-container flex items-center">
   <a href="/index.html" class="navbar-logo-pill js-logo-home">
-    <img alt="SEDIR Logo" src="/activos/img_logos/blanco.jpg" class="navbar-logo logo-default" style="height: 120px; width: auto;">
-    <img alt="SEDIR Logo" src="/activos/img_logos/Logo-Brown.svg" class="navbar-logo logo-scrolled" style="height: 120px; width: auto;">
+    <img alt="SEDIR Logo" src="/activos/img_logos/blanco.jpg" class="navbar-logo logo-default">
+    <img alt="SEDIR Logo" src="/activos/img_logos/Logo-Brown.svg" class="navbar-logo logo-scrolled">
   </a>
 </div>
 
     <!-- DESKTOP MENU -->
     <!-- Reemplaza esta línea en tu Navbar Desktop -->
-    <div class="hidden md:flex items-center flex-nowrap gap-4 lg:gap-6">
+    <div class="hidden lg:flex items-center flex-nowrap gap-4 lg:gap-6">
       <a class="navbar-link font-display font-medium text-[16px]" href="/index.html">
         Inicio
       </a>
@@ -72,7 +72,7 @@
     </div>
 
     <!-- MOBILE BUTTON (HAMBURGUESA) -->
-    <button id="menu-btn" class="md:hidden navbar-burger focus:outline-none" type="button"
+    <button id="menu-btn" class="lg:hidden navbar-burger focus:outline-none" type="button"
       aria-label="Abrir o cerrar menú" aria-expanded="false">
       <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
         <path class="line line1" stroke-linecap="round" stroke-width="2" d="M4 7h16" />
@@ -86,7 +86,7 @@
 
 <!-- MOBILE DRAWER (PANEL LATERAL) -->
 <div id="mobile-menu"
-  class="fixed top-0 right-[-100%] w-[280px] h-full bg-white shadow-2xl z-[10000] transition-all duration-300 ease-in-out md:hidden flex flex-col justify-between">
+  class="navbar-drawer fixed top-0 right-[-100%] w-[280px] h-full bg-white shadow-2xl z-[10000] transition-all duration-300 ease-in-out lg:hidden flex flex-col justify-between">
  
   <div>
     <!-- LOGO EN EL DRAWER -->
@@ -160,4 +160,4 @@
 </div>
 <!-- OVERLAY OSCURO DE FONDO -->
 <div id="overlay"
-  class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden z-[9999] md:hidden transition-opacity duration-300"></div>
+  class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden z-[9999] lg:hidden transition-opacity duration-300"></div>

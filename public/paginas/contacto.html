@@ -89,8 +89,8 @@
   <div class="absolute inset-0 bg-transparent z-10"></div>
 
   <!-- Contenido -->
-  <div class="relative z-20 w-full max-w-[1606px] mx-auto px-6 md:px-12 lg:px-[100px] flex items-center">
-<div class="w-full md:w-1/2 text-left translate-y-16">      <!-- Título -->
+    <div class="relative z-20 w-full max-w-[1606px] mx-auto px-4 sm:px-6 md:px-12 lg:px-[100px] flex items-center">
+<div class="w-full md:w-2/3 lg:w-1/2 text-left translate-y-16">      <!-- Título -->
       <h1
         class="font-montserrat text-3xl sm:text-4xl md:text-[44px] text-white font-extrabold leading-none">
         Ponte en 
@@ -104,14 +104,14 @@
 </header>
 
     <!-- Main Content -->
-    <main class="py-16">
-        <section class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+    <main class="py-12 sm:py-16">
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
             <!-- Left Column: Contact Info & Map -->
-            <div class="md:col-span-5 flex flex-col gap-8">
+            <div class="lg:col-span-5 flex flex-col gap-6 sm:gap-8 min-w-0">
                 <div class="space-y-8">
                     <div
-                        class="bg-[#00944a] text-white p-8 shadow-lg rounded-rl-[0] rounded-tr-[40px] rounded-br-[40px] rounded-bl-[40px]">
-                        <h3 class="text-xl font-bold mb-8">Información de contacto</h3>
+                        class="bg-[#00944a] text-white p-6 sm:p-8 shadow-lg rounded-tl-none rounded-tr-[40px] rounded-br-[40px] rounded-bl-[40px]">
+                        <h3 class="text-lg sm:text-xl font-bold mb-6 sm:mb-8">Información de contacto</h3>
                         <div class="space-y-6">
                             <div class="flex items-start gap-4">
                                 <div
@@ -124,9 +124,9 @@
                                             stroke-linejoin="round" stroke-width="2"></path>
                                     </svg>
                                 </div>
-                                <div>
+                                <div class="min-w-0">
                                     <p class="font-bold text-sm mb-1">Sede Central</p>
-                                    <p class="text-sm text-gray-100">Fundo Bellavista Parcela 291 (A 500 metros del portal
+                                    <p class="text-sm text-gray-100 break-words">Fundo Bellavista Parcela 291 (A 500 metros del portal
                                         de ingreso a Moro) Moro - Ancash, Peru</p>
                                 </div>
                             </div>
@@ -140,7 +140,7 @@
                                             stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
                                     </svg>
                                 </div>
-                                <div>
+                                <div class="min-w-0">
                                     <p class="font-bold text-sm mb-1">Teléfono / WhatsApp</p>
                                     <p class="text-sm text-gray-100">962 118 628</p>
                                 </div>
@@ -155,9 +155,9 @@
                                             stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
                                     </svg>
                                 </div>
-                                <div>
+                                <div class="min-w-0">
                                     <p class="font-bold text-sm mb-1">Correo electrónico</p>
-                                    <p class="text-sm text-gray-100">contacto@sedir.org.pe</p>
+                                    <p class="text-sm text-gray-100 break-all">contacto@sedir.org.pe</p>
                                 </div>
                             </div>
 
@@ -169,7 +169,7 @@
                                             stroke-linejoin="round" stroke-width="2"></path>
                                     </svg>
                                 </div>
-                                <div>
+                                <div class="min-w-0">
                                     <p class="font-bold text-sm mb-1">Horario de Atención</p>
                                     <p class="text-sm text-gray-100">Lunes a Viernes: 8:00 a.m. – 6:00 p.m.</p>
                                                                         <p class="text-sm text-gray-100">Sábado: 8:00 a.m. – 1:00 p.m.
@@ -180,14 +180,14 @@
                         </div>
                     </div>
 
-                    <div class="rounded-[20px] overflow-hidden shadow-lg h-64 border border-gray-200">
+                    <div class="rounded-[20px] overflow-hidden shadow-lg h-56 sm:h-64 border border-gray-200">
                         <iframe class="w-full h-full" src="https://www.google.com/maps?q=SEDIR+Nepena&output=embed"
                             allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
 
                     <div class="mt-4 text-center">
-                        <a href="https://maps.app.goo.gl/8Z3ngsadtKozAGHW7" target="_blank"
-                            class="inline-flex items-center gap-2 bg-[#00944a] hover:bg-[#007a3d] text-white px-6 py-3 rounded-full font-semibold transition-colors">
+                        <a href="https://maps.app.goo.gl/8Z3ngsadtKozAGHW7" target="_blank" rel="noopener noreferrer"
+                            class="inline-flex items-center justify-center gap-2 bg-[#00944a] hover:bg-[#007a3d] text-white px-5 sm:px-6 py-3 rounded-full text-sm sm:text-base font-semibold transition-colors">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor"
                                 viewBox="0 0 24 24">
                                 <path
@@ -201,14 +201,14 @@
             </div>
 
             <!-- Right Column: Form -->
-            <div class="md:col-span-7 bg-sedir-lightgray rounded-[20px] p-10 lg:p-12 shadow-sm border border-gray-100">
-                <div class="mb-10">
-                    <h2 class="font-heading font-bold text-3xl text-gray-900 mb-3">Envíanos un Mensaje</h2>
-                    <p class="text-gray-500 text-base">Completa el formulario y nuestro equipo te responderá en menos de
+            <div class="lg:col-span-7 min-w-0 bg-sedir-lightgray rounded-[20px] p-6 sm:p-8 lg:p-12 shadow-sm border border-gray-100">
+                <div class="mb-8 sm:mb-10">
+                    <h2 class="font-heading font-bold text-2xl sm:text-3xl text-gray-900 mb-3">Envíanos un Mensaje</h2>
+                    <p class="text-gray-500 text-sm sm:text-base">Completa el formulario y nuestro equipo te responderá en menos de
                         24 horas.</p>
                 </div>
                 <form action="#" class="space-y-8" id="contact-form" method="POST">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-8">
                         <div>
                             <label class="block text-sm font-semibold text-gray-700 mb-3" for="nombre">Nombre
                                 Completo</label>
@@ -269,6 +269,7 @@
                     </button>
                 </form>
             </div>
+            </section>
     </main>
 
     <!-- Footer Component -->

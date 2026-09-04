@@ -15,6 +15,8 @@
 
         --font-montserrat: 'Montserrat', sans-serif;
         --font-franklin: 'Franklin Gothic Demi', 'Franklin Gothic', sans-serif;
+        --hero-fondo-profesional: #17352f;
+        --hero-fondo-profesional-oscuro: #0b1715;
     }
 
     .hero-home * {
@@ -34,7 +36,7 @@
         min-height: 520px; 
         overflow: hidden;
         /* Fondo degradado verde institucional en lugar de negro puro mientras carga el video */
-        background: radial-gradient(circle at center, var(--color-primario-oscuro) 0%, var(--color-fondo-oscuro) 100%);
+        background: linear-gradient(135deg, var(--hero-fondo-profesional) 0%, var(--hero-fondo-profesional-oscuro) 100%);
         box-shadow: 0 12px 30px rgba(0, 3, 6, 0.5);
     }
 
@@ -205,10 +207,26 @@
         }
     }
 
+    @media (min-width: 769px) and (max-width: 1023px) {
+        .hero-home {
+            height: 65vh;/*SECCION VERDE DE LA PARTE DE ATRAS DEL VIDEO*/
+            height: 65dvh;/*SECCION VERDE DE LA PARTE DE ATRAS DEL VIDEO*/
+            min-height: 0;
+            aspect-ratio: auto;
+        }
+    }
+
     /* ==========================================
        6. MÓVIL Y TABLET
     ========================================= */
     @media (max-width: 768px) {
+        .hero-home {
+            height: 100vh;
+            height: 100dvh;
+            min-height: 0;
+            aspect-ratio: auto;
+        }
+
         .hero-video {
             object-position: center 30%;
         }

@@ -122,13 +122,22 @@
             border-radius: 20px 20px 20px 0;
         }
 
-        .asym-icon-box {
+        .program-icon {
+            width: 48px;
+            height: 48px;
+            flex: 0 0 48px;
+            border: 4px solid #FFFFFF;
             border-radius: 0 16px 16px 16px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
         }
 
         /* Efectos institucionales sutiles */
         .institutional-card {
             transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            min-width: 0;
         }
 
         .institutional-card:hover {
@@ -204,7 +213,7 @@
         <!-- =========================================================================================
              BLOQUE 1: DESARROLLO DE CAPACIDADES (FONDO BLANCO PURO)
              ========================================================================================= -->
-        <section id="capacitacion" class="bg-white py-20 md:py-28 scroll-mt-16">
+        <section id="capacitacion" class="bg-white py-14 md:py-20 lg:py-28 scroll-mt-16">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12">
 
                 <!-- Encabezado -->
@@ -248,7 +257,7 @@
                         <div
                             class="bg-white p-8 border border-gray-200/80 shadow-md institutional-card asym-tl-0-lg flex flex-col justify-between group">
                             <div
-                                class="w-12 h-12 bg-primary border-4 border-white asym-icon-box flex items-center justify-center shadow-md mb-6 group-hover:bg-primary-dark transition-colors">
+                                class="program-icon bg-primary shadow-md mb-6 group-hover:bg-primary-dark transition-colors">
                                 <span class="material-symbols-outlined text-white text-xl">school</span>
                             </div>
                             <h3
@@ -265,7 +274,7 @@
                         <div
                             class="bg-white p-8 border border-gray-200/80 shadow-md institutional-card asym-tl-0-lg flex flex-col justify-between group">
                             <div
-                                class="w-12 h-12 bg-primary border-4 border-white asym-icon-box flex items-center justify-center shadow-md mb-6 group-hover:bg-primary-dark transition-colors">
+                                class="program-icon bg-primary shadow-md mb-6 group-hover:bg-primary-dark transition-colors">
                                 <span class="material-symbols-outlined text-white text-xl">eco</span>
                             </div>
                             <h3
@@ -282,7 +291,7 @@
                         <div
                             class="bg-white p-8 border border-gray-200/80 shadow-md institutional-card asym-tl-0-lg flex flex-col justify-between group">
                             <div
-                                class="w-12 h-12 bg-primary border-4 border-white asym-icon-box flex items-center justify-center shadow-md mb-6 group-hover:bg-primary-dark transition-colors">
+                                class="program-icon bg-primary shadow-md mb-6 group-hover:bg-primary-dark transition-colors">
                                 <span class="material-symbols-outlined text-white text-xl">groups</span>
                             </div>
                             <h3
@@ -330,7 +339,7 @@
              BLOQUE 2: TRANSFERENCIA DE TECNOLOGÍA AGRÍCOLA (FONDO VERDE INSTITUCIONAL PROFUNDO)
              ========================================================================================= -->
         <section id="asistencia-tecnica"
-            class="bg-primary-dark text-white py-24 md:py-28 scroll-mt-16 relative overflow-hidden">
+            class="bg-primary-dark text-white py-16 md:py-20 lg:py-28 scroll-mt-16 relative overflow-hidden">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col gap-12">
 
                 <!-- Encabezado -->
@@ -482,7 +491,7 @@
         <!-- =========================================================================================
              BLOQUE 3: INVESTIGACIÓN APLICADA (FONDO GRIS BOTÁNICO SUAVE)
              ========================================================================================= -->
-        <section id="investigacion" class="bg-[#F3F6F4] py-24 md:py-28 scroll-mt-16 border-b border-gray-200/80">
+        <section id="investigacion" class="bg-[#F3F6F4] py-16 md:py-20 lg:py-28 scroll-mt-16 border-b border-gray-200/80">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12">
 
                 <!-- Encabezado -->
@@ -555,7 +564,7 @@
                         <div
                             class="bg-white p-8 md:p-10 asym-tl-0-lg border border-gray-200/80 shadow-md institutional-card group">
                             <div
-                                class="w-12 h-12 bg-primary border-4 border-white asym-icon-box flex items-center justify-center shadow-md mb-6 group-hover:bg-primary-dark transition-colors">
+                                class="program-icon bg-primary shadow-md mb-6 group-hover:bg-primary-dark transition-colors">
                                 <span class="material-symbols-outlined text-white text-xl">science</span>
                             </div>
                             <h3
@@ -575,7 +584,7 @@
                         <div
                             class="bg-white p-8 md:p-10 asym-tl-0-lg border border-gray-200/80 shadow-md institutional-card group">
                             <div
-                                class="w-12 h-12 bg-primary border-4 border-white asym-icon-box flex items-center justify-center shadow-md mb-6 group-hover:bg-primary-dark transition-colors">
+                                class="program-icon bg-primary shadow-md mb-6 group-hover:bg-primary-dark transition-colors">
                                 <span
                                     class="material-symbols-outlined text-white text-xl">precision_manufacturing</span>
                             </div>
