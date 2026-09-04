@@ -248,9 +248,13 @@
     muted
     playsinline
     preload="auto"
+    poster="../activos/videos/hero-poster.webp"
     aria-hidden="true"
 >
-    <source src="../activos/videos/VIDEO.mp4" type="video/mp4">
+    <source
+        src="../activos/videos/VIDEO-hero.mp4"
+        type="video/mp4"
+    >
     Su navegador no soporta el video de fondo.
 </video>
     </div>
@@ -272,39 +276,43 @@
 </section>
 
 <script>
-    (function () {
-        const video = document.getElementById("heroVideo");
-        if (!video) return;
+(function () {
+    const video = document.getElementById("heroVideo");
+    if (!video) return;
 
-        const INICIO = 6;
-        const FIN = 88;
+    const INICIO = 6;
+    const FIN = 88;
 
-        // 1. Asignar tiempo inicial sin bloquear el renderizado
-        video.addEventListener("loadedmetadata", function () {
-            if (video.duration >= INICIO) {
-                video.currentTime = INICIO;
-            }
-        });
+    let iniciado = false;
 
-        // 2. Control de bucle simple al llegar al final del fragmento
-        video.addEventListener("timeupdate", function () {
-            if (video.currentTime >= FIN) {
-                video.currentTime = INICIO;
-                video.play().catch(() => {});
-            }
-        });
-
-        // 3. Respaldo por si el video llega al final natural del archivo
-        video.addEventListener("ended", function () {
+    video.addEventListener("loadedmetadata", () => {
+        if (video.duration > INICIO) {
             video.currentTime = INICIO;
-            video.play().catch(() => {});
-        });
+        }
+    });
 
-        // 4. Intentar reproducir apenas haya datos suficientes
-        video.addEventListener("canplay", function () {
-            video.play().catch(error => {
-                console.warn("Autoplay bloqueado:", error);
+    video.addEventListener("canplay", () => {
+        if (!iniciado) {
+            iniciado = true;
+
+            video.play().catch(() => {
+                console.warn("El navegador bloqueó el autoplay.");
             });
-        }, { once: true });
-    })();
+        }
+    }, { once: true });
+
+    video.addEventListener("timeupdate", () => {
+        if (video.currentTime >= FIN) {
+            video.currentTime = INICIO;
+
+            video.play().catch(() => {});
+        }
+    });
+
+    video.addEventListener("ended", () => {
+        video.currentTime = INICIO;
+
+        video.play().catch(() => {});
+    });
+})();
 </script>
