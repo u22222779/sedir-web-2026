@@ -2,6 +2,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 const pool = require('../config/database');
+const { resetRateLimit } = require('../middleware/security.middleware');
 
 const TOKEN_EXPIRES_IN = '8h';
 
@@ -69,6 +70,8 @@ async function login(req, res) {
       secret,
       { expiresIn: TOKEN_EXPIRES_IN }
     );
+
+    resetRateLimit('login', req);
 
     return res.json({
       token,
