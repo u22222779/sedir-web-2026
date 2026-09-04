@@ -134,10 +134,16 @@
     player.classList.remove('is-visible');
   });
 
-  // Abrir automáticamente el panel de Facebook solo al entrar al index
-  var path = window.location.pathname;
-  var esIndex = path === '/' || path === '/index.html' || /\/index\.html$/.test(path);
-  if (esIndex) {
+  // Abrir solo al entrar al sitio desde fuera o mediante una entrada directa.
+  // Las navegaciones internas entre páginas de SEDIR no vuelven a abrirlo.
+  var esEntradaAlSitio = false;
+  try {
+    esEntradaAlSitio = !document.referrer || new URL(document.referrer).origin !== window.location.origin;
+  } catch (e) {
+    esEntradaAlSitio = true;
+  }
+
+  if (esEntradaAlSitio) {
     setTimeout(function () {
       player.classList.add('is-visible');
     }, 900);
