@@ -54,7 +54,38 @@
         object-position: center 35%; 
         /* Eliminamos opacity: 0 para que el video aparezca apenas el navegador reciba el primer fotograma */
     }
+/* ==========================================
+   2.1 ESTADO DE CARGA (spinner)
+========================================== */
+.hero-loading-state {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    color: rgba(255, 255, 255, 0.85);
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
 
+.hero-loading-state.is-hidden {
+    opacity: 0;
+}
+
+.hero-loading-state i {
+    font-size: 2rem;
+    color: var(--color-acento-naranja);
+}
+
+.hero-loading-state p {
+    font-family: var(--font-montserrat);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
     /* ==========================================
        3. OVERLAYS DEGRADADOS
     ========================================= */
@@ -250,9 +281,13 @@
     preload="auto"
     aria-hidden="true"
 >
-    <source src="../activos/videos/VIDEO.mp4" type="video/mp4">
+    <source src="../activos/videos/VIDEO-hero.mp4" type="video/mp4">
     Su navegador no soporta el video de fondo.
 </video>
+<div id="heroLoading" class="hero-loading-state">
+    <i class="fa-solid fa-spinner fa-spin"></i>
+    <p>Cargando video...</p>
+</div>
     </div>
 
     <div class="hero-overlay"></div>
@@ -273,38 +308,45 @@
 
 <script>
     (function () {
-        const video = document.getElementById("heroVideo");
-        if (!video) return;
+    const video = document.getElementById("heroVideo");
+    if (!video) return;
 
-        const INICIO = 6;
-        const FIN = 88;
+    const loadingState = document.getElementById("heroLoading");
+    const ocultarCarga = function () {
+        if (loadingState) loadingState.classList.add("is-hidden");
+    };
 
-        // 1. Asignar tiempo inicial sin bloquear el renderizado
-        video.addEventListener("loadedmetadata", function () {
-            if (video.duration >= INICIO) {
-                video.currentTime = INICIO;
-            }
-        });
+    const INICIO = 6;
+    const FIN = 88;
 
-        // 2. Control de bucle simple al llegar al final del fragmento
-        video.addEventListener("timeupdate", function () {
-            if (video.currentTime >= FIN) {
-                video.currentTime = INICIO;
-                video.play().catch(() => {});
-            }
-        });
+    video.addEventListener("loadedmetadata", function () {
+        if (video.duration >= INICIO) {
+            video.currentTime = INICIO;
+        }
+    });
 
-        // 3. Respaldo por si el video llega al final natural del archivo
-        video.addEventListener("ended", function () {
+    video.addEventListener("timeupdate", function () {
+        if (video.currentTime >= FIN) {
             video.currentTime = INICIO;
             video.play().catch(() => {});
-        });
+        }
+    });
 
-        // 4. Intentar reproducir apenas haya datos suficientes
-        video.addEventListener("canplay", function () {
-            video.play().catch(error => {
-                console.warn("Autoplay bloqueado:", error);
-            });
-        }, { once: true });
-    })();
+    video.addEventListener("ended", function () {
+        video.currentTime = INICIO;
+        video.play().catch(() => {});
+    });
+
+    video.addEventListener("canplay", function () {
+        video.play().catch(error => {
+            console.warn("Autoplay bloqueado:", error);
+        });
+    }, { once: true });
+
+    // Nuevo: ocultar spinner apenas empiece a reproducirse
+    video.addEventListener("playing", ocultarCarga, { once: true });
+
+    // Nuevo: respaldo por si tarda o falla
+    setTimeout(ocultarCarga, 6000);
+})();
 </script>
