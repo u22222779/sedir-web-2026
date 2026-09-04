@@ -11,7 +11,8 @@
     "migrar:noticias": "node scripts/migrar-noticias-legacy.js",
     "migrar:publicaciones": "node scripts/migrar-publicaciones-legacy.js",
     "migrar:webinars": "node scripts/migrar-webinars-legacy.js",
-    "migrar:webinars-funcionales": "node scripts/migrar-webinars-funcionales.js"
+    "migrar:webinars-funcionales": "node scripts/migrar-webinars-funcionales.js",
+    "seed:admin": "node scripts/seed-admin-user.js"
   },
   "jest": {
     "testEnvironment": "node",

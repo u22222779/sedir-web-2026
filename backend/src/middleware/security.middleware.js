@@ -34,15 +34,29 @@ function securityHeaders(req, res, next) {
   next();
 }
 
+function resetRateLimit(name, req) {
+  const key = `${name || 'global'}:${getClientIp(req)}`;
+  ipHits.delete(key);
+}
+
 function createRateLimiter(options = {}) {
   const windowMs = options.windowMs || 15 * 60 * 1000;
   const max = options.max || 100;
   const message = options.message || 'Demasiadas solicitudes. Intente nuevamente más tarde.';
+  const skipSuccessfulRequests = Boolean(options.skipSuccessfulRequests);
 
   return function rateLimiter(req, res, next) {
     const now = Date.now();
     const key = `${options.name || 'global'}:${getClientIp(req)}`;
     const current = ipHits.get(key);
+
+    if (skipSuccessfulRequests) {
+      res.on('finish', () => {
+        if (res.statusCode < 400) {
+          ipHits.delete(key);
+        }
+      });
+    }
 
     if (!current || current.resetAt <= now) {
       ipHits.set(key, {
@@ -73,8 +87,9 @@ const apiRateLimiter = createRateLimiter({
 const loginRateLimiter = createRateLimiter({
   name: 'login',
   windowMs: 15 * 60 * 1000,
-  max: 5,
+  max: 10,
   message: 'Demasiados intentos de inicio de sesión. Intente nuevamente en unos minutos.',
+  skipSuccessfulRequests: true,
 });
 
 const contactRateLimiter = createRateLimiter({
@@ -88,5 +103,6 @@ module.exports = {
   apiRateLimiter,
   contactRateLimiter,
   loginRateLimiter,
+  resetRateLimit,
   securityHeaders,
 };
