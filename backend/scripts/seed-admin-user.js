@@ -15,7 +15,7 @@ async function main() {
 
   try {
     const email = 'admin@sedir.local';
-    const passwordHash = await bcrypt.hash('sedir2025', 10);
+    const passwordHash = await bcrypt.hash('Prueba123!', 10);
     const existing = await pool.query('SELECT id_usuario FROM usuario WHERE email = $1', [email]);
 
     if (existing.rowCount) {

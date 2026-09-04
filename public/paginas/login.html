@@ -57,9 +57,13 @@
                     <input id="email" name="email" type="text" placeholder="admin" value=""
                         class="input-pill w-full text-sm" required />
                 </div>
-                <div>
+                <div class="relative">
                     <input id="password" name="password" type="password" placeholder="contraseña"
-                        class="input-pill w-full text-sm" required />
+                        class="input-pill w-full text-sm pr-11" required />
+                    <button type="button" id="toggle-password" aria-label="Mostrar contraseña"
+                        class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-gray-400 hover:text-gray-600 transition cursor-pointer">
+                        <span class="material-symbols-outlined text-xl select-none" id="toggle-password-icon">visibility</span>
+                    </button>
                 </div>
 
                 <button type="submit"
@@ -84,8 +88,20 @@
     <script>
         const loginForm = document.getElementById('login-form');
         const loginError = document.getElementById('login-error');
+        const togglePasswordBtn = document.getElementById('toggle-password');
+        const passwordInput = document.getElementById('password');
+        const togglePasswordIcon = document.getElementById('toggle-password-icon');
         const AUTH_TOKEN_KEY = 'sedir_admin_token';
         const AUTH_USER_KEY = 'sedir_admin_user';
+
+        if (togglePasswordBtn && passwordInput && togglePasswordIcon) {
+            togglePasswordBtn.addEventListener('click', function () {
+                const isPassword = passwordInput.type === 'password';
+                passwordInput.type = isPassword ? 'text' : 'password';
+                togglePasswordIcon.textContent = isPassword ? 'visibility_off' : 'visibility';
+                togglePasswordBtn.setAttribute('aria-label', isPassword ? 'Ocultar contraseña' : 'Mostrar contraseña');
+            });
+        }
 
         function clearAuth() {
             localStorage.removeItem(AUTH_TOKEN_KEY);
