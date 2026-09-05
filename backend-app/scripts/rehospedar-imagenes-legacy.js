@@ -15,7 +15,7 @@
  * sedir.org.pe. Córrelo en tu máquina (no en un sandbox restringido).
  *
  * Uso:
- *   cd backend
+ *   cd backend-app
  *   node scripts/rehospedar-imagenes-legacy.js
  *
  * Después de correrlo:

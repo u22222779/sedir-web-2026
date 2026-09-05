@@ -31,7 +31,7 @@ async function resolverStationId() {
   if (estaciones.length > 1) {
     console.warn(
       `[clima] Se encontraron ${estaciones.length} estaciones WeatherLink; usando "${estaciones[0].station_name}" (${estaciones[0].station_id}). ` +
-        "Define WEATHERLINK_STATION_ID en backend/.env si no es la correcta."
+        "Define WEATHERLINK_STATION_ID en backend-app/.env si no es la correcta."
     );
   }
 
@@ -44,7 +44,7 @@ function credencialesWeatherLink() {
   const apiSecret = process.env.WEATHERLINK_API_SECRET;
   if (!apiKey || !apiSecret) {
     const error = new Error(
-      "Faltan WEATHERLINK_API_KEY / WEATHERLINK_API_SECRET en backend/.env"
+      "Faltan WEATHERLINK_API_KEY / WEATHERLINK_API_SECRET en backend-app/.env"
     );
     error.status = 500;
     throw error;

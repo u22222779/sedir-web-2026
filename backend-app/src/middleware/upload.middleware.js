@@ -5,7 +5,7 @@ const multer = require('multer');
 
 // Carpeta pública donde quedan guardadas las imágenes subidas desde el
 // panel administrativo. Al vivir dentro de /public, express.static ya las
-// sirve automáticamente (ver backend/src/app.js).
+// sirve automáticamente (ver backend-app/src/app.js).
 const UPLOAD_DIR = path.join(__dirname, '..', '..', '..', 'public', 'activos', 'img_uploads');
 
 fs.mkdirSync(UPLOAD_DIR, { recursive: true });

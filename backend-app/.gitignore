@@ -4,5 +4,5 @@ AGENTS.md
 
 # Variables de entorno (contiene contraseñas y API keys reales, nunca subir)
 .env
-backend/.env
+.env
 *.env

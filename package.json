@@ -1,7 +1,7 @@
 {
   "name": "sedir-web-2026",
   "version": "1.0.0",
-  "description": "Base web de SEDIR con frontend en `public/` y backend activo en `backend/` usando Node.js, Express y PostgreSQL.",
+  "description": "Base web de SEDIR con frontend en `public/` y backend activo en `backend-app/` usando Node.js, Express y PostgreSQL.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

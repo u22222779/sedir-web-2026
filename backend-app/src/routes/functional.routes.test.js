@@ -150,6 +150,54 @@ describe("Pruebas funcionales — rutas backend", () => {
       expect(respuesta.status).toBe(200);
       expect(respuesta.body.user.email).toBe("carlos@sedir.pe");
     });
+
+    test("POST /change-password actualiza la contraseña y devuelve un token nuevo", async () => {
+      const currentHash = await bcrypt.hash("claveActual123", 10);
+      const token = jwt.sign({ sub: 1, rol: "admin" }, process.env.JWT_SECRET);
+      pool.query
+        .mockResolvedValueOnce({
+          rowCount: 1,
+          rows: [{ id_usuario: 1, nombre: "Carlos", email: "carlos@sedir.pe", password_hash: currentHash, rol: "admin" }],
+        })
+        .mockResolvedValueOnce({ rowCount: 1, rows: [] });
+
+      const respuesta = await request(app)
+        .post("/api/auth/change-password")
+        .set("Authorization", `Bearer ${token}`)
+        .send({
+          currentPassword: "claveActual123",
+          newPassword: "claveNueva456",
+          confirmPassword: "claveNueva456",
+        });
+
+      expect(respuesta.status).toBe(200);
+      expect(respuesta.body.message).toMatch(/actualizada/i);
+      expect(respuesta.body.token).toEqual(expect.any(String));
+      expect(pool.query).toHaveBeenCalledTimes(2);
+      expect(pool.query.mock.calls[1][0]).toMatch(/UPDATE usuario/i);
+      expect(pool.query.mock.calls[1][0]).not.toMatch(/updated_at/i);
+    });
+
+    test("POST /change-password rechaza la contraseña actual incorrecta", async () => {
+      const currentHash = await bcrypt.hash("claveActual123", 10);
+      const token = jwt.sign({ sub: 1, rol: "admin" }, process.env.JWT_SECRET);
+      pool.query.mockResolvedValueOnce({
+        rowCount: 1,
+        rows: [{ id_usuario: 1, nombre: "Carlos", email: "carlos@sedir.pe", password_hash: currentHash, rol: "admin" }],
+      });
+
+      const respuesta = await request(app)
+        .post("/api/auth/change-password")
+        .set("Authorization", `Bearer ${token}`)
+        .send({
+          currentPassword: "incorrecta",
+          newPassword: "claveNueva456",
+          confirmPassword: "claveNueva456",
+        });
+
+      expect(respuesta.status).toBe(401);
+      expect(pool.query).toHaveBeenCalledTimes(1);
+    });
   });
 
   // --------------------------------------------------------------------

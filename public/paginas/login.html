@@ -123,7 +123,7 @@
                 });
 
                 if (response.ok) {
-                    window.location.href = '/paginas/admin.html';
+                    window.location.href = '/admin';
                     return;
                 }
             } catch (error) {
@@ -162,7 +162,7 @@
 
                 localStorage.setItem(AUTH_TOKEN_KEY, data.token);
                 localStorage.setItem(AUTH_USER_KEY, JSON.stringify(data.user || {}));
-                window.location.href = '/paginas/admin.html';
+                window.location.href = '/admin';
                 return;
             } catch (error) {
                 loginError.textContent = error.message;

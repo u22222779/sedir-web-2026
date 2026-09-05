@@ -119,7 +119,99 @@ async function me(req, res) {
   }
 }
 
+async function changePassword(req, res) {
+  try {
+    const userId = Number(req.auth?.sub);
+    const currentPassword = String(req.body.currentPassword || '');
+    const newPassword = String(req.body.newPassword || '');
+    const confirmPassword = String(req.body.confirmPassword || '');
+
+    if (!userId || !currentPassword || !newPassword || !confirmPassword) {
+      return res.status(400).json({
+        error: 'Todos los campos de contraseña son obligatorios',
+      });
+    }
+
+    if (newPassword.length < 8) {
+      return res.status(400).json({
+        error: 'La nueva contraseña debe tener al menos 8 caracteres',
+      });
+    }
+
+    if (newPassword !== confirmPassword) {
+      return res.status(400).json({
+        error: 'La confirmación no coincide con la nueva contraseña',
+      });
+    }
+
+    if (currentPassword === newPassword) {
+      return res.status(400).json({
+        error: 'La nueva contraseña debe ser diferente a la actual',
+      });
+    }
+
+    const result = await pool.query(
+      `
+        SELECT id_usuario, nombre, email, password_hash, rol
+        FROM usuario
+        WHERE id_usuario = $1
+        LIMIT 1
+      `,
+      [userId]
+    );
+
+    if (!result.rowCount) {
+      return res.status(404).json({
+        error: 'Usuario no encontrado',
+      });
+    }
+
+    const user = result.rows[0];
+    const isCurrentPasswordValid = await bcrypt.compare(currentPassword, user.password_hash);
+
+    if (!isCurrentPasswordValid) {
+      return res.status(401).json({
+        error: 'La contraseña actual es incorrecta',
+      });
+    }
+
+    const passwordHash = await bcrypt.hash(newPassword, 12);
+    await pool.query(
+      `
+        UPDATE usuario
+        SET password_hash = $1
+        WHERE id_usuario = $2
+      `,
+      [passwordHash, userId]
+    );
+
+    const secret = process.env.JWT_SECRET;
+    const authUser = buildAuthUser(user);
+    const token = jwt.sign(
+      {
+        sub: authUser.id,
+        rol: authUser.rol,
+        email: authUser.email,
+        nombre: authUser.nombre,
+      },
+      secret,
+      { expiresIn: TOKEN_EXPIRES_IN }
+    );
+
+    return res.json({
+      message: 'Contraseña actualizada correctamente',
+      token,
+      user: authUser,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      error: error.message,
+    });
+  }
+}
+
 module.exports = {
   login,
   me,
+  changePassword,
 };

@@ -5,8 +5,8 @@
       "name": "SEDIR: iniciar servidor",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceFolder}/backend/src/server.js",
-      "cwd": "${workspaceFolder}/backend",
+      "program": "${workspaceFolder}/backend-app/src/server.js",
+      "cwd": "${workspaceFolder}/backend-app",
       "console": "integratedTerminal",
       "skipFiles": ["<node_internals>/**"]
     }

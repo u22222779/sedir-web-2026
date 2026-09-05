@@ -1,8 +1,0 @@
-{
-  "name": "sedir-optimize-images",
-  "version": "1.0.0",
-  "private": true,
-  "description": "Optimiza en el lugar todas las imagenes de public/activos (resize + recompresion), sin cambiar nombres ni extensiones.",
-  "dependencies": {
-    "sharp": "^0.33.5"
-  }}
